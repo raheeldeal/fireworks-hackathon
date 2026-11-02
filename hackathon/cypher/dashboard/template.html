@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text-to-Cypher Ablations</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --neutral: #c3c2b7;
+    --seq-lo: #cde2fb; --seq-hi: #104281; --good: #006300; --bad: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --neutral: #52514e;
+      --seq-lo: #184f95; --seq-hi: #cde2fb; --good: #0ca30c; --bad: #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --neutral: #52514e;
+    --seq-lo: #184f95; --seq-hi: #cde2fb; --good: #0ca30c; --bad: #e66767;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 15px; margin: 0 0 2px; }
+  .sub { color: var(--ink-2); margin: 0 0 12px; font-size: 13px; }
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 16px; margin-bottom: 16px; min-width: 0; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  .tiles { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+  @media (max-width: 760px) { .tiles { grid-template-columns: 1fr 1fr; } .tiles .hero { grid-column: 1 / -1; } }
+  .tile .label { color: var(--ink-2); font-size: 13px; }
+  .tile .value { font-size: 26px; font-weight: 600; }
+  .hero .value { font-size: 48px; line-height: 1.1; }
+  .tile .note { color: var(--muted); font-size: 12px; }
+  .meter { height: 8px; border-radius: 4px; background: var(--seq-lo); margin-top: 8px; overflow: hidden; }
+  .meter > div { height: 100%; background: var(--s1); border-radius: 4px; }
+  .filters { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 8px 0 16px; }
+  select, button { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--axis); border-radius: 6px; padding: 4px 8px; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  svg text { fill: var(--muted); font-size: 11px; }
+  svg .lbl { fill: var(--ink-2); font-size: 12px; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--c); margin-right: 5px; vertical-align: -1px; }
+  .legend span.hollow::before { background: none; border: 2px solid var(--c); border-radius: 50%; width: 8px; height: 8px; }
+  .legend span.line::before { height: 2px; border-radius: 1px; vertical-align: 3px; width: 14px; }
+  #tip { position: fixed; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--ring);
+         box-shadow: 0 4px 16px rgba(0,0,0,.12); border-radius: 8px; padding: 8px 10px; font-size: 12px; max-width: 320px; display: none; z-index: 10; }
+  #tip b { font-size: 14px; }
+  #tip .k { color: var(--ink-2); }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  th { color: var(--ink-2); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; word-break: break-word; }
+  .ok { color: var(--good); font-weight: 600; } .no { color: var(--bad); font-weight: 600; }
+  details summary { cursor: pointer; }
+  .attempt { border-left: 2px solid var(--grid); padding: 2px 0 2px 10px; margin: 6px 0; }
+  .muted { color: var(--muted); }
+  a { color: var(--s1); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Text-to-Cypher: harness and fine-tuning ablations</h1>
+  <p class="sub">200 locked test questions across 5 Neo4j graphs. Accuracy = rows returned match gold rows (execution accuracy).
+    Base model Muse Glimmer 30B on Fireworks. Frontier numbers are published (CypherGuard, different subset of the same dataset), not run by us.</p>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="filters">
+    <label>Config for breakdown and explorer <select id="pick"></select></label>
+    <button id="theme" type="button">Toggle theme</button>
+  </div>
+
+  <div class="row">
+    <section class="card"><h2>Accuracy vs cost per question</h2>
+      <p class="sub">Up and to the left is better. Line = Pareto frontier; faded dots are beaten on both axes.</p>
+      <div id="pareto-cost"></div><div class="legend" id="legend-cost"></div></section>
+    <section class="card"><h2>Accuracy vs median latency</h2>
+      <p class="sub">End-to-end seconds per question, including database time. No published frontier latency.</p>
+      <div id="pareto-lat"></div><div class="legend" id="legend-lat"></div></section>
+  </div>
+
+  <section class="card"><h2>Ablation ladder</h2>
+    <p class="sub">Accuracy with 95% confidence interval. Reference lines are published frontier scores.</p>
+    <div id="ladder"></div></section>
+
+  <div class="row">
+    <section class="card"><h2>Where answers come from</h2>
+      <p class="sub">Share of questions answered correctly at each harness stage.</p>
+      <div id="stages"></div><div class="legend" id="legend-stages"></div></section>
+    <section class="card"><h2>Accuracy by graph and difficulty</h2>
+      <p class="sub" id="grid-sub"></p><div id="grid"></div></section>
+  </div>
+
+  <div class="row">
+    <section class="card"><h2>Training loss</h2><p class="sub">Mean token NLL per step, per fine-tune.</p><div id="loss"></div><div class="legend" id="legend-loss"></div></section>
+    <section class="card"><h2>Spend by run</h2><p class="sub">From ledger.csv (upper bound: cached-prefill discounts ignored).</p><div id="spend"></div></section>
+  </div>
+
+  <section class="card"><h2>Design experiments (dev split)</h2>
+    <p class="sub">200 training questions held out for design choices; never the test set. Bars show accuracy with 95% CI, grouped by experiment.</p>
+    <div id="dev"></div></section>
+
+  <section class="card"><h2>All configs (table view)</h2><div class="scroll"><table id="table"></table></div></section>
+
+  <section class="card"><h2>Question explorer</h2>
+    <div class="filters"><label>Outcome <select id="f-outcome"><option value="">all</option><option>correct</option><option>wrong</option><option>error</option><option>empty</option></select></label>
+      <label>Graph <select id="f-graph"><option value="">all</option></select></label>
+      <label>Search <input id="f-q" type="search" placeholder="question text" style="font:inherit;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--surface);color:var(--ink)"></label></div>
+    <div class="scroll"><table id="explorer"></table></div></section>
+</main>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const FAMILY = { harness: ["--s1", "Harness only"], finetune: ["--s2", "Fine-tuned + harness"], small: ["--s3", "Other open model + harness"] };
+const STAGE = [["first", "--s1", "First try"], ["fix", "--s2", "Arrow fix"], ["repair", "--s3", "Repair"],
+               ["escalate", "--s4", "Escalation"], ["wrong", "--neutral", "Not correct"]];
+const NS = "http://www.w3.org/2000/svg";
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const pct = x => (100 * x).toFixed(1) + "%";
+const usd = x => x == null ? "–" : "$" + (x < 0.01 ? x.toFixed(5) : x.toFixed(2));
+const el = (tag, attrs = {}, parent) => {
+  const n = tag === "svg" || ["g","line","rect","circle","path","text","polyline"].includes(tag) ? document.createElementNS(NS, tag) : document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) k === "text" ? n.textContent = v : n.setAttribute(k, v);
+  if (parent) parent.appendChild(n);
+  return n;
+};
+
+// ---------- tooltip: values lead, labels follow; text inserted with textContent only ----------
+const tip = document.getElementById("tip");
+function showTip(evt, title, lines) {
+  tip.replaceChildren();
+  el("b", { text: title }, tip);
+  for (const [k, v] of lines) { const d = el("div", {}, tip); el("strong", { text: v + " " }, d); el("span", { class: "k", text: k }, d); }
+  tip.style.display = "block";
+  const x = Math.min(evt.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+  tip.style.left = x + "px"; tip.style.top = (evt.clientY + 14) + "px";
+}
+const hideTip = () => tip.style.display = "none";
+function hover(node, title, lines) {
+  node.setAttribute("tabindex", "0");
+  node.addEventListener("pointermove", e => showTip(e, title, lines));
+  node.addEventListener("pointerleave", hideTip);
+  node.addEventListener("focus", () => { const r = node.getBoundingClientRect(); showTip({ clientX: r.right, clientY: r.top }, title, lines); });
+  node.addEventListener("blur", hideTip);
+}
+
+// ---------- scales and axes ----------
+function niceTicks(lo, hi, n = 5) {
+  const step0 = (hi - lo) / n, mag = 10 ** Math.floor(Math.log10(step0)), err = step0 / mag;
+  const step = (err >= 7 ? 10 : err >= 3 ? 5 : err >= 1.5 ? 2 : 1) * mag;
+  const out = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-12; v += step) out.push(+v.toFixed(10));
+  return out;
+}
+function axes(svg, x, y, W, H, m, xfmt, yfmt, xlab) {
+  for (const t of niceTicks(y.lo, y.hi)) {
+    el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), stroke: css("--grid") }, svg);
+    el("text", { x: m.l - 6, y: y(t) + 4, "text-anchor": "end", text: yfmt(t) }, svg);
+  }
+  el("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: css("--axis") }, svg);
+  for (const t of niceTicks(x.lo, x.hi)) el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: xfmt(t) }, svg);
+  el("text", { x: (m.l + W - m.r) / 2, y: H - 4, "text-anchor": "middle", text: xlab }, svg);
+}
+const linear = (lo, hi, a, b) => { const f = v => a + (v - lo) / (hi - lo || 1) * (b - a); f.lo = lo; f.hi = hi; return f; };
+
+// ---------- Pareto scatter ----------
+function frontier(points, key) {  // best accuracy so far, scanning from cheapest/fastest
+  const sorted = [...points].sort((a, b) => a[key] - b[key] || b.accuracy - a.accuracy);
+  let best = -1; const out = [];
+  for (const p of sorted) if (p.accuracy > best) { out.push(p); best = p.accuracy; }
+  return out;
+}
+function pareto(target, legendTarget, key, fmt, label, ref) {
+  const pts = DATA.configs, W = 520, H = 320, m = { l: 48, r: 16, t: 12, b: 40 };
+  const xs = pts.map(p => p[key]).concat(ref ? [ref.x] : []), ys = pts.map(p => p.accuracy).concat(DATA.references.map(r => r.accuracy));
+  const x = linear(0, Math.max(...xs) * 1.15, m.l, W - m.r);
+  const y = linear(Math.max(0, Math.min(...ys) - 0.08), Math.min(1, Math.max(...ys) + 0.06), H - m.b, m.t);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": label }, target);
+  axes(svg, x, y, W, H, m, fmt, v => (100 * v).toFixed(0) + "%", label);
+  for (const r of DATA.references) {  // labels sit at the left end, away from the dots
+    el("line", { x1: m.l, x2: W - m.r, y1: y(r.accuracy), y2: y(r.accuracy), stroke: css("--muted"), "stroke-width": 1 }, svg);
+    el("text", { x: m.l + 4, y: y(r.accuracy) - 4, text: r.label.replace(" (published)", "") + " " + pct(r.accuracy) }, svg);
+  }
+  const placed = [];  // direct labels skip any spot that would collide; tooltip and table still carry every value
+  const placeLabel = (px, py, text, parent) => {
+    if (placed.some(([qx, qy]) => Math.abs(qx - px) < 28 && Math.abs(qy - py) < 13)) return;
+    placed.push([px, py]);
+    const right = px > W - m.r - 120;
+    el("text", { class: "lbl", x: right ? px - 8 : px + 8, y: py - 7, "text-anchor": right ? "end" : "start", text }, parent);
+  };
+  const front = frontier(pts, key);
+  el("polyline", { points: front.map(p => `${x(p[key])},${y(p.accuracy)}`).join(" "), fill: "none",
+                   stroke: css("--ink-2"), "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+  if (ref) {
+    const g = el("g", {}, svg);
+    el("circle", { cx: x(ref.x), cy: y(ref.y), r: 5, fill: css("--surface"), stroke: css("--ink-2"), "stroke-width": 2 }, g);
+    el("circle", { cx: x(ref.x), cy: y(ref.y), r: 12, fill: "transparent" }, g);
+    placeLabel(x(ref.x), y(ref.y) + 24, "Sonnet 4.6 (cost est.)", svg);
+    hover(g, "Claude Sonnet 4.6, zero-shot", [["accuracy (published)", pct(ref.y)], ["per question, estimated at list price", usd(ref.x)]]);
+  }
+  const ordered = [...front].reverse().concat(pts.filter(p => !front.includes(p)));  // label the frontier first
+  for (const p of ordered) {
+    const onFront = front.includes(p), g = el("g", { opacity: onFront ? 1 : 0.4 }, svg);
+    el("circle", { cx: x(p[key]), cy: y(p.accuracy), r: 5, fill: css(FAMILY[p.family][0]), stroke: css("--surface"), "stroke-width": 2 }, g);
+    el("circle", { cx: x(p[key]), cy: y(p.accuracy), r: 12, fill: "transparent" }, g);  // 24px hit target
+    placeLabel(x(p[key]), y(p.accuracy), p.id, g);
+    hover(g, `${p.id} · ${p.label}`, [["accuracy", pct(p.accuracy)], ["per question", usd(p.cost_per_question)],
+                                     ["median latency", p.p50_secs.toFixed(2) + " s"], ["calls per question", p.calls_per_question.toFixed(2)]]);
+  }
+  legend(legendTarget, Object.entries(FAMILY).filter(([f]) => pts.some(p => p.family === f)).map(([, [c, t]]) => [c, t])
+         .concat(ref ? [["--ink-2", "Published reference", "hollow"]] : []).concat([["--ink-2", "Pareto frontier", "line"]]));
+}
+function legend(target, items) {
+  for (const [c, t, kind] of items) { const s = el("span", { text: t, class: kind || "" }, target); s.style.setProperty("--c", css(c)); }
+}
+
+// ---------- ablation ladder: bars + CI whiskers + reference lines ----------
+function ladder(target) {
+  const pts = DATA.configs, rowH = 30, W = 1100, m = { l: 230, r: 60, t: 8, b: 56 }, H = m.t + m.b + rowH * pts.length;
+  const x = linear(0, 1, m.l, W - m.r), svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Ablation ladder" }, target);
+  for (const t of [0, .2, .4, .6, .8, 1]) {
+    el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b, stroke: css("--grid") }, svg);
+    el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: (100 * t) + "%" }, svg);
+  }
+  pts.forEach((p, i) => {
+    const cy = m.t + i * rowH + rowH / 2, g = el("g", {}, svg), w = x(p.accuracy) - x(0);
+    el("text", { class: "lbl", x: m.l - 10, y: cy + 4, "text-anchor": "end", text: `${p.id}  ${p.label}` }, svg);
+    el("path", { d: `M${x(0)},${cy - 9} h${w - 4} a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h${-(w - 4)} z`, fill: css(FAMILY[p.family][0]) }, g);
+    el("line", { x1: x(p.ci95[0]), x2: x(p.ci95[1]), y1: cy, y2: cy, stroke: css("--ink"), "stroke-width": 1.5 }, g);
+    for (const e of p.ci95) el("line", { x1: x(e), x2: x(e), y1: cy - 5, y2: cy + 5, stroke: css("--ink"), "stroke-width": 1.5 }, g);
+    el("text", { class: "lbl", x: x(p.ci95[1]) + 8, y: cy + 4, text: pct(p.accuracy) }, g);
+    el("rect", { x: x(0), y: cy - rowH / 2, width: x(1) - x(0), height: rowH, fill: "transparent" }, g);
+    hover(g, `${p.id} · ${p.label}`, [["accuracy", pct(p.accuracy)], ["95% CI", `${pct(p.ci95[0])} – ${pct(p.ci95[1])}`], ["questions", p.n]]);
+  });
+  DATA.references.forEach((r, i) => {
+    el("line", { x1: x(r.accuracy), x2: x(r.accuracy), y1: m.t - 4, y2: H - m.b, stroke: css("--muted"), "stroke-width": 1.5 }, svg);
+    el("text", { x: x(r.accuracy) + 4, y: H - m.b + 16 + 12 * (i + 1), text: r.label.replace(" (published)", "") + " " + pct(r.accuracy) }, svg);
+  });
+}
+
+// ---------- stage stacks ----------
+function stages(target) {
+  const pts = DATA.configs, rowH = 26, W = 540, m = { l: 48, r: 12, t: 4, b: 8 }, H = m.t + m.b + rowH * pts.length;
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Where answers come from" }, target);
+  const x = linear(0, 1, m.l, W - m.r);
+  pts.forEach((p, i) => {
+    const cy = m.t + i * rowH + rowH / 2; let acc = 0;
+    el("text", { class: "lbl", x: m.l - 8, y: cy + 4, "text-anchor": "end", text: p.id }, svg);
+    for (const [key, color, name] of STAGE) {
+      const share = (p.by_stage[key] || 0) / p.n;
+      if (!share) continue;
+      const x0 = x(acc) + (acc ? 1 : 0), x1 = x(acc + share) - 1;  // 2px surface gap between segments
+      const r = el("rect", { x: x0, y: cy - 8, width: Math.max(0, x1 - x0), height: 16, rx: 3, fill: css(color) }, svg);
+      hover(r, `${p.id} · ${name}`, [["of questions", pct(share)], ["questions", p.by_stage[key]]]);
+      acc += share;
+    }
+  });
+  legend(document.getElementById("legend-stages"), STAGE.map(([, c, t]) => [c, t]));
+}
+
+// ---------- heatmap: graph x tier for the picked config ----------
+function heat(target, cfg) {
+  target.replaceChildren();
+  const lo = css("--seq-lo"), hi = css("--seq-hi"), lightMode = lo.toLowerCase() === "#cde2fb";
+  document.getElementById("grid-sub").textContent =
+    `${cfg.id} · ${cfg.label}. ${lightMode ? "Darker" : "Lighter"} = more accurate; n = questions per cell.`;
+  const W = 540, cw = 120, ch = 40, m = { l: 120, t: 24 }, H = m.t + ch * DATA.graphs.length + 6;
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Accuracy by graph and tier" }, target);
+  const mix = t => { const a = lo.match(/\w\w/g).map(h => parseInt(h, 16)), b = hi.match(/\w\w/g).map(h => parseInt(h, 16));
+                     return "rgb(" + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",") + ")"; };
+  DATA.tiers.forEach((t, j) => el("text", { class: "lbl", x: m.l + j * cw + cw / 2, y: 14, "text-anchor": "middle", text: t }, svg));
+  DATA.graphs.forEach((g, i) => {
+    el("text", { class: "lbl", x: m.l - 8, y: m.t + i * ch + ch / 2 + 4, "text-anchor": "end", text: g }, svg);
+    DATA.tiers.forEach((t, j) => {
+      const c = cfg.grid[`${g}|${t}`]; if (!c) return;
+      const r = el("rect", { x: m.l + j * cw + 1, y: m.t + i * ch + 1, width: cw - 2, height: ch - 2, rx: 4, fill: mix(c.acc) }, svg);
+      const dark = (c.acc > 0.55) === lightMode;  // white text on the deep end of the ramp, near-black on the pale end
+      el("text", { x: m.l + j * cw + cw / 2, y: m.t + i * ch + ch / 2 + 4, "text-anchor": "middle",
+                   style: `fill:${dark ? "#ffffff" : "#0b0b0b"};font-size:12px`, text: `${pct(c.acc)} · n ${c.n}` }, svg);
+      hover(r, `${g} · ${t}`, [["accuracy", pct(c.acc)], ["questions", c.n]]);
+    });
+  });
+}
+
+// ---------- training loss lines ----------
+function loss(target) {
+  const runs = DATA.training.filter(r => r.points.length);
+  if (!runs.length) { el("p", { class: "muted", text: "No fine-tunes yet." }, target); return; }
+  const W = 540, H = 240, m = { l: 44, r: 12, t: 8, b: 36 };
+  const allX = runs.flatMap(r => r.points.map(p => p[0])), allY = runs.flatMap(r => r.points.map(p => p[1]));
+  const x = linear(0, Math.max(...allX), m.l, W - m.r), y = linear(0, Math.max(...allY) * 1.1, H - m.b, m.t);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Training loss" }, target);
+  axes(svg, x, y, W, H, m, v => v, v => v.toFixed(2), "training step");
+  const colors = ["--s1", "--s2", "--s3", "--s4"];
+  runs.slice(0, 4).forEach((r, i) => el("polyline", { points: r.points.map(p => `${x(p[0])},${y(p[1])}`).join(" "), fill: "none",
+                                                     stroke: css(colors[i]), "stroke-width": 2, "stroke-linejoin": "round" }, svg));
+  legend(document.getElementById("legend-loss"), runs.slice(0, 4).map((r, i) => [colors[i], `${r.tag} (${r.examples} examples)`, "line"]));
+}
+
+// ---------- spend ----------
+function spend(target) {
+  const t = el("table", {}, target), h = el("tr", {}, t);
+  el("th", { text: "run" }, h); el("th", { class: "num", text: "spend" }, h);
+  for (const [k, v] of Object.entries(DATA.spend.by_tag)) { const r = el("tr", {}, t); el("td", { text: k }, r); el("td", { class: "num", text: usd(v) }, r); }
+}
+
+// ---------- tiles ----------
+function tiles(target) {
+  const best = [...DATA.configs].sort((a, b) => b.accuracy - a.accuracy)[0];
+  const cheapest = [...DATA.configs].filter(c => c.accuracy >= DATA.references[0].accuracy).sort((a, b) => a.cost_per_question - b.cost_per_question)[0];
+  const tile = (cls, label, value, note) => { const d = el("div", { class: "card tile " + cls }, target);
+    el("div", { class: "label", text: label }, d); el("div", { class: "value", text: value }, d); if (note) el("div", { class: "note", text: note }, d); return d; };
+  tile("hero", `Best accuracy · ${best.id} ${best.label}`, pct(best.accuracy), `95% CI ${pct(best.ci95[0])} – ${pct(best.ci95[1])} · ${usd(best.cost_per_question)} per question`);
+  tile("", "Frontier reference", pct(DATA.references[0].accuracy), "Claude Sonnet 4.6, zero-shot (published)");
+  tile("", "Cheapest config at or above it", cheapest ? usd(cheapest.cost_per_question) : "none yet", cheapest ? `${cheapest.id} · per question` : "");
+  const s = tile("", "Fireworks spend", usd(DATA.spend.total), `of $${DATA.spend.cap} cap · $${DATA.spend.credits} credits`);
+  const meter = el("div", { class: "meter", role: "meter", "aria-valuenow": DATA.spend.total, "aria-valuemax": DATA.spend.cap }, s);
+  el("div", {}, meter).style.width = Math.min(100, 100 * DATA.spend.total / DATA.spend.cap) + "%";
+}
+
+// ---------- table view ----------
+function table(target) {
+  const cols = [["id", "", v => v], ["label", "config", v => v], ["accuracy", "accuracy", pct], ["ci95", "95% CI", v => `${pct(v[0])} – ${pct(v[1])}`],
+                ["cost_per_question", "$/question", usd], ["cost_per_correct", "$/correct", usd], ["calls_per_question", "calls/q", v => v.toFixed(2)],
+                ["p50_secs", "p50 s", v => v.toFixed(2)], ["p90_secs", "p90 s", v => v.toFixed(2)]];
+  const h = el("tr", {}, target);
+  cols.forEach(([, t], i) => el("th", { class: i > 1 ? "num" : "", text: t }, h));
+  for (const c of DATA.configs) { const r = el("tr", {}, target); cols.forEach(([k, , f], i) => el("td", { class: i > 1 ? "num" : "", text: f(c[k]) }, r)); }
+}
+
+// ---------- explorer ----------
+function explorer(cfg) {
+  const t = document.getElementById("explorer"); t.replaceChildren();
+  const fo = document.getElementById("f-outcome").value, fg = document.getElementById("f-graph").value, fq = document.getElementById("f-q").value.toLowerCase();
+  const h = el("tr", {}, t); ["id", "graph", "tier", "result", "question and attempts"].forEach(x => el("th", { text: x }, h));
+  for (const r of cfg.rows) {
+    if ((fo && r.outcome !== fo) || (fg && r.graph !== fg) || (fq && !r.question.toLowerCase().includes(fq))) continue;
+    const tr = el("tr", {}, t);
+    el("td", { text: r.id }, tr); el("td", { text: r.graph }, tr); el("td", { text: r.tier }, tr);
+    el("td", { class: r.outcome === "correct" ? "ok" : "no", text: (r.outcome === "correct" ? "✓ " : "✗ ") + r.outcome + (r.outcome === "correct" ? ` (${r.stage})` : "") }, tr);
+    const td = el("td", {}, tr), d = el("details", {}, td);
+    el("summary", { text: r.question }, d);
+    for (const a of r.attempts) {
+      const box = el("div", { class: "attempt" }, d);
+      el("div", { class: "muted", text: `${a.source} · ${a.status} · ${a.outcome} · ${a.n_rows} rows` }, box);
+      el("code", { text: a.cypher || "(no query)" }, box);
+      if (a.error) el("div", { class: "no", text: a.error }, box);
+      for (const w of a.warnings) el("div", { class: "muted", text: "warning: " + w }, box);
+    }
+    const gold = el("div", { class: "attempt" }, d); el("div", { class: "muted", text: "gold" }, gold); el("code", { text: r.gold }, gold);
+    if (DATA.trace_prefix && r.trace) { const a = el("a", { href: DATA.trace_prefix + r.trace, target: "_blank", rel: "noopener", text: "Open Langfuse trace ↗" }, d); }
+  }
+}
+
+// ---------- dev experiments: one bar group per experiment ----------
+function dev(target) {
+  if (!DATA.dev || !DATA.dev.length) { el("p", { class: "muted", text: "No dev experiments yet." }, target); return; }
+  const groups = [...new Set(DATA.dev.map(d => d.group))];
+  for (const g of groups) {
+    const items = DATA.dev.filter(d => d.group === g), best = Math.max(...items.map(d => d.accuracy));
+    el("h3", { text: g, style: "font-size:13px;margin:14px 0 4px" }, target);
+    const rowH = 26, W = 1100, m = { l: 200, r: 260, t: 4, b: 4 }, H = m.t + m.b + rowH * items.length;
+    const x = linear(0, 1, m.l, W - m.r), svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": g }, target);
+    items.forEach((d, i) => {
+      const cy = m.t + i * rowH + rowH / 2, w = x(d.accuracy) - x(0), gEl = el("g", {}, svg);
+      el("text", { class: "lbl", x: m.l - 10, y: cy + 4, "text-anchor": "end", text: d.label }, svg);
+      el("path", { d: `M${x(0)},${cy - 8} h${w - 4} a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h${-(w - 4)} z`,
+                   fill: css(d.accuracy === best ? "--s2" : "--s1") }, gEl);
+      el("line", { x1: x(d.ci95[0]), x2: x(d.ci95[1]), y1: cy, y2: cy, stroke: css("--ink"), "stroke-width": 1.5 }, gEl);
+      el("text", { class: "lbl", x: x(d.ci95[1]) + 8, y: cy + 4,
+                   text: `${pct(d.accuracy)}${d.accuracy === best ? "  ← best" : ""}   ${usd(d.cost_per_question)}/q   ${d.p50_secs.toFixed(1)} s` }, gEl);
+      el("rect", { x: x(0), y: cy - rowH / 2, width: x(1) - x(0), height: rowH, fill: "transparent" }, gEl);
+      hover(gEl, `${g}: ${d.label}`, [["accuracy", pct(d.accuracy)], ["95% CI", `${pct(d.ci95[0])} – ${pct(d.ci95[1])}`],
+                                      ["per question", usd(d.cost_per_question)], ["questions", d.n]]);
+    });
+  }
+  const lg = el("div", { class: "legend" }, target);
+  legend(lg, [["--s2", "Best in its experiment"], ["--s1", "Other settings"]]);
+}
+
+// ---------- wire up ----------
+function render() {
+  for (const id of ["tiles", "pareto-cost", "legend-cost", "pareto-lat", "legend-lat", "ladder", "stages", "legend-stages", "loss", "legend-loss", "spend", "table", "dev"])
+    document.getElementById(id).replaceChildren();
+  tiles(document.getElementById("tiles"));
+  const ref = DATA.references[0];
+  pareto(document.getElementById("pareto-cost"), document.getElementById("legend-cost"), "cost_per_question", v => "$" + v.toFixed(4),
+         "$ per question", ref.cost_per_question_est ? { x: ref.cost_per_question_est, y: ref.accuracy } : null);
+  pareto(document.getElementById("pareto-lat"), document.getElementById("legend-lat"), "p50_secs", v => v.toFixed(1) + "s", "median seconds per question", null);
+  ladder(document.getElementById("ladder")); stages(document.getElementById("stages"));
+  loss(document.getElementById("loss")); spend(document.getElementById("spend")); table(document.getElementById("table"));
+  dev(document.getElementById("dev"));
+  const cfg = DATA.configs.find(c => c.id === pick.value) || DATA.configs[0];
+  heat(document.getElementById("grid"), cfg); explorer(cfg);
+}
+const pick = document.getElementById("pick");
+for (const c of DATA.configs) el("option", { value: c.id, text: `${c.id} · ${c.label}` }, pick);
+pick.value = [...DATA.configs].sort((a, b) => b.accuracy - a.accuracy)[0].id;
+for (const g of DATA.graphs) el("option", { text: g }, document.getElementById("f-graph"));
+pick.addEventListener("change", render);
+for (const id of ["f-outcome", "f-graph", "f-q"]) document.getElementById(id).addEventListener("input", () => explorer(DATA.configs.find(c => c.id === pick.value)));
+document.getElementById("theme").addEventListener("click", () => {
+  const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.theme = dark ? "light" : "dark"; render();
+});
+render();
+</script>
+</body>
+</html>

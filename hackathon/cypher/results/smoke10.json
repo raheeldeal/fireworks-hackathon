@@ -1,0 +1,843 @@
+{
+ "tag": "smoke10",
+ "split": "test",
+ "data": "data/test.jsonl",
+ "model": "accounts/fireworks/models/muse-glimmer-30b",
+ "escalate_model": "accounts/fireworks/models/kimi-k3",
+ "config": {
+  "shots": 3,
+  "fix": true,
+  "repair": 3,
+  "escalate": "kimi-k3"
+ },
+ "created": "2026-11-02T12:29:06",
+ "summary": {
+  "n": 10,
+  "correct": 5,
+  "accuracy": 0.5,
+  "ci95": [
+   0.2366,
+   0.7634
+  ],
+  "outcomes": {
+   "correct": 5,
+   "wrong": 5
+  },
+  "by_stage": {
+   "first": 4,
+   "fix": 0,
+   "repair": 0,
+   "escalate": 1,
+   "wrong": 5
+  },
+  "by_graph": {
+   "fincen": 0.6667,
+   "movies": 0.6667,
+   "northwind": 0.5,
+   "twitter": 0.0
+  },
+  "by_tier": {
+   "easy": 0.3333,
+   "hard": 1.0,
+   "medium": 0.4
+  },
+  "cost": 0.044303,
+  "cost_per_question": 0.00443,
+  "cost_per_correct": 0.008861,
+  "calls_per_question": 1.5,
+  "p50_secs": 2.056,
+  "p90_secs": 19.411
+ },
+ "views": {
+  "first": {
+   "n": 10,
+   "correct": 4,
+   "accuracy": 0.4,
+   "ci95": [
+    0.1682,
+    0.6873
+   ],
+   "outcomes": {
+    "correct": 4,
+    "wrong": 5,
+    "error": 1
+   },
+   "by_stage": {
+    "first": 4,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 0,
+    "wrong": 6
+   },
+   "by_graph": {
+    "fincen": 0.6667,
+    "movies": 0.3333,
+    "northwind": 0.5,
+    "twitter": 0.0
+   },
+   "by_tier": {
+    "easy": 0.3333,
+    "hard": 0.5,
+    "medium": 0.4
+   },
+   "cost": 0.021937,
+   "cost_per_question": 0.002194,
+   "cost_per_correct": 0.005484,
+   "calls_per_question": 1.0,
+   "p50_secs": 2.048,
+   "p90_secs": 2.524
+  },
+  "fix": {
+   "n": 10,
+   "correct": 4,
+   "accuracy": 0.4,
+   "ci95": [
+    0.1682,
+    0.6873
+   ],
+   "outcomes": {
+    "correct": 4,
+    "wrong": 5,
+    "error": 1
+   },
+   "by_stage": {
+    "first": 4,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 0,
+    "wrong": 6
+   },
+   "by_graph": {
+    "fincen": 0.6667,
+    "movies": 0.3333,
+    "northwind": 0.5,
+    "twitter": 0.0
+   },
+   "by_tier": {
+    "easy": 0.3333,
+    "hard": 0.5,
+    "medium": 0.4
+   },
+   "cost": 0.021937,
+   "cost_per_question": 0.002194,
+   "cost_per_correct": 0.005484,
+   "calls_per_question": 1.0,
+   "p50_secs": 2.048,
+   "p90_secs": 2.524
+  },
+  "repair": {
+   "n": 10,
+   "correct": 4,
+   "accuracy": 0.4,
+   "ci95": [
+    0.1682,
+    0.6873
+   ],
+   "outcomes": {
+    "correct": 4,
+    "wrong": 5,
+    "error": 1
+   },
+   "by_stage": {
+    "first": 4,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 0,
+    "wrong": 6
+   },
+   "by_graph": {
+    "fincen": 0.6667,
+    "movies": 0.3333,
+    "northwind": 0.5,
+    "twitter": 0.0
+   },
+   "by_tier": {
+    "easy": 0.3333,
+    "hard": 0.5,
+    "medium": 0.4
+   },
+   "cost": 0.030863,
+   "cost_per_question": 0.003086,
+   "cost_per_correct": 0.007716,
+   "calls_per_question": 1.3,
+   "p50_secs": 2.056,
+   "p90_secs": 6.94
+  },
+  "escalate": {
+   "n": 10,
+   "correct": 5,
+   "accuracy": 0.5,
+   "ci95": [
+    0.2366,
+    0.7634
+   ],
+   "outcomes": {
+    "correct": 5,
+    "wrong": 5
+   },
+   "by_stage": {
+    "first": 4,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 1,
+    "wrong": 5
+   },
+   "by_graph": {
+    "fincen": 0.6667,
+    "movies": 0.6667,
+    "northwind": 0.5,
+    "twitter": 0.0
+   },
+   "by_tier": {
+    "easy": 0.3333,
+    "hard": 1.0,
+    "medium": 0.4
+   },
+   "cost": 0.044303,
+   "cost_per_question": 0.00443,
+   "cost_per_correct": 0.008861,
+   "calls_per_question": 1.5,
+   "p50_secs": 2.056,
+   "p90_secs": 19.411
+  }
+ },
+ "rows": [
+  {
+   "id": "t000",
+   "graph": "movies",
+   "tier": "medium",
+   "question": "What are the 3 most common taglines found in the movies?",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.tagline IS NOT NULL RETURN m.tagline AS Tagline, count(m) AS Frequency ORDER BY Frequency DESC LIMIT 3",
+   "examples": [
+    "tr118",
+    "tr431",
+    "tr165"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:Movie) RETURN m.tagline AS tagline, count(*) AS frequency ORDER BY frequency DESC LIMIT 3",
+     "cypher": "MATCH (m:Movie) RETURN m.tagline AS tagline, count(*) AS frequency ORDER BY frequency DESC LIMIT 3",
+     "status": "rows",
+     "error": null,
+     "n_rows": 3,
+     "calls": 1,
+     "in_tokens": 602,
+     "out_tokens": 25,
+     "cost": 0.00130192,
+     "secs": 2.064103126525879,
+     "outcome": "correct",
+     "preview": [
+      {
+       "tagline": "Free your mind",
+       "frequency": 1
+      },
+      {
+       "tagline": "Everything that has a beginning has an end",
+       "frequency": 1
+      },
+      {
+       "tagline": "Welcome to the Real World",
+       "frequency": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.066,
+   "outcome": "correct",
+   "langfuse_trace_id": "9facca3695ec26c02c1f6889642341c0",
+   "final_cypher": "MATCH (m:Movie) RETURN m.tagline AS tagline, count(*) AS frequency ORDER BY frequency DESC LIMIT 3",
+   "stage": "first"
+  },
+  {
+   "id": "t001",
+   "graph": "fincen",
+   "tier": "easy",
+   "question": "Show the top 3 Filings where the beneficiary bank country is 'Singapore'.",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "examples": [
+    "tr194",
+    "tr050",
+    "tr262"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+     "cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+     "status": "rows",
+     "error": null,
+     "n_rows": 3,
+     "calls": 1,
+     "in_tokens": 1022,
+     "out_tokens": 27,
+     "cost": 0.00213488,
+     "secs": 2.060049295425415,
+     "outcome": "correct",
+     "preview": [
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Sep 30, 2014",
+        "amount": 457984607,
+        "beneficiary_iso": "SGP",
+        "beneficiary_lng": "103.8",
+        "begin_date": "Sep 30, 2014",
+        "originator_bank": "Deutsche Bank AG",
+        "beneficiary_lat": "1.3667",
+        "begin_date_format": "2014-09-30T00:00:00Z",
+        "beneficiary_bank_id": "usb-ag-singapore-sgp",
+        "end_date_format": "2014-09-30T00:00:00Z",
+        "originator_iso": "HKG",
+        "origin_lat": "22.25",
+        "filer_org_name": "Deutsche Bank AG",
+        "originator_bank_country": "Hong Kong",
+        "beneficiary_bank": "Usb AG",
+        "beneficiary_bank_country": "Singapore",
+        "filer_org_name_id": "deutsche-bank-ag",
+        "end": "2014-09-30T00:00:00.000000000+00:00",
+        "origin_lng": "114.1667",
+        "originator_bank_id": "deutsche-bank-ag",
+        "id": "233414",
+        "begin": "2014-09-30T00:00:00.000000000+00:00",
+        "sar_id": "3670"
+       }
+      },
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Mar 19, 2014",
+        "amount": 336828000,
+        "beneficiary_iso": "SGP",
+        "beneficiary_lng": "103.8",
+        "begin_date": "Mar 7, 2014",
+        "originator_bank": "Societe Generale Private Banking",
+        "beneficiary_lat": "1.3667",
+        "begin_date_format": "2014-03-07T00:00:00Z",
+        "end_date_format": "2014-03-19T00:00:00Z",
+        "originator_iso": "CHE",
+        "beneficiary_bank_id": "societe-generale-bank-and-trust-singapore-sa-sgbt-singapore-singapore-sgp",
+        "origin_lat": "47",
+        "number": 4,
+        "filer_org_name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale SA",
+        "originator_bank_country": "Switzerland",
+        "beneficiary_bank_country": "Singapore",
+        "filer_org_name_id": "societe-generale-sa",
+        "beneficiary_bank": "Societe Generale Bank And Trust Singapore SA",
+        "end": "2014-03-19T00:00:00.000000000+00:00",
+        "origin_lng": "8",
+        "originator_bank_id": "societe-generale-private-banking",
+        "id": "231948",
+        "begin": "2014-03-07T00:00:00.000000000+00:00",
+        "sar_id": "2778"
+       }
+      },
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Mar 19, 2014",
+        "amount": 300000000,
+        "beneficiary_iso": "SGP",
+        "beneficiary_lng": "103.8",
+        "begin_date": "Mar 19, 2014",
+        "originator_bank": "Societe Generale Private Banking",
+        "beneficiary_lat": "1.3667",
+        "begin_date_format": "2014-03-19T00:00:00Z",
+        "beneficiary_bank_id": "societe-generale-bank-and-trust-singapore-sa-sgbt-singapore-singapore-sgp",
+        "end_date_format": "2014-03-19T00:00:00Z",
+        "originator_iso": "CHE",
+        "origin_lat": "47",
+        "number": 1,
+        "filer_org_name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale SA",
+        "originator_bank_country": "Switzerland",
+        "filer_org_name_id": "societe-generale-sa",
+        "beneficiary_bank_country": "Singapore",
+        "beneficiary_bank": "Societe Generale Bank And Trust Singapore SA",
+        "end": "2014-03-19T00:00:00.000000000+00:00",
+        "origin_lng": "8",
+        "originator_bank_id": "societe-generale-private-banking",
+        "id": "231952",
+        "begin": "2014-03-19T00:00:00.000000000+00:00",
+        "sar_id": "2778"
+       }
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.064,
+   "outcome": "correct",
+   "langfuse_trace_id": "9fe26fd2df1bb136bdb152e279611074",
+   "final_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "stage": "first"
+  },
+  {
+   "id": "t002",
+   "graph": "fincen",
+   "tier": "hard",
+   "question": "What is the country code of the entity that originated the filing with the lowest amount?",
+   "gold_cypher": "MATCH (filing:Filing) WITH min(filing.amount) AS lowestAmount MATCH (filing:Filing) WHERE filing.amount = lowestAmount MATCH (filing)-[:ORIGINATOR]->(entity:Entity) MATCH (entity)-[:COUNTRY]->(country:Country) RETURN country.code",
+   "examples": [
+    "tr482",
+    "tr042",
+    "tr074"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (f:Filing) WITH f ORDER BY f.amount ASC LIMIT 1 MATCH (f)-[:ORIGINATOR]->(e:Entity)-[:COUNTRY]->(c:Country) RETURN c.code",
+     "cypher": "MATCH (f:Filing) WITH f ORDER BY f.amount ASC LIMIT 1 MATCH (f)-[:ORIGINATOR]->(e:Entity)-[:COUNTRY]->(c:Country) RETURN c.code",
+     "status": "rows",
+     "error": null,
+     "n_rows": 1,
+     "calls": 1,
+     "in_tokens": 1027,
+     "out_tokens": 42,
+     "cost": 0.00221788,
+     "secs": 2.043767213821411,
+     "outcome": "correct",
+     "preview": [
+      {
+       "c.code": "LVA"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.047,
+   "outcome": "correct",
+   "langfuse_trace_id": "8fd475a8ce33ab0e7807b5a366dc8570",
+   "final_cypher": "MATCH (f:Filing) WITH f ORDER BY f.amount ASC LIMIT 1 MATCH (f)-[:ORIGINATOR]->(e:Entity)-[:COUNTRY]->(c:Country) RETURN c.code",
+   "stage": "first"
+  },
+  {
+   "id": "t003",
+   "graph": "northwind",
+   "tier": "medium",
+   "question": "What is the average number of units in stock for products in each category?",
+   "gold_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category) WITH c.categoryName AS categoryName, avg(p.unitsInStock) AS averageUnitsInStock RETURN categoryName, averageUnitsInStock",
+   "examples": [
+    "tr451",
+    "tr369",
+    "tr405"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName AS category, AVG(p.unitsInStock) AS averageUnitsInStock",
+     "cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName AS category, AVG(p.unitsInStock) AS averageUnitsInStock",
+     "status": "rows",
+     "error": null,
+     "n_rows": 8,
+     "calls": 1,
+     "in_tokens": 1502,
+     "out_tokens": 33,
+     "cost": 0.00310496,
+     "secs": 2.0411508083343506,
+     "outcome": "correct",
+     "preview": [
+      {
+       "category": "Beverages",
+       "averageUnitsInStock": 46.583333333333336
+      },
+      {
+       "category": "Condiments",
+       "averageUnitsInStock": 42.25000000000001
+      },
+      {
+       "category": "Confections",
+       "averageUnitsInStock": 29.692307692307693
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.044,
+   "outcome": "correct",
+   "langfuse_trace_id": "90aaaecef9ab301ee8aa30d2d8752453",
+   "final_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName AS category, AVG(p.unitsInStock) AS averageUnitsInStock",
+   "stage": "first"
+  },
+  {
+   "id": "t004",
+   "graph": "movies",
+   "tier": "easy",
+   "question": "Find all movies with a rating above 90.",
+   "gold_cypher": "MATCH (m:Movie)<-[r:REVIEWED]-(p:Person) WHERE r.rating > 90 RETURN m.title, r.rating",
+   "examples": [
+    "tr408",
+    "tr030",
+    "tr064"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Person)-[r:REVIEWED]->(m:Movie) WHERE r.rating > 90 RETURN m",
+     "cypher": "MATCH (p:Person)-[r:REVIEWED]->(m:Movie) WHERE r.rating > 90 RETURN m",
+     "status": "rows",
+     "error": null,
+     "n_rows": 3,
+     "calls": 1,
+     "in_tokens": 610,
+     "out_tokens": 26,
+     "cost": 0.00132248,
+     "secs": 2.0521838665008545,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "m": {
+        "_labels": [
+         "Movie"
+        ],
+        "tagline": "The rest of his life begins now.",
+        "votes": 155,
+        "title": "Jerry Maguire",
+        "released": 2000
+       }
+      },
+      {
+       "m": {
+        "_labels": [
+         "Movie"
+        ],
+        "tagline": "Pain heals, Chicks dig scars... Glory lasts forever",
+        "votes": 25,
+        "title": "The Replacements",
+        "released": 2000
+       }
+      },
+      {
+       "m": {
+        "_labels": [
+         "Movie"
+        ],
+        "tagline": "Everything is connected",
+        "votes": 127,
+        "title": "Cloud Atlas",
+        "released": 2012
+       }
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.054,
+   "outcome": "wrong",
+   "langfuse_trace_id": "278c7aff8833fa9f77b016691aef756b",
+   "final_cypher": "MATCH (p:Person)-[r:REVIEWED]->(m:Movie) WHERE r.rating > 90 RETURN m",
+   "stage": "first"
+  },
+  {
+   "id": "t005",
+   "graph": "twitter",
+   "tier": "easy",
+   "question": "List the top 3 tweets that mention 'Neo4j'.",
+   "gold_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:User {name: 'Neo4j'}) RETURN t.text AS tweet_text, t.favorites AS favorites ORDER BY favorites DESC LIMIT 3",
+   "examples": [
+    "tr083",
+    "tr294",
+    "tr006"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}) RETURN t.text AS tweet_text ORDER BY t.favorites DESC LIMIT 3",
+     "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}) RETURN t.text AS tweet_text ORDER BY t.favorites DESC LIMIT 3",
+     "status": "rows",
+     "error": null,
+     "n_rows": 3,
+     "calls": 1,
+     "in_tokens": 1106,
+     "out_tokens": 38,
+     "cost": 0.0023531999999999997,
+     "secs": 2.5236918926239014,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "tweet_text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @origin_trail @neo4j That could very likely be the case. I'v\u2026 https://t.co/YLCP8AJUeE"
+      },
+      {
+       "tweet_text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @origin_trail @neo4j Hi John, great to see you\u2019ve taken a de\u2026 https://t.co/C8mJuGWvpx"
+      },
+      {
+       "tweet_text": "Today @neo4j announced the Aura Enterprise cloud service, which is great but... \n\nWe also announced #Neo4j Aura FRE\u2026 https://t.co/TGPNnVRpHv"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.53,
+   "outcome": "wrong",
+   "langfuse_trace_id": "7f3b95c4f716befcc1273c79778b88a0",
+   "final_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}) RETURN t.text AS tweet_text ORDER BY t.favorites DESC LIMIT 3",
+   "stage": "first"
+  },
+  {
+   "id": "t006",
+   "graph": "northwind",
+   "tier": "medium",
+   "question": "What is the average `unitPrice` of products that have been ordered in quantities greater than 10?",
+   "gold_cypher": "MATCH (o:Order)-[rel:ORDERS]->(p:Product) WHERE rel.quantity > 10 WITH avg(toFloat(rel.unitPrice)) AS avgPrice RETURN avgPrice",
+   "examples": [
+    "tr418",
+    "tr467",
+    "tr001"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (o:Order)-[rel:ORDERS]->(p:Product) WHERE rel.quantity > 10 WITH avg(p.unitPrice) AS average_unit_price RETURN average_unit_price",
+     "cypher": "MATCH (o:Order)-[rel:ORDERS]->(p:Product) WHERE rel.quantity > 10 WITH avg(p.unitPrice) AS average_unit_price RETURN average_unit_price",
+     "status": "rows",
+     "error": null,
+     "n_rows": 1,
+     "calls": 1,
+     "in_tokens": 1480,
+     "out_tokens": 37,
+     "cost": 0.0030813599999999996,
+     "secs": 1.5170707702636719,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "average_unit_price": 27.988267614738184
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.522,
+   "outcome": "wrong",
+   "langfuse_trace_id": "fea9b52fab9b3d18079ab142a4321400",
+   "final_cypher": "MATCH (o:Order)-[rel:ORDERS]->(p:Product) WHERE rel.quantity > 10 WITH avg(p.unitPrice) AS average_unit_price RETURN average_unit_price",
+   "stage": "first"
+  },
+  {
+   "id": "t007",
+   "graph": "fincen",
+   "tier": "medium",
+   "question": "What is the total number of filings where the 'originator_country' is 'Singapore' and the 'amount' is greater than 1000000?",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.originator_country = 'Singapore' AND f.amount > 1000000 RETURN count(f) AS count",
+   "examples": [
+    "tr074",
+    "tr042",
+    "tr194"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (f:Filing) WHERE f.originator_bank_country = 'Singapore' AND f.amount > 1000000 RETURN count(f)",
+     "cypher": "MATCH (f:Filing) WHERE f.originator_bank_country = 'Singapore' AND f.amount > 1000000 RETURN count(f)",
+     "status": "rows",
+     "error": null,
+     "n_rows": 1,
+     "calls": 1,
+     "in_tokens": 1045,
+     "out_tokens": 28,
+     "cost": 0.0021848399999999995,
+     "secs": 1.5103979110717773,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "count(f)": 87
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.514,
+   "outcome": "wrong",
+   "langfuse_trace_id": "3b2b254e472d40b779a86ef6850c6e13",
+   "final_cypher": "MATCH (f:Filing) WHERE f.originator_bank_country = 'Singapore' AND f.amount > 1000000 RETURN count(f)",
+   "stage": "first"
+  },
+  {
+   "id": "t008",
+   "graph": "twitter",
+   "tier": "medium",
+   "question": "Show the top 5 users that 'Neo4j' interacts with based on the number of interactions.",
+   "gold_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(user:User) RETURN user.screen_name, COUNT(*) AS interactions ORDER BY interactions DESC LIMIT 5",
+   "examples": [
+    "tr390",
+    "tr028",
+    "tr444"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(u:User) WITH u, count(*) AS interactions ORDER BY interactions DESC LIMIT 5 RETURN u.name, u.screen_name, interactions",
+     "cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(u:User) WITH u, count(*) AS interactions ORDER BY interactions DESC LIMIT 5 RETURN u.name, u.screen_name, interactions",
+     "status": "rows",
+     "error": null,
+     "n_rows": 5,
+     "calls": 1,
+     "in_tokens": 1108,
+     "out_tokens": 49,
+     "cost": 0.0024108,
+     "secs": 2.5189359188079834,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "u.name": "Robert Sch\u00e4fer",
+       "u.screen_name": "roschaeferDE",
+       "interactions": 1
+      },
+      {
+       "u.name": "Demian",
+       "u.screen_name": "Bellumio",
+       "interactions": 1
+      },
+      {
+       "u.name": "Nathan Smith",
+       "u.screen_name": "nsmith_piano",
+       "interactions": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.523,
+   "outcome": "wrong",
+   "langfuse_trace_id": "2dbbef6fda937206f03c69bd85a9da38",
+   "final_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(u:User) WITH u, count(*) AS interactions ORDER BY interactions DESC LIMIT 5 RETURN u.name, u.screen_name, interactions",
+   "stage": "first"
+  },
+  {
+   "id": "t009",
+   "graph": "movies",
+   "tier": "hard",
+   "question": "\"Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?\"",
+   "gold_cypher": "MATCH (d1:Person)-[:DIRECTED]->(m1:Movie)<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m2:Movie)<-[:DIRECTED]-(d2:Person) WHERE id(d1) < id(d2) WITH d1, d2, COUNT(DISTINCT a) AS common_actors ORDER BY common_actors DESC LIMIT 1 RETURN d1.name AS Director1, d2.name AS Director2, common_actors",
+   "examples": [
+    "tr267",
+    "tr462",
+    "tr022"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE d1 <> d2 WITH d1, d2, count(DISTINCT a) AS common_actors WHERE d1.name < d2.name WITH max(common_actors) AS max_common MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE d1 <> d2 AND d1.name < d2.name WITH d1, d2, count(DISTINCT a) AS common_actors WHERE common_actors = max_common RETURN d1.name AS director1, d2.name AS director2, common_actors",
+     "cypher": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE d1 <> d2 WITH d1, d2, count(DISTINCT a) AS common_actors WHERE d1.name < d2.name WITH max(common_actors) AS max_common MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE d1 <> d2 AND d1.name < d2.name WITH d1, d2, count(DISTINCT a) AS common_actors WHERE common_actors = max_common RETURN d1.name AS director1, d2.name AS director2, common_actors",
+     "status": "error",
+     "error": "CypherSyntaxError: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: max_common (line 1, column 465 (offset: 464))\n\"MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:",
+     "n_rows": 0,
+     "calls": 1,
+     "in_tokens": 458,
+     "out_tokens": 190,
+     "cost": 0.0018248799999999999,
+     "secs": 1.9142379760742188,
+     "outcome": "error",
+     "preview": []
+    },
+    {
+     "source": "repair1",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE d1 <> d2 WITH d1, d2, count(DISTINCT a) AS common_actors WHERE d1.born < d2.born WITH collect({director1: d1, director2: d2, common_actors: common_actors}) AS pairs UNWIND pairs AS p WITH max(p.common_actors) AS max_common UNWIND pairs AS p WHERE p.common_actors = max_common RETURN p.director1.born AS director1_born, p.director2.born AS director2_born, p.common_actors",
+     "cypher": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE d1 <> d2 WITH d1, d2, count(DISTINCT a) AS common_actors WHERE d1.born < d2.born WITH collect({director1: d1, director2: d2, common_actors: common_actors}) AS pairs UNWIND pairs AS p WITH max(p.common_actors) AS max_common UNWIND pairs AS p WHERE p.common_actors = max_common RETURN p.director1.born AS director1_born, p.director2.born AS director2_born, p.common_actors",
+     "status": "error",
+     "error": "CypherSyntaxError: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'WHERE': expected 'ORDER BY', 'CALL', 'CREATE', 'LOAD CSV', 'DELETE', 'DETACH', 'FINISH', 'FOREACH', 'INSERT', 'LIMIT', 'MATCH', 'MERGE', 'NODETACH', 'OFFSET', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'SKIP', 'UNION', 'UNWIND'",
+     "n_rows": 0,
+     "calls": 1,
+     "in_tokens": 782,
+     "out_tokens": 164,
+     "cost": 0.0023330399999999998,
+     "secs": 2.1631202697753906,
+     "outcome": "error",
+     "preview": []
+    },
+    {
+     "source": "repair2",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS common_actors WITH collect({d1: d1, d2: d2, common_actors: common_actors}) AS pairs UNWIND pairs AS p WITH max(p.common_actors) AS max_common UNWIND pairs AS p WHERE p.common_actors = max_common RETURN p.d1, p.d2, p.common_actors",
+     "cypher": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS common_actors WITH collect({d1: d1, d2: d2, common_actors: common_actors}) AS pairs UNWIND pairs AS p WITH max(p.common_actors) AS max_common UNWIND pairs AS p WHERE p.common_actors = max_common RETURN p.d1, p.d2, p.common_actors",
+     "status": "error",
+     "error": "CypherSyntaxError: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'WHERE': expected 'ORDER BY', 'CALL', 'CREATE', 'LOAD CSV', 'DELETE', 'DETACH', 'FINISH', 'FOREACH', 'INSERT', 'LIMIT', 'MATCH', 'MERGE', 'NODETACH', 'OFFSET', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'SKIP', 'UNION', 'UNWIND'",
+     "n_rows": 0,
+     "calls": 1,
+     "in_tokens": 1101,
+     "out_tokens": 142,
+     "cost": 0.0028509200000000003,
+     "secs": 1.5672187805175781,
+     "outcome": "error",
+     "preview": []
+    },
+    {
+     "source": "repair3",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS common_actors WITH collect({d1: d1, d2: d2, common_actors: common_actors}) AS pairs UNWIND pairs AS p WITH max(p.common_actors) AS max_common MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS common_actors WHERE common_actors = max_common RETURN d1, d2, common_actors",
+     "cypher": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS common_actors WITH collect({d1: d1, d2: d2, common_actors: common_actors}) AS pairs UNWIND pairs AS p WITH max(p.common_actors) AS max_common MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS common_actors WHERE common_actors = max_common RETURN d1, d2, common_actors",
+     "status": "error",
+     "error": "CypherSyntaxError: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: max_common (line 1, column 523 (offset: 522))\n\"MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person), (d2:",
+     "n_rows": 0,
+     "calls": 1,
+     "in_tokens": 1396,
+     "out_tokens": 206,
+     "cost": 0.0037414399999999995,
+     "secs": 1.295335054397583,
+     "outcome": "error",
+     "preview": []
+    },
+    {
+     "source": "escalate:first",
+     "model": "accounts/fireworks/models/kimi-k3",
+     "output": "",
+     "cypher": "",
+     "status": "error",
+     "error": "no query",
+     "n_rows": 0,
+     "calls": 1,
+     "in_tokens": 464,
+     "out_tokens": 400,
+     "cost": 0.007392,
+     "secs": 6.318778038024902,
+     "outcome": "error",
+     "preview": []
+    },
+    {
+     "source": "escalate:repair1",
+     "model": "accounts/fireworks/models/kimi-k3",
+     "output": "MATCH (d1:Person)-[:DIRECTED]->(m1:Movie)<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m2:Movie)<-[:DIRECTED]-(d2:Person) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS shared_actors ORDER BY shared_actors DESC LIMIT 1 RETURN d1.name, d2.name, shared_actors",
+     "cypher": "MATCH (d1:Person)-[:DIRECTED]->(m1:Movie)<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m2:Movie)<-[:DIRECTED]-(d2:Person) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS shared_actors ORDER BY shared_actors DESC LIMIT 1 RETURN d1.name, d2.name, shared_actors",
+     "status": "rows",
+     "error": null,
+     "n_rows": 1,
+     "calls": 1,
+     "in_tokens": 521,
+     "out_tokens": 299,
+     "cost": 0.006048,
+     "secs": 6.152689695358276,
+     "outcome": "correct",
+     "preview": [
+      {
+       "d1.name": "Lilly Wachowski",
+       "d2.name": "Lana Wachowski",
+       "shared_actors": 4
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 19.431,
+   "outcome": "correct",
+   "langfuse_trace_id": "6276c624b0d2d04883233ac4fd8a3c61",
+   "final_cypher": "MATCH (d1:Person)-[:DIRECTED]->(m1:Movie)<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m2:Movie)<-[:DIRECTED]-(d2:Person) WHERE id(d1) < id(d2) WITH d1, d2, count(DISTINCT a) AS shared_actors ORDER BY shared_actors DESC LIMIT 1 RETURN d1.name, d2.name, shared_actors",
+   "stage": "escalate"
+  }
+ ]
+}

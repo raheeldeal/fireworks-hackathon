@@ -48,3 +48,21 @@ def test_clean_pred():
     assert clean_pred("```cypher\nMATCH (n) RETURN n;\n```") == "MATCH (n) RETURN n"
     assert clean_pred("<think>hmm</think>MATCH (n) RETURN n") == "MATCH (n) RETURN n"
     assert clean_pred(None) == ""
+
+
+def test_nan_and_inf_do_not_crash_and_compare_equal():
+    from score import norm
+    gold = {"columns": ["a"], "rows": [{"a": float("nan")}, {"a": float("inf")}]}
+    pred = {"ok": True, "columns": ["x"], "rows": [{"x": float("inf")}, {"x": float("nan")}]}
+    assert score(gold, pred) == "correct"
+    assert norm(float("nan")) == "nan"
+
+
+def test_covers_gold_allows_extra_columns_only():
+    from score import covers_gold
+    gold = {"columns": ["t"], "rows": [{"t": "A"}, {"t": "B"}]}
+    extra = {"ok": True, "columns": ["title", "rating"], "rows": [{"title": "B", "rating": 9}, {"title": "A", "rating": 7}]}
+    assert covers_gold(gold, extra)
+    assert not covers_gold(gold, {"ok": True, "columns": ["t"], "rows": [{"t": "A"}]})                   # missing a row
+    assert not covers_gold(gold, {"ok": True, "columns": ["t"], "rows": [{"t": "A"}, {"t": "C"}]})       # wrong value
+    assert not covers_gold(gold, {"ok": True, "columns": ["t"], "rows": [{"t": "A"}, {"t": "A"}]})       # reuses a row

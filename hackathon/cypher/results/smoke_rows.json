@@ -1,0 +1,265 @@
+{
+ "tag": "smoke_rows",
+ "split": "test",
+ "data": "data/test.jsonl",
+ "model": "accounts/fireworks/models/muse-glimmer-30b",
+ "escalate_model": null,
+ "config": {
+  "shots": 3,
+  "fix": false,
+  "repair": 0,
+  "escalate": null,
+  "warn": false
+ },
+ "created": "2026-11-02T13:34:51",
+ "summary": {
+  "n": 2,
+  "correct": 2,
+  "accuracy": 1.0,
+  "ci95": [
+   0.3424,
+   1.0
+  ],
+  "outcomes": {
+   "correct": 2
+  },
+  "by_stage": {
+   "first": 2,
+   "fix": 0,
+   "repair": 0,
+   "escalate": 0,
+   "wrong": 0
+  },
+  "by_graph": {
+   "fincen": 1.0,
+   "movies": 1.0
+  },
+  "by_tier": {
+   "easy": 1.0,
+   "medium": 1.0
+  },
+  "cost": 0.003437,
+  "cost_per_question": 0.001718,
+  "cost_per_correct": 0.001718,
+  "calls_per_question": 1.0,
+  "p50_secs": 3.334,
+  "p90_secs": 3.372
+ },
+ "views": {
+  "first": {
+   "n": 2,
+   "correct": 2,
+   "accuracy": 1.0,
+   "ci95": [
+    0.3424,
+    1.0
+   ],
+   "outcomes": {
+    "correct": 2
+   },
+   "by_stage": {
+    "first": 2,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 0,
+    "wrong": 0
+   },
+   "by_graph": {
+    "fincen": 1.0,
+    "movies": 1.0
+   },
+   "by_tier": {
+    "easy": 1.0,
+    "medium": 1.0
+   },
+   "cost": 0.003437,
+   "cost_per_question": 0.001718,
+   "cost_per_correct": 0.001718,
+   "calls_per_question": 1.0,
+   "p50_secs": 3.334,
+   "p90_secs": 3.372
+  }
+ },
+ "rows": [
+  {
+   "id": "t000",
+   "graph": "movies",
+   "tier": "medium",
+   "question": "What are the 3 most common taglines found in the movies?",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.tagline IS NOT NULL RETURN m.tagline AS Tagline, count(m) AS Frequency ORDER BY Frequency DESC LIMIT 3",
+   "examples": [
+    "tr118",
+    "tr431",
+    "tr165"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:Movie) RETURN m.tagline AS tagline, count(*) AS frequency ORDER BY frequency DESC LIMIT 3",
+     "cypher": "MATCH (m:Movie) RETURN m.tagline AS tagline, count(*) AS frequency ORDER BY frequency DESC LIMIT 3",
+     "calls": 1,
+     "in_tokens": 602,
+     "out_tokens": 25,
+     "cost": 0.00130192,
+     "secs": 3.3718197345733643,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 3,
+     "outcome": "correct",
+     "preview": [
+      {
+       "tagline": "Free your mind",
+       "frequency": 1
+      },
+      {
+       "tagline": "Everything that has a beginning has an end",
+       "frequency": 1
+      },
+      {
+       "tagline": "Welcome to the Real World",
+       "frequency": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 3.397,
+   "outcome": "correct",
+   "langfuse_trace_id": "4fe977da5046695a9c3c983a9fa59457",
+   "final_cypher": "MATCH (m:Movie) RETURN m.tagline AS tagline, count(*) AS frequency ORDER BY frequency DESC LIMIT 3",
+   "stage": "first"
+  },
+  {
+   "id": "t001",
+   "graph": "fincen",
+   "tier": "easy",
+   "question": "Show the top 3 Filings where the beneficiary bank country is 'Singapore'.",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "examples": [
+    "tr194",
+    "tr050",
+    "tr262"
+   ],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+     "cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+     "calls": 1,
+     "in_tokens": 1022,
+     "out_tokens": 27,
+     "cost": 0.00213488,
+     "secs": 3.297003746032715,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 3,
+     "outcome": "correct",
+     "preview": [
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Sep 30, 2014",
+        "amount": 457984607,
+        "beneficiary_iso": "SGP",
+        "beneficiary_lng": "103.8",
+        "begin_date": "Sep 30, 2014",
+        "originator_bank": "Deutsche Bank AG",
+        "beneficiary_lat": "1.3667",
+        "begin_date_format": "2014-09-30T00:00:00Z",
+        "beneficiary_bank_id": "usb-ag-singapore-sgp",
+        "end_date_format": "2014-09-30T00:00:00Z",
+        "originator_iso": "HKG",
+        "origin_lat": "22.25",
+        "filer_org_name": "Deutsche Bank AG",
+        "originator_bank_country": "Hong Kong",
+        "beneficiary_bank": "Usb AG",
+        "beneficiary_bank_country": "Singapore",
+        "filer_org_name_id": "deutsche-bank-ag",
+        "end": "2014-09-30T00:00:00.000000000+00:00",
+        "origin_lng": "114.1667",
+        "originator_bank_id": "deutsche-bank-ag",
+        "id": "233414",
+        "begin": "2014-09-30T00:00:00.000000000+00:00",
+        "sar_id": "3670"
+       }
+      },
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Mar 19, 2014",
+        "amount": 336828000,
+        "beneficiary_iso": "SGP",
+        "beneficiary_lng": "103.8",
+        "begin_date": "Mar 7, 2014",
+        "originator_bank": "Societe Generale Private Banking",
+        "beneficiary_lat": "1.3667",
+        "begin_date_format": "2014-03-07T00:00:00Z",
+        "end_date_format": "2014-03-19T00:00:00Z",
+        "originator_iso": "CHE",
+        "beneficiary_bank_id": "societe-generale-bank-and-trust-singapore-sa-sgbt-singapore-singapore-sgp",
+        "origin_lat": "47",
+        "number": 4,
+        "filer_org_name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale SA",
+        "originator_bank_country": "Switzerland",
+        "beneficiary_bank_country": "Singapore",
+        "filer_org_name_id": "societe-generale-sa",
+        "beneficiary_bank": "Societe Generale Bank And Trust Singapore SA",
+        "end": "2014-03-19T00:00:00.000000000+00:00",
+        "origin_lng": "8",
+        "originator_bank_id": "societe-generale-private-banking",
+        "id": "231948",
+        "begin": "2014-03-07T00:00:00.000000000+00:00",
+        "sar_id": "2778"
+       }
+      },
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Mar 19, 2014",
+        "amount": 300000000,
+        "beneficiary_iso": "SGP",
+        "beneficiary_lng": "103.8",
+        "begin_date": "Mar 19, 2014",
+        "originator_bank": "Societe Generale Private Banking",
+        "beneficiary_lat": "1.3667",
+        "begin_date_format": "2014-03-19T00:00:00Z",
+        "beneficiary_bank_id": "societe-generale-bank-and-trust-singapore-sa-sgbt-singapore-singapore-sgp",
+        "end_date_format": "2014-03-19T00:00:00Z",
+        "originator_iso": "CHE",
+        "origin_lat": "47",
+        "number": 1,
+        "filer_org_name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale SA",
+        "originator_bank_country": "Switzerland",
+        "filer_org_name_id": "societe-generale-sa",
+        "beneficiary_bank_country": "Singapore",
+        "beneficiary_bank": "Societe Generale Bank And Trust Singapore SA",
+        "end": "2014-03-19T00:00:00.000000000+00:00",
+        "origin_lng": "8",
+        "originator_bank_id": "societe-generale-private-banking",
+        "id": "231952",
+        "begin": "2014-03-19T00:00:00.000000000+00:00",
+        "sar_id": "2778"
+       }
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 3.322,
+   "outcome": "correct",
+   "langfuse_trace_id": "b1c97a35492a5c27331bb6e87cb7fe04",
+   "final_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "stage": "first"
+  }
+ ]
+}

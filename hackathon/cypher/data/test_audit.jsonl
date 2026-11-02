@@ -1,0 +1,45 @@
+{"id": "t007", "label": "gold_wrong", "reason": "gold filters on f.originator_country, which does not exist (database warning); gold count is 0", "reviewer": "claude-code (not human)"}
+{"id": "t151", "label": "gold_wrong", "reason": "'total revenue' computed as unitsInStock * unitPrice (inventory value), not from orders", "reviewer": "claude-code (not human)"}
+{"id": "t161", "label": "gold_wrong", "reason": "gold averages o.unitPrice on Order nodes; unitPrice lives on the ORDERS relationship, so gold is null", "reviewer": "claude-code (not human)"}
+{"id": "t162", "label": "gold_wrong", "reason": "gold sums o.quantity on Order nodes; quantity lives on the ORDERS relationship, so gold is all zeros", "reviewer": "claude-code (not human)"}
+{"id": "t182", "label": "gold_wrong", "reason": "gold uses f.originator_lat, which does not exist (database warning)", "reviewer": "claude-code (not human)"}
+{"id": "t005", "label": "ambiguous", "reason": "'mention Neo4j' matches User.name 'Neo4j' or screen_name 'neo4j'; ties in favorites at the LIMIT", "reviewer": "claude-code (not human)"}
+{"id": "t021", "label": "ambiguous", "reason": "'most recent followers' but FOLLOWS has no timestamp; gold orders by follower count", "reviewer": "claude-code (not human)"}
+{"id": "t022", "label": "ambiguous", "reason": "every actor has 0 followers: top 3 is an arbitrary tie-break", "reviewer": "claude-code (not human)"}
+{"id": "t043", "label": "ambiguous", "reason": "'top 3 users amplified' has no ranking criterion; gold uses followers", "reviewer": "claude-code (not human)"}
+{"id": "t050", "label": "ambiguous", "reason": "'most relationships' with filings: gold counts only ORIGINATOR, any relationship is a valid reading", "reviewer": "claude-code (not human)"}
+{"id": "t064", "label": "ambiguous", "reason": "'first 3 orders' to France: gold joins ORDERS (duplicate orders) and orders by shippedDate", "reviewer": "claude-code (not human)"}
+{"id": "t067", "label": "ambiguous", "reason": "'entities that have originator banks in Singapore': FILED vs ORIGINATOR both defensible", "reviewer": "claude-code (not human)"}
+{"id": "t078", "label": "ambiguous", "reason": "'first 3 genres' is an arbitrary subset; gold's ORDER BY userCount is per movie-genre pair", "reviewer": "claude-code (not human)"}
+{"id": "t107", "label": "ambiguous", "reason": "'top 5 movies with budget > 100M' has no ranking criterion; gold uses imdbRating", "reviewer": "claude-code (not human)"}
+{"id": "t109", "label": "ambiguous", "reason": "several filings share the latest end date; gold LIMIT 1 picks one arbitrarily", "reviewer": "claude-code (not human)"}
+{"id": "t115", "label": "ambiguous", "reason": "'top 3 tweets with hashtags' has no ranking criterion; gold uses created_at", "reviewer": "claude-code (not human)"}
+{"id": "t122", "label": "ambiguous", "reason": "many users rated all 20 genres: top 3 is an arbitrary tie-break", "reviewer": "claude-code (not human)"}
+{"id": "t141", "label": "ambiguous", "reason": "'top 5 tweets' has no ranking criterion; gold uses created_at", "reviewer": "claude-code (not human)"}
+{"id": "t156", "label": "ambiguous", "reason": "bornIn = 'USA' exact (gold) vs bornIn containing USA (e.g. 'Los Angeles, California, USA')", "reviewer": "claude-code (not human)"}
+{"id": "t164", "label": "ambiguous", "reason": "'most frequent tld' is undefined: counted over entities, countries or filings", "reviewer": "claude-code (not human)"}
+{"id": "t165", "label": "ambiguous", "reason": "many products have unitsOnOrder = 0: lowest 5 is an arbitrary tie-break", "reviewer": "claude-code (not human)"}
+{"id": "t173", "label": "ambiguous", "reason": "two directors tie at 1 movie; gold LIMIT 1 picks one", "reviewer": "claude-code (not human)"}
+{"id": "t184", "label": "ambiguous", "reason": "'filings originating from' US: gold uses FILED, ORIGINATOR is equally valid", "reviewer": "claude-code (not human)"}
+{"id": "t189", "label": "ambiguous", "reason": "'released in 1995' via released string vs year property, LIMIT 3 without ORDER BY", "reviewer": "claude-code (not human)"}
+{"id": "t197", "label": "ambiguous", "reason": "'orders that include both categories': within one order (gold) or across a customer's orders", "reviewer": "claude-code (not human)"}
+{"id": "t011", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t018", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t033", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t040", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t044", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t053", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t054", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t058", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t060", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t083", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t098", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t113", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t123", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t131", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t137", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t144", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t154", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t155", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t178", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}
+{"id": "t192", "label": "format_only", "reason": "models return the same entities in a different shape (columns, key, node vs properties, DISTINCT)", "reviewer": "claude-code (not human)"}

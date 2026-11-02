@@ -6,7 +6,7 @@ Results are executor.execute() dicts. Rows compared as unordered multisets. Colu
 the row order is still not enforced (ties make it brittle) but the LIMIT-selected set must match.
 Floats rounded to 3 decimals; 2 == 2.0.
 """
-import json, re
+import json, math, re
 from collections import Counter
 
 FLOAT_DP = 3
@@ -16,6 +16,8 @@ def norm(v):
     if isinstance(v, bool) or v is None or isinstance(v, str):
         return v
     if isinstance(v, (int, float)):
+        if not math.isfinite(v):  # NaN / inf (e.g. an average over nothing): compare by name, int() would crash
+            return repr(float(v))
         f = round(float(v), FLOAT_DP)
         return int(f) if f == int(f) else f
     if isinstance(v, (list, tuple)):
@@ -52,6 +54,23 @@ def score(gold, pred, gold_cypher=""):
         if gk2 == pk2:
             return "correct"
     return "wrong"
+
+
+def covers_gold(gold, pred):
+    """Lenient companion metric, never the headline: same number of rows, and every gold row's values appear in a
+    distinct predicted row (extra columns allowed). Counts e.g. returning title *and* rating when gold returns title.
+    Matching is greedy, so it can only under-count."""
+    if not pred.get("ok") or len(pred["rows"]) != len(gold["rows"]) or not gold["rows"]:
+        return False
+    values = lambda r, cols: Counter(norm(r[c]) for c in cols) if isinstance(r, dict) else Counter(norm(x) for x in r)
+    pred_rows = [values(r, pred["columns"]) for r in pred["rows"]]
+    used = set()
+    for g in (values(r, gold["columns"]) for r in gold["rows"]):
+        j = next((j for j, p in enumerate(pred_rows) if j not in used and not g - p), None)
+        if j is None:
+            return False
+        used.add(j)
+    return True
 
 
 AGG = re.compile(r"\b(count|sum|avg|min|max|collect|stdev|percentile\w*)\s*\(", re.I)

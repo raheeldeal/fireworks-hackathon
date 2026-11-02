@@ -15,10 +15,20 @@ Updated 10:44 PT.
 8. **Train set** (`data/train.jsonl`, 500 rows, 100 per graph) from the dataset's train split, gold verified the same way, with any question or gold query that appears in test removed. `check_leak.py`: 0 overlap.
 
 ## Next
-Baselines (step 4).
+Baselines, harness and fine-tunes: done or running. See [README.md](README.md) for results and [HARNESS.md](HARNESS.md) §15 for the decisions log.
+
+Status at 13:05:
+- **Done:**
+  - Harness R1–R5 on test.
+  - Open-model baselines (gpt-oss-120b, glm-5p3).
+  - FT1 (SFT on 1,500 gold) → **R6 66.0%**.
+  - Cross-model vote, contamination check, dashboard.
+- **Running:** FT-D (distillation) training then eval, then FT1-big (SFT on 4,386 gold, 1 epoch).
+- **Spend:** $11.30 of the $45 cap.
 
 ## What a human must do
-Nothing yet.
+- Decide when to commit to `main`.
+- Rotate the Fireworks and Langfuse secret keys after the hackathon (both were pasted into a chat).
 
 ## Caveats
 - The questions are synthetic (written by GPT-4o, Gemini, Claude Opus, GPT-4 Turbo) plus 8 crowdsourced rows. Some gold queries are imperfect; a hand-checked hard slice would fix that.

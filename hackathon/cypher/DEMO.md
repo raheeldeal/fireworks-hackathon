@@ -25,9 +25,20 @@ Point: the harness lifts the open model from 50.5% to 56.0% at $0.0027 per quest
 - **t092** (movies): *"Which persons have acted in and directed the same movie?"*
   - R6 writes the single-pattern query and returns person and movie.
 
-Ablation ladder: R6 reaches 66.0% (95% CI 59.2–72.2). The whole interval sits above the frontier's 56.6%, at $0.0026 per question and 1.2 s.
+Ablation ladder: SFT on 1.5k gold (R6) reaches 66.0%, and adding 9 other graphs' gold (R6bx) reaches **68.5%** (95% CI 61.8–74.5). The whole interval sits above the frontier's 56.6%, at $0.0026 per question and 1.1 s.
 
 ## 4. Honesty slide (20 s)
-- **Not memorized:** on the 111 test questions with no paraphrase in training, R6 still scores 65.8% (`contamination.py`).
+- **Not memorized:** on test questions with no paraphrase in training, R6 scores 65.8% and R6bx 68.8% (`contamination.py`).
+- **Not eval noise:** on the 175 audited-fair questions R6bx scores 77.1%, ranked first (`validate_eval.py`).
 - **Not a head-to-head:** the frontier number is published, on a different subset of the same dataset.
 - **Where the gain comes from:** about half of it is learning which columns analysts expect.
+
+## 5. Why it works (60 s, show `dashboard/why.png` and `dashboard/waterfall.png`)
+- **Waterfall:** the harness takes the open model from 50.5% to 56.0% (frontier level). SFT is the one significant jump (+10.0), and other-graph data adds +2.5, for **68.5%**. RFT-style, teacher distillation, hard-example upweighting and voting were all tested and didn't help.
+- **SFT vs the frontier proxy (Kimi K3, 2.8T):**
+  - **t177** "top 5 discontinued products": Kimi uses `LIMIT 5` without `ORDER BY` and gets an arbitrary 5. Ours sorts by ID, which gives the exact gold rows.
+  - **t097** "oldest Keanu Reeves movie": both find Johnny Mnemonic; ours also returns the year, as analysts expect.
+  - **Honest flip side, t072** "actors in both Action and Romance": the big model writes the right two-pattern query and ours doesn't. Big models still win on the hardest multi-step queries (78% vs 72% on the hard tier).
+- **Harness:** 34 of its 37 rescues come from the retrieved examples (output shape), and 3 from self-correction (t100 arrow fix, t009 escalation).
+- **RFT-style lost to SFT:** training only on answers the model already gets right reinforces its own habits. Gold covers what it gets wrong.
+- **Size:** a 30B dense model beats 743B and 2.8T MoE models after SFT on verified data.

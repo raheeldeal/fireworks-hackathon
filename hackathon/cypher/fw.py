@@ -26,6 +26,7 @@ PRICES = {
     "accounts/fireworks/models/deepseek-v4p1-flash": (0.30, 1.20),
     "accounts/fireworks/models/gpt-oss-120b": (0.15, 0.60),
     "accounts/fireworks/models/glm-5p3-flash": (0.15, 0.50),
+    "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b": (0.05, 0.20),  # ../submission/fw.py, 2026-11-01
     "accounts/fireworks/models/muse-glimmer-30b": (1.96, 4.88),
     "accounts/fireworks/models/qwen3-embedding-8b": (0.10, 0.0),  # fireworks.ai/pricing, "Qwen3 8B" embeddings, 2026-11-02
 }
@@ -196,10 +197,37 @@ class TrainingSampler:
         return Reply(text, len(ids), len(toks), charge(model, len(ids), len(toks), self.note), time.time() - t0)
 
 
+# ---------- backend 3: a small Hugging Face model running locally (free; Apple GPU via MPS) ----------
+class LocalHF:
+    """e.g. local:Qwen/Qwen2.5-1.5B-Instruct. Greedy decoding; one call at a time (run with --workers 1)."""
+
+    def __init__(self, repo, max_tokens=300, note=""):
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+        self.torch, self.name, self.max_tokens, self.note = torch, f"local:{repo}", max_tokens, note
+        self.device = "mps" if torch.backends.mps.is_available() else "cpu"
+        self.tok = AutoTokenizer.from_pretrained(repo, local_files_only=True)
+        self.model = AutoModelForCausalLM.from_pretrained(repo, local_files_only=True, torch_dtype=torch.float16).to(self.device)
+        self.lock = threading.Lock()
+
+    def __call__(self, messages):
+        enc = self.tok.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt", return_dict=True)
+        ids = enc["input_ids"].to(self.device)  # transformers 5 returns an encoding, not a bare tensor
+        t0 = time.time()
+        with self.lock, self.torch.no_grad():
+            out = self.model.generate(ids, max_new_tokens=self.max_tokens, do_sample=False,
+                                      pad_token_id=self.tok.eos_token_id)
+        new = out[0, ids.shape[1]:]
+        return Reply(self.tok.decode(new, skip_special_tokens=True), ids.shape[1], len(new), 0.0, time.time() - t0)
+
+
 def make_llm(model, model_path=None, **kw):
-    """'muse-glimmer-30b' (optionally with a checkpoint path) -> TrainingSampler; anything else -> ServerlessChat."""
+    """'muse-glimmer-30b' (optionally a checkpoint) -> TrainingSampler; 'local:<hf repo>' -> LocalHF;
+    anything else -> ServerlessChat."""
     if full_id(model) == MUSE:
         return TrainingSampler(model_path=model_path, **{k: v for k, v in kw.items() if k != "extra"})
+    if model.startswith("local:"):
+        return LocalHF(model.split(":", 1)[1], max_tokens=kw.get("max_tokens", 300), note=kw.get("note", ""))
     return ServerlessChat(model, **kw)
 
 

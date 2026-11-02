@@ -40,8 +40,10 @@ CONFIGS = [
     ("R15", "glm-5p3 + harness", "small", "r15_glm", "repair", False),
     ("R16", "Vote: R6 + R15 + R13 by result rows", "small", "r16_vote3", "first", False),
     ("R17", "Kimi K3 (2.8T) + harness", "small", "r17_kimi", "repair", False),
+    ("R22", "Qwen2.5 1.5B, untuned, local + examples + fix", "small", "r22_qwen15", "fix", False),
     ("R18", "Vote: R6 + R6b + Kimi K3 by result rows", "finetune", "r18_vote_ft", "first", False),
-    ("R19", "Vote of 3 Muse 30B adapters (R6 + R6b + R6z), no big model", "finetune", "r19_vote_muse", "first", False),
+    ("R19", "Vote R6+R6b+R6z (PICKED ON TEST, not citable)", "finetune", "r19_vote_muse", "first", False),
+    ("R20", "Vote of 4 Muse 30B adapters, picked on dev", "finetune", "r20_vote_devpick", "first", False),
 ]
 # Design experiments on the dev split (200 train questions, never the test set). Each is (group, label, file, stage).
 DEV = [
@@ -51,6 +53,13 @@ DEV = [
     ("Retrieval: keyword vs embedding (FT1 model)", "embedding top 3", "dev_ft1_embed3", "escalate"),
     ("Retrieval: keyword vs embedding (FT1 model)", "embedding top 5", "dev_ft1_embed5", "escalate"),
     ("Retrieval: keyword vs embedding (FT1 model)", "embedding top 10", "dev_ft1_embed10", "escalate"),
+    ("Examples in context (untuned Muse 30B, no repair)", "0 examples", "dev_base_k0", "first"),
+    ("Examples in context (untuned Muse 30B, no repair)", "keyword top 3", "dev_base_keyword3", "first"),
+    ("Examples in context (untuned Muse 30B, no repair)", "keyword top 5", "dev_base_keyword5", "first"),
+    ("Examples in context (untuned Muse 30B, no repair)", "keyword top 10", "dev_base_keyword10", "first"),
+    ("Examples in context (untuned Muse 30B, no repair)", "embedding top 3", "dev_base_embed3", "first"),
+    ("Examples in context (untuned Muse 30B, no repair)", "embedding top 5", "dev_base_embed5", "first"),
+    ("Examples in context (untuned Muse 30B, no repair)", "embedding top 10", "dev_base_embed10", "first"),
     ("Teacher bake-off (harness, no escalation)", "Kimi K3", "dev_teacher_kimi-k3", "repair"),
     ("Teacher bake-off (harness, no escalation)", "glm-5p3", "dev_teacher_glm-5p3", "repair"),
     ("Teacher bake-off (harness, no escalation)", "deepseek-v4p1-flash", "dev_teacher_deepseek-v4p1-flash", "repair"),

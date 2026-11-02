@@ -1,0 +1,134 @@
+{
+ "tag": "smoke_qwen15",
+ "split": "test",
+ "data": "data/test.jsonl",
+ "model": "local:Qwen/Qwen2.5-1.5B-Instruct",
+ "retriever": "keyword",
+ "shots": 3,
+ "escalate_model": null,
+ "config": {
+  "shots": 3,
+  "fix": false,
+  "repair": 0,
+  "escalate": null,
+  "warn": false
+ },
+ "created": "2026-11-02T14:35:42",
+ "summary": {
+  "n": 3,
+  "correct": 0,
+  "accuracy": 0.0,
+  "ci95": [
+   0.0,
+   0.5615
+  ],
+  "outcomes": {
+   "error": 3
+  },
+  "by_stage": {
+   "first": 0,
+   "fix": 0,
+   "repair": 0,
+   "escalate": 0,
+   "wrong": 3
+  },
+  "by_graph": {
+   "fincen": 0.0,
+   "movies": 0.0
+  },
+  "by_tier": {
+   "easy": 0.0,
+   "hard": 0.0,
+   "medium": 0.0
+  },
+  "cost": 0.0,
+  "cost_per_question": 0.0,
+  "cost_per_correct": null,
+  "calls_per_question": 0.0,
+  "p50_secs": 0.0,
+  "p90_secs": 0.0
+ },
+ "views": {
+  "first": {
+   "n": 3,
+   "correct": 0,
+   "accuracy": 0.0,
+   "ci95": [
+    0.0,
+    0.5615
+   ],
+   "outcomes": {
+    "error": 3
+   },
+   "by_stage": {
+    "first": 0,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 0,
+    "wrong": 3
+   },
+   "by_graph": {
+    "fincen": 0.0,
+    "movies": 0.0
+   },
+   "by_tier": {
+    "easy": 0.0,
+    "hard": 0.0,
+    "medium": 0.0
+   },
+   "cost": 0.0,
+   "cost_per_question": 0.0,
+   "cost_per_correct": null,
+   "calls_per_question": 0.0,
+   "p50_secs": 0.0,
+   "p90_secs": 0.0
+  }
+ },
+ "rows": [
+  {
+   "id": "t000",
+   "graph": "movies",
+   "tier": "medium",
+   "question": "What are the 3 most common taglines found in the movies?",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.tagline IS NOT NULL RETURN m.tagline AS Tagline, count(m) AS Frequency ORDER BY Frequency DESC LIMIT 3",
+   "examples": [],
+   "attempts": [],
+   "harness_error": "AttributeError: ",
+   "wall_secs": 0.017,
+   "outcome": "error",
+   "langfuse_trace_id": null,
+   "final_cypher": null,
+   "stage": "none"
+  },
+  {
+   "id": "t001",
+   "graph": "fincen",
+   "tier": "easy",
+   "question": "Show the top 3 Filings where the beneficiary bank country is 'Singapore'.",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "examples": [],
+   "attempts": [],
+   "harness_error": "AttributeError: ",
+   "wall_secs": 0.004,
+   "outcome": "error",
+   "langfuse_trace_id": null,
+   "final_cypher": null,
+   "stage": "none"
+  },
+  {
+   "id": "t002",
+   "graph": "fincen",
+   "tier": "hard",
+   "question": "What is the country code of the entity that originated the filing with the lowest amount?",
+   "gold_cypher": "MATCH (filing:Filing) WITH min(filing.amount) AS lowestAmount MATCH (filing:Filing) WHERE filing.amount = lowestAmount MATCH (filing)-[:ORIGINATOR]->(entity:Entity) MATCH (entity)-[:COUNTRY]->(country:Country) RETURN country.code",
+   "examples": [],
+   "attempts": [],
+   "harness_error": "AttributeError: ",
+   "wall_secs": 0.003,
+   "outcome": "error",
+   "langfuse_trace_id": null,
+   "final_cypher": null,
+   "stage": "none"
+  }
+ ]
+}

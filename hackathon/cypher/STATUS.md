@@ -17,14 +17,11 @@ Updated 10:44 PT.
 ## Next
 Baselines, harness and fine-tunes: done or running. See [README.md](README.md) for results and [HARNESS.md](HARNESS.md) §15 for the decisions log.
 
-Status at 13:05:
-- **Done:**
-  - Harness R1–R5 on test.
-  - Open-model baselines (gpt-oss-120b, glm-5p3).
-  - FT1 (SFT on 1,500 gold) → **R6 66.0%**.
-  - Cross-model vote, contamination check, dashboard.
-- **Running:** FT-D (distillation) training then eval, then FT1-big (SFT on 4,386 gold, 1 epoch).
-- **Spend:** $11.30 of the $45 cap.
+Final status (15:00):
+- **Best single model:** Muse Glimmer 30B + LoRA SFT on 6.5k verified gold (5 graphs + 9 other graphs), R6bx: **68.5%** strict on the 200 test questions (published frontier: 56.6%). 77.1% on the 175 audited-fair questions; 68.8% on the clean (no-paraphrase) subset.
+- **Tested, not adopted:** RFT-style self-distillation (58.0%), teacher distillation (65.5%), hard-example upweighting (61.0%), voting chosen on dev (68.0%), database-warning repair, embedding retrieval and more in-context examples (dev).
+- **Charts:** `dashboard/waterfall.png`, `before_after.png`, `why.png` (+ `_valid` versions); dashboard `dashboard/index.html`.
+- **Spend:** about $33 of the $45 cap.
 
 ## What a human must do
 - Decide when to commit to `main`.

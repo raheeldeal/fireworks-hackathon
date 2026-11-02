@@ -83,7 +83,7 @@
 <main>
   <h1>Text-to-Cypher: harness and fine-tuning ablations</h1>
   <p class="sub">200 locked test questions across 5 Neo4j graphs. Accuracy = rows returned match gold rows (execution accuracy).
-    Base model Muse Glimmer 30B on Fireworks. Frontier numbers are published (CypherGuard, different subset of the same dataset), not run by us.</p>
+    Base model Muse Glimmer 30B on Fireworks. Frontier baselines: Claude Sonnet 4.6 (published by CypherGuard, other subset of the same dataset) and Kimi K3 2.8T zero-shot (run by us on these 200 questions).</p>
 
   <div class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="tab-overview">Overview</button>
@@ -158,7 +158,7 @@ const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).
 const pct = x => (100 * x).toFixed(1) + "%";
 const usd = x => x == null ? "–" : "$" + (x < 0.01 ? x.toFixed(5) : x.toFixed(2));
 const el = (tag, attrs = {}, parent) => {
-  const n = tag === "svg" || ["g","line","rect","circle","path","text","polyline"].includes(tag) ? document.createElementNS(NS, tag) : document.createElement(tag);
+  const n = tag === "svg" || ["g","line","rect","circle","path","text","polyline","defs","pattern"].includes(tag) ? document.createElementNS(NS, tag) : document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) k === "text" ? n.textContent = v : n.setAttribute(k, v);
   if (parent) parent.appendChild(n);
   return n;
@@ -252,10 +252,27 @@ function legend(target, items) {
   for (const [c, t, kind] of items) { const s = el("span", { text: t, class: kind || "" }, target); s.style.setProperty("--c", css(c)); }
 }
 
+// ---------- hatched fill for frontier-baseline bars ----------
+let hatchCount = 0;
+function hatchDef(svg) {  // a pattern per svg: a pattern inside a hidden tab's svg renders nothing elsewhere
+  const id = `hatch-${++hatchCount}`, defs = el("defs", {}, svg);
+  const pat = document.createElementNS(NS, "pattern");
+  for (const [k, v] of Object.entries({ id, width: 6, height: 6, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" })) pat.setAttribute(k, v);
+  defs.appendChild(pat);
+  el("line", { x1: 0, y1: 0, x2: 0, y2: 6, stroke: css("--ink-2"), "stroke-width": 1.5 }, pat);
+  return `url(#${id})`;
+}
+
 // ---------- ablation ladder: bars + CI whiskers + reference lines ----------
 function ladder(target) {
-  const pts = DATA.configs, rowH = 30, W = 1100, m = { l: 230, r: 60, t: 8, b: 56 }, H = m.t + m.b + rowH * pts.length;
+  // frontier baselines first, as hatched reference bars; then every config
+  const refs = [{ id: "Frontier", label: "Claude Sonnet 4.6, zero-shot (published, other subset)", accuracy: DATA.references[0].accuracy, ref: true }];
+  const kimi = DATA.configs.find(c => c.id === "R23");
+  if (kimi) refs.push({ ...kimi, id: "Frontier", label: "Kimi K3 2.8T, zero-shot, no harness (run by us)", ref: true });
+  const pts = [...refs, ...DATA.configs.filter(c => c.id !== "R23")];
+  const rowH = 30, W = 1100, m = { l: 330, r: 60, t: 8, b: 56 }, H = m.t + m.b + rowH * pts.length;
   const x = linear(0, 1, m.l, W - m.r), svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Ablation ladder" }, target);
+  const hatch = hatchDef(svg);
   for (const t of [0, .2, .4, .6, .8, 1]) {
     el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b, stroke: css("--grid") }, svg);
     el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: (100 * t) + "%" }, svg);
@@ -263,12 +280,18 @@ function ladder(target) {
   pts.forEach((p, i) => {
     const cy = m.t + i * rowH + rowH / 2, g = el("g", {}, svg), w = x(p.accuracy) - x(0);
     el("text", { class: "lbl", x: m.l - 10, y: cy + 4, "text-anchor": "end", text: `${p.id}  ${p.label}` }, svg);
-    el("path", { d: `M${x(0)},${cy - 9} h${w - 4} a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h${-(w - 4)} z`, fill: css(FAMILY[p.family][0]) }, g);
-    el("line", { x1: x(p.ci95[0]), x2: x(p.ci95[1]), y1: cy, y2: cy, stroke: css("--ink"), "stroke-width": 1.5 }, g);
-    for (const e of p.ci95) el("line", { x1: x(e), x2: x(e), y1: cy - 5, y2: cy + 5, stroke: css("--ink"), "stroke-width": 1.5 }, g);
-    el("text", { class: "lbl", x: x(p.ci95[1]) + 8, y: cy + 4, text: pct(p.accuracy) }, g);
+    if (p.ref) {  // frontier baseline: hatched outline bar
+      el("rect", { x: x(0), y: cy - 9, width: w, height: 18, rx: 4, fill: hatch, stroke: css("--ink-2"), "stroke-width": 1.2 }, g);
+    } else {
+      el("path", { d: `M${x(0)},${cy - 9} h${w - 4} a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h${-(w - 4)} z`, fill: css(FAMILY[p.family][0]) }, g);
+    }
+    if (p.ci95) {
+      el("line", { x1: x(p.ci95[0]), x2: x(p.ci95[1]), y1: cy, y2: cy, stroke: css("--ink"), "stroke-width": 1.5 }, g);
+      for (const e of p.ci95) el("line", { x1: x(e), x2: x(e), y1: cy - 5, y2: cy + 5, stroke: css("--ink"), "stroke-width": 1.5 }, g);
+    }
+    el("text", { class: "lbl", x: x(p.ci95 ? p.ci95[1] : p.accuracy) + 8, y: cy + 4, text: pct(p.accuracy) + (p.ref ? "  frontier baseline" : "") }, g);
     el("rect", { x: x(0), y: cy - rowH / 2, width: x(1) - x(0), height: rowH, fill: "transparent" }, g);
-    hover(g, `${p.id} · ${p.label}`, [["accuracy", pct(p.accuracy)], ["95% CI", `${pct(p.ci95[0])} – ${pct(p.ci95[1])}`], ["questions", p.n]]);
+    hover(g, `${p.id} · ${p.label}`, [["accuracy", pct(p.accuracy)]].concat(p.ci95 ? [["95% CI", `${pct(p.ci95[0])} – ${pct(p.ci95[1])}`], ["questions", p.n]] : [["source", "CypherGuard, published"]]));
   });
   DATA.references.forEach((r, i) => {
     el("line", { x1: x(r.accuracy), x2: x(r.accuracy), y1: m.t - 4, y2: H - m.b, stroke: css("--muted"), "stroke-width": 1.5 }, svg);
@@ -344,12 +367,15 @@ function spend(target) {
 
 // ---------- tiles ----------
 function tiles(target) {
-  const best = [...DATA.configs].sort((a, b) => b.accuracy - a.accuracy)[0];
-  const cheapest = [...DATA.configs].filter(c => c.accuracy >= DATA.references[0].accuracy).sort((a, b) => a.cost_per_question - b.cost_per_question)[0];
+  const citable = DATA.configs.filter(c => c.citable !== false);  // never headline a config chosen on the test set
+  const best = [...citable].sort((a, b) => b.accuracy - a.accuracy)[0];
+  const cheapest = [...citable].filter(c => c.accuracy >= DATA.references[0].accuracy).sort((a, b) => a.cost_per_question - b.cost_per_question)[0];
   const tile = (cls, label, value, note) => { const d = el("div", { class: "card tile " + cls }, target);
     el("div", { class: "label", text: label }, d); el("div", { class: "value", text: value }, d); if (note) el("div", { class: "note", text: note }, d); return d; };
   tile("hero", `Best accuracy · ${best.id} ${best.label}`, pct(best.accuracy), `95% CI ${pct(best.ci95[0])} – ${pct(best.ci95[1])} · ${usd(best.cost_per_question)} per question`);
-  tile("", "Frontier reference", pct(DATA.references[0].accuracy), "Claude Sonnet 4.6, zero-shot (published)");
+  const kimi0 = DATA.configs.find(c => c.id === "R23");
+  tile("", "Frontier baseline", kimi0 ? pct(kimi0.accuracy) : pct(DATA.references[0].accuracy),
+       kimi0 ? `Kimi K3 2.8T zero-shot, run by us · Claude Sonnet 4.6 published: ${pct(DATA.references[0].accuracy)}` : "Claude Sonnet 4.6, zero-shot (published)");
   tile("", "Cheapest config at or above it", cheapest ? usd(cheapest.cost_per_question) : "none yet", cheapest ? `${cheapest.id} · per question` : "");
   const s = tile("", "Fireworks spend", usd(DATA.spend.total), `of $${DATA.spend.cap} cap · $${DATA.spend.credits} credits`);
   const meter = el("div", { class: "meter", role: "meter", "aria-valuenow": DATA.spend.total, "aria-valuemax": DATA.spend.cap }, s);
@@ -424,6 +450,7 @@ function waterfallTab() {
   const refs = W.refs || [], rowH = 34, gap = tried.length ? 1 : 0, rows = refs.length + (refs.length ? 1 : 0) + chain.length + gap + tried.length;
   const Wd = 1100, m = { l: 330, r: 300, t: 26, b: 30 }, H = m.t + m.b + rowH * rows;
   const x = linear(0, 100, m.l, Wd - m.r), svg = el("svg", { viewBox: `0 0 ${Wd} ${H}`, role: "img", "aria-label": "Waterfall" }, target);
+  const hatch = hatchDef(svg);
   for (const t of [0, 20, 40, 60, 80, 100]) {
     el("line", { x1: x(t), x2: x(t), y1: m.t - 6, y2: H - m.b, stroke: css("--grid") }, svg);
     el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: t + "%" }, svg);
@@ -432,7 +459,7 @@ function waterfallTab() {
   refs.forEach((r, i) => {
     const cy = m.t + i * rowH + rowH / 2;
     el("text", { class: "lbl", x: m.l - 10, y: cy + 4, "text-anchor": "end", text: r.label }, svg);
-    el("rect", { x: x(0), y: cy - 10, width: x(r.value) - x(0), height: 20, rx: 3, fill: "none", stroke: css("--ink-2"), "stroke-dasharray": "5 2" }, svg);
+    el("rect", { x: x(0), y: cy - 10, width: x(r.value) - x(0), height: 20, rx: 3, fill: hatch, stroke: css("--ink-2"), "stroke-width": 1.2 }, svg);
     el("text", { class: "lbl", x: x(r.value) + 8, y: cy + 4, text: pct(r.value / 100) + "  reference, not a step" }, svg);
   });
   if (refs.length) el("line", { x1: m.l, x2: Wd - 10, y1: m.t + refs.length * rowH + rowH / 2, y2: m.t + refs.length * rowH + rowH / 2, stroke: css("--grid") }, svg);
@@ -472,7 +499,7 @@ function waterfallTab() {
     g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
   }
   const lg = document.getElementById("legend-wf"); lg.replaceChildren();
-  legend(lg, [["--ink-2", "start / overall"], ["--s1", "adopted step"], ["--muted", "tested, not adopted", "hollow"], ["--ink-2", "frontier reference (dashed outline)", "hollow"]]);
+  legend(lg, [["--ink-2", "start / overall"], ["--s1", "adopted step"], ["--muted", "tested, not adopted", "hollow"], ["--ink-2", "frontier baseline (hatched)", "hollow"]]);
 }
 
 function sideBox(parent, title, side) {
@@ -520,7 +547,7 @@ function render() {
 }
 const pick = document.getElementById("pick");
 for (const c of DATA.configs) el("option", { value: c.id, text: `${c.id} · ${c.label}` }, pick);
-pick.value = [...DATA.configs].sort((a, b) => b.accuracy - a.accuracy)[0].id;
+pick.value = [...DATA.configs].filter(c => c.citable !== false).sort((a, b) => b.accuracy - a.accuracy)[0].id;
 for (const g of DATA.graphs) el("option", { text: g }, document.getElementById("f-graph"));
 pick.addEventListener("change", render);
 for (const id of ["f-outcome", "f-graph", "f-q"]) document.getElementById(id).addEventListener("input", () => explorer(DATA.configs.find(c => c.id === pick.value)));

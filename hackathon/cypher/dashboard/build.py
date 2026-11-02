@@ -13,7 +13,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 import metrics  # noqa: E402
 
-# id, label, family, result file (results/<tag>.json), stage to read it at, --warn off view?
+# id, label, family, result file (results/<tag>.json), stage to read it at, not citable (chosen on the test set)
 CONFIGS = [
     ("R1", "Base model, no harness", "harness", "r1_base", "first", False),
     ("R2", "+ retrieved examples", "harness", "r5_full", "first", False),
@@ -43,7 +43,7 @@ CONFIGS = [
     ("R23", "Kimi K3 (2.8T), zero-shot, no harness", "small", "r23_kimi_plain", "first", False),
     ("R22", "Qwen2.5 1.5B, untuned, local + examples + fix", "small", "r22_qwen15", "fix", False),
     ("R18", "Vote: R6 + R6b + Kimi K3 by result rows", "finetune", "r18_vote_ft", "first", False),
-    ("R19", "Vote R6+R6b+R6z (PICKED ON TEST, not citable)", "finetune", "r19_vote_muse", "first", False),
+    ("R19", "Vote R6+R6b+R6z (PICKED ON TEST, not citable)", "finetune", "r19_vote_muse", "first", True),
     ("R20", "Vote of 4 Muse 30B adapters, picked on dev", "finetune", "r20_vote_devpick", "first", False),
 ]
 # Design experiments on the dev split (200 train questions, never the test set). Each is (group, label, file, stage).
@@ -176,21 +176,22 @@ def waterfall_steps():
         if adopted:
             current = new
     steps.append({"label": "Overall: best system", "kind": "total", "value": acc(current)})
-    refs = [{"label": "Frontier baseline: Claude Sonnet 4.6, zero-shot (published, other subset)", "value": wf.FRONTIER}]
+    refs = [{"label": "Frontier: Claude Sonnet 4.6, zero-shot (published)", "value": wf.FRONTIER}]
     kimi = run("r23_kimi_plain", "first")
     if kimi:
-        refs.append({"label": "Frontier proxy, run by us: Kimi K3 (2.8T MoE), zero-shot, no harness", "value": acc(kimi)})
+        refs.append({"label": "Frontier, run by us: Kimi K3 2.8T, zero-shot", "value": acc(kimi)})
     return {"steps": steps, "frontier": wf.FRONTIER, "refs": refs}
 
 
 def main():
     configs = []
-    for cid, label, family, tag, stage, _ in CONFIGS:
+    for cid, label, family, tag, stage, not_citable in CONFIGS:
         doc = load(tag)
         if not doc or doc["split"] != "test" or stage not in doc["views"]:
             continue
         s = metrics.summarize(doc["rows"], stage)
         configs.append({"id": cid, "label": label, "family": family, "tag": tag, "stage": stage, "model": doc["model"],
+                        "citable": not not_citable,
                         **{k: s[k] for k in ("accuracy", "ci95", "n", "cost_per_question", "cost_per_correct",
                                              "calls_per_question", "p50_secs", "p90_secs", "by_stage", "outcomes")},
                         "grid": grid(doc, stage), "rows": explorer_rows(doc, stage)})

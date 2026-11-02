@@ -71,7 +71,7 @@ def system_for(row, prune=False):
     schema = row["schema"]
     if prune:
         from harness import schema_prune
-        schema = schema_prune(row["question"], schema)
+        schema = schema_prune(row["question"], schema)[0]  # returns (text, pruned?)
     return SYSTEM_T.replace("{schema}", schema)
 
 
@@ -107,6 +107,27 @@ def service_client():
 
 
 # ---------- reward (RFT) ----------
+GOLD_CACHE = os.path.join(HERE, "data", "train_gold.json")
+
+
+def gold_for(rows):
+    """Train rows carry only the gold Cypher; execute it once (read-only) and cache the result rows."""
+    cache = json.load(open(GOLD_CACHE)) if os.path.exists(GOLD_CACHE) else {}
+    todo = [r for r in rows if r["id"] not in cache and "gold_result" not in r]
+    if todo:
+        with ThreadPoolExecutor(8) as pool:
+            for r, res in zip(todo, pool.map(lambda r: execute(r["graph"], r["cypher"]), todo)):
+                cache[r["id"]] = {"rows": res["rows"], "columns": res["columns"], "ok": res["ok"], "error": res["error"]}
+        os.makedirs(os.path.dirname(GOLD_CACHE), exist_ok=True)
+        json.dump(cache, open(GOLD_CACHE, "w"), default=str)
+    for r in rows:
+        if "gold_result" not in r:
+            g = cache[r["id"]]
+            r["gold_result"] = {"rows": g["rows"], "columns": g["columns"]}
+            r["gold_ok"] = g["ok"]
+    return rows
+
+
 def reward(row, cypher):
     """1.0 if the candidate query executes and its result set equals gold under score.py (unordered multiset of rows,
     column names ignored, floats to 3 dp); 0.0 for wrong rows, execution errors, empty results and unparseable output."""
@@ -238,7 +259,18 @@ def sample(args):
         rows = rows[: args.limit]
     service = service_client()
     sampler = make_sampler(service, tok, args.model)
+    rows = gold_for(rows)
+    bad = [r["id"] for r in rows if not r.get("gold_ok", True)]
+    print(f"gold executed for {len(rows)} train rows; {len(bad)} gold errors (skipped): {bad[:10]}", flush=True)
+    rows = [r for r in rows if r.get("gold_ok", True)]
+    if args.only:
+        keep = set(json.load(open(args.only)))
+        rows = [r for r in rows if r["id"] in keep]
+        print(f"restricted to {len(rows)} ids from {args.only}", flush=True)
     recs = sample_rows(tok, sampler, rows, args.n, args.temp, args.max_tokens, f"rft sample {os.path.basename(args.out)}", args.workers)
+    with open(args.out + ".raw", "w") as f:  # persist paid samples before any scoring
+        for r in recs:
+            f.write(json.dumps({"id": r["row"]["id"], "cands": r["cands"], "in_tokens": r["in_tokens"], "api_error": r["api_error"]}, default=str) + "\n")
 
     def rew(rec):
         for c in rec["cands"]:
@@ -335,7 +367,14 @@ def train(args):
     for attempt in range(args.slot_retries + 1):
         try:
             if args.from_state:
-                tc = service.create_training_client_from_state(args.from_state)
+                try:
+                    tc = service.create_training_client_from_state(args.from_state)
+                except Exception as e:
+                    if "concurrent" in str(e).lower():
+                        raise
+                    print("from_state failed, warm start via load_state:", str(e)[:200], flush=True)
+                    tc = service.create_lora_training_client(base_model=BASE_MODEL, rank=args.rank, seed=SEED)
+                    tc.load_state(args.from_state).result()
             else:
                 tc = service.create_lora_training_client(base_model=BASE_MODEL, rank=args.rank, seed=SEED)
             break
@@ -412,7 +451,7 @@ def main():
     p.add_argument("--workers", type=int, default=8); p.add_argument("--prune", action="store_true")
     p = sp.add_parser("sample"); p.add_argument("--model", required=True); p.add_argument("--out", required=True)
     p.add_argument("--data", default=os.path.join(CY, "data", "train.jsonl"))
-    p.add_argument("--n", type=int, default=4); p.add_argument("--temp", type=float, default=0.8)
+    p.add_argument("--n", type=int, default=4); p.add_argument("--temp", type=float, default=0.8); p.add_argument("--only")
     p.add_argument("--max-tokens", type=int, default=400); p.add_argument("--limit", type=int, default=0); p.add_argument("--workers", type=int, default=8)
     p = sp.add_parser("build"); p.add_argument("--cands", required=True); p.add_argument("--out", required=True)
     p.add_argument("--mode", choices=["weighted", "reject"], default="weighted")

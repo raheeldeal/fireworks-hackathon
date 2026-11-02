@@ -203,3 +203,921 @@ timestamp,model,in_tokens,out_tokens,cost,note
 2026-11-02T11:44:05,accounts/fireworks/models/muse-glimmer-30b (sampler),378,43,0.000951,eval train_base
 2026-11-02T11:44:05,accounts/fireworks/models/muse-glimmer-30b (sampler),727,74,0.001786,eval train_base
 2026-11-02T11:44:05,accounts/fireworks/models/muse-glimmer-30b (sampler),722,78,0.001796,eval train_base
+2026-11-02T11:51:16,accounts/fireworks/models/muse-glimmer-30b (serverless training),0,0,0.000000,"sft train 897820 tokens, free promo ($0)"
+2026-11-02T11:51:33,accounts/fireworks/models/muse-glimmer-30b (sampler),379,29,0.000884,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),379,46,0.000967,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),728,47,0.001656,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),383,48,0.000985,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),375,48,0.000969,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),842,63,0.001958,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,59,0.002426,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),837,47,0.001870,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,252,0.003364,rft sample r1_cands.jsonl
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),834,174,0.002484,rft sample r1_cands.jsonl
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),723,40,0.001612,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,41,0.002668,eval train_sft
+2026-11-02T11:51:34,accounts/fireworks/models/muse-glimmer-30b (sampler),197,32,0.000542,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,27,0.002590,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,72,0.002817,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),379,45,0.000962,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),724,236,0.002571,rft sample r1_cands.jsonl
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,23,0.002586,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),727,45,0.001645,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,165,0.002953,rft sample r1_cands.jsonl
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),723,61,0.001715,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1098,50,0.002396,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),740,34,0.001616,eval train_sft
+2026-11-02T11:51:35,accounts/fireworks/models/muse-glimmer-30b (sampler),379,134,0.001397,rft sample r1_cands.jsonl
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),738,35,0.001617,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),727,62,0.001727,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),377,34,0.000905,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),832,29,0.001772,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),838,51,0.001891,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),725,35,0.001592,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),378,28,0.000878,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,60,0.002437,eval train_sft
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,212,0.003498,rft sample r1_cands.jsonl
+2026-11-02T11:51:36,accounts/fireworks/models/muse-glimmer-30b (sampler),838,46,0.001867,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),836,177,0.002502,rft sample r1_cands.jsonl
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),837,38,0.001826,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,100,0.002632,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,30,0.002610,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,29,0.002278,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),721,13,0.001477,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1273,45,0.002715,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),379,30,0.000889,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,37,0.002329,eval train_sft
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),740,209,0.002470,rft sample r1_cands.jsonl
+2026-11-02T11:51:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,60,0.002443,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),834,38,0.001820,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,182,0.003354,rft sample r1_cands.jsonl
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1087,19,0.002223,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,59,0.002424,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,36,0.002316,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),422,83,0.001232,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),829,38,0.001810,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),423,46,0.001054,eval train_sft
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),374,75,0.001099,rft sample r1_cands.jsonl
+2026-11-02T11:51:38,accounts/fireworks/models/muse-glimmer-30b (sampler),376,29,0.000878,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),836,56,0.001912,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),837,44,0.001855,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,279,0.003498,rft sample r1_cands.jsonl
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,50,0.002714,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),723,47,0.001646,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),832,34,0.001797,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),840,53,0.001905,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,147,0.002866,rft sample r1_cands.jsonl
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),378,25,0.000863,eval train_sft
+2026-11-02T11:51:39,accounts/fireworks/models/muse-glimmer-30b (sampler),834,51,0.001884,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,47,0.002374,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),376,33,0.000898,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,185,0.003374,rft sample r1_cands.jsonl
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,38,0.002324,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),728,51,0.001676,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),837,58,0.001924,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),725,43,0.001631,eval train_sft
+2026-11-02T11:51:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,26,0.002591,eval train_sft
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,35,0.002642,eval train_sft
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,51,0.002709,eval train_sft
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,193,0.003090,rft sample r1_cands.jsonl
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),725,53,0.001680,eval train_sft
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),373,28,0.000868,eval train_sft
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),837,181,0.002524,rft sample r1_cands.jsonl
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),373,35,0.000902,eval train_sft
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),836,170,0.002468,rft sample r1_cands.jsonl
+2026-11-02T11:51:41,accounts/fireworks/models/muse-glimmer-30b (sampler),726,58,0.001706,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),833,49,0.001872,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,65,0.002465,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),376,51,0.000986,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),835,40,0.001832,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,31,0.002619,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,218,0.003206,rft sample r1_cands.jsonl
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,38,0.002322,eval train_sft
+2026-11-02T11:51:42,accounts/fireworks/models/muse-glimmer-30b (sampler),1263,241,0.003652,rft sample r1_cands.jsonl
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,26,0.002269,eval train_sft
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),834,20,0.001732,eval train_sft
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),731,32,0.001589,eval train_sft
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),726,160,0.002204,rft sample r1_cands.jsonl
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),1267,60,0.002776,eval train_sft
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),209,159,0.001186,eval train_sft
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,44,0.002675,eval train_sft
+2026-11-02T11:51:43,accounts/fireworks/models/muse-glimmer-30b (sampler),834,48,0.001869,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,31,0.002611,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,202,0.003126,rft sample r1_cands.jsonl
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,42,0.002673,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),378,47,0.000970,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),837,223,0.002729,rft sample r1_cands.jsonl
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),730,36,0.001606,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),739,40,0.001644,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),832,20,0.001728,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),1275,48,0.002733,eval train_sft
+2026-11-02T11:51:44,accounts/fireworks/models/muse-glimmer-30b (sampler),385,52,0.001008,eval train_sft
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),834,45,0.001854,eval train_sft
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),381,50,0.000991,eval train_sft
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1085,219,0.003195,rft sample r1_cands.jsonl
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,65,0.002452,eval train_sft
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),377,25,0.000861,eval train_sft
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),429,45,0.001060,eval train_sft
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,206,0.003483,rft sample r1_cands.jsonl
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),723,101,0.001910,rft sample r1_cands.jsonl
+2026-11-02T11:51:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,36,0.002314,eval train_sft
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),831,45,0.001848,eval train_sft
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),1085,138,0.002800,rft sample r1_cands.jsonl
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),380,44,0.000960,eval train_sft
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),373,19,0.000824,eval train_sft
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),719,42,0.001614,eval train_sft
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),373,22,0.000838,eval train_sft
+2026-11-02T11:51:46,accounts/fireworks/models/muse-glimmer-30b (sampler),729,30,0.001575,eval train_sft
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),835,198,0.002603,rft sample r1_cands.jsonl
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),730,77,0.001807,eval train_sft
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),208,84,0.000818,eval train_sft
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),728,201,0.002408,rft sample r1_cands.jsonl
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,87,0.002575,eval train_sft
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),1266,56,0.002755,eval train_sft
+2026-11-02T11:51:47,accounts/fireworks/models/muse-glimmer-30b (sampler),380,56,0.001018,eval train_sft
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),835,38,0.001822,eval train_sft
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),720,246,0.002612,rft sample r1_cands.jsonl
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,47,0.002368,eval train_sft
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,44,0.002351,eval train_sft
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),721,61,0.001711,eval train_sft
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),729,52,0.001683,eval train_sft
+2026-11-02T11:51:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,48,0.002700,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,37,0.002648,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),382,298,0.002203,rft sample r1_cands.jsonl
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1278,252,0.003735,rft sample r1_cands.jsonl
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),729,58,0.001712,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,36,0.002314,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,39,0.002331,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),374,35,0.000904,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),835,48,0.001871,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,58,0.002429,eval train_sft
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,121,0.003062,rft sample r1_cands.jsonl
+2026-11-02T11:51:49,accounts/fireworks/models/muse-glimmer-30b (sampler),726,39,0.001613,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),838,46,0.001867,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,41,0.002346,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),375,43,0.000945,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,27,0.002592,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),737,404,0.003416,rft sample r1_cands.jsonl
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,48,0.002384,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),841,37,0.001829,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),382,44,0.000963,eval train_sft
+2026-11-02T11:51:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,210,0.003159,rft sample r1_cands.jsonl
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),376,31,0.000888,eval train_sft
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,194,0.003087,rft sample r1_cands.jsonl
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),728,34,0.001593,eval train_sft
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),841,39,0.001839,eval train_sft
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),722,72,0.001766,rft sample r1_cands.jsonl
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,31,0.002613,eval train_sft
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1263,45,0.002695,eval train_sft
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),206,38,0.000589,eval train_sft
+2026-11-02T11:51:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,153,0.003226,rft sample r1_cands.jsonl
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,48,0.002373,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),841,47,0.001878,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),737,41,0.001645,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),731,21,0.001535,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),380,179,0.001618,rft sample r1_cands.jsonl
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),839,70,0.001986,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),375,35,0.000906,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,64,0.002780,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,24,0.002575,eval train_sft
+2026-11-02T11:51:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1086,20,0.002226,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,135,0.002795,rft sample r1_cands.jsonl
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),729,267,0.002732,rft sample r1_cands.jsonl
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),733,32,0.001593,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,43,0.002674,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),379,28,0.000879,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),725,27,0.001553,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),375,31,0.000886,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),379,151,0.001480,rft sample r1_cands.jsonl
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),842,52,0.001904,eval train_sft
+2026-11-02T11:51:53,accounts/fireworks/models/muse-glimmer-30b (sampler),733,41,0.001637,eval train_sft
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),200,19,0.000485,eval train_sft
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,205,0.003480,rft sample r1_cands.jsonl
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,53,0.002401,eval train_sft
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),720,21,0.001514,eval train_sft
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),730,81,0.001826,eval train_sft
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1263,236,0.003627,rft sample r1_cands.jsonl
+2026-11-02T11:51:54,accounts/fireworks/models/muse-glimmer-30b (sampler),727,112,0.001971,rft sample r1_cands.jsonl
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),1101,39,0.002348,eval train_sft
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),835,53,0.001895,eval train_sft
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),838,46,0.001867,eval train_sft
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),837,76,0.002011,eval train_sft
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),1270,72,0.002841,eval train_sft
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),729,327,0.003025,rft sample r1_cands.jsonl
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),837,44,0.001855,eval train_sft
+2026-11-02T11:51:55,accounts/fireworks/models/muse-glimmer-30b (sampler),384,37,0.000933,eval train_sft
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),728,162,0.002217,rft sample r1_cands.jsonl
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,20,0.002569,eval train_sft
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),842,229,0.002768,rft sample r1_cands.jsonl
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),380,33,0.000906,eval train_sft
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),719,19,0.001502,eval train_sft
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),839,113,0.002196,eval train_sft
+2026-11-02T11:51:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1268,138,0.003159,rft sample r1_cands.jsonl
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),728,55,0.001695,eval train_sft
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,48,0.002700,eval train_sft
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,47,0.002368,eval train_sft
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),833,102,0.002130,rft sample r1_cands.jsonl
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,48,0.002698,eval train_sft
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,249,0.003352,rft sample r1_cands.jsonl
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,181,0.003357,rft sample r1_cands.jsonl
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,45,0.002354,eval train_sft
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,64,0.002790,eval train_sft
+2026-11-02T11:51:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1271,37,0.002672,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),837,77,0.002016,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,53,0.002403,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),827,21,0.001723,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),718,136,0.002071,rft sample r1_cands.jsonl
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,45,0.002687,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),1098,54,0.002416,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,60,0.002764,eval train_sft
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),842,157,0.002416,rft sample r1_cands.jsonl
+2026-11-02T11:51:58,accounts/fireworks/models/muse-glimmer-30b (sampler),831,166,0.002439,rft sample r1_cands.jsonl
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),842,64,0.001963,eval train_sft
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),722,30,0.001562,eval train_sft
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,34,0.002628,eval train_sft
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,55,0.002742,eval train_sft
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),413,65,0.001127,eval train_sft
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),724,37,0.001600,eval train_sft
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1270,301,0.003958,rft sample r1_cands.jsonl
+2026-11-02T11:51:59,accounts/fireworks/models/muse-glimmer-30b (sampler),838,170,0.002472,rft sample r1_cands.jsonl
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1253,58,0.002739,eval train_sft
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,58,0.002423,eval train_sft
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1100,35,0.002327,eval train_sft
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,283,0.003851,rft sample r1_cands.jsonl
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),726,248,0.002633,rft sample r1_cands.jsonl
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1085,46,0.002351,eval train_sft
+2026-11-02T11:52:00,accounts/fireworks/models/muse-glimmer-30b (sampler),839,52,0.001898,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),727,103,0.001928,rft sample r1_cands.jsonl
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),376,38,0.000922,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,53,0.002391,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,108,0.002663,rft sample r1_cands.jsonl
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),378,48,0.000975,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),725,59,0.001709,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),378,124,0.001346,rft sample r1_cands.jsonl
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),373,44,0.000946,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),728,36,0.001603,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,27,0.002590,eval train_sft
+2026-11-02T11:52:01,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,116,0.003026,rft sample r1_cands.jsonl
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,144,0.002837,rft sample r1_cands.jsonl
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,61,0.002777,eval train_sft
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,42,0.002345,eval train_sft
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),834,42,0.001840,eval train_sft
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,114,0.002695,rft sample r1_cands.jsonl
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,54,0.002727,eval train_sft
+2026-11-02T11:52:02,accounts/fireworks/models/muse-glimmer-30b (sampler),378,34,0.000907,eval train_sft
+2026-11-02T11:52:03,accounts/fireworks/models/muse-glimmer-30b (sampler),727,58,0.001708,eval train_sft
+2026-11-02T11:52:03,accounts/fireworks/models/muse-glimmer-30b (sampler),722,84,0.001825,eval train_sft
+2026-11-02T11:52:03,accounts/fireworks/models/muse-glimmer-30b (sampler),725,218,0.002485,rft sample r1_cands.jsonl
+2026-11-02T11:52:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1263,182,0.003364,rft sample r1_cands.jsonl
+2026-11-02T11:52:04,accounts/fireworks/models/muse-glimmer-30b (sampler),726,132,0.002067,rft sample r1_cands.jsonl
+2026-11-02T11:52:04,accounts/fireworks/models/muse-glimmer-30b (sampler),726,346,0.003111,rft sample r1_cands.jsonl
+2026-11-02T11:52:04,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,80,0.002854,rft sample r1_cands.jsonl
+2026-11-02T11:52:04,accounts/fireworks/models/muse-glimmer-30b (sampler),838,475,0.003960,rft sample r1_cands.jsonl
+2026-11-02T11:52:05,accounts/fireworks/models/muse-glimmer-30b (sampler),724,269,0.002732,rft sample r1_cands.jsonl
+2026-11-02T11:52:05,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,269,0.003784,rft sample r1_cands.jsonl
+2026-11-02T11:52:05,accounts/fireworks/models/muse-glimmer-30b (sampler),1253,112,0.003002,rft sample r1_cands.jsonl
+2026-11-02T11:52:05,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,153,0.003224,rft sample r1_cands.jsonl
+2026-11-02T11:52:06,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,186,0.003040,rft sample r1_cands.jsonl
+2026-11-02T11:52:06,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,164,0.003270,rft sample r1_cands.jsonl
+2026-11-02T11:52:06,accounts/fireworks/models/muse-glimmer-30b (sampler),721,229,0.002531,rft sample r1_cands.jsonl
+2026-11-02T11:52:06,accounts/fireworks/models/muse-glimmer-30b (sampler),729,182,0.002317,rft sample r1_cands.jsonl
+2026-11-02T11:52:07,accounts/fireworks/models/muse-glimmer-30b (sampler),727,248,0.002635,rft sample r1_cands.jsonl
+2026-11-02T11:52:07,accounts/fireworks/models/muse-glimmer-30b (sampler),733,191,0.002369,rft sample r1_cands.jsonl
+2026-11-02T11:52:07,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,104,0.002967,rft sample r1_cands.jsonl
+2026-11-02T11:52:07,accounts/fireworks/models/muse-glimmer-30b (sampler),835,204,0.002632,rft sample r1_cands.jsonl
+2026-11-02T11:52:08,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,172,0.003307,rft sample r1_cands.jsonl
+2026-11-02T11:52:08,accounts/fireworks/models/muse-glimmer-30b (sampler),838,220,0.002716,rft sample r1_cands.jsonl
+2026-11-02T11:52:08,accounts/fireworks/models/muse-glimmer-30b (sampler),380,140,0.001428,rft sample r1_cands.jsonl
+2026-11-02T11:52:08,accounts/fireworks/models/muse-glimmer-30b (sampler),836,185,0.002541,rft sample r1_cands.jsonl
+2026-11-02T11:52:09,accounts/fireworks/models/muse-glimmer-30b (sampler),382,147,0.001466,rft sample r1_cands.jsonl
+2026-11-02T11:52:09,accounts/fireworks/models/muse-glimmer-30b (sampler),839,222,0.002728,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),842,186,0.002558,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),729,198,0.002395,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),844,300,0.003118,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),375,169,0.001560,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),731,164,0.002233,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),374,106,0.001250,rft sample r1_cands.jsonl
+2026-11-02T11:52:10,accounts/fireworks/models/muse-glimmer-30b (sampler),731,122,0.002028,rft sample r1_cands.jsonl
+2026-11-02T11:52:11,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,119,0.002719,rft sample r1_cands.jsonl
+2026-11-02T11:52:11,accounts/fireworks/models/muse-glimmer-30b (sampler),382,246,0.001949,rft sample r1_cands.jsonl
+2026-11-02T11:52:11,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,131,0.002776,rft sample r1_cands.jsonl
+2026-11-02T11:52:11,accounts/fireworks/models/muse-glimmer-30b (sampler),385,236,0.001906,rft sample r1_cands.jsonl
+2026-11-02T11:52:12,accounts/fireworks/models/muse-glimmer-30b (sampler),832,104,0.002138,rft sample r1_cands.jsonl
+2026-11-02T11:52:12,accounts/fireworks/models/muse-glimmer-30b (sampler),834,191,0.002567,rft sample r1_cands.jsonl
+2026-11-02T11:52:12,accounts/fireworks/models/muse-glimmer-30b (sampler),835,88,0.002066,rft sample r1_cands.jsonl
+2026-11-02T11:52:12,accounts/fireworks/models/muse-glimmer-30b (sampler),726,176,0.002282,rft sample r1_cands.jsonl
+2026-11-02T11:52:13,accounts/fireworks/models/muse-glimmer-30b (sampler),1098,144,0.002855,rft sample r1_cands.jsonl
+2026-11-02T11:52:13,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,168,0.003299,rft sample r1_cands.jsonl
+2026-11-02T11:52:13,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,192,0.003395,rft sample r1_cands.jsonl
+2026-11-02T11:52:13,accounts/fireworks/models/muse-glimmer-30b (sampler),729,341,0.003093,rft sample r1_cands.jsonl
+2026-11-02T11:52:14,accounts/fireworks/models/muse-glimmer-30b (sampler),193,175,0.001232,rft sample r1_cands.jsonl
+2026-11-02T11:52:14,accounts/fireworks/models/muse-glimmer-30b (sampler),840,186,0.002554,rft sample r1_cands.jsonl
+2026-11-02T11:52:14,accounts/fireworks/models/muse-glimmer-30b (sampler),729,122,0.002024,rft sample r1_cands.jsonl
+2026-11-02T11:52:14,accounts/fireworks/models/muse-glimmer-30b (sampler),384,141,0.001441,rft sample r1_cands.jsonl
+2026-11-02T11:52:14,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,242,0.003653,rft sample r1_cands.jsonl
+2026-11-02T11:52:15,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,108,0.002663,rft sample r1_cands.jsonl
+2026-11-02T11:52:15,accounts/fireworks/models/muse-glimmer-30b (sampler),734,266,0.002737,rft sample r1_cands.jsonl
+2026-11-02T11:52:15,accounts/fireworks/models/muse-glimmer-30b (sampler),725,251,0.002646,rft sample r1_cands.jsonl
+2026-11-02T11:52:15,accounts/fireworks/models/muse-glimmer-30b (sampler),379,158,0.001514,rft sample r1_cands.jsonl
+2026-11-02T11:52:16,accounts/fireworks/models/muse-glimmer-30b (sampler),838,201,0.002623,rft sample r1_cands.jsonl
+2026-11-02T11:52:16,accounts/fireworks/models/muse-glimmer-30b (sampler),193,124,0.000983,rft sample r1_cands.jsonl
+2026-11-02T11:52:16,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,111,0.002674,rft sample r1_cands.jsonl
+2026-11-02T11:52:16,accounts/fireworks/models/muse-glimmer-30b (sampler),746,200,0.002438,rft sample r1_cands.jsonl
+2026-11-02T11:52:16,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,118,0.003045,rft sample r1_cands.jsonl
+2026-11-02T11:52:16,accounts/fireworks/models/muse-glimmer-30b (sampler),1272,141,0.003181,rft sample r1_cands.jsonl
+2026-11-02T11:52:17,accounts/fireworks/models/muse-glimmer-30b (sampler),387,144,0.001461,rft sample r1_cands.jsonl
+2026-11-02T11:52:17,accounts/fireworks/models/muse-glimmer-30b (sampler),384,159,0.001529,rft sample r1_cands.jsonl
+2026-11-02T11:52:17,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,184,0.003032,rft sample r1_cands.jsonl
+2026-11-02T11:52:18,accounts/fireworks/models/muse-glimmer-30b (sampler),735,166,0.002251,rft sample r1_cands.jsonl
+2026-11-02T11:52:18,accounts/fireworks/models/muse-glimmer-30b (sampler),837,198,0.002607,rft sample r1_cands.jsonl
+2026-11-02T11:52:18,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,113,0.003013,rft sample r1_cands.jsonl
+2026-11-02T11:52:18,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,152,0.003215,rft sample r1_cands.jsonl
+2026-11-02T11:52:18,accounts/fireworks/models/muse-glimmer-30b (sampler),719,235,0.002556,rft sample r1_cands.jsonl
+2026-11-02T11:52:19,accounts/fireworks/models/muse-glimmer-30b (sampler),847,318,0.003212,rft sample r1_cands.jsonl
+2026-11-02T11:52:19,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,184,0.003371,rft sample r1_cands.jsonl
+2026-11-02T11:52:19,accounts/fireworks/models/muse-glimmer-30b (sampler),724,160,0.002200,rft sample r1_cands.jsonl
+2026-11-02T11:52:19,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,180,0.003356,rft sample r1_cands.jsonl
+2026-11-02T11:52:20,accounts/fireworks/models/muse-glimmer-30b (sampler),836,130,0.002273,rft sample r1_cands.jsonl
+2026-11-02T11:52:20,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,300,0.003602,rft sample r1_cands.jsonl
+2026-11-02T11:52:20,accounts/fireworks/models/muse-glimmer-30b (sampler),729,221,0.002507,rft sample r1_cands.jsonl
+2026-11-02T11:52:20,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,142,0.002843,rft sample r1_cands.jsonl
+2026-11-02T11:52:21,accounts/fireworks/models/muse-glimmer-30b (sampler),382,207,0.001759,rft sample r1_cands.jsonl
+2026-11-02T11:52:21,accounts/fireworks/models/muse-glimmer-30b (sampler),378,186,0.001649,rft sample r1_cands.jsonl
+2026-11-02T11:52:21,accounts/fireworks/models/muse-glimmer-30b (sampler),838,231,0.002770,rft sample r1_cands.jsonl
+2026-11-02T11:52:21,accounts/fireworks/models/muse-glimmer-30b (sampler),720,146,0.002124,rft sample r1_cands.jsonl
+2026-11-02T11:52:21,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,127,0.002766,rft sample r1_cands.jsonl
+2026-11-02T11:52:22,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,108,0.002663,rft sample r1_cands.jsonl
+2026-11-02T11:52:22,accounts/fireworks/models/muse-glimmer-30b (sampler),372,112,0.001276,rft sample r1_cands.jsonl
+2026-11-02T11:52:22,accounts/fireworks/models/muse-glimmer-30b (sampler),720,76,0.001782,rft sample r1_cands.jsonl
+2026-11-02T11:52:22,accounts/fireworks/models/muse-glimmer-30b (sampler),382,206,0.001754,rft sample r1_cands.jsonl
+2026-11-02T11:52:22,accounts/fireworks/models/muse-glimmer-30b (sampler),381,135,0.001406,rft sample r1_cands.jsonl
+2026-11-02T11:52:23,accounts/fireworks/models/muse-glimmer-30b (sampler),834,104,0.002142,rft sample r1_cands.jsonl
+2026-11-02T11:52:23,accounts/fireworks/models/muse-glimmer-30b (sampler),571,276,0.002466,rft sample r1_cands.jsonl
+2026-11-02T11:52:23,accounts/fireworks/models/muse-glimmer-30b (sampler),382,118,0.001325,rft sample r1_cands.jsonl
+2026-11-02T11:52:23,accounts/fireworks/models/muse-glimmer-30b (sampler),835,165,0.002442,rft sample r1_cands.jsonl
+2026-11-02T11:52:23,accounts/fireworks/models/muse-glimmer-30b (sampler),830,124,0.002232,rft sample r1_cands.jsonl
+2026-11-02T11:52:24,accounts/fireworks/models/muse-glimmer-30b (sampler),731,228,0.002545,rft sample r1_cands.jsonl
+2026-11-02T11:52:24,accounts/fireworks/models/muse-glimmer-30b (sampler),830,174,0.002476,rft sample r1_cands.jsonl
+2026-11-02T11:52:24,accounts/fireworks/models/muse-glimmer-30b (sampler),727,198,0.002391,rft sample r1_cands.jsonl
+2026-11-02T11:52:25,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,214,0.003510,rft sample r1_cands.jsonl
+2026-11-02T11:52:25,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,170,0.003309,rft sample r1_cands.jsonl
+2026-11-02T11:52:25,accounts/fireworks/models/muse-glimmer-30b (sampler),841,264,0.002937,rft sample r1_cands.jsonl
+2026-11-02T11:52:25,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,112,0.002681,rft sample r1_cands.jsonl
+2026-11-02T11:52:25,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,159,0.002916,rft sample r1_cands.jsonl
+2026-11-02T11:52:26,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,320,0.004029,rft sample r1_cands.jsonl
+2026-11-02T11:52:26,accounts/fireworks/models/muse-glimmer-30b (sampler),378,167,0.001556,rft sample r1_cands.jsonl
+2026-11-02T11:52:26,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,384,0.004336,rft sample r1_cands.jsonl
+2026-11-02T11:52:27,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,230,0.003588,rft sample r1_cands.jsonl
+2026-11-02T11:52:27,accounts/fireworks/models/muse-glimmer-30b (sampler),377,71,0.001085,rft sample r1_cands.jsonl
+2026-11-02T11:52:27,accounts/fireworks/models/muse-glimmer-30b (sampler),722,171,0.002250,rft sample r1_cands.jsonl
+2026-11-02T11:52:27,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,271,0.003796,rft sample r1_cands.jsonl
+2026-11-02T11:52:27,accounts/fireworks/models/muse-glimmer-30b (sampler),730,220,0.002504,rft sample r1_cands.jsonl
+2026-11-02T11:52:27,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,235,0.003285,rft sample r1_cands.jsonl
+2026-11-02T11:52:28,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,202,0.003136,rft sample r1_cands.jsonl
+2026-11-02T11:52:28,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,181,0.003355,rft sample r1_cands.jsonl
+2026-11-02T11:52:28,accounts/fireworks/models/muse-glimmer-30b (sampler),379,155,0.001499,rft sample r1_cands.jsonl
+2026-11-02T11:52:28,accounts/fireworks/models/muse-glimmer-30b (sampler),1277,143,0.003201,rft sample r1_cands.jsonl
+2026-11-02T11:52:28,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,143,0.003162,rft sample r1_cands.jsonl
+2026-11-02T11:52:28,accounts/fireworks/models/muse-glimmer-30b (sampler),379,134,0.001397,rft sample r1_cands.jsonl
+2026-11-02T11:52:29,accounts/fireworks/models/muse-glimmer-30b (sampler),737,179,0.002318,rft sample r1_cands.jsonl
+2026-11-02T11:52:29,accounts/fireworks/models/muse-glimmer-30b (sampler),727,252,0.002655,rft sample r1_cands.jsonl
+2026-11-02T11:52:29,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,130,0.002775,rft sample r1_cands.jsonl
+2026-11-02T11:52:30,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,139,0.002823,rft sample r1_cands.jsonl
+2026-11-02T11:52:30,accounts/fireworks/models/muse-glimmer-30b (sampler),842,188,0.002568,rft sample r1_cands.jsonl
+2026-11-02T11:52:30,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,212,0.003183,rft sample r1_cands.jsonl
+2026-11-02T11:52:30,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,196,0.003426,rft sample r1_cands.jsonl
+2026-11-02T11:52:31,accounts/fireworks/models/muse-glimmer-30b (sampler),717,76,0.001776,rft sample r1_cands.jsonl
+2026-11-02T11:52:31,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,100,0.002958,rft sample r1_cands.jsonl
+2026-11-02T11:52:31,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,136,0.003127,rft sample r1_cands.jsonl
+2026-11-02T11:52:31,accounts/fireworks/models/muse-glimmer-30b (sampler),727,221,0.002503,rft sample r1_cands.jsonl
+2026-11-02T11:52:31,accounts/fireworks/models/muse-glimmer-30b (sampler),207,305,0.001894,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),387,200,0.001735,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,157,0.002905,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),836,174,0.002488,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,138,0.002820,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),207,252,0.001635,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,136,0.003125,rft sample r1_cands.jsonl
+2026-11-02T11:52:32,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,169,0.003302,rft sample r1_cands.jsonl
+2026-11-02T11:52:33,accounts/fireworks/models/muse-glimmer-30b (sampler),835,221,0.002715,rft sample r1_cands.jsonl
+2026-11-02T11:52:33,accounts/fireworks/models/muse-glimmer-30b (sampler),722,83,0.001820,rft sample r1_cands.jsonl
+2026-11-02T11:52:33,accounts/fireworks/models/muse-glimmer-30b (sampler),737,180,0.002323,rft sample r1_cands.jsonl
+2026-11-02T11:52:34,accounts/fireworks/models/muse-glimmer-30b (sampler),733,241,0.002613,rft sample r1_cands.jsonl
+2026-11-02T11:52:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,107,0.002659,rft sample r1_cands.jsonl
+2026-11-02T11:52:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,179,0.003331,rft sample r1_cands.jsonl
+2026-11-02T11:52:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,194,0.003416,rft sample r1_cands.jsonl
+2026-11-02T11:52:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1278,228,0.003618,rft sample r1_cands.jsonl
+2026-11-02T11:52:35,accounts/fireworks/models/muse-glimmer-30b (sampler),568,153,0.001860,rft sample r1_cands.jsonl
+2026-11-02T11:52:35,accounts/fireworks/models/muse-glimmer-30b (sampler),832,229,0.002748,rft sample r1_cands.jsonl
+2026-11-02T11:52:35,accounts/fireworks/models/muse-glimmer-30b (sampler),728,248,0.002637,rft sample r1_cands.jsonl
+2026-11-02T11:52:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,112,0.003004,rft sample r1_cands.jsonl
+2026-11-02T11:52:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,111,0.002678,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),837,171,0.002475,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),374,96,0.001202,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),195,104,0.000890,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),726,330,0.003033,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),375,123,0.001335,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),731,164,0.002233,rft sample r1_cands.jsonl
+2026-11-02T11:52:36,accounts/fireworks/models/muse-glimmer-30b (sampler),839,213,0.002684,rft sample r1_cands.jsonl
+2026-11-02T11:52:37,accounts/fireworks/models/muse-glimmer-30b (sampler),1086,230,0.003251,rft sample r1_cands.jsonl
+2026-11-02T11:52:37,accounts/fireworks/models/muse-glimmer-30b (sampler),829,120,0.002210,rft sample r1_cands.jsonl
+2026-11-02T11:52:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,223,0.003550,rft sample r1_cands.jsonl
+2026-11-02T11:52:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,200,0.003112,rft sample r1_cands.jsonl
+2026-11-02T11:52:38,accounts/fireworks/models/muse-glimmer-30b (sampler),369,165,0.001528,rft sample r1_cands.jsonl
+2026-11-02T11:52:38,accounts/fireworks/models/muse-glimmer-30b (sampler),836,183,0.002532,rft sample r1_cands.jsonl
+2026-11-02T11:52:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,211,0.003489,rft sample r1_cands.jsonl
+2026-11-02T11:52:38,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,184,0.003032,rft sample r1_cands.jsonl
+2026-11-02T11:52:39,accounts/fireworks/models/muse-glimmer-30b (sampler),377,135,0.001398,rft sample r1_cands.jsonl
+2026-11-02T11:52:39,accounts/fireworks/models/muse-glimmer-30b (sampler),374,95,0.001197,rft sample r1_cands.jsonl
+2026-11-02T11:52:39,accounts/fireworks/models/muse-glimmer-30b (sampler),376,150,0.001469,rft sample r1_cands.jsonl
+2026-11-02T11:52:39,accounts/fireworks/models/muse-glimmer-30b (sampler),1100,153,0.002903,rft sample r1_cands.jsonl
+2026-11-02T11:52:39,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,171,0.002979,rft sample r1_cands.jsonl
+2026-11-02T11:52:39,accounts/fireworks/models/muse-glimmer-30b (sampler),732,167,0.002250,rft sample r1_cands.jsonl
+2026-11-02T11:52:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,219,0.003203,rft sample r1_cands.jsonl
+2026-11-02T11:52:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,239,0.003630,rft sample r1_cands.jsonl
+2026-11-02T11:52:40,accounts/fireworks/models/muse-glimmer-30b (sampler),725,186,0.002329,rft sample r1_cands.jsonl
+2026-11-02T11:52:40,accounts/fireworks/models/muse-glimmer-30b (sampler),374,83,0.001138,rft sample r1_cands.jsonl
+2026-11-02T11:52:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,176,0.003336,rft sample r1_cands.jsonl
+2026-11-02T11:52:40,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,184,0.003360,rft sample r1_cands.jsonl
+2026-11-02T11:52:41,accounts/fireworks/models/muse-glimmer-30b (sampler),839,259,0.002908,rft sample r1_cands.jsonl
+2026-11-02T11:52:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,191,0.003072,rft sample r1_cands.jsonl
+2026-11-02T11:52:41,accounts/fireworks/models/muse-glimmer-30b (sampler),382,148,0.001471,rft sample r1_cands.jsonl
+2026-11-02T11:52:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,326,0.003725,rft sample r1_cands.jsonl
+2026-11-02T11:52:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,195,0.003088,rft sample r1_cands.jsonl
+2026-11-02T11:52:42,accounts/fireworks/models/muse-glimmer-30b (sampler),723,161,0.002203,rft sample r1_cands.jsonl
+2026-11-02T11:52:42,accounts/fireworks/models/muse-glimmer-30b (sampler),372,176,0.001588,rft sample r1_cands.jsonl
+2026-11-02T11:52:42,accounts/fireworks/models/muse-glimmer-30b (sampler),843,241,0.002828,rft sample r1_cands.jsonl
+2026-11-02T11:52:43,accounts/fireworks/models/muse-glimmer-30b (sampler),376,140,0.001420,rft sample r1_cands.jsonl
+2026-11-02T11:52:43,accounts/fireworks/models/muse-glimmer-30b (sampler),378,229,0.001858,rft sample r1_cands.jsonl
+2026-11-02T11:52:43,accounts/fireworks/models/muse-glimmer-30b (sampler),842,260,0.002919,rft sample r1_cands.jsonl
+2026-11-02T11:52:43,accounts/fireworks/models/muse-glimmer-30b (sampler),837,169,0.002465,rft sample r1_cands.jsonl
+2026-11-02T11:52:43,accounts/fireworks/models/muse-glimmer-30b (sampler),837,238,0.002802,rft sample r1_cands.jsonl
+2026-11-02T11:52:43,accounts/fireworks/models/muse-glimmer-30b (sampler),387,181,0.001642,rft sample r1_cands.jsonl
+2026-11-02T11:52:44,accounts/fireworks/models/muse-glimmer-30b (sampler),835,249,0.002852,rft sample r1_cands.jsonl
+2026-11-02T11:52:44,accounts/fireworks/models/muse-glimmer-30b (sampler),372,76,0.001100,rft sample r1_cands.jsonl
+2026-11-02T11:52:44,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,181,0.003020,rft sample r1_cands.jsonl
+2026-11-02T11:52:44,accounts/fireworks/models/muse-glimmer-30b (sampler),729,108,0.001956,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),379,129,0.001372,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,165,0.002944,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1271,197,0.003453,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),379,155,0.001499,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,175,0.002994,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1278,209,0.003525,rft sample r1_cands.jsonl
+2026-11-02T11:52:45,accounts/fireworks/models/muse-glimmer-30b (sampler),750,233,0.002607,rft sample r1_cands.jsonl
+2026-11-02T11:52:46,accounts/fireworks/models/muse-glimmer-30b (sampler),731,229,0.002550,rft sample r1_cands.jsonl
+2026-11-02T11:52:46,accounts/fireworks/models/muse-glimmer-30b (sampler),381,180,0.001625,rft sample r1_cands.jsonl
+2026-11-02T11:52:46,accounts/fireworks/models/muse-glimmer-30b (sampler),384,172,0.001592,rft sample r1_cands.jsonl
+2026-11-02T11:52:46,accounts/fireworks/models/muse-glimmer-30b (sampler),855,286,0.003071,rft sample r1_cands.jsonl
+2026-11-02T11:52:47,accounts/fireworks/models/muse-glimmer-30b (sampler),386,172,0.001596,rft sample r1_cands.jsonl
+2026-11-02T11:52:47,accounts/fireworks/models/muse-glimmer-30b (sampler),838,197,0.002604,rft sample r1_cands.jsonl
+2026-11-02T11:52:47,accounts/fireworks/models/muse-glimmer-30b (sampler),720,200,0.002387,rft sample r1_cands.jsonl
+2026-11-02T11:52:47,accounts/fireworks/models/muse-glimmer-30b (sampler),725,351,0.003134,rft sample r1_cands.jsonl
+2026-11-02T11:52:47,accounts/fireworks/models/muse-glimmer-30b (sampler),380,131,0.001384,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,126,0.003081,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),729,152,0.002171,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),850,263,0.002949,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,118,0.002708,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,177,0.003327,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),729,198,0.002395,rft sample r1_cands.jsonl
+2026-11-02T11:52:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,103,0.002635,rft sample r1_cands.jsonl
+2026-11-02T11:52:49,accounts/fireworks/models/muse-glimmer-30b (sampler),378,202,0.001727,rft sample r1_cands.jsonl
+2026-11-02T11:52:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,134,0.003122,rft sample r1_cands.jsonl
+2026-11-02T11:52:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,101,0.002955,rft sample r1_cands.jsonl
+2026-11-02T11:52:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,131,0.002785,rft sample r1_cands.jsonl
+2026-11-02T11:52:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,188,0.003379,rft sample r1_cands.jsonl
+2026-11-02T11:52:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1250,93,0.002904,rft sample r1_cands.jsonl
+2026-11-02T11:52:50,accounts/fireworks/models/muse-glimmer-30b (sampler),380,202,0.001731,rft sample r1_cands.jsonl
+2026-11-02T11:52:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1098,170,0.002982,rft sample r1_cands.jsonl
+2026-11-02T11:52:50,accounts/fireworks/models/muse-glimmer-30b (sampler),720,227,0.002519,rft sample r1_cands.jsonl
+2026-11-02T11:52:50,accounts/fireworks/models/muse-glimmer-30b (sampler),723,280,0.002783,rft sample r1_cands.jsonl
+2026-11-02T11:52:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,115,0.003021,rft sample r1_cands.jsonl
+2026-11-02T11:52:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,154,0.003221,rft sample r1_cands.jsonl
+2026-11-02T11:52:51,accounts/fireworks/models/muse-glimmer-30b (sampler),840,203,0.002637,rft sample r1_cands.jsonl
+2026-11-02T11:52:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,147,0.002866,rft sample r1_cands.jsonl
+2026-11-02T11:52:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,103,0.002964,rft sample r1_cands.jsonl
+2026-11-02T11:52:52,accounts/fireworks/models/muse-glimmer-30b (sampler),376,127,0.001357,rft sample r1_cands.jsonl
+2026-11-02T11:52:52,accounts/fireworks/models/muse-glimmer-30b (sampler),835,263,0.002920,rft sample r1_cands.jsonl
+2026-11-02T11:52:52,accounts/fireworks/models/muse-glimmer-30b (sampler),745,364,0.003237,rft sample r1_cands.jsonl
+2026-11-02T11:52:52,accounts/fireworks/models/muse-glimmer-30b (sampler),724,180,0.002297,rft sample r1_cands.jsonl
+2026-11-02T11:52:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,114,0.003028,rft sample r1_cands.jsonl
+2026-11-02T11:52:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1087,110,0.002667,rft sample r1_cands.jsonl
+2026-11-02T11:52:53,accounts/fireworks/models/muse-glimmer-30b (sampler),731,237,0.002589,rft sample r1_cands.jsonl
+2026-11-02T11:52:53,accounts/fireworks/models/muse-glimmer-30b (sampler),836,208,0.002654,rft sample r1_cands.jsonl
+2026-11-02T11:52:53,accounts/fireworks/models/muse-glimmer-30b (sampler),377,179,0.001612,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,167,0.002965,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,174,0.003309,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),841,168,0.002468,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),835,158,0.002408,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,124,0.002747,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),373,176,0.001590,rft sample r1_cands.jsonl
+2026-11-02T11:52:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,116,0.002706,rft sample r1_cands.jsonl
+2026-11-02T11:52:55,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,176,0.002999,rft sample r1_cands.jsonl
+2026-11-02T11:52:55,accounts/fireworks/models/muse-glimmer-30b (sampler),844,228,0.002767,rft sample r1_cands.jsonl
+2026-11-02T11:52:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,319,0.003693,rft sample r1_cands.jsonl
+2026-11-02T11:52:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1272,242,0.003674,rft sample r1_cands.jsonl
+2026-11-02T11:52:56,accounts/fireworks/models/muse-glimmer-30b (sampler),839,368,0.003440,rft sample r1_cands.jsonl
+2026-11-02T11:52:56,accounts/fireworks/models/muse-glimmer-30b (sampler),380,153,0.001491,rft sample r1_cands.jsonl
+2026-11-02T11:52:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,192,0.003083,rft sample r1_cands.jsonl
+2026-11-02T11:52:57,accounts/fireworks/models/muse-glimmer-30b (sampler),719,168,0.002229,rft sample r1_cands.jsonl
+2026-11-02T11:52:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,128,0.002759,rft sample r1_cands.jsonl
+2026-11-02T11:52:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1267,227,0.003591,rft sample r1_cands.jsonl
+2026-11-02T11:52:57,accounts/fireworks/models/muse-glimmer-30b (sampler),197,120,0.000972,rft sample r1_cands.jsonl
+2026-11-02T11:52:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1099,343,0.003828,rft sample r1_cands.jsonl
+2026-11-02T11:52:57,accounts/fireworks/models/muse-glimmer-30b (sampler),842,223,0.002739,rft sample r1_cands.jsonl
+2026-11-02T11:52:58,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,126,0.002747,rft sample r1_cands.jsonl
+2026-11-02T11:52:58,accounts/fireworks/models/muse-glimmer-30b (sampler),744,301,0.002927,rft sample r1_cands.jsonl
+2026-11-02T11:52:58,accounts/fireworks/models/muse-glimmer-30b (sampler),720,180,0.002290,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1266,195,0.003433,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),721,182,0.002301,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),834,163,0.002430,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,180,0.003352,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,169,0.002961,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),845,214,0.002701,rft sample r1_cands.jsonl
+2026-11-02T11:52:59,accounts/fireworks/models/muse-glimmer-30b (sampler),836,206,0.002644,rft sample r1_cands.jsonl
+2026-11-02T11:53:00,accounts/fireworks/models/muse-glimmer-30b (sampler),733,139,0.002115,rft sample r1_cands.jsonl
+2026-11-02T11:53:00,accounts/fireworks/models/muse-glimmer-30b (sampler),378,83,0.001146,rft sample r1_cands.jsonl
+2026-11-02T11:53:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,114,0.003020,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),840,194,0.002593,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),718,202,0.002393,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),197,146,0.001099,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),378,239,0.001907,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),373,165,0.001536,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),723,241,0.002593,rft sample r1_cands.jsonl
+2026-11-02T11:53:01,accounts/fireworks/models/muse-glimmer-30b (sampler),834,181,0.002518,rft sample r1_cands.jsonl
+2026-11-02T11:53:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,116,0.003036,rft sample r1_cands.jsonl
+2026-11-02T11:53:02,accounts/fireworks/models/muse-glimmer-30b (sampler),720,153,0.002158,rft sample r1_cands.jsonl
+2026-11-02T11:53:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,188,0.003054,rft sample r1_cands.jsonl
+2026-11-02T11:53:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,107,0.002664,rft sample r1_cands.jsonl
+2026-11-02T11:53:03,accounts/fireworks/models/muse-glimmer-30b (sampler),202,108,0.000923,rft sample r1_cands.jsonl
+2026-11-02T11:53:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1087,92,0.002579,rft sample r1_cands.jsonl
+2026-11-02T11:53:03,accounts/fireworks/models/muse-glimmer-30b (sampler),835,178,0.002505,rft sample r1_cands.jsonl
+2026-11-02T11:53:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1085,184,0.003025,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),832,91,0.002075,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),833,138,0.002306,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),1083,97,0.002596,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),377,143,0.001437,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),838,202,0.002628,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),835,147,0.002354,rft sample r1_cands.jsonl
+2026-11-02T11:53:04,accounts/fireworks/models/muse-glimmer-30b (sampler),1267,164,0.003284,rft sample r1_cands.jsonl
+2026-11-02T11:53:05,accounts/fireworks/models/muse-glimmer-30b (sampler),882,623,0.004769,rft sample r1_cands.jsonl
+2026-11-02T11:53:06,accounts/fireworks/models/muse-glimmer-30b (sampler),728,158,0.002198,rft sample r1_cands.jsonl
+2026-11-02T11:53:06,accounts/fireworks/models/muse-glimmer-30b (sampler),378,174,0.001590,rft sample r1_cands.jsonl
+2026-11-02T11:53:06,accounts/fireworks/models/muse-glimmer-30b (sampler),372,137,0.001398,rft sample r1_cands.jsonl
+2026-11-02T11:53:06,accounts/fireworks/models/muse-glimmer-30b (sampler),846,199,0.002629,rft sample r1_cands.jsonl
+2026-11-02T11:53:06,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,108,0.002660,rft sample r1_cands.jsonl
+2026-11-02T11:53:06,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,220,0.003206,rft sample r1_cands.jsonl
+2026-11-02T11:53:07,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,229,0.003581,rft sample r1_cands.jsonl
+2026-11-02T11:53:07,accounts/fireworks/models/muse-glimmer-30b (sampler),378,133,0.001390,rft sample r1_cands.jsonl
+2026-11-02T11:53:07,accounts/fireworks/models/muse-glimmer-30b (sampler),730,193,0.002373,rft sample r1_cands.jsonl
+2026-11-02T11:53:07,accounts/fireworks/models/muse-glimmer-30b (sampler),1098,219,0.003221,rft sample r1_cands.jsonl
+2026-11-02T11:53:08,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,140,0.002827,rft sample r1_cands.jsonl
+2026-11-02T11:53:08,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,249,0.003695,rft sample r1_cands.jsonl
+2026-11-02T11:53:08,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,148,0.002865,rft sample r1_cands.jsonl
+2026-11-02T11:53:08,accounts/fireworks/models/muse-glimmer-30b (sampler),378,117,0.001312,rft sample r1_cands.jsonl
+2026-11-02T11:53:09,accounts/fireworks/models/muse-glimmer-30b (sampler),844,311,0.003172,rft sample r1_cands.jsonl
+2026-11-02T11:53:09,accounts/fireworks/models/muse-glimmer-30b (sampler),837,151,0.002377,rft sample r1_cands.jsonl
+2026-11-02T11:53:09,accounts/fireworks/models/muse-glimmer-30b (sampler),858,653,0.004868,rft sample r1_cands.jsonl
+2026-11-02T11:53:09,accounts/fireworks/models/muse-glimmer-30b (sampler),727,162,0.002215,rft sample r1_cands.jsonl
+2026-11-02T11:53:09,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,246,0.003680,rft sample r1_cands.jsonl
+2026-11-02T11:53:10,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,111,0.003015,rft sample r1_cands.jsonl
+2026-11-02T11:53:10,accounts/fireworks/models/muse-glimmer-30b (sampler),374,124,0.001338,rft sample r1_cands.jsonl
+2026-11-02T11:53:10,accounts/fireworks/models/muse-glimmer-30b (sampler),383,246,0.001951,rft sample r1_cands.jsonl
+2026-11-02T11:53:10,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,162,0.002935,rft sample r1_cands.jsonl
+2026-11-02T11:53:11,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,112,0.003006,rft sample r1_cands.jsonl
+2026-11-02T11:53:11,accounts/fireworks/models/muse-glimmer-30b (sampler),830,220,0.002700,rft sample r1_cands.jsonl
+2026-11-02T11:53:11,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,189,0.003065,rft sample r1_cands.jsonl
+2026-11-02T11:53:12,accounts/fireworks/models/muse-glimmer-30b (sampler),1086,175,0.002983,rft sample r1_cands.jsonl
+2026-11-02T11:53:12,accounts/fireworks/models/muse-glimmer-30b (sampler),838,229,0.002760,rft sample r1_cands.jsonl
+2026-11-02T11:53:12,accounts/fireworks/models/muse-glimmer-30b (sampler),731,185,0.002336,rft sample r1_cands.jsonl
+2026-11-02T11:53:12,accounts/fireworks/models/muse-glimmer-30b (sampler),196,151,0.001121,rft sample r1_cands.jsonl
+2026-11-02T11:53:12,accounts/fireworks/models/muse-glimmer-30b (sampler),377,126,0.001354,rft sample r1_cands.jsonl
+2026-11-02T11:53:13,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,80,0.002860,rft sample r1_cands.jsonl
+2026-11-02T11:53:13,accounts/fireworks/models/muse-glimmer-30b (sampler),732,125,0.002045,rft sample r1_cands.jsonl
+2026-11-02T11:53:13,accounts/fireworks/models/muse-glimmer-30b (sampler),845,278,0.003013,rft sample r1_cands.jsonl
+2026-11-02T11:53:13,accounts/fireworks/models/muse-glimmer-30b (sampler),1084,223,0.003213,rft sample r1_cands.jsonl
+2026-11-02T11:53:13,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,126,0.003088,rft sample r1_cands.jsonl
+2026-11-02T11:53:13,accounts/fireworks/models/muse-glimmer-30b (sampler),379,141,0.001431,rft sample r1_cands.jsonl
+2026-11-02T11:53:14,accounts/fireworks/models/muse-glimmer-30b (sampler),731,238,0.002594,rft sample r1_cands.jsonl
+2026-11-02T11:53:14,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,110,0.002999,rft sample r1_cands.jsonl
+2026-11-02T11:53:14,accounts/fireworks/models/muse-glimmer-30b (sampler),381,151,0.001484,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,253,0.003371,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),1086,70,0.002470,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),720,1114,0.006848,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),379,141,0.001431,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),381,196,0.001703,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),729,189,0.002351,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),379,203,0.001733,rft sample r1_cands.jsonl
+2026-11-02T11:53:15,accounts/fireworks/models/muse-glimmer-30b (sampler),749,345,0.003152,rft sample r1_cands.jsonl
+2026-11-02T11:53:16,accounts/fireworks/models/muse-glimmer-30b (sampler),838,225,0.002740,rft sample r1_cands.jsonl
+2026-11-02T11:53:16,accounts/fireworks/models/muse-glimmer-30b (sampler),374,119,0.001314,rft sample r1_cands.jsonl
+2026-11-02T11:53:17,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,181,0.003361,rft sample r1_cands.jsonl
+2026-11-02T11:53:17,accounts/fireworks/models/muse-glimmer-30b (sampler),835,183,0.002530,rft sample r1_cands.jsonl
+2026-11-02T11:53:17,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,177,0.003324,rft sample r1_cands.jsonl
+2026-11-02T11:53:17,accounts/fireworks/models/muse-glimmer-30b (sampler),720,197,0.002373,rft sample r1_cands.jsonl
+2026-11-02T11:53:17,accounts/fireworks/models/muse-glimmer-30b (sampler),838,206,0.002648,rft sample r1_cands.jsonl
+2026-11-02T11:53:17,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,226,0.003561,rft sample r1_cands.jsonl
+2026-11-02T11:53:18,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,69,0.002806,rft sample r1_cands.jsonl
+2026-11-02T11:53:18,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,308,0.003971,rft sample r1_cands.jsonl
+2026-11-02T11:53:18,accounts/fireworks/models/muse-glimmer-30b (sampler),378,184,0.001639,rft sample r1_cands.jsonl
+2026-11-02T11:53:18,accounts/fireworks/models/muse-glimmer-30b (sampler),194,147,0.001098,rft sample r1_cands.jsonl
+2026-11-02T11:53:18,accounts/fireworks/models/muse-glimmer-30b (sampler),374,80,0.001123,rft sample r1_cands.jsonl
+2026-11-02T11:53:19,accounts/fireworks/models/muse-glimmer-30b (sampler),725,199,0.002392,rft sample r1_cands.jsonl
+2026-11-02T11:53:19,accounts/fireworks/models/muse-glimmer-30b (sampler),723,180,0.002295,rft sample r1_cands.jsonl
+2026-11-02T11:53:19,accounts/fireworks/models/muse-glimmer-30b (sampler),842,200,0.002626,rft sample r1_cands.jsonl
+2026-11-02T11:53:19,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,177,0.003006,rft sample r1_cands.jsonl
+2026-11-02T11:53:20,accounts/fireworks/models/muse-glimmer-30b (sampler),731,227,0.002541,rft sample r1_cands.jsonl
+2026-11-02T11:53:20,accounts/fireworks/models/muse-glimmer-30b (sampler),376,153,0.001484,rft sample r1_cands.jsonl
+2026-11-02T11:53:20,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,199,0.003119,rft sample r1_cands.jsonl
+2026-11-02T11:53:20,accounts/fireworks/models/muse-glimmer-30b (sampler),379,160,0.001524,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),412,297,0.002257,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),386,305,0.002245,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),833,167,0.002448,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),1097,139,0.002828,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),843,200,0.002628,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),837,237,0.002797,rft sample r1_cands.jsonl
+2026-11-02T11:53:21,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,185,0.003372,rft sample r1_cands.jsonl
+2026-11-02T11:53:22,accounts/fireworks/models/muse-glimmer-30b (sampler),851,359,0.003420,rft sample r1_cands.jsonl
+2026-11-02T11:53:22,accounts/fireworks/models/muse-glimmer-30b (sampler),378,90,0.001180,rft sample r1_cands.jsonl
+2026-11-02T11:53:22,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,222,0.003541,rft sample r1_cands.jsonl
+2026-11-02T11:53:23,accounts/fireworks/models/muse-glimmer-30b (sampler),838,186,0.002550,rft sample r1_cands.jsonl
+2026-11-02T11:53:23,accounts/fireworks/models/muse-glimmer-30b (sampler),730,302,0.002905,rft sample r1_cands.jsonl
+2026-11-02T11:53:23,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,265,0.003434,rft sample r1_cands.jsonl
+2026-11-02T11:53:23,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,172,0.003299,rft sample r1_cands.jsonl
+2026-11-02T11:53:23,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,140,0.003147,rft sample r1_cands.jsonl
+2026-11-02T11:53:24,accounts/fireworks/models/muse-glimmer-30b (sampler),839,279,0.003006,rft sample r1_cands.jsonl
+2026-11-02T11:53:24,accounts/fireworks/models/muse-glimmer-30b (sampler),377,82,0.001139,rft sample r1_cands.jsonl
+2026-11-02T11:53:24,accounts/fireworks/models/muse-glimmer-30b (sampler),198,200,0.001364,rft sample r1_cands.jsonl
+2026-11-02T11:53:25,accounts/fireworks/models/muse-glimmer-30b (sampler),839,288,0.003050,rft sample r1_cands.jsonl
+2026-11-02T11:53:25,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,200,0.003116,rft sample r1_cands.jsonl
+2026-11-02T11:53:25,accounts/fireworks/models/muse-glimmer-30b (sampler),372,115,0.001290,rft sample r1_cands.jsonl
+2026-11-02T11:53:25,accounts/fireworks/models/muse-glimmer-30b (sampler),718,185,0.002310,rft sample r1_cands.jsonl
+2026-11-02T11:53:25,accounts/fireworks/models/muse-glimmer-30b (sampler),728,237,0.002583,rft sample r1_cands.jsonl
+2026-11-02T11:53:25,accounts/fireworks/models/muse-glimmer-30b (sampler),739,226,0.002551,rft sample r1_cands.jsonl
+2026-11-02T11:53:26,accounts/fireworks/models/muse-glimmer-30b (sampler),845,203,0.002647,rft sample r1_cands.jsonl
+2026-11-02T11:53:26,accounts/fireworks/models/muse-glimmer-30b (sampler),379,149,0.001470,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),377,244,0.001930,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),843,360,0.003409,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),720,189,0.002334,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),836,152,0.002380,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,156,0.003235,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),831,147,0.002346,rft sample r1_cands.jsonl
+2026-11-02T11:53:27,accounts/fireworks/models/muse-glimmer-30b (sampler),371,132,0.001371,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),1088,95,0.002596,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),847,226,0.002763,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),375,150,0.001467,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),843,118,0.002228,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,122,0.003063,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),726,148,0.002145,rft sample r1_cands.jsonl
+2026-11-02T11:53:28,accounts/fireworks/models/muse-glimmer-30b (sampler),842,183,0.002543,rft sample r1_cands.jsonl
+2026-11-02T11:53:29,accounts/fireworks/models/muse-glimmer-30b (sampler),723,120,0.002003,rft sample r1_cands.jsonl
+2026-11-02T11:53:29,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,141,0.003154,rft sample r1_cands.jsonl
+2026-11-02T11:53:29,accounts/fireworks/models/muse-glimmer-30b (sampler),377,120,0.001325,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),720,251,0.002636,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),1254,184,0.003356,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),833,167,0.002448,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,143,0.002836,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),737,288,0.002850,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),836,237,0.002795,rft sample r1_cands.jsonl
+2026-11-02T11:53:30,accounts/fireworks/models/muse-glimmer-30b (sampler),727,198,0.002391,rft sample r1_cands.jsonl
+2026-11-02T11:53:31,accounts/fireworks/models/muse-glimmer-30b (sampler),374,131,0.001372,rft sample r1_cands.jsonl
+2026-11-02T11:53:31,accounts/fireworks/models/muse-glimmer-30b (sampler),376,136,0.001401,rft sample r1_cands.jsonl
+2026-11-02T11:53:31,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,144,0.002841,rft sample r1_cands.jsonl
+2026-11-02T11:53:31,accounts/fireworks/models/muse-glimmer-30b (sampler),376,146,0.001449,rft sample r1_cands.jsonl
+2026-11-02T11:53:31,accounts/fireworks/models/muse-glimmer-30b (sampler),206,262,0.001682,rft sample r1_cands.jsonl
+2026-11-02T11:53:31,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,187,0.003059,rft sample r1_cands.jsonl
+2026-11-02T11:53:32,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,198,0.003105,rft sample r1_cands.jsonl
+2026-11-02T11:53:32,accounts/fireworks/models/muse-glimmer-30b (sampler),381,251,0.001972,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),842,168,0.002470,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,174,0.002987,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),834,186,0.002542,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,242,0.003325,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),837,237,0.002797,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,154,0.002896,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,202,0.003130,rft sample r1_cands.jsonl
+2026-11-02T11:53:33,accounts/fireworks/models/muse-glimmer-30b (sampler),1256,112,0.003008,rft sample r1_cands.jsonl
+2026-11-02T11:53:34,accounts/fireworks/models/muse-glimmer-30b (sampler),726,190,0.002350,rft sample r1_cands.jsonl
+2026-11-02T11:53:34,accounts/fireworks/models/muse-glimmer-30b (sampler),377,136,0.001403,rft sample r1_cands.jsonl
+2026-11-02T11:53:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,127,0.002756,rft sample r1_cands.jsonl
+2026-11-02T11:53:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,192,0.003079,rft sample r1_cands.jsonl
+2026-11-02T11:53:34,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,130,0.003106,rft sample r1_cands.jsonl
+2026-11-02T11:53:35,accounts/fireworks/models/muse-glimmer-30b (sampler),385,132,0.001399,rft sample r1_cands.jsonl
+2026-11-02T11:53:35,accounts/fireworks/models/muse-glimmer-30b (sampler),835,124,0.002242,rft sample r1_cands.jsonl
+2026-11-02T11:53:35,accounts/fireworks/models/muse-glimmer-30b (sampler),1255,172,0.003299,rft sample r1_cands.jsonl
+2026-11-02T11:53:35,accounts/fireworks/models/muse-glimmer-30b (sampler),831,138,0.002302,rft sample r1_cands.jsonl
+2026-11-02T11:53:35,accounts/fireworks/models/muse-glimmer-30b (sampler),739,252,0.002678,rft sample r1_cands.jsonl
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),379,29,0.000884,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),670,47,0.001543,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),379,46,0.000967,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),383,48,0.000985,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),375,48,0.000969,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),543,49,0.001303,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),724,244,0.002610,rft sample r1_cands.jsonl
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),842,63,0.001958,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),1018,58,0.002278,eval train_sft_pruned
+2026-11-02T11:54:41,accounts/fireworks/models/muse-glimmer-30b (sampler),834,197,0.002596,rft sample r1_cands.jsonl
+2026-11-02T11:54:42,accounts/fireworks/models/muse-glimmer-30b (sampler),744,41,0.001658,eval train_sft_pruned
+2026-11-02T11:54:42,accounts/fireworks/models/muse-glimmer-30b (sampler),197,32,0.000542,eval train_sft_pruned
+2026-11-02T11:54:42,accounts/fireworks/models/muse-glimmer-30b (sampler),607,28,0.001326,eval train_sft_pruned
+2026-11-02T11:54:42,accounts/fireworks/models/muse-glimmer-30b (sampler),665,40,0.001499,eval train_sft_pruned
+2026-11-02T11:54:42,accounts/fireworks/models/muse-glimmer-30b (sampler),727,45,0.001645,eval train_sft_pruned
+2026-11-02T11:54:42,accounts/fireworks/models/muse-glimmer-30b (sampler),379,45,0.000962,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),723,61,0.001715,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,217,0.003523,rft sample r1_cands.jsonl
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),988,72,0.002288,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,251,0.003359,rft sample r1_cands.jsonl
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),407,50,0.001042,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,23,0.002586,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),377,34,0.000905,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),727,62,0.001727,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),682,34,0.001503,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),738,35,0.001617,eval train_sft_pruned
+2026-11-02T11:54:43,accounts/fireworks/models/muse-glimmer-30b (sampler),836,152,0.002380,rft sample r1_cands.jsonl
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),667,35,0.001478,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),379,126,0.001358,rft sample r1_cands.jsonl
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),378,28,0.000878,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),787,51,0.001791,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),742,29,0.001596,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),995,60,0.002243,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),544,45,0.001286,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),837,38,0.001826,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),476,90,0.001372,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),740,214,0.002495,rft sample r1_cands.jsonl
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,29,0.002278,eval train_sft_pruned
+2026-11-02T11:54:44,accounts/fireworks/models/muse-glimmer-30b (sampler),663,13,0.001363,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,182,0.003036,rft sample r1_cands.jsonl
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1045,30,0.002195,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),379,30,0.000889,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,37,0.002329,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),787,45,0.001762,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),406,59,0.001084,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),472,59,0.001213,eval train_sft_pruned
+2026-11-02T11:54:45,accounts/fireworks/models/muse-glimmer-30b (sampler),1258,186,0.003373,rft sample r1_cands.jsonl
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),834,38,0.001820,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),1061,21,0.002182,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),272,38,0.000719,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),374,46,0.000958,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,36,0.002316,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),376,29,0.000878,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),374,75,0.001099,rft sample r1_cands.jsonl
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),311,89,0.001044,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),276,35,0.000712,eval train_sft_pruned
+2026-11-02T11:54:46,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,280,0.003503,rft sample r1_cands.jsonl
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),723,47,0.001646,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,148,0.002870,rft sample r1_cands.jsonl
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),543,50,0.001308,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),1260,50,0.002714,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),808,34,0.001750,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),378,25,0.000863,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),777,53,0.001782,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),540,60,0.001351,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),376,33,0.000898,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),1094,47,0.002374,eval train_sft_pruned
+2026-11-02T11:54:47,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,224,0.003565,rft sample r1_cands.jsonl
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1096,170,0.002978,rft sample r1_cands.jsonl
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,38,0.002324,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),725,43,0.001631,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),786,58,0.001824,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),725,47,0.001650,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),670,58,0.001596,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),1257,26,0.002591,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),837,190,0.002568,rft sample r1_cands.jsonl
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),476,35,0.001104,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),528,52,0.001289,eval train_sft_pruned
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),836,155,0.002395,rft sample r1_cands.jsonl
+2026-11-02T11:54:48,accounts/fireworks/models/muse-glimmer-30b (sampler),373,28,0.000868,eval train_sft_pruned
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),373,35,0.000902,eval train_sft_pruned
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),290,30,0.000715,eval train_sft_pruned
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),668,58,0.001592,eval train_sft_pruned
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),767,49,0.001742,eval train_sft_pruned
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1093,206,0.003148,rft sample r1_cands.jsonl
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),1070,65,0.002414,eval train_sft_pruned
+2026-11-02T11:54:49,accounts/fireworks/models/muse-glimmer-30b (sampler),376,51,0.000986,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,31,0.002619,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1263,267,0.003778,rft sample r1_cands.jsonl
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),994,26,0.002075,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),446,38,0.001060,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),726,130,0.002057,rft sample r1_cands.jsonl
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),834,20,0.001732,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),744,48,0.001692,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),731,32,0.001589,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),209,159,0.001186,eval train_sft_pruned
+2026-11-02T11:54:50,accounts/fireworks/models/muse-glimmer-30b (sampler),1267,60,0.002776,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,200,0.003116,rft sample r1_cands.jsonl
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),608,47,0.001421,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),528,31,0.001186,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),474,42,0.001134,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),837,211,0.002670,rft sample r1_cands.jsonl
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),378,47,0.000970,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),672,36,0.001493,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),832,20,0.001728,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),681,39,0.001525,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),385,52,0.001008,eval train_sft_pruned
+2026-11-02T11:54:51,accounts/fireworks/models/muse-glimmer-30b (sampler),490,45,0.001180,eval train_sft_pruned
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1085,217,0.003186,rft sample r1_cands.jsonl
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,227,0.003585,rft sample r1_cands.jsonl
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),1016,62,0.002294,eval train_sft_pruned
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),381,50,0.000991,eval train_sft_pruned
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),377,25,0.000861,eval train_sft_pruned
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),316,45,0.000839,eval train_sft_pruned
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),723,96,0.001886,rft sample r1_cands.jsonl
+2026-11-02T11:54:52,accounts/fireworks/models/muse-glimmer-30b (sampler),429,45,0.001060,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),400,36,0.000960,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),741,45,0.001672,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),1085,148,0.002849,rft sample r1_cands.jsonl
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),661,31,0.001447,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),380,44,0.000960,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),373,19,0.000824,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),835,168,0.002456,rft sample r1_cands.jsonl
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),373,22,0.000838,eval train_sft_pruned
+2026-11-02T11:54:53,accounts/fireworks/models/muse-glimmer-30b (sampler),729,30,0.001575,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1024,74,0.002368,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),208,84,0.000818,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),730,77,0.001807,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),728,216,0.002481,rft sample r1_cands.jsonl
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),539,56,0.001330,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),278,37,0.000725,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),720,237,0.002568,rft sample r1_cands.jsonl
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),721,61,0.001711,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),380,56,0.001018,eval train_sft_pruned
+2026-11-02T11:54:54,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,47,0.002368,eval train_sft_pruned
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),729,52,0.001683,eval train_sft_pruned
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),399,44,0.000997,eval train_sft_pruned
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),382,265,0.002042,rft sample r1_cands.jsonl
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),1259,37,0.002648,eval train_sft_pruned
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),776,48,0.001755,eval train_sft_pruned
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),1278,264,0.003793,rft sample r1_cands.jsonl
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),604,39,0.001374,eval train_sft_pruned
+2026-11-02T11:54:55,accounts/fireworks/models/muse-glimmer-30b (sampler),729,58,0.001712,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),745,48,0.001694,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),374,35,0.000904,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1091,36,0.002314,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),1261,130,0.003106,rft sample r1_cands.jsonl
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),996,58,0.002235,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),668,39,0.001500,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),814,46,0.001820,eval train_sft_pruned
+2026-11-02T11:54:56,accounts/fireworks/models/muse-glimmer-30b (sampler),737,348,0.003143,rft sample r1_cands.jsonl
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1095,41,0.002346,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),751,37,0.001653,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),375,43,0.000945,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1043,36,0.002220,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1089,201,0.003115,rft sample r1_cands.jsonl
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),376,31,0.000888,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),382,44,0.000963,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),722,72,0.001766,rft sample r1_cands.jsonl
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1024,48,0.002241,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),751,38,0.001657,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1092,191,0.003072,rft sample r1_cands.jsonl
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),670,34,0.001479,eval train_sft_pruned
+2026-11-02T11:54:57,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,150,0.003211,rft sample r1_cands.jsonl
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),529,31,0.001188,eval train_sft_pruned
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),748,45,0.001686,eval train_sft_pruned
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),206,38,0.000589,eval train_sft_pruned
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),400,45,0.001004,eval train_sft_pruned
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),547,47,0.001301,eval train_sft_pruned
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),380,190,0.001672,rft sample r1_cands.jsonl
+2026-11-02T11:54:58,accounts/fireworks/models/muse-glimmer-30b (sampler),737,41,0.001645,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,129,0.002766,rft sample r1_cands.jsonl
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),731,21,0.001535,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),282,59,0.000841,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),375,35,0.000906,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),777,64,0.001835,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),469,24,0.001036,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),1086,20,0.002226,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),729,291,0.002849,rft sample r1_cands.jsonl
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),610,43,0.001405,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),733,32,0.001593,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),379,28,0.000879,eval train_sft_pruned
+2026-11-02T11:54:59,accounts/fireworks/models/muse-glimmer-30b (sampler),375,31,0.000886,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),675,41,0.001523,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),379,134,0.001397,rft sample r1_cands.jsonl
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),725,27,0.001553,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1265,190,0.003407,rft sample r1_cands.jsonl
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),752,52,0.001728,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),200,19,0.000485,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),994,53,0.002207,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),720,21,0.001514,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),1263,245,0.003671,rft sample r1_cands.jsonl
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),672,81,0.001712,eval train_sft_pruned
+2026-11-02T11:55:00,accounts/fireworks/models/muse-glimmer-30b (sampler),727,112,0.001971,rft sample r1_cands.jsonl
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),747,45,0.001684,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),772,53,0.001772,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),1101,39,0.002348,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),384,37,0.000933,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),544,46,0.001291,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),1058,72,0.002425,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),729,343,0.003103,rft sample r1_cands.jsonl
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),775,20,0.001617,eval train_sft_pruned
+2026-11-02T11:55:01,accounts/fireworks/models/muse-glimmer-30b (sampler),728,158,0.002198,rft sample r1_cands.jsonl
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),543,50,0.001308,eval train_sft_pruned
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),380,33,0.000906,eval train_sft_pruned
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),1268,138,0.003159,rft sample r1_cands.jsonl
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),842,257,0.002904,rft sample r1_cands.jsonl
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),728,55,0.001695,eval train_sft_pruned
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),719,19,0.001502,eval train_sft_pruned
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),776,120,0.002107,eval train_sft_pruned
+2026-11-02T11:55:02,accounts/fireworks/models/muse-glimmer-30b (sampler),531,48,0.001275,eval train_sft_pruned
+2026-11-02T11:55:03,accounts/fireworks/models/muse-glimmer-30b (sampler),447,47,0.001105,eval train_sft_pruned
+2026-11-02T11:55:03,accounts/fireworks/models/muse-glimmer-30b (sampler),775,48,0.001753,eval train_sft_pruned
+2026-11-02T11:55:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1262,154,0.003225,rft sample r1_cands.jsonl
+2026-11-02T11:55:03,accounts/fireworks/models/muse-glimmer-30b (sampler),833,107,0.002155,rft sample r1_cands.jsonl
+2026-11-02T11:55:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1090,254,0.003376,rft sample r1_cands.jsonl
+2026-11-02T11:55:03,accounts/fireworks/models/muse-glimmer-30b (sampler),1264,64,0.002790,eval train_sft_pruned

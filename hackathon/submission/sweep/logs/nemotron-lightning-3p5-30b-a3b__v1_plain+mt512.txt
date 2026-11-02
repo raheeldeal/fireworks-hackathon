@@ -131,4 +131,53 @@
 ✗ translate.text               -> invalid                      0.00s  Please change this text to French: 'The meeting is
 ✗ github.close_issue           -> invalid                      20.51s  That ticket about the flaky CI tests in the number
 ✓ gmail.send_email             -> gmail.send_email             4.34s  send email to ops@brightline.co re: server mainten
-✗ 
+✗ gmail.create_draft           -> invalid                      81.54s  To: Dana — can you have the assistant prep a rough
+✗ translate.text               -> invalid                      0.60s  translate 'welcome to our store' to spanish
+✓ jira.transition_ticket       -> jira.transition_ticket       53.93s  move PROJ-842 to done pls
+✗ fs.get_file_info             -> invalid                      1.20s  Hey, before I send that big video to the client I 
+✗ github.close_issue           -> invalid                      0.00s  close issue #412 in acme/api repo, done
+✓ fs.write_file                -> fs.write_file                103.19s  I have some text that needs to live at /home/dana/
+✓ db.list_tables               -> db.list_tables               114.19s  Please show me which tables existing in database, 
+✗ db.describe_table            -> invalid                      0.00s  show me the schema of the customers table
+✗ github.comment_on_issue      -> invalid                      82.89s  Hi Sam, can you have the assistant add a quick rep
+✓ browser.click                -> browser.click                87.45s  Hey Mira — the Acme dashboard is up in the browser
+✗ gmail.get_thread             -> invalid                      0.00s  There's a conversation I was copied on with the id
+✓ slack.upload_file            -> slack.upload_file            79.69s  Hey, I just finished putting together the onboardi
+✓ gmail.search_emails          -> gmail.search_emails          104.25s  find emails from HR about open enrollment last mon
+✗ weather.current              -> invalid                      55.88s  Priya, before you drive the van to the client site
+✗ drive.upload_file            -> invalid                      117.98s  Hey, so I finished editing the budget spreadsheet 
+✗ slack.search_messages        -> invalid                      1.26s  Hey, so I'm trying to track down something from a 
+✗ browser.download_file        -> invalid                      108.19s  grab https://cdn.example.com/reports/q3-sales.pdf 
+✓ browser.screenshot           -> browser.screenshot           0.98s  I'd like a visual record of whatever is currently 
+✓ jira.assign_ticket           -> jira.assign_ticket           33.90s  Please give ticket DATA-88 to Tomas, he is availab
+✗ jira.move_to_sprint          -> invalid                      96.19s  The API-302, API-303 and API-305 items are still p
+✗ github.list_pull_requests    -> invalid                      0.00s  Hi Daniel — before our standup on March 14th, can 
+✗ stripe.create_subscription   -> invalid                      0.00s  Please begin monthly billing for customer Chen Wei
+✓ fs.write_file                -> fs.write_file                1.18s  Please create file report_march.csv and put inside
+✗ drive.create_folder          -> invalid                      1.75s  Hey, so we're kicking off the Hendricks account ne
+✗ reminders.complete           -> invalid                      0.00s  done with the dentist one, tick it off
+✓ reminders.create             -> reminders.create             113.42s  remind me at 7am tmrw to take out trash
+✗ github.create_release        -> invalid                      1.46s  We just finished tagging 3.1.0 for the analytics d
+✗ gmail.reply_to_email         -> invalid                      34.69s  Hey Dana, can you have the assistant write back to
+✗ github.update_issue          -> invalid                      48.91s  Hi Marcus — can you have the bot update issue #203
+✗ github.request_review        -> github.create_issue          1.45s  Request review from Sarah on PR #482, thanks
+✗ reminders.create             -> invalid                      1.35s  I'd like something to ping me Tuesday at noon so I
+✗ gmail.forward_email          -> invalid                      4.38s  That message Ana sent me yesterday regarding the H
+✓ jira.assign_ticket           -> jira.assign_ticket           2.49s  assign PROJ-142 to Sarah Chen
+✗ db.explain_query             -> invalid                      60.92s  Hi Marcus — before tomorrow's standup (the 14th), 
+✗ calendar.create_event        -> invalid                      2.81s  Hey, so my manager finally approved the budget rev
+✗ calendar.respond_to_invite   -> invalid                      0.00s  Hey, so I got that invite to the quarterly review 
+✗ slack.schedule_message       -> invalid                      0.00s  I'd like the release notes to land in the #eng-upd
+✗ calendar.delete_event        -> invalid                      0.00s  The vendor walkthrough on the 22nd isn't going to 
+✗ translate.detect_language    -> invalid                      1.93s  Priya — the customer feedback from the March 14 su
+✗ browser.screenshot           -> invalid                      0.00s  Priya — before the 3pm standup, can you get an ima
+✗ stripe.create_coupon         -> invalid                      1.93s  Our Black Friday campaign needs a promotional code
+✗ fs.read_file                 -> invalid                      1.49s  There's a file at logs/deploy_error.log from last 
+✓ db.create_backup             -> db.create_backup             1.36s  I'd feel a lot safer if we had a restore point of 
+✓ fs.list_directory            -> fs.list_directory            1.16s  show me what's in /var/log/nginx
+✗ slack.set_status             -> invalid                      1.59s  Hey, so I'm heading into the quarterly planning of
+✓ weather.forecast             -> weather.forecast             1.57s  I'm trying to figure out if the weekend trip to th
+✗ gmail.reply_to_email         -> invalid                      0.00s  On the thread from Delta Logistics about the shipm
+
+nemotron-lightning-3p5-30b-a3b + v1_plain+mt512: acc 24.4% top3 24.4% | invalid 129 | p50 1.741s p95 96.194s | $0.1428/1k | catalog share 0.499 | ledger $0.527
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/submission/sweep/results/nemotron-lightning-3p5-30b-a3b__v1_plain+mt512__s0.json

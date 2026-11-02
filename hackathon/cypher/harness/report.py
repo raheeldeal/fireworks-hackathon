@@ -44,28 +44,69 @@ def table():
     return "\n".join(lines), "\n".join(tl)
 
 
+def r_esc(name, a):
+    return True
+
+
+def small_correct(r):
+    """Was the small-model vote right? Agreeing chains return the same rows, so they share a score:
+    with agreement 2 or 3 the vote is right iff at least two chains scored correct; with none it is the
+    first chain that returned rows."""
+    sc = r["attempt_scores"][:3]
+    if r["agreement"] in (2, 3):
+        return sc.count("correct") >= 2
+    return next((s for s in sc if s in ("correct", "wrong")), sc[0]) == "correct"
+
+
 def calibration():
-    out = ["# Calibration: does vote agreement predict correctness?", ""]
-    for name in ("vote3", "route_big"):
+    out = ["# Calibration: does vote agreement predict correctness?", "",
+           "Each row: three glm-5p3-flash generate-and-repair chains at temperature 0.7. Agreement = how many chains returned the same result set (score.py multiset rule). "
+           "Accuracy is for the small model's own voted answer, before any escalation. Source: every vote3 / route run in `results/harness_*.json`.", ""]
+    names = sorted(os.path.basename(p)[8:-5] for p in glob.glob(os.path.join(RES, "harness_*.json"))
+                   if os.path.basename(p)[8:].startswith(("vote3", "route_")))
+    pool = {3: [0, 0], 2: [0, 0], 1: [0, 0]}
+    esc_pool = {}
+    for name in names:
+        d = load(name)
+        if d["n"] < 200:
+            continue
+        for r in d["rows"]:
+            pool[r["agreement"]][0] += 1; pool[r["agreement"]][1] += small_correct(r)
+            if r["escalated"]:
+                e = esc_pool.setdefault(r["agreement"], [0, 0, 0]); e[0] += 1; e[1] += small_correct(r); e[2] += r["correct"]
+    tot = sum(v[0] for v in pool.values())
+    out += [f"## Pooled over {len([n for n in names if load(n)['n'] >= 200])} runs ({tot} row-runs)", "",
+            "| agreement | row-runs | share | small-model accuracy |", "|---|---|---|---|"]
+    for a, lab in ((3, "3/3"), (2, "2/3"), (1, "none")):
+        n_, c_ = pool[a]
+        out.append(f"| {lab} | {n_} | {pct(n_ / tot)} | {pct(c_ / n_) if n_ else '-'} |")
+    out += ["", "When escalated, glm-5p3 (default reasoning, generate-and-repair) versus the small model's own answer on the same rows:", "",
+            "| agreement when escalated | row-runs | small-model accuracy | glm-5p3 accuracy |", "|---|---|---|---|"]
+    for a, lab in ((2, "2/3"), (1, "none")):
+        if a in esc_pool:
+            n_, s_, b_ = esc_pool[a]
+            out.append(f"| {lab} | {n_} | {pct(s_ / n_)} | {pct(b_ / n_)} |")
+    out += ["", "## Per run", ""]
+    for name in names:
         d = load(name)
         if not d:
             continue
         rows = d["rows"]
-        out += [f"## From `{name}` ({len(rows)} rows, three glm-5p3-flash repair chains at T=0.7)", "",
-                "| agreement | rows | share | accuracy of voted answer |", "|---|---|---|---|"]
+        out += [f"## From `{name}` ({len(rows)} rows, three glm-5p3-flash repair chains at T=0.7, reasoning {d['reasoning_effort']})", "",
+                "| agreement | rows | share | accuracy of small-model voted answer |", "|---|---|---|---|"]
         for a, lab in ((3, "3/3"), (2, "2/3"), (1, "none")):
             rs = [r for r in rows if r["agreement"] == a]
-            if name == "route_big" and a == 1:
+            if name.startswith("route") and r_esc(name, a):
                 # score the small-model fallback (first chain with rows), not the big model's answer
-                acc = sum(next((s for s in r["attempt_scores"][:3] if s in ("correct", "wrong")), r["attempt_scores"][0]) == "correct" for r in rs)
+                acc = sum(small_correct(r) for r in rs)
             else:
                 acc = sum(r["correct"] for r in rs)
             out.append(f"| {lab} | {len(rs)} | {pct(len(rs) / len(rows))} | {pct(acc / len(rs)) if rs else '-'} |")
-        if name == "route_big":
+        if name.startswith("route"):
             esc = [r for r in rows if r["escalated"]]
             if esc:
                 big = sum(r["correct"] for r in esc)
-                small = sum(next((s for s in r["attempt_scores"][:3] if s in ("correct", "wrong")), r["attempt_scores"][0]) == "correct" for r in esc)
+                small = sum(small_correct(r) for r in esc)
                 out += ["", f"On the {len(esc)} escalated rows: small-model fallback answer {pct(small / len(esc))} correct, glm-5p3 answer {pct(big / len(esc))} correct."]
         out.append("")
     return "\n".join(out)

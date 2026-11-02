@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTIER = {"kimi-k3"}
 NAMES = {"nemotron-lightning-3p5-30b-a3b": "nemotron-lightning\n30B-A3B (reasoning off)", "glm-5p3-flash": "glm-5p3-flash",
          "deepseek-v4p1-flash": "deepseek-v4p1-flash", "glm-5p3": "glm-5p3", "kimi-k3": "kimi-k3"}
-res = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "results", "*.json"))]
+res = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "results", "*_v1_plain*_n*.json"))]  # baseline runs only
 res = sorted([r for r in res if r["model"] != "gold"], key=lambda r: r["accuracy"])
 fig, ax = plt.subplots(figsize=(9, 5.2))
 xs = range(len(res))

@@ -1,7 +1,7 @@
 """Print BASELINES.md tables from results/*.json (excludes smoke/ and gold)."""
 import json, glob, os, csv
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-files = sorted(glob.glob(os.path.join(HERE, "results", "*.json")))
+files = sorted(glob.glob(os.path.join(HERE, "results", "*_v1_plain*_n*.json")))  # baseline runs only
 res = [json.load(open(f)) for f in files]
 res = [r for r in res if r["model"] != "gold"]
 res.sort(key=lambda r: -r["accuracy"])

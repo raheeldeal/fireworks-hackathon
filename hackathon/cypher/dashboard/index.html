@@ -88,6 +88,7 @@
   <div class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="tab-overview">Overview</button>
     <button role="tab" aria-selected="false" data-tab="tab-waterfall">Waterfall &amp; fixes</button>
+    <button role="tab" aria-selected="false" data-tab="tab-pareto">Model Pareto</button>
   </div>
   <div id="tab-overview">
   <div class="tiles" id="tiles"></div>
@@ -134,6 +135,16 @@
       <label>Graph <select id="f-graph"><option value="">all</option></select></label>
       <label>Search <input id="f-q" type="search" placeholder="question text" style="font:inherit;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--surface);color:var(--ink)"></label></div>
     <div class="scroll"><table id="explorer"></table></div></section>
+  </div>
+  <div id="tab-pareto" hidden>
+    <section class="card"><h2>Where each model sits: accuracy vs cost</h2>
+      <p class="sub">One point per model or system on the same 200 test questions. Up and to the left is better; the line joins the
+        models no other model beats on both axes. Cost per 1,000 questions at Fireworks list prices (fine-tuned rows: training-sampler prices).</p>
+      <div id="mp-cost"></div><div class="legend" id="mp-legend"></div></section>
+    <section class="card"><h2>Accuracy vs median latency</h2>
+      <p class="sub">End-to-end seconds per question, including the database round trips. No published latency for Claude.</p>
+      <div id="mp-lat"></div></section>
+    <section class="card"><h2>The numbers</h2><div class="scroll"><table id="mp-table"></table></div></section>
   </div>
   <div id="tab-waterfall" hidden>
     <section class="card"><h2>From open model to best system</h2>
@@ -442,6 +453,75 @@ function dev(target) {
   legend(lg, [["--s2", "Best in its experiment"], ["--s1", "Other settings"]]);
 }
 
+// ---------- model pareto tab: one point per model, collision-free labels ----------
+const MODELS = [  // config id, display name, group
+  ["R1", "Muse 30B, untuned", "ours"], ["R5", "Muse 30B + harness", "ours"],
+  ["R6", "Muse 30B + SFT (1.5k gold)", "ours"], ["R6bx", "Muse 30B + SFT (6.5k gold) ★ best", "ours"],
+  ["R23", "Kimi K3 2.8T, zero-shot", "open"], ["R17", "Kimi K3 2.8T + harness", "open"],
+  ["R15", "GLM 5.3 743B + harness", "open"], ["R13e", "gpt-oss-120b + harness", "open"],
+];
+const GROUP = { ours: ["--s1", "Muse 30B dense (ours)"], open: ["--s3", "Other open models"] };
+function modelPoints() {
+  const pts = MODELS.map(([id, name, group]) => ({ ...DATA.configs.find(c => c.id === id), name, group })).filter(p => p.accuracy !== undefined);
+  const ref = DATA.references[0];
+  if (ref.cost_per_question_est) pts.push({ name: "Claude Sonnet 4.6 (published; cost estimated)", group: "frontier", accuracy: ref.accuracy,
+                                            cost_per_question: ref.cost_per_question_est, p50_secs: null });
+  return pts;
+}
+function modelPareto(target, key, xlab, xfmt) {
+  target.replaceChildren();
+  const pts = modelPoints().filter(p => p[key] !== null && p[key] !== undefined);
+  const val = p => key === "cost_per_question" ? 1000 * p[key] : p[key];
+  const W = 1100, H = 460, m = { l: 60, r: 30, t: 20, b: 46 };
+  const x = linear(0, Math.max(...pts.map(val)) * 1.12, m.l, W - m.r), y = linear(0.45, 0.75, H - m.b, m.t);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": xlab }, target);
+  axes(svg, x, y, W, H, m, xfmt, v => (100 * v).toFixed(0) + "%", xlab);
+  // Pareto frontier over the plotted points: best accuracy so far, scanning from the cheapest/fastest
+  const front = []; let best = -1;
+  for (const p of [...pts].sort((a, b) => val(a) - val(b) || b.accuracy - a.accuracy)) if (p.accuracy > best) { front.push(p); best = p.accuracy; }
+  el("polyline", { points: front.map(p => `${x(val(p))},${y(p.accuracy)}`).join(" "), fill: "none", stroke: css("--ink-2"),
+                   "stroke-width": 2, "stroke-dasharray": "6 4" }, svg);
+  // labels: try right, left, above, below; skip any box that overlaps a placed label or a point
+  const boxes = pts.map(p => ({ x0: x(val(p)) - 7, x1: x(val(p)) + 7, y0: y(p.accuracy) - 7, y1: y(p.accuracy) + 7 }));
+  const hits = (b) => boxes.some(o => b.x0 < o.x1 && b.x1 > o.x0 && b.y0 < o.y1 && b.y1 > o.y0) || b.x0 < m.l || b.x1 > W - m.r || b.y0 < 0 || b.y1 > H - m.b;
+  for (const p of [...pts].sort((a, b) => b.accuracy - a.accuracy)) {
+    const px = x(val(p)), py = y(p.accuracy), g = el("g", {}, svg), w = p.name.length * 6.6 + 4;
+    if (p.group === "frontier") {
+      el("circle", { cx: px, cy: py, r: 7, fill: css("--surface"), stroke: css("--ink-2"), "stroke-width": 2.5 }, g);
+    } else {
+      el("circle", { cx: px, cy: py, r: front.includes(p) ? 7 : 5.5, fill: css(GROUP[p.group][0]), stroke: css("--surface"), "stroke-width": 2,
+                     opacity: front.includes(p) ? 1 : 0.55 }, g);
+    }
+    el("circle", { cx: px, cy: py, r: 14, fill: "transparent" }, g);
+    for (const [dx, dy, anchor] of [[12, 4, "start"], [-12, 4, "end"], [0, -14, "middle"], [0, 22, "middle"], [12, -12, "start"], [12, 20, "start"]]) {
+      const x0 = anchor === "start" ? px + dx : anchor === "end" ? px + dx - w : px - w / 2;
+      const b = { x0, x1: x0 + w, y0: py + dy - 12, y1: py + dy + 4 };
+      if (hits(b)) continue;
+      boxes.push(b);
+      el("text", { class: "lbl", x: px + dx, y: py + dy, "text-anchor": anchor, text: p.name,
+                   style: p.name.includes("best") ? "font-weight:700;fill:var(--ink)" : "" }, g);
+      break;
+    }
+    hover(g, p.name, [["accuracy", pct(p.accuracy)], ["per 1,000 questions", "$" + (1000 * p.cost_per_question).toFixed(2)]]
+          .concat(p.p50_secs ? [["median latency", p.p50_secs.toFixed(2) + " s"]] : []).concat(p.ci95 ? [["95% CI", `${pct(p.ci95[0])} – ${pct(p.ci95[1])}`]] : []));
+  }
+}
+function modelParetoTab() {
+  modelPareto(document.getElementById("mp-cost"), "cost_per_question", "$ per 1,000 questions", v => "$" + v.toFixed(1));
+  modelPareto(document.getElementById("mp-lat"), "p50_secs", "median seconds per question", v => v.toFixed(1) + " s");
+  const lg = document.getElementById("mp-legend"); lg.replaceChildren();
+  legend(lg, [["--s1", GROUP.ours[1]], ["--s3", GROUP.open[1]], ["--ink-2", "Claude Sonnet 4.6, published", "hollow"], ["--ink-2", "Pareto frontier", "line"]]);
+  const t = document.getElementById("mp-table"); t.replaceChildren();
+  const h = el("tr", {}, t); ["model", "accuracy", "95% CI", "$ / 1,000 q", "median latency"].forEach((c, i) => el("th", { class: i ? "num" : "", text: c }, h));
+  for (const p of modelPoints().sort((a, b) => b.accuracy - a.accuracy)) {
+    const r = el("tr", {}, t);
+    el("td", { text: p.name }, r); el("td", { class: "num", text: pct(p.accuracy) }, r);
+    el("td", { class: "num", text: p.ci95 ? `${pct(p.ci95[0])} – ${pct(p.ci95[1])}` : "published" }, r);
+    el("td", { class: "num", text: "$" + (1000 * p.cost_per_question).toFixed(2) + (p.group === "frontier" ? " (est.)" : "") }, r);
+    el("td", { class: "num", text: p.p50_secs ? p.p50_secs.toFixed(2) + " s" : "–" }, r);
+  }
+}
+
 // ---------- waterfall tab: steps and the questions each step fixed or broke ----------
 let wfSelected = null;
 function waterfallTab() {
@@ -494,7 +574,7 @@ function waterfallTab() {
     const d = s.to - s.from;
     el("text", { class: "lbl", x: noteX, y: cy + 4, text: `${d >= 0 ? "+" : ""}${d.toFixed(1)}pp · fixed ${s.n_fixed} · broke ${s.n_broke}` }, g);
     g.setAttribute("tabindex", "0");
-    const pick = () => { wfSelected = s; waterfallTab(); fixesPanel(); };
+    const pick = () => { wfSelected = s; waterfallTab(); fixesPanel(); modelParetoTab(); };
     g.addEventListener("click", pick);
     g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
   }
@@ -559,16 +639,17 @@ render();
 for (const g of DATA.graphs) el("option", { text: g }, document.getElementById("wf-graph"));
 document.getElementById("wf-graph").addEventListener("input", fixesPanel);
 wfSelected = DATA.waterfall.steps.find(s => s.label.startsWith("SFT:")) || DATA.waterfall.steps.find(s => s.kind === "step");  // open on the headline step
-waterfallTab(); fixesPanel();
+waterfallTab(); fixesPanel(); modelParetoTab();
 function showTab(id) {
   for (const o of document.querySelectorAll(".tabs button")) {
     o.setAttribute("aria-selected", String(o.dataset.tab === id)); document.getElementById(o.dataset.tab).hidden = o.dataset.tab !== id;
   }
 }
 for (const b of document.querySelectorAll(".tabs button")) b.addEventListener("click", () => {
-  showTab(b.dataset.tab); history.replaceState(null, "", b.dataset.tab === "tab-waterfall" ? "#waterfall" : "#");
+  showTab(b.dataset.tab); history.replaceState(null, "", "#" + b.dataset.tab.replace("tab-", ""));
 });
-if (location.hash === "#waterfall") showTab("tab-waterfall");  // linkable: index.html#waterfall
+const fromHash = "tab-" + location.hash.slice(1);  // linkable: index.html#waterfall, index.html#pareto
+if (document.getElementById(fromHash)) showTab(fromHash);
 </script>
 </body>
 </html>

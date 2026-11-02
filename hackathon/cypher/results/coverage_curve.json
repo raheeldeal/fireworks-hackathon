@@ -1,0 +1,17 @@
+[
+  {
+    "policy": "answer only if 3/3 agree",
+    "coverage": 0.6925,
+    "precision": 0.6191
+  },
+  {
+    "policy": "answer if >=2/3 agree",
+    "coverage": 0.9337,
+    "precision": 0.5395
+  },
+  {
+    "policy": "answer everything",
+    "coverage": 1.0,
+    "precision": 0.5175
+  }
+]

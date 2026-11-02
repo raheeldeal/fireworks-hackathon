@@ -4,7 +4,7 @@ import glob, json, os, statistics
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(os.path.dirname(HERE), "results")
-ORDER = ["validate_only", "repair1", "vote3", "route_big", "prune_repair1", "repair1_fewshot", "route_big_u", "repair1_rdefault", "vote3_rdefault", "route_big_u_rdefault", "route_kimi"]
+ORDER = ["plain_rdefault", "validate_only", "repair1", "vote3", "route_big", "prune_repair1", "repair1_fewshot", "route_big_u", "repair1_rdefault", "vote3_rdefault", "route_big_u_rdefault", "route_kimi"]
 
 
 def load(name):
@@ -123,8 +123,29 @@ def prune_savings():
     return f"First-call prompt tokens: {full} full vs {pr} pruned ({pct(1 - pr / full)} saved over {len(pairs)} rows; {pruned_rows} rows pruned, the rest fell back to the full schema)."
 
 
+def seeds():
+    import re
+    groups = {}
+    for p in glob.glob(os.path.join(RES, "harness_*.json")):
+        name = os.path.basename(p)[8:-5]
+        d = json.load(open(p))
+        if d["n"] < 200:
+            continue
+        groups.setdefault(re.sub(r"_s\d+$", "", name), []).append(d)
+    lines = ["| config | runs | mean accuracy | range | mean lenient | mean error+empty | mean $/1k |", "|---|---|---|---|---|---|---|"]
+    for k, ds in sorted(groups.items(), key=lambda kv: -statistics.mean(d["accuracy"] for d in kv[1])):
+        if len(ds) < 2:
+            continue
+        a = [d["accuracy"] for d in ds]
+        lines.append(f"| {k} | {len(ds)} | {pct(statistics.mean(a))} | {pct(min(a))} to {pct(max(a))} | {pct(statistics.mean(d['accuracy_lenient'] for d in ds))} | "
+                     f"{pct(statistics.mean(d['error_rate'] + d['empty_rate'] for d in ds))} | ${statistics.mean(d['cost_per_1k_requests_usd'] for d in ds):.3f} |")
+    return "\n".join(lines)
+
+
 if __name__ == "__main__":
     t, tiers = table()
+    sd = seeds()
+    t = t + "\n\nRepeated runs (seed label only; the model is sampled fresh each run):\n\n" + sd
     s = prune_savings()
     open(os.path.join(HERE, "HARNESS_TABLE.md"), "w").write(t + "\n\n" + tiers + "\n\n" + (s or "") + "\n")
     open(os.path.join(HERE, "CALIBRATION.md"), "w").write(calibration())

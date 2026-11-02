@@ -1,6 +1,7 @@
 | config | n | accuracy | lenient | error/invalid | empty | p50 s | p95 s | $/1k | calls/row | escalation |
 |---|---|---|---|---|---|---|---|---|---|---|
 | baseline glm-5p3-flash (default reasoning, BASELINES.md run) | 200 | 57.0% | 69.5% | 0.5% | 0.5% | 1.624 | 4.308 | $0.241 | 1 | - |
+| plain_rdefault | 200 | 52.5% | 66.0% | 1.0% | 1.5% | 1.625 | 4.664 | $0.235 | 1.0 | - |
 | plain (same run, reasoning low, no gate) | 200 | 48.0% | - | 1.5% | 2.5% | 1.069 | 1.723 | $0.148 | 1 | - |
 | validate_only | 200 | 48.0% | 58.5% | 3.0% | 1.5% | 1.069 | 1.723 | $0.148 | 1.0 | - |
 | repair1 | 200 | 50.0% | 62.0% | 0.5% | 1.0% | 1.063 | 2.311 | $0.157 | 1.05 | - |
@@ -13,8 +14,18 @@
 | vote3_rdefault | 200 | 52.0% | 64.5% | 0.0% | 0.0% | 1.966 | 8.113 | $0.779 | 3.095 | - |
 | route_big_u_rdefault | 200 | 50.5% | 65.0% | 0.5% | 0.0% | 2.329 | 21.105 | $2.324 | 3.44 | 32.5% |
 
+Repeated runs (seed label only; the model is sampled fresh each run):
+
+| config | runs | mean accuracy | range | mean lenient | mean error+empty | mean $/1k |
+|---|---|---|---|---|---|---|
+| repair1_rdefault | 3 | 53.3% | 53.0% to 54.0% | 66.2% | 0.3% | $0.263 |
+| plain_rdefault | 3 | 53.0% | 52.5% to 54.0% | 65.2% | 2.2% | $0.240 |
+| route_big | 4 | 51.9% | 50.0% to 55.0% | 65.1% | 0.1% | $0.874 |
+| vote3 | 3 | 51.7% | 49.5% to 53.5% | 64.2% | 0.2% | $0.479 |
+
 | config | easy | medium | hard |
 |---|---|---|---|
+| plain_rdefault | 47.1% | 56.3% | 53.5% |
 | plain (low) | 42.9% | 54.0% | 44.2% |
 | validate_only | 42.9% | 54.0% | 44.2% |
 | repair1 | 42.9% | 57.5% | 46.5% |

@@ -1,0 +1,55 @@
+Node properties:
+- **User**
+  - `betweenness`: FLOAT Example: "3.49332601E8"
+  - `location`: STRING Example: "Graphs Are Everywhere"
+  - `followers`: INTEGER Example: "34507"
+  - `following`: INTEGER Example: "10124"
+  - `profile_image_url`: STRING Example: "http://pbs.twimg.com/profile_images/11837552737537"
+  - `screen_name`: STRING Example: "neo4j"
+  - `name`: STRING Example: "Neo4j"
+  - `url`: STRING Example: "https://t.co/JSIaZFJEaE"
+  - `statuses`: INTEGER Example: "512"
+- **Me**
+  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']
+  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8
+  - `following`: INTEGER Min: 10124, Max: 10124
+  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']
+  - `location`: STRING Available options: ['Graphs Are Everywhere']
+  - `followers`: INTEGER Min: 34507, Max: 34507
+  - `screen_name`: STRING Available options: ['neo4j']
+  - `name`: STRING Available options: ['Neo4j']
+- **Tweet**
+  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z
+  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966
+  - `id_str`: STRING Example: "1371815021265747970"
+  - `text`: STRING Example: "Proud to help @educationgovuk deliver critical ser"
+  - `favorites`: INTEGER Min: 0, Max: 394
+  - `import_method`: STRING Available options: ['user']
+- **Hashtag**
+  - `name`: STRING Example: "education"
+- **Link**
+  - `url`: STRING Example: "https://twitter.com/i/web/status/13718150212657479"
+- **Source**
+  - `name`: STRING Example: "Buffer"
+Relationship properties:
+- **SIMILAR_TO**
+  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0
+The relationships:
+(:User)-[:FOLLOWS]->(:User)
+(:User)-[:FOLLOWS]->(:Me)
+(:User)-[:POSTS]->(:Tweet)
+(:User)-[:INTERACTS_WITH]->(:User)
+(:User)-[:SIMILAR_TO]->(:User)
+(:User)-[:SIMILAR_TO]->(:Me)
+(:Me)-[:FOLLOWS]->(:User)
+(:Me)-[:POSTS]->(:Tweet)
+(:Me)-[:INTERACTS_WITH]->(:User)
+(:Me)-[:RT_MENTIONS]->(:User)
+(:Me)-[:AMPLIFIES]->(:User)
+(:Tweet)-[:MENTIONS]->(:User)
+(:Tweet)-[:MENTIONS]->(:Me)
+(:Tweet)-[:USING]->(:Source)
+(:Tweet)-[:TAGS]->(:Hashtag)
+(:Tweet)-[:CONTAINS]->(:Link)
+(:Tweet)-[:RETWEETS]->(:Tweet)
+(:Tweet)-[:REPLY_TO]->(:Tweet)

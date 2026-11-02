@@ -1,0 +1,3 @@
+timestamp,model,in_tokens,out_tokens,cost,note
+2026-11-02T13:37:10,accounts/fireworks/models/muse-glimmer-30b (sampler),589,62,0.001457,heldout gameofthrones smoke.json
+2026-11-02T13:37:10,accounts/fireworks/models/muse-glimmer-30b (sampler),580,26,0.001264,heldout gameofthrones smoke.json

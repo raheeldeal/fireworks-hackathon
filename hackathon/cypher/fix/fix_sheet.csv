@@ -1,0 +1,882 @@
+id,graph,tier,priority,question,gold_cypher,gold_columns,gold_rows_first3,gold_n_rows,audit_class,audit_note,tie_at_limit,VERDICT (keep/fix/drop),CORRECTED_cypher,YOUR_note
+t002,fincen,medium,A: every model misses,What are the names of the top 3 entities that benefited from filings with amounts less than 100?,"MATCH (f:Filing)-[:BENEFITS]->(e:Entity)
+WHERE f.amount < 100
+WITH e, count(f) AS benefitCount
+ORDER BY benefitCount DESC
+RETURN e.name, benefitCount
+LIMIT 3","e.name, benefitCount","[{""benefitCount"": 6, ""e.name"": ""Vnesheconombank""}, {""benefitCount"": 3, ""e.name"": ""Commonwealth Bank of Australia""}, {""benefitCount"": 2, ""e.name"": ""Nomos Bank""}]",3,AMBIGUOUS_QUESTION,"Two distinct Entity nodes are both named ""Vnesheconombank""; gold groups by node (6), prediction groups by name (7). The question asks for names",False,,,
+t008,northwind,medium,A: every model misses,List all suppliers that provide products to the 'Dairy Products' category.,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category {categoryName: 'Dairy Products'})
+RETURN s.companyName",s.companyName,"[{""s.companyName"": ""Norske Meierier""}, {""s.companyName"": ""Gai pâturage""}, {""s.companyName"": ""Gai pâturage""}]",10,GOLD_DEFECT,"""List all suppliers"" - gold returns 10 rows, one per product, repeating 4 suppliers; the prediction returns the 4 distinct suppliers",,,,
+t015,northwind,easy,A: every model misses,List the first 3 orders shipped to France.,"MATCH (o:Order)-[:ORDERS]->(p:Product)
+WHERE o.shipCountry = 'France'
+RETURN o.orderID, o.shipName, o.shipCity, o.shipPostalCode, o.shipAddress, o.shipCountry, o.shipRegion, o.shipVia, o.shippedDate
+ORDER BY o.shippedDate
+LIMIT 3","o.orderID, o.shipName, o.shipCity, o.shipPostalCode, o.shipAddress, o.shipCountry, o.shipRegion, o.shipVia, o.shippedDate","[{""o.orderID"": ""10248"", ""o.shipAddress"": ""59 rue de l'Abbaye"", ""o.shipCity"": ""Reims"", ""o.shipCountry"": ""France"", ""o.shipName"": ""Vins et alcools Chevalier"", ""o.shipPostalCode"": ""51100"", ""o.shipRegion"": ""NULL"", ""o.shipVia"": ""3"", ""o.shippedDate"": ""1996-07-16 00:00:00.000""}, {""o.orderID"": ""10248"", ""o.sh",3,GOLD_DEFECT,"Gold joins (o)-[:ORDERS]->(p) so its ""first 3 orders"" is order 10248 three times; prediction returns 3 distinct orders",,,,
+t017,fincen,hard,A: every model misses,"Show the first 5 countries with the highest number of filings involving transactions under $500,000.","MATCH (f:Filing)-[:BENEFITS|:CONCERNS|:ORIGINATOR]->(e:Entity)-[:COUNTRY]->(c:Country)
+WHERE f.amount < 500000
+WITH c, count(f) AS num_filings
+ORDER BY num_filings DESC
+LIMIT 5
+RETURN c.name AS country_name, num_filings","country_name, num_filings","[{""country_name"": ""Russia"", ""num_filings"": 3146}, {""country_name"": ""Switzerland"", ""num_filings"": 1012}, {""country_name"": ""Turkey"", ""num_filings"": 937}]",5,unaudited,,False,,,
+t018,northwind,easy,A: every model misses,Display all products that are not discontinued and have a 'unitPrice' above 35.,"MATCH (p:Product)
+WHERE p.discontinued = false AND p.unitPrice > 35
+RETURN p.productName, p.unitPrice","p.productName, p.unitPrice","[{""p.productName"": ""Northwoods Cranberry Sauce"", ""p.unitPrice"": 40.0}, {""p.productName"": ""Queso Manchego La Pastora"", ""p.unitPrice"": 38.0}, {""p.productName"": ""Carnarvon Tigers"", ""p.unitPrice"": 62.5}]",13,SCORING_ARTIFACT,"Identical 13 products; gold projects (name, unitPrice), prediction returns the node",,,,
+t020,fincen,medium,A: every model misses,What is the total number of filings where the 'originator_country' is 'Singapore' and the 'amount' is greater than 1000000?,"MATCH (f:Filing)
+WHERE f.originator_country = 'Singapore' AND f.amount > 1000000
+RETURN count(f) AS count",count,"[{""count"": 0}]",1,GOLD_DEFECT,"Gold filters on Filing.originator_country, which the graph does not have; gold count is 0 (excluded from accuracy_v2_excl_gold_defects)",,,,
+t027,twitter,easy,A: every model misses,List the top 3 users with the lowest number of followers who follow 'Neo4j'.,"MATCH (u:User)-[:FOLLOWS]->(m:Me {screen_name: 'neo4j'})
+RETURN u
+ORDER BY u.followers ASC
+LIMIT 3",u,"[{""u"": {""_labels"": [""User""], ""betweenness"": 0.0, ""followers"": 0, ""following"": 0, ""location"": ""Dallas, Texas"", ""name"": ""WYN Entertainment"", ""profile_image_url"": ""http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"", ""screen_name"": ""RealFanNetwork"", ""url"": ""http://t.co/KdgWeO",3,SCORING_ARTIFACT,"Tie under LIMIT: dozens of users have followers = 0; 2 of 3 rows match, plus node-vs-projection",,,,
+t032,recommendations,easy,A: every model misses,Find all movies that have the same release year as 'Toy Story' and list their titles and genres.,"MATCH (toyStory:Movie {title: 'Toy Story'})
+WITH toyStory, toyStory.released AS toyStoryYear
+MATCH (otherMovies:Movie {released: toyStoryYear})
+WITH otherMovies, toyStoryYear, [(otherMovies)-[:IN_GENRE]->(genres) | genres.name] AS genres
+RETURN otherMovies.title AS movieTitle, genres, toyStoryYear","movieTitle, genres, toyStoryYear","[{""genres"": [""Adventure"", ""Animation"", ""Children"", ""Comedy"", ""Fantasy""], ""movieTitle"": ""Toy Story"", ""toyStoryYear"": ""1995-11-22""}, {""genres"": [""Drama"", ""Crime""], ""movieTitle"": ""Casino"", ""toyStoryYear"": ""1995-11-22""}, {""genres"": [""Crime"", ""Comedy"", ""Thriller"", ""Drama"", ""Action""], ""movieTitle"": ""Money",6,AMBIGUOUS_QUESTION,"""same release year"": gold compares the full released date (1995-11-22), prediction compares m.year",,,,
+t045,twitter,medium,A: every model misses,Find the top 5 tweets by 'Neo4j' using a specific source.,"MATCH (u:User {name: 'Neo4j'})-[:POSTS]->(t:Tweet)-[:USING]->(s:Source)
+RETURN t
+ORDER BY t.favorites DESC
+LIMIT 5",t,"[{""t"": {""_labels"": [""Tweet""], ""created_at"": ""2021-02-15T20:40:58.000000000+00:00"", ""favorites"": 394, ""id"": 1361415227091292163, ""id_str"": ""1361415227091292163"", ""import_method"": ""user"", ""text"": ""Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.c",5,unaudited,,,,,
+t050,twitter,easy,A: every model misses,List the 5 most recent users who started following 'Neo4j'.,"MATCH (neo4j:Me {screen_name: 'neo4j'})<-[:FOLLOWS]-(user:User)
+RETURN user.screen_name, user.name, user.followers, user.following, user.profile_image_url, user.url, user.location, user.statuses
+ORDER BY user.followers DESC
+LIMIT 5","user.screen_name, user.name, user.followers, user.following, user.profile_image_url, user.url, user.location, user.statuses","[{""user.followers"": 3159351, ""user.following"": 3159351, ""user.location"": ""San Francisco"", ""user.name"": ""Twitter Verified"", ""user.profile_image_url"": ""http://pbs.twimg.com/profile_images/1354533298685566983/2mZQ3Lpt_normal.jpg"", ""user.screen_name"": ""verified"", ""user.statuses"": null, ""user.url"": null}",5,GOLD_DEFECT,"""5 most recent users who started following"" - no timestamp exists on FOLLOWS; gold orders by followers instead, so gold does not answer its own question",False,,,
+t057,recommendations,easy,A: every model misses,List the top 5 movies that were released in the '90s.,"MATCH (m:Movie)
+WHERE m.released STARTS WITH '199'
+RETURN m.title, m.released, m.imdbRating
+ORDER BY m.imdbRating DESC
+LIMIT 5","m.title, m.released, m.imdbRating","[{""m.imdbRating"": 9.5, ""m.released"": ""1990-09-23"", ""m.title"": ""Civil War, The""}, {""m.imdbRating"": 9.3, ""m.released"": ""1994-10-14"", ""m.title"": ""Shawshank Redemption, The""}, {""m.imdbRating"": 9.1, ""m.released"": ""1996-01-14"", ""m.title"": ""Pride and Prejudice""}]",5,AMBIGUOUS_QUESTION,"""released in the '90s"": m.released (string) and m.year (int) disagree in the data (Pride and Prejudice: 1996 vs 1995)",True,,,
+t070,twitter,easy,A: every model misses,Find the top 5 tweets with links and sort them by number of favorites.,"MATCH (t:Tweet)-[:CONTAINS]->(l:Link)
+RETURN t.text AS tweet_text, t.favorites AS favorites, l.url AS link_url
+ORDER BY t.favorites DESC
+LIMIT 5","tweet_text, favorites, link_url","[{""favorites"": 394, ""link_url"": ""https://twitter.com/alburov/status/1361271333653520384"", ""tweet_text"": ""Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp""}, {""favorites"": 120, ""link_url"": ""https://twitter.com/i/web/status/136386948",5,SCORING_ARTIFACT,"Same 5 tweets; gold projects (text, favorites, link_url), prediction returns the Tweet node",True,,,
+t071,recommendations,easy,A: every model misses,Which 3 movies have the most number of votes cast by users?,"MATCH (m:Movie)
+RETURN m.title, m.imdbVotes
+ORDER BY m.imdbVotes DESC
+LIMIT 3","m.title, m.imdbVotes","[{""m.imdbVotes"": null, ""m.title"": ""Gate of Heavenly Peace, The""}, {""m.imdbVotes"": null, ""m.title"": ""Wedding Gift, The""}, {""m.imdbVotes"": null, ""m.title"": ""This Is Spinal Tap""}]",3,GOLD_DEFECT,"m.imdbVotes is null for the top rows, so gold's answer is 3 nulls; the prediction counts RATED edges, which is what the question describes",,,,
+t072,northwind,easy,A: every model misses,Which products have a reorder level greater than 20 and are not discontinued?,"MATCH (p:Product)
+WHERE p.reorderLevel > 20 AND p.discontinued = false
+RETURN p.productName, p.productID, p.unitsInStock, p.unitPrice","p.productName, p.productID, p.unitsInStock, p.unitPrice","[{""p.productID"": ""2"", ""p.productName"": ""Chang"", ""p.unitPrice"": 19.0, ""p.unitsInStock"": 17}, {""p.productID"": ""3"", ""p.productName"": ""Aniseed Syrup"", ""p.unitPrice"": 10.0, ""p.unitsInStock"": 13}, {""p.productID"": ""6"", ""p.productName"": ""Grandma's Boysenberry Spread"", ""p.unitPrice"": 25.0, ""p.unitsInStock"": ",20,SCORING_ARTIFACT,"Same 20 products; gold returns 4 columns, prediction returns productName (""which products"")",,,,
+t075,twitter,hard,A: every model misses,Which users have 'Neo4j' mentioned in its tweets the most?,"MATCH (u:User)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(:User {name: 'Neo4j'})
+RETURN u.name AS user, count(t) AS mentions
+ORDER BY mentions DESC
+LIMIT 10","user, mentions","[{""mentions"": 104, ""user"": ""Neo4j""}, {""mentions"": 29, ""user"": ""Michael Hunger""}, {""mentions"": 20, ""user"": ""Daniel CF Ng""}]",10,unaudited,,True,,,
+t092,recommendations,medium,A: every model misses,"""톰크루즈 주연의 war 영화는 무엇이 있는가?""","MATCH (a:Actor {name: ""Tom Cruise""})-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre {name: ""War""})
+RETURN m.title AS MovieTitle, m.year AS ReleaseYear, m.imdbRating AS IMDbRating","MovieTitle, ReleaseYear, IMDbRating","[{""IMDbRating"": 7.1, ""MovieTitle"": ""Valkyrie"", ""ReleaseYear"": 2008}, {""IMDbRating"": 6.2, ""MovieTitle"": ""Lions For Lambs"", ""ReleaseYear"": 2007}, {""IMDbRating"": 7.7, ""MovieTitle"": ""Last Samurai, The"", ""ReleaseYear"": 2003}]",4,unaudited,,,,,
+t096,recommendations,hard,A: every model misses,List the top 3 actors who have acted in both 'Action' and 'Romance' genres.,"MATCH (a:Actor)-[:ACTED_IN]->(m1:Movie)-[:IN_GENRE]->(g1:Genre {name: 'Action'}),       (a)-[:ACTED_IN]->(m2:Movie)-[:IN_GENRE]->(g2:Genre {name: 'Romance'})
+WITH a, COUNT(DISTINCT m1) + COUNT(DISTINCT m2) AS movieCount
+ORDER BY movieCount DESC
+LIMIT 3
+RETURN a.name AS actorName, movieCount","actorName, movieCount","[{""actorName"": ""Bruce Willis"", ""movieCount"": 29}, {""actorName"": ""Cary Grant"", ""movieCount"": 28}, {""actorName"": ""Sean Connery"", ""movieCount"": 25}]",3,unaudited,,False,,,
+t107,recommendations,medium,A: every model misses,What is the most common genre among movies released in 2014?,"MATCH (m:Movie {year: 2014})-[:IN_GENRE]->(g:Genre)
+WITH g.name AS genre, count(*) AS movieCount
+ORDER BY movieCount DESC
+RETURN genre
+LIMIT 1",genre,"[{""genre"": ""Drama""}]",1,unaudited,,,,,
+t110,northwind,easy,A: every model misses,What are the first 3 products with a reorder level above 20?,"MATCH (p:Product)
+WHERE p.reorderLevel > 20
+RETURN p.productName, p.reorderLevel
+ORDER BY p.productName
+LIMIT 3","p.productName, p.reorderLevel","[{""p.productName"": ""Aniseed Syrup"", ""p.reorderLevel"": 25}, {""p.productName"": ""Boston Crab Meat"", ""p.reorderLevel"": 30}, {""p.productName"": ""Chang"", ""p.reorderLevel"": 25}]",3,AMBIGUOUS_QUESTION,"""first 3"" with no order given; gold invents ORDER BY productName, prediction takes an arbitrary 3",True,,,
+t113,twitter,medium,A: every model misses,List the first 3 tweets that mention the user with the highest betweenness.,"MATCH (u:User)-[:MENTIONS]-(t:Tweet)
+WHERE u.betweenness IS NOT NULL
+WITH u, t
+ORDER BY u.betweenness DESC
+LIMIT 1
+MATCH (t2:Tweet)-[:MENTIONS]->(u) 
+RETURN t2.text
+LIMIT 3",t2.text,"[{""t2.text"": ""RT @StackDevJobs: Software Developer Kubernetes at @neo4j (Malmö, Sweden) https://t.co/2rubfHVIvR #go""}, {""t2.text"": ""@neo4j This is super useful. \nSharing!""}, {""t2.text"": ""Just starting to learn about @neo4j and they really have a fascinating approach to building graphs at an enterpr",3,unaudited,,,,,
+t119,recommendations,easy,A: every model misses,What are the first 3 movies that have a revenue to budget ratio greater than 3?,"MATCH (m:Movie)
+WHERE m.revenue / m.budget > 3
+RETURN m.title, m.revenue, m.budget
+ORDER BY m.revenue / m.budget DESC
+LIMIT 3","m.title, m.revenue, m.budget","[{""m.budget"": 111, ""m.revenue"": 4530929, ""m.title"": ""Dangerous Beauty""}, {""m.budget"": 15000, ""m.revenue"": 193355800, ""m.title"": ""Paranormal Activity""}, {""m.budget"": 218, ""m.revenue"": 1162014, ""m.title"": ""Tarnation""}]",3,AMBIGUOUS_QUESTION,"""first 3"" with no order; gold invents ORDER BY ratio DESC",False,,,
+t122,twitter,easy,A: every model misses,What is the 'location' of the user who posted the tweet with the earliest 'created_at' date?,"MATCH (earliestTweet:Tweet)
+RETURN earliestTweet
+ORDER BY earliestTweet.created_at ASC
+LIMIT 1",earliestTweet,"[{""earliestTweet"": {""_labels"": [""Tweet""], ""created_at"": ""2020-12-06T05:12:02.000000000+00:00"", ""favorites"": 2, ""id"": 1335451913203163138, ""id_str"": ""1335451913203163138"", ""import_method"": ""user"", ""text"": ""In this week's #twin4j, Hantsy shows how to write our own custom queries using the @Query annot",1,GOLD_DEFECT,Question asks for the user's location; gold returns the Tweet node. The prediction returns a location,,,,
+t129,northwind,easy,A: every model misses,List the first 3 products from suppliers in 'Germany'.,"MATCH (s:Supplier {country: 'Germany'})-[:SUPPLIES]->(p:Product)
+RETURN p.productName, p.productID, p.unitPrice
+LIMIT 3","p.productName, p.productID, p.unitPrice","[{""p.productID"": ""26"", ""p.productName"": ""Gumbär Gummibärchen"", ""p.unitPrice"": 31.23}, {""p.productID"": ""25"", ""p.productName"": ""NuNuCa Nuß-Nougat-Creme"", ""p.unitPrice"": 14.0}, {""p.productID"": ""27"", ""p.productName"": ""Schoggi Schokolade"", ""p.unitPrice"": 43.9}]",3,SCORING_ARTIFACT,"Same 3 products in the same order; gold adds productID, unitPrice",,,,
+t133,northwind,hard,A: every model misses,Find the customer who placed the order with the highest total quantity of products.,"MATCH (o:Order)-[oi:ORDERS]->(p:Product)
+WITH o, sum(oi.quantity) AS totalQuantityPerOrder
+WITH max(totalQuantityPerOrder) AS maxQuantity
+MATCH (o:Order)-[oi:ORDERS]->(p:Product)
+WITH o, sum(oi.quantity) AS totalQuantityPerOrder, maxQuantity
+MATCH (c:Customer)-[:PURCHASED]->(o)
+WHERE totalQuantityPerOrder = maxQuantity
+RETURN c.customerID, c.companyName","c.customerID, c.companyName","[{""c.companyName"": ""Ernst Handel"", ""c.customerID"": ""ERNSH""}]",1,unaudited,,,,,
+t137,fincen,medium,A: every model misses,Find the filings where the 'originator_bank' and 'beneficiary_bank' are both located in the same city.,"MATCH (f:Filing)
+WHERE f.originator_bank IS NOT NULL AND f.beneficiary_bank IS NOT NULL
+MATCH (f)-[:ORIGINATOR]->(originator:Entity {name: f.originator_bank})
+MATCH (f)-[:CONCERNS]->(beneficiary:Entity {name: f.beneficiary_bank})
+WHERE originator.location = beneficiary.location
+RETURN f.id",f.id,"[{""f.id"": ""223690""}, {""f.id"": ""224004""}, {""f.id"": ""224019""}]",118,unaudited,,,,,
+t140,recommendations,easy,A: every model misses,Find the top 5 movies released most recently.,"MATCH (m:Movie)
+WHERE m.released IS NOT NULL
+RETURN m
+ORDER BY m.released DESC
+LIMIT 5",m,"[{""m"": {""_labels"": [""Movie""], ""countries"": [""USA""], ""imdbId"": ""1291570"", ""imdbRating"": 6.4, ""imdbVotes"": 18402, ""languages"": [""English""], ""movieId"": ""146688"", ""plot"": ""A psychic works with the FBI in order to hunt down a serial killer."", ""plotEmbedding"": [-0.002272470621392131, -0.001219251775182783",5,REAL_ERROR,"Prediction omits WHERE m.released IS NOT NULL, so ORDER BY ... DESC puts nulls first and it returns 5 movies with no release date",,,,
+t142,movies,easy,A: every model misses,What are the first 3 movies with a released year of 2008?,"MATCH (m:Movie)
+WHERE m.released = 2008
+RETURN m.title, m.released
+ORDER BY m.title
+LIMIT 3","m.title, m.released","[{""m.released"": 2008, ""m.title"": ""Frost/Nixon""}, {""m.released"": 2008, ""m.title"": ""Speed Racer""}]",2,SCORING_ARTIFACT,"Same 2 movies; gold projects (title, released), prediction returns the node",False,,,
+t150,twitter,medium,A: every model misses,Identify the first 3 users who have retweeted tweets mentioning 'Neo4j'.,"MATCH (u:User)-[:POSTS]->(t:Tweet)-[:RETWEETS]->(original:Tweet)-[:MENTIONS]->(m:Me {screen_name: 'neo4j'})
+RETURN u.screen_name
+LIMIT 3",u.screen_name,"[{""u.screen_name"": ""neo4j""}, {""u.screen_name"": ""neo4j""}, {""u.screen_name"": ""neo4j""}]",3,unaudited,,,,,
+t153,northwind,hard,A: every model misses,List the `productName` of products supplied by suppliers who are located in the same country as the customer with the most orders.,"MATCH (c:Customer)-[:PURCHASED]->(o:Order)
+WITH c, count(o) AS orderCount
+ORDER BY orderCount DESC
+WITH collect(c.country) AS countries
+LIMIT 1
+UNWIND countries AS country
+MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)
+WHERE s.country = country
+RETURN DISTINCT p.productName",p.productName,"[{""p.productName"": ""Chef Anton's Cajun Seasoning""}, {""p.productName"": ""Chef Anton's Gumbo Mix""}, {""p.productName"": ""Louisiana Fiery Hot Pepper Sauce""}]",44,unaudited,,False,,,
+t154,twitter,easy,A: every model misses,Who are the top 5 users that a specific user named 'Neo4j' follows?,"MATCH (me:Me {name: 'Neo4j'})-[:FOLLOWS]->(user:User)
+RETURN user.name, user.screen_name, user.followers, user.following
+ORDER BY user.followers DESC
+LIMIT 5","user.name, user.screen_name, user.followers, user.following","[{""user.followers"": 59391716, ""user.following"": 10, ""user.name"": ""Twitter"", ""user.screen_name"": ""Twitter""}, {""user.followers"": 49094141, ""user.following"": 103, ""user.name"": ""Elon Musk"", ""user.screen_name"": ""elonmusk""}, {""user.followers"": 44944849, ""user.following"": 204, ""user.name"": ""NASA"", ""user.sc",5,SCORING_ARTIFACT,Same 5 users in the same order; prediction omits user.following,False,,,
+t159,fincen,medium,A: every model misses,Which 3 entities have the most relationships with filings where the originator bank country is 'United Kingdom'?,"MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)
+WHERE f.originator_bank_country = 'United Kingdom'
+WITH e, count(f) AS filingsCount
+ORDER BY filingsCount DESC
+LIMIT 3
+RETURN e",e,"[{""e"": {""_labels"": [""Entity""], ""id"": ""barclays-bank-plc-ho-uk"", ""location"": [-2.0, 54.0], ""name"": ""Barclays Bank Plc Ho UK""}}, {""e"": {""_labels"": [""Entity""], ""id"": ""deutsche-bank-ag"", ""location"": [-73.987862, 40.777571], ""name"": ""Deutsche Bank AG""}}, {""e"": {""_labels"": [""Entity""], ""id"": ""barclays-bank",3,unaudited,,,,,
+t165,northwind,medium,A: every model misses,List the top 3 customers who have placed the most orders.,"MATCH (customer:Customer)-[:PURCHASED]->(order:Order)
+WITH customer, count(order) AS orderCount
+ORDER BY orderCount DESC
+LIMIT 3
+RETURN customer.customerID, orderCount","customer.customerID, orderCount","[{""customer.customerID"": ""SAVEA"", ""orderCount"": 31}, {""customer.customerID"": ""ERNSH"", ""orderCount"": 30}, {""customer.customerID"": ""QUICK"", ""orderCount"": 28}]",3,unaudited,,False,,,
+t166,twitter,hard,A: every model misses,Identify the URLs of the top 5 tweets retweeted by 'Neo4j'.,"MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(tweet:Tweet)<-[:RETWEETS]-(retweet:Tweet)
+WITH tweet, COUNT(retweet) AS retweet_count
+ORDER BY retweet_count DESC
+LIMIT 5
+MATCH (tweet)-[:CONTAINS]->(link:Link)
+RETURN link.url",link.url,"[{""link.url"": ""https://twitter.com/i/web/status/1342475970704506880""}, {""link.url"": ""https://neo4j.com/developer/dotnet/""}, {""link.url"": ""https://twitter.com/i/web/status/1349086742649954306""}]",7,unaudited,,,,,
+t171,recommendations,hard,A: every model misses,What are the first 3 genres associated with movies that have been rated by at least 5 different users?,"MATCH (g:Genre)<-[:IN_GENRE]-(m:Movie)<-[r:RATED]-(u:User)
+WITH g, m, count(DISTINCT u) AS userCount
+WHERE userCount >= 5
+RETURN g.name AS genre
+ORDER BY userCount DESC
+LIMIT 3",genre,"[{""genre"": ""Comedy""}, {""genre"": ""Romance""}, {""genre"": ""Drama""}]",3,unaudited,,,,,
+t174,twitter,easy,A: every model misses,Which users are amplified by 'Me'?,"MATCH (me:Me)-[:AMPLIFIES]->(user:User)
+RETURN user.name AS user, user.screen_name AS handle","user, handle","[{""handle"": ""tbrantb"", ""user"": ""Brant Boehmann""}, {""handle"": ""CSkardon"", ""user"": ""Chris Skardon 💙""}, {""handle"": ""unterstein"", ""user"": ""Johannes Unterstein""}]",144,SCORING_ARTIFACT,"Same 144 users; gold projects (name, screen_name), prediction returns the node",,,,
+t177,northwind,hard,A: every model misses,"""Which Employee had the Highest Cross-Selling Count of 'Chocolade' and Another Product?""","MATCH (choco:Product {productName: 'Chocolade'})-[:ORDERS]-(chocoOrder:Order)-[:ORDERS]-(otherProduct:Product)
+WHERE choco.productID <> otherProduct.productID
+WITH chocoOrder, COUNT(DISTINCT otherProduct) AS CrossSellingCount
+ORDER BY CrossSellingCount DESC
+LIMIT 1
+MATCH (chocoOrder)-[:PURCHASED]-(customer:Customer)-[:PURCHASED]-(otherOrder:Order)-[:ORDERS]-(otherProduct)
+WHERE chocoOrder <> otherOrder
+RETURN otherOrder.employeeID AS EmployeeID, COUNT(DISTINCT otherProduct) AS TotalCrossSelling
+ORDER BY TotalCrossSelling DESC
+LIMIT 1","EmployeeID, TotalCrossSelling","[{""EmployeeID"": ""1"", ""TotalCrossSelling"": 6}]",1,unaudited,,False,,,
+t181,northwind,hard,A: every model misses,Which suppliers supply to more than one category?,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WITH s, collect(DISTINCT c.categoryID) AS categories
+WHERE size(categories) > 1
+RETURN s.companyName AS Supplier, categories","Supplier, categories","[{""Supplier"": ""Pavlova"", ""categories"": [""1"", ""2"", ""3"", ""6"", ""8""]}, {""Supplier"": ""Karkki Oy"", ""categories"": [""1"", ""3""]}, {""Supplier"": ""Leka Trading"", ""categories"": [""1"", ""2"", ""5""]}]",10,unaudited,,,,,
+t184,twitter,hard,A: every model misses,Which users have 'Neo4j' mentioned the most in tweets? List the top 3.,"MATCH (u:User)<-[:MENTIONS]-(t:Tweet)<-[:POSTS]-(:Me {name: 'Neo4j'})
+RETURN u.name AS user, count(t) AS mentions
+ORDER BY mentions DESC
+LIMIT 3","user, mentions","[{""mentions"": 104, ""user"": ""Neo4j""}, {""mentions"": 40, ""user"": ""Jim Webber""}, {""mentions"": 29, ""user"": ""Jesús Barrasa""}]",3,unaudited,,False,,,
+t186,recommendations,easy,A: every model misses,Which three movies have the highest difference in revenue and budget?,"MATCH (m:Movie)
+WHERE m.revenue IS NOT NULL AND m.budget IS NOT NULL
+RETURN m.title, m.revenue, m.budget, (m.revenue - m.budget) AS profit
+ORDER BY profit DESC
+LIMIT 3","m.title, m.revenue, m.budget, profit","[{""m.budget"": 237000000, ""m.revenue"": 2787965087, ""m.title"": ""Avatar"", ""profit"": 2550965087}, {""m.budget"": 200000000, ""m.revenue"": 2187463944, ""m.title"": ""Titanic"", ""profit"": 1987463944}, {""m.budget"": 245000000, ""m.revenue"": 2068223624, ""m.title"": ""Star Wars: Episode VII - The Force Awakens"", ""profi",3,REAL_ERROR,"No null filter plus ORDER BY abs(revenue - budget), so it returns 3 movies with null difference",False,,,
+t004,twitter,medium,B: best model misses,List the first 3 tweets that 'Neo4j' retweets on '2021-03-16'.,"MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(retweet:Tweet)-[:RETWEETS]->(original:Tweet)
+WHERE date(retweet.created_at) = date('2021-03-16')
+RETURN original.text, original.created_at
+ORDER BY retweet.created_at
+LIMIT 3","original.text, original.created_at","[{""original.created_at"": null, ""original.text"": null}, {""original.created_at"": null, ""original.text"": null}]",2,GOLD_DEFECT,"Gold returns 2 rows of null, null (the retweeted originals have no text)",False,,,
+t007,movies,easy,B: best model misses,What are the top 5 movies with the least votes and their release years?,"MATCH (m:Movie)
+RETURN m.title AS title, m.released AS release_year, m.votes AS votes
+ORDER BY m.votes ASC
+LIMIT 5","title, release_year, votes","[{""release_year"": 2008, ""title"": ""Frost/Nixon"", ""votes"": 1}, {""release_year"": 2009, ""title"": ""Ninja Assassin"", ""votes"": 15}, {""release_year"": 2007, ""title"": ""Charlie Wilson's War"", ""votes"": 25}]",5,SCORING_ARTIFACT,"Same 5 movies; gold also returns votes, which the question (""movies and their release years"") never asked for",False,,,
+t014,fincen,medium,B: best model misses,Identify the top 5 entities that have the most connections to countries through the relationship [:COUNTRY].,"MATCH (e:Entity)-[:COUNTRY]->(c:Country)
+RETURN e, count(c) AS connections
+ORDER BY connections DESC
+LIMIT 5","e, connections","[{""connections"": 8, ""e"": {""_labels"": [""Entity""], ""id"": ""standard-chartered-bank"", ""location"": [-2.0, 54.0], ""name"": ""Standard Chartered Bank""}}, {""connections"": 8, ""e"": {""_labels"": [""Entity""], ""id"": ""deutsche-bank-ag"", ""location"": [-73.987862, 40.777571], ""name"": ""Deutsche Bank AG""}}, {""connections""",5,unaudited,,True,,,
+t022,recommendations,hard,B: best model misses,List the top 3 users who have rated at least one movie in each genre available.,"MATCH (u:User)-[r:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre)
+WITH u, collect(DISTINCT g.name) AS genresRated, count(DISTINCT g.name) AS genreCount
+MATCH (g2:Genre)
+WITH u, genresRated, genreCount, collect(DISTINCT g2.name) AS allGenres
+WHERE genreCount = size(allGenres)
+RETURN u.name AS userName, size(genresRated) AS genresRatedCount
+ORDER BY genresRatedCount DESC
+LIMIT 3","userName, genresRatedCount","[{""genresRatedCount"": 20, ""userName"": ""Angela Robertson""}, {""genresRatedCount"": 20, ""userName"": ""Karen Avila""}, {""genresRatedCount"": 20, ""userName"": ""Kenneth Daniels""}]",3,unaudited,,True,,,
+t026,twitter,easy,B: best model misses,What are the 3 most recent tweets posted by any user?,"MATCH (u:User)-[:POSTS]->(t:Tweet)
+RETURN t.text AS tweet_text, t.created_at AS created_at
+ORDER BY t.created_at DESC
+LIMIT 3","tweet_text, created_at","[{""created_at"": null, ""tweet_text"": null}, {""created_at"": null, ""tweet_text"": null}, {""created_at"": null, ""tweet_text"": null}]",3,GOLD_DEFECT,"Gold returns 3 rows of null, null (Tweet nodes have no text/created_at)",True,,,
+t030,recommendations,easy,B: best model misses,Which top 5 movies have the most diverse range of spoken languages?,"MATCH (m:Movie)
+RETURN m.title, m.languages, size(m.languages) AS num_languages
+ORDER BY num_languages DESC
+LIMIT 5","m.title, m.languages, num_languages","[{""m.languages"": null, ""m.title"": ""Saturn 3"", ""num_languages"": null}, {""m.languages"": null, ""m.title"": ""Gate of Heavenly Peace, The"", ""num_languages"": null}, {""m.languages"": null, ""m.title"": ""Koyaanisqatsi (a.k.a. Koyaanisqatsi: Life Out of Balance)"", ""num_languages"": null}]",5,GOLD_DEFECT,"size(m.languages) is null for the top rows, so gold's top 5 is 5 nulls",True,,,
+t039,twitter,easy,B: best model misses,Which tweets by 'neo4j' have the highest number of favorites?,"MATCH (u:User {screen_name: 'neo4j'})-[:POSTS]->(t:Tweet)
+RETURN t.text AS TweetText, t.favorites AS Favorites
+ORDER BY t.favorites DESC
+LIMIT 1","TweetText, Favorites","[{""Favorites"": 394, ""TweetText"": ""Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp""}]",1,AMBIGUOUS_QUESTION,"""Which tweets have the highest favorites"" names no count; gold LIMIT 1, prediction LIMIT 10, top row identical",False,,,
+t047,northwind,medium,B: best model misses,What is the total revenue generated by the product 'Aniseed Syrup'?,"MATCH (p:Product {productName: 'Aniseed Syrup'})-[:ORDERS]->(o:Order)
+WITH p, o, toFloat(o.unitPrice) * o.quantity AS revenue
+RETURN sum(revenue) AS totalRevenue",totalRevenue,"[{""totalRevenue"": 0}]",1,GOLD_DEFECT,"Gold matches (Product)-[:ORDERS]->(Order), reversed from the graph's Order->Product edge; gold revenue is 0 (excluded from accuracy_v2_excl_gold_defects)",,,,
+t052,recommendations,medium,B: best model misses,What is the most common language among movies with a budget lower than 10 million dollars?,"MATCH (m:Movie)
+WHERE m.budget < 10000000
+UNWIND m.languages AS language
+WITH language, count(*) AS count
+ORDER BY count DESC
+RETURN language
+LIMIT 1",language,"[{""language"": ""English""}]",1,unaudited,,,,,
+t054,movies,medium,B: best model misses,List all movies where the writer is also credited as a producer.,"MATCH (m:Movie)<-[:WROTE]-(p:Person)
+WHERE (p)-[:PRODUCED]->(m)
+RETURN m.title",m.title,"[{""m.title"": ""Jerry Maguire""}, {""m.title"": ""When Harry Met Sally""}, {""m.title"": ""V for Vendetta""}]",5,unaudited,,,,,
+t056,twitter,medium,B: best model misses,List the top 5 tweets that contain links and are posted by 'Neo4j'.,"MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(tweet:Tweet)-[:CONTAINS]->(link:Link)
+RETURN tweet.text, tweet.favorites
+ORDER BY tweet.favorites DESC
+LIMIT 5","tweet.text, tweet.favorites","[{""tweet.favorites"": 394, ""tweet.text"": ""Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp""}, {""tweet.favorites"": 72, ""tweet.text"": ""#NODES2021 is coming, and we want to hear about your #Neo4j graph story. \n\nBuilt a new connector?",5,unaudited,,True,,,
+t059,fincen,hard,B: best model misses,"What is the total number of filings originating from countries with `tld` ""US""?","MATCH (c:Country {tld: 'US'})
+MATCH (e:Entity)-[:COUNTRY]->(c)
+MATCH (e)-[:FILED]->(f:Filing)
+RETURN count(DISTINCT f) AS totalFilings",totalFilings,"[{""totalFilings"": 205}]",1,unaudited,,,,,
+t064,movies,medium,B: best model misses,Which people have written and directed the same movie?,"MATCH (p:Person)-[:WROTE]->(m:Movie)<-[:DIRECTED]-(p)
+RETURN DISTINCT p.name",p.name,"[{""p.name"": ""Cameron Crowe""}, {""p.name"": ""Lana Wachowski""}, {""p.name"": ""Lilly Wachowski""}]",4,unaudited,,,,,
+t065,fincen,medium,B: best model misses,Which three entities have the most filings where the originator bank is 'Barclays Bank Plc'?,"MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)
+WHERE f.originator_bank = 'Barclays Bank Plc'
+WITH e, count(f) AS filingsCount
+ORDER BY filingsCount DESC
+LIMIT 3
+RETURN e.name, filingsCount","e.name, filingsCount","[{""e.name"": ""Barclays Bank Plc"", ""filingsCount"": 15}]",1,unaudited,,False,,,
+t066,recommendations,easy,B: best model misses,Find the movies that have been released in the same year as the movie with the lowest IMDb rating.,"MATCH (m:Movie)
+WITH m
+ORDER BY m.imdbRating ASC
+LIMIT 1
+WITH m.year AS lowestRatedYear
+MATCH (movie:Movie {year: lowestRatedYear})
+RETURN movie.title",movie.title,"[{""movie.title"": ""Lawrence of Arabia""}, {""movie.title"": ""To Kill a Mockingbird""}, {""movie.title"": ""Manchurian Candidate, The""}]",41,SCORING_ARTIFACT,Identical 41 titles; prediction adds year and imdbRating,,,,
+t074,northwind,hard,B: best model misses,What is the total revenue generated by orders placed by customers with a company name that starts with the letter 'A'?,"MATCH (c:Customer)-[:PURCHASED]->(o:Order)-[rel:ORDERS]->(p:Product)
+WHERE c.companyName STARTS WITH 'A'
+WITH o, sum(toFloat(rel.unitPrice) * rel.quantity) AS revenuePerOrder
+WITH sum(revenuePerOrder) AS totalRevenue
+RETURN totalRevenue",totalRevenue,"[{""totalRevenue"": 27321.0}]",1,unaudited,,,,,
+t083,fincen,medium,B: best model misses,What is the total number of filings where the 'originator_lng' and 'beneficiary_lng' values are within 10 degrees of each other?,"MATCH (f:Filing)
+WHERE abs(toFloat(f.originator_lng) - toFloat(f.beneficiary_lng)) <= 10
+WITH DISTINCT f
+RETURN count(f) AS totalFilings",totalFilings,"[{""totalFilings"": 0}]",1,GOLD_DEFECT,"Gold reads Filing.originator_lng/beneficiary_lng, which the graph does not have; gold count is 0 (excluded from accuracy_v2_excl_gold_defects)",,,,
+t085,twitter,easy,B: best model misses,Identify the top 3 tweets with the highest number of favorites.,"MATCH (t:Tweet)
+RETURN t.text, t.favorites
+ORDER BY t.favorites DESC
+LIMIT 3","t.text, t.favorites","[{""t.favorites"": null, ""t.text"": null}, {""t.favorites"": null, ""t.text"": null}, {""t.favorites"": null, ""t.text"": null}]",3,GOLD_DEFECT,"Gold returns 3 rows of null, null",,,,
+t088,recommendations,hard,B: best model misses,Which 3 directors have directed movies in more than three genres?,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)-[:IN_GENRE]->(g:Genre)
+WITH d, count(DISTINCT g) AS genreCount
+WHERE genreCount > 3
+RETURN d.name AS Director, genreCount
+ORDER BY genreCount DESC
+LIMIT 3","Director, genreCount","[{""Director"": ""Robert Zemeckis"", ""genreCount"": 16}, {""Director"": ""Steven Spielberg"", ""genreCount"": 15}, {""Director"": ""Tim Burton"", ""genreCount"": 15}]",3,unaudited,,False,,,
+t090,twitter,easy,B: best model misses,Find the top 5 users by number of statuses posted.,"MATCH (u:User)
+RETURN u.name, u.screen_name, u.statuses
+ORDER BY u.statuses DESC
+LIMIT 5","u.name, u.screen_name, u.statuses","[{""u.name"": ""Neo4j"", ""u.screen_name"": ""neo4j"", ""u.statuses"": null}, {""u.name"": ""pranitahakim"", ""u.screen_name"": ""pranitahakim1"", ""u.statuses"": null}, {""u.name"": ""Galeister"", ""u.screen_name"": ""galeister"", ""u.statuses"": null}]",5,SCORING_ARTIFACT,"Same 5 users in the same order; prediction omits u.name. (statuses is null for all, so the ordering is arbitrary too)",,,,
+t091,movies,easy,B: best model misses,What is the title of the movie with the highest number of votes?,"MATCH (m:Movie)
+RETURN m.title, m.votes
+ORDER BY m.votes DESC
+LIMIT 1","m.title, m.votes","[{""m.title"": ""The Matrix Reloaded"", ""m.votes"": 1951}]",1,SCORING_ARTIFACT,"""What is the title"": prediction returns the title, gold returns title and votes. The prediction is the better answer and is scored wrong",False,,,
+t094,movies,easy,B: best model misses,List the top 5 movies with the most roles listed in ACTED_IN relationship.,"MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person)
+RETURN m.title AS movie, size(r.roles) AS roleCount
+ORDER BY roleCount DESC
+LIMIT 5","movie, roleCount","[{""movie"": ""The Polar Express"", ""roleCount"": 6}, {""movie"": ""Cloud Atlas"", ""roleCount"": 6}, {""movie"": ""Cloud Atlas"", ""roleCount"": 4}]",5,GOLD_DEFECT,"Gold does not aggregate, so its ""top 5 movies"" is top 5 *relationships* and lists Cloud Atlas 3 times",True,,,
+t098,fincen,hard,B: best model misses,What are the top 5 beneficiary countries by the number of filings they received from originator entities located in Singapore?,"MATCH (f:Filing)
+WHERE f.originator_iso = ""SGP""
+MATCH (f)-[:BENEFITS]->(be:Entity)-[:COUNTRY]->(bc:Country)
+WITH bc.name AS beneficiary_country, count(f) AS filing_count
+ORDER BY filing_count DESC
+RETURN beneficiary_country, filing_count
+LIMIT 5","beneficiary_country, filing_count","[{""beneficiary_country"": ""Singapore"", ""filing_count"": 39}, {""beneficiary_country"": ""Latvia"", ""filing_count"": 24}, {""beneficiary_country"": ""Hong Kong"", ""filing_count"": 22}]",5,unaudited,,False,,,
+t101,movies,easy,B: best model misses,List the movies with more than 100 votes.,"MATCH (m:Movie)
+WHERE m.votes > 100
+RETURN m.title",m.title,"[{""m.title"": ""The Matrix""}, {""m.title"": ""The Matrix Reloaded""}, {""m.title"": ""The Matrix Revolutions""}]",15,SCORING_ARTIFACT,Same 15 movies; prediction adds a votes column,,,,
+t102,northwind,medium,B: best model misses,List all products that have a unit price greater than the average unit price of products supplied by supplier '1'.,"MATCH (s:Supplier {supplierID: '1'})-[:SUPPLIES]->(p:Product)
+WITH avg(p.unitPrice) AS averageUnitPrice
+MATCH (p:Product)
+WHERE p.unitPrice > averageUnitPrice
+RETURN p.productName",p.productName,"[{""p.productName"": ""Chai""}, {""p.productName"": ""Chang""}, {""p.productName"": ""Chef Anton's Cajun Seasoning""}]",50,unaudited,,,,,
+t108,fincen,medium,B: best model misses,What are the top 5 entities linked to the most filings where the beneficiary bank country is 'United Kingdom'?,"MATCH (f:Filing)-[:BENEFITS]->(e:Entity)
+WHERE f.beneficiary_bank_country = 'United Kingdom'
+WITH e, count(f) AS filingsCount
+ORDER BY filingsCount DESC
+LIMIT 5
+RETURN e, filingsCount","e, filingsCount","[{""e"": {""_labels"": [""Entity""], ""id"": ""barclays-bank-plc-london-england-gbr"", ""location"": [-2.0, 54.0], ""name"": ""Barclays Bank Plc""}, ""filingsCount"": 10}, {""e"": {""_labels"": [""Entity""], ""country"": ""GBR"", ""id"": ""barclays-bank-plc-uk-corporate-gbr"", ""location"": [-2.0, 54.0], ""name"": ""Barclays Bank Plc""}",5,unaudited,,False,,,
+t109,northwind,medium,B: best model misses,List the top 5 customers based on the number of orders placed.,"MATCH (c:Customer)-[:PURCHASED]->(o:Order)
+WITH c, COUNT(o) AS orderCount
+ORDER BY orderCount DESC
+LIMIT 5
+RETURN c.companyName AS customerName, orderCount","customerName, orderCount","[{""customerName"": ""Save-a-lot Markets"", ""orderCount"": 31}, {""customerName"": ""Ernst Handel"", ""orderCount"": 30}, {""customerName"": ""QUICK-Stop"", ""orderCount"": 28}]",5,unaudited,,False,,,
+t112,recommendations,easy,B: best model misses,What are the first 3 movies where the main actor was born in France?,"MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
+WHERE a.bornIn = 'France'
+RETURN m.title
+LIMIT 3",m.title,"[{""m.title"": ""Trip to the Moon, A (Voyage dans la lune, Le)""}, {""m.title"": ""Little Romance, A""}, {""m.title"": ""My Favorite Season""}]",3,AMBIGUOUS_QUESTION,"a.bornIn = 'France' vs CONTAINS 'France'; the field holds values like ""Paris, France""",,,,
+t124,recommendations,medium,B: best model misses,What are the first 3 genres of movies that have been directed by directors born after 1980?,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)-[:IN_GENRE]->(g:Genre)
+WHERE d.born > date(""1980-01-01"")
+RETURN DISTINCT g.name
+ORDER BY g.name
+LIMIT 3",g.name,"[{""g.name"": ""Action""}, {""g.name"": ""Adventure""}, {""g.name"": ""Comedy""}]",3,unaudited,,,,,
+t138,northwind,medium,B: best model misses,What is the average discount applied to orders shipped to 'Denmark'?,"MATCH (o:Order {shipCountry: 'Denmark'})-[:ORDERS]->(p:Product)
+WITH avg(toFloat(o.discount)) AS averageDiscount
+RETURN averageDiscount",averageDiscount,"[{""averageDiscount"": null}]",1,GOLD_DEFECT,"Gold averages Order.discount, which the graph does not have; gold is null (excluded from accuracy_v2_excl_gold_defects)",,,,
+t145,fincen,easy,B: best model misses,Which entities benefited from filings where the originator bank was 'CIMB Bank Berhad'? Limit to top 3 results.,"MATCH (f:Filing)-[:BENEFITS]->(e:Entity)
+WHERE f.originator_bank = 'CIMB Bank Berhad'
+RETURN e
+LIMIT 3",e,"[{""e"": {""_labels"": [""Entity""], ""id"": ""barclays-bank-plc-london-england-gbr"", ""location"": [-2.0, 54.0], ""name"": ""Barclays Bank Plc""}}, {""e"": {""_labels"": [""Entity""], ""id"": ""barclays-bank-plc-london-england-gbr"", ""location"": [-2.0, 54.0], ""name"": ""Barclays Bank Plc""}}, {""e"": {""_labels"": [""Entity""], ""co",3,GOLD_DEFECT,"Gold's top 3 entities contains Barclays twice (one row per filing), so it answers ""3 filings"" not ""3 entities""; the prediction uses DISTINCT",,,,
+t148,fincen,medium,B: best model misses,What are the top 3 originator banks by the number of filings with an end date in 2012?,"MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)
+WHERE f.end >= datetime('2012-01-01T00:00:00Z') AND f.end <= datetime('2012-12-31T23:59:59Z')
+RETURN e.name AS OriginatorBank, count(f) AS NumberOfFilings
+ORDER BY NumberOfFilings DESC
+LIMIT 3","OriginatorBank, NumberOfFilings","[{""NumberOfFilings"": 94, ""OriginatorBank"": ""LTB Bank""}, {""NumberOfFilings"": 62, ""OriginatorBank"": ""Barclays Bank Plc Ho UK""}, {""NumberOfFilings"": 46, ""OriginatorBank"": ""LTB Bank Riga ""}]",3,unaudited,,False,,,
+t155,twitter,medium,B: best model misses,"Find the users who have retweeted tweets that mention hashtags also used by ""Neo4j"".","MATCH (neo4j:User {screen_name: ""neo4j""})-[:POSTS]->(neo4jTweets:Tweet)-[:TAGS]->(commonHashtags:Hashtag)
+WITH neo4j, neo4jTweets, commonHashtags
+MATCH (otherTweets:Tweet)-[:TAGS]->(commonHashtags)<-[:TAGS]-(neo4jTweets)
+WITH DISTINCT otherTweets
+MATCH (user:User)-[:POSTS]->(:Tweet)-[:RETWEETS]->(otherTweets)
+RETURN DISTINCT user.screen_name",user.screen_name,"[{""user.screen_name"": ""neo4j""}]",1,unaudited,,,,,
+t172,northwind,hard,B: best model misses,Find the top 5 customers who have ordered products where the discount was not applied.,"MATCH (c:Customer)-[:PURCHASED]->(o:Order)-[r:ORDERS]->(p:Product)
+WHERE r.discount = ""0""
+WITH c, COUNT(o) AS orderCount
+ORDER BY orderCount DESC
+LIMIT 5
+RETURN c.customerID, c.companyName, orderCount","c.customerID, c.companyName, orderCount","[{""c.companyName"": ""Save-a-lot Markets"", ""c.customerID"": ""SAVEA"", ""orderCount"": 62}, {""c.companyName"": ""Ernst Handel"", ""c.customerID"": ""ERNSH"", ""orderCount"": 52}, {""c.companyName"": ""Rattlesnake Canyon Grocery"", ""c.customerID"": ""RATTC"", ""orderCount"": 45}]",5,unaudited,,False,,,
+t185,recommendations,easy,B: best model misses,List the movies that have a runtime shorter than 90 minutes and an IMDB rating higher than 8.0.,"MATCH (m:Movie)
+WHERE m.runtime < 90 AND m.imdbRating > 8.0
+RETURN m.title",m.title,"[{""m.title"": ""Laura""}, {""m.title"": ""Paris Is Burning""}, {""m.title"": ""Stand by Me""}]",122,SCORING_ARTIFACT,Same 122 movies; prediction adds runtime and imdbRating,,,,
+t189,movies,medium,B: best model misses,Which persons have directed the most movies with a tagline containing 'world'?,"MATCH (p:Person)-[:DIRECTED]->(m:Movie)
+WHERE m.tagline CONTAINS 'world'
+WITH p, COUNT(m) AS movieCount
+ORDER BY movieCount DESC
+LIMIT 1
+RETURN p.name AS director, movieCount","director, movieCount","[{""director"": ""James Marshall"", ""movieCount"": 1}]",1,unaudited,,True,,,
+t194,twitter,medium,B: best model misses,List the first 3 hashtags used in tweets mentioning 'Neo4j'.,"MATCH (t:Tweet)-[:MENTIONS]->(u:User {name: 'Neo4j'})
+MATCH (t)-[:TAGS]->(h:Hashtag)
+RETURN h.name AS Hashtag
+LIMIT 3",Hashtag,"[{""Hashtag"": ""neo4j""}, {""Hashtag"": ""neo4j""}, {""Hashtag"": ""neo4j""}]",3,unaudited,,,,,
+t197,fincen,medium,B: best model misses,Which 3 filings involve the most entities either as originators or beneficiaries?,"MATCH (f:Filing)-[:ORIGINATOR|:BENEFITS]->(e:Entity)
+WITH f, COUNT(DISTINCT e) AS entityCount
+ORDER BY entityCount DESC
+LIMIT 3
+RETURN f.sar_id AS filing_id, entityCount","filing_id, entityCount","[{""entityCount"": 2, ""filing_id"": ""4098""}, {""entityCount"": 2, ""filing_id"": ""3653""}, {""entityCount"": 2, ""filing_id"": ""3381""}]",3,unaudited,,True,,,
+t198,fincen,medium,B: best model misses,Which entities are originators in the most number of filings involving a beneficiary bank from 'United Kingdom'?,"MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)
+WHERE f.beneficiary_bank_country = 'United Kingdom'
+WITH e, count(f) AS filingsCount
+RETURN e, filingsCount
+ORDER BY filingsCount DESC","e, filingsCount","[{""e"": {""_labels"": [""Entity""], ""id"": ""rosbank"", ""location"": [100.0, 60.0], ""name"": ""Rosbank""}, ""filingsCount"": 10}, {""e"": {""_labels"": [""Entity""], ""id"": ""vp-bank-ag"", ""location"": [9.5333, 47.1667], ""name"": ""VP Bank AG""}, ""filingsCount"": 6}, {""e"": {""_labels"": [""Entity""], ""id"": ""fbme-bank-ltd"", ""locati",76,unaudited,,,,,
+t199,movies,easy,B: best model misses,List the roles of any person in movies with a title containing 'Matrix'.,"MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)
+WHERE m.title CONTAINS 'Matrix'
+RETURN p.name AS person, m.title AS movie, r.roles AS roles","person, movie, roles","[{""movie"": ""The Matrix"", ""person"": ""Emil Eifrem"", ""roles"": [""Emil""]}, {""movie"": ""The Matrix"", ""person"": ""Hugo Weaving"", ""roles"": [""Agent Smith""]}, {""movie"": ""The Matrix"", ""person"": ""Laurence Fishburne"", ""roles"": [""Morpheus""]}]",13,SCORING_ARTIFACT,"""List the roles"": prediction returns the 13 role lists, gold also returns person and movie",,,,
+t000,recommendations,hard,C: models get it right,List the top 5 actors by number of different genres they've acted in.,"MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)
+WITH a, count(distinct g) AS genreCount
+ORDER BY genreCount DESC
+LIMIT 5
+RETURN a.name AS actor, genreCount AS numberOfGenres","actor, numberOfGenres","[{""actor"": ""Kurt Russell"", ""numberOfGenres"": 17}, {""actor"": ""Brad Pitt"", ""numberOfGenres"": 17}, {""actor"": ""Johnny Depp"", ""numberOfGenres"": 17}]",5,unaudited,,True,,,
+t001,movies,hard,C: models get it right,Who are the top 3 actors by number of followers?,"MATCH (actor:Person)-[:ACTED_IN]->(:Movie)
+OPTIONAL MATCH (follower:Person)-[:FOLLOWS]->(actor)
+WITH actor, COUNT(follower) AS followerCount
+RETURN actor.name AS actorName, followerCount
+ORDER BY followerCount DESC
+LIMIT 3","actorName, followerCount","[{""actorName"": ""Hugo Weaving"", ""followerCount"": 0}, {""actorName"": ""Laurence Fishburne"", ""followerCount"": 0}, {""actorName"": ""Emil Eifrem"", ""followerCount"": 0}]",3,unaudited,,True,,,
+t003,twitter,medium,C: models get it right,Which users interact most frequently with 'neo4j' and list the top 5?,"MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(user:User)
+RETURN user.screen_name, COUNT(*) AS interaction_count
+ORDER BY interaction_count DESC
+LIMIT 5","user.screen_name, interaction_count","[{""interaction_count"": 1, ""user.screen_name"": ""roschaeferDE""}, {""interaction_count"": 1, ""user.screen_name"": ""Bellumio""}, {""interaction_count"": 1, ""user.screen_name"": ""nsmith_piano""}]",5,unaudited,,True,,,
+t005,movies,medium,C: models get it right,List the top 3 directors who have directed movies with the highest average votes.,"MATCH (m:Movie)
+WITH m, avg(m.votes) AS average_votes
+MATCH (p:Person)-[:DIRECTED]->(m)
+WITH p, average_votes
+ORDER BY average_votes DESC
+RETURN p.name AS director_name, avg(average_votes) AS average_movie_votes
+LIMIT 3","director_name, average_movie_votes","[{""average_movie_votes"": 806.0, ""director_name"": ""Lana Wachowski""}, {""average_movie_votes"": 806.0, ""director_name"": ""Lilly Wachowski""}, {""average_movie_votes"": 563.0, ""director_name"": ""Tony Scott""}]",3,unaudited,,False,,,
+t006,movies,medium,C: models get it right,What is the average number of words in the review summaries of movies with a rating above 95?,"MATCH (:Person)-[r:REVIEWED]->(m:Movie)
+WHERE r.rating > 95
+WITH size(split(r.summary, "" "")) AS words
+RETURN avg(words) AS average_word_count",average_word_count,"[{""average_word_count"": 5.0}]",1,unaudited,,,,,
+t009,northwind,hard,C: models get it right,Which 3 customers have ordered the most diverse range of product categories?,"MATCH (c:Customer)-[:PURCHASED]->(o:Order)-[:ORDERS]->(p:Product)-[:PART_OF]->(cat:Category)
+WITH c, COUNT(DISTINCT cat.categoryID) AS diversity
+ORDER BY diversity DESC
+LIMIT 3
+RETURN c.companyName, diversity","c.companyName, diversity","[{""c.companyName"": ""Ernst Handel"", ""diversity"": 8}, {""c.companyName"": ""White Clover Markets"", ""diversity"": 8}, {""c.companyName"": ""Save-a-lot Markets"", ""diversity"": 8}]",3,unaudited,,True,,,
+t010,movies,medium,C: models get it right,"""how many movies did jeremy allen white played""","MATCH (p:Person {name: ""Jeremy Allen White""})-[:ACTED_IN]->(m:Movie)
+RETURN COUNT(m) AS movies_played",movies_played,"[{""movies_played"": 0}]",1,unaudited,,,,,
+t011,fincen,medium,C: models get it right,Find the filings where the originator bank and beneficiary bank are the same entity.,"MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)
+RETURN f.sar_id",f.sar_id,"[{""f.sar_id"": ""3146""}]",1,SCORING_ARTIFACT,"RETURN f vs RETURN f.sar_id, same single filing",,,,
+t012,movies,medium,C: models get it right,Who are the top 5 actors by the number of movies they acted in?,"MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+WITH p, COUNT(m) AS movieCount
+RETURN p.name AS actor, movieCount
+ORDER BY movieCount DESC
+LIMIT 5","actor, movieCount","[{""actor"": ""Tom Hanks"", ""movieCount"": 12}, {""actor"": ""Keanu Reeves"", ""movieCount"": 7}, {""actor"": ""Jack Nicholson"", ""movieCount"": 5}]",5,unaudited,,False,,,
+t013,fincen,hard,C: models get it right,List the first 3 countries by the number of originator banks they have.,"MATCH (c:Country)<-[:COUNTRY]-(e:Entity)<-[:ORIGINATOR]-(f:Filing)
+WITH c.name AS country, COUNT(DISTINCT e.id) AS originator_count
+ORDER BY originator_count DESC
+LIMIT 3
+RETURN country, originator_count","country, originator_count","[{""country"": ""Russia"", ""originator_count"": 101}, {""country"": ""United States"", ""originator_count"": 96}, {""country"": ""Switzerland"", ""originator_count"": 68}]",3,unaudited,,False,,,
+t016,recommendations,medium,C: models get it right,What are the top 3 genres in which movies with an imdbRating above 8.0 fall?,"MATCH (m:Movie)-[:IN_GENRE]->(g:Genre)
+WHERE m.imdbRating > 8.0
+RETURN g.name AS genre, COUNT(m) AS movieCount
+ORDER BY movieCount DESC
+LIMIT 3","genre, movieCount","[{""genre"": ""Drama"", ""movieCount"": 327}, {""genre"": ""Comedy"", ""movieCount"": 128}, {""genre"": ""Documentary"", ""movieCount"": 97}]",3,unaudited,,False,,,
+t019,movies,medium,C: models get it right,What are the 3 most common taglines found in the movies?,"MATCH (m:Movie)
+WHERE m.tagline IS NOT NULL
+RETURN m.tagline AS Tagline, count(m) AS Frequency
+ORDER BY Frequency DESC
+LIMIT 3","Tagline, Frequency","[{""Frequency"": 1, ""Tagline"": ""Free your mind""}, {""Frequency"": 1, ""Tagline"": ""Everything that has a beginning has an end""}, {""Frequency"": 1, ""Tagline"": ""Welcome to the Real World""}]",3,unaudited,,True,,,
+t021,fincen,easy,C: models get it right,"List the distinct 'originator_bank_id' values for filings where the 'beneficiary_bank_id' is ""azizi-bank-kabul-afghanistan-afg"".","MATCH (f:Filing)
+WHERE f.beneficiary_bank_id = ""azizi-bank-kabul-afghanistan-afg""
+RETURN DISTINCT f.originator_bank_id",f.originator_bank_id,"[{""f.originator_bank_id"": ""deutsche-bank-ag""}]",1,unaudited,,,,,
+t023,twitter,medium,C: models get it right,List the 3 most recent tweets that mention 'Neo4j' and contain a link.,"MATCH (t:Tweet)-[:MENTIONS]->(u:User {name: 'Neo4j'})
+MATCH (t)-[:CONTAINS]->(l:Link)
+RETURN t.text AS tweet_text, t.created_at AS created_at, l.url AS link_url
+ORDER BY t.created_at DESC
+LIMIT 3","tweet_text, created_at, link_url","[{""created_at"": ""2021-03-16T02:30:12.000000000+00:00"", ""link_url"": ""https://startup.jobs/application-security-engineer-malmo-at-neo4j"", ""tweet_text"": "".@neo4j is looking for an Application Security Engineer  - Malmo (London) https://t.co/XFlLj9APXT""}, {""created_at"": ""2021-03-15T16:11:00.000000000+00",3,unaudited,,False,,,
+t024,recommendations,medium,C: models get it right,Which 5 directors were born in the USA and have directed at least 3 movies?,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)
+WHERE d.bornIn CONTAINS 'USA'
+WITH d, count(m) AS numMovies
+WHERE numMovies >= 3
+RETURN d.name, numMovies
+ORDER BY numMovies DESC
+LIMIT 5","d.name, numMovies","[{""d.name"": ""Woody Allen"", ""numMovies"": 42}, {""d.name"": ""Martin Scorsese"", ""numMovies"": 30}, {""d.name"": ""Clint Eastwood"", ""numMovies"": 30}]",5,unaudited,,True,,,
+t025,fincen,easy,C: models get it right,What is the name of the entity that benefited from the filing with the latest end date?,"MATCH (f:Filing)
+WITH f
+ORDER BY f.end DESC
+LIMIT 1
+MATCH (f)-[:BENEFITS]->(e:Entity)
+RETURN e.name",e.name,"[{""e.name"": ""The National Bank of Ras Al-Khaimah""}]",1,unaudited,,,,,
+t028,movies,easy,C: models get it right,"Which people have directed movies with the word ""Give"" in the title?","MATCH (m:Movie)<-[:DIRECTED]-(p:Person)
+WHERE m.title CONTAINS 'Give'
+RETURN DISTINCT p.name",p.name,"[{""p.name"": ""Nancy Meyers""}]",1,SCORING_ARTIFACT,"RETURN p vs RETURN DISTINCT p.name, same person",,,,
+t029,twitter,easy,C: models get it right,What are the top 5 tweets by 'Neo4j' based on favorites count?,"MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(tweet:Tweet)
+RETURN tweet.text, tweet.favorites
+ORDER BY tweet.favorites DESC
+LIMIT 5","tweet.text, tweet.favorites","[{""tweet.favorites"": 394, ""tweet.text"": ""Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp""}, {""tweet.favorites"": 72, ""tweet.text"": ""#NODES2021 is coming, and we want to hear about your #Neo4j graph story. \n\nBuilt a new connector?",5,unaudited,,False,,,
+t031,northwind,medium,C: models get it right,What are the top 5 most frequently shipped cities for orders?,"MATCH (o:Order)
+RETURN o.shipCity AS City, count(o) AS NumberOfShipments
+ORDER BY NumberOfShipments DESC
+LIMIT 5","City, NumberOfShipments","[{""City"": ""London"", ""NumberOfShipments"": 33}, {""City"": ""Boise"", ""NumberOfShipments"": 31}, {""City"": ""Graz"", ""NumberOfShipments"": 30}]",5,unaudited,,False,,,
+t033,northwind,medium,C: models get it right,List the `shipCountry` and average `freight` cost for the top 5 countries with the highest average `freight` cost.,"MATCH (o:Order)
+WITH o.shipCountry AS shipCountry, avg(toFloat(o.freight)) AS averageFreight
+ORDER BY averageFreight DESC
+LIMIT 5
+RETURN shipCountry, averageFreight","shipCountry, averageFreight","[{""averageFreight"": 184.78750000000002, ""shipCountry"": ""Austria""}, {""averageFreight"": 152.51538461538462, ""shipCountry"": ""05487-020""}, {""averageFreight"": 145.01263157894738, ""shipCountry"": ""Ireland""}]",5,unaudited,,False,,,
+t034,movies,medium,C: models get it right,"What is the average rating for movies with ""The Matrix"" in the title?","MATCH (m:Movie)
+WHERE m.title CONTAINS 'The Matrix'
+WITH m
+MATCH (p:Person)-[r:REVIEWED]->(m)
+RETURN avg(r.rating)",avg(r.rating),"[{""avg(r.rating)"": null}]",1,unaudited,,,,,
+t035,fincen,easy,C: models get it right,What are the distinct values of 'originator_iso' in filings?,"MATCH (f:Filing)
+RETURN DISTINCT f.originator_iso",f.originator_iso,"[{""f.originator_iso"": ""SGP""}, {""f.originator_iso"": ""GBR""}, {""f.originator_iso"": ""GIB""}]",117,unaudited,,,,,
+t036,recommendations,easy,C: models get it right,What are the top 5 movies with a single-country language setting and the highest imdbRating?,"MATCH (m:Movie)
+WHERE size(m.countries) = 1
+RETURN m.title, m.imdbRating
+ORDER BY m.imdbRating DESC
+LIMIT 5","m.title, m.imdbRating","[{""m.imdbRating"": null, ""m.title"": ""Captain America: Civil War""}, {""m.imdbRating"": null, ""m.title"": ""The Great Gatsby""}, {""m.imdbRating"": null, ""m.title"": ""Ben-hur""}]",5,unaudited,,,,,
+t037,recommendations,hard,C: models get it right,Which three users have rated movies in the most number of different genres?,"MATCH (u:User)-[:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre)
+WITH u, count(DISTINCT g) AS numGenres
+ORDER BY numGenres DESC
+LIMIT 3
+RETURN u.name AS user, numGenres","user, numGenres","[{""numGenres"": 20, ""user"": ""Kenneth Daniels""}, {""numGenres"": 20, ""user"": ""Angela Robertson""}, {""numGenres"": 20, ""user"": ""Karen Avila""}]",3,unaudited,,True,,,
+t038,twitter,hard,C: models get it right,"""Which pair of users reply to each other's tweets most often?""","MATCH (u1:User)-[:POSTS]->(t1:Tweet)-[:REPLY_TO]->(t2:Tweet)<-[:POSTS]-(u2:User)
+WHERE u1 <> u2
+RETURN u1.screen_name AS User1, u2.screen_name AS User2, COUNT(*) AS Replies
+ORDER BY Replies DESC
+LIMIT 1","User1, User2, Replies","[{""Replies"": 6, ""User1"": ""dark_phoenix254"", ""User2"": ""adamcowley""}]",1,unaudited,,False,,,
+t040,recommendations,hard,C: models get it right,"""How many directors did Tom Hanks work with?""","MATCH (:Actor {name: ""Tom Hanks""})-[:ACTED_IN]->(:Movie)<-[:DIRECTED]-(directors:Director)
+RETURN COUNT(DISTINCT directors) AS NumberOfDirectorsWorkedWithTomHanks",NumberOfDirectorsWorkedWithTomHanks,"[{""NumberOfDirectorsWorkedWithTomHanks"": 31}]",1,unaudited,,,,,
+t041,recommendations,medium,C: models get it right,"What is the average IMDB rating of movies in the ""Adventure"" genre?","MATCH (g:Genre {name: 'Adventure'})
+MATCH (g)<-[:IN_GENRE]-(m:Movie)
+WITH avg(m.imdbRating) AS averageRating
+RETURN averageRating",averageRating,"[{""averageRating"": 6.655777979981804}]",1,unaudited,,,,,
+t042,recommendations,medium,C: models get it right,What is the average IMDB rating of all movies?,"MATCH (m:Movie)
+WITH avg(m.imdbRating) AS averageRating
+RETURN averageRating",averageRating,"[{""averageRating"": 6.719165378670798}]",1,unaudited,,,,,
+t043,twitter,medium,C: models get it right,Identify the top 3 hashtags used in tweets.,"MATCH (t:Tweet)-[:TAGS]->(h:Hashtag)
+RETURN h.name AS hashtag, COUNT(*) AS usage_count
+ORDER BY usage_count DESC
+LIMIT 3","hashtag, usage_count","[{""hashtag"": ""neo4j"", ""usage_count"": 256}, {""hashtag"": ""graphdatabases"", ""usage_count"": 80}, {""hashtag"": ""twin4j"", ""usage_count"": 68}]",3,unaudited,,False,,,
+t044,movies,medium,C: models get it right,What is the average rating of movies released in 2003?,"MATCH (m:Movie {released: 2003})<-[r:REVIEWED]-()
+WITH avg(r.rating) AS averageRating
+RETURN averageRating",averageRating,"[{""averageRating"": null}]",1,unaudited,,,,,
+t046,twitter,medium,C: models get it right,Who are the top 3 users that 'Neo4j' amplifies the most?,"MATCH (me:Me {screen_name: 'neo4j'})-[a:AMPLIFIES]->(u:User)
+RETURN u.screen_name AS user, count(a) AS amplifications
+ORDER BY amplifications DESC
+LIMIT 3","user, amplifications","[{""amplifications"": 1, ""user"": ""CSkardon""}, {""amplifications"": 1, ""user"": ""unterstein""}, {""amplifications"": 1, ""user"": ""tbrantb""}]",3,unaudited,,True,,,
+t048,fincen,hard,C: models get it right,What is the average amount filed by entities whose country code is 'CHN'?,"MATCH (e:Entity)-[:COUNTRY]->(c:Country)
+WHERE c.code = 'CHN'
+WITH e
+MATCH (e)-[:FILED]->(f:Filing)
+RETURN avg(f.amount)",avg(f.amount),"[{""avg(f.amount)"": null}]",1,unaudited,,,,,
+t049,twitter,hard,C: models get it right,"What is the average number of favorites for tweets that mention both ""Neo4j"" and a hashtag?","MATCH (t:Tweet)-[:MENTIONS]->(u:User {name: ""Neo4j""}),       (t)-[:TAGS]->(:Hashtag)
+WITH avg(t.favorites) AS average_favorites
+RETURN average_favorites",average_favorites,"[{""average_favorites"": 2.2340425531914905}]",1,unaudited,,,,,
+t051,twitter,easy,C: models get it right,List the first 3 tweets containing a hashtag named 'education'.,"MATCH (t:Tweet)-[:TAGS]->(h:Hashtag {name: 'education'})
+RETURN t
+LIMIT 3",t,"[{""t"": {""_labels"": [""Tweet""], ""created_at"": ""2021-03-12T20:00:17.000000000+00:00"", ""favorites"": 1, ""id"": 1370464683677868041, ""id_str"": ""1370464683677868041"", ""import_method"": ""user"", ""text"": ""Proud to help @educationgovuk deliver critical services across the #education sector with #Neo4jAuraEnterpr",2,unaudited,,,,,
+t053,movies,easy,C: models get it right,What are the top 3 oldest movies in the database by release year?,"MATCH (m:Movie)
+RETURN m.title, m.released
+ORDER BY m.released ASC
+LIMIT 3","m.title, m.released","[{""m.released"": 1975, ""m.title"": ""One Flew Over the Cuckoo's Nest""}, {""m.released"": 1986, ""m.title"": ""Top Gun""}, {""m.released"": 1986, ""m.title"": ""Stand By Me""}]",3,unaudited,,False,,,
+t055,fincen,hard,C: models get it right,What are the top 5 entities that have filed the most transactions with a beneficiary in the United Kingdom?,"MATCH (e:Entity)-[:FILED]->(f:Filing)-[:BENEFITS]->(:Entity)-[:COUNTRY]->(c:Country {name: ""United Kingdom""})
+WITH e, COUNT(f) AS transaction_count
+ORDER BY transaction_count DESC
+LIMIT 5
+RETURN e.name AS entity_name, transaction_count","entity_name, transaction_count","[{""entity_name"": ""The Bank of New York Mellon Corp."", ""transaction_count"": 55}, {""entity_name"": ""Standard Chartered Plc"", ""transaction_count"": 17}, {""entity_name"": ""Barclays Plc"", ""transaction_count"": 13}]",5,unaudited,,False,,,
+t058,northwind,easy,C: models get it right,Which supplier supplies the product with the highest unit price?,"MATCH (p:Product)
+WITH p
+ORDER BY p.unitPrice DESC
+LIMIT 1
+MATCH (s:Supplier)-[:SUPPLIES]->(p)
+RETURN s.companyName",s.companyName,"[{""s.companyName"": ""Aux joyeux ecclésiastiques""}]",1,unaudited,,,,,
+t060,fincen,easy,C: models get it right,List the top 5 filings with the shortest duration between 'begin' and 'end'.,"MATCH (f:Filing)
+WITH f, duration.between(f.begin, f.end) AS duration
+ORDER BY duration ASC
+LIMIT 5
+RETURN f.sar_id AS SAR_ID, f.begin AS BeginDate, f.end AS EndDate, duration AS Duration","SAR_ID, BeginDate, EndDate, Duration","[{""BeginDate"": ""2016-09-06T00:00:00.000000000+00:00"", ""Duration"": [-28, -13, 0, 0], ""EndDate"": ""2014-04-23T00:00:00.000000000+00:00"", ""SAR_ID"": ""3396""}, {""BeginDate"": ""2013-03-02T00:00:00.000000000+00:00"", ""Duration"": [-11, -14, 0, 0], ""EndDate"": ""2012-03-19T00:00:00.000000000+00:00"", ""SAR_ID"": ""427",5,unaudited,,False,,,
+t061,northwind,medium,C: models get it right,What is the maximum unitsOnOrder for products within the 'Confections' category?,"MATCH (p:Product)-[:PART_OF]->(c:Category {categoryName: 'Confections'})
+RETURN MAX(p.unitsOnOrder) AS MaxUnitsOnOrder",MaxUnitsOnOrder,"[{""MaxUnitsOnOrder"": 70}]",1,unaudited,,,,,
+t062,northwind,easy,C: models get it right,What is the name of the product with the highest reorder level?,"MATCH (p:Product)
+WITH p, p.reorderLevel AS reorderLevel
+ORDER BY reorderLevel DESCENDING
+RETURN p.productName
+LIMIT 1",p.productName,"[{""p.productName"": ""Queso Cabrales""}]",1,unaudited,,,,,
+t063,movies,easy,C: models get it right,Find all movies with a rating above 90.,"MATCH (m:Movie)<-[r:REVIEWED]-(p:Person)
+WHERE r.rating > 90
+RETURN m.title, r.rating","m.title, r.rating","[{""m.title"": ""Jerry Maguire"", ""r.rating"": 92}, {""m.title"": ""The Replacements"", ""r.rating"": 100}, {""m.title"": ""Cloud Atlas"", ""r.rating"": 95}]",3,unaudited,,,,,
+t067,twitter,hard,C: models get it right,List the sources used in tweets that mention more than 3 users.,"MATCH (t:Tweet)-[:MENTIONS]->(u:User)
+WITH t, size(collect(u)) AS mentioned_users
+WHERE mentioned_users > 3
+MATCH (t)-[:USING]->(s:Source)
+RETURN DISTINCT s.name AS source_name",source_name,"[{""source_name"": ""Tweetbot for iΟS""}, {""source_name"": ""Twitter Web App""}, {""source_name"": ""Twitter for Android""}]",8,unaudited,,,,,
+t068,movies,hard,C: models get it right,"""Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?""","MATCH (d1:Person)-[:DIRECTED]->(m1:Movie)<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m2:Movie)<-[:DIRECTED]-(d2:Person)
+WHERE id(d1) < id(d2)
+WITH d1, d2, COUNT(DISTINCT a) AS common_actors
+ORDER BY common_actors DESC
+LIMIT 1
+RETURN d1.name AS Director1, d2.name AS Director2, common_actors","Director1, Director2, common_actors","[{""Director1"": ""Lilly Wachowski"", ""Director2"": ""Lana Wachowski"", ""common_actors"": 4}]",1,unaudited,,False,,,
+t069,movies,medium,C: models get it right,Who are the top 3 actors with the most diverse roles?,"MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)
+WITH p, r.roles AS roles
+UNWIND roles AS role
+WITH p, COUNT(DISTINCT role) AS uniqueRolesCount
+RETURN p.name AS actor, uniqueRolesCount
+ORDER BY uniqueRolesCount DESC
+LIMIT 3","actor, uniqueRolesCount","[{""actor"": ""Tom Hanks"", ""uniqueRolesCount"": 20}, {""actor"": ""Hugo Weaving"", ""uniqueRolesCount"": 8}, {""actor"": ""Meg Ryan"", ""uniqueRolesCount"": 7}]",3,unaudited,,False,,,
+t073,recommendations,easy,C: models get it right,What are the IMDb ratings of movies that have a plot mentioning 'evil exterminator'?,"MATCH (m:Movie)
+WHERE m.plot CONTAINS 'evil exterminator'
+RETURN m.title, m.imdbRating","m.title, m.imdbRating","[{""m.imdbRating"": 6.8, ""m.title"": ""Boxtrolls, The""}]",1,unaudited,,,,,
+t076,twitter,easy,C: models get it right,What are the top 5 most recent tweets based on the creation date?,"MATCH (t:Tweet)
+RETURN t
+ORDER BY t.created_at DESC
+LIMIT 5",t,"[{""t"": {""_labels"": [""Tweet""], ""id"": 1370874493556588549}}, {""t"": {""_labels"": [""Tweet""], ""id"": 1371756686407577611}}, {""t"": {""_labels"": [""Tweet""], ""id"": 1371490116640776194}}]",5,unaudited,,,,,
+t077,northwind,medium,C: models get it right,Which 3 products have been ordered the most times?,"MATCH (:Order)-[o:ORDERS]->(p:Product)
+RETURN p.productName, COUNT(o) AS orderCount
+ORDER BY orderCount DESC
+LIMIT 3","p.productName, orderCount","[{""orderCount"": 54, ""p.productName"": ""Raclette Courdavault""}, {""orderCount"": 51, ""p.productName"": ""Guaraná Fantástica""}, {""orderCount"": 51, ""p.productName"": ""Gorgonzola Telino""}]",3,unaudited,,True,,,
+t078,fincen,easy,C: models get it right,Retrieve the first 3 filings with a beneficiary bank country of 'Singapore' and an amount greater than 200000.,"MATCH (f:Filing)
+WHERE f.beneficiary_bank_country = 'Singapore' AND f.amount > 200000
+RETURN f
+LIMIT 3",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 200041.6, ""begin"": ""2014-01-16T00:00:00.000000000+00:00"", ""begin_date"": ""Jan 16, 2014"", ""begin_date_format"": ""2014-01-16T00:00:00Z"", ""beneficiary_bank"": ""Oversea Chinese Banking Corp Ltd"", ""beneficiary_bank_country"": ""Singapore"", ""beneficiary_bank_id"": ""overs",3,unaudited,,,,,
+t079,northwind,medium,C: models get it right,What is the average number of units in stock for products in each category?,"MATCH (p:Product)-[:PART_OF]->(c:Category)
+WITH c.categoryName AS categoryName, avg(p.unitsInStock) AS averageUnitsInStock
+RETURN categoryName, averageUnitsInStock","categoryName, averageUnitsInStock","[{""averageUnitsInStock"": 46.583333333333336, ""categoryName"": ""Beverages""}, {""averageUnitsInStock"": 42.25000000000001, ""categoryName"": ""Condiments""}, {""averageUnitsInStock"": 29.692307692307693, ""categoryName"": ""Confections""}]",8,unaudited,,,,,
+t080,northwind,easy,C: models get it right,Which products are supplied by 'Exotic Liquids'?,"MATCH (s:Supplier {companyName: 'Exotic Liquids'})-[:SUPPLIES]->(p:Product)
+RETURN p.productName AS productName",productName,"[{""productName"": ""Chai""}, {""productName"": ""Chang""}, {""productName"": ""Aniseed Syrup""}]",3,unaudited,,,,,
+t081,movies,medium,C: models get it right,Which 3 directors have directed the most movies released after 2005?,"MATCH (d:Person)-[:DIRECTED]->(m:Movie)
+WHERE m.released > 2005
+WITH d, count(m) AS num_movies
+ORDER BY num_movies DESC
+LIMIT 3
+RETURN d.name AS director, num_movies","director, num_movies","[{""director"": ""Lilly Wachowski"", ""num_movies"": 2}, {""director"": ""Lana Wachowski"", ""num_movies"": 2}, {""director"": ""Ron Howard"", ""num_movies"": 2}]",3,unaudited,,True,,,
+t082,movies,medium,C: models get it right,"What is the average number of votes for movies released in the same year ""Speed Racer"" was released?","MATCH (m:Movie {title: 'Speed Racer'})
+WITH m.released AS releaseYear
+MATCH (m:Movie)
+WHERE m.released = releaseYear
+RETURN avg(m.votes) AS averageVotes",averageVotes,"[{""averageVotes"": 17.0}]",1,unaudited,,,,,
+t084,fincen,medium,C: models get it right,How many filings are there with an originator bank from 'Singapore' and a beneficiary bank from 'United Kingdom'?,"MATCH (f:Filing)
+WHERE f.originator_bank_country = 'Singapore' AND f.beneficiary_bank_country = 'United Kingdom'
+RETURN count(f) AS number_of_filings",number_of_filings,"[{""number_of_filings"": 4}]",1,unaudited,,,,,
+t086,northwind,easy,C: models get it right,"Which products are part of the 'Desserts, candies, and sweet breads' category and have a 'unitsOnOrder' above 5?","MATCH (p:Product)-[:PART_OF]->(c:Category {description: 'Desserts, candies, and sweet breads'})
+WHERE p.unitsOnOrder > 5
+RETURN p.productName, p.unitsOnOrder","p.productName, p.unitsOnOrder","[{""p.productName"": ""Scottish Longbreads"", ""p.unitsOnOrder"": 10}, {""p.productName"": ""Chocolade"", ""p.unitsOnOrder"": 70}, {""p.productName"": ""Maxilaku"", ""p.unitsOnOrder"": 60}]",4,unaudited,,,,,
+t087,movies,medium,C: models get it right,Name 3 people who have the most combined roles across all their ACTED_IN movies.,"MATCH (p:Person)-[a:ACTED_IN]->(m:Movie)
+WITH p, sum(size(a.roles)) AS totalRoles
+ORDER BY totalRoles DESC
+LIMIT 3
+RETURN p.name AS PersonName, totalRoles","PersonName, totalRoles","[{""PersonName"": ""Tom Hanks"", ""totalRoles"": 20}, {""PersonName"": ""Hugo Weaving"", ""totalRoles"": 10}, {""PersonName"": ""Keanu Reeves"", ""totalRoles"": 7}]",3,unaudited,,True,,,
+t089,twitter,medium,C: models get it right,What are the top 5 hashtags in tweets containing the word 'education'?,"MATCH (t:Tweet)-[:TAGS]->(h:Hashtag)
+WHERE t.text CONTAINS 'education'
+RETURN h.name AS hashtag, count(*) AS count
+ORDER BY count DESC
+LIMIT 5","hashtag, count","[{""count"": 2, ""hashtag"": ""education""}, {""count"": 2, ""hashtag"": ""neo4jauraenterprise""}]",2,unaudited,,False,,,
+t093,recommendations,medium,C: models get it right,"What is the average budget for movies in the ""Science Fiction"" genre?","MATCH (m:Movie)-[:IN_GENRE]->(g:Genre {name: 'Science Fiction'})
+RETURN avg(m.budget)",avg(m.budget),"[{""avg(m.budget)"": null}]",1,unaudited,,,,,
+t095,movies,hard,C: models get it right,"""Which director directed the least movies among the movies that the actor who acted in the most movies acted in?""","MATCH (actor:Person)-[:ACTED_IN]->(m:Movie)
+WITH actor, count(m) AS moviesActed
+ORDER BY moviesActed DESC
+LIMIT 1
+MATCH (actor)-[:ACTED_IN]->(m)<-[:DIRECTED]-(director:Person)
+WITH director, count(m) AS moviesDirected
+ORDER BY moviesDirected ASC
+LIMIT 1
+RETURN director.name AS directorName, moviesDirected","directorName, moviesDirected","[{""directorName"": ""Penny Marshall"", ""moviesDirected"": 1}]",1,unaudited,,True,,,
+t097,fincen,hard,C: models get it right,What is the total amount filed by entities in 'China'?,"MATCH (c:Country {name: 'China'})<-[:COUNTRY]-(e:Entity)-[:FILED]->(f:Filing)
+RETURN SUM(f.amount) AS total_amount",total_amount,"[{""total_amount"": 0}]",1,unaudited,,,,,
+t099,movies,medium,C: models get it right,What is the highest rating given to a movie?,"MATCH (:Person)-[review:REVIEWED]->(:Movie)
+WITH max(review.rating) AS highestRating
+RETURN highestRating",highestRating,"[{""highestRating"": 100}]",1,unaudited,,,,,
+t100,fincen,easy,C: models get it right,Identify the top 3 filings where the originator bank and the beneficiary bank are located at the same latitude.,"MATCH (f:Filing)
+WHERE f.origin_lat = f.beneficiary_lat
+RETURN f
+ORDER BY f.amount DESC
+LIMIT 3",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 1082748112.02, ""begin"": ""2007-01-08T00:00:00.000000000+00:00"", ""begin_date"": ""Jan 8, 2007"", ""begin_date_format"": ""2007-01-08T00:00:00Z"", ""beneficiary_bank"": ""Deutsche Bank AG -- London Branch"", ""beneficiary_bank_country"": ""United Kingdom"", ""beneficiary_bank_i",3,unaudited,,,,,
+t103,movies,medium,C: models get it right,"Who has the most movies with a 'Silly, but fun' review summary?","MATCH (p:Person)-[:REVIEWED {summary: 'Silly, but fun'}]->(m:Movie)
+WITH p, count(m) AS movieCount
+ORDER BY movieCount DESC
+LIMIT 1
+RETURN p.name AS personName, movieCount","personName, movieCount","[{""movieCount"": 1, ""personName"": ""Jessica Thompson""}]",1,unaudited,,False,,,
+t104,fincen,hard,C: models get it right,Find the three countries with the most originator banks in the filings.,"MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)-[:COUNTRY]->(c:Country)
+WITH c.name AS country, COUNT(DISTINCT e.id) AS originator_count
+ORDER BY originator_count DESC
+LIMIT 3
+RETURN country, originator_count","country, originator_count","[{""country"": ""Russia"", ""originator_count"": 101}, {""country"": ""United States"", ""originator_count"": 96}, {""country"": ""Switzerland"", ""originator_count"": 68}]",3,unaudited,,False,,,
+t105,twitter,medium,C: models get it right,What is the average number of favorites for tweets that use the hashtag 'education'?,"MATCH (t:Tweet)-[:TAGS]->(h:Hashtag {name: 'education'})
+WITH avg(t.favorites) AS average_favorites
+RETURN average_favorites",average_favorites,"[{""average_favorites"": 1.0}]",1,unaudited,,,,,
+t106,recommendations,medium,C: models get it right,What are the first 3 movies with the most number of associated actors?,"MATCH (m:Movie)<-[:ACTED_IN]-(a:Actor)
+WITH m, COUNT(a) AS actorCount
+ORDER BY actorCount DESC
+LIMIT 3
+RETURN m.title AS movieTitle, actorCount","movieTitle, actorCount","[{""actorCount"": 4, ""movieTitle"": ""Jumanji""}, {""actorCount"": 4, ""movieTitle"": ""Grumpier Old Men""}, {""actorCount"": 4, ""movieTitle"": ""Toy Story""}]",3,unaudited,,True,,,
+t111,fincen,medium,C: models get it right,What are the top 3 countries by the number of filings where they appear as the originator bank country?,"MATCH (f:Filing)
+WHERE f.originator_bank_country IS NOT NULL
+RETURN f.originator_bank_country AS Country, count(f) AS FilingsCount
+ORDER BY FilingsCount DESC
+LIMIT 3","Country, FilingsCount","[{""Country"": ""Latvia"", ""FilingsCount"": 823}, {""Country"": ""Russia"", ""FilingsCount"": 677}, {""Country"": ""United States"", ""FilingsCount"": 254}]",3,unaudited,,False,,,
+t114,recommendations,easy,C: models get it right,Which 5 movies had their entire plot translated into more than one language?,"MATCH (m:Movie)
+WHERE size(m.languages) > 1
+RETURN m.title, m.languages
+LIMIT 5","m.title, m.languages","[{""m.languages"": [""English"", "" French""], ""m.title"": ""Jumanji""}, {""m.languages"": [""English"", "" Spanish""], ""m.title"": ""Heat""}, {""m.languages"": [""English"", "" French""], ""m.title"": ""Sabrina""}]",5,unaudited,,,,,
+t115,recommendations,hard,C: models get it right,What are the top 3 directors who have directed movies with the most diverse set of actors?,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(a:Actor)
+WITH d, count(DISTINCT a) AS numActors
+ORDER BY numActors DESC
+LIMIT 3
+RETURN d.name AS director, numActors","director, numActors","[{""director"": ""Woody Allen"", ""numActors"": 132}, {""director"": ""Alfred Hitchcock"", ""numActors"": 129}, {""director"": ""Steven Spielberg"", ""numActors"": 107}]",3,unaudited,,False,,,
+t116,movies,medium,C: models get it right,Which persons have acted in and directed the same movie?,"MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p)
+RETURN p.name AS personName, m.title AS movieTitle","personName, movieTitle","[{""movieTitle"": ""That Thing You Do"", ""personName"": ""Tom Hanks""}, {""movieTitle"": ""Unforgiven"", ""personName"": ""Clint Eastwood""}, {""movieTitle"": ""Hoffa"", ""personName"": ""Danny DeVito""}]",3,unaudited,,,,,
+t117,fincen,easy,C: models get it right,List the first 3 entities that have been beneficiaries in filings originating from 'United Arab Emirates'.,"MATCH (f:Filing)-[:BENEFITS]->(e:Entity)
+WHERE f.originator_bank_country = 'United Arab Emirates'
+RETURN e.name
+LIMIT 3",e.name,"[{""e.name"": ""Deutsche Bank AG""}, {""e.name"": ""Cibc""}, {""e.name"": ""State Bank of India(Mumbai, India)""}]",3,unaudited,,,,,
+t118,twitter,hard,C: models get it right,"What is the average number of followers for users who have posted tweets containing the hashtag ""education""?","MATCH (t:Tweet)-[:TAGS]->(h:Hashtag {name: 'education'})
+WITH t
+MATCH (u:User)-[:POSTS]->(t)
+RETURN avg(u.followers)",avg(u.followers),"[{""avg(u.followers)"": 34507.0}]",1,unaudited,,,,,
+t120,movies,easy,C: models get it right,List the top 5 movies by number of roles in the 'ACTED_IN' relationship.,"MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person)
+RETURN m.title AS movie, size(r.roles) AS numRoles
+ORDER BY numRoles DESC
+LIMIT 5","movie, numRoles","[{""movie"": ""The Polar Express"", ""numRoles"": 6}, {""movie"": ""Cloud Atlas"", ""numRoles"": 6}, {""movie"": ""Cloud Atlas"", ""numRoles"": 4}]",5,unaudited,,True,,,
+t121,movies,hard,C: models get it right,What is the oldest movie that Keanu Reeves acted in?,"MATCH (p:Person {name: ""Keanu Reeves""})-[:ACTED_IN]->(m:Movie)
+WITH min(m.released) AS oldestMovie
+MATCH (p:Person {name: ""Keanu Reeves""})-[:ACTED_IN]->(m:Movie)
+WHERE m.released = oldestMovie
+RETURN m.title, m.released","m.title, m.released","[{""m.released"": 1995, ""m.title"": ""Johnny Mnemonic""}]",1,unaudited,,,,,
+t123,northwind,medium,C: models get it right,Identify the 3 most common ship addresses for orders.,"MATCH (o:Order)
+WITH o.shipAddress AS address, COUNT(o) AS orderCount
+ORDER BY orderCount DESC
+LIMIT 3
+RETURN address, orderCount","address, orderCount","[{""address"": ""187 Suffolk Ln."", ""orderCount"": 31}, {""address"": ""Kirchgasse 6"", ""orderCount"": 30}, {""address"": ""Taucherstraße 10"", ""orderCount"": 28}]",3,unaudited,,False,,,
+t125,twitter,medium,C: models get it right,Find the first 3 tweets where 'neo4j' is mentioned and the tweet is a retweet.,"MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})
+WHERE EXISTS {   (t)-[:RETWEETS]->(:Tweet) }
+RETURN t
+LIMIT 3",t,"[{""t"": {""_labels"": [""Tweet""], ""created_at"": ""2020-12-06T15:25:43.000000000+00:00"", ""favorites"": 0, ""id"": 1335606350739595264, ""id_str"": ""1335606350739595264"", ""import_method"": ""user"", ""text"": ""RT @StackDevJobs: Software Developer Kubernetes at @neo4j (Malmö, Sweden) https://t.co/2rubfHVIvR #go""}}, {",3,unaudited,,,,,
+t126,movies,medium,C: models get it right,Find all movies where the director is also listed as an actor.,"MATCH (m:Movie)
+MATCH (p:Person)-[:DIRECTED]->(m)
+WHERE (p)-[:ACTED_IN]->(m)
+RETURN DISTINCT m.title",m.title,"[{""m.title"": ""That Thing You Do""}, {""m.title"": ""Unforgiven""}, {""m.title"": ""Hoffa""}]",3,unaudited,,,,,
+t127,fincen,medium,C: models get it right,How many filings have a beneficiary bank in 'United Kingdom' and an amount greater than 200000?,"MATCH (f:Filing)
+WHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 200000
+RETURN count(f) AS number_of_filings",number_of_filings,"[{""number_of_filings"": 79}]",1,unaudited,,,,,
+t128,northwind,medium,C: models get it right,Identify all suppliers from 'Germany' who supply products in the 'Beverages' category.,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WHERE s.country = 'Germany' AND c.categoryName = 'Beverages'
+RETURN s",s,"[{""s"": {""_labels"": [""Supplier""], ""address"": ""Bogenallee 51"", ""city"": ""Frankfurt"", ""companyName"": ""Plutzer Lebensmittelgroßmärkte AG"", ""contactName"": ""Martin Bein"", ""contactTitle"": ""International Marketing Mgr."", ""country"": ""Germany"", ""fax"": ""NULL"", ""homePage"": ""Plutzer (on the World Wide Web)#http:/",1,unaudited,,,,,
+t130,recommendations,medium,C: models get it right,Which 3 movies have the most diverse set of genres associated with them?,"MATCH (m:Movie)-[:IN_GENRE]->(g:Genre)
+WITH m, count(distinct g) as genreCount
+ORDER BY genreCount DESC
+LIMIT 3
+RETURN m.title as movie, genreCount as numberOfGenres","movie, numberOfGenres","[{""movie"": ""Rubber"", ""numberOfGenres"": 10}, {""movie"": ""Wonderful World of the Brothers Grimm, The"", ""numberOfGenres"": 8}, {""movie"": ""Motorama"", ""numberOfGenres"": 8}]",3,unaudited,,True,,,
+t131,twitter,easy,C: models get it right,Who are the top 5 followers of 'Neo4j' based on the number of statuses they have?,"MATCH (u:User)-[:FOLLOWS]->(m:Me {screen_name: 'neo4j'})
+RETURN u.name, u.screen_name, u.statuses
+ORDER BY u.statuses DESC
+LIMIT 5","u.name, u.screen_name, u.statuses","[{""u.name"": ""Tobias Lindaaker"", ""u.screen_name"": ""thobe"", ""u.statuses"": null}, {""u.name"": ""Peter Neubauer"", ""u.screen_name"": ""peterneubauer"", ""u.statuses"": null}, {""u.name"": ""Anders Nawroth"", ""u.screen_name"": ""nawroth"", ""u.statuses"": null}]",5,unaudited,,,,,
+t132,movies,medium,C: models get it right,"""How many movies that are directed by Tom Hanks have \""love\"" in the tagline?""","MATCH (:Person {name: ""Tom Hanks""})-[:DIRECTED]->(m:Movie)
+WHERE m.tagline CONTAINS ""love""
+RETURN COUNT(m) AS MoviesWithLoveInTagline",MoviesWithLoveInTagline,"[{""MoviesWithLoveInTagline"": 0}]",1,unaudited,,,,,
+t134,twitter,hard,C: models get it right,Identify the top 5 hashtags used in tweets that 'Neo4j' has retweeted.,"MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(tweet)-[:RETWEETS]->(retweeted_tweet)-[:TAGS]->(hashtag)
+RETURN hashtag.name AS hashtag, count(*) AS count
+ORDER BY count DESC
+LIMIT 5","hashtag, count","[{""count"": 6, ""hashtag"": ""bbbt""}, {""count"": 4, ""hashtag"": ""graph""}, {""count"": 4, ""hashtag"": ""neo4j""}]",5,unaudited,,True,,,
+t135,fincen,easy,C: models get it right,Which 3 filings involve the highest amounts where the beneficiary bank's country is 'United Kingdom' and the originator bank's country is 'Singapore'?,"MATCH (f:Filing)
+WHERE f.beneficiary_bank_country = 'United Kingdom' AND f.originator_bank_country = 'Singapore'
+RETURN f
+ORDER BY f.amount DESC
+LIMIT 3",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 116238361.25, ""begin"": ""2015-03-30T00:00:00.000000000+00:00"", ""begin_date"": ""Mar 30, 2015"", ""begin_date_format"": ""2015-03-30T00:00:00Z"", ""beneficiary_bank"": ""Barclays Bank Plc"", ""beneficiary_bank_country"": ""United Kingdom"", ""beneficiary_bank_id"": ""barclays-ba",3,unaudited,,,,,
+t136,movies,medium,C: models get it right,Which person has both acted in and directed the same movie?,"MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p)
+RETURN p.name AS person_name, m.title AS movie_title","person_name, movie_title","[{""movie_title"": ""That Thing You Do"", ""person_name"": ""Tom Hanks""}, {""movie_title"": ""Unforgiven"", ""person_name"": ""Clint Eastwood""}, {""movie_title"": ""Hoffa"", ""person_name"": ""Danny DeVito""}]",3,unaudited,,,,,
+t139,northwind,easy,C: models get it right,List the first 3 categories and their descriptions.,"MATCH (c:Category)
+RETURN c.categoryName, c.description
+LIMIT 3","c.categoryName, c.description","[{""c.categoryName"": ""Beverages"", ""c.description"": ""Soft drinks, coffees, teas, beers, and ales""}, {""c.categoryName"": ""Condiments"", ""c.description"": ""Sweet and savory sauces, relishes, spreads, and seasonings""}, {""c.categoryName"": ""Confections"", ""c.description"": ""Desserts, candies, and sweet breads""}",3,unaudited,,,,,
+t141,fincen,easy,C: models get it right,Retrieve the first 3 filings where the originator bank country is 'United Kingdom' and the amount is above 200000.,"MATCH (f:Filing)
+WHERE f.originator_bank_country = 'United Kingdom' AND f.amount > 200000
+RETURN f
+LIMIT 3",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 204420, ""begin"": ""2011-08-24T00:00:00.000000000+00:00"", ""begin_date"": ""Aug 24, 2011"", ""begin_date_format"": ""2011-08-24T00:00:00Z"", ""beneficiary_bank"": ""Rosbank"", ""beneficiary_bank_country"": ""Russia"", ""beneficiary_bank_id"": ""rosbank-moscow-russia-rus"", ""benefi",3,unaudited,,,,,
+t143,twitter,medium,C: models get it right,Find the first 3 users who have mentioned 'neo4j' in tweets and follow 'neo4j'.,"MATCH (u:User)-[:FOLLOWS]->(neo:User {screen_name: 'neo4j'}),       (u)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(neo)
+RETURN u
+LIMIT 3",u,"[{""u"": {""_labels"": [""User""], ""betweenness"": 0.0, ""followers"": 1202, ""following"": 1210, ""location"": ""NYC/DC/ATL"", ""name"": ""C. Moyé, atty@law"", ""profile_image_url"": ""http://pbs.twimg.com/profile_images/1324508079753449473/scn9qbQT_normal.jpg"", ""screen_name"": ""chrismoye_esq""}}, {""u"": {""_labels"": [""User",3,unaudited,,,,,
+t144,movies,easy,C: models get it right,"List all the movies with the summary ""A solid romp"".","MATCH (m:Movie)<-[r:REVIEWED]-()
+WHERE r.summary = ""A solid romp""
+RETURN m.title",m.title,"[{""m.title"": ""The Da Vinci Code""}]",1,SCORING_ARTIFACT,"RETURN m vs RETURN m.title, same movie",,,,
+t146,recommendations,medium,C: models get it right,Which actor has acted in the most movies with a runtime longer than 3 hours?,"MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
+WHERE m.runtime > 180
+WITH a, count(m) AS movieCount
+ORDER BY movieCount DESC
+RETURN a.name AS actorName, movieCount
+LIMIT 1","actorName, movieCount","[{""actorName"": ""Ed Harris"", ""movieCount"": 3}]",1,unaudited,,True,,,
+t147,fincen,easy,C: models get it right,Find the top 3 filings with the earliest begin dates and amounts over 100000.,"MATCH (f:Filing)
+WHERE f.amount > 100000
+RETURN f
+ORDER BY f.begin ASC
+LIMIT 3",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 1114906.08, ""begin"": ""2000-02-08T00:00:00.000000000+00:00"", ""begin_date"": ""Feb 8, 2000"", ""begin_date_format"": ""2000-02-08T00:00:00Z"", ""beneficiary_bank"": ""Banco De Comercio"", ""beneficiary_bank_country"": ""Peru"", ""beneficiary_bank_id"": ""banco-de-comercio-lima-p",3,unaudited,,,,,
+t149,movies,easy,C: models get it right,"""What is the name of the movie containing the word \""Mail\""?""","MATCH (m:Movie)
+WHERE m.title CONTAINS ""Mail""
+RETURN m.title",m.title,"[{""m.title"": ""You've Got Mail""}]",1,unaudited,,,,,
+t151,twitter,hard,C: models get it right,Find the hashtags that are commonly used in tweets that mention 'neo4j'.,"MATCH (tweet:Tweet)-[:MENTIONS]->(:User {screen_name: 'neo4j'}),       (tweet)-[:TAGS]->(hashtag:Hashtag)
+WITH hashtag,       count(DISTINCT tweet) AS tweetCount
+RETURN hashtag.name, tweetCount
+ORDER BY tweetCount DESC","hashtag.name, tweetCount","[{""hashtag.name"": ""bbbt"", ""tweetCount"": 56}, {""hashtag.name"": ""neo4j"", ""tweetCount"": 24}, {""hashtag.name"": ""graph"", ""tweetCount"": 16}]",114,unaudited,,,,,
+t152,fincen,easy,C: models get it right,List the filings where the beneficiary bank country is 'United Kingdom'.,"MATCH (f:Filing)
+WHERE f.beneficiary_bank_country = 'United Kingdom'
+RETURN f",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 56898523.47, ""begin"": ""2015-03-25T00:00:00.000000000+00:00"", ""begin_date"": ""Mar 25, 2015"", ""begin_date_format"": ""2015-03-25T00:00:00Z"", ""beneficiary_bank"": ""Barclays Bank Plc"", ""beneficiary_bank_country"": ""United Kingdom"", ""beneficiary_bank_id"": ""barclays-ban",120,unaudited,,,,,
+t156,recommendations,easy,C: models get it right,Which movies have both high revenue (over 500 million USD) and high imdbRating (above 8.0)?,"MATCH (m:Movie)
+WHERE m.revenue > 500000000 AND m.imdbRating > 8.0
+RETURN m.title AS MovieTitle, m.revenue AS Revenue, m.imdbRating AS IMDbRating","MovieTitle, Revenue, IMDbRating","[{""IMDbRating"": 8.1, ""MovieTitle"": ""Jurassic Park"", ""Revenue"": 920100000}, {""IMDbRating"": 8.1, ""MovieTitle"": ""Sixth Sense, The"", ""Revenue"": 672806292}, {""IMDbRating"": 8.1, ""MovieTitle"": ""Monsters, Inc."", ""Revenue"": 562816256}]",30,unaudited,,,,,
+t157,twitter,medium,C: models get it right,Which users does 'neo4j' amplify the most and list the top 5?,"MATCH (me:Me {screen_name: 'neo4j'})-[:AMPLIFIES]->(user:User)
+RETURN user.screen_name, COUNT(*) AS amplification_count
+ORDER BY amplification_count DESC
+LIMIT 5","user.screen_name, amplification_count","[{""amplification_count"": 1, ""user.screen_name"": ""CSkardon""}, {""amplification_count"": 1, ""user.screen_name"": ""unterstein""}, {""amplification_count"": 1, ""user.screen_name"": ""ikwattro""}]",5,unaudited,,True,,,
+t158,movies,easy,C: models get it right,Which movies released between 2005 and 2010 have the tagline 'Speed has no limits'?,"MATCH (m:Movie)
+WHERE m.released >= 2005 AND m.released <= 2010   AND m.tagline = 'Speed has no limits'
+RETURN m.title",m.title,"[{""m.title"": ""Speed Racer""}]",1,SCORING_ARTIFACT,"RETURN m vs RETURN m.title, same movie",,,,
+t160,northwind,easy,C: models get it right,What is the city of the customer with companyName 'Lonesome Pine Restaurant'?,"MATCH (c:Customer {companyName: 'Lonesome Pine Restaurant'})
+RETURN c.city",c.city,"[{""c.city"": ""Portland""}]",1,unaudited,,,,,
+t161,movies,easy,C: models get it right,List the first 3 people who acted in a movie released in 2012.,"MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+WHERE m.released = 2012
+RETURN p.name
+LIMIT 3",p.name,"[{""p.name"": ""Tom Hanks""}, {""p.name"": ""Jim Broadbent""}, {""p.name"": ""Halle Berry""}]",3,unaudited,,,,,
+t162,recommendations,medium,C: models get it right,Which 3 users have given the highest average rating to movies they've rated?,"MATCH (u:User)-[r:RATED]->(m:Movie)
+WITH u, avg(r.rating) AS avgRating
+ORDER BY avgRating DESC
+LIMIT 3
+RETURN u.name AS userName, avgRating","userName, avgRating","[{""avgRating"": 4.948717948717949, ""userName"": ""Jennifer Allen""}, {""avgRating"": 4.85, ""userName"": ""Lynn Green""}, {""avgRating"": 4.799999999999999, ""userName"": ""Erica Sullivan""}]",3,unaudited,,False,,,
+t163,northwind,medium,C: models get it right,Which 3 suppliers have the highest average unit price across their products?,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)
+WITH s, avg(p.unitPrice) AS avgUnitPrice
+ORDER BY avgUnitPrice DESC
+LIMIT 3
+RETURN s.companyName AS Supplier, avgUnitPrice AS AverageUnitPrice","Supplier, AverageUnitPrice","[{""AverageUnitPrice"": 140.75, ""Supplier"": ""Aux joyeux ecclésiastiques""}, {""AverageUnitPrice"": 46.0, ""Supplier"": ""Tokyo Traders""}, {""AverageUnitPrice"": 44.678000000000004, ""Supplier"": ""Plutzer Lebensmittelgroßmärkte AG""}]",3,unaudited,,False,,,
+t164,fincen,easy,C: models get it right,List the 3 oldest filings based on the begin date.,"MATCH (f:Filing)
+RETURN f
+ORDER BY f.begin
+LIMIT 3",f,"[{""f"": {""_labels"": [""Filing""], ""amount"": 1114906.08, ""begin"": ""2000-02-08T00:00:00.000000000+00:00"", ""begin_date"": ""Feb 8, 2000"", ""begin_date_format"": ""2000-02-08T00:00:00Z"", ""beneficiary_bank"": ""Banco De Comercio"", ""beneficiary_bank_country"": ""Peru"", ""beneficiary_bank_id"": ""banco-de-comercio-lima-p",3,unaudited,,,,,
+t167,northwind,hard,C: models get it right,What are the names of the top 3 suppliers based on the average freight of orders they supplied?,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)
+WITH s, o.freight AS freight
+WHERE freight IS NOT NULL
+WITH s, avg(toFloat(freight)) AS avgFreight
+ORDER BY avgFreight DESC
+LIMIT 3
+RETURN s.companyName AS supplierName, avgFreight","supplierName, avgFreight","[{""avgFreight"": 183.2861111111111, ""supplierName"": ""Aux joyeux ecclésiastiques""}, {""avgFreight"": 149.08828571428572, ""supplierName"": ""Gai pâturage""}, {""avgFreight"": 111.94356164383562, ""supplierName"": ""Pasta Buttini s.r.l.""}]",3,unaudited,,False,,,
+t168,recommendations,medium,C: models get it right,List the top 3 directors by the number of movies directed.,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)
+RETURN d.name AS director, count(m) AS moviesDirected
+ORDER BY moviesDirected DESC
+LIMIT 3","director, moviesDirected","[{""director"": ""Woody Allen"", ""moviesDirected"": 42}, {""director"": ""Alfred Hitchcock"", ""moviesDirected"": 38}, {""director"": ""Clint Eastwood"", ""moviesDirected"": 30}]",3,unaudited,,True,,,
+t169,northwind,easy,C: models get it right,Find the `productName` and `categoryID` of the product with the highest `unitsOnOrder` that is not discontinued.,"MATCH (p:Product)
+WHERE p.discontinued = false
+WITH p
+ORDER BY p.unitsOnOrder DESC
+LIMIT 1
+RETURN p.productName, p.categoryID","p.productName, p.categoryID","[{""p.categoryID"": ""2"", ""p.productName"": ""Louisiana Hot Spiced Okra""}]",1,unaudited,,,,,
+t170,recommendations,medium,C: models get it right,List the top 5 directors by number of movies directed in the 1990s.,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)
+WHERE m.year >= 1990 AND m.year < 2000
+WITH d, count(m) AS moviesDirected
+ORDER BY moviesDirected DESC
+LIMIT 5
+RETURN d.name, moviesDirected","d.name, moviesDirected","[{""d.name"": ""Woody Allen"", ""moviesDirected"": 10}, {""d.name"": ""Spike Lee"", ""moviesDirected"": 10}, {""d.name"": ""Joel Schumacher"", ""moviesDirected"": 9}]",5,unaudited,,True,,,
+t173,northwind,medium,C: models get it right,Which 3 suppliers provide products in the 'Dairy Products' category?,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category {categoryName: 'Dairy Products'})
+RETURN DISTINCT s.companyName
+LIMIT 3",s.companyName,"[{""s.companyName"": ""Norske Meierier""}, {""s.companyName"": ""Gai pâturage""}, {""s.companyName"": ""Formaggi Fortini s.r.l.""}]",3,unaudited,,,,,
+t175,twitter,hard,C: models get it right,What are the top 3 hashtags used in the tweets that have been retweeted by 'Neo4j'?,"MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(tweet:Tweet)-[:RETWEETS]->(retweetedTweet:Tweet)-[:TAGS]->(hashtag:Hashtag)
+WITH hashtag, COUNT(*) as usageCount
+ORDER BY usageCount DESC
+LIMIT 3
+RETURN hashtag.name AS hashtag, usageCount","hashtag, usageCount","[{""hashtag"": ""bbbt"", ""usageCount"": 6}, {""hashtag"": ""graph"", ""usageCount"": 4}, {""hashtag"": ""neo4j"", ""usageCount"": 4}]",3,unaudited,,False,,,
+t176,northwind,hard,C: models get it right,What are the supplierIDs for suppliers who have provided products to more than three different cities?,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)
+WITH s.supplierID AS supplierID, COUNT(DISTINCT o.shipCity) AS cityCount
+WHERE cityCount > 3
+RETURN supplierID",supplierID,"[{""supplierID"": ""1""}, {""supplierID"": ""2""}, {""supplierID"": ""3""}]",29,unaudited,,,,,
+t178,fincen,medium,C: models get it right,How many filings have a `begin_date` in the month of June?,"MATCH (f:Filing)
+WHERE f.begin_date CONTAINS ""Jun""
+RETURN count(f)",count(f),"[{""count(f)"": 332}]",1,unaudited,,,,,
+t179,fincen,hard,C: models get it right,What is the country code of the entity that originated the filing with the lowest amount?,"MATCH (filing:Filing)
+WITH min(filing.amount) AS lowestAmount
+MATCH (filing:Filing)
+WHERE filing.amount = lowestAmount
+MATCH (filing)-[:ORIGINATOR]->(entity:Entity)
+MATCH (entity)-[:COUNTRY]->(country:Country)
+RETURN country.code",country.code,"[{""country.code"": ""LVA""}]",1,unaudited,,,,,
+t180,northwind,easy,C: models get it right,Which 3 categories contain products with no units on order?,"MATCH (p:Product)-[:PART_OF]->(c:Category)
+WHERE p.unitsOnOrder = 0
+RETURN DISTINCT c.categoryName
+LIMIT 3",c.categoryName,"[{""c.categoryName"": ""Beverages""}, {""c.categoryName"": ""Condiments""}, {""c.categoryName"": ""Produce""}]",3,unaudited,,,,,
+t182,recommendations,hard,C: models get it right,List the top 3 directors who have worked with the most number of actors.,"MATCH (d:Director)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(a:Actor)
+WITH d, count(DISTINCT a) AS actors_count
+ORDER BY actors_count DESC
+RETURN d.name, actors_count
+LIMIT 3","d.name, actors_count","[{""actors_count"": 132, ""d.name"": ""Woody Allen""}, {""actors_count"": 129, ""d.name"": ""Alfred Hitchcock""}, {""actors_count"": 107, ""d.name"": ""Steven Spielberg""}]",3,unaudited,,False,,,
+t183,recommendations,medium,C: models get it right,Which actor has acted in the most movies?,"MATCH (actor:Actor)-[:ACTED_IN]->(movie:Movie)
+WITH actor, count(movie) AS movieCount
+ORDER BY movieCount DESC
+RETURN actor.name, movieCount
+LIMIT 1","actor.name, movieCount","[{""actor.name"": ""Robert De Niro"", ""movieCount"": 56}]",1,unaudited,,False,,,
+t187,fincen,hard,C: models get it right,Which 5 countries have the most filings as beneficiaries in the first half of any year?,"MATCH (f:Filing)-[:BENEFITS]->(e:Entity)-[:COUNTRY]->(c:Country)
+WHERE f.begin_date_format =~ '.*-01-.*' OR f.begin_date_format =~ '.*-02-.*' OR f.begin_date_format =~ '.*-03-.*' OR f.begin_date_format =~ '.*-04-.*' OR f.begin_date_format =~ '.*-05-.*' OR f.begin_date_format =~ '.*-06-.*'
+RETURN c.name AS country, COUNT(f) AS filings_count
+ORDER BY filings_count DESC
+LIMIT 5","country, filings_count","[{""country"": ""Russia"", ""filings_count"": 230}, {""country"": ""Latvia"", ""filings_count"": 225}, {""country"": ""Switzerland"", ""filings_count"": 195}]",5,unaudited,,False,,,
+t188,movies,medium,C: models get it right,Which person has directed movies with a rating higher than 95?,"MATCH (p:Person)-[:DIRECTED]->(m:Movie)<-[r:REVIEWED]-()
+WHERE r.rating > 95
+RETURN DISTINCT p.name",p.name,"[{""p.name"": ""Howard Deutch""}]",1,unaudited,,,,,
+t190,movies,medium,C: models get it right,Which movies have more than 3 actors listed?,"MATCH (m:Movie)<-[:ACTED_IN]-(p:Person)
+WITH m, count(p) AS actorCount
+WHERE actorCount > 3
+RETURN m.title AS MovieTitle, actorCount","MovieTitle, actorCount","[{""MovieTitle"": ""The Matrix"", ""actorCount"": 5}, {""MovieTitle"": ""The Matrix Reloaded"", ""actorCount"": 4}, {""MovieTitle"": ""The Matrix Revolutions"", ""actorCount"": 4}]",27,unaudited,,,,,
+t191,northwind,hard,C: models get it right,What are the names of the top 3 categories based on the number of suppliers providing products to them?,"MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WITH c.categoryName AS categoryName, COUNT(DISTINCT s.supplierID) AS supplierCount
+ORDER BY supplierCount DESC
+LIMIT 3
+RETURN categoryName, supplierCount","categoryName, supplierCount","[{""categoryName"": ""Condiments"", ""supplierCount"": 8}, {""categoryName"": ""Beverages"", ""supplierCount"": 8}, {""categoryName"": ""Seafood"", ""supplierCount"": 8}]",3,unaudited,,False,,,
+t192,fincen,easy,C: models get it right,List the first 3 entities that are concerned in filings with an amount greater than 1000000.,"MATCH (f:Filing)-[:CONCERNS]->(e:Entity)
+WHERE f.amount > 1000000
+RETURN e
+LIMIT 3",e,"[{""e"": {""_labels"": [""Entity""], ""country"": ""BGR"", ""id"": ""piraeus-bank-sofia-bulgaria-bgr"", ""location"": [25.0, 43.0], ""name"": ""Piraeus Bank""}}, {""e"": {""_labels"": [""Entity""], ""country"": ""RUS"", ""id"": ""sberbank-of-russia-moscow-russia-rus"", ""location"": [100.0, 60.0], ""name"": ""Sberbank of Russia""}}, {""e"":",3,SCORING_ARTIFACT,"RETURN e vs RETURN e.name, same 3 entities",,,,
+t193,northwind,easy,C: models get it right,Which products are supplied by suppliers from the UK?,"MATCH (s:Supplier {country: 'UK'})-[:SUPPLIES]->(p:Product)
+RETURN p.productName AS productName",productName,"[{""productName"": ""Chai""}, {""productName"": ""Chang""}, {""productName"": ""Aniseed Syrup""}]",3,unaudited,,,,,
+t195,northwind,medium,C: models get it right,What are the top 5 categories by total unitsInStock?,"MATCH (p:Product)-[:PART_OF]->(c:Category)
+WITH c.categoryName AS category, SUM(p.unitsInStock) AS totalUnitsInStock
+ORDER BY totalUnitsInStock DESC
+LIMIT 5
+RETURN category, totalUnitsInStock","category, totalUnitsInStock","[{""category"": ""Seafood"", ""totalUnitsInStock"": 701}, {""category"": ""Beverages"", ""totalUnitsInStock"": 559}, {""category"": ""Condiments"", ""totalUnitsInStock"": 507}]",5,unaudited,,False,,,
+t196,recommendations,medium,C: models get it right,What are the top 5 most recent movies in the database and their genres?,"MATCH (m:Movie)-[:IN_GENRE]->(g:Genre)
+RETURN m.title AS movieTitle, m.released AS releaseDate, collect(g.name) AS genres
+ORDER BY m.released DESC
+LIMIT 5","movieTitle, releaseDate, genres","[{""genres"": [""Adventure"", ""Action"", ""Horror"", ""Sci-Fi""], ""movieTitle"": ""Sharknado 4: The 4th Awakens"", ""releaseDate"": null}, {""genres"": [""Adventure"", ""Comedy"", ""Fantasy"", ""Musical""], ""movieTitle"": ""Into the Woods"", ""releaseDate"": null}, {""genres"": [""Adventure"", ""Drama"", ""Sci-Fi""], ""movieTitle"": ""Day",5,unaudited,,,,,

@@ -1,0 +1,70 @@
+Node properties:
+- **Movie**
+  - `url`: STRING Example: "https://themoviedb.org/movie/862"
+  - `runtime`: INTEGER Min: 2, Max: 910
+  - `revenue`: INTEGER Min: 1, Max: 2787965087
+  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6
+  - `released`: STRING Example: "1995-11-22"
+  - `countries`: LIST Min Size: 1, Max Size: 16
+  - `languages`: LIST Min Size: 1, Max Size: 19
+  - `plot`: STRING Example: "A cowboy doll is profoundly threatened and jealous"
+  - `imdbVotes`: INTEGER Min: 13, Max: 1626900
+  - `imdbId`: STRING Example: "0114709"
+  - `year`: INTEGER Min: 1902, Max: 2016
+  - `poster`: STRING Example: "https://image.tmdb.org/t/p/w440_and_h660_face/uXDf"
+  - `movieId`: STRING Example: "1"
+  - `tmdbId`: STRING Example: "862"
+  - `title`: STRING Example: "Toy Story"
+  - `budget`: INTEGER Min: 1, Max: 380000000
+- **Genre**
+  - `name`: STRING Example: "Adventure"
+- **User**
+  - `userId`: STRING Example: "1"
+  - `name`: STRING Example: "Omar Huffman"
+- **Actor**
+  - `url`: STRING Example: "https://themoviedb.org/person/1271225"
+  - `name`: STRING Example: "François Lallement"
+  - `tmdbId`: STRING Example: "1271225"
+  - `bornIn`: STRING Example: "France"
+  - `bio`: STRING Example: "​From Wikipedia, the free encyclopedia  Lillian Di"
+  - `died`: DATE Example: "1954-01-01"
+  - `born`: DATE Example: "1877-02-04"
+  - `imdbId`: STRING Example: "2083046"
+  - `poster`: STRING Example: "https://image.tmdb.org/t/p/w440_and_h660_face/6DCW"
+- **Director**
+  - `url`: STRING Example: "https://themoviedb.org/person/88953"
+  - `bornIn`: STRING Example: "Burchard, Nebraska, USA"
+  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01
+  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29
+  - `tmdbId`: STRING Example: "88953"
+  - `imdbId`: STRING Example: "0516001"
+  - `name`: STRING Example: "Harold Lloyd"
+  - `poster`: STRING Example: "https://image.tmdb.org/t/p/w440_and_h660_face/er4Z"
+  - `bio`: STRING Example: "Harold Lloyd has been called the cinema’s “first m"
+- **Person**
+  - `url`: STRING Example: "https://themoviedb.org/person/1271225"
+  - `died`: DATE Example: "1954-01-01"
+  - `bornIn`: STRING Example: "France"
+  - `born`: DATE Example: "1877-02-04"
+  - `imdbId`: STRING Example: "2083046"
+  - `name`: STRING Example: "François Lallement"
+  - `poster`: STRING Example: "https://image.tmdb.org/t/p/w440_and_h660_face/6DCW"
+  - `tmdbId`: STRING Example: "1271225"
+  - `bio`: STRING Example: "​From Wikipedia, the free encyclopedia  Lillian Di"
+Relationship properties:
+- **RATED**
+  - `rating: FLOAT` Example: "2.0"
+  - `timestamp: INTEGER` Example: "1260759108"
+- **ACTED_IN**
+  - `role: STRING` Example: "Officer of the Marines (uncredited)"
+- **DIRECTED**
+  - `role: STRING` 
+The relationships:
+(:Movie)-[:IN_GENRE]->(:Genre)
+(:User)-[:RATED]->(:Movie)
+(:Actor)-[:ACTED_IN]->(:Movie)
+(:Actor)-[:DIRECTED]->(:Movie)
+(:Director)-[:DIRECTED]->(:Movie)
+(:Director)-[:ACTED_IN]->(:Movie)
+(:Person)-[:ACTED_IN]->(:Movie)
+(:Person)-[:DIRECTED]->(:Movie)

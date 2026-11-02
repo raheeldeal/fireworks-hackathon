@@ -1,0 +1,44 @@
+Node properties:
+- **Country**
+  - `location`: POINT 
+  - `code`: STRING Example: "AFG"
+  - `name`: STRING Example: "Afghanistan"
+  - `tld`: STRING Example: "AF"
+- **Filing**
+  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z
+  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z
+  - `originator_bank_id`: STRING Example: "cimb-bank-berhad"
+  - `sar_id`: STRING Example: "3297"
+  - `beneficiary_bank`: STRING Example: "Barclays Bank Plc"
+  - `filer_org_name_id`: STRING Example: "the-bank-of-new-york-mellon-corp"
+  - `originator_bank_country`: STRING Example: "Singapore"
+  - `beneficiary_bank_country`: STRING Example: "United Kingdom"
+  - `filer_org_name`: STRING Example: "The Bank of New York Mellon Corp."
+  - `originator_iso`: STRING Example: "SGP"
+  - `beneficiary_bank_id`: STRING Example: "barclays-bank-plc-london-england-gbr"
+  - `origin_lat`: STRING Example: "1.3667"
+  - `origin_lng`: STRING Example: "103.8"
+  - `end_date_format`: STRING Example: "2015-09-25T00:00:00Z"
+  - `begin_date_format`: STRING Example: "2015-03-25T00:00:00Z"
+  - `originator_bank`: STRING Example: "CIMB Bank Berhad"
+  - `beneficiary_lat`: STRING Example: "54"
+  - `beneficiary_iso`: STRING Example: "GBR"
+  - `beneficiary_lng`: STRING Example: "-2"
+  - `begin_date`: STRING Example: "Mar 25, 2015"
+  - `id`: STRING Example: "223254"
+  - `end_date`: STRING Example: "Sep 25, 2015"
+  - `amount`: INTEGER Min: 1.18, Max: 2721000000
+  - `number`: INTEGER Min: 1, Max: 174
+- **Entity**
+  - `id`: STRING Example: "the-bank-of-new-york-mellon-corp"
+  - `location`: POINT 
+  - `name`: STRING Example: "The Bank of New York Mellon Corp."
+  - `country`: STRING Example: "CHN"
+Relationship properties:
+
+The relationships:
+(:Filing)-[:BENEFITS]->(:Entity)
+(:Filing)-[:CONCERNS]->(:Entity)
+(:Filing)-[:ORIGINATOR]->(:Entity)
+(:Entity)-[:FILED]->(:Filing)
+(:Entity)-[:COUNTRY]->(:Country)

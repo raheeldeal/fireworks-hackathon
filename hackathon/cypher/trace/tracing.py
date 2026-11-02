@@ -139,7 +139,7 @@ class Handle:
 
     # ---- data
     def update(self, input=None, output=None, metadata=None, usage=None, cost=None,
-               model=None, level=None, tags=None, error=None, **extra):
+               model=None, level=None, tags=None, error=None, session_id=None, **extra):
         n = self.node
         if n is not None:
             if input is not None:
@@ -182,16 +182,17 @@ class Handle:
             try:
                 if kw:
                     self.lf.update(**kw)
-                if tags or (self.is_root and (input is not None or output is not None)):
-                    tkw = {}
-                    if tags:
-                        tkw["tags"] = list(tags)
-                    if self.is_root and input is not None:
-                        tkw["input"] = input
-                    if self.is_root and output is not None:
-                        tkw["output"] = output
-                    if tkw:
-                        self.lf.update_trace(**tkw)
+                tkw = {}
+                if tags:
+                    tkw["tags"] = list(tags)
+                if session_id:
+                    tkw["session_id"] = session_id
+                if self.is_root and input is not None:
+                    tkw["input"] = input
+                if self.is_root and output is not None:
+                    tkw["output"] = output
+                if tkw:
+                    self.lf.update_trace(**tkw)
             except Exception as e:  # noqa: BLE001  never let tracing break the run
                 print(f"[tracing] update failed on {self.node.name if self.node else '?'}: {e!r}")
         return self

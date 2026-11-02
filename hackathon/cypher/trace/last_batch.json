@@ -1,0 +1,1730 @@
+[
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.844,
+  "input": {
+   "question": "\"How many movies that are directed by Tom Hanks have \\\"love\\\" in the tagline?\"",
+   "graph": "movies",
+   "config": "prune_repair1",
+   "tier": "medium"
+  },
+  "output": {
+   "cypher": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m)",
+   "status": "rows",
+   "row_count": 1,
+   "rows": [
+    {
+     "count(m)": 0
+    }
+   ],
+   "columns": [
+    "count(m)"
+   ],
+   "error": null,
+   "correct": true,
+   "correct_lenient": true,
+   "gold_cypher": "MATCH (:Person {name: \"Tom Hanks\"})-[:DIRECTED]->(m:Movie)\\nWHERE m.tagline CONTAINS \"love\"\\nRETURN COUNT(m) AS MoviesWithLoveInTagline"
+  },
+  "meta": {
+   "graph": "movies",
+   "tier": "medium",
+   "config": "prune_repair1",
+   "row_id": "t132",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 189,
+   "out_tokens": 41,
+   "cost_usd": 4.8849999999999995e-05,
+   "latency_s": 1.844,
+   "model_calls": 1,
+   "usage": {
+    "input": 189,
+    "output": 41
+   },
+   "scores": {
+    "correct": 1,
+    "correct_lenient": 1,
+    "latency_s": 1.844,
+    "cost_usd": 4.9e-05
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.843,
+    "input": {
+     "question": "\"How many movies that are directed by Tom Hanks have \\\"love\\\" in the tagline?\"",
+     "graph": "movies"
+    },
+    "output": {
+     "cypher": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m)",
+     "status": "rows",
+     "row_count": 1,
+     "rows_head": [
+      {
+       "count(m)": 0
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": true,
+     "in_tokens": 189,
+     "out_tokens": 41,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 189,
+      "output": 41
+     },
+     "cost_usd": 4.8849999999999995e-05
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "question": "\"How many movies that are directed by Tom Hanks have \\\"love\\\" in the tagline?\""
+      },
+      "output": {
+       "applied": true,
+       "chars_after": 427,
+       "schema": "Node properties:\nMovie {title: STRING, votes: INTEGER, tagline: STRING, released: INTEGER}\nPerson {born: INTEGER, name: STRING}\nRelationship properties:\nACTED_IN {roles: LIST}\nREVIEWED {summary: STRING, rating: INTEGER}\nThe relationships:\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n(:Person)-[:PRODUCED]->(:Movie)\n(:Person)-[:WROTE]->(:Movie)\n(:Person)-[:FOLLOWS]->(:Person)\n(:Person)-[:REVIEWED]->(:Movie)"
+      },
+      "meta": {
+       "chars_before": 427,
+       "note": "pruned 427 -> 427 chars"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.605,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\nMovie {title: STRING, votes: INTEGER, tagline: STRING, released: INTEGER}\nPerson {born: INTEGER, name: STRING}\nRelationship properties:\nACTED_IN {roles: LIST}\nREVIEWED {summary: STRING, rating: INTEGER}\nThe relationships:\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n(:Person)-[:PRODUCED]->(:Movie)\n(:Person)-[:WROTE]->(:Movie)\n(:Person)-[:FOLLOWS]->(:Person)\n(:Person)-[:REVIEWED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "\"How many movies that are directed by Tom Hanks have \\\"love\\\" in the tagline?\""
+       }
+      ],
+      "output": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m)",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.605,
+       "note": "glm-5p3-flash: 189 prompt + 41 completion tokens, $0.00005, 0.6s",
+       "usage": {
+        "input": 189,
+        "output": 41,
+        "total": 230
+       },
+       "cost_usd": 4.8849999999999995e-05
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m)"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 1.238,
+      "input": {
+       "graph": "movies",
+       "cypher": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m)"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 1,
+       "columns": [
+        "count(m)"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "count(m)": 0
+        }
+       ]
+      },
+      "meta": {
+       "graph": "movies",
+       "latency_s": 1.238,
+       "note": "rows: 1 row(s) in 1.238s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.844,
+  "input": {
+   "question": "\"What is the name of the movie containing the word \\\"Mail\\\"?\"",
+   "graph": "movies",
+   "config": "prune_repair1",
+   "tier": "easy"
+  },
+  "output": {
+   "cypher": "MATCH (m:Movie) WHERE m.title CONTAINS 'Mail' RETURN m.title",
+   "status": "rows",
+   "row_count": 1,
+   "rows": [
+    {
+     "m.title": "You've Got Mail"
+    }
+   ],
+   "columns": [
+    "m.title"
+   ],
+   "error": null,
+   "correct": true,
+   "correct_lenient": true,
+   "gold_cypher": "MATCH (m:Movie)\\nWHERE m.title CONTAINS \"Mail\"\\nRETURN m.title"
+  },
+  "meta": {
+   "graph": "movies",
+   "tier": "easy",
+   "config": "prune_repair1",
+   "row_id": "t149",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 184,
+   "out_tokens": 19,
+   "cost_usd": 3.7099999999999994e-05,
+   "latency_s": 1.844,
+   "model_calls": 1,
+   "usage": {
+    "input": 184,
+    "output": 19
+   },
+   "scores": {
+    "correct": 1,
+    "correct_lenient": 1,
+    "latency_s": 1.844,
+    "cost_usd": 3.7e-05
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.844,
+    "input": {
+     "question": "\"What is the name of the movie containing the word \\\"Mail\\\"?\"",
+     "graph": "movies"
+    },
+    "output": {
+     "cypher": "MATCH (m:Movie) WHERE m.title CONTAINS 'Mail' RETURN m.title",
+     "status": "rows",
+     "row_count": 1,
+     "rows_head": [
+      {
+       "m.title": "You've Got Mail"
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": false,
+     "in_tokens": 184,
+     "out_tokens": 19,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 184,
+      "output": 19
+     },
+     "cost_usd": 3.7099999999999994e-05
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "question": "\"What is the name of the movie containing the word \\\"Mail\\\"?\""
+      },
+      "output": {
+       "applied": false,
+       "chars_after": 427,
+       "schema": "Node properties:\nMovie {title: STRING, votes: INTEGER, tagline: STRING, released: INTEGER}\nPerson {born: INTEGER, name: STRING}\nRelationship properties:\nACTED_IN {roles: LIST}\nREVIEWED {summary: STRING, rating: INTEGER}\nThe relationships:\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n(:Person)-[:PRODUCED]->(:Movie)\n(:Person)-[:WROTE]->(:Movie)\n(:Person)-[:FOLLOWS]->(:Person)\n(:Person)-[:REVIEWED]->(:Movie)"
+      },
+      "meta": {
+       "chars_before": 427,
+       "note": "kept the full schema (too little survived)"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.529,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\nMovie {title: STRING, votes: INTEGER, tagline: STRING, released: INTEGER}\nPerson {born: INTEGER, name: STRING}\nRelationship properties:\nACTED_IN {roles: LIST}\nREVIEWED {summary: STRING, rating: INTEGER}\nThe relationships:\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n(:Person)-[:PRODUCED]->(:Movie)\n(:Person)-[:WROTE]->(:Movie)\n(:Person)-[:FOLLOWS]->(:Person)\n(:Person)-[:REVIEWED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "\"What is the name of the movie containing the word \\\"Mail\\\"?\""
+       }
+      ],
+      "output": "MATCH (m:Movie) WHERE m.title CONTAINS 'Mail' RETURN m.title",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.529,
+       "note": "glm-5p3-flash: 184 prompt + 19 completion tokens, $0.00004, 0.5s",
+       "usage": {
+        "input": 184,
+        "output": 19,
+        "total": 203
+       },
+       "cost_usd": 3.7099999999999994e-05
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.002,
+      "input": {
+       "cypher": "MATCH (m:Movie) WHERE m.title CONTAINS 'Mail' RETURN m.title"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 1.312,
+      "input": {
+       "graph": "movies",
+       "cypher": "MATCH (m:Movie) WHERE m.title CONTAINS 'Mail' RETURN m.title"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 1,
+       "columns": [
+        "m.title"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "m.title": "You've Got Mail"
+        }
+       ]
+      },
+      "meta": {
+       "graph": "movies",
+       "latency_s": 1.312,
+       "note": "rows: 1 row(s) in 1.312s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.846,
+  "input": {
+   "question": "List the distinct 'originator_bank_id' values for filings where the 'beneficiary_bank_id' is \"azizi-bank-kabul-afghanistan-afg\".",
+   "graph": "fincen",
+   "config": "prune_repair1",
+   "tier": "easy"
+  },
+  "output": {
+   "cypher": "MATCH (f:Filing {beneficiary_bank_id: \"azizi-bank-kabul-afghanistan-afg\"}) RETURN DISTINCT f.originator_bank_id",
+   "status": "rows",
+   "row_count": 1,
+   "rows": [
+    {
+     "f.originator_bank_id": "deutsche-bank-ag"
+    }
+   ],
+   "columns": [
+    "f.originator_bank_id"
+   ],
+   "error": null,
+   "correct": true,
+   "correct_lenient": true,
+   "gold_cypher": "MATCH (f:Filing)\\nWHERE f.beneficiary_bank_id = \"azizi-bank-kabul-afghanistan-afg\"\\nRETURN DISTINCT f.originator_bank_id"
+  },
+  "meta": {
+   "graph": "fincen",
+   "tier": "easy",
+   "config": "prune_repair1",
+   "row_id": "t021",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 680,
+   "out_tokens": 36,
+   "cost_usd": 0.00012,
+   "latency_s": 1.846,
+   "model_calls": 1,
+   "usage": {
+    "input": 680,
+    "output": 36
+   },
+   "scores": {
+    "correct": 1,
+    "correct_lenient": 1,
+    "latency_s": 1.846,
+    "cost_usd": 0.00012
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.846,
+    "input": {
+     "question": "List the distinct 'originator_bank_id' values for filings where the 'beneficiary_bank_id' is \"azizi-bank-kabul-afghanistan-afg\".",
+     "graph": "fincen"
+    },
+    "output": {
+     "cypher": "MATCH (f:Filing {beneficiary_bank_id: \"azizi-bank-kabul-afghanistan-afg\"}) RETURN DISTINCT f.originator_bank_id",
+     "status": "rows",
+     "row_count": 1,
+     "rows_head": [
+      {
+       "f.originator_bank_id": "deutsche-bank-ag"
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": true,
+     "in_tokens": 680,
+     "out_tokens": 36,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 680,
+      "output": 36
+     },
+     "cost_usd": 0.00012
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.001,
+      "input": {
+       "question": "List the distinct 'originator_bank_id' values for filings where the 'beneficiary_bank_id' is \"azizi-bank-kabul-afghanistan-afg\"."
+      },
+      "output": {
+       "applied": true,
+       "chars_after": 1732,
+       "schema": "Node properties:\n- **Filing**\n  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z\n  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z\n  - `originator_bank_id`: STRING Example: \"cimb-bank-berhad\"\n  - `sar_id`: STRING Example: \"3297\"\n  - `beneficiary_bank`: STRING Example: \"Barclays Bank Plc\"\n  - `filer_org_name_id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `originator_bank_country`: STRING Example: \"Singapore\"\n  - `beneficiary_bank_country`: STRING Example: \"United Kingdom\"\n  - `filer_org_name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `originator_iso`: STRING Example: \"SGP\"\n  - `beneficiary_bank_id`: STRING Example: \"barclays-bank-plc-london-england-gbr\"\n  - `origin_lat`: STRING Example: \"1.3667\"\n  - `origin_lng`: STRING Example: \"103.8\"\n  - `end_date_format`: STRING Example: \"2015-09-25T00:00:00Z\"\n  - `begin_date_format`: STRING Example: \"2015-03-25T00:00:00Z\"\n  - `originator_bank`: STRING Example: \"CIMB Bank Berhad\"\n  - `beneficiary_lat`: STRING Example: \"54\"\n  - `beneficiary_iso`: STRING Example: \"GBR\"\n  - `beneficiary_lng`: STRING Example: \"-2\"\n  - `begin_date`: STRING Example: \"Mar 25, 2015\"\n  - `id`: STRING Example: \"223254\"\n  - `end_date`: STRING Example: \"Sep 25, 2015\"\n  - `amount`: INTEGER Min: 1.18, Max: 2721000000\n  - `number`: INTEGER Min: 1, Max: 174\n- **Entity**\n  - `id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `location`: POINT \n  - `name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `country`: STRING Example: \"CHN\"\nRelationship properties:\n\nThe relationships:\n(:Filing)-[:BENEFITS]->(:Entity)\n(:Filing)-[:CONCERNS]->(:Entity)\n(:Filing)-[:ORIGINATOR]->(:Entity)\n(:Entity)-[:FILED]->(:Filing)"
+      },
+      "meta": {
+       "chars_before": 1910,
+       "note": "pruned 1910 -> 1732 chars"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.661,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Filing**\n  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z\n  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z\n  - `originator_bank_id`: STRING Example: \"cimb-bank-berhad\"\n  - `sar_id`: STRING Example: \"3297\"\n  - `beneficiary_bank`: STRING Example: \"Barclays Bank Plc\"\n  - `filer_org_name_id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `originator_bank_country`: STRING Example: \"Singapore\"\n  - `beneficiary_bank_country`: STRING Example: \"United Kingdom\"\n  - `filer_org_name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `originator_iso`: STRING Example: \"SGP\"\n  - `beneficiary_bank_id`: STRING Example: \"barclays-bank-plc-london-england-gbr\"\n  - `origin_lat`: STRING Example: \"1.3667\"\n  - `origin_lng`: STRING Example: \"103.8\"\n  - `end_date_format`: STRING Example: \"2015-09-25T00:00:00Z\"\n  - `begin_date_format`: STRING Example: \"2015-03-25T00:00:00Z\"\n  - `originator_bank`: STRING Example: \"CIMB Bank Berhad\"\n  - `beneficiary_lat`: STRING Example: \"54\"\n  - `beneficiary_iso`: STRING Example: \"GBR\"\n  - `beneficiary_lng`: STRING Example: \"-2\"\n  - `begin_date`: STRING Example: \"Mar 25, 2015\"\n  - `id`: STRING Example: \"223254\"\n  - `end_date`: STRING Example: \"Sep 25, 2015\"\n  - `amount`: INTEGER Min: 1.18, Max: 2721000000\n  - `number`: INTEGER Min: 1, Max: 174\n- **Entity**\n  - `id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `location`: POINT \n  - `name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `country`: STRING Example: \"CHN\"\nRelationship properties:\n\nThe relationships:\n(:Filing)-[:BENEFITS]->(:Entity)\n(:Filing)-[:CONCERNS]->(:Entity)\n(:Filing)-[:ORIGINATOR]->(:Entity)\n(:Entity)-[:FILED]->(:Filing)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "List the distinct 'originator_bank_id' values for filings where the 'beneficiary_bank_id' is \"azizi-bank-kabul-afghanistan-afg\"."
+       }
+      ],
+      "output": "MATCH (f:Filing {beneficiary_bank_id: \"azizi-bank-kabul-afghanistan-afg\"}) RETURN DISTINCT f.originator_bank_id",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.661,
+       "note": "glm-5p3-flash: 680 prompt + 36 completion tokens, $0.00012, 0.7s",
+       "usage": {
+        "input": 680,
+        "output": 36,
+        "total": 716
+       },
+       "cost_usd": 0.00012
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (f:Filing {beneficiary_bank_id: \"azizi-bank-kabul-afghanistan-afg\"}) RETURN DISTINCT f.originator_bank_id"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 1.184,
+      "input": {
+       "graph": "fincen",
+       "cypher": "MATCH (f:Filing {beneficiary_bank_id: \"azizi-bank-kabul-afghanistan-afg\"}) RETURN DISTINCT f.originator_bank_id"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 1,
+       "columns": [
+        "f.originator_bank_id"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "f.originator_bank_id": "deutsche-bank-ag"
+        }
+       ]
+      },
+      "meta": {
+       "graph": "fincen",
+       "latency_s": 1.184,
+       "note": "rows: 1 row(s) in 1.184s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.854,
+  "input": {
+   "question": "Find the filings where the originator bank and beneficiary bank are the same entity.",
+   "graph": "fincen",
+   "config": "prune_repair1",
+   "tier": "medium"
+  },
+  "output": {
+   "cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity), (f)-[:BENEFITS]->(b:Entity)\nWHERE o = b\nRETURN f",
+   "status": "rows",
+   "row_count": 1,
+   "rows": [
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Nov 26, 2010",
+      "amount": 665000,
+      "beneficiary_iso": "HKG",
+      "beneficiary_lng": "114.1667",
+      "begin_date": "Nov 26, 2010",
+      "originator_bank": "HSBC Hong Kong",
+      "beneficiary_lat": "22.25",
+      "begin_date_format": "2010-11-26T00:00:00Z",
+      "beneficiary_bank_id": "hsbc-hong-kong-hkg",
+      "end_date_format": "2010-11-26T00:00:00Z",
+      "originator_iso": "HKG",
+      "origin_lat": "22.25",
+      "number": 1,
+      "filer_org_name": "HSBC Holdings Plc",
+      "originator_bank_country": "Hong Kong",
+      "beneficiary_bank": "HSBC Hong Kong",
+      "beneficiary_bank_country": "Hong Kong",
+      "filer_org_name_id": "hsbc-holdings-plc",
+      "end": "2010-11-26T00:00:00.000000000+00:00",
+      "origin_lng": "114.1667",
+      "originator_bank_id": "hsbc-hong-kong-hkg",
+      "id": "243296",
+      "begin": "2010-11-26T00:00:00.000000000+00:00",
+      "sar_id": "3146"
+     }
+    }
+   ],
+   "columns": [
+    "f"
+   ],
+   "error": null,
+   "correct": false,
+   "correct_lenient": true,
+   "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\\nRETURN f.sar_id"
+  },
+  "meta": {
+   "graph": "fincen",
+   "tier": "medium",
+   "config": "prune_repair1",
+   "row_id": "t011",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 659,
+   "out_tokens": 39,
+   "cost_usd": 0.00011834999999999999,
+   "latency_s": 1.854,
+   "model_calls": 1,
+   "usage": {
+    "input": 659,
+    "output": 39
+   },
+   "scores": {
+    "correct": 0,
+    "correct_lenient": 1,
+    "latency_s": 1.854,
+    "cost_usd": 0.000118
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.854,
+    "input": {
+     "question": "Find the filings where the originator bank and beneficiary bank are the same entity.",
+     "graph": "fincen"
+    },
+    "output": {
+     "cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity), (f)-[:BENEFITS]->(b:Entity)\nWHERE o = b\nRETURN f",
+     "status": "rows",
+     "row_count": 1,
+     "rows_head": [
+      {
+       "f": {
+        "_labels": [
+         "Filing"
+        ],
+        "end_date": "Nov 26, 2010",
+        "amount": 665000,
+        "beneficiary_iso": "HKG",
+        "beneficiary_lng": "114.1667",
+        "begin_date": "Nov 26, 2010",
+        "originator_bank": "HSBC Hong Kong",
+        "beneficiary_lat": "22.25",
+        "begin_date_format": "2010-11-26T00:00:00Z",
+        "beneficiary_bank_id": "hsbc-hong-kong-hkg",
+        "end_date_format": "2010-11-26T00:00:00Z",
+        "originator_iso": "HKG",
+        "origin_lat": "22.25",
+        "number": 1,
+        "filer_org_name": "HSBC Holdings Plc",
+        "originator_bank_country": "Hong Kong",
+        "beneficiary_bank": "HSBC Hong Kong",
+        "beneficiary_bank_country": "Hong Kong",
+        "filer_org_name_id": "hsbc-holdings-plc",
+        "end": "2010-11-26T00:00:00.000000000+00:00",
+        "origin_lng": "114.1667",
+        "originator_bank_id": "hsbc-hong-kong-hkg",
+        "id": "243296",
+        "begin": "2010-11-26T00:00:00.000000000+00:00",
+        "sar_id": "3146"
+       }
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": true,
+     "in_tokens": 659,
+     "out_tokens": 39,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 659,
+      "output": 39
+     },
+     "cost_usd": 0.00011834999999999999
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "question": "Find the filings where the originator bank and beneficiary bank are the same entity."
+      },
+      "output": {
+       "applied": true,
+       "chars_after": 1732,
+       "schema": "Node properties:\n- **Filing**\n  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z\n  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z\n  - `originator_bank_id`: STRING Example: \"cimb-bank-berhad\"\n  - `sar_id`: STRING Example: \"3297\"\n  - `beneficiary_bank`: STRING Example: \"Barclays Bank Plc\"\n  - `filer_org_name_id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `originator_bank_country`: STRING Example: \"Singapore\"\n  - `beneficiary_bank_country`: STRING Example: \"United Kingdom\"\n  - `filer_org_name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `originator_iso`: STRING Example: \"SGP\"\n  - `beneficiary_bank_id`: STRING Example: \"barclays-bank-plc-london-england-gbr\"\n  - `origin_lat`: STRING Example: \"1.3667\"\n  - `origin_lng`: STRING Example: \"103.8\"\n  - `end_date_format`: STRING Example: \"2015-09-25T00:00:00Z\"\n  - `begin_date_format`: STRING Example: \"2015-03-25T00:00:00Z\"\n  - `originator_bank`: STRING Example: \"CIMB Bank Berhad\"\n  - `beneficiary_lat`: STRING Example: \"54\"\n  - `beneficiary_iso`: STRING Example: \"GBR\"\n  - `beneficiary_lng`: STRING Example: \"-2\"\n  - `begin_date`: STRING Example: \"Mar 25, 2015\"\n  - `id`: STRING Example: \"223254\"\n  - `end_date`: STRING Example: \"Sep 25, 2015\"\n  - `amount`: INTEGER Min: 1.18, Max: 2721000000\n  - `number`: INTEGER Min: 1, Max: 174\n- **Entity**\n  - `id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `location`: POINT \n  - `name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `country`: STRING Example: \"CHN\"\nRelationship properties:\n\nThe relationships:\n(:Filing)-[:BENEFITS]->(:Entity)\n(:Filing)-[:CONCERNS]->(:Entity)\n(:Filing)-[:ORIGINATOR]->(:Entity)\n(:Entity)-[:FILED]->(:Filing)"
+      },
+      "meta": {
+       "chars_before": 1910,
+       "note": "pruned 1910 -> 1732 chars"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.566,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Filing**\n  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z\n  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z\n  - `originator_bank_id`: STRING Example: \"cimb-bank-berhad\"\n  - `sar_id`: STRING Example: \"3297\"\n  - `beneficiary_bank`: STRING Example: \"Barclays Bank Plc\"\n  - `filer_org_name_id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `originator_bank_country`: STRING Example: \"Singapore\"\n  - `beneficiary_bank_country`: STRING Example: \"United Kingdom\"\n  - `filer_org_name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `originator_iso`: STRING Example: \"SGP\"\n  - `beneficiary_bank_id`: STRING Example: \"barclays-bank-plc-london-england-gbr\"\n  - `origin_lat`: STRING Example: \"1.3667\"\n  - `origin_lng`: STRING Example: \"103.8\"\n  - `end_date_format`: STRING Example: \"2015-09-25T00:00:00Z\"\n  - `begin_date_format`: STRING Example: \"2015-03-25T00:00:00Z\"\n  - `originator_bank`: STRING Example: \"CIMB Bank Berhad\"\n  - `beneficiary_lat`: STRING Example: \"54\"\n  - `beneficiary_iso`: STRING Example: \"GBR\"\n  - `beneficiary_lng`: STRING Example: \"-2\"\n  - `begin_date`: STRING Example: \"Mar 25, 2015\"\n  - `id`: STRING Example: \"223254\"\n  - `end_date`: STRING Example: \"Sep 25, 2015\"\n  - `amount`: INTEGER Min: 1.18, Max: 2721000000\n  - `number`: INTEGER Min: 1, Max: 174\n- **Entity**\n  - `id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `location`: POINT \n  - `name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `country`: STRING Example: \"CHN\"\nRelationship properties:\n\nThe relationships:\n(:Filing)-[:BENEFITS]->(:Entity)\n(:Filing)-[:CONCERNS]->(:Entity)\n(:Filing)-[:ORIGINATOR]->(:Entity)\n(:Entity)-[:FILED]->(:Filing)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "Find the filings where the originator bank and beneficiary bank are the same entity."
+       }
+      ],
+      "output": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity), (f)-[:BENEFITS]->(b:Entity)\nWHERE o = b\nRETURN f",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.566,
+       "note": "glm-5p3-flash: 659 prompt + 39 completion tokens, $0.00012, 0.6s",
+       "usage": {
+        "input": 659,
+        "output": 39,
+        "total": 698
+       },
+       "cost_usd": 0.00011834999999999999
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity), (f)-[:BENEFITS]->(b:Entity)\nWHERE o = b\nRETURN f"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 1.287,
+      "input": {
+       "graph": "fincen",
+       "cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity), (f)-[:BENEFITS]->(b:Entity)\nWHERE o = b\nRETURN f"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 1,
+       "columns": [
+        "f"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "f": {
+          "_labels": [
+           "Filing"
+          ],
+          "end_date": "Nov 26, 2010",
+          "amount": 665000,
+          "beneficiary_iso": "HKG",
+          "beneficiary_lng": "114.1667",
+          "begin_date": "Nov 26, 2010",
+          "originator_bank": "HSBC Hong Kong",
+          "beneficiary_lat": "22.25",
+          "begin_date_format": "2010-11-26T00:00:00Z",
+          "beneficiary_bank_id": "hsbc-hong-kong-hkg",
+          "end_date_format": "2010-11-26T00:00:00Z",
+          "originator_iso": "HKG",
+          "origin_lat": "22.25",
+          "number": 1,
+          "filer_org_name": "HSBC Holdings Plc",
+          "originator_bank_country": "Hong Kong",
+          "beneficiary_bank": "HSBC Hong Kong",
+          "beneficiary_bank_country": "Hong Kong",
+          "filer_org_name_id": "hsbc-holdings-plc",
+          "end": "2010-11-26T00:00:00.000000000+00:00",
+          "origin_lng": "114.1667",
+          "originator_bank_id": "hsbc-hong-kong-hkg",
+          "id": "243296",
+          "begin": "2010-11-26T00:00:00.000000000+00:00",
+          "sar_id": "3146"
+         }
+        }
+       ]
+      },
+      "meta": {
+       "graph": "fincen",
+       "latency_s": 1.287,
+       "note": "rows: 1 row(s) in 1.287s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.551,
+  "input": {
+   "question": "What are the first 3 movies with the most number of associated actors?",
+   "graph": "recommendations",
+   "config": "prune_repair1",
+   "tier": "medium"
+  },
+  "output": {
+   "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, count(a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3",
+   "status": "rows",
+   "row_count": 3,
+   "rows": [
+    {
+     "movie": "Hamlet",
+     "actorCount": 24
+    },
+    {
+     "movie": "Three Musketeers, The",
+     "actorCount": 16
+    },
+    {
+     "movie": "Jane Eyre",
+     "actorCount": 16
+    }
+   ],
+   "columns": [
+    "movie",
+    "actorCount"
+   ],
+   "error": null,
+   "correct": false,
+   "correct_lenient": false,
+   "gold_cypher": "MATCH (m:Movie)<-[:ACTED_IN]-(a:Actor)\\nWITH m, COUNT(a) AS actorCount\\nORDER BY actorCount DESC\\nLIMIT 3\\nRETURN m.title AS movieTitle, actorCount"
+  },
+  "meta": {
+   "graph": "recommendations",
+   "tier": "medium",
+   "config": "prune_repair1",
+   "row_id": "t106",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 1095,
+   "out_tokens": 40,
+   "cost_usd": 0.00018425,
+   "latency_s": 1.551,
+   "model_calls": 1,
+   "usage": {
+    "input": 1095,
+    "output": 40
+   },
+   "scores": {
+    "correct": 0,
+    "correct_lenient": 0,
+    "latency_s": 1.551,
+    "cost_usd": 0.000184
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.551,
+    "input": {
+     "question": "What are the first 3 movies with the most number of associated actors?",
+     "graph": "recommendations"
+    },
+    "output": {
+     "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, count(a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3",
+     "status": "rows",
+     "row_count": 3,
+     "rows_head": [
+      {
+       "movie": "Hamlet",
+       "actorCount": 24
+      },
+      {
+       "movie": "Three Musketeers, The",
+       "actorCount": 16
+      },
+      {
+       "movie": "Jane Eyre",
+       "actorCount": 16
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": false,
+     "in_tokens": 1095,
+     "out_tokens": 40,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 1095,
+      "output": 40
+     },
+     "cost_usd": 0.00018425
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "question": "What are the first 3 movies with the most number of associated actors?"
+      },
+      "output": {
+       "applied": false,
+       "chars_after": 2953,
+       "schema": "Node properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **Genre**\n  - `name`: STRING Example: \"Adventure\"\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\n- **Actor**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bornIn`: STRING Example: \"France\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n- **Director**\n  - `url`: STRING Example: \"https://themoviedb.org/person/88953\"\n  - `bornIn`: STRING Example: \"Burchard, Nebraska, USA\"\n  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01\n  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29\n  - `tmdbId`: STRING Example: \"88953\"\n  - `imdbId`: STRING Example: \"0516001\"\n  - `name`: STRING Example: \"Harold Lloyd\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/er4Z\"\n  - `bio`: STRING Example: \"Harold Lloyd has been called the cinema\u2019s \u201cfirst m\"\n- **Person**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `bornIn`: STRING Example: \"France\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\n- **ACTED_IN**\n  - `role: STRING` Example: \"Officer of the Marines (uncredited)\"\n- **DIRECTED**\n  - `role: STRING` \nThe relationships:\n(:Movie)-[:IN_GENRE]->(:Genre)\n(:User)-[:RATED]->(:Movie)\n(:Actor)-[:ACTED_IN]->(:Movie)\n(:Actor)-[:DIRECTED]->(:Movie)\n(:Director)-[:DIRECTED]->(:Movie)\n(:Director)-[:ACTED_IN]->(:Movie)\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)"
+      },
+      "meta": {
+       "chars_before": 2953,
+       "note": "kept the full schema (too little survived)"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.708,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **Genre**\n  - `name`: STRING Example: \"Adventure\"\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\n- **Actor**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bornIn`: STRING Example: \"France\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n- **Director**\n  - `url`: STRING Example: \"https://themoviedb.org/person/88953\"\n  - `bornIn`: STRING Example: \"Burchard, Nebraska, USA\"\n  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01\n  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29\n  - `tmdbId`: STRING Example: \"88953\"\n  - `imdbId`: STRING Example: \"0516001\"\n  - `name`: STRING Example: \"Harold Lloyd\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/er4Z\"\n  - `bio`: STRING Example: \"Harold Lloyd has been called the cinema\u2019s \u201cfirst m\"\n- **Person**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `bornIn`: STRING Example: \"France\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\n- **ACTED_IN**\n  - `role: STRING` Example: \"Officer of the Marines (uncredited)\"\n- **DIRECTED**\n  - `role: STRING` \nThe relationships:\n(:Movie)-[:IN_GENRE]->(:Genre)\n(:User)-[:RATED]->(:Movie)\n(:Actor)-[:ACTED_IN]->(:Movie)\n(:Actor)-[:DIRECTED]->(:Movie)\n(:Director)-[:DIRECTED]->(:Movie)\n(:Director)-[:ACTED_IN]->(:Movie)\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "What are the first 3 movies with the most number of associated actors?"
+       }
+      ],
+      "output": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, count(a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.708,
+       "note": "glm-5p3-flash: 1095 prompt + 40 completion tokens, $0.00018, 0.7s",
+       "usage": {
+        "input": 1095,
+        "output": 40,
+        "total": 1135
+       },
+       "cost_usd": 0.00018425
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, count(a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 0.842,
+      "input": {
+       "graph": "recommendations",
+       "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, count(a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 3,
+       "columns": [
+        "movie",
+        "actorCount"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "movie": "Hamlet",
+         "actorCount": 24
+        },
+        {
+         "movie": "Three Musketeers, The",
+         "actorCount": 16
+        },
+        {
+         "movie": "Jane Eyre",
+         "actorCount": 16
+        }
+       ]
+      },
+      "meta": {
+       "graph": "recommendations",
+       "latency_s": 0.842,
+       "note": "rows: 3 row(s) in 0.842s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.635,
+  "input": {
+   "question": "Which 3 movies have the most number of votes cast by users?",
+   "graph": "recommendations",
+   "config": "prune_repair1",
+   "tier": "easy"
+  },
+  "output": {
+   "cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS movie, count(r) AS votes\nORDER BY votes DESC\nLIMIT 3",
+   "status": "rows",
+   "row_count": 3,
+   "rows": [
+    {
+     "movie": "Forrest Gump",
+     "votes": 341
+    },
+    {
+     "movie": "Pulp Fiction",
+     "votes": 324
+    },
+    {
+     "movie": "Shawshank Redemption, The",
+     "votes": 311
+    }
+   ],
+   "columns": [
+    "movie",
+    "votes"
+   ],
+   "error": null,
+   "correct": false,
+   "correct_lenient": false,
+   "gold_cypher": "MATCH (m:Movie)\\nRETURN m.title, m.imdbVotes\\nORDER BY m.imdbVotes DESC\\nLIMIT 3"
+  },
+  "meta": {
+   "graph": "recommendations",
+   "tier": "easy",
+   "config": "prune_repair1",
+   "row_id": "t071",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 440,
+   "out_tokens": 39,
+   "cost_usd": 8.55e-05,
+   "latency_s": 1.635,
+   "model_calls": 1,
+   "usage": {
+    "input": 440,
+    "output": 39
+   },
+   "scores": {
+    "correct": 0,
+    "correct_lenient": 0,
+    "latency_s": 1.635,
+    "cost_usd": 8.6e-05
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.635,
+    "input": {
+     "question": "Which 3 movies have the most number of votes cast by users?",
+     "graph": "recommendations"
+    },
+    "output": {
+     "cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS movie, count(r) AS votes\nORDER BY votes DESC\nLIMIT 3",
+     "status": "rows",
+     "row_count": 3,
+     "rows_head": [
+      {
+       "movie": "Forrest Gump",
+       "votes": 341
+      },
+      {
+       "movie": "Pulp Fiction",
+       "votes": 324
+      },
+      {
+       "movie": "Shawshank Redemption, The",
+       "votes": 311
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": true,
+     "in_tokens": 440,
+     "out_tokens": 39,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 440,
+      "output": 39
+     },
+     "cost_usd": 8.55e-05
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.001,
+      "input": {
+       "question": "Which 3 movies have the most number of votes cast by users?"
+      },
+      "output": {
+       "applied": true,
+       "chars_after": 1063,
+       "schema": "Node properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\nThe relationships:\n(:User)-[:RATED]->(:Movie)"
+      },
+      "meta": {
+       "chars_before": 2953,
+       "note": "pruned 2953 -> 1063 chars"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.572,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\nThe relationships:\n(:User)-[:RATED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "Which 3 movies have the most number of votes cast by users?"
+       }
+      ],
+      "output": "MATCH (u:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS movie, count(r) AS votes\nORDER BY votes DESC\nLIMIT 3",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.572,
+       "note": "glm-5p3-flash: 440 prompt + 39 completion tokens, $0.00009, 0.6s",
+       "usage": {
+        "input": 440,
+        "output": 39,
+        "total": 479
+       },
+       "cost_usd": 8.55e-05
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS movie, count(r) AS votes\nORDER BY votes DESC\nLIMIT 3"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 1.062,
+      "input": {
+       "graph": "recommendations",
+       "cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS movie, count(r) AS votes\nORDER BY votes DESC\nLIMIT 3"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 3,
+       "columns": [
+        "movie",
+        "votes"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "movie": "Forrest Gump",
+         "votes": 341
+        },
+        {
+         "movie": "Pulp Fiction",
+         "votes": 324
+        },
+        {
+         "movie": "Shawshank Redemption, The",
+         "votes": 311
+        }
+       ]
+      },
+      "meta": {
+       "graph": "recommendations",
+       "latency_s": 1.062,
+       "note": "rows: 3 row(s) in 1.062s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 1.675,
+  "input": {
+   "question": "What are the supplierIDs for suppliers who have provided products to more than three different cities?",
+   "graph": "northwind",
+   "config": "prune_repair1",
+   "tier": "hard"
+  },
+  "output": {
+   "cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)\nWITH s, COUNT(DISTINCT o.shipCity) AS cityCount\nWHERE cityCount > 3\nRETURN s.supplierID",
+   "status": "rows",
+   "row_count": 29,
+   "rows": [
+    {
+     "s.supplierID": "1"
+    },
+    {
+     "s.supplierID": "2"
+    },
+    {
+     "s.supplierID": "3"
+    },
+    {
+     "s.supplierID": "4"
+    },
+    {
+     "s.supplierID": "5"
+    },
+    {
+     "s.supplierID": "6"
+    },
+    {
+     "s.supplierID": "7"
+    },
+    {
+     "s.supplierID": "8"
+    },
+    {
+     "s.supplierID": "9"
+    },
+    {
+     "s.supplierID": "10"
+    },
+    {
+     "s.supplierID": "11"
+    },
+    {
+     "s.supplierID": "12"
+    },
+    {
+     "s.supplierID": "13"
+    },
+    {
+     "s.supplierID": "14"
+    },
+    {
+     "s.supplierID": "15"
+    },
+    {
+     "s.supplierID": "16"
+    },
+    {
+     "s.supplierID": "17"
+    },
+    {
+     "s.supplierID": "18"
+    },
+    {
+     "s.supplierID": "19"
+    },
+    {
+     "s.supplierID": "20"
+    },
+    "... [+9 more]"
+   ],
+   "columns": [
+    "s.supplierID"
+   ],
+   "error": null,
+   "correct": true,
+   "correct_lenient": true,
+   "gold_cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)\\nWITH s.supplierID AS supplierID, COUNT(DISTINCT o.shipCity) AS cityCount\\nWHERE cityCount > 3\\nRETURN supplierID"
+  },
+  "meta": {
+   "graph": "northwind",
+   "tier": "hard",
+   "config": "prune_repair1",
+   "row_id": "t176",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 1050,
+   "out_tokens": 55,
+   "cost_usd": 0.000185,
+   "latency_s": 1.674,
+   "model_calls": 1,
+   "usage": {
+    "input": 1050,
+    "output": 55
+   },
+   "scores": {
+    "correct": 1,
+    "correct_lenient": 1,
+    "latency_s": 1.674,
+    "cost_usd": 0.000185
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 1.674,
+    "input": {
+     "question": "What are the supplierIDs for suppliers who have provided products to more than three different cities?",
+     "graph": "northwind"
+    },
+    "output": {
+     "cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)\nWITH s, COUNT(DISTINCT o.shipCity) AS cityCount\nWHERE cityCount > 3\nRETURN s.supplierID",
+     "status": "rows",
+     "row_count": 29,
+     "rows_head": [
+      {
+       "s.supplierID": "1"
+      },
+      {
+       "s.supplierID": "2"
+      },
+      {
+       "s.supplierID": "3"
+      },
+      {
+       "s.supplierID": "4"
+      },
+      {
+       "s.supplierID": "5"
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": true,
+     "in_tokens": 1050,
+     "out_tokens": 55,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 1050,
+      "output": 55
+     },
+     "cost_usd": 0.000185
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "question": "What are the supplierIDs for suppliers who have provided products to more than three different cities?"
+      },
+      "output": {
+       "applied": true,
+       "chars_after": 2886,
+       "schema": "Node properties:\n- **Product**\n  - `productName`: STRING Example: \"Chai\"\n  - `quantityPerUnit`: STRING Example: \"10 boxes x 20 bags\"\n  - `unitsOnOrder`: INTEGER Min: 0, Max: 100\n  - `supplierID`: STRING Example: \"1\"\n  - `productID`: STRING Example: \"1\"\n  - `discontinued`: BOOLEAN \n  - `categoryID`: STRING Available options: ['1', '2', '7', '6', '8', '4', '3', '5']\n  - `reorderLevel`: INTEGER Min: 0, Max: 30\n  - `unitsInStock`: INTEGER Min: 0, Max: 125\n  - `unitPrice`: FLOAT Min: 2.5, Max: 263.5\n- **Supplier**\n  - `companyName`: STRING Example: \"Exotic Liquids\"\n  - `contactName`: STRING Example: \"Charlotte Cooper\"\n  - `homePage`: STRING Available options: ['NULL', '#CAJUN.HTM#', \"Mayumi's (on the World Wide Web)#http://www.micros\", '(03) 444-6588', 'Plutzer (on the World Wide Web)#http://www.microso', '(0544) 60603', '(1) 03.83.00.62', '(02) 555-4873', '(089) 6547667', '38.76.98.58']\n  - `phone`: STRING Example: \"(171) 555-2222\"\n  - `postalCode`: STRING Example: \"EC1 4SD\"\n  - `contactTitle`: STRING Example: \"Purchasing Manager\"\n  - `region`: STRING Example: \"NULL\"\n  - `address`: STRING Example: \"49 Gilbert St.\"\n  - `fax`: STRING Example: \"NULL\"\n  - `supplierID`: STRING Example: \"1\"\n  - `country`: STRING Example: \"UK\"\n  - `city`: STRING Example: \"London\"\n- **Customer**\n  - `fax`: STRING Example: \"030-0076545\"\n  - `companyName`: STRING Example: \"Alfreds Futterkiste\"\n  - `customerID`: STRING Example: \"ALFKI\"\n  - `phone`: STRING Example: \"030-0074321\"\n  - `contactName`: STRING Example: \"Maria Anders\"\n  - `contactTitle`: STRING Example: \"Sales Representative\"\n  - `region`: STRING Example: \"NULL\"\n  - `address`: STRING Example: \"Obere Str. 57\"\n  - `postalCode`: STRING Example: \"12209\"\n  - `country`: STRING Example: \"Germany\"\n  - `city`: STRING Example: \"Berlin\"\n- **Order**\n  - `shipName`: STRING Example: \"Vins et alcools Chevalier\"\n  - `requiredDate`: STRING Example: \"1996-08-01 00:00:00.000\"\n  - `shipCity`: STRING Example: \"Reims\"\n  - `employeeID`: STRING Available options: ['5', '6', '4', '3', '9', '1', '8', '2', '7']\n  - `shipPostalCode`: STRING Example: \"51100\"\n  - `shippedDate`: STRING Example: \"1996-07-16 00:00:00.000\"\n  - `freight`: STRING Example: \"32.38\"\n  - `orderDate`: STRING Example: \"1996-07-04 00:00:00.000\"\n  - `orderID`: STRING Example: \"10248\"\n  - `shipAddress`: STRING Example: \"59 rue de l'Abbaye\"\n  - `customerID`: STRING Example: \"VINET\"\n  - `shipCountry`: STRING Example: \"France\"\n  - `shipVia`: STRING Available options: ['3', '1', '2']\n  - `shipRegion`: STRING Example: \"NULL\"\nRelationship properties:\n- **ORDERS**\n  - `orderID: STRING` Example: \"10248\"\n  - `unitPrice: STRING` Example: \"34.80\"\n  - `productID: STRING` Example: \"72\"\n  - `quantity: INTEGER` Min: 1, Max:  130\n  - `discount: STRING` Example: \"0\"\nThe relationships:\n(:Supplier)-[:SUPPLIES]->(:Product)\n(:Customer)-[:PURCHASED]->(:Order)\n(:Order)-[:ORDERS]->(:Product)"
+      },
+      "meta": {
+       "chars_before": 3583,
+       "note": "pruned 3583 -> 2886 chars"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 0.686,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Product**\n  - `productName`: STRING Example: \"Chai\"\n  - `quantityPerUnit`: STRING Example: \"10 boxes x 20 bags\"\n  - `unitsOnOrder`: INTEGER Min: 0, Max: 100\n  - `supplierID`: STRING Example: \"1\"\n  - `productID`: STRING Example: \"1\"\n  - `discontinued`: BOOLEAN \n  - `categoryID`: STRING Available options: ['1', '2', '7', '6', '8', '4', '3', '5']\n  - `reorderLevel`: INTEGER Min: 0, Max: 30\n  - `unitsInStock`: INTEGER Min: 0, Max: 125\n  - `unitPrice`: FLOAT Min: 2.5, Max: 263.5\n- **Supplier**\n  - `companyName`: STRING Example: \"Exotic Liquids\"\n  - `contactName`: STRING Example: \"Charlotte Cooper\"\n  - `homePage`: STRING Available options: ['NULL', '#CAJUN.HTM#', \"Mayumi's (on the World Wide Web)#http://www.micros\", '(03) 444-6588', 'Plutzer (on the World Wide Web)#http://www.microso', '(0544) 60603', '(1) 03.83.00.62', '(02) 555-4873', '(089) 6547667', '38.76.98.58']\n  - `phone`: STRING Example: \"(171) 555-2222\"\n  - `postalCode`: STRING Example: \"EC1 4SD\"\n  - `contactTitle`: STRING Example: \"Purchasing Manager\"\n  - `region`: STRING Example: \"NULL\"\n  - `address`: STRING Example: \"49 Gilbert St.\"\n  - `fax`: STRING Example: \"NULL\"\n  - `supplierID`: STRING Example: \"1\"\n  - `country`: STRING Example: \"UK\"\n  - `city`: STRING Example: \"London\"\n- **Customer**\n  - `fax`: STRING Example: \"030-0076545\"\n  - `companyName`: STRING Example: \"Alfreds Futterkiste\"\n  - `customerID`: STRING Example: \"ALFKI\"\n  - `phone`: STRING Example: \"030-0074321\"\n  - `contactName`: STRING Example: \"Maria Anders\"\n  - `contactTitle`: STRING Example: \"Sales Representative\"\n  - `region`: STRING Example: \"NULL\"\n  - `address`: STRING Example: \"Obere Str. 57\"\n  - `postalCode`: STRING Example: \"12209\"\n  - `country`: STRING Example: \"Germany\"\n  - `city`: STRING Example: \"Berlin\"\n- **Order**\n  - `shipName`: STRING Example: \"Vins et alcools Chevalier\"\n  - `requiredDate`: STRING Example: \"1996-08-01 00:00:00.000\"\n  - `shipCity`: STRING Example: \"Reims\"\n  - `employeeID`: STRING Available options: ['5', '6', '4', '3', '9', '1', '8', '2', '7']\n  - `shipPostalCode`: STRING Example: \"51100\"\n  - `shippedDate`: STRING Example: \"1996-07-16 00:00:00.000\"\n  - `freight`: STRING Example: \"32.38\"\n  - `orderDate`: STRING Example: \"1996-07-04 00:00:00.000\"\n  - `orderID`: STRING Example: \"10248\"\n  - `shipAddress`: STRING Example: \"59 rue de l'Abbaye\"\n  - `customerID`: STRING Example: \"VINET\"\n  - `shipCountry`: STRING Example: \"France\"\n  - `shipVia`: STRING Available options: ['3', '1', '2']\n  - `shipRegion`: STRING Example: \"NULL\"\nRelationship properties:\n- **ORDERS**\n  - `orderID: STRING` Example: \"10248\"\n  - `unitPrice: STRING` Example: \"34.80\"\n  - `productID: STRING` Example: \"72\"\n  - `quantity: INTEGER` Min: 1, Max:  130\n  - `discount: STRING` Example: \"0\"\nThe relationships:\n(:Supplier)-[:SUPPLIES]->(:Product)\n(:Customer)-[:PURCHASED]->(:Order)\n(:Order)-[:ORDERS]->(:Product)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "What are the supplierIDs for suppliers who have provided products to more than three different cities?"
+       }
+      ],
+      "output": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)\nWITH s, COUNT(DISTINCT o.shipCity) AS cityCount\nWHERE cityCount > 3\nRETURN s.supplierID",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 0.686,
+       "note": "glm-5p3-flash: 1050 prompt + 55 completion tokens, $0.00018, 0.7s",
+       "usage": {
+        "input": 1050,
+        "output": 55,
+        "total": 1105
+       },
+       "cost_usd": 0.000185
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)\nWITH s, COUNT(DISTINCT o.shipCity) AS cityCount\nWHERE cityCount > 3\nRETURN s.supplierID"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 0.987,
+      "input": {
+       "graph": "northwind",
+       "cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)<-[:ORDERS]-(o:Order)\nWITH s, COUNT(DISTINCT o.shipCity) AS cityCount\nWHERE cityCount > 3\nRETURN s.supplierID"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 29,
+       "columns": [
+        "s.supplierID"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "s.supplierID": "1"
+        },
+        {
+         "s.supplierID": "2"
+        },
+        {
+         "s.supplierID": "3"
+        },
+        {
+         "s.supplierID": "4"
+        },
+        {
+         "s.supplierID": "5"
+        }
+       ]
+      },
+      "meta": {
+       "graph": "northwind",
+       "latency_s": 0.987,
+       "note": "rows: 29 row(s) in 0.987s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "step": "text2cypher",
+  "kind": "span",
+  "seconds": 2.134,
+  "input": {
+   "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
+   "graph": "twitter",
+   "config": "prune_repair1",
+   "tier": "hard"
+  },
+  "output": {
+   "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me) WHERE (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites)",
+   "status": "rows",
+   "row_count": 1,
+   "rows": [
+    {
+     "avg(t.favorites)": 2.4505494505494503
+    }
+   ],
+   "columns": [
+    "avg(t.favorites)"
+   ],
+   "error": null,
+   "correct": false,
+   "correct_lenient": false,
+   "gold_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {name: \"Neo4j\"}),       (t)-[:TAGS]->(:Hashtag)\\nWITH avg(t.favorites) AS average_favorites\\nRETURN average_favorites"
+  },
+  "meta": {
+   "graph": "twitter",
+   "tier": "hard",
+   "config": "prune_repair1",
+   "row_id": "t049",
+   "agreement": null,
+   "escalated": false,
+   "in_tokens": 787,
+   "out_tokens": 33,
+   "cost_usd": 0.00013455000000000002,
+   "latency_s": 2.134,
+   "model_calls": 1,
+   "usage": {
+    "input": 787,
+    "output": 33
+   },
+   "scores": {
+    "correct": 0,
+    "correct_lenient": 0,
+    "latency_s": 2.134,
+    "cost_usd": 0.000135
+   }
+  },
+  "children": [
+   {
+    "step": "attempt",
+    "kind": "span",
+    "seconds": 2.134,
+    "input": {
+     "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
+     "graph": "twitter"
+    },
+    "output": {
+     "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me) WHERE (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites)",
+     "status": "rows",
+     "row_count": 1,
+     "rows_head": [
+      {
+       "avg(t.favorites)": 2.4505494505494503
+      }
+     ],
+     "problems": [],
+     "repaired": false
+    },
+    "meta": {
+     "model": "accounts/fireworks/models/glm-5p3-flash",
+     "temperature": 0.0,
+     "calls": 1,
+     "pruned": true,
+     "in_tokens": 787,
+     "out_tokens": 33,
+     "statuses": [
+      "rows"
+     ],
+     "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
+     "usage": {
+      "input": 787,
+      "output": 33
+     },
+     "cost_usd": 0.00013455000000000002
+    },
+    "children": [
+     {
+      "step": "schema_prune",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?"
+      },
+      "output": {
+       "applied": true,
+       "chars_after": 2021,
+       "schema": "Node properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)"
+      },
+      "meta": {
+       "chars_before": 2221,
+       "note": "pruned 2221 -> 2021 chars"
+      },
+      "children": []
+     },
+     {
+      "step": "generate",
+      "kind": "generation",
+      "seconds": 1.171,
+      "input": [
+       {
+        "role": "system",
+        "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+       },
+       {
+        "role": "user",
+        "content": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?"
+       }
+      ],
+      "output": "MATCH (t:Tweet)-[:MENTIONS]->(:Me) WHERE (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites)",
+      "meta": {
+       "model": "accounts/fireworks/models/glm-5p3-flash",
+       "temperature": 0.0,
+       "reasoning_effort": "low",
+       "reasoning_tokens": 0,
+       "finish_reason": "stop",
+       "latency_s": 1.171,
+       "note": "glm-5p3-flash: 787 prompt + 33 completion tokens, $0.00013, 1.2s",
+       "usage": {
+        "input": 787,
+        "output": 33,
+        "total": 820
+       },
+       "cost_usd": 0.00013455000000000002
+      },
+      "children": []
+     },
+     {
+      "step": "validate",
+      "kind": "span",
+      "seconds": 0.0,
+      "input": {
+       "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me) WHERE (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites)"
+      },
+      "output": {
+       "problems": [],
+       "n_problems": 0,
+       "unsafe": false
+      },
+      "meta": {
+       "note": "no schema problems"
+      },
+      "children": []
+     },
+     {
+      "step": "execute",
+      "kind": "span",
+      "seconds": 0.962,
+      "input": {
+       "graph": "twitter",
+       "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me) WHERE (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites)"
+      },
+      "output": {
+       "status": "rows",
+       "row_count": 1,
+       "columns": [
+        "avg(t.favorites)"
+       ],
+       "error": null,
+       "rows_head": [
+        {
+         "avg(t.favorites)": 2.4505494505494503
+        }
+       ]
+      },
+      "meta": {
+       "graph": "twitter",
+       "latency_s": 0.962,
+       "note": "rows: 1 row(s) in 0.962s"
+      },
+      "children": []
+     }
+    ]
+   }
+  ]
+ }
+]

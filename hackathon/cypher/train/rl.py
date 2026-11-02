@@ -140,11 +140,11 @@ def reward(row, cypher):
 
 
 # ---------- sampling ----------
-def sample_rows(tok, sampler, rows, n, temp, max_tokens, note, workers, prune=False):
+def sample_rows(tok, sampler, rows, n, temp, max_tokens, note, workers, prune=False, seed=SEED):
     from fireworks.training import sdk
     prefill = answer_prefill(tok)
     eot = tok.convert_tokens_to_ids("<|eot|>")
-    params = sdk.SamplingParams(max_tokens=max_tokens, temperature=temp, stop=[eot], seed=SEED if temp > 0 else None)
+    params = sdk.SamplingParams(max_tokens=max_tokens, temperature=temp, stop=[eot], seed=seed if (temp > 0 or seed != SEED) else None)
     done = [0]
 
     def one(r):
@@ -192,7 +192,10 @@ def evaluate(args):
     service = service_client()
     sampler = make_sampler(service, tok, args.model)
     label = os.path.splitext(os.path.basename(args.out))[0]
-    recs = sample_rows(tok, sampler, rows, 1, 0.0, args.max_tokens, f"eval {label}", args.workers, prune=args.prune)
+    if args.seed:  # rerun with a different sampler seed and shuffled request order (temperature stays 0)
+        rows = rows[:]; random.Random(args.seed).shuffle(rows)
+    recs = sample_rows(tok, sampler, rows, 1, 0.0, args.max_tokens, f"eval {label}", args.workers, prune=args.prune, seed=args.seed or SEED)
+    recs.sort(key=lambda r: r["row"]["id"])
 
     def score_one(rec):
         ex = rec["row"]
@@ -239,7 +242,7 @@ def evaluate(args):
         "reasoning_tokens": 0, "api_errors": sum(1 for r in out_rows if r["api_error"]),
         "truncated": sum(1 for r in out_rows if "length" in str(r["finish_reason"]).lower()),
         "request_extra": {"sampler": "serverless training", "temperature": 0, "prefill": "to=user (reasoning off)"},
-        "max_tokens": args.max_tokens, "checkpoint": args.model,
+        "max_tokens": args.max_tokens, "checkpoint": args.model, "seed": args.seed,
         "test_sha256": open(os.path.join(CY, "data", "TEST_HASH")).read().split()[0],
         "pricing_note": "serverless-training sampler rates at full prefill price (prefill $1.96/M, sample $4.88/M); "
                         "production serving of a LoRA needs a dedicated deployment (train/DEPLOY.md)",
@@ -448,7 +451,7 @@ def main():
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("eval"); p.add_argument("--model", required=True); p.add_argument("--out", required=True)
     p.add_argument("--max-tokens", type=int, default=400); p.add_argument("--limit", type=int, default=0)
-    p.add_argument("--workers", type=int, default=8); p.add_argument("--prune", action="store_true")
+    p.add_argument("--workers", type=int, default=8); p.add_argument("--prune", action="store_true"); p.add_argument("--seed", type=int, default=0)
     p = sp.add_parser("sample"); p.add_argument("--model", required=True); p.add_argument("--out", required=True)
     p.add_argument("--data", default=os.path.join(CY, "data", "train.jsonl"))
     p.add_argument("--n", type=int, default=4); p.add_argument("--temp", type=float, default=0.8); p.add_argument("--only")

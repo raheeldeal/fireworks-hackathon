@@ -217,5 +217,8 @@
   }
  ],
  "sampler_path": "raheeldeal/run-c97a350b3a4d4cd4833b08fa4e3f251b/cy-r1rej-bca0935b",
- "state_path": "raheeldeal/run-c97a350b3a4d4cd4833b08fa4e3f251b/cy-r1rej-st"
+ "state_path": "raheeldeal/run-c97a350b3a4d4cd4833b08fa4e3f251b/cy-r1rej-st",
+ "promoted_model": "accounts/raheeldeal/models/cypher-r1rej-1204",
+ "promoted_from": "accounts/raheeldeal/trainingSessions/ts-2129125b63f1456cb9aa4d88e1eb7310/checkpoints/run-c97a350b3a4d4cd4833b08fa4e3f251b-cy-r1rej-bca0935b",
+ "deleted": "2026-11-02T12:05:10"
 }

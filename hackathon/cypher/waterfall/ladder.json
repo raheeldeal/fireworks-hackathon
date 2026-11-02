@@ -1,0 +1,589 @@
+{
+ "source": "github.com/vishwajeet-hogale/fireworks-hackathon@22ab54a hackathon/cypher/results",
+ "frontier_reference": {
+  "label": "Claude Sonnet 4.6",
+  "acc": 56.63,
+  "note": "published zero-shot number on another subset (CypherGuard, arxiv.org/html/2610.41755); reference only"
+ },
+ "audit_counts": {
+  "gold_wrong": 5,
+  "format_only": 20,
+  "ambiguous": 20
+ },
+ "all200": {
+  "n": 200,
+  "steps": [
+   {
+    "label": "Untuned open model",
+    "detail": "Muse Glimmer 30B",
+    "acc": 50.5,
+    "kind": "start",
+    "cost_per_1k": 1.9365413999999999
+   },
+   {
+    "label": "Retrieved examples",
+    "detail": "3 similar solved questions in the prompt",
+    "acc": 54.0,
+    "kind": "step",
+    "diff": 3.5,
+    "lo": -4.0,
+    "hi": 11.0,
+    "significant": false,
+    "gained": 34,
+    "lost": 27,
+    "cost_per_1k": 2.3727675999999995,
+    "examples": [
+     {
+      "q": "Show the top 3 Filings where the beneficiary bank country is 'Singapore'.",
+      "tier": "easy",
+      "graph": "fincen",
+      "trace": "4cdfc6f8ba5932b2796fca95a68c581c"
+     },
+     {
+      "q": "What is the country code of the entity that originated the filing with the lowest amount?",
+      "tier": "hard",
+      "graph": "fincen",
+      "trace": "af1db35eb24637063e7fce459eb43e5a"
+     },
+     {
+      "q": "Which people have written and directed the same movie?",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "cfaaa3beb6c8db1f7b6ead82965f9d0e"
+     },
+     {
+      "q": "List the top 5 movies that have been rated the lowest by users.",
+      "tier": "medium",
+      "graph": "recommendations",
+      "trace": "2ebab152b515b51db76e58ff1e350c1a"
+     },
+     {
+      "q": "Identify the top 3 filings where the originator bank and the beneficiary bank are located at the same latitude.",
+      "tier": "easy",
+      "graph": "fincen",
+      "trace": "402693860b79d0e55005a64dcba12d06"
+     },
+     {
+      "q": "What is the average number of followers for users who follow 'Neo4j'?",
+      "tier": "medium",
+      "graph": "twitter",
+      "trace": "00bcec7c3a48c69a39dd68bfd6a4477b"
+     }
+    ]
+   },
+   {
+    "label": "Arrow-direction fix",
+    "detail": "flip relationship arrows the schema says are backwards",
+    "acc": 54.5,
+    "kind": "step",
+    "diff": 0.5,
+    "lo": 0.0,
+    "hi": 1.5,
+    "significant": false,
+    "gained": 1,
+    "lost": 0,
+    "cost_per_1k": 2.3727675999999995,
+    "examples": [
+     {
+      "q": "\"Which pair of users reply to each other's tweets most often?\"",
+      "tier": "hard",
+      "graph": "twitter",
+      "trace": "854b1d6340b35f5e6b672fd3a1d7b80e"
+     }
+    ]
+   },
+   {
+    "label": "Repair loop",
+    "detail": "feed the database error back, retry",
+    "acc": 55.0,
+    "kind": "step",
+    "diff": 0.5,
+    "lo": 0.0,
+    "hi": 1.5,
+    "significant": false,
+    "gained": 1,
+    "lost": 0,
+    "cost_per_1k": 2.6098163999999984,
+    "examples": [
+     {
+      "q": "What is the average number of votes for movies released in the same year \"Speed Racer\" was released?",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "7abc6c133d0287de429ed81eb1b4722e"
+     }
+    ]
+   },
+   {
+    "label": "Escalate to Kimi K3",
+    "detail": "hand the hardest cases to a bigger open model",
+    "acc": 56.0,
+    "kind": "step",
+    "diff": 1.0,
+    "lo": 0.0,
+    "hi": 2.5,
+    "significant": false,
+    "gained": 2,
+    "lost": 0,
+    "cost_per_1k": 2.7306263999999993,
+    "examples": [
+     {
+      "q": "\"Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?\"",
+      "tier": "hard",
+      "graph": "movies",
+      "trace": "ac4312d7d33f17b2998ac1e5dcffcc9d"
+     },
+     {
+      "q": "Find tweets that mention 'Neo4j' and are tagged with 'education'.",
+      "tier": "easy",
+      "graph": "twitter",
+      "trace": "c2321a4e8f61d7c11765096c1b71531a"
+     }
+    ]
+   },
+   {
+    "label": "SFT",
+    "detail": "LoRA fine-tune on 1.5k execution-verified examples",
+    "acc": 66.0,
+    "kind": "step",
+    "diff": 10.0,
+    "lo": 3.5000000000000004,
+    "hi": 16.5,
+    "significant": true,
+    "gained": 34,
+    "lost": 14,
+    "cost_per_1k": 2.5978236,
+    "examples": [
+     {
+      "q": "Find all movies with a rating above 90.",
+      "tier": "easy",
+      "graph": "movies",
+      "trace": "c2977ee2844fb85a203d5764889538d5"
+     },
+     {
+      "q": "What is the average `unitPrice` of products that have been ordered in quantities greater than 10?",
+      "tier": "medium",
+      "graph": "northwind",
+      "trace": "68c6677a10dbb23c60ab2c40629ba50b"
+     },
+     {
+      "q": "Show the top 5 users that 'Neo4j' interacts with based on the number of interactions.",
+      "tier": "medium",
+      "graph": "twitter",
+      "trace": "e8a4e7e5e162a675b1bdebc37c3ac61e"
+     },
+     {
+      "q": "Which country has produced the most movies in the database?",
+      "tier": "medium",
+      "graph": "recommendations",
+      "trace": "f0f651e0d20369373da17661f3e27ce9"
+     },
+     {
+      "q": "Which users have a betweenness higher than 1000000?",
+      "tier": "easy",
+      "graph": "twitter",
+      "trace": "bd71741b248f0d8f22bffb718c62cc37"
+     },
+     {
+      "q": "List all movies where the writer is also credited as a producer.",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "69d4ab913a7de5ec7f1dbf15eabd0bf9"
+     }
+    ]
+   },
+   {
+    "label": "More SFT data",
+    "detail": "+ 9 other graphs, 6.5k examples",
+    "acc": 68.5,
+    "kind": "step",
+    "diff": 2.5,
+    "lo": -2.0,
+    "hi": 7.000000000000001,
+    "significant": false,
+    "gained": 14,
+    "lost": 9,
+    "cost_per_1k": 2.6264841999999984,
+    "examples": [
+     {
+      "q": "\"Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?\"",
+      "tier": "hard",
+      "graph": "movies",
+      "trace": "3c2409abcbebccb67b64417c88d09ac8"
+     },
+     {
+      "q": "What is the average rating for movies with \"The Matrix\" in the title?",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "8c113a769d3dfeeb59575c98ac6b113a"
+     },
+     {
+      "q": "Which products have a unit price greater than $75 and are in the 'Confections' category?",
+      "tier": "easy",
+      "graph": "northwind",
+      "trace": "3609929db5131a1770a2d2c373cb1730"
+     },
+     {
+      "q": "List the first 3 entities that have filed the most filings where the beneficiary bank's country is the same as the originator bank's country.",
+      "tier": "medium",
+      "graph": "fincen",
+      "trace": "9a8db0fcd4ecb215d4b32c0605435c1d"
+     },
+     {
+      "q": "Find the users who have retweeted tweets that mention hashtags also used by \"Neo4j\".",
+      "tier": "medium",
+      "graph": "twitter",
+      "trace": "52e75e4dbb2d912fde8d25840bdc35e2"
+     },
+     {
+      "q": "What is the name of the entity that benefited from the filing with the latest end date?",
+      "tier": "easy",
+      "graph": "fincen",
+      "trace": "ba6b2da9312efbb1db8d84c9bb9a03ad"
+     }
+    ]
+   }
+  ],
+  "tried": [
+   {
+    "label": "RFT-style (own verified answers) instead of SFT",
+    "acc": 58.0,
+    "ref_acc": 66.0,
+    "diff": -8.0,
+    "lo": -14.499999999999998,
+    "hi": -1.0,
+    "significant": true,
+    "gained": 17,
+    "lost": 33
+   },
+   {
+    "label": "Teacher distillation from Kimi K3",
+    "acc": 65.5,
+    "ref_acc": 66.0,
+    "diff": -0.5,
+    "lo": -4.0,
+    "hi": 3.0,
+    "significant": false,
+    "gained": 6,
+    "lost": 7
+   },
+   {
+    "label": "Hard examples x2",
+    "acc": 61.0,
+    "ref_acc": 66.0,
+    "diff": -5.0,
+    "lo": -11.0,
+    "hi": 0.5,
+    "significant": false,
+    "gained": 12,
+    "lost": 22
+   },
+   {
+    "label": "Vote of 4 adapters",
+    "acc": 68.0,
+    "ref_acc": 68.5,
+    "diff": -0.5,
+    "lo": -3.5000000000000004,
+    "hi": 2.5,
+    "significant": false,
+    "gained": 4,
+    "lost": 5
+   }
+  ],
+  "final_acc": 68.5,
+  "misses": 63,
+  "miss_reasons": {
+   "gold_wrong": 5,
+   "ambiguous": 18,
+   "format_only": 17,
+   "model_wrong": 23
+  }
+ },
+ "fair175": {
+  "n": 175,
+  "steps": [
+   {
+    "label": "Untuned open model",
+    "detail": "Muse Glimmer 30B",
+    "acc": 54.857142857142854,
+    "kind": "start",
+    "cost_per_1k": 1.9109842285714278
+   },
+   {
+    "label": "Retrieved examples",
+    "detail": "3 similar solved questions in the prompt",
+    "acc": 61.714285714285715,
+    "kind": "step",
+    "diff": 6.857142857142857,
+    "lo": -1.7142857142857144,
+    "hi": 14.857142857142858,
+    "significant": false,
+    "gained": 34,
+    "lost": 22,
+    "cost_per_1k": 2.345127542857143,
+    "examples": [
+     {
+      "q": "Show the top 3 Filings where the beneficiary bank country is 'Singapore'.",
+      "tier": "easy",
+      "graph": "fincen",
+      "trace": "4cdfc6f8ba5932b2796fca95a68c581c"
+     },
+     {
+      "q": "What is the country code of the entity that originated the filing with the lowest amount?",
+      "tier": "hard",
+      "graph": "fincen",
+      "trace": "af1db35eb24637063e7fce459eb43e5a"
+     },
+     {
+      "q": "Which people have written and directed the same movie?",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "cfaaa3beb6c8db1f7b6ead82965f9d0e"
+     },
+     {
+      "q": "List the top 5 movies that have been rated the lowest by users.",
+      "tier": "medium",
+      "graph": "recommendations",
+      "trace": "2ebab152b515b51db76e58ff1e350c1a"
+     },
+     {
+      "q": "Identify the top 3 filings where the originator bank and the beneficiary bank are located at the same latitude.",
+      "tier": "easy",
+      "graph": "fincen",
+      "trace": "402693860b79d0e55005a64dcba12d06"
+     },
+     {
+      "q": "What is the average number of followers for users who follow 'Neo4j'?",
+      "tier": "medium",
+      "graph": "twitter",
+      "trace": "00bcec7c3a48c69a39dd68bfd6a4477b"
+     }
+    ]
+   },
+   {
+    "label": "Arrow-direction fix",
+    "detail": "flip relationship arrows the schema says are backwards",
+    "acc": 62.285714285714285,
+    "kind": "step",
+    "diff": 0.5714285714285714,
+    "lo": 0.0,
+    "hi": 1.7142857142857144,
+    "significant": false,
+    "gained": 1,
+    "lost": 0,
+    "cost_per_1k": 2.345127542857143,
+    "examples": [
+     {
+      "q": "\"Which pair of users reply to each other's tweets most often?\"",
+      "tier": "hard",
+      "graph": "twitter",
+      "trace": "854b1d6340b35f5e6b672fd3a1d7b80e"
+     }
+    ]
+   },
+   {
+    "label": "Repair loop",
+    "detail": "feed the database error back, retry",
+    "acc": 62.857142857142854,
+    "kind": "step",
+    "diff": 0.5714285714285714,
+    "lo": 0.0,
+    "hi": 1.7142857142857144,
+    "significant": false,
+    "gained": 1,
+    "lost": 0,
+    "cost_per_1k": 2.5510656000000003,
+    "examples": [
+     {
+      "q": "What is the average number of votes for movies released in the same year \"Speed Racer\" was released?",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "7abc6c133d0287de429ed81eb1b4722e"
+     }
+    ]
+   },
+   {
+    "label": "Escalate to Kimi K3",
+    "detail": "hand the hardest cases to a bigger open model",
+    "acc": 64.0,
+    "kind": "step",
+    "diff": 1.1428571428571428,
+    "lo": 0.0,
+    "hi": 2.857142857142857,
+    "significant": false,
+    "gained": 2,
+    "lost": 0,
+    "cost_per_1k": 2.6891341714285715,
+    "examples": [
+     {
+      "q": "\"Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?\"",
+      "tier": "hard",
+      "graph": "movies",
+      "trace": "ac4312d7d33f17b2998ac1e5dcffcc9d"
+     },
+     {
+      "q": "Find tweets that mention 'Neo4j' and are tagged with 'education'.",
+      "tier": "easy",
+      "graph": "twitter",
+      "trace": "c2321a4e8f61d7c11765096c1b71531a"
+     }
+    ]
+   },
+   {
+    "label": "SFT",
+    "detail": "LoRA fine-tune on 1.5k execution-verified examples",
+    "acc": 75.42857142857143,
+    "kind": "step",
+    "diff": 11.428571428571429,
+    "lo": 4.0,
+    "hi": 19.428571428571427,
+    "significant": true,
+    "gained": 34,
+    "lost": 14,
+    "cost_per_1k": 2.6034777142857144,
+    "examples": [
+     {
+      "q": "Find all movies with a rating above 90.",
+      "tier": "easy",
+      "graph": "movies",
+      "trace": "c2977ee2844fb85a203d5764889538d5"
+     },
+     {
+      "q": "What is the average `unitPrice` of products that have been ordered in quantities greater than 10?",
+      "tier": "medium",
+      "graph": "northwind",
+      "trace": "68c6677a10dbb23c60ab2c40629ba50b"
+     },
+     {
+      "q": "Show the top 5 users that 'Neo4j' interacts with based on the number of interactions.",
+      "tier": "medium",
+      "graph": "twitter",
+      "trace": "e8a4e7e5e162a675b1bdebc37c3ac61e"
+     },
+     {
+      "q": "Which country has produced the most movies in the database?",
+      "tier": "medium",
+      "graph": "recommendations",
+      "trace": "f0f651e0d20369373da17661f3e27ce9"
+     },
+     {
+      "q": "Which users have a betweenness higher than 1000000?",
+      "tier": "easy",
+      "graph": "twitter",
+      "trace": "bd71741b248f0d8f22bffb718c62cc37"
+     },
+     {
+      "q": "List all movies where the writer is also credited as a producer.",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "69d4ab913a7de5ec7f1dbf15eabd0bf9"
+     }
+    ]
+   },
+   {
+    "label": "More SFT data",
+    "detail": "+ 9 other graphs, 6.5k examples",
+    "acc": 77.14285714285714,
+    "kind": "step",
+    "diff": 1.7142857142857142,
+    "lo": -3.428571428571429,
+    "hi": 6.857142857142858,
+    "significant": false,
+    "gained": 12,
+    "lost": 9,
+    "cost_per_1k": 2.6350893714285704,
+    "examples": [
+     {
+      "q": "\"Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?\"",
+      "tier": "hard",
+      "graph": "movies",
+      "trace": "3c2409abcbebccb67b64417c88d09ac8"
+     },
+     {
+      "q": "What is the average rating for movies with \"The Matrix\" in the title?",
+      "tier": "medium",
+      "graph": "movies",
+      "trace": "8c113a769d3dfeeb59575c98ac6b113a"
+     },
+     {
+      "q": "Which products have a unit price greater than $75 and are in the 'Confections' category?",
+      "tier": "easy",
+      "graph": "northwind",
+      "trace": "3609929db5131a1770a2d2c373cb1730"
+     },
+     {
+      "q": "List the first 3 entities that have filed the most filings where the beneficiary bank's country is the same as the originator bank's country.",
+      "tier": "medium",
+      "graph": "fincen",
+      "trace": "9a8db0fcd4ecb215d4b32c0605435c1d"
+     },
+     {
+      "q": "Find the users who have retweeted tweets that mention hashtags also used by \"Neo4j\".",
+      "tier": "medium",
+      "graph": "twitter",
+      "trace": "52e75e4dbb2d912fde8d25840bdc35e2"
+     },
+     {
+      "q": "Which supplier supplies the product with the highest unit price?",
+      "tier": "easy",
+      "graph": "northwind",
+      "trace": "b62f3ce26f4e9176f579ac892f8c2d42"
+     }
+    ]
+   }
+  ],
+  "tried": [
+   {
+    "label": "RFT-style (own verified answers) instead of SFT",
+    "acc": 65.71428571428571,
+    "ref_acc": 75.42857142857143,
+    "diff": -9.714285714285714,
+    "lo": -17.71428571428571,
+    "hi": -1.7142857142857144,
+    "significant": true,
+    "gained": 16,
+    "lost": 33
+   },
+   {
+    "label": "Teacher distillation from Kimi K3",
+    "acc": 74.85714285714286,
+    "ref_acc": 75.42857142857143,
+    "diff": -0.5714285714285714,
+    "lo": -4.571428571428571,
+    "hi": 3.428571428571429,
+    "significant": false,
+    "gained": 6,
+    "lost": 7
+   },
+   {
+    "label": "Hard examples x2",
+    "acc": 68.0,
+    "ref_acc": 75.42857142857143,
+    "diff": -7.428571428571429,
+    "lo": -13.714285714285715,
+    "hi": -1.1428571428571428,
+    "significant": true,
+    "gained": 9,
+    "lost": 22
+   },
+   {
+    "label": "Vote of 4 adapters",
+    "acc": 77.14285714285714,
+    "ref_acc": 77.14285714285714,
+    "diff": 0.0,
+    "lo": -2.857142857142857,
+    "hi": 3.428571428571429,
+    "significant": false,
+    "gained": 4,
+    "lost": 4
+   }
+  ],
+  "final_acc": 77.14285714285714,
+  "misses": 40,
+  "miss_reasons": {
+   "gold_wrong": 0,
+   "ambiguous": 0,
+   "format_only": 17,
+   "model_wrong": 23
+  }
+ }
+}

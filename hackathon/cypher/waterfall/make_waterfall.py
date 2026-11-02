@@ -1,290 +1,225 @@
 #!/usr/bin/env python3
-"""Slide-ready waterfall charts (1920x1080 PNG) for the text-to-Cypher pitch.
+"""Slide-ready waterfall charts (1920x1080 PNG) of the cumulative improvement ladder.
 
-Every number is read from the per-question result files, never typed in.
-  python3 make_waterfall.py              # strict scorer v1 (hackathon/cypher/results/)
-  python3 make_waterfall.py --scorer v2  # strict scorer v2 (results_v2/, used by RESULTS_FINAL.md)
-Lenient scores are identical in both folders.
+  python3 build_ladder.py --data <folder>   # recompute ladder.json from the per-question result files
+  python3 make_waterfall.py                 # draw the charts from ladder.json
 
-Rules the charts follow:
-  * strict and lenient never share a chart
-  * the fine-tune lane (Muse Glimmer 30B) is never stacked on the harness lane (GLM 5.3 Flash)
-  * Claude Opus 5 is a reference line or bar, not a step
-  * harness steps are single runs (run-to-run noise is about +/-2pp)
+One system, built up in order: untuned Muse Glimmer 30B, then four harness steps, then SFT inside the harness.
+Every step is measured against the step before it on the same questions. Claude Sonnet 4.6 is a published number
+on a different subset, so it is drawn as a reference line, never as a step.
 """
-import json, os, sys
+import json, os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SCORER = "v2" if "--scorer" in sys.argv and sys.argv[sys.argv.index("--scorer") + 1] == "v2" else "v1"
-RES = os.path.join(HERE, "..", "results_v2" if SCORER == "v2" else "results")
-SUFFIX = "_v2" if SCORER == "v2" else ""
+LAD = json.load(open(os.path.join(HERE, "ladder.json")))
+FR = LAD["frontier_reference"]
 
-def score(f, metric):
-    d = json.load(open(os.path.join(RES, f)))
-    rows = d["rows"]
-    if metric == "strict":
-        acc = sum(bool(r["correct"]) for r in rows) / len(rows)
-        assert abs(acc - d["accuracy"]) < 1e-9, f"{f}: recomputed {acc} != stored {d['accuracy']}"
-    else:
-        acc = d["accuracy_lenient"]
-    return round(acc * 100, 1), d["n"], d.get("cost_per_1k_requests_usd")
+# what kind of question each step newly gets right, with a real example from the run (ladder.json "examples")
+CATCH = {
+    "Retrieved examples": ("Graph vocabulary", "“Top 3 filings where\nthe bank country\nis Singapore”"),
+    "Arrow-direction fix": ("Wrong arrows", "“Which users reply\nto each other\nmost?”"),
+    "Repair loop": ("Crashed queries", "“Avg votes for movies\nfrom the year Speed\nRacer came out”"),
+    "Escalate to Kimi K3": ("Hard multi-hop", "“Pair of directors\nsharing the\nmost actors”"),
+    "SFT": ("Conventions", "“Top 5 users\n‘Neo4j’ interacts\nwith”"),
+    "More SFT data": ("Wider coverage", "“Avg rating of\n‘The Matrix’\nmovies”"),
+}
+SHORT = {"Untuned open model": "Muse 30B\nuntuned", "Retrieved examples": "+ Retrieved\nexamples",
+         "Arrow-direction fix": "+ Arrow\nfix", "Repair loop": "+ Repair\nloop",
+         "Escalate to Kimi K3": "+ Escalate\nto Kimi K3", "SFT": "+ SFT", "More SFT data": "+ More\nSFT data"}
 
-# ---- data -------------------------------------------------------------------
-HARNESS = [  # (label, file, what it catches)
-    ("GLM 5.3 Flash\n(open, small)", "harness_validate_only.json", None),
-    ("+ Repair", "harness_repair1.json",
-     "Crashed queries.\n\u201cAvg rating of\nMatrix movies\u201d\nnow runs"),
-    ("+ Vote of 3", "harness_vote3.json",
-     "Hard multi-hop.\n\u201c3 directors in\n3+ genres\u201d"),
-    ("+ Route on\ndisagreement", "harness_route_big.json",
-     "The 6% where\ntries disagree.\n\u201cUsers who rated\nevery genre\u201d"),
-]
-FINETUNE = [
-    ("Muse 30B\n(open, base)", "train_base.json", None),
-    ("+ SFT", "train_sft.json", "Empty results. “Who interacts\nmost with ‘neo4j’?”"),
-    ("+ RFT", "train_rft_r1_reject.json", "Recency, top-N.\n“3 most recent tweets”"),
-]
-CLAUDE = "claude-opus-5_v1_plain_n100.json"
-AUDIT = [  # 40 hand-audited misses of the best small model (RESULTS_FINAL.md, audit/)
-    ("Broken answer key", 11), ("Ambiguous question", 7),
-    ("Right answer,\nother column", 20), ("Model truly wrong", 2),
-]
-
-def lane(spec, metric):
-    return [(lab, *score(f, metric), ex) for lab, f, ex in spec]
-
-# ---- style ------------------------------------------------------------------
 INK, MUTED, GRID = "#1d1d1f", "#6e6e73", "#e5e5ea"
-BLUE, BLUE_L = "#1f5fbf", "#8fb3e8"
-ORANGE, ORANGE_L = "#c2571a", "#f0b48a"
-GREY = "#9a9aa0"
-AUDIT_C = ["#d9534f", "#e8a33d", "#9b7fd1", "#3a3a3c"]
-plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 20, "axes.edgecolor": GRID,
+START_C, HARN, HARN_L, TUNE, TUNE_L, TOTAL = "#3a3a3c", "#1f5fbf", "#d6e2f5", "#c2571a", "#f6dccb", "#111111"
+REASON_C = {"model_wrong": "#3a3a3c", "format_only": "#9b7fd1", "ambiguous": "#e8a33d", "gold_wrong": "#d9534f"}
+REASON_L = {"model_wrong": "Model truly wrong", "format_only": "Right answer,\ndifferent format",
+            "ambiguous": "Ambiguous question", "gold_wrong": "Broken answer key"}
+plt.rcParams.update({"font.family": "DejaVu Sans", "axes.edgecolor": GRID,
                      "axes.spines.top": False, "axes.spines.right": False})
 
-def new_fig():
+
+def fig_():
     return plt.figure(figsize=(19.2, 10.8), dpi=100, facecolor="white")
 
-def title(fig, t, sub):
-    fig.text(0.04, 0.93, t, fontsize=44, weight="bold", color=INK)
-    fig.text(0.04, 0.885, sub, fontsize=20, color=MUTED)
 
-def footnote(fig, t):
-    fig.text(0.04, 0.02, t, va="bottom", linespacing=1.4, fontsize=15, color=MUTED)
+def head(fig, t, sub):
+    fig.text(0.04, 0.925, t, fontsize=42, weight="bold", color=INK)
+    fig.text(0.04, 0.88, sub, fontsize=19, color=MUTED)
 
-def waterfall(ax, data, dark, light, ymax=80, examples=False, single_run=False, label_size=19):
-    """First bar solid from 0, each step a floating block, final total outlined."""
-    xs = range(len(data))
-    prev = None
-    for i, (lab, acc, n, cost, ex) in enumerate(data):
-        if prev is None:
-            ax.bar(i, acc, 0.62, color=dark)
-            ax.text(i, acc + 1.2, f"{acc:.1f}%", ha="center", va="bottom", fontsize=26, weight="bold", color=INK)
-        else:
-            d = acc - prev
-            lo = min(acc, prev)
-            ax.bar(i, prev if d >= 0 else acc, 0.62, color=light, alpha=0.35)  # carried level
-            ax.bar(i, abs(d), 0.62, bottom=lo, color=dark if d >= 0 else "#d9534f")
-            ax.plot([i - 1 + 0.31, i - 0.31], [prev, prev], color=MUTED, lw=1.5, ls=":")
-            ax.text(i, acc + 5.0, f"{'+' if d >= 0 else ''}{d:.1f}", ha="center", va="bottom",
-                    fontsize=26, weight="bold", color=dark)
-            ax.text(i, acc + 1.0, f"= {acc:.1f}%", ha="center", va="bottom", fontsize=17, color=INK)
-            if single_run:
-                ax.text(i, -0.5, "single run", ha="center", va="top", fontsize=13, color=MUTED,
-                        style="italic", transform=ax.get_xaxis_transform() if False else ax.transData)
-        prev = acc
-    ax.set_xticks(list(xs))
-    ax.set_xticklabels([d[0] for d in data], fontsize=label_size, color=INK)
-    ax.set_ylim(0, ymax)
-    ax.set_yticks(range(0, ymax + 1, 20))
-    ax.set_yticklabels([f"{v}%" for v in range(0, ymax + 1, 20)], fontsize=16, color=MUTED)
-    ax.grid(axis="y", color=GRID, lw=1)
-    ax.set_axisbelow(True)
-    ax.tick_params(length=0)
-    if examples:
-        for i, (lab, acc, n, cost, ex) in enumerate(data):
-            if ex:
-                ax.text(i, -0.2, ex, ha="center", va="top", fontsize=15, color=MUTED,
-                        transform=ax.get_xaxis_transform(), linespacing=1.3)
 
-def claude_line(ax, acc, cost, xmax, text=True):
-    ax.axhline(acc, color=GREY, ls="--", lw=2.5, zorder=0)
-    if text:
-        ax.text(0.99, 0.97, f"- - -  Claude Opus 5 (frontier): {acc:.0f}%, ${cost:.2f} / 1k q", ha="right",
-                va="top", fontsize=17, color=MUTED, transform=ax.transAxes)
+def foot(fig, t):
+    fig.text(0.04, 0.02, t, fontsize=14, color=MUTED, va="bottom", linespacing=1.4)
 
-def save(fig, name):
-    p = os.path.join(HERE, f"{name}{SUFFIX}.png")
+
+def save(fig, name, folder=HERE):
+    p = os.path.join(folder, name + ".png")
     fig.savefig(p, dpi=100, facecolor="white")
     plt.close(fig)
-    print("wrote", os.path.relpath(p, os.getcwd()))
+    return p
 
-SCORE_NOTE = {"v1": "strict scorer", "v2": "strict scorer v2"}[SCORER]
 
-# ---- version 1: strict, two lanes --------------------------------------------
-def v1():
-    h, f = lane(HARNESS, "strict"), lane(FINETUNE, "strict")
-    c_acc, c_n, c_cost = score(CLAUDE, "strict")
-    fig = new_fig()
-    title(fig, "Two ways to beat the frontier with open models",
-          f"Execution accuracy, {SCORE_NOTE}: exact rows from the live Neo4j graph. 200 held-out questions.")
-    ax1 = fig.add_axes([0.06, 0.17, 0.50, 0.62])
-    ax2 = fig.add_axes([0.62, 0.17, 0.35, 0.62])
-    waterfall(ax1, h, BLUE, BLUE_L, single_run=False)
-    waterfall(ax2, f, ORANGE, ORANGE_L)
-    claude_line(ax1, c_acc, c_cost, 3.4)
-    claude_line(ax2, c_acc, c_cost, 2.4, text=False)
-    ax1.set_title("Harness lane  ·  GLM 5.3 Flash", fontsize=24, color=BLUE, loc="left", weight="bold", pad=16)
-    ax2.set_title("Fine-tune lane  ·  Muse Glimmer 30B", fontsize=24, color=ORANGE, loc="left", weight="bold", pad=16)
-    footnote(fig, f"Separate models: the lanes are not stacked. Harness steps are single runs (run-to-run noise ≈ ±2pp).\n"
-                  f"SFT held across 3 seeds. Claude Opus 5 ran on the first {c_n} questions only.")
-    save(fig, "v1_strict_two_lanes")
+def is_tune(label):
+    return "SFT" in label
 
-# ---- version 2: lenient, two lanes -------------------------------------------
-def v2():
-    h, f = lane(HARNESS, "lenient"), lane(FINETUNE, "lenient")
-    fig = new_fig()
-    title(fig, "Two ways to beat the frontier with open models",
-          "Execution accuracy, lenient scorer: right rows, extra columns allowed. 200 held-out questions.")
-    ax1 = fig.add_axes([0.06, 0.17, 0.50, 0.62])
-    ax2 = fig.add_axes([0.62, 0.17, 0.35, 0.62])
-    waterfall(ax1, h, BLUE, BLUE_L)
-    waterfall(ax2, f, ORANGE, ORANGE_L)
-    ax1.set_title("Harness lane  ·  GLM 5.3 Flash", fontsize=24, color=BLUE, loc="left", weight="bold", pad=16)
-    ax2.set_title("Fine-tune lane  ·  Muse Glimmer 30B", fontsize=24, color=ORANGE, loc="left", weight="bold", pad=16)
-    footnote(fig, "Claude Opus 5 has no lenient score, so it is not shown. Separate models: the lanes are not stacked. "
-                  "Harness steps are single runs (noise ≈ ±2pp).")
-    save(fig, "v2_lenient_two_lanes")
 
-# ---- version 3: classic single waterfall + fine-tune side panel ----------------
-def v3():
-    h, f = lane(HARNESS, "strict"), lane(FINETUNE, "strict")
-    c_acc, c_n, c_cost = score(CLAUDE, "strict")
-    data = [("Claude Opus 5\n(frontier)", c_acc, c_n, c_cost, f"Reference.\n${c_cost:.2f} / 1k q.\nFirst {c_n} q only")] + h
-    fig = new_fig()
-    title(fig, f"From {h[0][1]:.0f}% to {h[-1][1]:.0f}%: what each step catches",
-          f"Execution accuracy, {SCORE_NOTE}. 200 held-out questions on live Neo4j graphs.")
-    ax = fig.add_axes([0.06, 0.30, 0.60, 0.50])
-    # Claude reference bar, then the harness waterfall shifted right by one slot
-    ax.bar(0, c_acc, 0.62, color=GREY, hatch="//", edgecolor="white")
-    ax.text(0, c_acc + 1.2, f"{c_acc:.0f}%", ha="center", va="bottom", fontsize=26, weight="bold", color=MUTED)
-    ax.axvline(0.6, color=GRID, lw=2)
-    sub = fig.add_axes([0.06, 0.30, 0.60, 0.50], sharey=ax)
-    sub.set_visible(False)
+def draw_ladder(ax, L, upto=None, examples=False, frontier=True, ymax=100, big=True):
+    allsteps = L["steps"]
+    steps = allsteps if upto is None else allsteps[:upto + 1]
+    n = len(allsteps) + 1  # plus the total bar
+    fs = 27 if big else 21
     prev = None
-    for i, (lab, acc, n, cost, ex) in enumerate(h, start=1):
-        if prev is None:
-            ax.bar(i, acc, 0.62, color=BLUE)
-            ax.text(i, acc + 1.2, f"{acc:.0f}%", ha="center", va="bottom", fontsize=26, weight="bold", color=INK)
-            ax.text(i, -0.2, f"${cost:.2f} / 1k q", ha="center", va="top", fontsize=14, color=MUTED,
-                    transform=ax.get_xaxis_transform())
+    for i, s in enumerate(steps):
+        if s["kind"] == "start":
+            ax.bar(i, s["acc"], 0.64, color=START_C)
+            ax.text(i, s["acc"] + 1.2, f"{s['acc']:.1f}%", ha="center", va="bottom", fontsize=fs, weight="bold", color=INK)
         else:
-            ax.bar(i, prev, 0.62, color=BLUE_L, alpha=0.35)
-            ax.bar(i, acc - prev, 0.62, bottom=prev, color=BLUE)
-            ax.plot([i - 1 + 0.31, i - 0.31], [prev, prev], color=MUTED, lw=1.5, ls=":")
-            ax.text(i, acc + 1.2, f"+{acc - prev:.0f}", ha="center", va="bottom", fontsize=26, weight="bold", color=BLUE)
-            ax.text(i, -0.2, ex, ha="center", va="top", fontsize=15, color=MUTED,
-                    transform=ax.get_xaxis_transform(), linespacing=1.3)
-        prev = acc
-    i = len(h) + 1
-    ax.bar(i, prev, 0.62, color="white", edgecolor=BLUE, lw=3)
-    ax.text(i, prev + 1.2, f"{prev:.0f}%", ha="center", va="bottom", fontsize=30, weight="bold", color=BLUE)
-    ax.text(0, -0.2, data[0][4], ha="center", va="top", fontsize=14, color=MUTED,
-            transform=ax.get_xaxis_transform(), linespacing=1.3)
-    ax.set_xticks(range(len(h) + 2))
-    ax.set_xticklabels([data[0][0]] + [x[0] for x in h] + ["Harness\ntotal"], fontsize=17, color=INK)
-    ax.set_ylim(0, 70); ax.set_yticks(range(0, 71, 20))
-    ax.set_yticklabels([f"{v}%" for v in range(0, 71, 20)], fontsize=16, color=MUTED)
-    ax.grid(axis="y", color=GRID); ax.set_axisbelow(True); ax.tick_params(length=0)
-    ax.tick_params(axis="x", pad=10)
-    # side panel: fine-tune lane
-    fig.patches.append(Rectangle((0.70, 0.12), 0.27, 0.72, transform=fig.transFigure,
-                                 facecolor="#fbf4ee", edgecolor="none", zorder=-1))
-    fig.text(0.72, 0.80, "Separately: fine-tuning", fontsize=24, weight="bold", color=ORANGE)
-    fig.text(0.72, 0.765, "Muse Glimmer 30B, a different open model", fontsize=15, color=MUTED)
-    ax2 = fig.add_axes([0.74, 0.30, 0.21, 0.42])
-    waterfall(ax2, f, ORANGE, ORANGE_L, ymax=70, label_size=15)
-    for t in ax2.texts:
-        t.set_fontsize(min(t.get_fontsize(), 20))
-    ax2.set_yticklabels([])
-    fig.text(0.72, 0.205, f"SFT: +{f[1][1]-f[0][1]:.1f}, held across 3 seeds.\n"
-                          f"RFT: +{f[2][1]-f[1][1]:.1f}, reward = database\nreturns the right rows.",
-             fontsize=15, color=INK, va="top", linespacing=1.4)
-    footnote(fig, "Harness steps are single runs (run-to-run noise ≈ ±2pp). The lanes use different models and are not stacked.")
-    save(fig, "v3_classic_waterfall")
+            dark, light = (TUNE, TUNE_L) if is_tune(s["label"]) else (HARN, HARN_L)
+            ax.bar(i, prev, 0.64, color=light)
+            ax.bar(i, max(s["diff"], 0.35), 0.64, bottom=prev, color=dark)
+            ax.plot([i - 1 + 0.32, i - 0.32], [prev, prev], color=MUTED, lw=1.4, ls=":")
+            ax.text(i, s["acc"] + 4.4, f"+{s['diff']:.1f}", ha="center", va="bottom", fontsize=fs, weight="bold", color=dark)
+            sig = "significant" if s["significant"] else "not significant"
+            ax.text(i, s["acc"] + 1.0, sig, ha="center", va="bottom", fontsize=12 if not big else 13,
+                    color=dark if s["significant"] else MUTED, weight="bold" if s["significant"] else "normal",
+                    bbox=dict(facecolor="white", edgecolor="none", pad=1.5), zorder=5)
+            if examples:
+                kind, ex = CATCH[s["label"]]
+                ax.text(i, -0.17, kind, ha="center", va="top", fontsize=15, weight="bold", color=dark,
+                        transform=ax.get_xaxis_transform())
+                ax.text(i, -0.235, ex, ha="center", va="top", fontsize=13, color=MUTED,
+                        transform=ax.get_xaxis_transform(), linespacing=1.3)
+        prev = s["acc"]
+    if upto is None:
+        t = len(allsteps)
+        ax.bar(t, L["final_acc"], 0.64, color="white", edgecolor=TOTAL, lw=3.5)
+        ax.text(t, L["final_acc"] + 1.2, f"{L['final_acc']:.1f}%", ha="center", va="bottom", fontsize=fs + 5,
+                weight="bold", color=TOTAL)
+    if frontier:
+        ax.axhline(FR["acc"], color="#8e8e93", ls="--", lw=2.4, zorder=0)
+        ax.text(-0.45, FR["acc"] + 13, f"- - Claude Sonnet 4.6: {FR['acc']:.1f}%\n    (published, other subset)",
+                ha="left", va="bottom", fontsize=15, color=MUTED, linespacing=1.25)
+    ax.set_xlim(-0.55, n - 0.45)
+    ax.set_xticks(range(n))
+    ax.set_xticklabels([SHORT[s["label"]] for s in allsteps] + ["Our\nsystem"], fontsize=17 if big else 14, color=INK)
+    ax.set_ylim(0, ymax)
+    ax.set_yticks(range(0, ymax + 1, 20))
+    ax.set_yticklabels([f"{v}%" for v in range(0, ymax + 1, 20)], fontsize=15, color=MUTED)
+    ax.grid(axis="y", color=GRID)
+    ax.set_axisbelow(True)
+    ax.tick_params(length=0)
+    hs = [i for i, s in enumerate(allsteps) if s["kind"] == "step" and not is_tune(s["label"])]
+    ts = [i for i, s in enumerate(allsteps) if is_tune(s["label"])]
+    for idx, name, col in ((hs, "HARNESS", HARN), (ts, "FINE-TUNING, inside the harness", TUNE)):
+        y = ymax - 4
+        ax.plot([idx[0] - 0.3, idx[-1] + 0.3], [y, y], color=col, lw=3)
+        ax.text((idx[0] + idx[-1]) / 2, y + 0.8, name, ha="center", va="bottom", fontsize=14 if not big else 15,
+                weight="bold", color=col)
 
-# ---- version 4: build-up to the ceiling ---------------------------------------
-def v4(frames=True):
-    """Harness lane on the left; on the right, the 100% bar split into what we got
-    and why the rest is missing, estimated from the 40-miss audit. Also writes
-    step-by-step frames so the slide can build in the video."""
-    h = lane(HARNESS, "strict")
-    c_acc, c_n, c_cost = score(CLAUDE, "strict")
-    final = h[-1][1]
-    total_audit = sum(n for _, n in AUDIT)
 
-    def draw(step):
-        fig = new_fig()
-        title(fig, "Why we stop at %.0f%%: the exam, not the model" % final if step >= len(h) + 1
-              else "Building past the frontier, one step at a time",
-              f"Execution accuracy, {SCORE_NOTE}. 200 held-out questions on live Neo4j graphs.")
-        ax = fig.add_axes([0.06, 0.20, 0.55, 0.60])
-        prev = None
-        for i, (lab, acc, n, cost, ex) in enumerate(h):
-            if i > step:
-                break
-            if prev is None:
-                ax.bar(i, acc, 0.62, color=BLUE)
-                ax.text(i, acc + 1.2, f"{acc:.0f}%", ha="center", va="bottom", fontsize=28, weight="bold", color=INK)
-            else:
-                ax.bar(i, prev, 0.62, color=BLUE_L, alpha=0.35)
-                ax.bar(i, acc - prev, 0.62, bottom=prev, color=BLUE)
-                ax.plot([i - 1 + 0.31, i - 0.31], [prev, prev], color=MUTED, lw=1.5, ls=":")
-                ax.text(i, acc + 1.2, f"+{acc - prev:.0f}", ha="center", va="bottom", fontsize=28, weight="bold", color=BLUE)
-                ax.text(i, -0.17, ex.replace("\n", " ").split(". ")[0], ha="center", va="top",
-                        fontsize=15, color=MUTED, transform=ax.get_xaxis_transform())
-            prev = acc
-        claude_line(ax, c_acc, c_cost, len(h) - 0.6)
-        ax.set_xlim(-0.6, len(h) - 0.4)
-        ax.set_xticks(range(len(h)))
-        ax.set_xticklabels([x[0] if i <= step else "" for i, x in enumerate(h)], fontsize=18, color=INK)
-        ax.set_ylim(0, 100); ax.set_yticks(range(0, 101, 25))
-        ax.set_yticklabels([f"{v}%" for v in range(0, 101, 25)], fontsize=16, color=MUTED)
-        ax.grid(axis="y", color=GRID); ax.set_axisbelow(True); ax.tick_params(length=0)
-        if step >= len(h) + 1:
-            axc = fig.add_axes([0.70, 0.20, 0.08, 0.60])
-            axc.bar(0, final, 0.8, color=BLUE)
-            axc.text(0, final / 2, f"{final:.0f}%\nright", ha="center", va="center", color="white", fontsize=20, weight="bold")
-            bottom = final
-            for (lab, n), col in zip(AUDIT, AUDIT_C):
-                share = (100 - final) * n / total_audit
-                axc.bar(0, share, 0.8, bottom=bottom, color=col)
-                fig.text(0.79, 0.20 + 0.60 * (bottom + share / 2) / 100, f"{lab}  ({n}/{total_audit})",
-                         va="center", fontsize=18, color=INK)
-                bottom += share
-            axc.set_ylim(0, 100); axc.axis("off")
-            fig.text(0.70, 0.83, "The missing %.0f%%" % (100 - final), fontsize=24, weight="bold", color=INK)
-            fig.text(0.70, 0.13, f"Split estimated from {total_audit} hand-audited misses.\n"
-                                 f"Only {AUDIT[-1][1]} of {total_audit} were the model’s fault.",
-                     fontsize=16, color=MUTED, va="top", linespacing=1.4)
-        footnote(fig, f"Harness steps are single runs (noise ≈ ±2pp). Claude Opus 5 ran on the first {c_n} questions only.")
+def SUB(L):
+    return (f"Execution accuracy, {L['n']} locked test questions on 5 live Neo4j graphs. "
+            "Each step vs the one before, same questions.")
+
+
+NOTE = ("Significance: paired bootstrap 95% CI vs the previous step. Claude Sonnet 4.6 is a published zero-shot "
+        "number on a different subset,\nso it is a reference line, not a step.")
+
+
+def v1():
+    L = LAD["all200"]
+    fig = fig_()
+    head(fig, f"From {L['steps'][0]['acc']:.1f}% to {L['final_acc']:.1f}%: what each step adds", SUB(L))
+    ax = fig.add_axes([0.05, 0.15, 0.92, 0.66])
+    draw_ladder(ax, L)
+    foot(fig, NOTE)
+    return save(fig, "v1_ladder")
+
+
+def v2():
+    L = LAD["all200"]
+    fig = fig_()
+    head(fig, "What each step catches", SUB(L))
+    ax = fig.add_axes([0.05, 0.33, 0.92, 0.49])
+    draw_ladder(ax, L, examples=True)
+    foot(fig, "Examples are real questions each step newly got right in the run. "
+              "Significance: paired bootstrap 95% CI vs the previous step.")
+    return save(fig, "v2_ladder_what_it_catches")
+
+
+def v3(frames=True):
+    L = LAD["all200"]
+    r = L["miss_reasons"]
+
+    def draw(upto, ceiling):
+        fig = fig_()
+        title = (f"Why {L['final_acc']:.1f}%, not 100%: mostly the exam" if ceiling
+                 else "Building past the frontier, one step at a time")
+        head(fig, title, SUB(L))
+        ax = fig.add_axes([0.05, 0.15, 0.66, 0.66])
+        draw_ladder(ax, L, upto=upto, big=False)
+        if ceiling:
+            axc = fig.add_axes([0.76, 0.15, 0.06, 0.66])
+            axc.bar(0, L["final_acc"], 0.9, color=TOTAL)
+            axc.text(0, L["final_acc"] / 2, f"{L['final_acc']:.1f}%\nright", ha="center", va="center",
+                     color="white", fontsize=18, weight="bold")
+            b = L["final_acc"]
+            for k in ("model_wrong", "format_only", "ambiguous", "gold_wrong"):
+                h = 100 * r[k] / L["n"]
+                axc.bar(0, h, 0.9, bottom=b, color=REASON_C[k])
+                fig.text(0.83, 0.15 + 0.66 * (b + h / 2) / 100, f"{REASON_L[k]}  ({r[k]})", va="center",
+                         fontsize=16, color=INK, linespacing=1.15)
+                b += h
+            axc.set_ylim(0, 100)
+            axc.axis("off")
+            fig.text(0.76, 0.84, f"The {L['misses']} misses", fontsize=22, weight="bold", color=INK)
+            exam = r["format_only"] + r["ambiguous"] + r["gold_wrong"]
+            fig.text(0.76, 0.12, f"{exam} of {L['misses']} misses are the exam's fault,\nper our audit.",
+                     fontsize=15, color=MUTED, va="top", linespacing=1.35)
+        foot(fig, NOTE)
         return fig
 
-    last = len(h) + 1
+    paths = []
     if frames:
-        os.makedirs(os.path.join(HERE, "frames"), exist_ok=True)
-        for s in range(last + 1):
-            if s == len(h):
-                continue  # identical to the step before the ceiling appears
-            fig = draw(s)
-            p = os.path.join(HERE, "frames", f"v4_step{s}{SUFFIX}.png")
-            fig.savefig(p, dpi=100, facecolor="white"); plt.close(fig)
-        print("wrote", os.path.relpath(os.path.join(HERE, "frames"), os.getcwd()), "(build frames)")
-    save(draw(last), "v4_buildup_ceiling")
+        fd = os.path.join(HERE, "frames")
+        os.makedirs(fd, exist_ok=True)
+        k_last = len(L["steps"])
+        for k in range(k_last):
+            paths.append(save(draw(k, False), f"v3_frame{k + 1:02d}", fd))
+        paths.append(save(draw(None, False), f"v3_frame{k_last + 1:02d}", fd))
+        paths.append(save(draw(None, True), f"v3_frame{k_last + 2:02d}", fd))
+    paths.append(save(draw(None, True), "v3_ladder_why_not_100"))
+    return paths
+
+
+def v4():
+    L = LAD["fair175"]
+    fig = fig_()
+    head(fig, f"On fair questions: {L['steps'][0]['acc']:.1f}% to {L['final_acc']:.1f}%",
+         f"{L['n']} questions: the 200, minus {200 - L['n']} our audit found broken or ambiguous. "
+         "Each step measured against the one before.")
+    ax = fig.add_axes([0.05, 0.15, 0.62, 0.66])
+    draw_ladder(ax, L, frontier=False, big=False)
+    fig.patches.append(Rectangle((0.70, 0.12), 0.28, 0.72, transform=fig.transFigure, facecolor="#f5f5f7",
+                                 edgecolor="none", zorder=-1))
+    fig.text(0.72, 0.79, "Tried, did not help", fontsize=26, weight="bold", color=INK)
+    y = 0.71
+    for t in L["tried"]:
+        sig = "significant" if t["significant"] else "not significant"
+        col = "#d9534f" if t["diff"] < 0 and t["significant"] else MUTED
+        fig.text(0.72, y, t["label"].replace(" instead of SFT", "\ninstead of SFT"), fontsize=17, color=INK,
+                 va="top", linespacing=1.2)
+        fig.text(0.965, y, f"{t['diff']:+.1f}", fontsize=24, weight="bold", color=col, va="top", ha="right")
+        fig.text(0.965, y - 0.045, sig, fontsize=13, color=col, va="top", ha="right")
+        y -= 0.13
+    fig.text(0.72, 0.17, "Each compared with the setup\nit would have replaced.", fontsize=14, color=MUTED,
+             va="top", linespacing=1.35)
+    foot(fig, "Frontier reference omitted: the published Claude number is not on this subset. "
+              "Significance: paired bootstrap 95% CI.")
+    return save(fig, "v4_fair_questions_and_dead_ends")
+
 
 if __name__ == "__main__":
-    v1(); v2(); v3(); v4()
+    for p in [v1(), v2()] + v3() + [v4()]:
+        print("wrote", os.path.relpath(p, HERE))

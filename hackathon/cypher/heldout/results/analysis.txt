@@ -1,0 +1,30 @@
+| model | n held-out | held-out (gameofthrones) | main exam n | main exam | delta (pts) |
+|---|---|---|---|---|---|
+| glm-5p3-flash (default reasoning) | 100 | 56.0% | 200 | 60.5% | -4.5 |
+| Muse Glimmer 30B base | 100 | 57.0% | 200 | 51.5% | +5.5 |
+| Muse Glimmer + SFT (cypher-sft-1150) | 100 | 60.0% | 200 | 59.0% | +1.0 |
+| Muse Glimmer + SFT + RFT (cypher-r1rej-1204) | 100 | 62.0% | 200 | 60.0% | +2.0 |
+| kimi-k3 (frontier) | 50 | 48.0% | 100 | 50.0% | -2.0 |
+
+first 50 held-out rows (kimi's slice):
+  glm-5p3-flash (default reasoning): 58%
+  Muse Glimmer 30B base: 56%
+  Muse Glimmer + SFT (cypher-sft-1150): 58%
+  Muse Glimmer + SFT + RFT (cypher-r1rej-1204): 56%
+  kimi-k3 (frontier): 48%
+
+per tier (held-out, score_v2):
+| model | easy | medium | hard |
+|---|---|---|---|
+| glm-5p3-flash (default reasoning) | 55% (n=67) | 68% (n=28) | 0% (n=5) |
+| Muse Glimmer 30B base | 55% (n=67) | 64% (n=28) | 40% (n=5) |
+| Muse Glimmer + SFT (cypher-sft-1150) | 58% (n=67) | 75% (n=28) | 0% (n=5) |
+| Muse Glimmer + SFT + RFT (cypher-r1rej-1204) | 63% (n=67) | 71% (n=28) | 0% (n=5) |
+| kimi-k3 (frontier) | 47% (n=36) | 64% (n=11) | 0% (n=3) |
+
+paired bootstrap (10,000 resamples, two-sided):
+  SFT vs base, held-out: n=100 diff +3.0 pts, 95% CI [-6.0, +12.0], p=0.570, rows only A right 11, only B right 8
+  SFT+RFT vs base, held-out: n=100 diff +5.0 pts, 95% CI [-3.0, +13.0], p=0.271, rows only A right 11, only B right 6
+  SFT+RFT vs SFT, held-out: n=100 diff +2.0 pts, 95% CI [-5.0, +9.0], p=0.666, rows only A right 7, only B right 5
+  SFT vs glm-5p3-flash, held-out: n=100 diff +4.0 pts, 95% CI [-5.0, +13.0], p=0.458, rows only A right 13, only B right 9
+  SFT vs base, main 200: n=200 diff +7.5 pts, 95% CI [+2.0, +13.0], p=0.006, rows only A right 23, only B right 8

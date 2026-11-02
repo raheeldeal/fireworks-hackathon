@@ -1,0 +1,2828 @@
+{
+ "model": "accounts/fireworks/models/kimi-k3",
+ "prompt": "v1_plain",
+ "scorer": "score_v2 (audit/SCORING.md)",
+ "n": 50,
+ "graph": "gameofthrones",
+ "accuracy": 0.48,
+ "accuracy_v2": 0.48,
+ "accuracy_v1": 0.46,
+ "accuracy_lenient": 0.66,
+ "error_rate": 0.0,
+ "empty_rate": 0.0,
+ "wrong_rate": 0.52,
+ "p50_latency_s": 2.757,
+ "cost_total_usd": 0.2125,
+ "in_tokens": 28891,
+ "out_tokens": 8386,
+ "api_errors": 0,
+ "request_extra": {},
+ "checkpoint": "accounts/fireworks/models/kimi-k3",
+ "test_file": "heldout/test_gameofthrones.jsonl",
+ "test_sha256": "b2539c710a123178b7c3c52e59fe18b868a7d239a1e666560b6b78abc510afe9",
+ "by_tier_v2": {
+  "easy": {
+   "n": 36,
+   "accuracy_v1": 0.4444,
+   "accuracy_v2": 0.4722
+  },
+  "medium": {
+   "n": 11,
+   "accuracy_v1": 0.6364,
+   "accuracy_v2": 0.6364
+  },
+  "hard": {
+   "n": 3,
+   "accuracy_v1": 0.0,
+   "accuracy_v2": 0.0
+  }
+ },
+ "rows": [
+  {
+   "id": "h000",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the characters with the lowest `book1PageRank` who interact with characters having a `community` value of 759.",
+   "gold_cypher": "MATCH (c1:Character)\\nWHERE c1.community = 759\\nMATCH (c1)-[:INTERACTS1]-(c2:Character)\\nWITH c2\\nORDER BY c2.book1PageRank\\nLIMIT 1\\nRETURN c2.name",
+   "raw": "MATCH (c:Character)-[:INTERACTS]-(other:Character)\nWHERE other.community = 759\nWITH collect(DISTINCT c) AS characters, min(c.book1PageRank) AS lowestPageRank\nUNWIND characters AS c\nWITH c, lowestPageRank\nWHERE c.book1PageRank = lowestPageRank\nRETURN c.name AS character, c.book1PageRank\nORDER BY c.name",
+   "pred_cypher": "MATCH (c:Character)-[:INTERACTS]-(other:Character)\nWHERE other.community = 759\nWITH collect(DISTINCT c) AS characters, min(c.book1PageRank) AS lowestPageRank\nUNWIND characters AS c\nWITH c, lowestPageRank\nWHERE c.book1PageRank = lowestPageRank\nRETURN c.name AS character, c.book1PageRank\nORDER BY c.name",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 116,
+   "pred_rows_head": [
+    {
+     "character": "Alayaya",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "character": "Alerie-Hightower",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "character": "Alester-Florent",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "character": "Alla-Tyrell",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "character": "Amory-Lorch",
+     "c.book1PageRank": 0.15000000000000002
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 8.69,
+   "in_tokens": 591,
+   "out_tokens": 568,
+   "reasoning_tokens": 469,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h001",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify characters whose pagerank is exactly 0.15000000000000002.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.pagerank = 0.15000000000000002\\nRETURN c.name",
+   "raw": "MATCH (c:Character)\nWHERE c.pagerank = 0.15000000000000002\nRETURN c.name, c.pagerank",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.pagerank = 0.15000000000000002\nRETURN c.name, c.pagerank",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 185,
+   "pred_rows_head": [
+    {
+     "c.name": "Addam-Marbrand",
+     "c.pagerank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aegon-Frey-(son-of-Stevron)",
+     "c.pagerank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aegon-I-Targaryen",
+     "c.pagerank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aegon-Targaryen-(son-of-Rhaegar)",
+     "c.pagerank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aegon-V-Targaryen",
+     "c.pagerank": 0.15000000000000002
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.63,
+   "in_tokens": 582,
+   "out_tokens": 65,
+   "reasoning_tokens": 22,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h002",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the top 3 characters with the lowest book1BetweennessCentrality?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.book1BetweennessCentrality IS NOT NULL\\nRETURN c.name AS character, c.book1BetweennessCentrality AS centrality\\nORDER BY centrality\\nLIMIT 3",
+   "raw": "MATCH (c:Character)\nRETURN c.name, c.book1BetweennessCentrality\nORDER BY c.book1BetweennessCentrality ASC\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name, c.book1BetweennessCentrality\nORDER BY c.book1BetweennessCentrality ASC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "c.name": "Aegon-Frey-(son-of-Stevron)",
+     "c.book1BetweennessCentrality": 0.0
+    },
+    {
+     "c.name": "Aegon-I-Targaryen",
+     "c.book1BetweennessCentrality": 0.0
+    },
+    {
+     "c.name": "Addam-Marbrand",
+     "c.book1BetweennessCentrality": 0.0
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.748,
+   "in_tokens": 582,
+   "out_tokens": 86,
+   "reasoning_tokens": 41,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h003",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify characters in community 759 with a pagerank above 0.4.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.community = 759 AND c.pagerank > 0.4\\nRETURN c.name, c.pagerank",
+   "raw": "MATCH (c:Character)\nWHERE c.community = 759 AND c.pagerank > 0.4\nRETURN c.name, c.pagerank, c.community\nORDER BY c.pagerank DESC",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.community = 759 AND c.pagerank > 0.4\nRETURN c.name, c.pagerank, c.community\nORDER BY c.pagerank DESC",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 14,
+   "pred_rows_head": [
+    {
+     "c.name": "Sansa-Stark",
+     "c.pagerank": 3.580713636728881,
+     "c.community": 759
+    },
+    {
+     "c.name": "Tommen-Baratheon",
+     "c.pagerank": 2.523233744291638,
+     "c.community": 759
+    },
+    {
+     "c.name": "Sandor-Clegane",
+     "c.pagerank": 1.3518024821951826,
+     "c.community": 759
+    },
+    {
+     "c.name": "Tysha",
+     "c.pagerank": 1.2012390054270026,
+     "c.community": 759
+    },
+    {
+     "c.name": "Joffrey-Baratheon",
+     "c.pagerank": 0.8797740201119548,
+     "c.community": 759
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.642,
+   "in_tokens": 581,
+   "out_tokens": 77,
+   "reasoning_tokens": 20,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h004",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the names of characters who have an INTERACTS2 book value of 2 and a weight greater than 50?",
+   "gold_cypher": "MATCH (c:Character)-[i:INTERACTS2]->(other:Character)\\nWHERE i.book = 2 AND i.weight > 50\\nRETURN c.name",
+   "raw": "MATCH (c:Character)-[r:INTERACTS2]->(:Character)\nWHERE r.book = 2 AND r.weight > 50\nRETURN DISTINCT c.name",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS2]->(:Character)\nWHERE r.book = 2 AND r.weight > 50\nRETURN DISTINCT c.name",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 10,
+   "pred_rows_head": [
+    {
+     "c.name": "Arya-Stark"
+    },
+    {
+     "c.name": "Bran-Stark"
+    },
+    {
+     "c.name": "Catelyn-Stark"
+    },
+    {
+     "c.name": "Cersei-Lannister"
+    },
+    {
+     "c.name": "Davos-Seaworth"
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.194,
+   "in_tokens": 591,
+   "out_tokens": 94,
+   "reasoning_tokens": 47,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h005",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the top 5 characters with the lowest centrality?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.centrality IS NOT NULL\\nRETURN c.name, c.centrality\\nORDER BY c.centrality ASC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nRETURN c.name AS name, c.centrality AS centrality\nORDER BY c.centrality ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name AS name, c.centrality AS centrality\nORDER BY c.centrality ASC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "name": "Aegon-Frey-(son-of-Stevron)",
+     "centrality": 0.0
+    },
+    {
+     "name": "Aegon-I-Targaryen",
+     "centrality": 0.0
+    },
+    {
+     "name": "Aegon-Targaryen-(son-of-Rhaegar)",
+     "centrality": 0.0
+    },
+    {
+     "name": "Aegon-V-Targaryen",
+     "centrality": 0.0
+    },
+    {
+     "name": "Addam-Marbrand",
+     "centrality": 0.0
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.975,
+   "in_tokens": 578,
+   "out_tokens": 87,
+   "reasoning_tokens": 43,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h006",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the characters who have interacted with 'Benerro' in any book and have a 'degree' less than 5.",
+   "gold_cypher": "MATCH (b:Character {name: 'Benerro'})\\nMATCH (b)--(c:Character)\\nWHERE c.degree < 5\\nRETURN DISTINCT c.name",
+   "raw": "MATCH (b:Character {name: 'Benerro'})-[:INTERACTS|INTERACTS1|INTERACTS2|INTERACTS3|INTERACTS45]-(c:Character)\nWHERE c.degree < 5\nRETURN DISTINCT c.name",
+   "pred_cypher": "MATCH (b:Character {name: 'Benerro'})-[:INTERACTS|INTERACTS1|INTERACTS2|INTERACTS3|INTERACTS45]-(c:Character)\nWHERE c.degree < 5\nRETURN DISTINCT c.name",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 2,
+   "pred_rows_head": [
+    {
+     "c.name": "Haldon"
+    },
+    {
+     "c.name": "Moqorro"
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.795,
+   "in_tokens": 591,
+   "out_tokens": 263,
+   "reasoning_tokens": 194,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h007",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who are the top 3 characters with the highest centrality?",
+   "gold_cypher": "MATCH (c:Character)\\nRETURN c.name, c.centrality\\nORDER BY c.centrality DESC\\nLIMIT 3",
+   "raw": "MATCH (c:Character)\nRETURN c.name, c.centrality\nORDER BY c.centrality DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name, c.centrality\nORDER BY c.centrality DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "c.name": "Alliser-Thorne",
+     "c.centrality": 1.0
+    },
+    {
+     "c.name": "Benjen-Stark",
+     "c.centrality": 1.0
+    },
+    {
+     "c.name": "Boros-Blount",
+     "c.centrality": 1.0
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.884,
+   "in_tokens": 578,
+   "out_tokens": 77,
+   "reasoning_tokens": 38,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h008",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What are the names of the top 5 characters with the highest book1PageRank?",
+   "gold_cypher": "MATCH (c:Character)\\nRETURN c.name AS character, c.book1PageRank AS pageRank\\nORDER BY pageRank DESC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nRETURN c.name AS name, c.book1PageRank AS book1PageRank\nORDER BY c.book1PageRank DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name AS name, c.book1PageRank AS book1PageRank\nORDER BY c.book1PageRank DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "name": "Eddard-Stark",
+     "book1PageRank": 8.164174336296284
+    },
+    {
+     "name": "Tyrion-Lannister",
+     "book1PageRank": 5.930439547970604
+    },
+    {
+     "name": "Catelyn-Stark",
+     "book1PageRank": 5.4188070749134205
+    },
+    {
+     "name": "Robert-Baratheon",
+     "book1PageRank": 5.314800432638434
+    },
+    {
+     "name": "Jon-Snow",
+     "book1PageRank": 4.821979834747603
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.376,
+   "in_tokens": 583,
+   "out_tokens": 90,
+   "reasoning_tokens": 42,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h009",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who interacts in book 45 with a weight greater than 90?",
+   "gold_cypher": "MATCH (c1:Character)-[i:INTERACTS45]->(c2:Character)\\nWHERE i.weight > 90\\nRETURN c1.name AS character1, c2.name AS character2, i.weight AS weight",
+   "raw": "MATCH (a:Character)-[r:INTERACTS45]->(b:Character)\nWHERE r.weight > 90\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC",
+   "pred_cypher": "MATCH (a:Character)-[r:INTERACTS45]->(b:Character)\nWHERE r.weight > 90\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 2,
+   "pred_rows_head": [
+    {
+     "character1": "Daenerys-Targaryen",
+     "character2": "Hizdahr-zo-Loraq",
+     "weight": 96
+    },
+    {
+     "character1": "Cersei-Lannister",
+     "character2": "Tommen-Baratheon",
+     "weight": 93
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.825,
+   "in_tokens": 579,
+   "out_tokens": 115,
+   "reasoning_tokens": 53,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h010",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What is the lowest 'book1BetweennessCentrality' value among all characters?",
+   "gold_cypher": "MATCH (c:Character)\\nRETURN min(c.book1BetweennessCentrality) AS min_centrality",
+   "raw": "MATCH (c:Character) RETURN min(c.book1BetweennessCentrality) AS lowestBook1BetweennessCentrality",
+   "pred_cypher": "MATCH (c:Character) RETURN min(c.book1BetweennessCentrality) AS lowestBook1BetweennessCentrality",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "lowestBook1BetweennessCentrality": 0.0
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.505,
+   "in_tokens": 582,
+   "out_tokens": 57,
+   "reasoning_tokens": 20,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h011",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find all characters that have 'INTERACTS2' relationship with a weight above 50.",
+   "gold_cypher": "MATCH (c:Character)-[r:INTERACTS2]->(:Character)\\nWHERE r.weight > 50\\nRETURN c",
+   "raw": "MATCH (c:Character)-[r:INTERACTS2]-(:Character)\nWHERE r.weight > 50\nRETURN DISTINCT c",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS2]-(:Character)\nWHERE r.weight > 50\nRETURN DISTINCT c",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 18,
+   "pred_rows_head": [
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 301.00645534734974,
+      "louvain": 9,
+      "fastrf_embedding": [
+       -0.15551070868968964,
+       -0.6832578182220459,
+       -0.30330514907836914,
+       0.7459936141967773,
+       0.024958975613117218,
+       -0.3971257507801056,
+       0.46677395701408386,
+       0.6506232619285583,
+       -0.6878155469894409,
+       1.09311842918396
+      ],
+      "book1PageRank": 2.781731928245661,
+      "centrality": 0.0,
+      "degree": 8.0,
+      "name": "Arya-Stark",
+      "book45PageRank": 5.083229982429223,
+      "community": 605,
+      "pagerank": 0.2661666698753834
+     }
+    },
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 960.0319135675135,
+      "louvain": 5,
+      "fastrf_embedding": [
+       0.18649210035800934,
+       -0.07998603582382202,
+       -0.3705011010169983,
+       0.8752190470695496,
+       0.5738258361816406,
+       -0.3852701783180237,
+       0.44138383865356445,
+       0.42096853256225586,
+       -0.43709516525268555,
+       1.3531146049499512
+      ],
+      "book1PageRank": 3.5609024426905043,
+      "centrality": 1.0,
+      "degree": 12.0,
+      "name": "Bran-Stark",
+      "book45PageRank": 2.299498666362717,
+      "community": 642,
+      "pagerank": 0.23719562517944728
+     }
+    },
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 2604.7556467555924,
+      "louvain": 1,
+      "fastrf_embedding": [
+       0.524446964263916,
+       -0.3803202211856842,
+       -0.2185530960559845,
+       1.4116944074630737,
+       0.12343055754899979,
+       -0.11456385254859924,
+       0.08329211175441742,
+       0.6949648857116699,
+       -0.31851106882095337,
+       0.6014328002929688
+      ],
+      "book1PageRank": 5.4188070749134205,
+      "centrality": 0.8333333333333334,
+      "degree": 26.0,
+      "name": "Catelyn-Stark",
+      "book45PageRank": 1.7513287543111746,
+      "community": 579,
+      "pagerank": 0.36334500362236216
+     }
+    },
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 454.8086339495463,
+      "louvain": 0,
+      "fastrf_embedding": [
+       0.08447568863630295,
+       -0.7249010801315308,
+       -0.4880490005016327,
+       1.135746717453003,
+       0.041625794023275375,
+       0.2633621394634247,
+       0.8561347723007202,
+       0.8741286993026733,
+       -0.07169564068317413,
+       0.037886470556259155
+      ],
+      "book1PageRank": 3.036200181612617,
+      "centrality": 0.8181818181818182,
+      "degree": 46.0,
+      "name": "Cersei-Lannister",
+      "book45PageRank": 9.48743926545994,
+      "pagerank": 0.4001630128506378,
+      "community": 759
+     }
+    },
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 0.0,
+      "louvain": 7,
+      "fastrf_embedding": [
+       -0.5502477884292603,
+       -0.9033403396606445,
+       0.39599117636680603,
+       -0.10079849511384964,
+       0.05720099061727524,
+       0.08192747831344604,
+       1.0580518245697021,
+       0.8261584043502808,
+       -0.4753626883029938,
+       0.3658595681190491
+      ],
+      "book1PageRank": 0.15000000000000002,
+      "centrality": 0.0,
+      "degree": 16.0,
+      "name": "Davos-Seaworth",
+      "book45PageRank": 2.528418507713882,
+      "community": 579,
+      "pagerank": 0.44369929637759925
+     }
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.146,
+   "in_tokens": 584,
+   "out_tokens": 240,
+   "reasoning_tokens": 200,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h012",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Find the characters involved in the heaviest INTERACTS2 relationship.",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS2]->(c2:Character)\\nRETURN c1, c2, r.weight AS weight\\nORDER BY r.weight DESC\\nLIMIT 1",
+   "raw": "MATCH (a:Character)-[r:INTERACTS2]->(b:Character)\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (a:Character)-[r:INTERACTS2]->(b:Character)\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC\nLIMIT 1",
+   "exec_status": "correct",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "character1": "Joffrey-Baratheon",
+     "character2": "Tyrion-Lannister",
+     "weight": 92
+    }
+   ],
+   "correct": true,
+   "correct_v1": false,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.884,
+   "in_tokens": 579,
+   "out_tokens": 94,
+   "reasoning_tokens": 35,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h013",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average `degree` of characters who interact with \"Ryman-Frey\" in book 45?",
+   "gold_cypher": "MATCH (rf:Character {name: \"Ryman-Frey\"})-[:INTERACTS45]-(other)\\nWITH avg(other.degree) AS avg_degree\\nRETURN avg_degree",
+   "raw": "MATCH (c:Character)-[:INTERACTS45]-(r:Character {name: \"Ryman-Frey\"})\nRETURN avg(c.degree) AS averageDegree",
+   "pred_cypher": "MATCH (c:Character)-[:INTERACTS45]-(r:Character {name: \"Ryman-Frey\"})\nRETURN avg(c.degree) AS averageDegree",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "averageDegree": 22.166666666666664
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.877,
+   "in_tokens": 588,
+   "out_tokens": 206,
+   "reasoning_tokens": 160,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h014",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List all characters who have a book1BetweennessCentrality greater than 1000.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.book1BetweennessCentrality > 1000\\nRETURN c.name AS character",
+   "raw": "MATCH (c:Character)\nWHERE c.book1BetweennessCentrality > 1000\nRETURN c.name, c.book1BetweennessCentrality\nORDER BY c.book1BetweennessCentrality DESC",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.book1BetweennessCentrality > 1000\nRETURN c.name, c.book1BetweennessCentrality\nORDER BY c.book1BetweennessCentrality DESC",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 8,
+   "pred_rows_head": [
+    {
+     "c.name": "Eddard-Stark",
+     "c.book1BetweennessCentrality": 4638.53495125504
+    },
+    {
+     "c.name": "Robert-Baratheon",
+     "c.book1BetweennessCentrality": 3682.391035767814
+    },
+    {
+     "c.name": "Tyrion-Lannister",
+     "c.book1BetweennessCentrality": 3272.6060155260343
+    },
+    {
+     "c.name": "Jon-Snow",
+     "c.book1BetweennessCentrality": 2952.057281565677
+    },
+    {
+     "c.name": "Catelyn-Stark",
+     "c.book1BetweennessCentrality": 2604.7556467555924
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.655,
+   "in_tokens": 583,
+   "out_tokens": 80,
+   "reasoning_tokens": 26,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h015",
+   "graph": "gameofthrones",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find the characters with the lowest 'degree' who have interacted with 'Stevron-Frey'.",
+   "gold_cypher": "MATCH (stevron:Character {name: 'Stevron-Frey'})-[r]->(other:Character)\\nWITH min(other.degree) AS min_degree\\nMATCH (stevron:Character {name: 'Stevron-Frey'})-[r]->(other:Character)\\nWHERE other.degree = min_degree\\nRETURN other.name, other.degree",
+   "raw": "MATCH (c:Character)-[:INTERACTS]-(:Character {name: \"Stevron-Frey\"})\nWITH min(c.degree) AS lowestDegree\nMATCH (c:Character)-[:INTERACTS]-(:Character {name: \"Stevron-Frey\"})\nWHERE c.degree = lowestDegree\nRETURN c.name AS character, c.degree AS degree\nORDER BY character",
+   "pred_cypher": "MATCH (c:Character)-[:INTERACTS]-(:Character {name: \"Stevron-Frey\"})\nWITH min(c.degree) AS lowestDegree\nMATCH (c:Character)-[:INTERACTS]-(:Character {name: \"Stevron-Frey\"})\nWHERE c.degree = lowestDegree\nRETURN c.name AS character, c.degree AS degree\nORDER BY character",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "character": "Aegon-Frey-(son-of-Stevron)",
+     "degree": 0.0
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 6.545,
+   "in_tokens": 585,
+   "out_tokens": 424,
+   "reasoning_tokens": 335,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h016",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find characters connected by any INTERACTS relationship with a weight over 200.",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS|INTERACTS1|INTERACTS2|INTERACTS3|INTERACTS45]->(c2:Character)\\nWHERE r.weight > 200\\nRETURN c1.name, r, c2.name",
+   "raw": "MATCH (a:Character)-[r:INTERACTS]->(b:Character)\nWHERE r.weight > 200\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC",
+   "pred_cypher": "MATCH (a:Character)-[r:INTERACTS]->(b:Character)\nWHERE r.weight > 200\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 6,
+   "pred_rows_head": [
+    {
+     "character1": "Eddard-Stark",
+     "character2": "Robert-Baratheon",
+     "weight": 334
+    },
+    {
+     "character1": "Jon-Snow",
+     "character2": "Samwell-Tarly",
+     "weight": 228
+    },
+    {
+     "character1": "Joffrey-Baratheon",
+     "character2": "Sansa-Stark",
+     "weight": 222
+    },
+    {
+     "character1": "Joffrey-Baratheon",
+     "character2": "Tyrion-Lannister",
+     "weight": 219
+    },
+    {
+     "character1": "Bran-Stark",
+     "character2": "Hodor",
+     "weight": 209
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.784,
+   "in_tokens": 581,
+   "out_tokens": 125,
+   "reasoning_tokens": 64,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h017",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Identify the top 5 most frequent communities in INTERACTS1 relationships.",
+   "gold_cypher": "MATCH (c1:Character)-[:INTERACTS1]->(c2:Character)\\nRETURN c1.community AS Community, count(*) AS Frequency\\nORDER BY Frequency DESC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)-[:INTERACTS1]-()\nRETURN c.community AS community, count(*) AS frequency\nORDER BY frequency DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)-[:INTERACTS1]-()\nRETURN c.community AS community, count(*) AS frequency\nORDER BY frequency DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "community": 579,
+     "frequency": 483
+    },
+    {
+     "community": 759,
+     "frequency": 174
+    },
+    {
+     "community": 642,
+     "frequency": 111
+    },
+    {
+     "community": 598,
+     "frequency": 85
+    },
+    {
+     "community": 578,
+     "frequency": 68
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.567,
+   "in_tokens": 580,
+   "out_tokens": 282,
+   "reasoning_tokens": 236,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h018",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List characters within louvain communities 0 to 5 with a pagerank greater than 0.5.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.louvain >= 0 AND c.louvain <= 5 AND c.pagerank > 0.5\\nRETURN c",
+   "raw": "MATCH (c:Character)\nWHERE c.louvain >= 0 AND c.louvain <= 5 AND c.pagerank > 0.5\nRETURN c.name AS name, c.louvain AS louvain, c.pagerank AS pagerank\nORDER BY pagerank DESC",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.louvain >= 0 AND c.louvain <= 5 AND c.pagerank > 0.5\nRETURN c.name AS name, c.louvain AS louvain, c.pagerank AS pagerank\nORDER BY pagerank DESC",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 90,
+   "pred_rows_head": [
+    {
+     "name": "Tyrion-Lannister",
+     "louvain": 0,
+     "pagerank": 9.473142454730429
+    },
+    {
+     "name": "Tywin-Lannister",
+     "louvain": 0,
+     "pagerank": 4.665256252734499
+    },
+    {
+     "name": "Theon-Greyjoy",
+     "louvain": 5,
+     "pagerank": 4.454318900905401
+    },
+    {
+     "name": "Varys",
+     "louvain": 0,
+     "pagerank": 3.589986279753582
+    },
+    {
+     "name": "Sansa-Stark",
+     "louvain": 0,
+     "pagerank": 3.580713636728881
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.037,
+   "in_tokens": 588,
+   "out_tokens": 126,
+   "reasoning_tokens": 49,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h019",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the maximum `book1BetweennessCentrality` among characters with `community` 579?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.community = 579\\nRETURN max(c.book1BetweennessCentrality)",
+   "raw": "MATCH (c:Character)\nWHERE c.community = 579\nRETURN max(c.book1BetweennessCentrality) AS maxBook1BetweennessCentrality",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.community = 579\nRETURN max(c.book1BetweennessCentrality) AS maxBook1BetweennessCentrality",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "maxBook1BetweennessCentrality": 4638.53495125504
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.453,
+   "in_tokens": 586,
+   "out_tokens": 68,
+   "reasoning_tokens": 23,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h020",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "\"which is the character that most interacted with someone else?\"",
+   "gold_cypher": "MATCH (c:Character)-[r:INTERACTS]->(:Character)\\nRETURN c.name, SUM(r.weight) as totalInteractions\\nORDER BY totalInteractions DESC\\nLIMIT 1",
+   "raw": "MATCH (c:Character)-[r:INTERACTS]->(other:Character)\nRETURN c.name AS character, other.name AS interactedWith, r.weight AS interactions\nORDER BY r.weight DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS]->(other:Character)\nRETURN c.name AS character, other.name AS interactedWith, r.weight AS interactions\nORDER BY r.weight DESC\nLIMIT 1",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "character": "Eddard-Stark",
+     "interactedWith": "Robert-Baratheon",
+     "interactions": 334
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.875,
+   "in_tokens": 263,
+   "out_tokens": 204,
+   "reasoning_tokens": 147,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h021",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which character has the highest book1BetweennessCentrality?",
+   "gold_cypher": "MATCH (c:Character)\\nRETURN c.name, c.book1BetweennessCentrality\\nORDER BY c.book1BetweennessCentrality DESC\\nLIMIT 1",
+   "raw": "MATCH (c:Character)\nRETURN c.name AS character, c.book1BetweennessCentrality AS betweenness\nORDER BY c.book1BetweennessCentrality DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name AS character, c.book1BetweennessCentrality AS betweenness\nORDER BY c.book1BetweennessCentrality DESC\nLIMIT 1",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "character": "Eddard-Stark",
+     "betweenness": 4638.53495125504
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.274,
+   "in_tokens": 577,
+   "out_tokens": 91,
+   "reasoning_tokens": 41,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h022",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify characters who have both high pagerank and high degree of centrality. Limit to top 5.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.pagerank > 8.0 AND c.degree > 250.0\\nRETURN c.name, c.pagerank, c.degree\\nORDER BY c.pagerank DESC, c.degree DESC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nRETURN c.name AS name, c.pagerank AS pagerank, c.degree AS degree\nORDER BY c.pagerank DESC, c.degree DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name AS name, c.pagerank AS pagerank, c.degree AS degree\nORDER BY c.pagerank DESC, c.degree DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "name": "Tyrion-Lannister",
+     "pagerank": 9.473142454730429,
+     "degree": 300.0
+    },
+    {
+     "name": "Stannis-Baratheon",
+     "pagerank": 6.20480796309716,
+     "degree": 197.0
+    },
+    {
+     "name": "Tywin-Lannister",
+     "pagerank": 4.665256252734499,
+     "degree": 124.0
+    },
+    {
+     "name": "Theon-Greyjoy",
+     "pagerank": 4.454318900905401,
+     "degree": 125.0
+    },
+    {
+     "name": "Varys",
+     "pagerank": 3.589986279753582,
+     "degree": 97.0
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.684,
+   "in_tokens": 586,
+   "out_tokens": 154,
+   "reasoning_tokens": 101,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h023",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify characters with a centrality exactly 0.0 and a degree over 20.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.centrality = 0.0 AND c.degree > 20\\nRETURN c",
+   "raw": "MATCH (c:Character)\nWHERE c.centrality = 0.0 AND c.degree > 20\nRETURN c.name, c.centrality, c.degree",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.centrality = 0.0 AND c.degree > 20\nRETURN c.name, c.centrality, c.degree",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 23,
+   "pred_rows_head": [
+    {
+     "c.name": "Hizdahr-zo-Loraq",
+     "c.centrality": 0.0,
+     "c.degree": 22.0
+    },
+    {
+     "c.name": "Margaery-Tyrell",
+     "c.centrality": 0.0,
+     "c.degree": 33.0
+    },
+    {
+     "c.name": "Meera-Reed",
+     "c.centrality": 0.0,
+     "c.degree": 22.0
+    },
+    {
+     "c.name": "Melisandre",
+     "c.centrality": 0.0,
+     "c.degree": 34.0
+    },
+    {
+     "c.name": "Oberyn-Martell",
+     "c.centrality": 0.0,
+     "c.degree": 32.0
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.508,
+   "in_tokens": 583,
+   "out_tokens": 68,
+   "reasoning_tokens": 21,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h024",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the names of characters who have an INTERACTS2 book value of 2 and a weight greater than 50?",
+   "gold_cypher": "MATCH (c:Character)-[r:INTERACTS2]->(:Character)\\nWHERE r.book = 2 AND r.weight > 50\\nRETURN c.name",
+   "raw": "MATCH (c:Character)-[r:INTERACTS2]->(:Character)\nWHERE r.book = 2 AND r.weight > 50\nRETURN DISTINCT c.name",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS2]->(:Character)\nWHERE r.book = 2 AND r.weight > 50\nRETURN DISTINCT c.name",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 10,
+   "pred_rows_head": [
+    {
+     "c.name": "Arya-Stark"
+    },
+    {
+     "c.name": "Bran-Stark"
+    },
+    {
+     "c.name": "Catelyn-Stark"
+    },
+    {
+     "c.name": "Cersei-Lannister"
+    },
+    {
+     "c.name": "Davos-Seaworth"
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.229,
+   "in_tokens": 591,
+   "out_tokens": 73,
+   "reasoning_tokens": 26,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h025",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify the characters who interact with 'Theon-Greyjoy' in any book.",
+   "gold_cypher": "MATCH (c:Character)-[:INTERACTS|INTERACTS1|INTERACTS2|INTERACTS3|INTERACTS45]->(theon:Character {name: 'Theon-Greyjoy'})\\nRETURN DISTINCT c.name AS CharacterName",
+   "raw": "MATCH (t:Character {name: 'Theon-Greyjoy'})-[r:INTERACTS|INTERACTS1|INTERACTS2|INTERACTS3|INTERACTS45]-(c:Character)\nRETURN DISTINCT c.name",
+   "pred_cypher": "MATCH (t:Character {name: 'Theon-Greyjoy'})-[r:INTERACTS|INTERACTS1|INTERACTS2|INTERACTS3|INTERACTS45]-(c:Character)\nRETURN DISTINCT c.name",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 66,
+   "pred_rows_head": [
+    {
+     "c.name": "Roose-Bolton"
+    },
+    {
+     "c.name": "Captain-Myraham-Daughter"
+    },
+    {
+     "c.name": "Kyra"
+    },
+    {
+     "c.name": "Benfred-Tallhart"
+    },
+    {
+     "c.name": "Grunt"
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.3,
+   "in_tokens": 582,
+   "out_tokens": 263,
+   "reasoning_tokens": 198,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h026",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the characters with a fastrf_embedding value at the last position less than -0.5? Limit to 3 characters.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.fastrf_embedding[9] < -0.5\\nRETURN c.name\\nLIMIT 3",
+   "raw": "MATCH (c:Character)\nWHERE c.fastrf_embedding[-1] < -0.5\nRETURN c.name\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.fastrf_embedding[-1] < -0.5\nRETURN c.name\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "c.name": "Aggar"
+    },
+    {
+     "c.name": "Aggo"
+    },
+    {
+     "c.name": "Alla-Tyrell"
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.73,
+   "in_tokens": 592,
+   "out_tokens": 151,
+   "reasoning_tokens": 110,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h027",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Retrieve the first 3 characters who interact in book 1 with a weight of exactly 291.",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS1 {weight: 291}]->(c2:Character)\\nRETURN c1.name, c2.name\\nLIMIT 3",
+   "raw": "MATCH (c:Character)-[r:INTERACTS1]->(:Character)\nWHERE r.weight = 291\nRETURN c\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS1]->(:Character)\nWHERE r.weight = 291\nRETURN c\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 4638.53495125504,
+      "louvain": 2,
+      "fastrf_embedding": [
+       0.39165541529655457,
+       -1.1100142002105713,
+       -0.0980011522769928,
+       0.8953916430473328,
+       0.04706774279475212,
+       -0.043146103620529175,
+       -0.021473795175552368,
+       0.6434606313705444,
+       -0.7552379369735718,
+       0.6352384090423584
+      ],
+      "book1PageRank": 8.164174336296284,
+      "centrality": 0.7586206896551724,
+      "degree": 49.0,
+      "name": "Eddard-Stark",
+      "book45PageRank": 2.809556921719629,
+      "community": 579,
+      "pagerank": 0.5553947000175775
+     }
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.9,
+   "in_tokens": 585,
+   "out_tokens": 144,
+   "reasoning_tokens": 101,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h028",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find 3 characters with fastrf_embedding values where the first element is greater than 0.5.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.fastrf_embedding[0] > 0.5\\nRETURN c\\nLIMIT 3",
+   "raw": "MATCH (c:Character)\nWHERE c.fastrf_embedding[0] > 0.5\nRETURN c.name, c.fastrf_embedding[0]\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.fastrf_embedding[0] > 0.5\nRETURN c.name, c.fastrf_embedding[0]\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "c.name": "Aegon-Frey-(son-of-Stevron)",
+     "c.fastrf_embedding[0]": 0.6692425608634949
+    },
+    {
+     "c.name": "Alleras",
+     "c.fastrf_embedding[0]": 0.6753732562065125
+    },
+    {
+     "c.name": "Armen",
+     "c.fastrf_embedding[0]": 0.7895497679710388
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.465,
+   "in_tokens": 586,
+   "out_tokens": 131,
+   "reasoning_tokens": 82,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h029",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "How many characters have a degree value equal to 0.0?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.degree = 0.0\\nRETURN count(c)",
+   "raw": "MATCH (c:Character) WHERE c.degree = 0.0 RETURN count(c)",
+   "pred_cypher": "MATCH (c:Character) WHERE c.degree = 0.0 RETURN count(c)",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "count(c)": 185
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.578,
+   "in_tokens": 579,
+   "out_tokens": 50,
+   "reasoning_tokens": 19,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h030",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the characters with the lowest 'book45PageRank' values who interacted with \"Aemon-Targaryen-(Maester-Aemon)\" in book 45.",
+   "gold_cypher": "MATCH (target:Character {name: \"Aemon-Targaryen-(Maester-Aemon)\"})\\nMATCH (target)-[:INTERACTS45]->(other:Character)\\nWITH other\\nORDER BY other.book45PageRank ASC\\nLIMIT 10\\nRETURN other.name AS character_name, other.book45PageRank AS page_rank",
+   "raw": "MATCH (a:Character {name: \"Aemon-Targaryen-(Maester-Aemon)\"})-[:INTERACTS45]-(c:Character)\nRETURN c.name AS character, c.book45PageRank AS book45PageRank\nORDER BY c.book45PageRank ASC\nLIMIT 10",
+   "pred_cypher": "MATCH (a:Character {name: \"Aemon-Targaryen-(Maester-Aemon)\"})-[:INTERACTS45]-(c:Character)\nRETURN c.name AS character, c.book45PageRank AS book45PageRank\nORDER BY c.book45PageRank ASC\nLIMIT 10",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 8,
+   "pred_rows_head": [
+    {
+     "character": "Aegon-V-Targaryen",
+     "book45PageRank": 0.306266340075915
+    },
+    {
+     "character": "Clydas",
+     "book45PageRank": 1.058611735199264
+    },
+    {
+     "character": "Dareon",
+     "book45PageRank": 1.058987981110726
+    },
+    {
+     "character": "Alleras",
+     "book45PageRank": 1.5841243390877138
+    },
+    {
+     "character": "Gilly",
+     "book45PageRank": 1.7031533668286436
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.008,
+   "in_tokens": 599,
+   "out_tokens": 239,
+   "reasoning_tokens": 163,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h031",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 4,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify the top 5 characters based on the average of their centrality values across all books.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.centrality IS NOT NULL   AND exists {(c)-[:INTERACTS1]->()}   AND exists {(c)-[:INTERACTS2]->()}   AND exists {(c)-[:INTERACTS3]->()}   AND exists {(c)-[:INTERACTS45]->()}\\nWITH c,    (coalesce(c.book1PageRank, 0) +     coalesce(c.book45PageRank, 0) +    coalesce(c.pagerank, 0)) / 3 AS avgCentrality\\nRETURN c.name AS character, avgCentrality\\nORDER BY avgCentrality DESC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nWITH c, (c.book1BetweennessCentrality + c.book1PageRank + c.book45PageRank) / 3.0 AS avgCentrality\nRETURN c.name AS character, avgCentrality\nORDER BY avgCentrality DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nWITH c, (c.book1BetweennessCentrality + c.book1PageRank + c.book45PageRank) / 3.0 AS avgCentrality\nRETURN c.name AS character, avgCentrality\nORDER BY avgCentrality DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "character": "Eddard-Stark",
+     "avgCentrality": 1549.8362275043519
+    },
+    {
+     "character": "Robert-Baratheon",
+     "avgCentrality": 1230.2122358283941
+    },
+    {
+     "character": "Tyrion-Lannister",
+     "avgCentrality": 1095.3268828417547
+    },
+    {
+     "character": "Jon-Snow",
+     "avgCentrality": 989.4297258917786
+    },
+    {
+     "character": "Catelyn-Stark",
+     "avgCentrality": 870.6419275282723
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 13.13,
+   "in_tokens": 584,
+   "out_tokens": 976,
+   "reasoning_tokens": 903,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h032",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the top 5 characters with a community number exactly 795.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.community = 795\\nRETURN c.name\\nORDER BY c.pagerank DESC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nWHERE c.community = 795\nRETURN c.name, c.community, c.pagerank\nORDER BY c.pagerank DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.community = 795\nRETURN c.name, c.community, c.pagerank\nORDER BY c.pagerank DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "c.name": "Victarion-Greyjoy",
+     "c.community": 795,
+     "c.pagerank": 2.457920060706385
+    },
+    {
+     "c.name": "Wulfe",
+     "c.community": 795,
+     "c.pagerank": 2.2392320940534205
+    },
+    {
+     "c.name": "Euron-Greyjoy",
+     "c.community": 795,
+     "c.pagerank": 0.23019302150933074
+    },
+    {
+     "c.name": "Rodrik-Sparr",
+     "c.community": 795,
+     "c.pagerank": 0.20390315025585995
+    },
+    {
+     "c.name": "Ralf-Stonehouse",
+     "c.community": 795,
+     "c.pagerank": 0.19865979576370593
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.04,
+   "in_tokens": 579,
+   "out_tokens": 161,
+   "reasoning_tokens": 110,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h033",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which character has the minimum 'pagerank' value?",
+   "gold_cypher": "MATCH (c:Character)\\nRETURN c.name, c.pagerank\\nORDER BY c.pagerank\\nLIMIT 1",
+   "raw": "MATCH (c:Character) RETURN c.name, c.pagerank ORDER BY c.pagerank ASC LIMIT 1",
+   "pred_cypher": "MATCH (c:Character) RETURN c.name, c.pagerank ORDER BY c.pagerank ASC LIMIT 1",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "c.name": "Addam-Marbrand",
+     "c.pagerank": 0.15000000000000002
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.716,
+   "in_tokens": 576,
+   "out_tokens": 77,
+   "reasoning_tokens": 40,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h034",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who has the highest 'book1BetweennessCentrality' among all characters? Show top 3.",
+   "gold_cypher": "MATCH (c:Character)\\nRETURN c.name, c.book1BetweennessCentrality\\nORDER BY c.book1BetweennessCentrality DESC\\nLIMIT 3",
+   "raw": "MATCH (c:Character)\nRETURN c.name AS name, c.book1BetweennessCentrality AS book1BetweennessCentrality\nORDER BY c.book1BetweennessCentrality DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name AS name, c.book1BetweennessCentrality AS book1BetweennessCentrality\nORDER BY c.book1BetweennessCentrality DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "name": "Eddard-Stark",
+     "book1BetweennessCentrality": 4638.53495125504
+    },
+    {
+     "name": "Robert-Baratheon",
+     "book1BetweennessCentrality": 3682.391035767814
+    },
+    {
+     "name": "Tyrion-Lannister",
+     "book1BetweennessCentrality": 3272.6060155260343
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.798,
+   "in_tokens": 586,
+   "out_tokens": 73,
+   "reasoning_tokens": 19,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h035",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the minimum `weight` of the `INTERACTS3` relationship between characters with a `book1BetweennessCentrality` greater than 400?",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS3]->(c2:Character)\\nWHERE c1.book1BetweennessCentrality > 400\\nRETURN min(r.weight)",
+   "raw": "MATCH (a:Character)-[r:INTERACTS3]->(b:Character)\nWHERE a.book1BetweennessCentrality > 400 AND b.book1BetweennessCentrality > 400\nRETURN min(r.weight) AS minWeight",
+   "pred_cypher": "MATCH (a:Character)-[r:INTERACTS3]->(b:Character)\nWHERE a.book1BetweennessCentrality > 400 AND b.book1BetweennessCentrality > 400\nRETURN min(r.weight) AS minWeight",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "minWeight": 3
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 5.06,
+   "in_tokens": 598,
+   "out_tokens": 192,
+   "reasoning_tokens": 129,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h036",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the maximum `weight` of the `INTERACTS` relationship between characters with a `louvain` value of 0?",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS]->(c2:Character)\\nWHERE c1.louvain = 0 AND c2.louvain = 0\\nRETURN max(r.weight)",
+   "raw": "MATCH (a:Character)-[r:INTERACTS]->(b:Character)\nWHERE a.louvain = 0 AND b.louvain = 0\nRETURN max(r.weight) AS maxWeight",
+   "pred_cypher": "MATCH (a:Character)-[r:INTERACTS]->(b:Character)\nWHERE a.louvain = 0 AND b.louvain = 0\nRETURN max(r.weight) AS maxWeight",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "maxWeight": 222
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.71,
+   "in_tokens": 595,
+   "out_tokens": 173,
+   "reasoning_tokens": 115,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h037",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Retrieve the first 3 characters who interact in book 1 with a weight of exactly 291.",
+   "gold_cypher": "MATCH (c:Character)-[r:INTERACTS1 {weight: 291, book: 1}]->(:Character)\\nRETURN c\\nLIMIT 3",
+   "raw": "MATCH (c:Character)-[r:INTERACTS1]->(other:Character)\nWHERE r.weight = 291\nRETURN c\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS1]->(other:Character)\nWHERE r.weight = 291\nRETURN c\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "c": {
+      "_labels": [
+       "Character"
+      ],
+      "book1BetweennessCentrality": 4638.53495125504,
+      "louvain": 2,
+      "fastrf_embedding": [
+       0.39165541529655457,
+       -1.1100142002105713,
+       -0.0980011522769928,
+       0.8953916430473328,
+       0.04706774279475212,
+       -0.043146103620529175,
+       -0.021473795175552368,
+       0.6434606313705444,
+       -0.7552379369735718,
+       0.6352384090423584
+      ],
+      "book1PageRank": 8.164174336296284,
+      "centrality": 0.7586206896551724,
+      "degree": 49.0,
+      "name": "Eddard-Stark",
+      "book45PageRank": 2.809556921719629,
+      "community": 579,
+      "pagerank": 0.5553947000175775
+     }
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.408,
+   "in_tokens": 585,
+   "out_tokens": 136,
+   "reasoning_tokens": 91,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h038",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Find characters that interact with a weight of exactly 92 in book 2.",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS2 {weight: 92}]->(c2:Character)\\nRETURN c1.name AS Character1, c2.name AS Character2",
+   "raw": "MATCH (c:Character)-[r:INTERACTS2]->(other:Character)\nWHERE r.weight = 92\nRETURN c.name AS character, other.name AS interactsWith, r.weight AS weight",
+   "pred_cypher": "MATCH (c:Character)-[r:INTERACTS2]->(other:Character)\nWHERE r.weight = 92\nRETURN c.name AS character, other.name AS interactsWith, r.weight AS weight",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "character": "Joffrey-Baratheon",
+     "interactsWith": "Tyrion-Lannister",
+     "weight": 92
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.306,
+   "in_tokens": 581,
+   "out_tokens": 88,
+   "reasoning_tokens": 33,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h039",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find characters with a centrality below 0.2 and a book45PageRank above 3.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.centrality < 0.2 AND c.book45PageRank > 3\\nRETURN c.name, c.centrality, c.book45PageRank",
+   "raw": "MATCH (c:Character)\nWHERE c.centrality < 0.2 AND c.book45PageRank > 3\nRETURN c.name, c.centrality, c.book45PageRank",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.centrality < 0.2 AND c.book45PageRank > 3\nRETURN c.name, c.centrality, c.book45PageRank",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 10,
+   "pred_rows_head": [
+    {
+     "c.name": "Aeron-Greyjoy",
+     "c.centrality": 0.0,
+     "c.book45PageRank": 3.215006654255786
+    },
+    {
+     "c.name": "Arianne-Martell",
+     "c.centrality": 0.0,
+     "c.book45PageRank": 3.380475865713493
+    },
+    {
+     "c.name": "Arya-Stark",
+     "c.centrality": 0.0,
+     "c.book45PageRank": 5.083229982429223
+    },
+    {
+     "c.name": "Asha-Greyjoy",
+     "c.centrality": 0.0,
+     "c.book45PageRank": 4.583288589222134
+    },
+    {
+     "c.name": "Barristan-Selmy",
+     "c.centrality": 0.0,
+     "c.book45PageRank": 3.847007803850277
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.463,
+   "in_tokens": 586,
+   "out_tokens": 77,
+   "reasoning_tokens": 24,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h040",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the top 5 characters with the lowest book1PageRank but more than zero degree?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.degree > 0\\nRETURN c.name, c.book1PageRank\\nORDER BY c.book1PageRank\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nWHERE c.degree > 0\nRETURN c.name, c.book1PageRank\nORDER BY c.book1PageRank ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.degree > 0\nRETURN c.name, c.book1PageRank\nORDER BY c.book1PageRank ASC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "c.name": "Alleras",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Asha-Greyjoy",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Arianne-Martell",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Armen",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Axell-Florent",
+     "c.book1PageRank": 0.15000000000000002
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.193,
+   "in_tokens": 585,
+   "out_tokens": 97,
+   "reasoning_tokens": 49,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h041",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": true,
+    "where": true
+   },
+   "question": "What is the shortest path between \"Addam-Marbrand\" and \"Cersei-Lannister\" in terms of interactions?",
+   "gold_cypher": "MATCH p=shortestPath((c1:Character {name: \"Addam-Marbrand\"})-[*]-(c2:Character {name: \"Cersei-Lannister\"}))\\nRETURN p",
+   "raw": "MATCH (a:Character {name: \"Addam-Marbrand\"}), (b:Character {name: \"Cersei-Lannister\"})\nMATCH p = shortestPath((a)-[:INTERACTS*]-(b))\nRETURN p",
+   "pred_cypher": "MATCH (a:Character {name: \"Addam-Marbrand\"}), (b:Character {name: \"Cersei-Lannister\"})\nMATCH p = shortestPath((a)-[:INTERACTS*]-(b))\nRETURN p",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "p": [
+      {
+       "_labels": [
+        "Character"
+       ],
+       "book1BetweennessCentrality": 0.0,
+       "louvain": 0,
+       "fastrf_embedding": [
+        0.35382550954818726,
+        -0.45881387591362,
+        -0.17309759557247162,
+        1.4506233930587769,
+        0.05110495537519455,
+        0.41523367166519165,
+        0.7736440896987915,
+        0.6593196392059326,
+        0.040663570165634155,
+        0.02788778766989708
+       ],
+       "book1PageRank": 0.3328256397977546,
+       "centrality": 0.0,
+       "degree": 0.0,
+       "name": "Addam-Marbrand",
+       "book45PageRank": 0.6875444317091245,
+       "community": 578,
+       "pagerank": 0.15000000000000002
+      },
+      {
+       "_labels": [
+        "Character"
+       ],
+       "book1BetweennessCentrality": 454.8086339495463,
+       "louvain": 0,
+       "fastrf_embedding": [
+        0.08447568863630295,
+        -0.7249010801315308,
+        -0.4880490005016327,
+        1.135746717453003,
+        0.041625794023275375,
+        0.2633621394634247,
+        0.8561347723007202,
+        0.8741286993026733,
+        -0.07169564068317413,
+        0.037886470556259155
+       ],
+       "book1PageRank": 3.036200181612617,
+       "centrality": 0.8181818181818182,
+       "degree": 46.0,
+       "name": "Cersei-Lannister",
+       "book45PageRank": 9.48743926545994,
+       "pagerank": 0.4001630128506378,
+       "community": 759
+      }
+     ]
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.487,
+   "in_tokens": 590,
+   "out_tokens": 161,
+   "reasoning_tokens": 100,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h042",
+   "graph": "gameofthrones",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 5 characters based on the sum weight of their INTERACTS1 and INTERACTS2 relationships.",
+   "gold_cypher": "MATCH (c:Character)-[r1:INTERACTS1]->(c1:Character)\\nMATCH (c)-[r2:INTERACTS2]->(c2:Character)\\nWITH c, SUM(r1.weight + r2.weight) AS totalWeight\\nRETURN c.name AS characterName, totalWeight\\nORDER BY totalWeight DESC\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nOPTIONAL MATCH (c)-[r:INTERACTS1|INTERACTS2]->()\nWITH c, sum(coalesce(r.weight, 0)) AS totalWeight\nRETURN c.name AS character, totalWeight\nORDER BY totalWeight DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nOPTIONAL MATCH (c)-[r:INTERACTS1|INTERACTS2]->()\nWITH c, sum(coalesce(r.weight, 0)) AS totalWeight\nRETURN c.name AS character, totalWeight\nORDER BY totalWeight DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "character": "Eddard-Stark",
+     "totalWeight": 1135
+    },
+    {
+     "character": "Bran-Stark",
+     "totalWeight": 976
+    },
+    {
+     "character": "Cersei-Lannister",
+     "totalWeight": 834
+    },
+    {
+     "character": "Arya-Stark",
+     "totalWeight": 833
+    },
+    {
+     "character": "Catelyn-Stark",
+     "totalWeight": 748
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.991,
+   "in_tokens": 589,
+   "out_tokens": 283,
+   "reasoning_tokens": 210,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h043",
+   "graph": "gameofthrones",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 4,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which characters interacted with both \"Catelyn-Stark\" and \"Cersei-Lannister\"?",
+   "gold_cypher": "MATCH (catelyn:Character {name: \"Catelyn-Stark\"})-[:INTERACTS]->(catelyn_interaction)\\nWITH catelyn, count(DISTINCT catelyn_interaction) AS catelyn_interactions\\nMATCH (cersei:Character {name: \"Cersei-Lannister\"})-[:INTERACTS]->(cersei_interaction)\\nWITH catelyn, cersei,  catelyn_interactions, count(DISTINCT cersei_interaction) AS cersei_interactions\\nMATCH (catelyn)-[:INTERACTS]->(common_interaction)<-[:INTERACTS]-(cersei)\\nRETURN DISTINCT common_interaction.name",
+   "raw": "MATCH (c:Character)-[:INTERACTS]-(:Character {name: \"Catelyn-Stark\"}),\n(c)-[:INTERACTS]-(:Character {name: \"Cersei-Lannister\"})\nRETURN c.name",
+   "pred_cypher": "MATCH (c:Character)-[:INTERACTS]-(:Character {name: \"Catelyn-Stark\"}),\n(c)-[:INTERACTS]-(:Character {name: \"Cersei-Lannister\"})\nRETURN c.name",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 23,
+   "pred_rows_head": [
+    {
+     "c.name": "Arya-Stark"
+    },
+    {
+     "c.name": "Brienne-of-Tarth"
+    },
+    {
+     "c.name": "Bran-Stark"
+    },
+    {
+     "c.name": "Bronn"
+    },
+    {
+     "c.name": "Jon-Snow"
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.84,
+   "in_tokens": 585,
+   "out_tokens": 210,
+   "reasoning_tokens": 151,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h044",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List characters with the lowest 5 book1PageRanks.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.book1PageRank IS NOT NULL\\nRETURN c.name AS character, c.book1PageRank AS pageRank\\nORDER BY pageRank\\nLIMIT 5",
+   "raw": "MATCH (c:Character)\nRETURN c.name, c.book1PageRank\nORDER BY c.book1PageRank ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name, c.book1PageRank\nORDER BY c.book1PageRank ASC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "c.name": "Aegon-Frey-(son-of-Stevron)",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aemon-Targaryen-(Dragonknight)",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aegon-Targaryen-(son-of-Rhaegar)",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aegon-V-Targaryen",
+     "c.book1PageRank": 0.15000000000000002
+    },
+    {
+     "c.name": "Aenys-Frey",
+     "c.book1PageRank": 0.15000000000000002
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.67,
+   "in_tokens": 578,
+   "out_tokens": 72,
+   "reasoning_tokens": 31,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h045",
+   "graph": "gameofthrones",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who are three characters connected by an INTERACTS45 relationship in book 45?",
+   "gold_cypher": "MATCH (c1:Character)-[:INTERACTS45]->(c2:Character)-[:INTERACTS45]->(c3:Character)\\nRETURN c1.name, c2.name, c3.name\\nLIMIT 3",
+   "raw": "MATCH (a:Character)-[:INTERACTS45]->(b:Character)-[:INTERACTS45]->(c:Character)\nRETURN a.name AS character1, b.name AS character2, c.name AS character3\nLIMIT 1",
+   "pred_cypher": "MATCH (a:Character)-[:INTERACTS45]->(b:Character)-[:INTERACTS45]->(c:Character)\nRETURN a.name AS character1, b.name AS character2, c.name AS character3\nLIMIT 1",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "character1": "Aegon-V-Targaryen",
+     "character2": "Aemon-Targaryen-(Maester-Aemon)",
+     "character3": "Alleras"
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 7.199,
+   "in_tokens": 582,
+   "out_tokens": 511,
+   "reasoning_tokens": 448,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h046",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which characters have a degree exactly 300?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.degree = 300.0\\nRETURN c.name",
+   "raw": "MATCH (c:Character)\nWHERE c.degree = 300\nRETURN c.name, c.degree",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.degree = 300\nRETURN c.name, c.degree",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "pred_rows_head": [
+    {
+     "c.name": "Tyrion-Lannister",
+     "c.degree": 300.0
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.795,
+   "in_tokens": 574,
+   "out_tokens": 45,
+   "reasoning_tokens": 13,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h047",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find characters with a centrality above 0.5 and a book1BetweennessCentrality above 3000.",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.centrality > 0.5 AND c.book1BetweennessCentrality > 3000\\nRETURN c",
+   "raw": "MATCH (c:Character)\nWHERE c.centrality > 0.5 AND c.book1BetweennessCentrality > 3000\nRETURN c.name, c.centrality, c.book1BetweennessCentrality",
+   "pred_cypher": "MATCH (c:Character)\nWHERE c.centrality > 0.5 AND c.book1BetweennessCentrality > 3000\nRETURN c.name, c.centrality, c.book1BetweennessCentrality",
+   "exec_status": "wrong",
+   "exec_status_v1": "wrong",
+   "exec_status_v2": "wrong",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "c.name": "Eddard-Stark",
+     "c.centrality": 0.7586206896551724,
+     "c.book1BetweennessCentrality": 4638.53495125504
+    },
+    {
+     "c.name": "Robert-Baratheon",
+     "c.centrality": 0.6301369863013698,
+     "c.book1BetweennessCentrality": 3682.391035767814
+    },
+    {
+     "c.name": "Tyrion-Lannister",
+     "c.centrality": 0.5742574257425742,
+     "c.book1BetweennessCentrality": 3272.6060155260343
+    }
+   ],
+   "correct": false,
+   "correct_v1": false,
+   "correct_v2": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.746,
+   "in_tokens": 589,
+   "out_tokens": 85,
+   "reasoning_tokens": 27,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h048",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the top 3 characters by centrality?",
+   "gold_cypher": "MATCH (c:Character)\\nWHERE c.centrality IS NOT NULL\\nRETURN c.name, c.centrality\\nORDER BY c.centrality DESC\\nLIMIT 3",
+   "raw": "MATCH (c:Character)\nRETURN c.name, c.centrality\nORDER BY c.centrality DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Character)\nRETURN c.name, c.centrality\nORDER BY c.centrality DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "c.name": "Alliser-Thorne",
+     "c.centrality": 1.0
+    },
+    {
+     "c.name": "Benjen-Stark",
+     "c.centrality": 1.0
+    },
+    {
+     "c.name": "Boros-Blount",
+     "c.centrality": 1.0
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.703,
+   "in_tokens": 576,
+   "out_tokens": 77,
+   "reasoning_tokens": 38,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "h049",
+   "graph": "gameofthrones",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Identify the top 5 strongest INTERACTS relationships by weight.",
+   "gold_cypher": "MATCH (c1:Character)-[r:INTERACTS]->(c2:Character)\\nRETURN c1.name, c2.name, r.weight\\nORDER BY r.weight DESC\\nLIMIT 5",
+   "raw": "MATCH (a:Character)-[r:INTERACTS]->(b:Character)\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (a:Character)-[r:INTERACTS]->(b:Character)\nRETURN a.name AS character1, b.name AS character2, r.weight AS weight\nORDER BY r.weight DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_status_v1": "correct",
+   "exec_status_v2": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "character1": "Eddard-Stark",
+     "character2": "Robert-Baratheon",
+     "weight": 334
+    },
+    {
+     "character1": "Jon-Snow",
+     "character2": "Samwell-Tarly",
+     "weight": 228
+    },
+    {
+     "character1": "Joffrey-Baratheon",
+     "character2": "Sansa-Stark",
+     "weight": 222
+    },
+    {
+     "character1": "Joffrey-Baratheon",
+     "character2": "Tyrion-Lannister",
+     "weight": 219
+    },
+    {
+     "character1": "Bran-Stark",
+     "character2": "Hodor",
+     "weight": 209
+    }
+   ],
+   "correct": true,
+   "correct_v1": true,
+   "correct_v2": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.83,
+   "in_tokens": 578,
+   "out_tokens": 100,
+   "reasoning_tokens": 42,
+   "finish_reason": "stop",
+   "api_error": null
+  }
+ ]
+}

@@ -16,8 +16,8 @@ RUNS=[("Muse Glimmer 30B (baseline, before SFT)","train_base.json",True),
       ("GLM Flash + harness (vote of 3)","harness_vote3.json",False),
       ("DeepSeek V4.1 Flash","deepseek-v4p1-flash_v1_plain_n200.json",False),
       ("Kimi K3 (100 q)","kimi-k3_v1_plain_n100.json",False),
-      ("GLM 5.3 large (100 q)","glm-5p3_v1_plain_n100.json",False)]
-for extra in glob.glob("results/claude-*_n100.json")+glob.glob("results/gpt-*_n100.json"):
+      ("GLM 5.3 large (100 q)","glm-5p3_v1_plain_n100.json",False),("Claude Opus 5, closed (100 q)","claude-opus-5_v1_plain_n100.json",False)]
+for extra in []:
     d=json.load(open(extra))
     if d.get("accuracy"): RUNS.append((d["model"]+" (100 q)",os.path.basename(extra),False))
 base=load(RUNS[0][1]); bmap={r["id"]:bool(r["correct"]) for r in base["rows"]}

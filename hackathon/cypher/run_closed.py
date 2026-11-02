@@ -34,7 +34,6 @@ def call_anthropic(model, system, user, max_tokens):
     body = json.dumps({
         "model": model,
         "max_tokens": max_tokens,
-        "temperature": 0,
         "system": system,
         "messages": [{"role": "user", "content": user}],
     }).encode()
@@ -102,17 +101,18 @@ def main():
         try:
             raw, lat, ti, to = call(a.model, system, ex["question"], a.max_tokens)
         except urllib.error.HTTPError as e:
-            return {"id": ex.get("instance_id") or ex.get("id"), "tier": ex.get("tier"), "graph": ex.get("database_reference_alias"),
+            return {"id": ex["id"], "tier": ex["complexity"]["tier"], "graph": ex["graph"],
                     "pred_cypher": "", "exec_status": "error", "correct": False, "latency": 0.0,
                     "in_tokens": 0, "out_tokens": 0, "raw": f"HTTP {e.code}: {e.read()[:200]!r}"}
         pred = clean_pred(raw)
-        res = execute(ex["database_reference_alias"], pred)
-        st, ok = score(res, ex.get("gold_result"))
+        res = execute(ex["graph"], pred) if pred else {"ok": False, "rows": [], "columns": [], "error": "no query", "secs": 0}
+        st = score({"ok": True, **ex["gold_result"]}, res, ex["cypher"])
+        ok = st == "correct"
         cost = (ti * pin + to * pout) / 1_000_000
         with _lock:
             spent["usd"] += cost
-        return {"id": ex.get("instance_id") or ex.get("id"), "tier": ex.get("tier"), "graph": ex.get("database_reference_alias"),
-                "pred_cypher": pred, "exec_status": st, "correct": bool(ok), "latency": lat,
+        return {"id": ex["id"], "tier": ex["complexity"]["tier"], "graph": ex["graph"],
+                "pred_cypher": pred, "exec_status": st, "correct": ok, "latency": lat,
                 "in_tokens": ti, "out_tokens": to, "cost": cost, "raw": raw[:400]}
 
     with ThreadPoolExecutor(max_workers=a.workers) as pool:

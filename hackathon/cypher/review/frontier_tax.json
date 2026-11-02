@@ -1,0 +1,82 @@
+[
+ {
+  "domain": "text-to-SQL (Spider)",
+  "small": "glm-5p3-flash_v1_plain_seed3.json",
+  "small_acc": 0.8667,
+  "small_cost": 0.104,
+  "small_n": 180,
+  "kimi_acc": 0.79,
+  "kimi_cost": 2.8599,
+  "kimi_n": 100
+ },
+ {
+  "domain": "regex",
+  "small": "glm-5p3-flash_v2_rubric_conf.json",
+  "small_acc": 0.955,
+  "small_cost": 0.124,
+  "small_n": 200,
+  "kimi_acc": 0.96,
+  "kimi_cost": 2.637,
+  "kimi_n": 100
+ },
+ {
+  "domain": "code fix (HumanEvalFix)",
+  "small": "glm-5p3-flash_v1_plain_retry.json",
+  "small_acc": 1.0,
+  "small_cost": 0.2546,
+  "small_n": 164,
+  "kimi_acc": 0.99,
+  "kimi_cost": 3.7102,
+  "kimi_n": 100
+ },
+ {
+  "domain": "function calling (BFCL)",
+  "small": "nemotron-lightning-3p5-30b-a3b_tools_v1_plain_required_renone_seed1.json",
+  "small_acc": 0.915,
+  "small_cost": 0.0536,
+  "small_n": 200,
+  "kimi_acc": 0.88,
+  "kimi_cost": 3.1584,
+  "kimi_n": 100
+ },
+ {
+  "domain": "tool routing (100 tools)",
+  "small": "glm-5p3-flash__v1_plain__s0.json",
+  "small_acc": 0.9889,
+  "small_cost": 0.2828,
+  "small_n": 180,
+  "kimi_acc": 0.95,
+  "kimi_cost": 6.1496,
+  "kimi_n": 100
+ },
+ {
+  "domain": "intent routing (Banking77)",
+  "small": "glm-5p3-flash_v1_plain.json",
+  "small_acc": 0.8506,
+  "small_cost": 0.2588,
+  "small_n": 154,
+  "kimi_acc": 0.88,
+  "kimi_cost": 5.5982,
+  "kimi_n": 100
+ },
+ {
+  "domain": "product \u2192 JSON",
+  "small": "glm-5p3-flash_v3_fewshot_s9.json",
+  "small_acc": 0.96,
+  "small_cost": 0.352,
+  "small_n": 200,
+  "kimi_acc": 0.92,
+  "kimi_cost": 5.0921,
+  "kimi_n": 100
+ },
+ {
+  "domain": "text-to-Cypher",
+  "small": "glm-5p3-flash_v1_plain_n200.json",
+  "small_acc": 0.605,
+  "small_cost": 0.2414,
+  "small_n": 200,
+  "kimi_acc": 0.5,
+  "kimi_cost": 6.3628,
+  "kimi_n": 100
+ }
+]

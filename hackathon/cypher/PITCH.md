@@ -26,7 +26,7 @@ A text-to-Cypher system plus the benchmark to judge it:
 Honest footnote: the advantage-weighted RFT variant regressed to 36.5%; no trust region in the API's weighted loss, empty results went 1% → 14.5%. We diagnosed it and switched to rejection sampling.
 
 ## Slide 5 — Finding 3: the benchmark everyone uses is 15% mis-keyed (40s)
-We hand-audited all 36 easy-tier failures. The model is genuinely wrong **twice**.
+We hand-audited 40 failures (all 36 easy-tier plus 4 medium). The model is genuinely wrong **twice**.
 - 11 broken answer keys ("first 3 orders" → the same order three times; "where is this user" → a tweet)
 - 7 ambiguous questions
 - 20 cases where the model answered the question and the key returned a different column

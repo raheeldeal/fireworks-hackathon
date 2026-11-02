@@ -16,7 +16,7 @@ Fireworks "Make your own frontier" hackathon, 2 Nov 2026.
 Three findings, with the evidence in `RESULTS_FINAL.md`:
 1. **Price does not buy accuracy here.** Three expensive models sit at 49 to 53%; the cheapest is at 60.5%. We eliminated scorer strictness, column tolerance and reasoning budget as explanations.
 2. **Fine-tuning on execution reward works.** 51.5% → 59.0% (SFT) → 60.0% (RFT), training free. The advantage-weighted RFT variant regressed to 36.5%; diagnosed and documented rather than dropped.
-3. **~15% of the public benchmark is mis-keyed.** Of 36 easy-tier "failures", the model is genuinely wrong twice. Audit in `audit/MISS_AUDIT.md`.
+3. **~15% of the public benchmark is mis-keyed.** Of 40 hand-audited failures, the model is genuinely wrong twice. Audit in `audit/MISS_AUDIT.md`.
 
 ## The benchmark
 - 200 questions from the public `neo4j/text2cypher-2025v1` **test** split, 40 from each of five live Neo4j demo graphs.

@@ -1,0 +1,90 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Cypher deck draft</title>
+<style>
+body{margin:0;background:#fff;color:#000;font-family:Helvetica,Arial,sans-serif}
+.s{display:none;box-sizing:border-box;width:100vw;height:100vh;padding:6vh 7vw}
+.s.on{display:block}
+h1{font-size:5.2vh;margin:0 0 4vh}
+p,li{font-size:3.1vh;line-height:1.45}
+ul{padding-left:3vw}
+table{border-collapse:collapse;font-size:2.4vh;width:100%}
+td,th{border-bottom:1px solid #000;padding:.7vh 1vw;text-align:left}
+.big{font-size:9vh;font-weight:bold;margin:6vh 0 2vh}
+.n{position:fixed;bottom:2vh;right:3vw;font-size:2vh}
+.todo{border:2px dashed #000;padding:1vh 1vw;font-size:2.4vh}
+img{max-width:100%;max-height:70vh}
+.sm{font-size:2.2vh}
+</style></head><body>
+
+<div class="s"><h1>1. The problem</h1>
+<p class="big" style="font-size:6vh">Fraud analysts can't ask their graph database a question without waiting on an engineer.</p>
+<ul><li><b>User:</b> analysts on fraud, compliance and supply-chain teams whose data lives in a graph (Neo4j).</li>
+<li><b>Pain today:</b> every question becomes a ticket. An engineer writes the query in Cypher. Answers take hours to days.</li>
+<li><b>AI today:</b> frontier models write the query, get about half wrong, and nobody can tell which half.</li></ul></div>
+
+<div class="s"><h1>2. Why this problem</h1>
+<p class="sm">We tested 10 tasks. Each one is "input &rarr; output". The best open model already aced most of them, so they left no room to improve.</p>
+<table><tr><th>Task</th><th>Frontier</th><th>Best small open</th><th>Room to improve?</th></tr>
+<tr><td>Broken code &rarr; fixed code</td><td>96% (GLM 5.3)</td><td>99% (GLM Flash)</td><td>No</td></tr>
+<tr><td>Request &rarr; right tool of 100</td><td>95% (Kimi K3)</td><td>98%</td><td>No</td></tr>
+<tr><td>Meeting transcript &rarr; action items</td><td>n/a</td><td>0.93 F1</td><td>No</td></tr>
+<tr><td>Request &rarr; function call</td><td>92% (GLM 5.3)</td><td>92%</td><td>No</td></tr>
+<tr><td>Support ticket &rarr; intent (77)</td><td>88% (Kimi K3)</td><td>87%</td><td>No</td></tr>
+<tr><td>Product page &rarr; JSON record</td><td>70% (GLM 5.3)</td><td>77%</td><td>Label noise</td></tr>
+<tr><td>Contract clause &rarr; type (100)</td><td>74% (Kimi K3)</td><td>69%</td><td>Label noise</td></tr>
+<tr><td>Plain English &rarr; regex</td><td>n/a</td><td>68% (87% w/ examples)</td><td>Prompting fixes it</td></tr>
+<tr><td>Plain English &rarr; SQL</td><td colspan="2">not finished</td><td>n/a</td></tr>
+<tr><td>Clinical note &rarr; ICD-10 codes</td><td colspan="2">not run</td><td>n/a</td></tr>
+<tr><td><b>Plain English &rarr; Cypher (graph)</b></td><td><b>47% (Claude Opus 5)</b></td><td><b>48%</b></td><td><b>Yes</b></td></tr></table>
+<p class="todo">METRIC TBD: pick with Raheel. Every number shows its baseline.</p></div>
+
+<div class="s"><h1>3. Vision</h1>
+<p class="big" style="font-size:6vh">Any analyst asks any database in plain English and gets a verified answer from a small model they own.</p>
+<ul><li>The database is the grader: run the query, compare the rows. No human labels needed.</li>
+<li>That free, exact reward is what makes fine-tuning and RFT work.</li>
+<li>Graph first, then SQL and any other query language.</li></ul></div>
+
+<div class="s"><h1>4. Where we got today</h1>
+<p class="big">47% &rarr; 55%</p>
+<p>Claude Opus 5 &rarr; our system, same questions, scored by running every query on a live graph.</p>
+<p class="big" style="font-size:6vh">$9.00 &rarr; $0.77 per 1,000 questions</p>
+<p class="sm">Strict scoring, 200 locked questions (Claude on the first 100). Our 55% is a single run; repeated runs average 52%.</p></div>
+
+<div class="s"><h1>Live demo: one question, three systems</h1>
+<ul><li>Same question &rarr; Claude, raw open model, our system.</li>
+<li>Each runs on the live Neo4j graph: rows, correct or wrong, cost, time.</li>
+<li>Open our Langfuse trace: query &rarr; database error &rarr; repair &rarr; right rows.</li></ul>
+<p class="todo">Recorded clip goes here (~30s).</p></div>
+
+<div class="s"><h1>5. What moved the score</h1>
+<img src="../cypher/waterfall/v3_classic_waterfall.png">
+<p class="sm">Top 3 technical moves: (1) exam verified by running every answer key on the live database, (2) repair loop that feeds the database error back, (3) SFT + RFT on Fireworks with "database returns the right rows" as the reward.</p></div>
+
+<div class="s"><h1>6. What we learned</h1>
+<ul><li><b>Price didn't buy accuracy.</b> A $0.15 open model matched $9.00 Claude on the same questions.</li>
+<li><b>The exam was the bottleneck.</b> Of 40 misses we checked by hand, the model was truly wrong in 2. About 15% of the public answer keys are broken.</li>
+<li><b>SFT gave the biggest reliable gain:</b> +8 points, held across 3 seeds.</li>
+<li><b>RFT needs guardrails.</b> One variant collapsed to 36.5%. Rewarding only right answers worked.</li>
+<li><b>The harness buys trust.</b> Broken queries fell from 2.2% to 0.1%, and three-way agreement tells you when to trust an answer.</li></ul></div>
+
+<div class="s"><h1>7. Value and what's next</h1>
+<table><tr><th>At 2,000 questions/day</th><th>Claude Opus 5</th><th>Our system</th></tr>
+<tr><td>Accuracy</td><td>47%</td><td>55%</td></tr>
+<tr><td>Cost per month</td><td>$540</td><td>$46</td></tr>
+<tr><td>Cost per correct answer</td><td>$0.019</td><td>$0.0014</td></tr>
+<tr><td>Time per answer</td><td colspan="2">~2 seconds vs ~20 minutes for an engineer (assumption)</td></tr></table>
+<p class="todo">Add: market size $ (source needed) and engineer-hours saved.</p>
+<p><b>Next:</b> run the fine-tuned model inside the harness. Publish the corrected benchmark. Send low-agreement answers to a human review queue.</p></div>
+
+<div class="s"><h1>8. Reproduce it</h1>
+<ul><li>Public repo: code, locked exam (sha256), scorer with 31 tests, every result file.</li>
+<li>One command per system: baseline, harness, fine-tuned model.</li>
+<li>Every step traced in Langfuse: query, error, repair, rows, cost.</li></ul>
+<p class="todo">Repo is PRIVATE today. Needs a secrets check, then go public.</p></div>
+
+<div class="n" id="n"></div>
+<script>
+const s=[...document.querySelectorAll('.s')];let i=0;
+function go(k){i=Math.max(0,Math.min(s.length-1,k));s.forEach((e,j)=>e.classList.toggle('on',j===i));document.getElementById('n').textContent=(i+1)+' / '+s.length}
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+addEventListener('click',()=>go(i+1));go(0);
+</script></body></html>

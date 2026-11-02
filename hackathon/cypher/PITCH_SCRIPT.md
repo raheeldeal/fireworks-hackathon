@@ -1,3 +1,15 @@
+# 20-second recording
+
+→ **Waterfall & fixes** tab:
+> "We started with a 30B open model at 50%, below the frontier's 57%.
+> A harness that checks every query against the real database brought us level, at 56%.
+> Fine-tuning on verified examples took us to 68.5%."
+
+→ **Model Pareto** tab:
+> "That beats a 2.8-trillion-parameter model by 10 points, at about half the cost, in about a second."
+
+---
+
 # Pitch script: how each component helped (about 4 minutes)
 
 Open `dashboard/index.html`. Lines in quotes are what to say; arrows are what to click.

@@ -13,3 +13,6 @@ timestamp,model,in_tokens,out_tokens,cost,note
 2026-11-02T11:31:25,accounts/fireworks/models/kimi-k3,81324,26154,0.636282,v1_plain n=100
 2026-11-02T11:31:35,accounts/fireworks/models/deepseek-v4p1-flash,177081,92385,0.163986,v1_plain n=200
 2026-11-02T12:10:02,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,250000,15000,0.015500,ESTIMATE upper bound: 2025v1 run killed after 38 min (requests hanging); usage not captured
+2026-11-02T12:32:53,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,151477,16729,0.010920,v1_plain_rsnoff n=200
+2026-11-02T12:32:58,accounts/fireworks/models/glm-5p3,80591,5099,0.135263,v1_plain n=100
+2026-11-02T12:33:48,accounts/fireworks/models/kimi-k3,88124,8339,0.389457,v1_plain n=100

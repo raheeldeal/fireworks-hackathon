@@ -5,6 +5,7 @@ We fine-tune a 30B open model on execution-verified data and wrap it in a harnes
 
 **Headline: Muse Glimmer 30B + LoRA SFT (FT-BX) + harness reaches 68.5% execution accuracy on our 200-question test set.**
 The published zero-shot score of Claude Sonnet 4.6 on this dataset is 56.6%, so that is +11.9 points, at $0.0026 per question and 1.1 s.
+On our exact 200 questions, the 2.8T-parameter Kimi K3 zero-shot scores 58.5%; our model beats it by +10.0 points (paired 95% CI +3.5 to +16.5, p = 0.004).
 
 - Plan, story and full decisions log: [HARNESS.md](HARNESS.md)
 - Demo script: [DEMO.md](DEMO.md)
@@ -28,7 +29,9 @@ returned rows must match the gold rows. Δ is against R1 on the same questions, 
 | R5 | + arrow fix, repair loop, escalation to Kimi K3 | 56.0% (49.1–62.7) | +5.5 (n.s.) | $0.0027 | 1.0 s |
 | R13 | gpt-oss-120b + harness | 56.0% | +5.5 (n.s.) | **$0.0004** | 0.9 s |
 | R15 | GLM 5.3 + harness | 61.0% | +10.5 | $0.0018 | 1.5 s |
+| R23 | **Kimi K3 (2.8T), zero-shot, no harness: frontier baseline run by us** | 58.5% (51.6–65.1) | +8.0 | $0.0043 | 2.9 s |
 | R17 | Kimi K3 (2.8T) + harness | 63.0% | +12.5 | $0.0051 | 2.7 s |
+| R22 | Qwen2.5 1.5B, untuned, local + examples + arrow fix | 15.0% | −35.5 | $0 (local) | 9.0 s |
 | R7d | Muse 30B + FT-D: SFT on its own verified traces (+ gpt-oss, GLM) | 58.0% | +7.5 (n.s.) | $0.0026 | 1.1 s |
 | R6z | Muse 30B + FT1, no retrieved examples | 63.5% | +13.0 | $0.0022 | 1.1 s |
 | R6b | Muse 30B + FT1-big: SFT on 4,386 gold, 1 epoch | 65.5% | +15.0 | $0.0027 | 1.3 s |

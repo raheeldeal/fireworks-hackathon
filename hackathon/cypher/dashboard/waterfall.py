@@ -78,14 +78,26 @@ def main():
             tried.append((label, ref_level, ref_level + diff, "hold", note))
     chain.append(("Overall: best system", 0, level, "total", ""))
 
-    # rows top to bottom: chain, a gap row, then the tested-but-not-adopted block
-    n_rows = len(chain) + (1 + len(tried) if tried else 0)
+    # frontier baselines, drawn as reference bars above the chain (they are not steps)
+    refs = ([("Frontier baseline: Claude Sonnet 4.6, zero-shot (published, other subset)", FRONTIER)] if not VALID_ONLY else [])
+    if os.path.exists(os.path.join(ROOT, "results", "r23_kimi_plain.json")):  # zero-shot: no examples, no harness
+        kimi = correct_by_id("r23_kimi_plain", "first")
+        refs.append(("Frontier proxy, run by us: Kimi K3 (2.8T MoE), zero-shot, no harness", 100 * sum(kimi.values()) / len(kimi)))
+
+    # rows top to bottom: references, gap, chain, gap, tested-but-not-adopted block
+    n_rows = len(refs) + 1 + len(chain) + (1 + len(tried) if tried else 0)
     fig, ax = plt.subplots(figsize=(14, 0.62 * n_rows + 2.2), dpi=150)
     top = n_rows - 1
-    chain_y = [top - k for k in range(len(chain))]
-    tried_y = [top - len(chain) - 1 - k for k in range(len(tried))]
+    ref_y = [top - k for k in range(len(refs))]
+    chain_y = [top - len(refs) - 1 - k for k in range(len(chain))]
+    tried_y = [chain_y[-1] - 2 - k for k in range(len(tried))]
 
-    ends = [max(a, b) for _, a, b, _, _ in chain + tried] + ([] if VALID_ONLY else [FRONTIER])
+    for y, (label, v) in zip(ref_y, refs):
+        ax.barh(y, v, height=0.6, color="white", edgecolor=INK2, hatch="//", linewidth=1, zorder=3)
+        ax.text(v + 0.8, y, f"{v:.1f}%", va="center", fontsize=11, color=INK2, fontweight="bold", bbox=CLEAR, zorder=4)
+    ax.axhline(top - len(refs), color=GRID, linewidth=1)
+
+    ends = [max(a, b) for _, a, b, _, _ in chain + tried] + [v for _, v in refs]
     NOTE_X = max(ends) + NOTE_GAP  # one aligned column, clear of every bar and the frontier line
     prev_end, prev_y = None, None
     for y, (label, a, b, kind, note) in zip(chain_y, chain):
@@ -104,14 +116,8 @@ def main():
             ax.plot([prev_end, prev_end], [prev_y - 0.3, y + 0.3], color=MUTED, linewidth=1)
         prev_end, prev_y = (hi_ if kind == "total" else b), y
 
-    if not VALID_ONLY:  # frontier: a reference line over the chain rows, not a step (published, other subset)
-        ax.plot([FRONTIER, FRONTIER], [chain_y[-1] - 0.45, top + 0.45], color=INK2, linestyle=(0, (4, 3)), linewidth=1.2,
-                zorder=2)
-        ax.text(FRONTIER, top + 0.55, f"Claude Sonnet 4.6, {FRONTIER:.1f}% (published, other subset)",
-                ha="center", va="bottom", fontsize=9, color=INK2)
-
     if tried:
-        gap_y = top - len(chain)
+        gap_y = chain_y[-1] - 1
         ax.axhline(gap_y, color=GRID, linewidth=1)
         ax.text(0.5, gap_y, "Tested, not adopted (each vs the step it would replace)", va="center", fontsize=9.5,
                 color=MUTED, style="italic", backgroundcolor="white")
@@ -121,9 +127,10 @@ def main():
                     linestyle=(0, (3, 2)))
             ax.text(NOTE_X, y, note, va="center", fontsize=9.5, color=MUTED, zorder=4)
 
-    labels = {y: c[0] for y, c in zip(chain_y, chain)} | {y: t[0] for y, t in zip(tried_y, tried)}
+    labels = ({y: r[0] for y, r in zip(ref_y, refs)} | {y: c[0] for y, c in zip(chain_y, chain)}
+              | {y: t[0] for y, t in zip(tried_y, tried)})
     ax.set_yticks(list(labels), list(labels.values()), fontsize=10)
-    ax.set_ylim(-0.7, top + 1.1)
+    ax.set_ylim(min(labels) - 0.7, top + 0.7)
     ax.tick_params(colors=MUTED)
     ax.tick_params(axis="y", labelcolor=INK)
     ax.set_xlim(0, NOTE_X + 30)
@@ -139,7 +146,7 @@ def main():
                  loc="left", fontsize=12, color=INK, pad=12)
     ax.legend(handles=[Patch(facecolor=TOTAL, label="start / overall"), Patch(facecolor=UP, label="adopted step"),
                        Patch(facecolor="white", edgecolor=MUTED, linestyle="--", label="tested, not adopted")]
-              + ([Line2D([0], [0], color=INK2, linestyle=(0, (4, 3)), label="frontier reference")] if not VALID_ONLY else []),
+              + [Patch(facecolor="white", edgecolor=INK2, hatch="//", label="frontier baseline (reference, not a step)")],
               loc="upper center", bbox_to_anchor=(0.5, -0.07), ncol=4, fontsize=9, frameon=False)  # below the axis
     fig.tight_layout()
     out = os.path.join(HERE, "waterfall_valid.png" if VALID_ONLY else "waterfall.png")

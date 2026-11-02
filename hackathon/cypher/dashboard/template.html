@@ -421,20 +421,26 @@ let wfSelected = null;
 function waterfallTab() {
   const target = document.getElementById("wf"); target.replaceChildren();
   const W = DATA.waterfall, steps = W.steps, chain = steps.filter(s => s.kind !== "tried"), tried = steps.filter(s => s.kind === "tried");
-  const rowH = 34, gap = tried.length ? 1 : 0, rows = chain.length + gap + tried.length;
+  const refs = W.refs || [], rowH = 34, gap = tried.length ? 1 : 0, rows = refs.length + (refs.length ? 1 : 0) + chain.length + gap + tried.length;
   const Wd = 1100, m = { l: 330, r: 300, t: 26, b: 30 }, H = m.t + m.b + rowH * rows;
   const x = linear(0, 100, m.l, Wd - m.r), svg = el("svg", { viewBox: `0 0 ${Wd} ${H}`, role: "img", "aria-label": "Waterfall" }, target);
   for (const t of [0, 20, 40, 60, 80, 100]) {
     el("line", { x1: x(t), x2: x(t), y1: m.t - 6, y2: H - m.b, stroke: css("--grid") }, svg);
     el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: t + "%" }, svg);
   }
-  el("line", { x1: x(W.frontier), x2: x(W.frontier), y1: m.t - 6, y2: m.t + rowH * chain.length, stroke: css("--ink-2"), "stroke-dasharray": "4 3" }, svg);
-  el("text", { x: x(W.frontier), y: m.t - 10, "text-anchor": "middle", text: `Claude Sonnet 4.6, ${W.frontier.toFixed(1)}% (published, other subset)` }, svg);
-  const noteX = x(Math.max(...steps.map(s => Math.max(s.to ?? 0, s.from ?? 0, s.value ?? 0)), W.frontier) + 4);
-  const rowsY = [...chain.map((s, i) => [s, m.t + i * rowH + rowH / 2]),
-                 ...tried.map((s, i) => [s, m.t + (chain.length + gap + i) * rowH + rowH / 2])];
+  const off = refs.length ? refs.length + 1 : 0;  // reference rows, then a divider row, then the chain
+  refs.forEach((r, i) => {
+    const cy = m.t + i * rowH + rowH / 2;
+    el("text", { class: "lbl", x: m.l - 10, y: cy + 4, "text-anchor": "end", text: r.label }, svg);
+    el("rect", { x: x(0), y: cy - 10, width: x(r.value) - x(0), height: 20, rx: 3, fill: "none", stroke: css("--ink-2"), "stroke-dasharray": "5 2" }, svg);
+    el("text", { class: "lbl", x: x(r.value) + 8, y: cy + 4, text: pct(r.value / 100) + "  reference, not a step" }, svg);
+  });
+  if (refs.length) el("line", { x1: m.l, x2: Wd - 10, y1: m.t + refs.length * rowH + rowH / 2, y2: m.t + refs.length * rowH + rowH / 2, stroke: css("--grid") }, svg);
+  const noteX = x(Math.max(...steps.map(s => Math.max(s.to ?? 0, s.from ?? 0, s.value ?? 0)), ...refs.map(r => r.value)) + 4);
+  const rowsY = [...chain.map((s, i) => [s, m.t + (off + i) * rowH + rowH / 2]),
+                 ...tried.map((s, i) => [s, m.t + (off + chain.length + gap + i) * rowH + rowH / 2])];
   if (tried.length) {
-    const gy = m.t + chain.length * rowH + rowH / 2;
+    const gy = m.t + (off + chain.length) * rowH + rowH / 2;
     el("line", { x1: m.l, x2: Wd - 10, y1: gy, y2: gy, stroke: css("--grid") }, svg);
     el("text", { x: m.l + 4, y: gy - 4, text: "Tested, not adopted (each vs the step it would replace)", style: "font-style:italic" }, svg);
   }
@@ -466,7 +472,7 @@ function waterfallTab() {
     g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
   }
   const lg = document.getElementById("legend-wf"); lg.replaceChildren();
-  legend(lg, [["--ink-2", "start / overall"], ["--s1", "adopted step"], ["--muted", "tested, not adopted", "hollow"], ["--ink-2", "frontier reference", "line"]]);
+  legend(lg, [["--ink-2", "start / overall"], ["--s1", "adopted step"], ["--muted", "tested, not adopted", "hollow"], ["--ink-2", "frontier reference (dashed outline)", "hollow"]]);
 }
 
 function sideBox(parent, title, side) {

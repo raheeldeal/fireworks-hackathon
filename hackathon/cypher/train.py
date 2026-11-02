@@ -2,6 +2,8 @@
 
   python train.py plan    --data data/sft_ft1_gold.jsonl                 # token counts, no network
   python train.py sft     --data data/sft_ft1_gold.jsonl --tag ft1        # train; prints the sampler checkpoint
+  python train.py sft     --curriculum --data data/sft_xgraph_gold.jsonl data/sft_ft1big_gold.jsonl --tag ftcur --epochs 1
+                                                                        # stages in order: other graphs, then in-domain
   python train.py cleanup --tag ft1                                      # delete the session (frees a run slot)
 
 Evaluate a checkpoint with: python run_eval.py --model muse-glimmer-30b --model-path <checkpoint> ...
@@ -50,7 +52,7 @@ def build_datums(s, examples):
 
 def plan(args):
     s = tokenizer_and_prefill()
-    examples = load_jsonl(args.data)
+    examples = [e for path in args.data for e in load_jsonl(path)]
     _, n = build_datums(s, examples)
     print(f"{len(examples)} examples, {n} tokens/epoch, {args.epochs} epochs -> {n * args.epochs} training tokens")
 
@@ -61,8 +63,13 @@ def sft(args):
     if datetime.now(timezone.utc) >= FREE_UNTIL:
         raise SystemExit("free Muse Glimmer SFT has ended; re-check pricing before training")
     s = tokenizer_and_prefill()
-    examples = load_jsonl(args.data)
-    datums, n_tokens = build_datums(s, examples)
+    stages = [load_jsonl(path) for path in args.data]  # one list per --data file
+    datums, n_tokens, stage_of = [], 0, []
+    for k, examples in enumerate(stages):
+        d, n = build_datums(s, examples)
+        datums += d
+        n_tokens += n
+        stage_of += [k] * len(d)
     service = FiretitanServiceClient(api_key=os.environ["FIREWORKS_API_KEY"], base_url=fw.TRAINING_URL)
     for attempt in range(60):  # the account allows one Muse run at a time: wait for the slot instead of failing
         try:
@@ -78,6 +85,7 @@ def sft(args):
     info = {"tag": args.tag, "data": args.data, "examples": len(datums), "tokens_per_epoch": n_tokens,
             "session_name": getattr(service, "training_session_name", None), "run": tc.run_id,
             "epochs": args.epochs, "batch": args.batch, "lr": args.lr, "rank": args.rank,
+            "curriculum": args.curriculum, "stage_sizes": [len(x) for x in stages],
             "started": time.strftime("%Y-%m-%dT%H:%M:%S"), "log": []}
     json.dump(info, open(info_path, "w"), indent=1)  # saved early so cleanup works even if training dies
     print(f"session {info['session_name']}  {len(datums)} examples, {n_tokens} tokens/epoch", flush=True)
@@ -85,8 +93,15 @@ def sft(args):
     rng, step = random.Random(SEED), 0
     total = args.epochs * -(-len(datums) // args.batch)
     for epoch in range(args.epochs):
-        order = list(range(len(datums)))
-        rng.shuffle(order)
+        if args.curriculum:  # stages in the order given, each shuffled within itself
+            order = []
+            for k in range(len(stages)):
+                block = [j for j in range(len(datums)) if stage_of[j] == k]
+                rng.shuffle(block)
+                order += block
+        else:  # all files mixed together
+            order = list(range(len(datums)))
+            rng.shuffle(order)
         for i in range(0, len(order), args.batch):
             lr = args.lr * max(0.1, 1 - step / total)  # linear decay to 10%
             fb = tc.forward_backward([datums[j] for j in order[i: i + args.batch]], "cross_entropy").result()
@@ -94,7 +109,7 @@ def sft(args):
             m = getattr(fb, "metrics", None) or {}
             nll = m["loss:sum"] / max(m["response_tokens"], 1.0) if m.get("loss:sum") is not None and m.get("response_tokens") else None
             step += 1
-            info["log"].append({"step": step, "epoch": epoch, "lr": lr, "mean_nll": nll})
+            info["log"].append({"step": step, "epoch": epoch, "stage": stage_of[order[i]], "lr": lr, "mean_nll": nll})
             print(f"step {step}/{total}  epoch {epoch}  lr {lr:.2e}  mean_nll {nll}", flush=True)
         json.dump(info, open(info_path, "w"), indent=1)
 
@@ -118,7 +133,8 @@ def main():
     sp = ap.add_subparsers(dest="cmd", required=True)
     for name in ("plan", "sft"):
         p = sp.add_parser(name)
-        p.add_argument("--data", required=True)
+        p.add_argument("--data", required=True, nargs="+", help="one or more SFT files")
+        p.add_argument("--curriculum", action="store_true", help="train the --data files in order, not mixed")
         p.add_argument("--tag", default="plan")
         p.add_argument("--epochs", type=int, default=2)
         p.add_argument("--batch", type=int, default=16)

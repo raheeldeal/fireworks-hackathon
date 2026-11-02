@@ -1,0 +1,22 @@
+{
+ "tag": "ftcur",
+ "data": [
+  "data/sft_xgraph_gold.jsonl",
+  "data/sft_ft1big_gold.jsonl"
+ ],
+ "examples": 6500,
+ "tokens_per_epoch": 7216200,
+ "session_name": "accounts/vishwajeethogale/trainingSessions/ts-8cc1dd50c06744e78e97ca2626cf5147",
+ "run": "run-53b608ed9b7945eea4ae55488c5c683e",
+ "epochs": 1,
+ "batch": 16,
+ "lr": 0.0001,
+ "rank": 16,
+ "curriculum": true,
+ "stage_sizes": [
+  2114,
+  4386
+ ],
+ "started": "2026-11-02T15:20:17",
+ "log": []
+}

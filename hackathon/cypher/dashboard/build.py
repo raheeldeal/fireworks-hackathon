@@ -40,6 +40,7 @@ CONFIGS = [
     ("R15", "glm-5p3 + harness", "small", "r15_glm", "repair", False),
     ("R16", "Vote: R6 + R15 + R13 by result rows", "small", "r16_vote3", "first", False),
     ("R17", "Kimi K3 (2.8T) + harness", "small", "r17_kimi", "repair", False),
+    ("R23", "Kimi K3 (2.8T), zero-shot, no harness", "small", "r23_kimi_plain", "first", False),
     ("R22", "Qwen2.5 1.5B, untuned, local + examples + fix", "small", "r22_qwen15", "fix", False),
     ("R18", "Vote: R6 + R6b + Kimi K3 by result rows", "finetune", "r18_vote_ft", "first", False),
     ("R19", "Vote R6+R6b+R6z (PICKED ON TEST, not citable)", "finetune", "r19_vote_muse", "first", False),
@@ -175,7 +176,11 @@ def waterfall_steps():
         if adopted:
             current = new
     steps.append({"label": "Overall: best system", "kind": "total", "value": acc(current)})
-    return {"steps": steps, "frontier": wf.FRONTIER}
+    refs = [{"label": "Frontier baseline: Claude Sonnet 4.6, zero-shot (published, other subset)", "value": wf.FRONTIER}]
+    kimi = run("r23_kimi_plain", "first")
+    if kimi:
+        refs.append({"label": "Frontier proxy, run by us: Kimi K3 (2.8T MoE), zero-shot, no harness", "value": acc(kimi)})
+    return {"steps": steps, "frontier": wf.FRONTIER, "refs": refs}
 
 
 def main():

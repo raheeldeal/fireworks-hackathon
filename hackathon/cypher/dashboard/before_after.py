@@ -31,6 +31,7 @@ CONFIGS = [  # label, result file, stage
     ("Muse 30B dense + SFT (4.4k gold, 1 epoch) + harness", "r6b_ft1big", "escalate"),
     ("Muse 30B dense + SFT (1.5k gold), no examples", "r6z_ft1_noshots", "escalate"),
     ("Kimi K3 (2.8T MoE) + harness", "r17_kimi", "repair"),
+    ("Kimi K3 (2.8T MoE), zero-shot, no harness", "r23_kimi_plain", "first"),
     ("GLM 5.3 (743B MoE) + harness", "r15_glm", "repair"),
     ("Muse 30B dense + RFT-style (own verified answers) + harness", "r7_ftd", "escalate"),
     ("Muse 30B dense, untuned + full harness", "r5_full", "escalate"),

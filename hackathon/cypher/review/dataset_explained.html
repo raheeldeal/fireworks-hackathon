@@ -1,0 +1,255 @@
+<title>Text2Cypher Dataset, Read</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a single reading column; each example is a two-up compare card that stacks on phones. */
+:root {
+  --bg:#fbfaf8; --panel:#ffffff; --ink:#1a1a18; --muted:#6b6a64; --line:#e3e1db;
+  --accent:#1f5f4e; --warn:#8a4b1f; --code:#f4f2ee;
+  --display:"Fraunces",Georgia,serif; --body:"Public Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13140f; --panel:#1b1d17; --ink:#eceadf; --muted:#9b998e; --line:#2e3128;
+  --accent:#6ec2a5; --warn:#d99a63; --code:#211f1a; color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#13140f;--panel:#1b1d17;--ink:#eceadf;--muted:#9b998e;--line:#2e3128;--accent:#6ec2a5;--warn:#d99a63;--code:#211f1a;color-scheme:dark;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px;}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin:0 0 .4em;text-wrap:balance;font-weight:600;}
+.lede{font-size:1.05rem;color:var(--muted);max-width:62ch;margin:0 0 2.2em;}
+h2{font-family:var(--display);font-size:1.35rem;margin:2.4em 0 .6em;font-weight:600;}
+h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:1.2em 0 .4em;font-weight:600;}
+.sub{text-transform:none;letter-spacing:0;font-weight:400;}
+pre{font-family:var(--mono);font-size:.76rem;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:10px 12px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:0;}
+.row{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:0 0 20px;}
+.row header{display:flex;gap:12px;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px;}
+.rid{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:600;}
+.meta{font-size:.75rem;color:var(--muted);font-family:var(--mono);}
+.q{font-family:var(--display);font-size:1.12rem;font-weight:500;margin:.7em 0 .2em;}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.pair>div{min-width:0;}
+@media (max-width:760px){.pair{grid-template-columns:1fr;}}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:4px;}
+table{border-collapse:collapse;font-size:.76rem;width:100%;font-variant-numeric:tabular-nums;}
+th,td{text-align:left;padding:5px 9px;border-bottom:1px solid var(--line);white-space:nowrap;}
+th{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+tbody tr:last-child td{border-bottom:none;}
+.b{font-family:var(--body);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:3px;font-weight:600;}
+.ok{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent);}
+.no{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn);}
+.na{background:var(--code);color:var(--muted);}
+.verdict{border-left:3px solid var(--accent);padding:2px 0 2px 14px;margin:18px 0 0;font-size:.92rem;}
+.verdict code{font-family:var(--mono);font-size:.84em;background:var(--code);padding:1px 4px;border-radius:3px;}
+.none{color:var(--muted);font-size:.8rem;}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:1.2em 0;}
+.fact{background:var(--panel);padding:14px 16px;}
+.fact b{display:block;font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1;}
+.fact span{font-size:.76rem;color:var(--muted);display:block;margin-top:5px;}
+.fact.flag b{color:var(--warn);}
+p{max-width:68ch;}
+</style>
+<div class=wrap>
+<h1>What is actually inside the Text2Cypher dataset</h1>
+<p class=lede>This is the public dataset <code>neo4j/text2cypher-2025v1</code>, the one our benchmark is built from. Every example below is a real row, rendered exactly as it ships, next to the rows its "correct" query returns when you run it against the live Neo4j database and what our models wrote instead.</p>
+
+<h2>The file, in numbers</h2>
+<div class=facts>
+  <div class=fact><b>4,438</b><span>rows in the test portion</span></div>
+  <div class=fact><b>4</b><span>useful fields per row: question, schema, query, which database</span></div>
+  <div class="fact flag"><b>2,310</b><span>rows with no database attached, so their query can never be checked</span></div>
+  <div class="fact flag"><b>41</b><span>rows whose question a human wrote. The other 4,397 are AI-generated or templated.</span></div>
+  <div class=fact><b>950</b><span>rows in the five databases that are publicly reachable</span></div>
+  <div class=fact><b>200</b><span>of those we locked as our exam, after running every answer key</span></div>
+</div>
+<h4>Who wrote the questions and answer keys</h4>
+<div class=scroll><table><thead><tr><th>who</th><th>rows</th></tr></thead><tbody><tr><td>neo4jLabs_functional_cypher</td><td>1461</td></tr><tr><td>neo4j_text2cypher2023_test</td><td>701</td></tr><tr><td>neo4jLabs_synthetic_gpt4turbo</td><td>614</td></tr><tr><td>neo4jLabs_synthetic_gpt4o</td><td>606</td></tr><tr><td>neo4jLabs_synthetic_gemini</td><td>552</td></tr><tr><td>neo4jLabs_synthetic_claudeopus</td><td>310</td></tr><tr><td>cyspider_t5base_prefix_correct</td><td>43</td></tr><tr><td>neo4j_crowdsourced</td><td>41</td></tr><tr><td>cyspider_cased_dev</td><td>27</td></tr></tbody></table></div>
+<p>A row has no stored results and no verification. The query beside each question is simply what its author, usually a language model, wrote. Nobody ran it.</p>
+
+<h2>Six real rows</h2>
+<p>Left is the dataset as published. Right is what two models wrote when given only the question and the database description. Verdicts are our grader's.</p>
+
+<article class=row id="t007">
+  <header>
+    <span class=rid>t007</span>
+    <span class=meta>movies · easy</span>
+  </header>
+  <h3 class=q>What are the top 5 movies with the least votes and their release years?</h3>
+  <div class=pair>
+    <div>
+      <h4>Answer key, as published <span class=sub>(the "correct" query)</span></h4>
+      <pre>MATCH (m:Movie)
+RETURN m.title AS title, m.released AS release_year, m.votes AS votes
+ORDER BY m.votes ASC
+LIMIT 5</pre>
+      <h4>What that query actually returns <span class=sub>(5 rows)</span></h4>
+      <div class=scroll><table><thead><tr><th>title</th><th>release_year</th><th>votes</th></tr></thead><tbody><tr><td>Frost/Nixon</td><td>2008</td><td>1</td></tr><tr><td>Ninja Assassin</td><td>2009</td><td>15</td></tr><tr><td>Charlie Wilson&#x27;s War</td><td>2007</td><td>25</td></tr><tr><td>The Replacements</td><td>2000</td><td>25</td></tr><tr><td>That Thing You Do</td><td>1996</td><td>29</td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h4>glm-5p3-flash wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (m:Movie) RETURN m.title AS movie, m.released AS releaseYear ORDER BY m.votes ASC LIMIT 5</pre>
+      <h4>kimi-k3 wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.votes ASC LIMIT 5</pre>
+    </div>
+  </div>
+  <p class=verdict><strong>The model was marked WRONG.</strong> It returned the five movies and their release years, exactly what the question asks. The answer key also returns the vote count. Same five films, same order.</p>
+</article>
+<article class=row id="t000">
+  <header>
+    <span class=rid>t000</span>
+    <span class=meta>recommendations · hard</span>
+  </header>
+  <h3 class=q>List the top 5 actors by number of different genres they&#x27;ve acted in.</h3>
+  <div class=pair>
+    <div>
+      <h4>Answer key, as published <span class=sub>(the "correct" query)</span></h4>
+      <pre>MATCH (a:Actor)-[:ACTED_IN]-&gt;(m:Movie)-[:IN_GENRE]-&gt;(g:Genre)
+WITH a, count(distinct g) AS genreCount
+ORDER BY genreCount DESC
+LIMIT 5
+RETURN a.name AS actor, genreCount AS numberOfGenres</pre>
+      <h4>What that query actually returns <span class=sub>(5 rows)</span></h4>
+      <div class=scroll><table><thead><tr><th>actor</th><th>numberOfGenres</th></tr></thead><tbody><tr><td>Kurt Russell</td><td>17</td></tr><tr><td>Brad Pitt</td><td>17</td></tr><tr><td>Johnny Depp</td><td>17</td></tr><tr><td>Samuel L. Jackson</td><td>17</td></tr><tr><td>Ewan McGregor</td><td>16</td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h4>glm-5p3-flash wrote <span class="b ok">correct</span></h4>
+      <pre>MATCH (a:Actor)-[:ACTED_IN]-&gt;(m:Movie)-[:IN_GENRE]-&gt;(g:Genre)
+RETURN a.name AS actor, count(DISTINCT g.name) AS genreCount
+ORDER BY genreCount DESC
+LIMIT 5</pre>
+      <h4>kimi-k3 wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (a:Actor)-[:ACTED_IN]-&gt;(:Movie)-[:IN_GENRE]-&gt;(g:Genre)
+RETURN a.name AS actor, count(DISTINCT g) AS genreCount
+ORDER BY genreCount DESC, actor ASC
+LIMIT 5</pre>
+    </div>
+  </div>
+  <p class=verdict><strong>Both marked WRONG.</strong> Four actors tie at 17 genres. The key picks five without a tiebreaker, so the database returns an arbitrary five. kimi added <code>, actor ASC</code> to make its answer deterministic and got a different, equally correct five.</p>
+</article>
+<article class=row id="t015">
+  <header>
+    <span class=rid>t015</span>
+    <span class=meta>northwind · easy</span>
+  </header>
+  <h3 class=q>List the first 3 orders shipped to France.</h3>
+  <div class=pair>
+    <div>
+      <h4>Answer key, as published <span class=sub>(the "correct" query)</span></h4>
+      <pre>MATCH (o:Order)-[:ORDERS]-&gt;(p:Product)
+WHERE o.shipCountry = &#x27;France&#x27;
+RETURN o.orderID, o.shipName, o.shipCity, o.shipPostalCode, o.shipAddress, o.shipCountry, o.shipRegion, o.shipVia, o.shippedDate
+ORDER BY o.shippedDate
+LIMIT 3</pre>
+      <h4>What that query actually returns <span class=sub>(3 rows)</span></h4>
+      <div class=scroll><table><thead><tr><th>o.orderID</th><th>o.shipName</th><th>o.shipCity</th><th>o.shipPostalCode</th><th>o.shipAddress</th><th>o.shipCountry</th><th>o.shipRegion</th><th>o.shipVia</th><th>o.shippedDate</th></tr></thead><tbody><tr><td>10248</td><td>Vins et alcools Chevalier</td><td>Reims</td><td>51100</td><td>59 rue de l&#x27;Abbaye</td><td>France</td><td>NULL</td><td>3</td><td>1996-07-16 00:00:00.000</td></tr><tr><td>10248</td><td>Vins et alcools Chevalier</td><td>Reims</td><td>51100</td><td>59 rue de l&#x27;Abbaye</td><td>France</td><td>NULL</td><td>3</td><td>1996-07-16 00:00:00.000</td></tr><tr><td>10248</td><td>Vins et alcools Chevalier</td><td>Reims</td><td>51100</td><td>59 rue de l&#x27;Abbaye</td><td>France</td><td>NULL</td><td>3</td><td>1996-07-16 00:00:00.000</td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h4>glm-5p3-flash wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (o:Order)
+WHERE o.shipCountry = &#x27;France&#x27;
+RETURN o
+ORDER BY o.orderDate ASC
+LIMIT 3</pre>
+      <h4>kimi-k3 wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (o:Order)
+WHERE o.shipCountry = &#x27;France&#x27;
+RETURN o
+ORDER BY o.orderDate
+LIMIT 3</pre>
+    </div>
+  </div>
+  <p class=verdict><strong>The answer key is broken.</strong> The question asks for the first three orders. The key returns the same order three times.</p>
+</article>
+<article class=row id="t122">
+  <header>
+    <span class=rid>t122</span>
+    <span class=meta>twitter · easy</span>
+  </header>
+  <h3 class=q>What is the &#x27;location&#x27; of the user who posted the tweet with the earliest &#x27;created_at&#x27; date?</h3>
+  <div class=pair>
+    <div>
+      <h4>Answer key, as published <span class=sub>(the "correct" query)</span></h4>
+      <pre>MATCH (earliestTweet:Tweet)
+RETURN earliestTweet
+ORDER BY earliestTweet.created_at ASC
+LIMIT 1</pre>
+      <h4>What that query actually returns <span class=sub>(1 rows)</span></h4>
+      <div class=scroll><table><thead><tr><th>earliestTweet</th></tr></thead><tbody><tr><td>{&#x27;_labels&#x27;: [&#x27;Tweet&#x27;], &#x27;created_at&#x27;: &#x27;2020-12-06T05:12:02.000000000+00:00&#x27;, &#x27;favorites&#x27;: 2, &#x27;id&#x27;: 1335451913203163138, &#x27;id_str&#x27;: &#x27;1335451913203163138&#x27;, &#x27;import_method&#x27;: &#x27;user&#x27;, &#x27;text&#x27;: &quot;In this week&#x27;s #twin4j, Hantsy shows how to write our own custom queries using the @Query annotation in Spring Data… https://t.co/oM6IPkARqZ&quot;}</td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h4>glm-5p3-flash wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (u)-[:POSTS]-&gt;(t:Tweet)
+WITH t, u ORDER BY t.created_at ASC LIMIT 1
+RETURN u.location</pre>
+      <h4>kimi-k3 wrote <span class="b na">not run</span></h4>
+      <pre>— not in the 100-row subset</pre>
+    </div>
+  </div>
+  <p class=verdict><strong>The answer key answers a different question.</strong> The question asks where a user is located. The key returns a Tweet.</p>
+</article>
+<article class=row id="t091">
+  <header>
+    <span class=rid>t091</span>
+    <span class=meta>movies · easy</span>
+  </header>
+  <h3 class=q>What is the title of the movie with the highest number of votes?</h3>
+  <div class=pair>
+    <div>
+      <h4>Answer key, as published <span class=sub>(the "correct" query)</span></h4>
+      <pre>MATCH (m:Movie)
+RETURN m.title, m.votes
+ORDER BY m.votes DESC
+LIMIT 1</pre>
+      <h4>What that query actually returns <span class=sub>(1 rows)</span></h4>
+      <div class=scroll><table><thead><tr><th>m.title</th><th>m.votes</th></tr></thead><tbody><tr><td>The Matrix Reloaded</td><td>1951</td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h4>glm-5p3-flash wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (m:Movie)
+RETURN m.title
+ORDER BY m.votes DESC
+LIMIT 1</pre>
+      <h4>kimi-k3 wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (m:Movie) RETURN m.title ORDER BY m.votes DESC LIMIT 1</pre>
+    </div>
+  </div>
+  <p class=verdict><strong>Marked WRONG.</strong> The question asks for a title. The key returns the title plus the vote count.</p>
+</article>
+<article class=row id="t002">
+  <header>
+    <span class=rid>t002</span>
+    <span class=meta>fincen · medium</span>
+  </header>
+  <h3 class=q>What are the names of the top 3 entities that benefited from filings with amounts less than 100?</h3>
+  <div class=pair>
+    <div>
+      <h4>Answer key, as published <span class=sub>(the "correct" query)</span></h4>
+      <pre>MATCH (f:Filing)-[:BENEFITS]-&gt;(e:Entity)
+WHERE f.amount &lt; 100
+WITH e, count(f) AS benefitCount
+ORDER BY benefitCount DESC
+RETURN e.name, benefitCount
+LIMIT 3</pre>
+      <h4>What that query actually returns <span class=sub>(3 rows)</span></h4>
+      <div class=scroll><table><thead><tr><th>e.name</th><th>benefitCount</th></tr></thead><tbody><tr><td>Vnesheconombank</td><td>6</td></tr><tr><td>Commonwealth Bank of Australia</td><td>3</td></tr><tr><td>Nomos Bank</td><td>2</td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h4>glm-5p3-flash wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (f:Filing)-[:BENEFITS]-&gt;(e:Entity)
+WHERE f.amount &lt; 100
+RETURN e.name AS name, count(f) AS numFilings
+ORDER BY numFilings DESC
+LIMIT 3</pre>
+      <h4>kimi-k3 wrote <span class="b no">wrong</span></h4>
+      <pre>MATCH (f:Filing)-[:BENEFITS]-&gt;(e:Entity)
+WHERE f.amount &lt; 100
+RETURN e.name AS name, count(f) AS filingCount
+ORDER BY filingCount DESC
+LIMIT 3</pre>
+    </div>
+  </div>
+  <p class=verdict><strong>A genuine model error.</strong> Both models filtered on the wrong property. This is what a real failure looks like, and it is the minority.</p>
+</article>
+
+<h2>What this means</h2>
+<p>Five of the six failures above are the dataset disagreeing with itself: an answer key that returns a different column than the question asks for, an arbitrary choice among tied rows, or a key that answers a different question entirely. One is a real model error.</p>
+<p>Across the full 200-question exam, 33 out of every 100 questions are missed by every model we tested, cheap or expensive. That is the ceiling, and most of it is this.</p>
+</div>

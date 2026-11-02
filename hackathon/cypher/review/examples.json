@@ -1,0 +1,230 @@
+[
+ {
+  "id": "t007",
+  "graph": "movies",
+  "tier": "easy",
+  "question": "What are the top 5 movies with the least votes and their release years?",
+  "gold": "MATCH (m:Movie)\nRETURN m.title AS title, m.released AS release_year, m.votes AS votes\nORDER BY m.votes ASC\nLIMIT 5",
+  "gold_cols": [
+   "title",
+   "release_year",
+   "votes"
+  ],
+  "gold_rows": [
+   {
+    "release_year": 2008,
+    "title": "Frost/Nixon",
+    "votes": 1
+   },
+   {
+    "release_year": 2009,
+    "title": "Ninja Assassin",
+    "votes": 15
+   },
+   {
+    "release_year": 2007,
+    "title": "Charlie Wilson's War",
+    "votes": 25
+   },
+   {
+    "release_year": 2000,
+    "title": "The Replacements",
+    "votes": 25
+   },
+   {
+    "release_year": 1996,
+    "title": "That Thing You Do",
+    "votes": 29
+   }
+  ],
+  "gold_n": 5,
+  "flash_pred": "MATCH (m:Movie) RETURN m.title AS movie, m.released AS releaseYear ORDER BY m.votes ASC LIMIT 5",
+  "flash_ok": false,
+  "kimi_pred": "MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.votes ASC LIMIT 5",
+  "kimi_ok": false,
+  "schema": "Node properties:\n- **Movie**\n  - `title`: STRING Example: \"The Matrix\"\n  - `votes`: INTEGER Min: 1, Max: 5259\n  - `tagline`: STRING Example: \"Welcome to the Real World\"\n  - `released`: INTEGER Min: 1975, Max: 2012\n- **Person**\n  - `born`: INTEGER Min: 1929, Max: 1996\n  - `name`: STRING Example: \"Keanu Reeves\"\nRelationship properties:\n- **ACTED_IN**\n  - `roles: LIST` Min Size: 1, Max Size: 6\n- **REVIEWED**\n  - `summary: STRING` Available options: ['Pretty funny at times', 'A solid romp', 'Silly, but fun', 'You had me at Jerry', 'An amazing journey', 'Slapstick redeemed only by the Robin Williams and ', 'Dark, but compelling', 'The coolest football movie ever', 'Fun, but a little far fetched']\n  - `rating: INTEGER` Min: 45, Max:  100\nThe relationships:\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n(:Person)-[:PRODUCED]->(:Movie)\n(:Person)-[:WROTE]->(:Movie)\n(:Person)-[:FOLLOWS]->(:Person)\n(:Person)-[:REVIEWED]->(:Movie)"
+ },
+ {
+  "id": "t000",
+  "graph": "recommendations",
+  "tier": "hard",
+  "question": "List the top 5 actors by number of different genres they've acted in.",
+  "gold": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(distinct g) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5\nRETURN a.name AS actor, genreCount AS numberOfGenres",
+  "gold_cols": [
+   "actor",
+   "numberOfGenres"
+  ],
+  "gold_rows": [
+   {
+    "actor": "Kurt Russell",
+    "numberOfGenres": 17
+   },
+   {
+    "actor": "Brad Pitt",
+    "numberOfGenres": 17
+   },
+   {
+    "actor": "Johnny Depp",
+    "numberOfGenres": 17
+   },
+   {
+    "actor": "Samuel L. Jackson",
+    "numberOfGenres": 17
+   },
+   {
+    "actor": "Ewan McGregor",
+    "numberOfGenres": 16
+   }
+  ],
+  "gold_n": 5,
+  "flash_pred": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+  "flash_ok": true,
+  "kimi_pred": "MATCH (a:Actor)-[:ACTED_IN]->(:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g) AS genreCount\nORDER BY genreCount DESC, actor ASC\nLIMIT 5",
+  "kimi_ok": false,
+  "schema": "Node properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **Genre**\n  - `name`: STRING Example: \"Adventure\"\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\n- **Actor**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bornIn`: STRING Example: \"France\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedi"
+ },
+ {
+  "id": "t015",
+  "graph": "northwind",
+  "tier": "easy",
+  "question": "List the first 3 orders shipped to France.",
+  "gold": "MATCH (o:Order)-[:ORDERS]->(p:Product)\nWHERE o.shipCountry = 'France'\nRETURN o.orderID, o.shipName, o.shipCity, o.shipPostalCode, o.shipAddress, o.shipCountry, o.shipRegion, o.shipVia, o.shippedDate\nORDER BY o.shippedDate\nLIMIT 3",
+  "gold_cols": [
+   "o.orderID",
+   "o.shipName",
+   "o.shipCity",
+   "o.shipPostalCode",
+   "o.shipAddress",
+   "o.shipCountry",
+   "o.shipRegion",
+   "o.shipVia",
+   "o.shippedDate"
+  ],
+  "gold_rows": [
+   {
+    "o.orderID": "10248",
+    "o.shipAddress": "59 rue de l'Abbaye",
+    "o.shipCity": "Reims",
+    "o.shipCountry": "France",
+    "o.shipName": "Vins et alcools Chevalier",
+    "o.shipPostalCode": "51100",
+    "o.shipRegion": "NULL",
+    "o.shipVia": "3",
+    "o.shippedDate": "1996-07-16 00:00:00.000"
+   },
+   {
+    "o.orderID": "10248",
+    "o.shipAddress": "59 rue de l'Abbaye",
+    "o.shipCity": "Reims",
+    "o.shipCountry": "France",
+    "o.shipName": "Vins et alcools Chevalier",
+    "o.shipPostalCode": "51100",
+    "o.shipRegion": "NULL",
+    "o.shipVia": "3",
+    "o.shippedDate": "1996-07-16 00:00:00.000"
+   },
+   {
+    "o.orderID": "10248",
+    "o.shipAddress": "59 rue de l'Abbaye",
+    "o.shipCity": "Reims",
+    "o.shipCountry": "France",
+    "o.shipName": "Vins et alcools Chevalier",
+    "o.shipPostalCode": "51100",
+    "o.shipRegion": "NULL",
+    "o.shipVia": "3",
+    "o.shippedDate": "1996-07-16 00:00:00.000"
+   }
+  ],
+  "gold_n": 3,
+  "flash_pred": "MATCH (o:Order)\nWHERE o.shipCountry = 'France'\nRETURN o\nORDER BY o.orderDate ASC\nLIMIT 3",
+  "flash_ok": false,
+  "kimi_pred": "MATCH (o:Order)\nWHERE o.shipCountry = 'France'\nRETURN o\nORDER BY o.orderDate\nLIMIT 3",
+  "kimi_ok": false,
+  "schema": "Node properties:\n- **Product**\n  - `productName`: STRING Example: \"Chai\"\n  - `quantityPerUnit`: STRING Example: \"10 boxes x 20 bags\"\n  - `unitsOnOrder`: INTEGER Min: 0, Max: 100\n  - `supplierID`: STRING Example: \"1\"\n  - `productID`: STRING Example: \"1\"\n  - `discontinued`: BOOLEAN \n  - `categoryID`: STRING Available options: ['1', '2', '7', '6', '8', '4', '3', '5']\n  - `reorderLevel`: INTEGER Min: 0, Max: 30\n  - `unitsInStock`: INTEGER Min: 0, Max: 125\n  - `unitPrice`: FLOAT Min: 2.5, Max: 263.5\n- **Category**\n  - `picture`: STRING Available options: ['0x151C2F00020000000D000E0014002100FFFFFFFF4269746D']\n  - `categoryID`: STRING Available options: ['1', '2', '3', '4', '5', '6', '7', '8']\n  - `description`: STRING Available options: ['Soft drinks, coffees, teas, beers, and ales', 'Sweet and savory sauces, relishes, spreads, and se', 'Desserts, candies, and sweet breads', 'Cheeses', 'Breads, crackers, pasta, and cereal', 'Prepared meats', 'Dried fruit and bean curd', 'Seaweed and fish']\n  - `categoryName`: STRING Available options: ['Beverages', 'Condiments', 'Confections', 'Dairy Products', 'Grains/Cereals', 'Meat/Poultry', 'Produce', 'Seafood']\n- **Supplier**\n  - `companyName`: STRI"
+ },
+ {
+  "id": "t122",
+  "graph": "twitter",
+  "tier": "easy",
+  "question": "What is the 'location' of the user who posted the tweet with the earliest 'created_at' date?",
+  "gold": "MATCH (earliestTweet:Tweet)\nRETURN earliestTweet\nORDER BY earliestTweet.created_at ASC\nLIMIT 1",
+  "gold_cols": [
+   "earliestTweet"
+  ],
+  "gold_rows": [
+   {
+    "earliestTweet": {
+     "_labels": [
+      "Tweet"
+     ],
+     "created_at": "2020-12-06T05:12:02.000000000+00:00",
+     "favorites": 2,
+     "id": 1335451913203163138,
+     "id_str": "1335451913203163138",
+     "import_method": "user",
+     "text": "In this week's #twin4j, Hantsy shows how to write our own custom queries using the @Query annotation in Spring Data\u2026 https://t.co/oM6IPkARqZ"
+    }
+   }
+  ],
+  "gold_n": 1,
+  "flash_pred": "MATCH (u)-[:POSTS]->(t:Tweet)\nWITH t, u ORDER BY t.created_at ASC LIMIT 1\nRETURN u.location",
+  "flash_ok": false,
+  "kimi_pred": "",
+  "kimi_ok": null,
+  "schema": "Node properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"13718150212657479"
+ },
+ {
+  "id": "t091",
+  "graph": "movies",
+  "tier": "easy",
+  "question": "What is the title of the movie with the highest number of votes?",
+  "gold": "MATCH (m:Movie)\nRETURN m.title, m.votes\nORDER BY m.votes DESC\nLIMIT 1",
+  "gold_cols": [
+   "m.title",
+   "m.votes"
+  ],
+  "gold_rows": [
+   {
+    "m.title": "The Matrix Reloaded",
+    "m.votes": 1951
+   }
+  ],
+  "gold_n": 1,
+  "flash_pred": "MATCH (m:Movie)\nRETURN m.title\nORDER BY m.votes DESC\nLIMIT 1",
+  "flash_ok": false,
+  "kimi_pred": "MATCH (m:Movie) RETURN m.title ORDER BY m.votes DESC LIMIT 1",
+  "kimi_ok": false,
+  "schema": "Node properties:\n- **Movie**\n  - `title`: STRING Example: \"The Matrix\"\n  - `votes`: INTEGER Min: 1, Max: 5259\n  - `tagline`: STRING Example: \"Welcome to the Real World\"\n  - `released`: INTEGER Min: 1975, Max: 2012\n- **Person**\n  - `born`: INTEGER Min: 1929, Max: 1996\n  - `name`: STRING Example: \"Keanu Reeves\"\nRelationship properties:\n- **ACTED_IN**\n  - `roles: LIST` Min Size: 1, Max Size: 6\n- **REVIEWED**\n  - `summary: STRING` Available options: ['Pretty funny at times', 'A solid romp', 'Silly, but fun', 'You had me at Jerry', 'An amazing journey', 'Slapstick redeemed only by the Robin Williams and ', 'Dark, but compelling', 'The coolest football movie ever', 'Fun, but a little far fetched']\n  - `rating: INTEGER` Min: 45, Max:  100\nThe relationships:\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n(:Person)-[:PRODUCED]->(:Movie)\n(:Person)-[:WROTE]->(:Movie)\n(:Person)-[:FOLLOWS]->(:Person)\n(:Person)-[:REVIEWED]->(:Movie)"
+ },
+ {
+  "id": "t002",
+  "graph": "fincen",
+  "tier": "medium",
+  "question": "What are the names of the top 3 entities that benefited from filings with amounts less than 100?",
+  "gold": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount < 100\nWITH e, count(f) AS benefitCount\nORDER BY benefitCount DESC\nRETURN e.name, benefitCount\nLIMIT 3",
+  "gold_cols": [
+   "e.name",
+   "benefitCount"
+  ],
+  "gold_rows": [
+   {
+    "benefitCount": 6,
+    "e.name": "Vnesheconombank"
+   },
+   {
+    "benefitCount": 3,
+    "e.name": "Commonwealth Bank of Australia"
+   },
+   {
+    "benefitCount": 2,
+    "e.name": "Nomos Bank"
+   }
+  ],
+  "gold_n": 3,
+  "flash_pred": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount < 100\nRETURN e.name AS name, count(f) AS numFilings\nORDER BY numFilings DESC\nLIMIT 3",
+  "flash_ok": false,
+  "kimi_pred": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount < 100\nRETURN e.name AS name, count(f) AS filingCount\nORDER BY filingCount DESC\nLIMIT 3",
+  "kimi_ok": false,
+  "schema": "Node properties:\n- **Country**\n  - `location`: POINT \n  - `code`: STRING Example: \"AFG\"\n  - `name`: STRING Example: \"Afghanistan\"\n  - `tld`: STRING Example: \"AF\"\n- **Filing**\n  - `begin`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-09-05T00:00:00Z\n  - `end`: DATE_TIME Min: 2000-02-08T00:00:00Z, Max: 2017-11-03T00:00:00Z\n  - `originator_bank_id`: STRING Example: \"cimb-bank-berhad\"\n  - `sar_id`: STRING Example: \"3297\"\n  - `beneficiary_bank`: STRING Example: \"Barclays Bank Plc\"\n  - `filer_org_name_id`: STRING Example: \"the-bank-of-new-york-mellon-corp\"\n  - `originator_bank_country`: STRING Example: \"Singapore\"\n  - `beneficiary_bank_country`: STRING Example: \"United Kingdom\"\n  - `filer_org_name`: STRING Example: \"The Bank of New York Mellon Corp.\"\n  - `originator_iso`: STRING Example: \"SGP\"\n  - `beneficiary_bank_id`: STRING Example: \"barclays-bank-plc-london-england-gbr\"\n  - `origin_lat`: STRING Example: \"1.3667\"\n  - `origin_lng`: STRING Example: \"103.8\"\n  - `end_date_format`: STRING Example: \"2015-09-25T00:00:00Z\"\n  - `begin_date_format`: STRING Example: \"2015-03-25T00:00:00Z\"\n  - `originator_bank`: STRING Example: \"CIMB Bank Berhad\"\n  - `beneficiary_lat`: STRING Example: \"54\"\n  - "
+ }
+]

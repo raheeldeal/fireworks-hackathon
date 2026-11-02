@@ -1,0 +1,33 @@
+{
+ "total": 4438,
+ "no_db": 2310,
+ "sources": {
+  "neo4jLabs_functional_cypher": 1461,
+  "neo4j_text2cypher2023_test": 701,
+  "neo4jLabs_synthetic_gpt4turbo": 614,
+  "neo4jLabs_synthetic_gpt4o": 606,
+  "neo4jLabs_synthetic_gemini": 552,
+  "neo4jLabs_synthetic_claudeopus": 310,
+  "cyspider_t5base_prefix_correct": 43,
+  "neo4j_crowdsourced": 41,
+  "cyspider_cased_dev": 27,
+  "neo4j_rageval_products": 25,
+  "cyspider_uncased_dev": 25,
+  "neo4j_rageval_movies": 10,
+  "cyspider_t5base_prefix_incorrect": 7,
+  "cyspider_t5base_incorrect": 5,
+  "20250307_datacleanup": 5,
+  "cyspider_t5base_finetune_correct": 3,
+  "hf_iprahara": 3
+ },
+ "per_db": {
+  "null": 2310,
+  "neo4jlabs_demo_db_eoflix": 260,
+  "neo4jlabs_demo_db_recommendations": 258,
+  "neo4jlabs_demo_db_movies": 203,
+  "neo4jlabs_demo_db_northwind": 197,
+  "neo4jlabs_demo_db_twitch": 185,
+  "neo4jlabs_demo_db_grandstack": 182,
+  "neo4jlabs_demo_db_gameofthrones": 148
+ }
+}

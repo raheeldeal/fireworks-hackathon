@@ -1,10 +1,15 @@
 """Build data/test.jsonl (200, locked) and data/train.jsonl (500) from verified pools."""
-import json, random, hashlib, collections
+import json, random, hashlib, collections, sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from score import complexity
 GRAPHS = ["movies", "recommendations", "northwind", "fincen", "twitter"]
 def usable(r):
     return r["gold_ok"] and r["gold_n_rows"] > 0 and not r["gold_truncated"] and r["gold_result"] is not None and r["gold_secs"] < 8
 def load(p):
-    return [json.loads(l) for l in open(p)]
+    rows = [json.loads(l) for l in open(p)]
+    for r in rows:
+        r["complexity"] = complexity(r["cypher"])  # recompute with the current tagger
+    return rows
 rng = random.Random(2026)
 test_pool = [r for r in load("raw/pool_test.jsonl") if usable(r)]
 train_pool = [r for r in load("raw/pool_train.jsonl") if usable(r)]
@@ -23,7 +28,7 @@ assert len(test) == 200, len(test)
 rng.shuffle(test)
 out = []
 for i, r in enumerate(test):
-    out.append({"id": f"t{i:03d}", "source_id": r["source_id"], "source_split": "hf_test", "graph": r["graph"],
+    out.append({"id": f"t{i:03d}", "source_id": r["source_id"], "source_split": "hf_test", "source_dataset": "neo4j/text2cypher-2025v1", "graph": r["graph"],
                 "question": r["question"], "cypher": r["cypher"], "schema": r["schema"], "data_source": r["data_source"],
                 "complexity": r["complexity"], "gold_n_rows": r["gold_n_rows"], "gold_result": r["gold_result"]})
 with open("data/test.jsonl", "w") as f:
@@ -41,7 +46,7 @@ for g in GRAPHS:
 rng.shuffle(train)
 with open("data/train.jsonl", "w") as f:
     for i, r in enumerate(train):
-        f.write(json.dumps({"id": f"tr{i:03d}", "source_id": r["source_id"], "source_split": "hf_train", "graph": r["graph"],
+        f.write(json.dumps({"id": f"tr{i:03d}", "source_id": r["source_id"], "source_split": "hf_train", "source_dataset": "neo4j/text2cypher-2025v1", "graph": r["graph"],
                             "question": r["question"], "cypher": r["cypher"], "schema": r["schema"],
                             "data_source": r["data_source"], "complexity": r["complexity"], "gold_n_rows": r["gold_n_rows"]}, sort_keys=True) + "\n")
 print("train", len(train))

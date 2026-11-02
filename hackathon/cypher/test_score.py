@@ -48,3 +48,21 @@ def test_clean_pred():
     assert clean_pred("```cypher\nMATCH (n) RETURN n;\n```") == "MATCH (n) RETURN n"
     assert clean_pred("<think>hmm</think>MATCH (n) RETURN n") == "MATCH (n) RETURN n"
     assert clean_pred(None) == ""
+
+from score import score_lenient
+
+def test_lenient_extra_column():
+    p = R(["name", "n", "x"], [["Tom", 3, 1], ["Ann", 2, 1]])
+    assert score(G, p) == "wrong" and score_lenient(G, p) == "correct"
+
+def test_lenient_node_vs_property():
+    g = R(["p"], [[{"_labels": ["Person"], "name": "Tom", "born": 1956}]])
+    assert score_lenient(g, R(["name"], [["Tom"]])) == "correct"
+
+def test_lenient_still_rejects_missing_column_and_wrong_rows():
+    assert score_lenient(G, R(["name"], [["Tom"], ["Ann"]])) == "wrong"
+    assert score_lenient(G, R(["name", "n"], [["Tom", 3]])) == "wrong"
+
+def test_literal_backslash_n_2025v1():
+    c = complexity(r"MATCH (p:Person)-[:ACTED_IN]->(m:Movie)\nWHERE m.released > 2000\nRETURN p.name, count(m) AS n\nORDER BY n DESC\nLIMIT 3")
+    assert c["where"] and c["order_by"] and c["limit"] and c["aggregation"]

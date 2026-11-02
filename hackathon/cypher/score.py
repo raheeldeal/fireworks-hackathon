@@ -32,8 +32,13 @@ def row_key(row, columns, keep_col_order):
     return tuple(vals)
 
 
+def _unescape(cypher):
+    # text2cypher-2025v1 writes line breaks as a literal backslash + n; see executor.normalize_cypher
+    return (cypher or "").replace("\\n", "\n")
+
+
 def has_order_by(cypher):
-    return bool(re.search(r"\border\s+by\b", cypher or "", re.I))
+    return bool(re.search(r"\border\s+by\b", _unescape(cypher), re.I))
 
 
 def score(gold, pred, gold_cypher=""):
@@ -59,7 +64,7 @@ REL = re.compile(r"<?-\[[^\]]*\]->?|<--|-->|(?<=\))--(?=\()")
 
 
 def complexity(cypher):
-    c = cypher or ""
+    c = _unescape(cypher)
     rels = REL.findall(c)
     varlen = any("*" in r for r in rels)
     hops = len(rels) + (1 if varlen else 0)
@@ -90,3 +95,48 @@ def clean_pred(text):
     text = text.strip().strip("`").strip()
     text = re.sub(r"^(cypher|query)\s*:\s*", "", text, flags=re.I)
     return text.strip().rstrip(";").strip()
+
+
+def _flat(v, out):
+    """Flatten a value into scalar tokens; nodes/maps contribute their property values."""
+    if isinstance(v, dict):
+        for k, x in v.items():
+            if not k.startswith("_"):
+                _flat(x, out)
+    else:
+        out.append(repr(norm(v)))
+    return out
+
+
+def _row_tokens(row):
+    vals = row.values() if isinstance(row, dict) else row
+    has_node = any(isinstance(v, dict) for v in vals)
+    toks = []
+    for v in vals:
+        _flat(v, toks)
+    return set(toks), has_node
+
+
+def score_lenient(gold, pred, gold_cypher=""):
+    """Secondary metric. Same as score(), but a row also matches when the prediction returns extra
+    columns (gold values are a subset of pred values), or when gold returned whole nodes and the
+    prediction returned some of their properties. Row counts must still match exactly."""
+    s = score(gold, pred, gold_cypher)
+    if s != "wrong":
+        return s
+    g = [_row_tokens(r) for r in gold["rows"]]
+    p = [_row_tokens(r)[0] for r in pred["rows"]]
+    if len(g) != len(p):
+        return "wrong"
+    used = [False] * len(p)
+    for gt, gnode in sorted(g, key=lambda x: -len(x[0])):
+        hit = False
+        for i, pt in enumerate(p):
+            if used[i] or not pt:
+                continue
+            if gt <= pt or (gnode and pt <= gt):
+                used[i] = hit = True
+                break
+        if not hit:
+            return "wrong"
+    return "correct"

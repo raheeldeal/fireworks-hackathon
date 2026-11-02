@@ -1,12 +1,14 @@
 """Execute gold Cypher for candidate rows; write verified pools with results + complexity."""
-import json, random, sys, os
+import json, random, sys, os, logging
+logging.getLogger("neo4j").setLevel(logging.ERROR)
 from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from executor import execute, GRAPHS, MAX_ROWS
 from score import complexity
 
 split, per_graph, out = sys.argv[1], int(sys.argv[2]), sys.argv[3]
-rows = [json.loads(l) for l in open(f"raw/text2cypher-2024v1_{split}.jsonl")]
+DS = os.environ.get("T2C_DS", "text2cypher-2025v1")
+rows = [json.loads(l) for l in open(f"raw/{DS}_{split}.jsonl")]
 rng = random.Random(42)
 cands = []
 for g in GRAPHS:

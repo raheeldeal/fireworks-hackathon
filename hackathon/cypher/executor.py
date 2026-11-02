@@ -43,8 +43,17 @@ def to_py(v):
     return v
 
 
+def normalize_cypher(cypher):
+    """text2cypher-2025v1 stores line breaks in the gold Cypher as the two characters backslash + n,
+    which Neo4j rejects as a syntax error. Turn them back into real line breaks. Inside Cypher string
+    literals the escape and a real newline mean the same thing, so query meaning is unchanged.
+    The stored dataset text is never modified; this runs only at execution time."""
+    return cypher.replace("\\n", "\n") if cypher else cypher
+
+
 def execute(graph, cypher, timeout=TIMEOUT_S):
     t0 = time.time()
+    cypher = normalize_cypher(cypher)
     if not cypher or not cypher.strip():
         return {"ok": False, "rows": [], "columns": [], "error": "no query", "secs": 0.0}
 

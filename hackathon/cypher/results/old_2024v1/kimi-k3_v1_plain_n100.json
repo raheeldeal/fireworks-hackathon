@@ -1,0 +1,5261 @@
+{
+ "model": "accounts/fireworks/models/kimi-k3",
+ "prompt": "v1_plain",
+ "mock": false,
+ "n": 100,
+ "accuracy": 0.58,
+ "invalid_outputs": 0,
+ "error_rate": 0.0,
+ "empty_rate": 0.01,
+ "wrong_rate": 0.41,
+ "p50_latency_s": 3.261,
+ "p95_latency_s": 6.674,
+ "cost_per_1k_requests_usd": 5.4617,
+ "cost_total_usd": 0.5462,
+ "in_tokens": 83048,
+ "out_tokens": 19802,
+ "reasoning_tokens": 14336,
+ "api_errors": 0,
+ "truncated": 0,
+ "request_extra": {},
+ "max_tokens": 4096,
+ "test_sha256": "165146bffa05ae1b1b49115b6df7aeea8e1f5f4bd7089d784c3f7ea373ce1b14",
+ "by_graph": {
+  "fincen": {
+   "n": 21,
+   "accuracy": 0.4762,
+   "error": 0,
+   "empty": 0,
+   "accuracy_lenient": 0.6667
+  },
+  "movies": {
+   "n": 25,
+   "accuracy": 0.8,
+   "error": 0,
+   "empty": 0,
+   "accuracy_lenient": 0.84
+  },
+  "northwind": {
+   "n": 18,
+   "accuracy": 0.6111,
+   "error": 0,
+   "empty": 0,
+   "accuracy_lenient": 0.6667
+  },
+  "recommendations": {
+   "n": 21,
+   "accuracy": 0.6667,
+   "error": 0,
+   "empty": 1,
+   "accuracy_lenient": 0.8571
+  },
+  "twitter": {
+   "n": 15,
+   "accuracy": 0.2,
+   "error": 0,
+   "empty": 0,
+   "accuracy_lenient": 0.6
+  }
+ },
+ "by_tier": {
+  "easy": {
+   "n": 32,
+   "accuracy": 0.5,
+   "error": 0,
+   "empty": 1,
+   "accuracy_lenient": 0.6875
+  },
+  "hard": {
+   "n": 17,
+   "accuracy": 0.5294,
+   "error": 0,
+   "empty": 0,
+   "accuracy_lenient": 0.5882
+  },
+  "medium": {
+   "n": 51,
+   "accuracy": 0.6471,
+   "error": 0,
+   "empty": 0,
+   "accuracy_lenient": 0.8235
+  }
+ },
+ "rows": [
+  {
+   "id": "t000",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the 3 most common taglines found in the movies?",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.tagline IS NOT NULL RETURN m.tagline AS Tagline, count(m) AS Frequency ORDER BY Frequency DESC LIMIT 3",
+   "raw": "MATCH (m:Movie)\nWHERE m.tagline IS NOT NULL\nRETURN m.tagline AS tagline, count(*) AS count\nORDER BY count DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (m:Movie)\nWHERE m.tagline IS NOT NULL\nRETURN m.tagline AS tagline, count(*) AS count\nORDER BY count DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.736,
+   "in_tokens": 382,
+   "out_tokens": 77,
+   "reasoning_tokens": 29,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "tagline": "Free your mind",
+     "count": 1
+    },
+    {
+     "tagline": "Everything that has a beginning has an end",
+     "count": 1
+    },
+    {
+     "tagline": "Welcome to the Real World",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "t001",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Show the top 3 Filings where the beneficiary bank country is 'Singapore'.",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'Singapore' RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "raw": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'Singapore'\nRETURN f\nORDER BY f.amount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'Singapore'\nRETURN f\nORDER BY f.amount DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.087,
+   "in_tokens": 734,
+   "out_tokens": 105,
+   "reasoning_tokens": 62,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Sep 30, 2014",
+      "amount": 457984607,
+      "beneficiary_iso": "SGP",
+      "beneficiary_lng": "103.8",
+      "begin_date": "Sep 30, 2014",
+      "originator_bank": "Deutsche Bank AG",
+      "beneficiary_lat": "1.3667",
+      "begin_date_format": "2014-09-30T00:00:00Z",
+      "beneficiary_bank_id": "usb-ag-singapore-sgp",
+      "end_date_format": "2014-09-30T00:00:00Z",
+      "originator_iso": "HKG",
+      "origin_lat": "22.25",
+      "filer_org_name": "Deutsche Bank AG",
+      "originator_bank_country": "Hong Kong",
+      "beneficiary_bank": "Usb AG",
+      "beneficiary_bank_country": "Singapore",
+      "filer_org_name_id": "deutsche-bank-ag",
+      "end": "2014-09-30T00:00:00.000000000+00:00",
+      "origin_lng": "114.1667",
+      "originator_bank_id": "deutsche-bank-ag",
+      "id": "233414",
+      "begin": "2014-09-30T00:00:00.000000000+00:00",
+      "sar_id": "3670"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Mar 19, 2014",
+      "amount": 336828000,
+      "beneficiary_iso": "SGP",
+      "beneficiary_lng": "103.8",
+      "begin_date": "Mar 7, 2014",
+      "originator_bank": "Societe Generale Private Banking",
+      "beneficiary_lat": "1.3667",
+      "begin_date_format": "2014-03-07T00:00:00Z",
+      "end_date_format": "2014-03-19T00:00:00Z",
+      "originator_iso": "CHE",
+      "beneficiary_bank_id": "societe-generale-bank-and-trust-singapore-sa-sgbt-singapore-singapore-sgp",
+      "origin_lat": "47",
+      "number": 4,
+      "filer_org_name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale SA",
+      "originator_bank_country": "Switzerland",
+      "beneficiary_bank_country": "Singapore",
+      "filer_org_name_id": "societe-generale-sa",
+      "beneficiary_bank": "Societe Generale Bank And Trust Singapore SA",
+      "end": "2014-03-19T00:00:00.000000000+00:00",
+      "origin_lng": "8",
+      "originator_bank_id": "societe-generale-private-banking",
+      "id": "231948",
+      "begin": "2014-03-07T00:00:00.000000000+00:00",
+      "sar_id": "2778"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Mar 19, 2014",
+      "amount": 300000000,
+      "beneficiary_iso": "SGP",
+      "beneficiary_lng": "103.8",
+      "begin_date": "Mar 19, 2014",
+      "originator_bank": "Societe Generale Private Banking",
+      "beneficiary_lat": "1.3667",
+      "begin_date_format": "2014-03-19T00:00:00Z",
+      "beneficiary_bank_id": "societe-generale-bank-and-trust-singapore-sa-sgbt-singapore-singapore-sgp",
+      "end_date_format": "2014-03-19T00:00:00Z",
+      "originator_iso": "CHE",
+      "origin_lat": "47",
+      "number": 1,
+      "filer_org_name": "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale SA",
+      "originator_bank_country": "Switzerland",
+      "filer_org_name_id": "societe-generale-sa",
+      "beneficiary_bank_country": "Singapore",
+      "beneficiary_bank": "Societe Generale Bank And Trust Singapore SA",
+      "end": "2014-03-19T00:00:00.000000000+00:00",
+      "origin_lng": "8",
+      "originator_bank_id": "societe-generale-private-banking",
+      "id": "231952",
+      "begin": "2014-03-19T00:00:00.000000000+00:00",
+      "sar_id": "2778"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t002",
+   "graph": "fincen",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the country code of the entity that originated the filing with the lowest amount?",
+   "gold_cypher": "MATCH (filing:Filing) WITH min(filing.amount) AS lowestAmount MATCH (filing:Filing) WHERE filing.amount = lowestAmount MATCH (filing)-[:ORIGINATOR]->(entity:Entity) MATCH (entity)-[:COUNTRY]->(country:Country) RETURN country.code",
+   "raw": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)\nRETURN e.country AS country_code\nORDER BY f.amount ASC\nLIMIT 1",
+   "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)\nRETURN e.country AS country_code\nORDER BY f.amount ASC\nLIMIT 1",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.062,
+   "in_tokens": 735,
+   "out_tokens": 171,
+   "reasoning_tokens": 125,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "country_code": null
+    }
+   ]
+  },
+  {
+   "id": "t003",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What is the average number of units in stock for products in each category?",
+   "gold_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category) WITH c.categoryName AS categoryName, avg(p.unitsInStock) AS averageUnitsInStock RETURN categoryName, averageUnitsInStock",
+   "raw": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName, avg(p.unitsInStock) AS avgUnitsInStock",
+   "pred_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName, avg(p.unitsInStock) AS avgUnitsInStock",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 8,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.158,
+   "in_tokens": 1268,
+   "out_tokens": 110,
+   "reasoning_tokens": 66,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "c.categoryName": "Beverages",
+     "avgUnitsInStock": 46.583333333333336
+    },
+    {
+     "c.categoryName": "Condiments",
+     "avgUnitsInStock": 42.25000000000001
+    },
+    {
+     "c.categoryName": "Confections",
+     "avgUnitsInStock": 29.692307692307693
+    },
+    {
+     "c.categoryName": "Dairy Products",
+     "avgUnitsInStock": 39.3
+    },
+    {
+     "c.categoryName": "Grains/Cereals",
+     "avgUnitsInStock": 44.0
+    }
+   ]
+  },
+  {
+   "id": "t004",
+   "graph": "movies",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find all movies with a rating above 90.",
+   "gold_cypher": "MATCH (m:Movie)<-[r:REVIEWED]-(p:Person) WHERE r.rating > 90 RETURN m.title, r.rating",
+   "raw": "MATCH (m:Movie)<-[r:REVIEWED]-(:Person)\nWHERE r.rating > 90\nRETURN m.title, r.rating",
+   "pred_cypher": "MATCH (m:Movie)<-[r:REVIEWED]-(:Person)\nWHERE r.rating > 90\nRETURN m.title, r.rating",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.289,
+   "in_tokens": 378,
+   "out_tokens": 136,
+   "reasoning_tokens": 92,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "Jerry Maguire",
+     "r.rating": 92
+    },
+    {
+     "m.title": "The Replacements",
+     "r.rating": 100
+    },
+    {
+     "m.title": "Cloud Atlas",
+     "r.rating": 95
+    }
+   ]
+  },
+  {
+   "id": "t005",
+   "graph": "twitter",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the top 3 tweets that mention 'Neo4j'.",
+   "gold_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:User {name: 'Neo4j'}) RETURN t.text AS tweet_text, t.favorites AS favorites ORDER BY favorites DESC LIMIT 3",
+   "raw": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me)\nRETURN t\nORDER BY t.favorites DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me)\nRETURN t\nORDER BY t.favorites DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.853,
+   "in_tokens": 834,
+   "out_tokens": 177,
+   "reasoning_tokens": 136,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "t": {
+      "_labels": [
+       "Tweet"
+      ],
+      "favorites": 120,
+      "import_method": "user",
+      "id_str": "1363869486575742979",
+      "created_at": "2021-02-22T15:13:19.000000000+00:00",
+      "id": 1363869486575742979,
+      "text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @origin_trail @neo4j That could very likely be the case. I'v\u2026 https://t.co/YLCP8AJUeE"
+     }
+    },
+    {
+     "t": {
+      "_labels": [
+       "Tweet"
+      ],
+      "favorites": 81,
+      "import_method": "user",
+      "id_str": "1363582202953531393",
+      "created_at": "2021-02-21T20:11:45.000000000+00:00",
+      "id": 1363582202953531393,
+      "text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @origin_trail @neo4j Hi John, great to see you\u2019ve taken a de\u2026 https://t.co/C8mJuGWvpx"
+     }
+    },
+    {
+     "t": {
+      "_labels": [
+       "Tweet"
+      ],
+      "favorites": 58,
+      "import_method": "user",
+      "id_str": "1354483413399396353",
+      "created_at": "2021-01-27T17:36:25.000000000+00:00",
+      "id": 1354483413399396353,
+      "text": "Today @neo4j announced the Aura Enterprise cloud service, which is great but... \n\nWe also announced #Neo4j Aura FRE\u2026 https://t.co/TGPNnVRpHv"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t006",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average `unitPrice` of products that have been ordered in quantities greater than 10?",
+   "gold_cypher": "MATCH (o:Order)-[rel:ORDERS]->(p:Product) WHERE rel.quantity > 10 WITH avg(toFloat(rel.unitPrice)) AS avgPrice RETURN avgPrice",
+   "raw": "MATCH (o:Order)-[r:ORDERS]->(p:Product)\nWHERE r.quantity > 10\nWITH DISTINCT p\nRETURN avg(p.unitPrice) AS averageUnitPrice",
+   "pred_cypher": "MATCH (o:Order)-[r:ORDERS]->(p:Product)\nWHERE r.quantity > 10\nWITH DISTINCT p\nRETURN avg(p.unitPrice) AS averageUnitPrice",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 5.647,
+   "in_tokens": 1274,
+   "out_tokens": 292,
+   "reasoning_tokens": 241,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "averageUnitPrice": 28.86636363636364
+    }
+   ]
+  },
+  {
+   "id": "t007",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the total number of filings where the 'originator_country' is 'Singapore' and the 'amount' is greater than 1000000?",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.originator_country = 'Singapore' AND f.amount > 1000000 RETURN count(f) AS count",
+   "raw": "MATCH (f:Filing) WHERE f.originator_bank_country = 'Singapore' AND f.amount > 1000000 RETURN count(f)",
+   "pred_cypher": "MATCH (f:Filing) WHERE f.originator_bank_country = 'Singapore' AND f.amount > 1000000 RETURN count(f)",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.753,
+   "in_tokens": 749,
+   "out_tokens": 145,
+   "reasoning_tokens": 103,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "count(f)": 87
+    }
+   ]
+  },
+  {
+   "id": "t008",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Show the top 5 users that 'Neo4j' interacts with based on the number of interactions.",
+   "gold_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(user:User) RETURN user.screen_name, COUNT(*) AS interactions ORDER BY interactions DESC LIMIT 5",
+   "raw": "MATCH (m:Me)-[r:INTERACTS_WITH]->(u:User)\nWHERE m.name = 'Neo4j'\nRETURN u.screen_name AS user, u.name AS name, count(r) AS interactions\nORDER BY interactions DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (m:Me)-[r:INTERACTS_WITH]->(u:User)\nWHERE m.name = 'Neo4j'\nRETURN u.screen_name AS user, u.name AS name, count(r) AS interactions\nORDER BY interactions DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.917,
+   "in_tokens": 842,
+   "out_tokens": 160,
+   "reasoning_tokens": 93,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "user": "roschaeferDE",
+     "name": "Robert Sch\u00e4fer",
+     "interactions": 1
+    },
+    {
+     "user": "Bellumio",
+     "name": "Demian",
+     "interactions": 1
+    },
+    {
+     "user": "nsmith_piano",
+     "name": "Nathan Smith",
+     "interactions": 1
+    },
+    {
+     "user": "IncubateIND",
+     "name": "IncubateIND",
+     "interactions": 1
+    },
+    {
+     "user": "____Billionaire",
+     "name": "\u2605 \u2606 Billionaire \u2606 \u2605",
+     "interactions": 1
+    }
+   ]
+  },
+  {
+   "id": "t009",
+   "graph": "movies",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 4,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "\"Which pair of directors has the maximal number of actors who acted in at least one movie directed by each director?\"",
+   "gold_cypher": "MATCH (d1:Person)-[:DIRECTED]->(m1:Movie)<-[:ACTED_IN]-(a:Person)-[:ACTED_IN]->(m2:Movie)<-[:DIRECTED]-(d2:Person) WHERE id(d1) < id(d2) WITH d1, d2, COUNT(DISTINCT a) AS common_actors ORDER BY common_actors DESC LIMIT 1 RETURN d1.name AS Director1, d2.name AS Director2, common_actors",
+   "raw": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person)\nMATCH (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a)\nWHERE elementId(d1) < elementId(d2)\nRETURN d1.name AS director1, d2.name AS director2, count(DISTINCT a) AS sharedActors\nORDER BY sharedActors DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (d1:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a:Person)\nMATCH (d2:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(a)\nWHERE elementId(d1) < elementId(d2)\nRETURN d1.name AS director1, d2.name AS director2, count(DISTINCT a) AS sharedActors\nORDER BY sharedActors DESC\nLIMIT 1",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 17.822,
+   "in_tokens": 213,
+   "out_tokens": 1140,
+   "reasoning_tokens": 1031,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "director1": "Lilly Wachowski",
+     "director2": "Lana Wachowski",
+     "sharedActors": 15
+    }
+   ]
+  },
+  {
+   "id": "t010",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which people have written and directed the same movie?",
+   "gold_cypher": "MATCH (p:Person)-[:WROTE]->(m:Movie)<-[:DIRECTED]-(p) RETURN DISTINCT p.name",
+   "raw": "MATCH (p:Person)-[:WROTE]->(m:Movie)<-[:DIRECTED]-(p)\nRETURN DISTINCT p.name, m.title",
+   "pred_cypher": "MATCH (p:Person)-[:WROTE]->(m:Movie)<-[:DIRECTED]-(p)\nRETURN DISTINCT p.name, m.title",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 4,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.279,
+   "in_tokens": 378,
+   "out_tokens": 175,
+   "reasoning_tokens": 130,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Cameron Crowe",
+     "m.title": "Jerry Maguire"
+    },
+    {
+     "p.name": "Lana Wachowski",
+     "m.title": "Speed Racer"
+    },
+    {
+     "p.name": "Lilly Wachowski",
+     "m.title": "Speed Racer"
+    },
+    {
+     "p.name": "Nancy Meyers",
+     "m.title": "Something's Gotta Give"
+    }
+   ]
+  },
+  {
+   "id": "t011",
+   "graph": "northwind",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which suppliers supply to more than one category?",
+   "gold_cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category) WITH s, collect(DISTINCT c.categoryID) AS categories WHERE size(categories) > 1 RETURN s.companyName AS Supplier, categories",
+   "raw": "MATCH (s:Supplier)-[:SUPPLIES]->(:Product)-[:PART_OF]->(c:Category)\nWITH s, count(DISTINCT c) AS categoryCount\nWHERE categoryCount > 1\nRETURN s.companyName AS supplierName, categoryCount\nORDER BY categoryCount DESC, supplierName",
+   "pred_cypher": "MATCH (s:Supplier)-[:SUPPLIES]->(:Product)-[:PART_OF]->(c:Category)\nWITH s, count(DISTINCT c) AS categoryCount\nWHERE categoryCount > 1\nRETURN s.companyName AS supplierName, categoryCount\nORDER BY categoryCount DESC, supplierName",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 10,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.924,
+   "in_tokens": 1262,
+   "out_tokens": 198,
+   "reasoning_tokens": 123,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "supplierName": "Pavlova",
+     "categoryCount": 5
+    },
+    {
+     "supplierName": "Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG",
+     "categoryCount": 5
+    },
+    {
+     "supplierName": "G'day",
+     "categoryCount": 3
+    },
+    {
+     "supplierName": "Leka Trading",
+     "categoryCount": 3
+    },
+    {
+     "supplierName": "Mayumi's",
+     "categoryCount": 3
+    }
+   ]
+  },
+  {
+   "id": "t012",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What are the top 3 directors who have directed movies with the most diverse set of actors?",
+   "gold_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(a:Actor) WITH d, count(DISTINCT a) AS numActors ORDER BY numActors DESC LIMIT 3 RETURN d.name AS director, numActors",
+   "raw": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(a:Actor)\nRETURN d.name AS director, count(DISTINCT a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(a:Actor)\nRETURN d.name AS director, count(DISTINCT a) AS actorCount\nORDER BY actorCount DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.94,
+   "in_tokens": 1103,
+   "out_tokens": 190,
+   "reasoning_tokens": 125,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "director": "Woody Allen",
+     "actorCount": 132
+    },
+    {
+     "director": "Alfred Hitchcock",
+     "actorCount": 129
+    },
+    {
+     "director": "Steven Spielberg",
+     "actorCount": 107
+    }
+   ]
+  },
+  {
+   "id": "t013",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which country has produced the most movies in the database?",
+   "gold_cypher": "MATCH (m:Movie) UNWIND m.countries AS country WITH country, COUNT(DISTINCT m) AS movieCount ORDER BY movieCount DESC RETURN country, movieCount LIMIT 1",
+   "raw": "MATCH (m:Movie)\nUNWIND m.countries AS country\nRETURN country, count(m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (m:Movie)\nUNWIND m.countries AS country\nRETURN country, count(m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 1",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.045,
+   "in_tokens": 1095,
+   "out_tokens": 132,
+   "reasoning_tokens": 86,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "country": "USA",
+     "movieCount": 6333
+    }
+   ]
+  },
+  {
+   "id": "t014",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 5 movies that have been rated the lowest by users.",
+   "gold_cypher": "MATCH (:User)-[r:RATED]->(m:Movie) RETURN m.title AS title, AVG(r.rating) AS avgRating ORDER BY avgRating ASC LIMIT 5",
+   "raw": "MATCH (m:Movie)<-[r:RATED]-(u:User)\nRETURN m.title AS title, avg(r.rating) AS averageRating, count(r) AS numberOfRatings\nORDER BY averageRating ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (m:Movie)<-[r:RATED]-(u:User)\nRETURN m.title AS title, avg(r.rating) AS averageRating, count(r) AS numberOfRatings\nORDER BY averageRating ASC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.337,
+   "in_tokens": 1099,
+   "out_tokens": 138,
+   "reasoning_tokens": 76,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "title": "Paul Blart: Mall Cop",
+     "averageRating": 0.5,
+     "numberOfRatings": 2
+    },
+    {
+     "title": "Approaching the Unknown",
+     "averageRating": 0.5,
+     "numberOfRatings": 1
+    },
+    {
+     "title": "Conspirator, The",
+     "averageRating": 0.5,
+     "numberOfRatings": 1
+    },
+    {
+     "title": "Trespass",
+     "averageRating": 0.5,
+     "numberOfRatings": 1
+    },
+    {
+     "title": "Sunspring",
+     "averageRating": 0.5,
+     "numberOfRatings": 1
+    }
+   ]
+  },
+  {
+   "id": "t015",
+   "graph": "twitter",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
+   "gold_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {name: \"Neo4j\"}),       (t)-[:TAGS]->(:Hashtag) WITH avg(t.favorites) AS average_favorites RETURN average_favorites",
+   "raw": "MATCH (t:Tweet)-[:MENTIONS]->(u), (t)-[:TAGS]->(:Hashtag)\nWHERE u.screen_name = 'neo4j' OR u.name = 'Neo4j'\nWITH DISTINCT t\nRETURN avg(t.favorites) AS averageFavorites",
+   "pred_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u), (t)-[:TAGS]->(:Hashtag)\nWHERE u.screen_name = 'neo4j' OR u.name = 'Neo4j'\nWITH DISTINCT t\nRETURN avg(t.favorites) AS averageFavorites",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 13.348,
+   "in_tokens": 842,
+   "out_tokens": 907,
+   "reasoning_tokens": 837,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "averageFavorites": 2.450549450549451
+    }
+   ]
+  },
+  {
+   "id": "t016",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average rating for movies with \"The Matrix\" in the title?",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.title CONTAINS 'The Matrix' WITH m MATCH (p:Person)-[r:REVIEWED]->(m) RETURN avg(r.rating)",
+   "raw": "MATCH (m:Movie)<-[r:REVIEWED]-(:Person)\nWHERE m.title CONTAINS \"The Matrix\"\nRETURN avg(r.rating) AS averageRating",
+   "pred_cypher": "MATCH (m:Movie)<-[r:REVIEWED]-(:Person)\nWHERE m.title CONTAINS \"The Matrix\"\nRETURN avg(r.rating) AS averageRating",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.449,
+   "in_tokens": 384,
+   "out_tokens": 132,
+   "reasoning_tokens": 84,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "averageRating": null
+    }
+   ]
+  },
+  {
+   "id": "t017",
+   "graph": "recommendations",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the top 5 oldest actors in the database.",
+   "gold_cypher": "MATCH (a:Actor) WHERE a.born IS NOT NULL RETURN a.name, a.born ORDER BY a.born ASC LIMIT 5",
+   "raw": "MATCH (a:Actor)\nWHERE a.born IS NOT NULL\nRETURN a.name, a.born\nORDER BY a.born ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (a:Actor)\nWHERE a.born IS NOT NULL\nRETURN a.name, a.born\nORDER BY a.born ASC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.175,
+   "in_tokens": 1095,
+   "out_tokens": 144,
+   "reasoning_tokens": 99,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "a.name": "Ron Smerczak",
+     "a.born": "1649-03-07"
+    },
+    {
+     "a.name": "Paul von Hindenburg",
+     "a.born": "1847-10-02"
+    },
+    {
+     "a.name": "Maggie Moore",
+     "a.born": "1851-04-10"
+    },
+    {
+     "a.name": "Eugene Silvain",
+     "a.born": "1851-06-17"
+    },
+    {
+     "a.name": "Monte Collins",
+     "a.born": "1856-01-01"
+    }
+   ]
+  },
+  {
+   "id": "t018",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 5 filings with the shortest duration between 'begin' and 'end'.",
+   "gold_cypher": "MATCH (f:Filing) WITH f, duration.between(f.begin, f.end) AS duration ORDER BY duration ASC LIMIT 5 RETURN f.sar_id AS SAR_ID, f.begin AS BeginDate, f.end AS EndDate, duration AS Duration",
+   "raw": "MATCH (f:Filing)\nRETURN f.id AS filing_id, f.begin AS begin, f.end AS end, duration.between(f.begin, f.end) AS duration\nORDER BY duration ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (f:Filing)\nRETURN f.id AS filing_id, f.begin AS begin, f.end AS end, duration.between(f.begin, f.end) AS duration\nORDER BY duration ASC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 7.351,
+   "in_tokens": 736,
+   "out_tokens": 321,
+   "reasoning_tokens": 264,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "filing_id": "231317",
+     "begin": "2016-09-06T00:00:00.000000000+00:00",
+     "end": "2014-04-23T00:00:00.000000000+00:00",
+     "duration": [
+      -28,
+      -13,
+      0,
+      0
+     ]
+    },
+    {
+     "filing_id": "242408",
+     "begin": "2013-03-02T00:00:00.000000000+00:00",
+     "end": "2012-03-19T00:00:00.000000000+00:00",
+     "duration": [
+      -11,
+      -14,
+      0,
+      0
+     ]
+    },
+    {
+     "filing_id": "232321",
+     "begin": "2013-12-27T00:00:00.000000000+00:00",
+     "end": "2013-01-30T00:00:00.000000000+00:00",
+     "duration": [
+      -10,
+      -28,
+      0,
+      0
+     ]
+    },
+    {
+     "filing_id": "237398",
+     "begin": "2013-09-03T00:00:00.000000000+00:00",
+     "end": "2012-11-12T00:00:00.000000000+00:00",
+     "duration": [
+      -9,
+      -21,
+      0,
+      0
+     ]
+    },
+    {
+     "filing_id": "229416",
+     "begin": "2016-04-13T00:00:00.000000000+00:00",
+     "end": "2015-07-05T00:00:00.000000000+00:00",
+     "duration": [
+      -9,
+      -8,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "t019",
+   "graph": "twitter",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which users have a betweenness higher than 1000000?",
+   "gold_cypher": "MATCH (u:User) WHERE u.betweenness > 1000000 RETURN u.screen_name, u.betweenness",
+   "raw": "MATCH (u:User) WHERE u.betweenness > 1000000 RETURN u.screen_name, u.name, u.betweenness ORDER BY u.betweenness DESC",
+   "pred_cypher": "MATCH (u:User) WHERE u.betweenness > 1000000 RETURN u.screen_name, u.name, u.betweenness ORDER BY u.betweenness DESC",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.601,
+   "in_tokens": 834,
+   "out_tokens": 232,
+   "reasoning_tokens": 184,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "u.screen_name": "neo4j",
+     "u.name": "Neo4j",
+     "u.betweenness": 349332601.0
+    }
+   ]
+  },
+  {
+   "id": "t020",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What are the top 3 categories with the highest average unit price of products?",
+   "gold_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category) WITH c.categoryName AS category, avg(p.unitPrice) AS avgUnitPrice ORDER BY avgUnitPrice DESC LIMIT 3 RETURN category, avgUnitPrice",
+   "raw": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName AS categoryName, avg(p.unitPrice) AS averageUnitPrice\nORDER BY averageUnitPrice DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nRETURN c.categoryName AS categoryName, avg(p.unitPrice) AS averageUnitPrice\nORDER BY averageUnitPrice DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.792,
+   "in_tokens": 1269,
+   "out_tokens": 95,
+   "reasoning_tokens": 39,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "categoryName": "Meat/Poultry",
+     "averageUnitPrice": 54.00666666666667
+    },
+    {
+     "categoryName": "Beverages",
+     "averageUnitPrice": 37.97916666666667
+    },
+    {
+     "categoryName": "Produce",
+     "averageUnitPrice": 32.370000000000005
+    }
+   ]
+  },
+  {
+   "id": "t021",
+   "graph": "twitter",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the 5 most recent users who started following 'Neo4j'.",
+   "gold_cypher": "MATCH (neo4j:Me {screen_name: 'neo4j'})<-[:FOLLOWS]-(user:User) RETURN user.screen_name, user.name, user.followers, user.following, user.profile_image_url, user.url, user.location, user.statuses ORDER BY user.followers DESC LIMIT 5",
+   "raw": "MATCH (u:User)-[:FOLLOWS]->(m:Me)\nRETURN u\nORDER BY u.followers DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (u:User)-[:FOLLOWS]->(m:Me)\nRETURN u\nORDER BY u.followers DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 6.441,
+   "in_tokens": 836,
+   "out_tokens": 296,
+   "reasoning_tokens": 253,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "u": {
+      "_labels": [
+       "User"
+      ],
+      "followers": 3159351,
+      "screen_name": "verified",
+      "following": 3159351,
+      "name": "Twitter Verified",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1354533298685566983/2mZQ3Lpt_normal.jpg",
+      "location": "San Francisco",
+      "betweenness": 0.0
+     }
+    },
+    {
+     "u": {
+      "_labels": [
+       "User"
+      ],
+      "followers": 2137734,
+      "screen_name": "6BillionPeople",
+      "following": 2137734,
+      "name": "MarQuis Trill \u2022 Youngest Black Billionaire",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1368725691991093249/G8fSFE8V_normal.jpg",
+      "location": "Los Angeles, CA",
+      "betweenness": 0.0,
+      "url": "https://t.co/hKSSVCDWJ0"
+     }
+    },
+    {
+     "u": {
+      "_labels": [
+       "User"
+      ],
+      "followers": 1345269,
+      "screen_name": "soledadobrien",
+      "following": 1345269,
+      "name": "Soledad O'Brien",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1317585860481736704/2UG16TCA_normal.jpg",
+      "location": " New York",
+      "betweenness": 0.0,
+      "url": "https://t.co/bpjy55iFNE"
+     }
+    },
+    {
+     "u": {
+      "_labels": [
+       "User"
+      ],
+      "followers": 761241,
+      "screen_name": "larrykim",
+      "following": 761241,
+      "name": "Larry Kim",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/634035372733898752/6aSBCDd9_normal.jpg",
+      "location": "Boston, MA",
+      "betweenness": 0.0,
+      "url": "https://t.co/lvIODUHxYS"
+     }
+    },
+    {
+     "u": {
+      "_labels": [
+       "User"
+      ],
+      "followers": 631106,
+      "screen_name": "ammr",
+      "following": 631106,
+      "name": "Ammar Mohammed",
+      "location": "Doha, Qatar",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1170786147125137411/x78ovuNh_normal.jpg",
+      "betweenness": 0.0,
+      "url": "https://t.co/7oU2kHWUCE"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t022",
+   "graph": "movies",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who are the top 3 actors by number of followers?",
+   "gold_cypher": "MATCH (actor:Person)-[:ACTED_IN]->(:Movie) OPTIONAL MATCH (follower:Person)-[:FOLLOWS]->(actor) WITH actor, COUNT(follower) AS followerCount RETURN actor.name AS actorName, followerCount ORDER BY followerCount DESC LIMIT 3",
+   "raw": "MATCH (p:Person)-[:ACTED_IN]->(:Movie)\nOPTIONAL MATCH (follower:Person)-[:FOLLOWS]->(p)\nRETURN p.name AS actor, count(follower) AS followers\nORDER BY followers DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Person)-[:ACTED_IN]->(:Movie)\nOPTIONAL MATCH (follower:Person)-[:FOLLOWS]->(p)\nRETURN p.name AS actor, count(follower) AS followers\nORDER BY followers DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 5.619,
+   "in_tokens": 380,
+   "out_tokens": 253,
+   "reasoning_tokens": 186,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "actor": "Hugo Weaving",
+     "followers": 0
+    },
+    {
+     "actor": "Laurence Fishburne",
+     "followers": 0
+    },
+    {
+     "actor": "Emil Eifrem",
+     "followers": 0
+    }
+   ]
+  },
+  {
+   "id": "t023",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Find the top 5 most frequently ordered products.",
+   "gold_cypher": "MATCH (:Order)-[o:ORDERS]->(p:Product) RETURN p.productName, COUNT(o) AS orderCount ORDER BY orderCount DESC LIMIT 5",
+   "raw": "MATCH (p:Product)<-[o:ORDERS]-(:Order)\nRETURN p.productName AS productName, COUNT(o) AS orderCount\nORDER BY orderCount DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (p:Product)<-[o:ORDERS]-(:Order)\nRETURN p.productName AS productName, COUNT(o) AS orderCount\nORDER BY orderCount DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.088,
+   "in_tokens": 1263,
+   "out_tokens": 174,
+   "reasoning_tokens": 122,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "productName": "Raclette Courdavault",
+     "orderCount": 54
+    },
+    {
+     "productName": "Guaran\u00e1 Fant\u00e1stica",
+     "orderCount": 51
+    },
+    {
+     "productName": "Gorgonzola Telino",
+     "orderCount": 51
+    },
+    {
+     "productName": "Camembert Pierrot",
+     "orderCount": 51
+    },
+    {
+     "productName": "Gnocchi di nonna Alice",
+     "orderCount": 50
+    }
+   ]
+  },
+  {
+   "id": "t024",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify the top 3 filings where the originator bank and the beneficiary bank are located at the same latitude.",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.origin_lat = f.beneficiary_lat RETURN f ORDER BY f.amount DESC LIMIT 3",
+   "raw": "MATCH (f:Filing)\nWHERE toFloat(f.origin_lat) = toFloat(f.beneficiary_lat)\nRETURN f\nORDER BY f.amount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)\nWHERE toFloat(f.origin_lat) = toFloat(f.beneficiary_lat)\nRETURN f\nORDER BY f.amount DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.68,
+   "in_tokens": 740,
+   "out_tokens": 172,
+   "reasoning_tokens": 124,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Jan 4, 2013",
+      "amount": 1082748112.02,
+      "beneficiary_lng": "-2",
+      "beneficiary_iso": "GBR",
+      "begin_date": "Jan 8, 2007",
+      "originator_bank": "JPMorgan Chase Bank",
+      "beneficiary_lat": "54",
+      "begin_date_format": "2007-01-08T00:00:00Z",
+      "beneficiary_bank_id": "deutsche-bank-ag-london-branch-gbr",
+      "end_date_format": "2013-01-04T00:00:00Z",
+      "originator_iso": "GBR",
+      "origin_lat": "54",
+      "number": 90,
+      "filer_org_name": "JP Morgan Chase & Co.",
+      "originator_bank_country": "United Kingdom",
+      "beneficiary_bank": "Deutsche Bank AG -- London Branch",
+      "filer_org_name_id": "jp-morgan-chase-co",
+      "beneficiary_bank_country": "United Kingdom",
+      "end": "2013-01-04T00:00:00.000000000+00:00",
+      "origin_lng": "-2",
+      "originator_bank_id": "jpmorgan-chase-bank",
+      "id": "236396",
+      "begin": "2007-01-08T00:00:00.000000000+00:00",
+      "sar_id": "3190"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Oct 20, 2015",
+      "amount": 500000000,
+      "beneficiary_iso": "LUX",
+      "beneficiary_lng": "6.1667",
+      "begin_date": "Oct 20, 2015",
+      "originator_bank": "Bank of China",
+      "beneficiary_lat": "49.75",
+      "begin_date_format": "2015-10-20T00:00:00Z",
+      "end_date_format": "2015-10-20T00:00:00Z",
+      "beneficiary_bank_id": "kbl-european-private-bankers-sa-luxembourg-lux",
+      "originator_iso": "LUX",
+      "origin_lat": "49.75",
+      "number": 1,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "Luxembourg",
+      "beneficiary_bank_country": "Luxembourg",
+      "beneficiary_bank": "Kbl European Private Bankers S.A.",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "end": "2015-10-20T00:00:00.000000000+00:00",
+      "origin_lng": "6.1667",
+      "originator_bank_id": "bank-of-china",
+      "id": "226760",
+      "begin": "2015-10-20T00:00:00.000000000+00:00",
+      "sar_id": "3991"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "May 16, 2013",
+      "amount": 300000000,
+      "beneficiary_iso": "LVA",
+      "beneficiary_lng": "25",
+      "begin_date": "May 16, 2013",
+      "originator_bank": "AS Expobank",
+      "beneficiary_lat": "57",
+      "begin_date_format": "2013-05-16T00:00:00Z",
+      "beneficiary_bank_id": "rigensis-bank-as-riga-latvia-lva",
+      "end_date_format": "2013-05-16T00:00:00Z",
+      "originator_iso": "LVA",
+      "origin_lat": "57",
+      "number": 1,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "Latvia",
+      "beneficiary_bank": "Rigensis Bank AS",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "beneficiary_bank_country": "Latvia",
+      "end": "2013-05-16T00:00:00.000000000+00:00",
+      "origin_lng": "25",
+      "originator_bank_id": "as-expobank",
+      "id": "234728",
+      "begin": "2013-05-16T00:00:00.000000000+00:00",
+      "sar_id": "2421"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t025",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average number of followers for users who follow 'Neo4j'?",
+   "gold_cypher": "MATCH (neo4j:User {screen_name: 'neo4j'})<-[:FOLLOWS]-(follower:User) WITH avg(follower.followers) AS average_followers RETURN average_followers",
+   "raw": "MATCH (u:User)-[:FOLLOWS]->(m:Me {screen_name: 'neo4j'})\nRETURN avg(u.followers) AS average_followers",
+   "pred_cypher": "MATCH (u:User)-[:FOLLOWS]->(m:Me {screen_name: 'neo4j'})\nRETURN avg(u.followers) AS average_followers",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.999,
+   "in_tokens": 837,
+   "out_tokens": 243,
+   "reasoning_tokens": 195,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "average_followers": 1251.261983423166
+    }
+   ]
+  },
+  {
+   "id": "t026",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which three users have rated the most number of actors?",
+   "gold_cypher": "MATCH (u:User)-[:RATED]->(m:Movie)<-[:ACTED_IN]-(a:Actor) WITH u, count(distinct a) AS numActors ORDER BY numActors DESC LIMIT 3 RETURN u.name AS user, numActors",
+   "raw": "MATCH (u:User)-[:RATED]->(m:Movie)<-[:ACTED_IN]-(a:Actor)\nRETURN u.name AS user, COUNT(DISTINCT a) AS actorsRated\nORDER BY actorsRated DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (u:User)-[:RATED]->(m:Movie)<-[:ACTED_IN]-(a:Actor)\nRETURN u.name AS user, COUNT(DISTINCT a) AS actorsRated\nORDER BY actorsRated DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.645,
+   "in_tokens": 1095,
+   "out_tokens": 226,
+   "reasoning_tokens": 162,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "user": "Darlene Garcia",
+     "actorsRated": 5056
+    },
+    {
+     "user": "Robert Brooks",
+     "actorsRated": 3943
+    },
+    {
+     "user": "Angela Garcia",
+     "actorsRated": 3639
+    }
+   ]
+  },
+  {
+   "id": "t027",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which three users have rated movies in the most number of different genres?",
+   "gold_cypher": "MATCH (u:User)-[:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre) WITH u, count(DISTINCT g) AS numGenres ORDER BY numGenres DESC LIMIT 3 RETURN u.name AS user, numGenres",
+   "raw": "MATCH (u:User)-[:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH u, count(DISTINCT g) AS genreCount\nRETURN u.name AS user, genreCount\nORDER BY genreCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (u:User)-[:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH u, count(DISTINCT g) AS genreCount\nRETURN u.name AS user, genreCount\nORDER BY genreCount DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.415,
+   "in_tokens": 1098,
+   "out_tokens": 210,
+   "reasoning_tokens": 141,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "user": "Kenneth Daniels",
+     "genreCount": 20
+    },
+    {
+     "user": "Angela Robertson",
+     "genreCount": 20
+    },
+    {
+     "user": "Karen Avila",
+     "genreCount": 20
+    }
+   ]
+  },
+  {
+   "id": "t028",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 5 users have the most ratings in the 'Comedy' genre?",
+   "gold_cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre {name: 'Comedy'}) RETURN u.name AS user, count(r) AS comedyRatings ORDER BY comedyRatings DESC LIMIT 5",
+   "raw": "MATCH (u:User)-[r:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre {name: 'Comedy'})\nRETURN u.name AS user, count(r) AS ratings\nORDER BY ratings DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)-[:IN_GENRE]->(g:Genre {name: 'Comedy'})\nRETURN u.name AS user, count(r) AS ratings\nORDER BY ratings DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.147,
+   "in_tokens": 1100,
+   "out_tokens": 112,
+   "reasoning_tokens": 47,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "user": "Karen Avila",
+     "ratings": 892
+    },
+    {
+     "user": "Darlene Garcia",
+     "ratings": 798
+    },
+    {
+     "user": "Robert Brooks",
+     "ratings": 703
+    },
+    {
+     "user": "Angela Garcia",
+     "ratings": 623
+    },
+    {
+     "user": "Angela Robertson",
+     "ratings": 583
+    }
+   ]
+  },
+  {
+   "id": "t029",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which products have a unit price greater than $75 and are in the 'Confections' category?",
+   "gold_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category {categoryName: 'Confections'}) WHERE p.unitPrice > 75 RETURN p.productName, p.unitPrice",
+   "raw": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nWHERE p.unitPrice > 75 AND c.categoryName = 'Confections'\nRETURN p.productName, p.unitPrice, c.categoryName",
+   "pred_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nWHERE p.unitPrice > 75 AND c.categoryName = 'Confections'\nRETURN p.productName, p.unitPrice, c.categoryName",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.957,
+   "in_tokens": 1274,
+   "out_tokens": 108,
+   "reasoning_tokens": 51,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.productName": "Sir Rodney's Marmalade",
+     "p.unitPrice": 81.0,
+     "c.categoryName": "Confections"
+    }
+   ]
+  },
+  {
+   "id": "t030",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 3 users have the highest average movie rating with at least 20 rated movies?",
+   "gold_cypher": "MATCH (u:User)-[r:RATED]->(m:Movie) WITH u, COUNT(r) AS ratedMovies, AVG(r.rating) AS avgRating WHERE ratedMovies >= 20 RETURN u.name AS userName, avgRating ORDER BY avgRating DESC LIMIT 3",
+   "raw": "MATCH (u:User)-[r:RATED]->(m:Movie)\nWITH u, avg(r.rating) AS avgRating, count(r) AS numRatings\nWHERE numRatings >= 20\nRETURN u.name, avgRating, numRatings\nORDER BY avgRating DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (u:User)-[r:RATED]->(m:Movie)\nWITH u, avg(r.rating) AS avgRating, count(r) AS numRatings\nWHERE numRatings >= 20\nRETURN u.name, avgRating, numRatings\nORDER BY avgRating DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.226,
+   "in_tokens": 1102,
+   "out_tokens": 179,
+   "reasoning_tokens": 102,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "u.name": "Jennifer Allen",
+     "avgRating": 4.948717948717949,
+     "numRatings": 39
+    },
+    {
+     "u.name": "Lynn Green",
+     "avgRating": 4.85,
+     "numRatings": 40
+    },
+    {
+     "u.name": "Erica Sullivan",
+     "avgRating": 4.799999999999999,
+     "numRatings": 75
+    }
+   ]
+  },
+  {
+   "id": "t031",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 3 'filer_org_name' values with the highest average 'number' value for their filings.",
+   "gold_cypher": "MATCH (f:Filing) WITH f.filer_org_name AS filer_org_name, avg(f.number) AS average_number ORDER BY average_number DESC LIMIT 3 RETURN filer_org_name, average_number",
+   "raw": "MATCH (f:Filing)\nRETURN f.filer_org_name AS filer_org_name, avg(f.number) AS avg_number\nORDER BY avg_number DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)\nRETURN f.filer_org_name AS filer_org_name, avg(f.number) AS avg_number\nORDER BY avg_number DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.873,
+   "in_tokens": 741,
+   "out_tokens": 149,
+   "reasoning_tokens": 100,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "filer_org_name": "JP Morgan Chase & Co.",
+     "avg_number": 7.8979591836734695
+    },
+    {
+     "filer_org_name": "Standard Chartered Plc",
+     "avg_number": 7.058666666666667
+    },
+    {
+     "filer_org_name": "The Northern Trust Company",
+     "avg_number": 5.518518518518519
+    }
+   ]
+  },
+  {
+   "id": "t032",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What is the average discount given across all orders?",
+   "gold_cypher": "MATCH (:Order)-[o:ORDERS]->(:Product) RETURN avg(toFloat(o.discount)) AS averageDiscount",
+   "raw": "MATCH ()-[r:ORDERS]->() RETURN avg(toFloat(r.discount)) AS averageDiscount",
+   "pred_cypher": "MATCH ()-[r:ORDERS]->() RETURN avg(toFloat(r.discount)) AS averageDiscount",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.747,
+   "in_tokens": 1263,
+   "out_tokens": 91,
+   "reasoning_tokens": 58,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "averageDiscount": 0.05616705336426909
+    }
+   ]
+  },
+  {
+   "id": "t033",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the first 3 entities that have filed the most filings where the beneficiary bank's country is the same as the originator bank's country.",
+   "gold_cypher": "MATCH (e:Entity)-[:FILED]->(f:Filing) WHERE f.beneficiary_bank_country = f.originator_bank_country WITH e, COUNT(f) AS num_filings ORDER BY num_filings DESC LIMIT 3 RETURN e.name AS entity_name, num_filings",
+   "raw": "MATCH (e:Entity)-[:FILED]->(f:Filing)\nWHERE f.beneficiary_bank_country = f.originator_bank_country\nRETURN e.name AS entity, count(f) AS filing_count\nORDER BY filing_count DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (e:Entity)-[:FILED]->(f:Filing)\nWHERE f.beneficiary_bank_country = f.originator_bank_country\nRETURN e.name AS entity, count(f) AS filing_count\nORDER BY filing_count DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 5.285,
+   "in_tokens": 747,
+   "out_tokens": 246,
+   "reasoning_tokens": 181,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "entity": "The Bank of New York Mellon Corp.",
+     "filing_count": 225
+    },
+    {
+     "entity": "Standard Chartered Plc",
+     "filing_count": 27
+    },
+    {
+     "entity": "JP Morgan Chase & Co.",
+     "filing_count": 23
+    }
+   ]
+  },
+  {
+   "id": "t034",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List all movies where the writer is also credited as a producer.",
+   "gold_cypher": "MATCH (m:Movie)<-[:WROTE]-(p:Person) WHERE (p)-[:PRODUCED]->(m) RETURN m.title",
+   "raw": "MATCH (p:Person)-[:WROTE]->(m:Movie)<-[:PRODUCED]-(p)\nRETURN m.title",
+   "pred_cypher": "MATCH (p:Person)-[:WROTE]->(m:Movie)<-[:PRODUCED]-(p)\nRETURN m.title",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.48,
+   "in_tokens": 381,
+   "out_tokens": 135,
+   "reasoning_tokens": 93,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "Jerry Maguire"
+    },
+    {
+     "m.title": "When Harry Met Sally"
+    },
+    {
+     "m.title": "V for Vendetta"
+    },
+    {
+     "m.title": "V for Vendetta"
+    },
+    {
+     "m.title": "Something's Gotta Give"
+    }
+   ]
+  },
+  {
+   "id": "t035",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 6,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find the users who have retweeted tweets that mention hashtags also used by \"Neo4j\".",
+   "gold_cypher": "MATCH (neo4j:User {screen_name: \"neo4j\"})-[:POSTS]->(neo4jTweets:Tweet)-[:TAGS]->(commonHashtags:Hashtag) WITH neo4j, neo4jTweets, commonHashtags MATCH (otherTweets:Tweet)-[:TAGS]->(commonHashtags)<-[:TAGS]-(neo4jTweets) WITH DISTINCT otherTweets MATCH (user:User)-[:POSTS]->(:Tweet)-[:RETWEETS]->(otherTweets) RETURN DISTINCT user.screen_name",
+   "raw": "MATCH (me:Me {name: \"Neo4j\"})-[:POSTS]->(:Tweet)-[:TAGS]->(h:Hashtag)\nWITH DISTINCT h\nMATCH (u:User)-[:POSTS]->(:Tweet)-[:RETWEETS]->(:Tweet)-[:TAGS]->(h)\nRETURN DISTINCT u",
+   "pred_cypher": "MATCH (me:Me {name: \"Neo4j\"})-[:POSTS]->(:Tweet)-[:TAGS]->(h:Hashtag)\nWITH DISTINCT h\nMATCH (u:User)-[:POSTS]->(:Tweet)-[:RETWEETS]->(:Tweet)-[:TAGS]->(h)\nRETURN DISTINCT u",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 15.046,
+   "in_tokens": 841,
+   "out_tokens": 1028,
+   "reasoning_tokens": 948,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "u": {
+      "_labels": [
+       "Me",
+       "User"
+      ],
+      "followers": 34507,
+      "screen_name": "neo4j",
+      "following": 10124,
+      "name": "Neo4j",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1183755273753767936/vSV_IPTs_normal.jpg",
+      "location": "Graphs Are Everywhere",
+      "betweenness": 349332601.0,
+      "url": "https://t.co/JSIaZFJEaE"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t036",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which entity benefited from the filing with the lowest 'amount'?",
+   "gold_cypher": "MATCH (f:Filing) WITH f ORDER BY f.amount ASC LIMIT 1 MATCH (f)-[:BENEFITS]->(b:Entity) RETURN b.name",
+   "raw": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nRETURN e.name, f.amount\nORDER BY f.amount ASC\nLIMIT 1",
+   "pred_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nRETURN e.name, f.amount\nORDER BY f.amount ASC\nLIMIT 1",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 1.988,
+   "in_tokens": 730,
+   "out_tokens": 90,
+   "reasoning_tokens": 43,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "e.name": "JSC VTB Bank",
+     "f.amount": 1.18
+    }
+   ]
+  },
+  {
+   "id": "t037",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average betweenness centrality of users who follow Neo4j?",
+   "gold_cypher": "MATCH (n:User {screen_name: 'neo4j'})<-[:FOLLOWS]-(follower) WITH avg(follower.betweenness) AS average_betweenness RETURN average_betweenness",
+   "raw": "MATCH (u:User)-[:FOLLOWS]->(m:Me)\nRETURN avg(u.betweenness) AS averageBetweenness",
+   "pred_cypher": "MATCH (u:User)-[:FOLLOWS]->(m:Me)\nRETURN avg(u.betweenness) AS averageBetweenness",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.437,
+   "in_tokens": 837,
+   "out_tokens": 135,
+   "reasoning_tokens": 94,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "averageBetweenness": 0.0
+    }
+   ]
+  },
+  {
+   "id": "t038",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "How many filings have a beneficiary bank in 'United Kingdom' and an amount greater than 200000?",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 200000 RETURN count(f) AS number_of_filings",
+   "raw": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 200000\nRETURN count(f)",
+   "pred_cypher": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 200000\nRETURN count(f)",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.916,
+   "in_tokens": 739,
+   "out_tokens": 100,
+   "reasoning_tokens": 56,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "count(f)": 79
+    }
+   ]
+  },
+  {
+   "id": "t039",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 3 directors who have directed movies with the highest average votes.",
+   "gold_cypher": "MATCH (m:Movie) WITH m, avg(m.votes) AS average_votes MATCH (p:Person)-[:DIRECTED]->(m) WITH p, average_votes ORDER BY average_votes DESC RETURN p.name AS director_name, avg(average_votes) AS average_movie_votes LIMIT 3",
+   "raw": "MATCH (p:Person)-[:DIRECTED]->(m:Movie)\nRETURN p.name AS director, avg(m.votes) AS averageVotes\nORDER BY averageVotes DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Person)-[:DIRECTED]->(m:Movie)\nRETURN p.name AS director, avg(m.votes) AS averageVotes\nORDER BY averageVotes DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.753,
+   "in_tokens": 384,
+   "out_tokens": 110,
+   "reasoning_tokens": 57,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "director": "Lilly Wachowski",
+     "averageVotes": 806.0
+    },
+    {
+     "director": "Lana Wachowski",
+     "averageVotes": 806.0
+    },
+    {
+     "director": "Tony Scott",
+     "averageVotes": 563.0
+    }
+   ]
+  },
+  {
+   "id": "t040",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "How many orders have been placed for each product?",
+   "gold_cypher": "MATCH ()-[:ORDERS]->(p:Product) WITH p.productID AS productID, count(*) AS orderCount RETURN productID, orderCount",
+   "raw": "MATCH (p:Product)\nOPTIONAL MATCH (:Order)-[r:ORDERS]->(p)\nRETURN p.productName AS product, COUNT(r) AS orderCount\nORDER BY orderCount DESC",
+   "pred_cypher": "MATCH (p:Product)\nOPTIONAL MATCH (:Order)-[r:ORDERS]->(p)\nRETURN p.productName AS product, COUNT(r) AS orderCount\nORDER BY orderCount DESC",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 77,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.886,
+   "in_tokens": 1263,
+   "out_tokens": 256,
+   "reasoning_tokens": 203,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "product": "Raclette Courdavault",
+     "orderCount": 54
+    },
+    {
+     "product": "Guaran\u00e1 Fant\u00e1stica",
+     "orderCount": 51
+    },
+    {
+     "product": "Gorgonzola Telino",
+     "orderCount": 51
+    },
+    {
+     "product": "Camembert Pierrot",
+     "orderCount": 51
+    },
+    {
+     "product": "Gnocchi di nonna Alice",
+     "orderCount": 50
+    }
+   ]
+  },
+  {
+   "id": "t041",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 3 directors have directed movies in more than three genres?",
+   "gold_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)-[:IN_GENRE]->(g:Genre) WITH d, count(DISTINCT g) AS genreCount WHERE genreCount > 3 RETURN d.name AS Director, genreCount ORDER BY genreCount DESC LIMIT 3",
+   "raw": "MATCH (d:Director)-[:DIRECTED]->(:Movie)-[:IN_GENRE]->(g:Genre)\nWITH d, count(DISTINCT g) AS genreCount\nWHERE genreCount > 3\nRETURN d.name AS director, genreCount\nORDER BY genreCount DESC, director ASC\nLIMIT 3",
+   "pred_cypher": "MATCH (d:Director)-[:DIRECTED]->(:Movie)-[:IN_GENRE]->(g:Genre)\nWITH d, count(DISTINCT g) AS genreCount\nWHERE genreCount > 3\nRETURN d.name AS director, genreCount\nORDER BY genreCount DESC, director ASC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 5.153,
+   "in_tokens": 1097,
+   "out_tokens": 246,
+   "reasoning_tokens": 168,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "director": "Robert Zemeckis",
+     "genreCount": 16
+    },
+    {
+     "director": "Steven Spielberg",
+     "genreCount": 15
+    },
+    {
+     "director": "Tim Burton",
+     "genreCount": 15
+    }
+   ]
+  },
+  {
+   "id": "t042",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "\"how many movies did jeremy allen white played\"",
+   "gold_cypher": "MATCH (p:Person {name: \"Jeremy Allen White\"})-[:ACTED_IN]->(m:Movie) RETURN COUNT(m) AS movies_played",
+   "raw": "MATCH (p:Person {name: 'Jeremy Allen White'})-[:ACTED_IN]->(m:Movie) RETURN count(m)",
+   "pred_cypher": "MATCH (p:Person {name: 'Jeremy Allen White'})-[:ACTED_IN]->(m:Movie) RETURN count(m)",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.636,
+   "in_tokens": 201,
+   "out_tokens": 115,
+   "reasoning_tokens": 72,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "count(m)": 0
+    }
+   ]
+  },
+  {
+   "id": "t043",
+   "graph": "twitter",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who are the top 3 users amplified by 'Me'?",
+   "gold_cypher": "MATCH (me:Me)-[:AMPLIFIES]->(u:User) RETURN u.name, u.screen_name ORDER BY u.followers DESC LIMIT 3",
+   "raw": "MATCH (me:Me)-[r:AMPLIFIES]->(u:User)\nRETURN u.screen_name AS screen_name, u.name AS name, count(r) AS amplifications\nORDER BY amplifications DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (me:Me)-[r:AMPLIFIES]->(u:User)\nRETURN u.screen_name AS screen_name, u.name AS name, count(r) AS amplifications\nORDER BY amplifications DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.361,
+   "in_tokens": 833,
+   "out_tokens": 143,
+   "reasoning_tokens": 82,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "screen_name": "CSkardon",
+     "name": "Chris Skardon \ud83d\udc99",
+     "amplifications": 1
+    },
+    {
+     "screen_name": "unterstein",
+     "name": "Johannes Unterstein",
+     "amplifications": 1
+    },
+    {
+     "screen_name": "tbrantb",
+     "name": "Brant Boehmann",
+     "amplifications": 1
+    }
+   ]
+  },
+  {
+   "id": "t044",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 3 customers who have placed the most orders.",
+   "gold_cypher": "MATCH (customer:Customer)-[:PURCHASED]->(order:Order) WITH customer, count(order) AS orderCount ORDER BY orderCount DESC LIMIT 3 RETURN customer.customerID, orderCount",
+   "raw": "MATCH (c:Customer)-[:PURCHASED]->(o:Order)\nRETURN c.companyName, count(o) AS orderCount\nORDER BY orderCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Customer)-[:PURCHASED]->(o:Order)\nRETURN c.companyName, count(o) AS orderCount\nORDER BY orderCount DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.046,
+   "in_tokens": 1266,
+   "out_tokens": 118,
+   "reasoning_tokens": 67,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "c.companyName": "Save-a-lot Markets",
+     "orderCount": 31
+    },
+    {
+     "c.companyName": "Ernst Handel",
+     "orderCount": 30
+    },
+    {
+     "c.companyName": "QUICK-Stop",
+     "orderCount": 28
+    }
+   ]
+  },
+  {
+   "id": "t045",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the first 3 hashtags appearing in the latest tweets by 'Neo4j'.",
+   "gold_cypher": "MATCH (u:User {screen_name: 'neo4j'})-[:POSTS]->(t:Tweet)-[:TAGS]->(h:Hashtag) WITH t, h ORDER BY t.created_at DESC LIMIT 3 RETURN h.name AS hashtag",
+   "raw": "MATCH (me:Me)-[:POSTS]->(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name\nORDER BY t.created_at DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (me:Me)-[:POSTS]->(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name\nORDER BY t.created_at DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.842,
+   "in_tokens": 838,
+   "out_tokens": 192,
+   "reasoning_tokens": 140,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "h.name": "neo4jauraenterprise"
+    },
+    {
+     "h.name": "education"
+    },
+    {
+     "h.name": "neo4j"
+    }
+   ]
+  },
+  {
+   "id": "t046",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Retrieve the first 3 beneficiary banks located in 'United Kingdom'.",
+   "gold_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)-[:COUNTRY]->(c:Country {name: 'United Kingdom'}) RETURN e.name AS BeneficiaryBank LIMIT 3",
+   "raw": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'United Kingdom' RETURN DISTINCT f.beneficiary_bank LIMIT 3",
+   "pred_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'United Kingdom' RETURN DISTINCT f.beneficiary_bank LIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.478,
+   "in_tokens": 731,
+   "out_tokens": 158,
+   "reasoning_tokens": 116,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "f.beneficiary_bank": "Barclays Bank Plc"
+    },
+    {
+     "f.beneficiary_bank": "Standard Chartered Bank"
+    },
+    {
+     "f.beneficiary_bank": "Lloyds Bank Plc"
+    }
+   ]
+  },
+  {
+   "id": "t047",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average number of words in the review summaries of movies with a rating above 95?",
+   "gold_cypher": "MATCH (:Person)-[r:REVIEWED]->(m:Movie) WHERE r.rating > 95 WITH size(split(r.summary, \" \")) AS words RETURN avg(words) AS average_word_count",
+   "raw": "MATCH (:Movie)<-[r:REVIEWED]-(:Person)\nWHERE r.rating > 95\nRETURN avg(size(split(r.summary, ' '))) AS averageWords",
+   "pred_cypher": "MATCH (:Movie)<-[r:REVIEWED]-(:Person)\nWHERE r.rating > 95\nRETURN avg(size(split(r.summary, ' '))) AS averageWords",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.165,
+   "in_tokens": 388,
+   "out_tokens": 242,
+   "reasoning_tokens": 194,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "averageWords": 5.0
+    }
+   ]
+  },
+  {
+   "id": "t048",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average rating of movies released in 2003?",
+   "gold_cypher": "MATCH (m:Movie {released: 2003})<-[r:REVIEWED]-() WITH avg(r.rating) AS averageRating RETURN averageRating",
+   "raw": "MATCH (m:Movie)<-[r:REVIEWED]-(:Person) WHERE m.released = 2003 RETURN avg(r.rating)",
+   "pred_cypher": "MATCH (m:Movie)<-[r:REVIEWED]-(:Person) WHERE m.released = 2003 RETURN avg(r.rating)",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.347,
+   "in_tokens": 381,
+   "out_tokens": 119,
+   "reasoning_tokens": 76,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "avg(r.rating)": null
+    }
+   ]
+  },
+  {
+   "id": "t049",
+   "graph": "recommendations",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which movies have both high revenue (over 500 million USD) and high imdbRating (above 8.0)?",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.revenue > 500000000 AND m.imdbRating > 8.0 RETURN m.title AS MovieTitle, m.revenue AS Revenue, m.imdbRating AS IMDbRating",
+   "raw": "MATCH (m:Movie)\nWHERE m.revenue > 500000000 AND m.imdbRating > 8.0\nRETURN m.title, m.revenue, m.imdbRating\nORDER BY m.revenue DESC",
+   "pred_cypher": "MATCH (m:Movie)\nWHERE m.revenue > 500000000 AND m.imdbRating > 8.0\nRETURN m.title, m.revenue, m.imdbRating\nORDER BY m.revenue DESC",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 30,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.889,
+   "in_tokens": 1109,
+   "out_tokens": 84,
+   "reasoning_tokens": 26,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "Star Wars: Episode VII - The Force Awakens",
+     "m.revenue": 2068223624,
+     "m.imdbRating": 8.4
+    },
+    {
+     "m.title": "Avengers, The",
+     "m.revenue": 1519557910,
+     "m.imdbRating": 8.1
+    },
+    {
+     "m.title": "Harry Potter and the Deathly Hallows: Part 2",
+     "m.revenue": 1341511219,
+     "m.imdbRating": 8.1
+    },
+    {
+     "m.title": "Lord of the Rings: The Return of the King, The",
+     "m.revenue": 1118888979,
+     "m.imdbRating": 8.9
+    },
+    {
+     "m.title": "Dark Knight Rises, The",
+     "m.revenue": 1081041287,
+     "m.imdbRating": 8.5
+    }
+   ]
+  },
+  {
+   "id": "t050",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 3 entities have the most relationships with filings where the originator bank country is 'United Kingdom'?",
+   "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity) WHERE f.originator_bank_country = 'United Kingdom' WITH e, count(f) AS filingsCount ORDER BY filingsCount DESC LIMIT 3 RETURN e",
+   "raw": "MATCH (e:Entity)-[r]-(f:Filing)\nWHERE f.originator_bank_country = 'United Kingdom'\nRETURN e.name AS entity, count(r) AS relationship_count\nORDER BY relationship_count DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (e:Entity)-[r]-(f:Filing)\nWHERE f.originator_bank_country = 'United Kingdom'\nRETURN e.name AS entity, count(r) AS relationship_count\nORDER BY relationship_count DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.472,
+   "in_tokens": 739,
+   "out_tokens": 239,
+   "reasoning_tokens": 178,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "entity": "The Bank of New York Mellon Corp.",
+     "relationship_count": 152
+    },
+    {
+     "entity": "Commonwealth Bank of Australia",
+     "relationship_count": 103
+    },
+    {
+     "entity": "Deutsche Bank AG",
+     "relationship_count": 83
+    }
+   ]
+  },
+  {
+   "id": "t051",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 5 products with the lowest units in stock.",
+   "gold_cypher": "MATCH (p:Product) RETURN p.productName, p.unitsInStock ORDER BY p.unitsInStock ASC LIMIT 5",
+   "raw": "MATCH (p:Product)\nRETURN p.productName, p.unitsInStock\nORDER BY p.unitsInStock ASC\nLIMIT 5",
+   "pred_cypher": "MATCH (p:Product)\nRETURN p.productName, p.unitsInStock\nORDER BY p.unitsInStock ASC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.728,
+   "in_tokens": 1266,
+   "out_tokens": 82,
+   "reasoning_tokens": 42,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.productName": "Th\u00fcringer Rostbratwurst",
+     "p.unitsInStock": 0
+    },
+    {
+     "p.productName": "Gorgonzola Telino",
+     "p.unitsInStock": 0
+    },
+    {
+     "p.productName": "Alice Mutton",
+     "p.unitsInStock": 0
+    },
+    {
+     "p.productName": "Chef Anton's Gumbo Mix",
+     "p.unitsInStock": 0
+    },
+    {
+     "p.productName": "Perth Pasties",
+     "p.unitsInStock": 0
+    }
+   ]
+  },
+  {
+   "id": "t052",
+   "graph": "movies",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What are the top 5 movies with the least votes and their release years?",
+   "gold_cypher": "MATCH (m:Movie) RETURN m.title AS title, m.released AS release_year, m.votes AS votes ORDER BY m.votes ASC LIMIT 5",
+   "raw": "MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.votes ASC LIMIT 5",
+   "pred_cypher": "MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.votes ASC LIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.367,
+   "in_tokens": 384,
+   "out_tokens": 69,
+   "reasoning_tokens": 34,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "m.title": "Frost/Nixon",
+     "m.released": 2008
+    },
+    {
+     "m.title": "Ninja Assassin",
+     "m.released": 2009
+    },
+    {
+     "m.title": "Charlie Wilson's War",
+     "m.released": 2007
+    },
+    {
+     "m.title": "The Replacements",
+     "m.released": 2000
+    },
+    {
+     "m.title": "That Thing You Do",
+     "m.released": 1996
+    }
+   ]
+  },
+  {
+   "id": "t053",
+   "graph": "twitter",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which users have 'Neo4j' mentioned the most in tweets? List the top 3.",
+   "gold_cypher": "MATCH (u:User)<-[:MENTIONS]-(t:Tweet)<-[:POSTS]-(:Me {name: 'Neo4j'}) RETURN u.name AS user, count(t) AS mentions ORDER BY mentions DESC LIMIT 3",
+   "raw": "MATCH (me:Me)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(u:User)\nRETURN u.screen_name AS user, count(t) AS mentions\nORDER BY mentions DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (me:Me)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(u:User)\nRETURN u.screen_name AS user, count(t) AS mentions\nORDER BY mentions DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.743,
+   "in_tokens": 841,
+   "out_tokens": 169,
+   "reasoning_tokens": 111,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "user": "neo4j",
+     "mentions": 104
+    },
+    {
+     "user": "jimwebber",
+     "mentions": 40
+    },
+    {
+     "user": "BarrasaDV",
+     "mentions": 29
+    }
+   ]
+  },
+  {
+   "id": "t054",
+   "graph": "recommendations",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the movies that have a runtime shorter than 90 minutes and an IMDB rating higher than 8.0.",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.runtime < 90 AND m.imdbRating > 8.0 RETURN m.title",
+   "raw": "MATCH (m:Movie)\nWHERE m.runtime < 90 AND m.imdbRating > 8.0\nRETURN m.title, m.runtime, m.imdbRating",
+   "pred_cypher": "MATCH (m:Movie)\nWHERE m.runtime < 90 AND m.imdbRating > 8.0\nRETURN m.title, m.runtime, m.imdbRating",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 122,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.488,
+   "in_tokens": 1108,
+   "out_tokens": 69,
+   "reasoning_tokens": 22,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "Laura",
+     "m.runtime": 88,
+     "m.imdbRating": 8.1
+    },
+    {
+     "m.title": "Paris Is Burning",
+     "m.runtime": 71,
+     "m.imdbRating": 8.1
+    },
+    {
+     "m.title": "Stand by Me",
+     "m.runtime": 89,
+     "m.imdbRating": 8.1
+    },
+    {
+     "m.title": "High Noon",
+     "m.runtime": 85,
+     "m.imdbRating": 8.1
+    },
+    {
+     "m.title": "Killing, The",
+     "m.runtime": 85,
+     "m.imdbRating": 8.1
+    }
+   ]
+  },
+  {
+   "id": "t055",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the top 3 users that 'Neo4j' amplifies the most?",
+   "gold_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[a:AMPLIFIES]->(u:User) RETURN u.screen_name AS user, count(a) AS amplifications ORDER BY amplifications DESC LIMIT 3",
+   "raw": "MATCH (me:Me)-[r:AMPLIFIES]->(u:User)\nRETURN u.screen_name AS screen_name, u.name AS name, count(r) AS amplifications\nORDER BY amplifications DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (me:Me)-[r:AMPLIFIES]->(u:User)\nRETURN u.screen_name AS screen_name, u.name AS name, count(r) AS amplifications\nORDER BY amplifications DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.674,
+   "in_tokens": 839,
+   "out_tokens": 175,
+   "reasoning_tokens": 114,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "screen_name": "CSkardon",
+     "name": "Chris Skardon \ud83d\udc99",
+     "amplifications": 1
+    },
+    {
+     "screen_name": "unterstein",
+     "name": "Johannes Unterstein",
+     "amplifications": 1
+    },
+    {
+     "screen_name": "tbrantb",
+     "name": "Brant Boehmann",
+     "amplifications": 1
+    }
+   ]
+  },
+  {
+   "id": "t056",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which person has both acted in and directed the same movie?",
+   "gold_cypher": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p) RETURN p.name AS person_name, m.title AS movie_title",
+   "raw": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p)\nRETURN p.name, m.title",
+   "pred_cypher": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p)\nRETURN p.name, m.title",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.139,
+   "in_tokens": 380,
+   "out_tokens": 172,
+   "reasoning_tokens": 128,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Tom Hanks",
+     "m.title": "That Thing You Do"
+    },
+    {
+     "p.name": "Clint Eastwood",
+     "m.title": "Unforgiven"
+    },
+    {
+     "p.name": "Danny DeVito",
+     "m.title": "Hoffa"
+    }
+   ]
+  },
+  {
+   "id": "t057",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 3 products have the largest quantity per unit in the 'Condiments' category?",
+   "gold_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category {categoryName: 'Condiments'}) RETURN p.productName, p.quantityPerUnit ORDER BY p.quantityPerUnit DESC LIMIT 3",
+   "raw": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nWHERE c.categoryName = 'Condiments'\nRETURN p.productName, p.quantityPerUnit\nORDER BY p.quantityPerUnit DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nWHERE c.categoryName = 'Condiments'\nRETURN p.productName, p.quantityPerUnit\nORDER BY p.quantityPerUnit DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.668,
+   "in_tokens": 1271,
+   "out_tokens": 209,
+   "reasoning_tokens": 151,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.productName": "Chef Anton's Cajun Seasoning",
+     "p.quantityPerUnit": "48 - 6 oz jars"
+    },
+    {
+     "p.productName": "Chef Anton's Gumbo Mix",
+     "p.quantityPerUnit": "36 boxes"
+    },
+    {
+     "p.productName": "Louisiana Fiery Hot Pepper Sauce",
+     "p.quantityPerUnit": "32 - 8 oz bottles"
+    }
+   ]
+  },
+  {
+   "id": "t058",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the first 3 entities that are concerned in filings with an amount greater than 1000000.",
+   "gold_cypher": "MATCH (f:Filing)-[:CONCERNS]->(e:Entity) WHERE f.amount > 1000000 RETURN e LIMIT 3",
+   "raw": "MATCH (f:Filing)-[:CONCERNS]->(e:Entity)\nWHERE f.amount > 1000000\nRETURN DISTINCT e\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)-[:CONCERNS]->(e:Entity)\nWHERE f.amount > 1000000\nRETURN DISTINCT e\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.581,
+   "in_tokens": 739,
+   "out_tokens": 230,
+   "reasoning_tokens": 183,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "e": {
+      "_labels": [
+       "Entity"
+      ],
+      "country": "BGR",
+      "name": "Piraeus Bank",
+      "location": [
+       25.0,
+       43.0
+      ],
+      "id": "piraeus-bank-sofia-bulgaria-bgr"
+     }
+    },
+    {
+     "e": {
+      "_labels": [
+       "Entity"
+      ],
+      "country": "RUS",
+      "name": "Sberbank of Russia",
+      "location": [
+       100.0,
+       60.0
+      ],
+      "id": "sberbank-of-russia-moscow-russia-rus"
+     }
+    },
+    {
+     "e": {
+      "_labels": [
+       "Entity"
+      ],
+      "country": "RUS",
+      "name": "VTB Bank",
+      "location": [
+       100.0,
+       60.0
+      ],
+      "id": "vtb-bank-open-joint-stock-bank-moscow-russia-rus"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t059",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What is the average quantity of products ordered per order?",
+   "gold_cypher": "MATCH (o:Order)-[r:ORDERS]->(p:Product) WITH o, sum(r.quantity) AS totalQuantityPerOrder RETURN avg(totalQuantityPerOrder) AS averageQuantityPerOrder",
+   "raw": "MATCH (o:Order)-[r:ORDERS]->(p:Product) RETURN avg(r.quantity) AS averageQuantity",
+   "pred_cypher": "MATCH (o:Order)-[r:ORDERS]->(p:Product) RETURN avg(r.quantity) AS averageQuantity",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.407,
+   "in_tokens": 1264,
+   "out_tokens": 296,
+   "reasoning_tokens": 258,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "averageQuantity": 23.812993039443157
+    }
+   ]
+  },
+  {
+   "id": "t060",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the names of the top 3 entities that benefited from filings with 'amount' greater than 1000000?",
+   "gold_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity) WHERE f.amount > 1000000 WITH e, count(f) AS filingCount RETURN e.name AS entityName, filingCount ORDER BY filingCount DESC LIMIT 3",
+   "raw": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount > 1000000\nRETURN e.name AS name, count(f) AS filingCount\nORDER BY filingCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount > 1000000\nRETURN e.name AS name, count(f) AS filingCount\nORDER BY filingCount DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 2.815,
+   "in_tokens": 743,
+   "out_tokens": 109,
+   "reasoning_tokens": 47,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "name": "Credit Suisse AG",
+     "filingCount": 132
+    },
+    {
+     "name": "JSC Norvik Banka",
+     "filingCount": 63
+    },
+    {
+     "name": "Rosbank",
+     "filingCount": 62
+    }
+   ]
+  },
+  {
+   "id": "t061",
+   "graph": "movies",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What are the top 3 oldest movies in the database by release year?",
+   "gold_cypher": "MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.released ASC LIMIT 3",
+   "raw": "MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.released ASC LIMIT 3",
+   "pred_cypher": "MATCH (m:Movie) RETURN m.title, m.released ORDER BY m.released ASC LIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.432,
+   "in_tokens": 383,
+   "out_tokens": 61,
+   "reasoning_tokens": 26,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "One Flew Over the Cuckoo's Nest",
+     "m.released": 1975
+    },
+    {
+     "m.title": "Top Gun",
+     "m.released": 1986
+    },
+    {
+     "m.title": "Stand By Me",
+     "m.released": 1986
+    }
+   ]
+  },
+  {
+   "id": "t062",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who are the top 3 actors with the most diverse roles?",
+   "gold_cypher": "MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) WITH p, r.roles AS roles UNWIND roles AS role WITH p, COUNT(DISTINCT role) AS uniqueRolesCount RETURN p.name AS actor, uniqueRolesCount ORDER BY uniqueRolesCount DESC LIMIT 3",
+   "raw": "MATCH (p:Person)-[r:ACTED_IN]->(:Movie)\nUNWIND r.roles AS role\nWITH p, count(DISTINCT role) AS diverseRoles\nRETURN p.name, diverseRoles\nORDER BY diverseRoles DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Person)-[r:ACTED_IN]->(:Movie)\nUNWIND r.roles AS role\nWITH p, count(DISTINCT role) AS diverseRoles\nRETURN p.name, diverseRoles\nORDER BY diverseRoles DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.735,
+   "in_tokens": 381,
+   "out_tokens": 249,
+   "reasoning_tokens": 184,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Tom Hanks",
+     "diverseRoles": 20
+    },
+    {
+     "p.name": "Hugo Weaving",
+     "diverseRoles": 8
+    },
+    {
+     "p.name": "Meg Ryan",
+     "diverseRoles": 7
+    }
+   ]
+  },
+  {
+   "id": "t063",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which countries have entities that filed filings with a total amount greater than 1000000 between 2010 and 2015?",
+   "gold_cypher": "MATCH (f:Filing) WHERE date(f.begin) >= date('2010-01-01') AND date(f.begin) <= date('2015-12-31') WITH f.filer_org_name_id AS filer_org_name_id, sum(f.amount) AS total_amount WHERE total_amount > 1000000 MATCH (e:Entity {id: filer_org_name_id})-[:COUNTRY]->(c:Country) RETURN DISTINCT c.name",
+   "raw": "MATCH (c:Country)<-[:COUNTRY]-(e:Entity)-[:FILED]->(f:Filing)\nWHERE f.begin >= datetime('2010-01-01T00:00:00Z') AND f.begin < datetime('2016-01-01T00:00:00Z')\nWITH c, sum(f.amount) AS total_amount\nWHERE total_amount > 1000000\nRETURN c.name AS country, total_amount\nORDER BY total_amount DESC",
+   "pred_cypher": "MATCH (c:Country)<-[:COUNTRY]-(e:Entity)-[:FILED]->(f:Filing)\nWHERE f.begin >= datetime('2010-01-01T00:00:00Z') AND f.begin < datetime('2016-01-01T00:00:00Z')\nWITH c, sum(f.amount) AS total_amount\nWHERE total_amount > 1000000\nRETURN c.name AS country, total_amount\nORDER BY total_amount DESC",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 9,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.561,
+   "in_tokens": 744,
+   "out_tokens": 318,
+   "reasoning_tokens": 205,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "country": "Germany",
+     "total_amount": 3308115938.73
+    },
+    {
+     "country": "United States",
+     "total_amount": 3307878927.45
+    },
+    {
+     "country": "Hong Kong",
+     "total_amount": 3306715938.73
+    },
+    {
+     "country": "Czech Republic",
+     "total_amount": 3306715938.73
+    },
+    {
+     "country": "United Kingdom",
+     "total_amount": 3306715938.73
+    }
+   ]
+  },
+  {
+   "id": "t064",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the first 3 orders shipped to France.",
+   "gold_cypher": "MATCH (o:Order)-[:ORDERS]->(p:Product) WHERE o.shipCountry = 'France' RETURN o.orderID, o.shipName, o.shipCity, o.shipPostalCode, o.shipAddress, o.shipCountry, o.shipRegion, o.shipVia, o.shippedDate ORDER BY o.shippedDate LIMIT 3",
+   "raw": "MATCH (o:Order)\nWHERE o.shipCountry = 'France'\nRETURN o\nORDER BY o.orderID\nLIMIT 3",
+   "pred_cypher": "MATCH (o:Order)\nWHERE o.shipCountry = 'France'\nRETURN o\nORDER BY o.orderID\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.152,
+   "in_tokens": 1263,
+   "out_tokens": 95,
+   "reasoning_tokens": 55,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "o": {
+      "_labels": [
+       "Order"
+      ],
+      "shipCity": "Reims",
+      "orderID": "10248",
+      "freight": "32.38",
+      "requiredDate": "1996-08-01 00:00:00.000",
+      "employeeID": "5",
+      "shipName": "Vins et alcools Chevalier",
+      "shipPostalCode": "51100",
+      "shipCountry": "France",
+      "shipAddress": "59 rue de l'Abbaye",
+      "shipVia": "3",
+      "customerID": "VINET",
+      "shippedDate": "1996-07-16 00:00:00.000",
+      "orderDate": "1996-07-04 00:00:00.000",
+      "shipRegion": "NULL"
+     }
+    },
+    {
+     "o": {
+      "_labels": [
+       "Order"
+      ],
+      "shipCity": "Reims",
+      "orderID": "10274",
+      "freight": "6.01",
+      "requiredDate": "1996-09-03 00:00:00.000",
+      "employeeID": "6",
+      "shipName": "Vins et alcools Chevalier",
+      "shipPostalCode": "51100",
+      "shipCountry": "France",
+      "shipAddress": "59 rue de l'Abbaye",
+      "shipVia": "1",
+      "customerID": "VINET",
+      "shippedDate": "1996-08-16 00:00:00.000",
+      "orderDate": "1996-08-06 00:00:00.000",
+      "shipRegion": "NULL"
+     }
+    },
+    {
+     "o": {
+      "_labels": [
+       "Order"
+      ],
+      "shipCity": "Reims",
+      "orderID": "10295",
+      "freight": "1.15",
+      "requiredDate": "1996-09-30 00:00:00.000",
+      "employeeID": "2",
+      "shipName": "Vins et alcools Chevalier",
+      "shipPostalCode": "51100",
+      "shipCountry": "France",
+      "shipAddress": "59 rue de l'Abbaye",
+      "shipVia": "2",
+      "customerID": "VINET",
+      "shippedDate": "1996-09-10 00:00:00.000",
+      "orderDate": "1996-09-02 00:00:00.000",
+      "shipRegion": "NULL"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t065",
+   "graph": "fincen",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the minimum amount filed by entities located in the country with name \"Singapore\"?",
+   "gold_cypher": "MATCH (c:Country {name: \"Singapore\"})<-[:COUNTRY]-(e:Entity)-[:FILED]->(f:Filing) WITH min(f.amount) AS minAmount RETURN minAmount",
+   "raw": "MATCH (e:Entity)-[:COUNTRY]->(c:Country {name: \"Singapore\"})\nMATCH (e)-[:FILED]->(f:Filing)\nRETURN min(f.amount) AS min_amount",
+   "pred_cypher": "MATCH (e:Entity)-[:COUNTRY]->(c:Country {name: \"Singapore\"})\nMATCH (e)-[:FILED]->(f:Filing)\nRETURN min(f.amount) AS min_amount",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.832,
+   "in_tokens": 735,
+   "out_tokens": 168,
+   "reasoning_tokens": 113,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "min_amount": 755
+    }
+   ]
+  },
+  {
+   "id": "t066",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 3 directors have directed the most movies released after 2005?",
+   "gold_cypher": "MATCH (d:Person)-[:DIRECTED]->(m:Movie) WHERE m.released > 2005 WITH d, count(m) AS num_movies ORDER BY num_movies DESC LIMIT 3 RETURN d.name AS director, num_movies",
+   "raw": "MATCH (p:Person)-[:DIRECTED]->(m:Movie)\nWHERE m.released > 2005\nRETURN p.name, count(m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Person)-[:DIRECTED]->(m:Movie)\nWHERE m.released > 2005\nRETURN p.name, count(m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.186,
+   "in_tokens": 383,
+   "out_tokens": 122,
+   "reasoning_tokens": 64,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Lilly Wachowski",
+     "movieCount": 2
+    },
+    {
+     "p.name": "Lana Wachowski",
+     "movieCount": 2
+    },
+    {
+     "p.name": "Ron Howard",
+     "movieCount": 2
+    }
+   ]
+  },
+  {
+   "id": "t067",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Show the names of Entities that have originator banks in 'Singapore'.",
+   "gold_cypher": "MATCH (e:Entity)-[:FILED]->(f:Filing {originator_bank_country: 'Singapore'}) RETURN DISTINCT e.name AS EntityName",
+   "raw": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)\nWHERE f.originator_bank_country = 'Singapore'\nRETURN DISTINCT e.name",
+   "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)\nWHERE f.originator_bank_country = 'Singapore'\nRETURN DISTINCT e.name",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 30,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.257,
+   "in_tokens": 732,
+   "out_tokens": 205,
+   "reasoning_tokens": 161,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "e.name": "CIMB Bank Berhad"
+    },
+    {
+     "e.name": "DBS Bank Ltd"
+    },
+    {
+     "e.name": "United Overseas Bank Limited"
+    },
+    {
+     "e.name": "DBS Bank Ltd, Singapore"
+    },
+    {
+     "e.name": "HSBC Singapore General Account"
+    }
+   ]
+  },
+  {
+   "id": "t068",
+   "graph": "twitter",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 3,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Who are the top 5 users that 'neo4j' retweets the most?",
+   "gold_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(tweet:Tweet)-[:RETWEETS]->(retweetedTweet:Tweet)<-[:POSTS]-(retweetedUser:User) RETURN retweetedUser.screen_name AS retweeted_user, count(*) AS retweet_count ORDER BY retweet_count DESC LIMIT 5",
+   "raw": "MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(t:Tweet)-[:RETWEETS]->(rt:Tweet)<-[:POSTS]-(u:User)\nRETURN u.screen_name, u.name, COUNT(*) AS retweet_count\nORDER BY retweet_count DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(t:Tweet)-[:RETWEETS]->(rt:Tweet)<-[:POSTS]-(u:User)\nRETURN u.screen_name, u.name, COUNT(*) AS retweet_count\nORDER BY retweet_count DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.833,
+   "in_tokens": 839,
+   "out_tokens": 330,
+   "reasoning_tokens": 247,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "u.screen_name": "BarrasaDV",
+     "u.name": "Jes\u00fas Barrasa",
+     "retweet_count": 17
+    },
+    {
+     "u.screen_name": "ElLazal",
+     "u.name": "Lju Lazarevic",
+     "retweet_count": 17
+    },
+    {
+     "u.screen_name": "lyonwj",
+     "u.name": "William Lyon",
+     "retweet_count": 13
+    },
+    {
+     "u.screen_name": "fbiville",
+     "u.name": "Florent Biville",
+     "retweet_count": 12
+    },
+    {
+     "u.screen_name": "neo4j",
+     "u.name": "Neo4j",
+     "retweet_count": 9
+    }
+   ]
+  },
+  {
+   "id": "t069",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which 3 filings involve the most entities either as originators or beneficiaries?",
+   "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR|:BENEFITS]->(e:Entity) WITH f, COUNT(DISTINCT e) AS entityCount ORDER BY entityCount DESC LIMIT 3 RETURN f.sar_id AS filing_id, entityCount",
+   "raw": "MATCH (f:Filing)-[:ORIGINATOR|BENEFITS]->(e:Entity)\nWITH f, count(DISTINCT e) AS entityCount\nRETURN f.id AS filing_id, f.sar_id AS sar_id, entityCount\nORDER BY entityCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR|BENEFITS]->(e:Entity)\nWITH f, count(DISTINCT e) AS entityCount\nRETURN f.id AS filing_id, f.sar_id AS sar_id, entityCount\nORDER BY entityCount DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 7.004,
+   "in_tokens": 733,
+   "out_tokens": 289,
+   "reasoning_tokens": 214,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "filing_id": "224519",
+     "sar_id": "4098",
+     "entityCount": 2
+    },
+    {
+     "filing_id": "229485",
+     "sar_id": "3653",
+     "entityCount": 2
+    },
+    {
+     "filing_id": "238443",
+     "sar_id": "3381",
+     "entityCount": 2
+    }
+   ]
+  },
+  {
+   "id": "t070",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "\"How many movies that are directed by Tom Hanks have \\\"love\\\" in the tagline?\"",
+   "gold_cypher": "MATCH (:Person {name: \"Tom Hanks\"})-[:DIRECTED]->(m:Movie) WHERE m.tagline CONTAINS \"love\" RETURN COUNT(m) AS MoviesWithLoveInTagline",
+   "raw": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m) AS count",
+   "pred_cypher": "MATCH (p:Person {name: 'Tom Hanks'})-[:DIRECTED]->(m:Movie)\nWHERE toLower(m.tagline) CONTAINS 'love'\nRETURN count(m) AS count",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.697,
+   "in_tokens": 210,
+   "out_tokens": 238,
+   "reasoning_tokens": 181,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "count": 0
+    }
+   ]
+  },
+  {
+   "id": "t071",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Name 3 people who have the most combined roles across all their ACTED_IN movies.",
+   "gold_cypher": "MATCH (p:Person)-[a:ACTED_IN]->(m:Movie) WITH p, sum(size(a.roles)) AS totalRoles ORDER BY totalRoles DESC LIMIT 3 RETURN p.name AS PersonName, totalRoles",
+   "raw": "MATCH (p:Person)-[r:ACTED_IN]->(:Movie)\nRETURN p.name, sum(size(r.roles)) AS totalRoles\nORDER BY totalRoles DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (p:Person)-[r:ACTED_IN]->(:Movie)\nRETURN p.name, sum(size(r.roles)) AS totalRoles\nORDER BY totalRoles DESC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.974,
+   "in_tokens": 386,
+   "out_tokens": 140,
+   "reasoning_tokens": 89,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Tom Hanks",
+     "totalRoles": 20
+    },
+    {
+     "p.name": "Hugo Weaving",
+     "totalRoles": 10
+    },
+    {
+     "p.name": "Keanu Reeves",
+     "totalRoles": 7
+    }
+   ]
+  },
+  {
+   "id": "t072",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 4,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the top 3 actors who have acted in both 'Action' and 'Romance' genres.",
+   "gold_cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m1:Movie)-[:IN_GENRE]->(g1:Genre {name: 'Action'}),       (a)-[:ACTED_IN]->(m2:Movie)-[:IN_GENRE]->(g2:Genre {name: 'Romance'}) WITH a, COUNT(DISTINCT m1) + COUNT(DISTINCT m2) AS movieCount ORDER BY movieCount DESC LIMIT 3 RETURN a.name AS actorName, movieCount",
+   "raw": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWHERE g.name IN ['Action', 'Romance']\nWITH a, collect(DISTINCT g.name) AS genres, count(DISTINCT m) AS movieCount\nWHERE size(genres) = 2\nRETURN a.name AS actor, movieCount\nORDER BY movieCount DESC\nLIMIT 3",
+   "pred_cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWHERE g.name IN ['Action', 'Romance']\nWITH a, collect(DISTINCT g.name) AS genres, count(DISTINCT m) AS movieCount\nWHERE size(genres) = 2\nRETURN a.name AS actor, movieCount\nORDER BY movieCount DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.611,
+   "in_tokens": 1105,
+   "out_tokens": 236,
+   "reasoning_tokens": 136,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "actor": "Bruce Willis",
+     "movieCount": 28
+    },
+    {
+     "actor": "Cary Grant",
+     "movieCount": 26
+    },
+    {
+     "actor": "Harrison Ford",
+     "movieCount": 23
+    }
+   ]
+  },
+  {
+   "id": "t073",
+   "graph": "movies",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What is the title of the movie with the highest number of votes?",
+   "gold_cypher": "MATCH (m:Movie) RETURN m.title, m.votes ORDER BY m.votes DESC LIMIT 1",
+   "raw": "MATCH (m:Movie)\nRETURN m.title\nORDER BY m.votes DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (m:Movie)\nRETURN m.title\nORDER BY m.votes DESC\nLIMIT 1",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.011,
+   "in_tokens": 382,
+   "out_tokens": 89,
+   "reasoning_tokens": 56,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "m.title": "The Matrix Reloaded"
+    }
+   ]
+  },
+  {
+   "id": "t074",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the average IMDB rating of movies in the \"Children\" genre?",
+   "gold_cypher": "MATCH (g:Genre {name: 'Children'})<-[:IN_GENRE]-(m:Movie) WITH avg(m.imdbRating) AS average_rating RETURN average_rating",
+   "raw": "MATCH (m:Movie)-[:IN_GENRE]->(g:Genre {name: \"Children\"})\nRETURN avg(m.imdbRating) AS averageImdbRating",
+   "pred_cypher": "MATCH (m:Movie)-[:IN_GENRE]->(g:Genre {name: \"Children\"})\nRETURN avg(m.imdbRating) AS averageImdbRating",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.263,
+   "in_tokens": 1100,
+   "out_tokens": 114,
+   "reasoning_tokens": 68,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "averageImdbRating": 6.450687285223368
+    }
+   ]
+  },
+  {
+   "id": "t075",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which three genres have the lowest average IMDb rating?",
+   "gold_cypher": "MATCH (m:Movie)-[:IN_GENRE]->(g:Genre) WHERE m.imdbRating IS NOT NULL WITH g.name AS genre, avg(m.imdbRating) AS avgRating RETURN genre, avgRating ORDER BY avgRating ASC LIMIT 3",
+   "raw": "MATCH (m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN g.name AS genre, avg(m.imdbRating) AS avgRating\nORDER BY avgRating ASC\nLIMIT 3",
+   "pred_cypher": "MATCH (m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN g.name AS genre, avg(m.imdbRating) AS avgRating\nORDER BY avgRating ASC\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.12,
+   "in_tokens": 1096,
+   "out_tokens": 92,
+   "reasoning_tokens": 38,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "genre": "Horror",
+     "avgRating": 6.085189437428248
+    },
+    {
+     "genre": "Children",
+     "avgRating": 6.450687285223368
+    },
+    {
+     "genre": "Comedy",
+     "avgRating": 6.465019702940279
+    }
+   ]
+  },
+  {
+   "id": "t076",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which products are supplied by 'Exotic Liquids'?",
+   "gold_cypher": "MATCH (s:Supplier {companyName: 'Exotic Liquids'})-[:SUPPLIES]->(p:Product) RETURN p.productName AS productName",
+   "raw": "MATCH (s:Supplier {companyName: 'Exotic Liquids'})-[:SUPPLIES]->(p:Product)\nRETURN p.productName",
+   "pred_cypher": "MATCH (s:Supplier {companyName: 'Exotic Liquids'})-[:SUPPLIES]->(p:Product)\nRETURN p.productName",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.824,
+   "in_tokens": 1264,
+   "out_tokens": 85,
+   "reasoning_tokens": 41,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.productName": "Chai"
+    },
+    {
+     "p.productName": "Chang"
+    },
+    {
+     "p.productName": "Aniseed Syrup"
+    }
+   ]
+  },
+  {
+   "id": "t077",
+   "graph": "fincen",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which 5 countries have the most filings as beneficiaries in the first half of any year?",
+   "gold_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)-[:COUNTRY]->(c:Country) WHERE f.begin_date_format =~ '.*-01-.*' OR f.begin_date_format =~ '.*-02-.*' OR f.begin_date_format =~ '.*-03-.*' OR f.begin_date_format =~ '.*-04-.*' OR f.begin_date_format =~ '.*-05-.*' OR f.begin_date_format =~ '.*-06-.*' RETURN c.name AS country, COUNT(f) AS filings_count ORDER BY filings_count DESC LIMIT 5",
+   "raw": "MATCH (f:Filing)\nWHERE f.begin.month <= 6\nRETURN f.beneficiary_bank_country AS country, count(f) AS filingCount\nORDER BY filingCount DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (f:Filing)\nWHERE f.begin.month <= 6\nRETURN f.beneficiary_bank_country AS country, count(f) AS filingCount\nORDER BY filingCount DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 6.244,
+   "in_tokens": 736,
+   "out_tokens": 363,
+   "reasoning_tokens": 309,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "country": "Russia",
+     "filingCount": 230
+    },
+    {
+     "country": "Latvia",
+     "filingCount": 225
+    },
+    {
+     "country": "Switzerland",
+     "filingCount": 195
+    },
+    {
+     "country": "United States",
+     "filingCount": 137
+    },
+    {
+     "country": "Hong Kong",
+     "filingCount": 129
+    }
+   ]
+  },
+  {
+   "id": "t078",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the first 3 genres associated with movies that have been rated by at least 5 different users?",
+   "gold_cypher": "MATCH (g:Genre)<-[:IN_GENRE]-(m:Movie)<-[r:RATED]-(u:User) WITH g, m, count(DISTINCT u) AS userCount WHERE userCount >= 5 RETURN g.name AS genre ORDER BY userCount DESC LIMIT 3",
+   "raw": "MATCH (m:Movie)<-[:RATED]-(u:User)\nWITH m, count(DISTINCT u) AS userCount\nWHERE userCount >= 5\nMATCH (m)-[:IN_GENRE]->(g:Genre)\nRETURN DISTINCT g.name\nLIMIT 3",
+   "pred_cypher": "MATCH (m:Movie)<-[:RATED]-(u:User)\nWITH m, count(DISTINCT u) AS userCount\nWHERE userCount >= 5\nMATCH (m)-[:IN_GENRE]->(g:Genre)\nRETURN DISTINCT g.name\nLIMIT 3",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.259,
+   "in_tokens": 1106,
+   "out_tokens": 217,
+   "reasoning_tokens": 146,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "g.name": "Fantasy"
+    },
+    {
+     "g.name": "Adventure"
+    },
+    {
+     "g.name": "Animation"
+    }
+   ]
+  },
+  {
+   "id": "t079",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the minimum reorder level for products in the 'Seafood' category?",
+   "gold_cypher": "MATCH (c:Category {categoryName: 'Seafood'})<-[:PART_OF]-(p:Product) RETURN MIN(p.reorderLevel) AS minReorderLevel",
+   "raw": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nWHERE c.categoryName = 'Seafood'\nRETURN min(p.reorderLevel) AS minReorderLevel",
+   "pred_cypher": "MATCH (p:Product)-[:PART_OF]->(c:Category)\nWHERE c.categoryName = 'Seafood'\nRETURN min(p.reorderLevel) AS minReorderLevel",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.764,
+   "in_tokens": 1269,
+   "out_tokens": 84,
+   "reasoning_tokens": 36,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "minReorderLevel": 0
+    }
+   ]
+  },
+  {
+   "id": "t080",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What is the highest rating given to a movie?",
+   "gold_cypher": "MATCH (:Person)-[review:REVIEWED]->(:Movie) WITH max(review.rating) AS highestRating RETURN highestRating",
+   "raw": "MATCH ()-[r:REVIEWED]->() RETURN max(r.rating) AS highestRating",
+   "pred_cypher": "MATCH ()-[r:REVIEWED]->() RETURN max(r.rating) AS highestRating",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.349,
+   "in_tokens": 378,
+   "out_tokens": 85,
+   "reasoning_tokens": 53,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "highestRating": 100
+    }
+   ]
+  },
+  {
+   "id": "t081",
+   "graph": "movies",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the movies with more than 100 votes.",
+   "gold_cypher": "MATCH (m:Movie) WHERE m.votes > 100 RETURN m.title",
+   "raw": "MATCH (m:Movie) WHERE m.votes > 100 RETURN m.title",
+   "pred_cypher": "MATCH (m:Movie) WHERE m.votes > 100 RETURN m.title",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 15,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.345,
+   "in_tokens": 378,
+   "out_tokens": 43,
+   "reasoning_tokens": 14,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "The Matrix"
+    },
+    {
+     "m.title": "The Matrix Reloaded"
+    },
+    {
+     "m.title": "The Matrix Revolutions"
+    },
+    {
+     "m.title": "The Devil's Advocate"
+    },
+    {
+     "m.title": "A Few Good Men"
+    }
+   ]
+  },
+  {
+   "id": "t082",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who has the most movies with a 'Silly, but fun' review summary?",
+   "gold_cypher": "MATCH (p:Person)-[:REVIEWED {summary: 'Silly, but fun'}]->(m:Movie) WITH p, count(m) AS movieCount ORDER BY movieCount DESC LIMIT 1 RETURN p.name AS personName, movieCount",
+   "raw": "MATCH (p:Person)-[r:REVIEWED]->(m:Movie)\nWHERE r.summary = 'Silly, but fun'\nRETURN p.name, count(m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 1",
+   "pred_cypher": "MATCH (p:Person)-[r:REVIEWED]->(m:Movie)\nWHERE r.summary = 'Silly, but fun'\nRETURN p.name, count(m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 1",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 5.049,
+   "in_tokens": 385,
+   "out_tokens": 296,
+   "reasoning_tokens": 234,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Jessica Thompson",
+     "movieCount": 1
+    }
+   ]
+  },
+  {
+   "id": "t083",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which customers have a contact title of 'Sales Representative' and are located in 'Berlin'?",
+   "gold_cypher": "MATCH (c:Customer) WHERE c.contactTitle = 'Sales Representative' AND c.city = 'Berlin' RETURN c",
+   "raw": "MATCH (c:Customer)\nWHERE c.contactTitle = 'Sales Representative' AND c.city = 'Berlin'\nRETURN c",
+   "pred_cypher": "MATCH (c:Customer)\nWHERE c.contactTitle = 'Sales Representative' AND c.city = 'Berlin'\nRETURN c",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.359,
+   "in_tokens": 1272,
+   "out_tokens": 60,
+   "reasoning_tokens": 22,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "c": {
+      "_labels": [
+       "Customer"
+      ],
+      "country": "Germany",
+      "contactTitle": "Sales Representative",
+      "address": "Obere Str. 57",
+      "phone": "030-0074321",
+      "city": "Berlin",
+      "contactName": "Maria Anders",
+      "companyName": "Alfreds Futterkiste",
+      "postalCode": "12209",
+      "customerID": "ALFKI",
+      "fax": "030-0076545",
+      "region": "NULL"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t084",
+   "graph": "northwind",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the first 3 categories and their descriptions.",
+   "gold_cypher": "MATCH (c:Category) RETURN c.categoryName, c.description LIMIT 3",
+   "raw": "MATCH (c:Category)\nRETURN c.categoryName, c.description\nORDER BY c.categoryID\nLIMIT 3",
+   "pred_cypher": "MATCH (c:Category)\nRETURN c.categoryName, c.description\nORDER BY c.categoryID\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.341,
+   "in_tokens": 1263,
+   "out_tokens": 65,
+   "reasoning_tokens": 29,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "c.categoryName": "Beverages",
+     "c.description": "Soft drinks, coffees, teas, beers, and ales"
+    },
+    {
+     "c.categoryName": "Condiments",
+     "c.description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+    },
+    {
+     "c.categoryName": "Confections",
+     "c.description": "Desserts, candies, and sweet breads"
+    }
+   ]
+  },
+  {
+   "id": "t085",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the top 5 directors by number of movies directed in the 1990s.",
+   "gold_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie) WHERE m.year >= 1990 AND m.year < 2000 WITH d, count(m) AS moviesDirected ORDER BY moviesDirected DESC LIMIT 5 RETURN d.name, moviesDirected",
+   "raw": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)\nWHERE m.year >= 1990 AND m.year <= 1999\nRETURN d.name AS director, count(DISTINCT m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)\nWHERE m.year >= 1990 AND m.year <= 1999\nRETURN d.name AS director, count(DISTINCT m) AS movieCount\nORDER BY movieCount DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.118,
+   "in_tokens": 1102,
+   "out_tokens": 208,
+   "reasoning_tokens": 139,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "director": "Woody Allen",
+     "movieCount": 10
+    },
+    {
+     "director": "Spike Lee",
+     "movieCount": 10
+    },
+    {
+     "director": "Joel Schumacher",
+     "movieCount": 9
+    },
+    {
+     "director": "Barry Levinson",
+     "movieCount": 8
+    },
+    {
+     "director": "Abel Ferrara",
+     "movieCount": 7
+    }
+   ]
+  },
+  {
+   "id": "t086",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the total revenue generated by movies directed by directors born in 'Burchard, Nebraska, USA'?",
+   "gold_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie) WHERE d.bornIn = 'Burchard, Nebraska, USA' RETURN SUM(m.revenue) AS totalRevenue",
+   "raw": "MATCH (d:Director {bornIn: 'Burchard, Nebraska, USA'})-[:DIRECTED]->(m:Movie)\nRETURN sum(m.revenue) AS totalRevenue",
+   "pred_cypher": "MATCH (d:Director {bornIn: 'Burchard, Nebraska, USA'})-[:DIRECTED]->(m:Movie)\nRETURN sum(m.revenue) AS totalRevenue",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.577,
+   "in_tokens": 1106,
+   "out_tokens": 170,
+   "reasoning_tokens": 117,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "totalRevenue": 0
+    }
+   ]
+  },
+  {
+   "id": "t087",
+   "graph": "recommendations",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "What are the top 5 highest-rated movies by users, based on the average user rating?",
+   "gold_cypher": "MATCH (m:Movie)<-[r:RATED]-(u:User) WITH m, avg(r.rating) AS avgRating ORDER BY avgRating DESC LIMIT 5 RETURN m.title AS movie, avgRating",
+   "raw": "MATCH (:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS title, avg(r.rating) AS averageRating\nORDER BY averageRating DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (:User)-[r:RATED]->(m:Movie)\nRETURN m.title AS title, avg(r.rating) AS averageRating\nORDER BY averageRating DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.933,
+   "in_tokens": 1103,
+   "out_tokens": 95,
+   "reasoning_tokens": 44,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "title": "King Is Alive, The",
+     "averageRating": 5.0
+    },
+    {
+     "title": "Art of War, The",
+     "averageRating": 5.0
+    },
+    {
+     "title": "One Magic Christmas",
+     "averageRating": 5.0
+    },
+    {
+     "title": "Step Into Liquid",
+     "averageRating": 5.0
+    },
+    {
+     "title": "Innocence",
+     "averageRating": 5.0
+    }
+   ]
+  },
+  {
+   "id": "t088",
+   "graph": "recommendations",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the names of the movies directed by persons born in 'Burchard, Nebraska, USA'?",
+   "gold_cypher": "MATCH (d:Director {bornIn: 'Burchard, Nebraska, USA'})-[:DIRECTED]->(m:Movie) RETURN m.title AS MovieName",
+   "raw": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)\nWHERE d.bornIn = 'Burchard, Nebraska, USA'\nRETURN m.title",
+   "pred_cypher": "MATCH (d:Director)-[:DIRECTED]->(m:Movie)\nWHERE d.bornIn = 'Burchard, Nebraska, USA'\nRETURN m.title",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.067,
+   "in_tokens": 1105,
+   "out_tokens": 239,
+   "reasoning_tokens": 192,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "Kid Brother, The"
+    }
+   ]
+  },
+  {
+   "id": "t089",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List the first 3 entities that are concerned in filings with a beneficiary bank country of 'United Kingdom' and an amount greater than 1000000.",
+   "gold_cypher": "MATCH (f:Filing)-[:CONCERNS]->(e:Entity) WHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 1000000 RETURN e LIMIT 3",
+   "raw": "MATCH (f:Filing)-[:CONCERNS]->(e:Entity)\nWHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 1000000\nRETURN e\nLIMIT 3",
+   "pred_cypher": "MATCH (f:Filing)-[:CONCERNS]->(e:Entity)\nWHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 1000000\nRETURN e\nLIMIT 3",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 4.547,
+   "in_tokens": 749,
+   "out_tokens": 191,
+   "reasoning_tokens": 133,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "e": {
+      "_labels": [
+       "Entity"
+      ],
+      "country": "RUS",
+      "name": "VTB JSC Bank",
+      "location": [
+       100.0,
+       60.0
+      ],
+      "id": "vtb-jsc-bank-open-joint-stock-bank-moscow-russia-rus"
+     }
+    },
+    {
+     "e": {
+      "_labels": [
+       "Entity"
+      ],
+      "country": "DEU",
+      "name": "Berliner Volksbank Eg",
+      "location": [
+       9.0,
+       51.0
+      ],
+      "id": "berliner-volksbank-eg-berlin-germany-deu"
+     }
+    },
+    {
+     "e": {
+      "_labels": [
+       "Entity"
+      ],
+      "country": "UKR",
+      "name": "Kredobank",
+      "location": [
+       32.0,
+       49.0
+      ],
+      "id": "kredobank-lviv-ukraine-ukr"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t090",
+   "graph": "recommendations",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "List 3 actors born in France who have directed a movie.",
+   "gold_cypher": "MATCH (p:Person) WHERE p.bornIn = 'France' AND exists{ (p)-[:DIRECTED]->(:Movie) } RETURN p.name LIMIT 3",
+   "raw": "MATCH (a:Actor)-[:DIRECTED]->(m:Movie)\nWHERE a.bornIn = 'France'\nRETURN DISTINCT a.name\nLIMIT 3",
+   "pred_cypher": "MATCH (a:Actor)-[:DIRECTED]->(m:Movie)\nWHERE a.bornIn = 'France'\nRETURN DISTINCT a.name\nLIMIT 3",
+   "exec_status": "empty",
+   "exec_error": null,
+   "pred_n_rows": 0,
+   "correct": false,
+   "pred": "empty",
+   "label": "correct",
+   "latency": 2.688,
+   "in_tokens": 1097,
+   "out_tokens": 135,
+   "reasoning_tokens": 89,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "empty",
+   "pred_rows_head": []
+  },
+  {
+   "id": "t091",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Find the top 5 tweets by 'Neo4j' that contain the hashtag '#education'.",
+   "gold_cypher": "MATCH (u:User {screen_name: 'neo4j'})-[:POSTS]->(t:Tweet)-[:TAGS]->(h:Hashtag {name: 'education'}) RETURN t.text, t.favorites, t.created_at ORDER BY t.favorites DESC LIMIT 5",
+   "raw": "MATCH (u)-[:POSTS]->(t:Tweet)-[:TAGS]->(h:Hashtag)\nWHERE toLower(h.name) = 'education' AND (toLower(u.screen_name) = 'neo4j' OR u.name = 'Neo4j')\nRETURN t.id_str AS id, t.text AS text, t.favorites AS favorites, t.created_at AS created_at\nORDER BY t.favorites DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (u)-[:POSTS]->(t:Tweet)-[:TAGS]->(h:Hashtag)\nWHERE toLower(h.name) = 'education' AND (toLower(u.screen_name) = 'neo4j' OR u.name = 'Neo4j')\nRETURN t.id_str AS id, t.text AS text, t.favorites AS favorites, t.created_at AS created_at\nORDER BY t.favorites DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 2,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 6.263,
+   "in_tokens": 840,
+   "out_tokens": 380,
+   "reasoning_tokens": 276,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "id": "1370464683677868041",
+     "text": "Proud to help @educationgovuk deliver critical services across the #education sector with #Neo4jAuraEnterprise! \n\nL\u2026 https://t.co/wS1mSretfd",
+     "favorites": 1,
+     "created_at": "2021-03-12T20:00:17.000000000+00:00"
+    },
+    {
+     "id": "1371815021265747970",
+     "text": "Proud to help @educationgovuk deliver critical services across the #education sector with #Neo4jAuraEnterprise! \n\nL\u2026 https://t.co/p0urzRAQph",
+     "favorites": 1,
+     "created_at": "2021-03-16T13:26:02.000000000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "t092",
+   "graph": "movies",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Which persons have acted in and directed the same movie?",
+   "gold_cypher": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p) RETURN p.name AS personName, m.title AS movieTitle",
+   "raw": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p)\nRETURN p.name, m.title",
+   "pred_cypher": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p)\nRETURN p.name, m.title",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 5.421,
+   "in_tokens": 379,
+   "out_tokens": 177,
+   "reasoning_tokens": 133,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "p.name": "Tom Hanks",
+     "m.title": "That Thing You Do"
+    },
+    {
+     "p.name": "Clint Eastwood",
+     "m.title": "Unforgiven"
+    },
+    {
+     "p.name": "Danny DeVito",
+     "m.title": "Hoffa"
+    }
+   ]
+  },
+  {
+   "id": "t093",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which entities have filed filings where the beneficiary bank is located in a country with a code ending in \"M\"?",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_iso ENDS WITH 'M' WITH f MATCH (e:Entity)-[:FILED]->(f) RETURN DISTINCT e.name",
+   "raw": "MATCH (filer:Entity)-[:FILED]->(filing:Filing)-[:BENEFITS]->(beneficiary:Entity)-[:COUNTRY]->(country:Country)\nWHERE country.code ENDS WITH \"M\"\nRETURN DISTINCT filer",
+   "pred_cypher": "MATCH (filer:Entity)-[:FILED]->(filing:Filing)-[:BENEFITS]->(beneficiary:Entity)-[:COUNTRY]->(country:Country)\nWHERE country.code ENDS WITH \"M\"\nRETURN DISTINCT filer",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 6.674,
+   "in_tokens": 740,
+   "out_tokens": 414,
+   "reasoning_tokens": 350,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "filer": {
+      "_labels": [
+       "Entity"
+      ],
+      "name": "The Bank of New York Mellon Corp.",
+      "location": [
+       -73.987862,
+       40.777571
+      ],
+      "id": "the-bank-of-new-york-mellon-corp"
+     }
+    },
+    {
+     "filer": {
+      "_labels": [
+       "Entity"
+      ],
+      "name": "JP Morgan Chase & Co.",
+      "location": [
+       -73.987862,
+       40.777571
+      ],
+      "id": "jp-morgan-chase-co"
+     }
+    },
+    {
+     "filer": {
+      "_labels": [
+       "Entity"
+      ],
+      "name": "The Northern Trust Company",
+      "location": [
+       -73.987862,
+       40.777571
+      ],
+      "id": "the-northern-trust-company"
+     }
+    },
+    {
+     "filer": {
+      "_labels": [
+       "Entity"
+      ],
+      "name": "Standard Chartered Plc",
+      "location": [
+       -73.987862,
+       40.777571
+      ],
+      "id": "standard-chartered-plc"
+     }
+    },
+    {
+     "filer": {
+      "_labels": [
+       "Entity"
+      ],
+      "name": "China Investment Corporation",
+      "location": [
+       -73.987862,
+       40.777571
+      ],
+      "id": "china-investment-corporation"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t094",
+   "graph": "fincen",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": false,
+    "multi_hop": false,
+    "order_by": false,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which filings have a beneficiary bank in 'United Kingdom' and an amount greater than 1000000?",
+   "gold_cypher": "MATCH (f:Filing) WHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 1000000 RETURN f",
+   "raw": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 1000000\nRETURN f",
+   "pred_cypher": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'United Kingdom' AND f.amount > 1000000\nRETURN f",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 60,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 1.648,
+   "in_tokens": 739,
+   "out_tokens": 67,
+   "reasoning_tokens": 24,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Sep 7, 2010",
+      "amount": 1050000,
+      "beneficiary_iso": "GBR",
+      "beneficiary_lng": "-2",
+      "begin_date": "Sep 7, 2010",
+      "originator_bank": "LTB Bank",
+      "beneficiary_lat": "54",
+      "begin_date_format": "2010-09-07T00:00:00Z",
+      "beneficiary_bank_id": "credit-suisse-securities-europe-limited-london-england-gbr",
+      "end_date_format": "2010-09-07T00:00:00Z",
+      "originator_iso": "LVA",
+      "origin_lat": "57",
+      "number": 1,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "Latvia",
+      "beneficiary_bank": "Credit Suisse Securities",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "beneficiary_bank_country": "United Kingdom",
+      "end": "2010-09-07T00:00:00.000000000+00:00",
+      "origin_lng": "25",
+      "originator_bank_id": "ltb-bank",
+      "id": "233256",
+      "begin": "2010-09-07T00:00:00.000000000+00:00",
+      "sar_id": "2750"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "May 6, 2016",
+      "amount": 1051824.94,
+      "beneficiary_lng": "-2",
+      "beneficiary_iso": "GBR",
+      "begin_date": "Apr 21, 2016",
+      "originator_bank": "Cyprus Development Bank Public",
+      "beneficiary_lat": "54",
+      "begin_date_format": "2016-04-21T00:00:00Z",
+      "beneficiary_bank_id": "barclays-bank-plc-london-england-gbr",
+      "end_date_format": "2016-05-06T00:00:00Z",
+      "originator_iso": "CYP",
+      "origin_lat": "35",
+      "number": 5,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "Cyprus",
+      "beneficiary_bank_country": "United Kingdom",
+      "beneficiary_bank": "Barclays Bank Plc",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "end": "2016-05-06T00:00:00.000000000+00:00",
+      "origin_lng": "33",
+      "originator_bank_id": "cyprus-development-bank-public",
+      "id": "242161",
+      "begin": "2016-04-21T00:00:00.000000000+00:00",
+      "sar_id": "2231"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Nov 21, 2007",
+      "amount": 1124500,
+      "beneficiary_iso": "GBR",
+      "beneficiary_lng": "-2",
+      "begin_date": "Oct 1, 2007",
+      "originator_bank": "Gazprombank",
+      "beneficiary_lat": "54",
+      "begin_date_format": "2007-10-01T00:00:00Z",
+      "originator_iso": "RUS",
+      "beneficiary_bank_id": "lloyds-bank-plc-england-gbr",
+      "end_date_format": "2007-11-21T00:00:00Z",
+      "origin_lat": "60",
+      "number": 3,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "Russia",
+      "beneficiary_bank_country": "United Kingdom",
+      "beneficiary_bank": "Lloyds Bank Plc",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "end": "2007-11-21T00:00:00.000000000+00:00",
+      "origin_lng": "100",
+      "originator_bank_id": "gazprombank",
+      "id": "241866",
+      "begin": "2007-10-01T00:00:00.000000000+00:00",
+      "sar_id": "2331"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Mar 7, 2013",
+      "amount": 1128500,
+      "beneficiary_iso": "GBR",
+      "beneficiary_lng": "-2",
+      "begin_date": "Oct 30, 2012",
+      "originator_bank": "Western Union Business Solutions",
+      "beneficiary_lat": "54",
+      "begin_date_format": "2012-10-30T00:00:00Z",
+      "beneficiary_bank_id": "barclays-bank-plc-london-england-gbr",
+      "end_date_format": "2013-03-07T00:00:00Z",
+      "originator_iso": "USA",
+      "origin_lat": "38",
+      "number": 34,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "United States",
+      "beneficiary_bank_country": "United Kingdom",
+      "beneficiary_bank": "Barclays Bank Plc",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "end": "2013-03-07T00:00:00.000000000+00:00",
+      "origin_lng": "-97",
+      "originator_bank_id": "western-union-business-solutions",
+      "id": "231995",
+      "begin": "2012-10-30T00:00:00.000000000+00:00",
+      "sar_id": "4105"
+     }
+    },
+    {
+     "f": {
+      "_labels": [
+       "Filing"
+      ],
+      "end_date": "Apr 10, 2012",
+      "amount": 1160000,
+      "beneficiary_iso": "GBR",
+      "beneficiary_lng": "-2",
+      "begin_date": "Apr 10, 2012",
+      "originator_bank": "Arab Bank For Investment & Foreign Trade",
+      "beneficiary_lat": "54",
+      "begin_date_format": "2012-04-10T00:00:00Z",
+      "beneficiary_bank_id": "deutsche-bank-aglondon-england-gbr",
+      "originator_iso": "ARE",
+      "end_date_format": "2012-04-10T00:00:00Z",
+      "origin_lat": "24",
+      "number": 1,
+      "filer_org_name": "The Bank of New York Mellon Corp.",
+      "originator_bank_country": "United Arab Emirates",
+      "beneficiary_bank_country": "United Kingdom",
+      "filer_org_name_id": "the-bank-of-new-york-mellon-corp",
+      "beneficiary_bank": "Deutsche Bank A.G.(London, England)",
+      "end": "2012-04-10T00:00:00.000000000+00:00",
+      "origin_lng": "54",
+      "originator_bank_id": "arab-bank-for-investment-foreign-trade",
+      "id": "232910",
+      "begin": "2012-04-10T00:00:00.000000000+00:00",
+      "sar_id": "2923"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t095",
+   "graph": "recommendations",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the top 5 movies by revenue that were released in languages other than English?",
+   "gold_cypher": "MATCH (m:Movie) WHERE NOT 'English' IN m.languages RETURN m.title, m.revenue ORDER BY m.revenue DESC LIMIT 5",
+   "raw": "MATCH (m:Movie)\nWHERE NOT 'English' IN m.languages\nRETURN m.title, m.revenue, m.languages\nORDER BY m.revenue DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (m:Movie)\nWHERE NOT 'English' IN m.languages\nRETURN m.title, m.revenue, m.languages\nORDER BY m.revenue DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 4.267,
+   "in_tokens": 1102,
+   "out_tokens": 150,
+   "reasoning_tokens": 99,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "m.title": "Shanghai Triad (Yao a yao yao dao waipo qiao)",
+     "m.revenue": null,
+     "m.languages": [
+      "Mandarin"
+     ]
+    },
+    {
+     "m.title": "Lamerica",
+     "m.revenue": null,
+     "m.languages": [
+      "Albanian",
+      " Italian"
+     ]
+    },
+    {
+     "m.title": "Postman, The (Postino, Il)",
+     "m.revenue": null,
+     "m.languages": [
+      "Italian",
+      " Spanish"
+     ]
+    },
+    {
+     "m.title": "Confessional, The (Confessionnal, Le)",
+     "m.revenue": null,
+     "m.languages": [
+      "French",
+      " English"
+     ]
+    },
+    {
+     "m.title": "French Twist (Gazon maudit)",
+     "m.revenue": null,
+     "m.languages": [
+      "French",
+      " Spanish"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "t096",
+   "graph": "movies",
+   "tier": "easy",
+   "complexity": {
+    "aggregation": false,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "easy",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 5 movies by number of roles in the 'ACTED_IN' relationship.",
+   "gold_cypher": "MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person) RETURN m.title AS movie, size(r.roles) AS numRoles ORDER BY numRoles DESC LIMIT 5",
+   "raw": "MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, sum(size(r.roles)) AS roleCount\nORDER BY roleCount DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)\nRETURN m.title AS movie, sum(size(r.roles)) AS roleCount\nORDER BY roleCount DESC\nLIMIT 5",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 3.295,
+   "in_tokens": 387,
+   "out_tokens": 221,
+   "reasoning_tokens": 166,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "movie": "Cloud Atlas",
+     "roleCount": 17
+    },
+    {
+     "movie": "A Few Good Men",
+     "roleCount": 12
+    },
+    {
+     "movie": "Jerry Maguire",
+     "roleCount": 9
+    },
+    {
+     "movie": "The Green Mile",
+     "roleCount": 8
+    },
+    {
+     "movie": "Stand By Me",
+     "roleCount": 7
+    }
+   ]
+  },
+  {
+   "id": "t097",
+   "graph": "movies",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": false,
+    "multi_hop": true,
+    "order_by": false,
+    "tier": "hard",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What is the oldest movie that Keanu Reeves acted in?",
+   "gold_cypher": "MATCH (p:Person {name: \"Keanu Reeves\"})-[:ACTED_IN]->(m:Movie) WITH min(m.released) AS oldestMovie MATCH (p:Person {name: \"Keanu Reeves\"})-[:ACTED_IN]->(m:Movie) WHERE m.released = oldestMovie RETURN m.title, m.released",
+   "raw": "MATCH (p:Person {name: 'Keanu Reeves'})-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS title, m.released AS released\nORDER BY m.released ASC\nLIMIT 1",
+   "pred_cypher": "MATCH (p:Person {name: 'Keanu Reeves'})-[:ACTED_IN]->(m:Movie)\nRETURN m.title AS title, m.released AS released\nORDER BY m.released ASC\nLIMIT 1",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 1,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 3.962,
+   "in_tokens": 381,
+   "out_tokens": 103,
+   "reasoning_tokens": 42,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "title": "Johnny Mnemonic",
+     "released": 1995
+    }
+   ]
+  },
+  {
+   "id": "t098",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": false,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Identify the first 3 users who mentioned 'Neo4j' in their tweets.",
+   "gold_cypher": "MATCH (u:User)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(m:Me {screen_name: 'neo4j'}) RETURN u.screen_name, t.created_at ORDER BY t.created_at ASC LIMIT 3",
+   "raw": "MATCH (u:User)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(:Me)\nWITH u, min(t.created_at) AS firstMention\nORDER BY firstMention ASC\nLIMIT 3\nRETURN u.screen_name, u.name, firstMention",
+   "pred_cypher": "MATCH (u:User)-[:POSTS]->(t:Tweet)-[:MENTIONS]->(:Me)\nWITH u, min(t.created_at) AS firstMention\nORDER BY firstMention ASC\nLIMIT 3\nRETURN u.screen_name, u.name, firstMention",
+   "exec_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 5.047,
+   "in_tokens": 838,
+   "out_tokens": 364,
+   "reasoning_tokens": 294,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "wrong",
+   "pred_rows_head": [
+    {
+     "u.screen_name": "neo4j",
+     "u.name": "Neo4j",
+     "firstMention": "2020-12-06T15:25:43.000000000+00:00"
+    },
+    {
+     "u.screen_name": "chrismoye_esq",
+     "u.name": "C. Moy\u00e9, atty@law",
+     "firstMention": "2021-01-14T13:20:51.000000000+00:00"
+    },
+    {
+     "u.screen_name": "drlynnchiu",
+     "u.name": "Lynn Chiu",
+     "firstMention": "2021-01-14T15:00:16.000000000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "t099",
+   "graph": "northwind",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 0,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the `shipCountry` and average `freight` cost for the top 5 countries with the highest average `freight` cost.",
+   "gold_cypher": "MATCH (o:Order) WITH o.shipCountry AS shipCountry, avg(toFloat(o.freight)) AS averageFreight ORDER BY averageFreight DESC LIMIT 5 RETURN shipCountry, averageFreight",
+   "raw": "MATCH (o:Order)\nRETURN o.shipCountry AS shipCountry, avg(toFloat(o.freight)) AS avgFreight\nORDER BY avgFreight DESC\nLIMIT 5",
+   "pred_cypher": "MATCH (o:Order)\nRETURN o.shipCountry AS shipCountry, avg(toFloat(o.freight)) AS avgFreight\nORDER BY avgFreight DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 2.242,
+   "in_tokens": 1282,
+   "out_tokens": 118,
+   "reasoning_tokens": 67,
+   "finish_reason": "stop",
+   "api_error": null,
+   "lenient_status": "correct",
+   "pred_rows_head": [
+    {
+     "shipCountry": "Austria",
+     "avgFreight": 184.78750000000002
+    },
+    {
+     "shipCountry": "05487-020",
+     "avgFreight": 152.51538461538462
+    },
+    {
+     "shipCountry": "Ireland",
+     "avgFreight": 145.01263157894738
+    },
+    {
+     "shipCountry": "59000",
+     "avgFreight": 127.58799999999998
+    },
+    {
+     "shipCountry": "USA",
+     "avgFreight": 112.87942622950821
+    }
+   ]
+  }
+ ],
+ "accuracy_lenient": 0.74
+}

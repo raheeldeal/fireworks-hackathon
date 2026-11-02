@@ -1,0 +1,14 @@
+timestamp,model,in_tokens,out_tokens,cost,note
+2026-11-02T10:43:07,accounts/fireworks/models/glm-5p3-flash,3424,642,0.000835,v1_plain n=5
+2026-11-02T10:43:09,accounts/fireworks/models/glm-5p3,3424,771,0.008186,v1_plain n=5
+2026-11-02T10:43:10,accounts/fireworks/models/kimi-k3,3497,648,0.020211,v1_plain n=5
+2026-11-02T10:43:16,accounts/fireworks/models/deepseek-v4p1-flash,3655,2190,0.003724,v1_plain n=5
+2026-11-02T10:53:10,accounts/fireworks/models/glm-5p3,82242,32273,0.257140,v1_plain n=100
+2026-11-02T10:53:17,accounts/fireworks/models/kimi-k3,83048,19802,0.546174,v1_plain n=100
+2026-11-02T10:53:29,accounts/fireworks/models/glm-5p3-flash,169150,40611,0.045678,v1_plain n=200
+2026-11-02T10:54:12,accounts/fireworks/models/deepseek-v4p1-flash,177928,89222,0.160445,v1_plain n=200
+2026-11-02T11:26:00,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,400000,40000,0.028000,ESTIMATE upper bound: 2024v1 run killed mid-way when switching to 2025v1; usage not captured
+2026-11-02T11:30:28,accounts/fireworks/models/glm-5p3-flash,168297,46082,0.048286,v1_plain n=200
+2026-11-02T11:31:09,accounts/fireworks/models/glm-5p3,80591,45442,0.312772,v1_plain n=100
+2026-11-02T11:31:25,accounts/fireworks/models/kimi-k3,81324,26154,0.636282,v1_plain n=100
+2026-11-02T11:31:35,accounts/fireworks/models/deepseek-v4p1-flash,177081,92385,0.163986,v1_plain n=200

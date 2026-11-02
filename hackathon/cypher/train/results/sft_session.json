@@ -1,0 +1,18 @@
+{
+ "session": "ts-d620b42267a34cda8302d76b0294fc03",
+ "session_name": "accounts/raheeldeal/trainingSessions/ts-d620b42267a34cda8302d76b0294fc03",
+ "run": "run-58f25dda56b54a00b18f5fc7a630078e",
+ "started": "2026-11-02T11:43:52",
+ "tag": "sft",
+ "data": "data/train.jsonl",
+ "from_state": null,
+ "rows": 500,
+ "tokens_per_epoch": 448910,
+ "loss_tokens_per_epoch": 24793,
+ "epochs": 2,
+ "batch": 16,
+ "lr": 0.0001,
+ "rank": 16,
+ "loss_fn": "cross_entropy (per-token weights)",
+ "log": []
+}

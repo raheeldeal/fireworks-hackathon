@@ -1,0 +1,246 @@
+{
+ "model": "accounts/fireworks/models/muse-glimmer-30b",
+ "prompt": "v1_plain",
+ "mock": false,
+ "n": 4,
+ "accuracy": 0.25,
+ "accuracy_lenient": 0.25,
+ "invalid_outputs": 1,
+ "error_rate": 0.25,
+ "empty_rate": 0.25,
+ "wrong_rate": 0.25,
+ "p50_latency_s": 0.73,
+ "p95_latency_s": 0.768,
+ "cost_per_1k_requests_usd": 1.7316,
+ "cost_total_usd": 0.0069,
+ "in_tokens": 3031,
+ "out_tokens": 202,
+ "in_tokens_per_call": 757.8,
+ "out_tokens_per_call": 50.5,
+ "reasoning_tokens": 0,
+ "api_errors": 0,
+ "truncated": 0,
+ "request_extra": {
+  "sampler": "serverless training",
+  "temperature": 0,
+  "prefill": "to=user (reasoning off)"
+ },
+ "max_tokens": 400,
+ "checkpoint": "base",
+ "test_sha256": "6c47ee00573e7ebc4e144c7e31363b2f3c72b10556e5d2c853323cc85733b491",
+ "pricing_note": "serverless-training sampler rates at full prefill price (prefill $1.96/M, sample $4.88/M); production serving of a LoRA needs a dedicated deployment (train/DEPLOY.md)",
+ "by_graph": {
+  "fincen": {
+   "n": 1,
+   "accuracy": 0.0,
+   "accuracy_lenient": 0.0,
+   "error": 0,
+   "empty": 0
+  },
+  "movies": {
+   "n": 1,
+   "accuracy": 0.0,
+   "accuracy_lenient": 0.0,
+   "error": 1,
+   "empty": 0
+  },
+  "recommendations": {
+   "n": 1,
+   "accuracy": 1.0,
+   "accuracy_lenient": 1.0,
+   "error": 0,
+   "empty": 0
+  },
+  "twitter": {
+   "n": 1,
+   "accuracy": 0.0,
+   "accuracy_lenient": 0.0,
+   "error": 0,
+   "empty": 1
+  }
+ },
+ "by_tier": {
+  "hard": {
+   "n": 2,
+   "accuracy": 0.5,
+   "accuracy_lenient": 0.5,
+   "error": 1,
+   "empty": 0
+  },
+  "medium": {
+   "n": 2,
+   "accuracy": 0.0,
+   "accuracy_lenient": 0.0,
+   "error": 0,
+   "empty": 1
+  }
+ },
+ "rows": [
+  {
+   "id": "t000",
+   "graph": "recommendations",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "List the top 5 actors by number of different genres they've acted in.",
+   "gold_cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\\nWITH a, count(distinct g) AS genreCount\\nORDER BY genreCount DESC\\nLIMIT 5\\nRETURN a.name AS actor, genreCount AS numberOfGenres",
+   "raw": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g.name) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5<|eot|>",
+   "pred_cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g.name) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+   "exec_status": "correct",
+   "lenient_status": "correct",
+   "exec_error": null,
+   "pred_n_rows": 5,
+   "pred_rows_head": [
+    {
+     "actor": "Kurt Russell",
+     "genreCount": 17
+    },
+    {
+     "actor": "Brad Pitt",
+     "genreCount": 17
+    },
+    {
+     "actor": "Johnny Depp",
+     "genreCount": 17
+    },
+    {
+     "actor": "Samuel L. Jackson",
+     "genreCount": 17
+    },
+    {
+     "actor": "Ewan McGregor",
+     "genreCount": 16
+    }
+   ],
+   "correct": true,
+   "pred": "correct",
+   "label": "correct",
+   "latency": 0.878,
+   "in_tokens": 1091,
+   "out_tokens": 58,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "t001",
+   "graph": "movies",
+   "tier": "hard",
+   "complexity": {
+    "aggregation": true,
+    "hops": 2,
+    "limit": true,
+    "multi_hop": true,
+    "order_by": true,
+    "tier": "hard",
+    "var_length": false,
+    "where": false
+   },
+   "question": "Who are the top 3 actors by number of followers?",
+   "gold_cypher": "MATCH (actor:Person)-[:ACTED_IN]->(:Movie)\\nOPTIONAL MATCH (follower:Person)-[:FOLLOWS]->(actor)\\nWITH actor, COUNT(follower) AS followerCount\\nRETURN actor.name AS actorName, followerCount\\nORDER BY followerCount DESC\\nLIMIT 3",
+   "raw": "MATCH (a:Person)-[:ACTED_IN]->(:Movie)\nWITH a, size((a)<-[:FOLLOWS]-(:Person)) AS followers\nORDER BY followers DESC\nLIMIT 3\nRETURN a.name AS actor, followers<|eot|>",
+   "pred_cypher": "MATCH (a:Person)-[:ACTED_IN]->(:Movie)\nWITH a, size((a)<-[:FOLLOWS]-(:Person)) AS followers\nORDER BY followers DESC\nLIMIT 3\nRETURN a.name AS actor, followers",
+   "exec_status": "error",
+   "lenient_status": "error",
+   "exec_error": "CypherSyntaxError: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: A pattern expression should only be used in order to test the existence of a pattern. It can no longer be used inside the function size(), an alternative is to replace size() with COUNT {}. (line 2, column 14 (offset: 52))\n\"WITH a, size((",
+   "pred_n_rows": 0,
+   "pred_rows_head": [],
+   "correct": false,
+   "pred": "error",
+   "label": "correct",
+   "latency": 0.693,
+   "in_tokens": 375,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "t002",
+   "graph": "fincen",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "What are the names of the top 3 entities that benefited from filings with amounts less than 100?",
+   "gold_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\\nWHERE f.amount < 100\\nWITH e, count(f) AS benefitCount\\nORDER BY benefitCount DESC\\nRETURN e.name, benefitCount\\nLIMIT 3",
+   "raw": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount < 100\nRETURN e.name AS entity_name, count(*) AS benefit_count\nORDER BY benefit_count DESC\nLIMIT 3<|eot|>",
+   "pred_cypher": "MATCH (f:Filing)-[:BENEFITS]->(e:Entity)\nWHERE f.amount < 100\nRETURN e.name AS entity_name, count(*) AS benefit_count\nORDER BY benefit_count DESC\nLIMIT 3",
+   "exec_status": "wrong",
+   "lenient_status": "wrong",
+   "exec_error": null,
+   "pred_n_rows": 3,
+   "pred_rows_head": [
+    {
+     "entity_name": "Vnesheconombank",
+     "benefit_count": 7
+    },
+    {
+     "entity_name": "Commonwealth Bank of Australia",
+     "benefit_count": 3
+    },
+    {
+     "entity_name": "Nomos Bank",
+     "benefit_count": 2
+    }
+   ],
+   "correct": false,
+   "pred": "wrong",
+   "label": "correct",
+   "latency": 0.768,
+   "in_tokens": 728,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "api_error": null
+  },
+  {
+   "id": "t003",
+   "graph": "twitter",
+   "tier": "medium",
+   "complexity": {
+    "aggregation": true,
+    "hops": 1,
+    "limit": true,
+    "multi_hop": false,
+    "order_by": true,
+    "tier": "medium",
+    "var_length": false,
+    "where": true
+   },
+   "question": "Which users interact most frequently with 'neo4j' and list the top 5?",
+   "gold_cypher": "MATCH (me:Me {screen_name: 'neo4j'})-[:INTERACTS_WITH]->(user:User)\\nRETURN user.screen_name, COUNT(*) AS interaction_count\\nORDER BY interaction_count DESC\\nLIMIT 5",
+   "raw": "MATCH (u:User)-[r:INTERACTS_WITH]->(m:Me {screen_name: 'neo4j'})\nRETURN u.screen_name AS user, count(r) AS interactions\nORDER BY interactions DESC\nLIMIT 5\n<|eot|>",
+   "pred_cypher": "MATCH (u:User)-[r:INTERACTS_WITH]->(m:Me {screen_name: 'neo4j'})\nRETURN u.screen_name AS user, count(r) AS interactions\nORDER BY interactions DESC\nLIMIT 5",
+   "exec_status": "empty",
+   "lenient_status": "empty",
+   "exec_error": null,
+   "pred_n_rows": 0,
+   "pred_rows_head": [],
+   "correct": false,
+   "pred": "empty",
+   "label": "correct",
+   "latency": 0.622,
+   "in_tokens": 837,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "api_error": null
+  }
+ ]
+}

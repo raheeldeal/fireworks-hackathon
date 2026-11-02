@@ -1,0 +1,14 @@
+timestamp,model,in_tokens,out_tokens,cost,note
+2026-11-02T11:36:46,accounts/fireworks/models/glm-5p3-flash,15325,1092,0.002845,harness route_big n=6
+2026-11-02T11:36:46,accounts/fireworks/models/glm-5p3,362,341,0.002007,harness route_big n=6
+2026-11-02T11:36:51,accounts/fireworks/models/glm-5p3-flash,4226,244,0.000756,harness repair1_fewshot n=4
+2026-11-02T11:37:48,accounts/fireworks/models/glm-5p3-flash,168297,8695,0.029592,harness validate_only n=200
+2026-11-02T11:38:31,accounts/fireworks/models/glm-5p3-flash,178258,9389,0.031433,harness repair1 n=200
+2026-11-02T11:40:08,accounts/fireworks/models/glm-5p3-flash,173894,48677,0.050423,harness repair1_rdefault n=200
+2026-11-02T11:40:28,accounts/fireworks/models/glm-5p3-flash,535683,29071,0.094888,harness vote3 n=200
+2026-11-02T11:41:53,accounts/fireworks/models/glm-5p3-flash,544621,29117,0.096252,harness route_big n=200
+2026-11-02T11:41:53,accounts/fireworks/models/glm-5p3,10674,9761,0.057892,harness route_big n=200
+2026-11-02T11:42:31,accounts/fireworks/models/glm-5p3-flash,142309,9524,0.026108,harness prune_repair1 n=200
+2026-11-02T11:43:01,accounts/fireworks/models/glm-5p3-flash,182508,9619,0.032186,harness repair1_fewshot n=200
+2026-11-02T11:44:05,accounts/fireworks/models/glm-5p3-flash,547046,28884,0.096499,harness route_big_u n=200
+2026-11-02T11:44:05,accounts/fireworks/models/glm-5p3,51383,47855,0.282498,harness route_big_u n=200

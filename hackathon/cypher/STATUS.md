@@ -1,6 +1,6 @@
 # Text-to-Cypher benchmark: status
 
-Updated 11:30 PT.
+Updated 12:55 PT.
 
 ## Done
 1. **Dataset: `neo4j/text2cypher-2025v1`** (team standard as of 11:25). Columns: question, schema, cypher, data_source, instance_id, database_reference_alias. Raw copies in `raw/`. The earlier 2024v1 set and its baselines are kept in `data/old_2024v1/` and `results/old_2024v1/` for reference only.
@@ -16,8 +16,18 @@ Updated 11:30 PT.
    - Purity check: question, cypher and schema in all 200 rows are byte-identical to the Hugging Face rows. Re-running the gold queries scores 200/200.
 8. **Train set** (`data/train.jsonl`, 500 rows, 100 per graph) from the 2025v1 TRAIN split, gold verified the same way, any question or gold query also in test removed. `check_leak.py`: 0 overlap.
 
-## In progress
-Baselines on the 2025v1 set (five models). BASELINES.md and baselines.png follow.
+9. **Baselines done** on the 2025v1 set. Full tables in `BASELINES.md`, chart in `baselines.png`, per-row results in `results/<model>_v1_plain*_n*.json` (standard shape plus pred_cypher, exec_status, lenient_status, latency, in/out/reasoning tokens).
+
+| model | n | strict | lenient | error | $/1k |
+|---|---|---|---|---|---|
+| glm-5p3-flash | 200 | 57.0% | 69.5% | 0.5% | $0.24 |
+| deepseek-v4p1-flash | 200 | 49.0% | 64.0% | 1.5% | $0.82 |
+| kimi-k3 (frontier) | 100 | 49.0% | 61.0% | 2.0% | $6.36 |
+| glm-5p3 | 100 | 48.0% | 62.0% | 3.0% | $3.13 |
+| nemotron-lightning, reasoning off | 200 | 22.5% | 29.5% | 32.0% | $0.08 |
+
+   On the same first 100 rows: glm-5p3-flash 58%, kimi-k3 49%, glm-5p3 48%, deepseek 47%. 33 of those 100 rows are missed by every model.
+10. **Spend:** about $2.26 from this workstream (includes $0.04 of estimated usage for two killed nemotron runs). `ledger.csv` reads $2.79 because other team runs also append to it since 12:32.
 
 ## What a human must decide
 - **2025v1 gold Cypher has a formatting defect.** In 4,427 of 4,438 test rows the line breaks are stored as the two characters backslash + n, so the raw gold fails with a syntax error on Neo4j. The executor converts them back to real line breaks at run time (`executor.normalize_cypher`); the stored rows are untouched. Inside Cypher strings the escape and a real line break mean the same thing, so no query changes meaning. If you want a zero-normalization rule, the 2025v1 gold set cannot run as published.
@@ -27,4 +37,6 @@ Baselines on the 2025v1 set (five models). BASELINES.md and baselines.png follow
 - Questions are mostly synthetic (GPT-4o, Gemini, Claude Opus, GPT-4 Turbo) plus 9 crowdsourced rows. Some gold queries are imperfect; a hand-checked hard slice would fix that.
 - 17 test rows use LIMIT without ORDER BY, so the gold rows are arbitrary picks; a correct query can return different rows.
 - The demo server is shared and public. If Neo4j takes it down during judging, prediction scoring stops. Gold rows are snapshotted in test.jsonl.
-- nemotron-lightning answered slowly today (50 to 65 s per call, even for "say hi").
+- nemotron-lightning's endpoint hung on about 1 in 5 requests today. The runner now has `--timeout` (25 s used) and records wall time including retries. 4 rows still failed at the API and count as errors.
+- The tier labels do not track difficulty the way you would expect: "easy" rows score lowest for every model. Easy questions often ask for "the movies" or "3 users", and the gold picks one projection (whole node vs. name) or arbitrary rows. A human hard-slice review would separate real model errors from gold ambiguity.
+- `results/` also holds other agents' files (harness_*, train_*, *_rlow_*, a failed claude-opus-5 run at 0%). BASELINES.md and baselines.png read only the five baseline files above.

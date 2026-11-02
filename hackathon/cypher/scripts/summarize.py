@@ -1,7 +1,8 @@
 """Print BASELINES.md tables from results/*.json (excludes smoke/ and gold)."""
 import json, glob, os, csv
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-files = sorted(glob.glob(os.path.join(HERE, "results", "*_v1_plain*_n*.json")))  # baseline runs only
+BASE = ("nemotron-lightning-3p5-30b-a3b", "glm-5p3-flash", "deepseek-v4p1-flash", "glm-5p3", "kimi-k3")
+files = sorted(f for f in glob.glob(os.path.join(HERE, "results", "*_v1_plain*_n*.json")) if os.path.basename(f).split("_v1_plain")[0] in BASE)  # this agent's baseline runs only
 res = [json.load(open(f)) for f in files]
 res = [r for r in res if r["model"] != "gold"]
 res.sort(key=lambda r: -r["accuracy"])
@@ -38,5 +39,5 @@ f100 = [v for k, v in byid.items() if k in first100]
 L.append(f"\nOn the first 100 rows, {sum(all(not c for c in v) for v in f100)} rows are missed by every model; "
          f"{sum(any(c for c in v) for v in f100)} are solved by at least one model (oracle ceiling).")
 spent = sum(float(x["cost"]) for x in csv.DictReader(open(os.path.join(HERE, "ledger.csv"))))
-L.append(f"\nLedger total: ${spent:.4f}")
+L.append(f"\nledger.csv total: ${spent:.4f} (the file is shared; since 12:32 other team runs, e.g. glm-5p3 and kimi-k3 with reasoning_effort low, also append to it).")
 print("\n".join(L))

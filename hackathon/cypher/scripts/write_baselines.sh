@@ -23,6 +23,7 @@ cat <<'FTR'
 - Most misses are "wrong", not "error": models write valid Cypher that answers a slightly different question (extra or missing columns, returning a node instead of a name, a different interpretation of "top"). Execution errors are 0 to 2%.
 - 17 test rows use LIMIT without ORDER BY, so the gold rows are arbitrary ("list 3 movies..."). A correct query can return different rows.
 - The frontier models do not win on this prompt. glm-5p3 and kimi-k3 think by default; with max_tokens 4096 a few calls ran out of tokens mid-thought (the `truncated` count in each results file) and returned no query, which counts as an error.
+- nemotron-lightning (reasoning off) is not usable with this prompt: 29% of its outputs fail to parse, several are free text that starts with MATCH and drifts into unrelated prose. Separately, its endpoint hung on about 1 in 5 requests today; 42 rows timed out after 6 tries at 25 s and were re-run with a 60 s timeout (38 recovered, 4 still count as errors). Its p50/p95 above are per successful request; including retries, p50 is 0.7 s and p95 is 87 s.
 - glm-5p3 and kimi-k3 were run on the first 100 rows only (cost); use the "same first 100 rows" table for model-to-model comparisons.
 
 Regenerate: `sh scripts/write_baselines.sh`

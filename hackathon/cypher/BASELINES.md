@@ -16,6 +16,7 @@ error = query failed to run (syntax, unknown function, timeout) or no query retu
 | deepseek-v4p1-flash | v1_plain | 200 | 49.0% | 64.0% | 48.5% | 1.5% | 1.0% | 2.12 | 11.77 | $0.820 | 461 | 412 |
 | kimi-k3 | v1_plain | 100 | 49.0% | 61.0% | 48.0% | 2.0% | 1.0% | 3.41 | 11.01 | $6.363 | 261 | 205 |
 | glm-5p3 | v1_plain | 100 | 48.0% | 62.0% | 48.0% | 3.0% | 1.0% | 2.51 | 11.93 | $3.128 | 454 | 407 |
+| nemotron-lightning-3p5-30b-a3b | v1_plain_rsnoff | 200 | 22.5% | 29.5% | 33.0% | 32.0% | 12.5% | 0.47 | 21.76 | $0.083 | 180 | 2 |
 
 **Accuracy by graph**
 
@@ -25,6 +26,7 @@ error = query failed to run (syntax, unknown function, timeout) or no query retu
 | deepseek-v4p1-flash | 200 | 62% (40) | 42% (40) | 48% (40) | 57% (40) | 35% (40) |
 | kimi-k3 | 100 | 65% (23) | 50% (20) | 44% (16) | 53% (19) | 32% (22) |
 | glm-5p3 | 100 | 74% (23) | 45% (20) | 44% (16) | 53% (19) | 23% (22) |
+| nemotron-lightning-3p5-30b-a3b | 200 | 20% (40) | 25% (40) | 30% (40) | 30% (40) | 8% (40) |
 
 **Accuracy by complexity tier** (easy: 0 to 1 hop, no aggregation; medium: multi-hop or aggregation; hard: both)
 
@@ -34,6 +36,7 @@ error = query failed to run (syntax, unknown function, timeout) or no query retu
 | deepseek-v4p1-flash | 44% (70) | 54% (87) | 47% (43) |
 | kimi-k3 | 40% (35) | 63% (43) | 36% (22) |
 | glm-5p3 | 34% (35) | 60% (43) | 45% (22) |
+| nemotron-lightning-3p5-30b-a3b | 21% (70) | 26% (87) | 16% (43) |
 
 **Apples to apples: all models on the same first 100 test rows**
 
@@ -43,15 +46,17 @@ error = query failed to run (syntax, unknown function, timeout) or no query retu
 | deepseek-v4p1-flash | 47% | 60% |
 | kimi-k3 | 49% | 61% |
 | glm-5p3 | 48% | 62% |
+| nemotron-lightning-3p5-30b-a3b | 22% | 29% |
 
-On the first 100 rows, 36 rows are missed by every model; 64 are solved by at least one model (oracle ceiling).
+On the first 100 rows, 33 rows are missed by every model; 67 are solved by at least one model (oracle ceiling).
 
-Ledger total: $2.2317
+ledger.csv total: $2.7885 (the file is shared; since 12:32 other team runs, e.g. glm-5p3 and kimi-k3 with reasoning_effort low, also append to it).
 
 ## Reading the numbers
 - Most misses are "wrong", not "error": models write valid Cypher that answers a slightly different question (extra or missing columns, returning a node instead of a name, a different interpretation of "top"). Execution errors are 0 to 2%.
 - 17 test rows use LIMIT without ORDER BY, so the gold rows are arbitrary ("list 3 movies..."). A correct query can return different rows.
 - The frontier models do not win on this prompt. glm-5p3 and kimi-k3 think by default; with max_tokens 4096 a few calls ran out of tokens mid-thought (the `truncated` count in each results file) and returned no query, which counts as an error.
+- nemotron-lightning (reasoning off) is not usable with this prompt: 29% of its outputs fail to parse, several are free text that starts with MATCH and drifts into unrelated prose. Separately, its endpoint hung on about 1 in 5 requests today; 42 rows timed out after 6 tries at 25 s and were re-run with a 60 s timeout (38 recovered, 4 still count as errors). Its p50/p95 above are per successful request; including retries, p50 is 0.7 s and p95 is 87 s.
 - glm-5p3 and kimi-k3 were run on the first 100 rows only (cost); use the "same first 100 rows" table for model-to-model comparisons.
 
 Regenerate: `sh scripts/write_baselines.sh`

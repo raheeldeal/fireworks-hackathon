@@ -1,0 +1,23 @@
+| config | model | accuracy | invalid | p50 s | p95 s | $/1k | seeds |
+|---|---|---|---|---|---|---|---|
+| v1_plain_retry | deepseek-v4p1-flash | 96.3% | 2 | 2.25 | 10.89 | 0.789 | 1 |
+| v1_plain_retry | glm-5p3-flash | 100.0% | 0 | 2.00 | 7.43 | 0.255 | 1 |
+| v1_plain_retry | glm-5p3 | 96.3% | 5 | 4.20 | 18.80 | 4.206 | 1 |
+| v1_plain_retry | gpt-oss-120b | 79.9% | 0 | 1.33 | 3.54 | 0.295 | 1 |
+| v1_plain_retry | nemotron-lightning-3p5-30b-a3b | 79.3% | 17 | 3.98 | 22.30 | 0.476 | 1 |
+| v1_plain_retry | kimi-k3 | 99.0% | 0 | 2.47 | 7.91 | 3.710 | 1 |
+| v1_plain_retry | glm-5p3-flash | 99.4% | 0.7 | 2.10 | 7.42 | 0.259 | 3 |
+| v2_rubric_retry | glm-5p3-flash | 98.8% | 0 | 1.90 | 7.48 | 0.260 | 1 |
+| v1_plain_5shot_retry | glm-5p3-flash | 98.8% | 1 | 1.46 | 5.01 | 0.275 | 1 |
+| v1_plain_5shot_retry | glm-5p3-flash | 98.0% | 1 | 1.46 | 4.91 | 0.282 | 3 |
+| v1_plain_json | glm-5p3-flash | 32.9% | 110 | 2.28 | 9.19 | 0.257 | 1 |
+| v1_plain_json_rescored | glm-5p3-flash | 96.3% | 5 | 2.28 | 9.19 | 0.257 | 1 |
+| v1_plain_conf_retry | glm-5p3-flash | 98.8% | 0 | 2.58 | 9.83 | 0.332 | 1 |
+| v1_plain_conf_retry_route_self_100 | glm-5p3-flash->glm-5p3 | 96.3% | 5 | 7.04 | 43.20 | 4.538 | 1 |
+| v1_plain_conf_retry_route_self_50 | glm-5p3-flash->glm-5p3 | 98.8% | 0 | 2.58 | 9.83 | 0.332 | 1 |
+| v1_plain_conf_retry_route_self_70 | glm-5p3-flash->glm-5p3 | 98.8% | 0 | 2.58 | 9.83 | 0.332 | 1 |
+| v1_plain_conf_retry_route_self_90 | glm-5p3-flash->glm-5p3 | 98.8% | 1 | 2.58 | 9.83 | 0.553 | 1 |
+| v1_plain_retry_route_tokens_1200 | glm-5p3-flash->glm-5p3 | 99.4% | 1 | 2.00 | 9.70 | 0.891 | 1 |
+| v1_plain_retry_route_tokens_300 | glm-5p3-flash->glm-5p3 | 97.0% | 5 | 2.15 | 25.04 | 3.619 | 1 |
+| v1_plain_retry_route_tokens_600 | glm-5p3-flash->glm-5p3 | 97.6% | 4 | 2.00 | 21.64 | 2.211 | 1 |
+| v1_plain_retry_route_verify | glm-5p3-flash->glm-5p3 | 100.0% | 0 | 2.00 | 7.75 | 0.370 | 1 |

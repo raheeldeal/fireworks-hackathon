@@ -1,0 +1,63 @@
+{
+  "small": "results/glm-5p3-flash_v2_conf_low.json",
+  "big": "results/kimi-k3_v1_plain_n100.json",
+  "n": 100,
+  "sweep": [
+    {
+      "threshold": 0.5,
+      "escalated_frac": 0.02,
+      "accuracy": 0.83,
+      "cost_per_1k_requests_usd": 0.3371,
+      "p50_latency_s": 0.62,
+      "p95_latency_s": 1.11
+    },
+    {
+      "threshold": 0.6,
+      "escalated_frac": 0.12,
+      "accuracy": 0.85,
+      "cost_per_1k_requests_usd": 0.8969,
+      "p50_latency_s": 0.633,
+      "p95_latency_s": 3.3
+    },
+    {
+      "threshold": 0.7,
+      "escalated_frac": 0.27,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 1.7366,
+      "p50_latency_s": 0.669,
+      "p95_latency_s": 4.498
+    },
+    {
+      "threshold": 0.8,
+      "escalated_frac": 0.36,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 2.2405,
+      "p50_latency_s": 0.747,
+      "p95_latency_s": 4.764
+    },
+    {
+      "threshold": 0.9,
+      "escalated_frac": 0.45,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 2.7443,
+      "p50_latency_s": 0.966,
+      "p95_latency_s": 4.764
+    },
+    {
+      "threshold": 0.95,
+      "escalated_frac": 0.77,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 4.5357,
+      "p50_latency_s": 2.385,
+      "p95_latency_s": 4.999
+    },
+    {
+      "threshold": 1.01,
+      "escalated_frac": 1.0,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 5.8233,
+      "p50_latency_s": 2.424,
+      "p95_latency_s": 4.999
+    }
+  ]
+}

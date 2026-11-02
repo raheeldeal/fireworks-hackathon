@@ -1,0 +1,116 @@
+{
+ "model": "accounts/fireworks/models/deepseek-v4p1-flash",
+ "prompt": "v1_plain",
+ "mock": false,
+ "n": 2,
+ "seed": 0,
+ "errors": 0,
+ "accuracy": 0.0,
+ "precision": 0.0,
+ "recall": 0.0,
+ "f1": 0.0,
+ "due_acc": 0.0,
+ "exact_row_acc": 0.0,
+ "invalid_outputs": 2,
+ "p50_latency_s": 9.216,
+ "p95_latency_s": 8.692,
+ "cost_per_1k_requests_usd": 1.4674,
+ "avg_in_tokens": 796,
+ "avg_out_tokens": 1024,
+ "avg_reasoning_tokens": 1024,
+ "wall_s": 9.7,
+ "rows": [
+  {
+   "id": "ma-0000",
+   "gold": [
+    {
+     "owner": "Aisha",
+     "task": "test the Slack announcement about the brand refresh",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "test the spec for the customer survey",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "follow up on the test plan for the paid search campaign",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "order the new laptops for the interns",
+     "due": "April 3"
+    },
+    {
+     "owner": "Leila",
+     "task": "summarize the test plan for the brand refresh",
+     "due": null
+    }
+   ],
+   "raw": "",
+   "pred": null,
+   "score": {
+    "valid": false,
+    "n_gold": 5,
+    "n_pred": 0,
+    "tp": 0,
+    "due_correct": 0,
+    "due_total": 0,
+    "matches": [],
+    "unmatched_pred": [],
+    "unmatched_gold": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "latency": 8.692365884780884,
+   "in_tokens": 835,
+   "out_tokens": 1024,
+   "reasoning_tokens": 1024,
+   "cost": 0.0014793,
+   "correct": false
+  },
+  {
+   "id": "ma-0002",
+   "gold": [
+    {
+     "owner": "Omar",
+     "task": "post the hiring update in #general",
+     "due": "the end of the quarter"
+    },
+    {
+     "owner": "Noah",
+     "task": "schedule the rollout checklist for the staging environment",
+     "due": null
+    }
+   ],
+   "raw": "",
+   "pred": null,
+   "score": {
+    "valid": false,
+    "n_gold": 2,
+    "n_pred": 0,
+    "tp": 0,
+    "due_correct": 0,
+    "due_total": 0,
+    "matches": [],
+    "unmatched_pred": [],
+    "unmatched_gold": [
+     0,
+     1
+    ]
+   },
+   "latency": 9.739200115203857,
+   "in_tokens": 756,
+   "out_tokens": 1024,
+   "reasoning_tokens": 1024,
+   "cost": 0.0014555999999999998,
+   "correct": false
+  }
+ ]
+}

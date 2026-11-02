@@ -1,0 +1,108 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Upload Dataset Files
+
+> Provides a streamlined way to upload a dataset file in a single API request. This path can handle file sizes up to 150Mb. For larger file sizes use [Get Dataset Upload Endpoint](get-dataset-upload-endpoint).
+
+
+
+
+## OpenAPI
+
+````yaml post /v1/accounts/{account_id}/datasets/{dataset_id}:upload
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 3.0.359
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
+paths:
+  /v1/accounts/{account_id}/datasets/{dataset_id}:upload:
+    post:
+      tags:
+        - Gateway
+      summary: Upload Dataset Files
+      description: >
+        Provides a streamlined way to upload a dataset file in a single API
+        request. This path can handle file sizes up to 150Mb. For larger file
+        sizes use [Get Dataset Upload Endpoint](get-dataset-upload-endpoint).
+      operationId: Gateway_UploadDatasetFile
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+        - name: dataset_id
+          in: path
+          required: true
+          description: The dataset id
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileUploadResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    FileUploadResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The dataset id.
+        object:
+          type: string
+          description: The object type, which is always file.
+        bytes:
+          type: integer
+          format: int64
+          description: The size of the file, in bytes.
+        created_at:
+          type: integer
+          format: int64
+          description: The Unix timestamp (in seconds) for when the file was created.
+        filename:
+          type: string
+          description: The name of the file.
+        purpose:
+          type: string
+          description: The intended purpose of the file.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      scheme: bearer
+      bearerFormat: API_KEY
+
+````

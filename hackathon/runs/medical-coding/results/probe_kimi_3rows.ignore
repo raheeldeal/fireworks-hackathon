@@ -1,0 +1,84 @@
+{
+  "model": "accounts/fireworks/models/kimi-k3",
+  "prompt": "v1_plain",
+  "mock": false,
+  "n": 3,
+  "accuracy": 1.0,
+  "exact_accuracy": 1.0,
+  "invalid_outputs": 0,
+  "p50_latency_s": 1.502,
+  "p95_latency_s": 1.502,
+  "cost_per_1k_requests_usd": 3.652,
+  "in_tokens": 2562,
+  "out_tokens": 218,
+  "reasoning_tokens": 164,
+  "total_cost_usd": 0.011,
+  "rows": [
+    {
+      "id": "mc-210",
+      "text": "Clinic follow-up, 66-year-old female here for fatigue, cold intolerance, and mild constipation over the past several months. She takes levothyroxine 75 mcg daily but admits to missing doses recently. Exam: dry skin, mild periorbital puffiness, pulse 58, no goiter or thyroid nodularity. TSH today 12.4, free T4 low-normal. Impression: hypothyroidism, suboptimally controlled, likely secondary to erratic replacement dosing. Plan: reinforce daily adherence, increase levothyroxine to 88 mcg daily, recheck TSH in 8 weeks. Advised symptoms should improve with consistent therapy.",
+      "label": [
+        "E03"
+      ],
+      "raw": "[\"E03\"]",
+      "pred": [
+        "E03"
+      ],
+      "correct": true,
+      "f1": 1.0,
+      "invalid": false,
+      "latency": 1.502,
+      "in_tokens": 846,
+      "out_tokens": 71,
+      "reasoning_tokens": 54,
+      "finish_reason": "stop",
+      "cost": 0.003603
+    },
+    {
+      "id": "mc-417",
+      "text": "Cardiology clinic. 66-year-old female with known coronary artery disease, prior drug-eluting stent to the LAD three years ago, on aspirin, atorvastatin, and metoprolol; today denies chest pain at rest but reports predictable exertional heaviness climbing stairs, consistent with stable angina from chronic ischemic heart disease. ECG shows old anterior changes, no acute findings; stress testing ordered to reassess ischemic burden. She also describes recurrent postprandial right upper quadrant pain, particularly after fatty meals, with ultrasound demonstrating multiple gallstones and a mildly thickened gallbladder wall without ductal dilation, consistent with cholelithiasis. Plan: continue antianginal regimen, consider increased beta-blocker dose, surgical consultation regarding elective cholecystectomy, low-fat diet advice, and return immediately for severe or prolonged pain.",
+      "label": [
+        "I25",
+        "K80"
+      ],
+      "raw": "[\"I25\",\"K80\"]",
+      "pred": [
+        "I25",
+        "K80"
+      ],
+      "correct": true,
+      "f1": 1.0,
+      "invalid": false,
+      "latency": 1.772,
+      "in_tokens": 884,
+      "out_tokens": 96,
+      "reasoning_tokens": 76,
+      "finish_reason": "stop",
+      "cost": 0.004092
+    },
+    {
+      "id": "mc-344",
+      "text": "Family medicine clinic. 31-year-old male evaluated for longstanding inattention, impulsivity, and disorganization affecting job performance. Completed ASRS-v1.1 with high scores in inattention and hyperactivity domains; collateral history from partner confirms childhood onset. Failed organizational strategies alone. No substance use. Exam unremarkable; vitals stable. Assessment: attention-deficit hyperactivity disorder, combined presentation, adult. Plan: trial of atomoxetine 40 mg daily titrating to 80 mg, safety labs at baseline, sleep hygiene counseling, follow-up visit in 6 weeks to assess response and side effects.",
+      "label": [
+        "F90"
+      ],
+      "raw": "[\"F90\"]",
+      "pred": [
+        "F90"
+      ],
+      "correct": true,
+      "f1": 1.0,
+      "invalid": false,
+      "latency": 1.454,
+      "in_tokens": 832,
+      "out_tokens": 51,
+      "reasoning_tokens": 34,
+      "finish_reason": "stop",
+      "cost": 0.003261
+    }
+  ],
+  "seed": 7,
+  "extra": null,
+  "wall_s": 6.0,
+  "data": "test.jsonl"
+}

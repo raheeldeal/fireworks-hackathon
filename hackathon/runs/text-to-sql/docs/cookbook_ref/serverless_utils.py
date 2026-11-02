@@ -1,0 +1,200 @@
+"""Serverless managed training setup helpers.
+
+The serverless counterpart to ``build_service_client`` in
+``training/utils/service.py``: connects to a shared, already-running pooled
+trainer through the gateway serverless surface
+(``{FIREWORKS_BASE_URL}/training/v1/serverless``) instead of provisioning a
+dedicated trainer, and routes checkpoint list/promote through the session-scoped
+endpoints. Returns the same handles ``sft_loop.main`` consumes for the dedicated
+path so the training loop is identical from there on.
+"""
+
+from __future__ import annotations
+
+import logging
+
+from fireworks.training.sdk import FireworksClient, FiretitanServiceClient
+
+from training.utils.checkpoints import TrainingCheckpoints
+from training.utils.client import DEFAULT_TIMEOUT_S, ReconnectableClient
+
+logger = logging.getLogger(__name__)
+
+_SERVERLESS_PATH = "/training/v1/serverless"
+
+
+def gateway_root_url(base_url: str) -> str:
+    """The gateway root of ``base_url``, which may already name a training surface."""
+    root = base_url.rstrip("/")
+    for suffix in (_SERVERLESS_PATH, "/training/v1"):
+        if root.endswith(suffix):
+            return root[: -len(suffix)]
+    return root
+
+
+def serverless_base_url(base_url: str) -> str:
+    """The serverless training surface for a gateway root or surface URL."""
+    return gateway_root_url(base_url) + _SERVERLESS_PATH
+
+
+class ServerlessCheckpointClient:
+    """Adapts the SDK's session-scoped checkpoint endpoints to the control-plane
+    client protocol that ``TrainingCheckpoints`` expects (``_CheckpointLister``).
+
+    In serverless mode checkpoint list/promote target the owning
+    ``TrainingSession`` (``accounts/{a}/trainingSessions/{s}/checkpoints``)
+    rather than the ``rlorTrainerJobs`` path. Save/load still go through the
+    live training client to the pooled trainer; only list + promote diverge.
+    """
+
+    def __init__(self, fw_client: FireworksClient, account_id: str) -> None:
+        self._fw = fw_client
+        self._account_id = account_id
+
+    def _session_name(self, session_id: str) -> str:
+        return f"accounts/{self._account_id}/trainingSessions/{session_id}"
+
+    def list_checkpoints(self, job_id: str, *, page_size: int = 200) -> list[dict]:
+        # ``job_id`` is the TrainingCheckpoints trainer_id, which is the
+        # owning TrainingSession id in serverless mode.
+        return self._fw.list_training_session_checkpoints(
+            self._session_name(job_id), page_size=page_size
+        )
+
+    def promote_checkpoint(
+        self,
+        job_id: str | None = None,
+        checkpoint_id: str | None = None,
+        output_model_id: str | None = None,
+        base_model: str | None = None,
+        *,
+        name: str | None = None,
+        hot_load_deployment_id: str | None = None,
+    ) -> dict:
+        # TrainingCheckpoints.promote_latest passes the full session checkpoint
+        # resource name via ``name=``; hot_load_deployment_id is not used here.
+        if name is None:
+            raise ValueError(
+                "serverless promotion requires the full session checkpoint "
+                "resource name (name=accounts/.../trainingSessions/.../checkpoints/...)"
+            )
+        return self._fw.promote_session_checkpoint(
+            name=name, output_model_id=output_model_id, base_model=base_model
+        )
+
+
+def enable_serverless_supervised_409_retry(service: FiretitanServiceClient) -> None:
+    """Opt an existing SFT/DPO serverless service into capacity-409 retries.
+
+    Older supported SDK releases lack this optional hook; leave their retry
+    behavior unchanged rather than preventing training from starting. Call
+    before creating or resuming a training client. This does not select a
+    trainer backend or opt other workloads in.
+    """
+    enable_retry = getattr(service, "_enable_serverless_supervised_409_retry", None)
+    if enable_retry is not None:
+        enable_retry()
+
+
+def close_serverless_session(service: FiretitanServiceClient) -> None:
+    """Close ``service``'s serverless training session, releasing its quota
+    slot immediately instead of waiting out the idle grace. No-op on older
+    supported SDK releases without the hook; their sessions expire naturally."""
+    close_session = getattr(service, "delete_training_session", None)
+    if close_session is not None:
+        close_session()
+
+
+def setup_serverless_training(cfg, *, api_key, base_url, additional_headers, stack, close_session_on_exit=False):
+    """Build the training + checkpoint handles for a serverless LoRA run.
+
+    Returns ``(service, client, ckpt, session_id, max_seq_len)``. The caller
+    may close the returned service; both the service and internal control-plane
+    client are registered on the provided ``stack`` (an ``ExitStack``), including
+    when setup fails after the training session is reserved. Requires
+    ``cfg.lora_rank > 0`` and a concrete ``cfg.max_seq_len`` (there is no training
+    shape to resolve sequence length from on this path).
+
+    With ``close_session_on_exit=True`` the stack also closes the training
+    session at teardown, releasing the run's concurrent-run quota slot
+    immediately. Opt in only when nothing later needs to resume from or promote
+    this run's checkpoints — teardown runs on the crash path too, and a closed
+    session ends that run's checkpoint lifecycle.
+    """
+    if cfg.lora_rank <= 0:
+        raise ValueError(
+            "serverless mode requires lora_rank > 0 (the pool is LoRA-only)."
+        )
+    if not cfg.max_seq_len:
+        raise ValueError(
+            "serverless mode requires Config.max_seq_len to be set "
+            "(there is no training shape to resolve it from)."
+        )
+    service = FiretitanServiceClient(
+        base_url=serverless_base_url(base_url),
+        api_key=api_key,
+        default_headers=additional_headers or None,
+        managed_additional_headers=additional_headers,
+    )
+    stack.callback(service.close)
+    if close_session_on_exit:
+        # Registered before model creation reserves the session, so a setup
+        # failure still releases it; unwinds before ``service.close``.
+        stack.callback(close_serverless_session, service)
+    # This helper is shared by the serverless SFT and DPO recipes only. Opt the
+    # holder in before model creation so create/retrieve and training futures
+    # share the narrowly scoped capacity-409 retry policy.
+    enable_serverless_supervised_409_retry(service)
+    training_client = service.create_lora_training_client(
+        cfg.base_model,
+        rank=cfg.lora_rank,
+        alpha=getattr(cfg, "lora_alpha", 32),
+    )
+    # The API gateway now returns run-scoped model ids
+    # ("{run_id}:train:{seq}"). The owning CP TrainingSession remains on the
+    # service holder and is the resource used for checkpoint list/promote.
+    session_id = getattr(service, "training_session_id", None)
+    if not session_id:
+        raise RuntimeError(
+            "serverless service did not expose a training_session_id; "
+            "cannot resolve the training session id for checkpoint promotion."
+        )
+    client = ReconnectableClient.from_training_client(
+        training_client,
+        base_model=cfg.base_model,
+        lora_rank=cfg.lora_rank,
+        job_id=session_id,
+        default_timeout=cfg.step_timeout or DEFAULT_TIMEOUT_S,
+        service=service,
+    )
+    # Checkpoint list/promote use the session-scoped endpoints on the regular
+    # gateway (not the serverless surface base_url). cp_client holds a persistent
+    # sync httpx client, so register its close on teardown like the dedicated
+    # path closes its service client.
+    cp_client = FireworksClient(
+        api_key=api_key, base_url=gateway_root_url(base_url), additional_headers=additional_headers
+    )
+    stack.callback(cp_client.close)
+    account_id = cp_client.account_id
+    run_id = getattr(training_client, "run_id", None)
+    ckpt = TrainingCheckpoints(
+        client,
+        ServerlessCheckpointClient(cp_client, account_id),
+        trainer_id=session_id,
+        log_path=cfg.log_path,
+        lora_rank=cfg.lora_rank,
+        serverless=True,
+        current_run_id=run_id,
+    )
+    # Serverless checkpoints are namespaced under the run that saved them, so
+    # another process continues this run with a fully qualified reference.
+    logger.info(
+        "Serverless training session %s, run %s. To continue from one of this "
+        "run's checkpoints in a new process, pass "
+        "init_from_checkpoint='%s/%s/<checkpoint>' with the same log_path.",
+        session_id,
+        run_id,
+        account_id,
+        run_id,
+    )
+    return service, client, ckpt, session_id, cfg.max_seq_len

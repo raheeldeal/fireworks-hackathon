@@ -1,0 +1,58 @@
+{
+  "model": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+  "prompt": "v1_plain",
+  "mock": false,
+  "n": 5,
+  "accuracy": 1.0,
+  "invalid_outputs": 0,
+  "p50_latency_s": 0.867,
+  "p95_latency_s": 0.895,
+  "cost_per_1k_requests_usd": 0.0,
+  "rows": [
+    {
+      "id": 1,
+      "text": "I was charged twice for my subscription this month, please refund one.",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.6784920692443848
+    },
+    {
+      "id": 2,
+      "text": "The export button does nothing when I click it on Safari.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 1.3981330394744873
+    },
+    {
+      "id": 3,
+      "text": "Would love a dark mode option in the mobile app.",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.894862174987793
+    },
+    {
+      "id": 4,
+      "text": "I can't log in, it says my password is wrong but I just reset it.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.8316652774810791
+    },
+    {
+      "id": 5,
+      "text": "How do I invite a teammate to my workspace?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.8672440052032471
+    }
+  ]
+}

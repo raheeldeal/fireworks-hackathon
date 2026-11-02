@@ -1,0 +1,27 @@
+[
+ {
+  "id": 266,
+  "text": "How long will it take for my transfer to arrive?",
+  "label": "transfer_not_received_by_recipient"
+ },
+ {
+  "id": 193,
+  "text": "My top-up seems to be pending for a long time?",
+  "label": "pending_top_up"
+ },
+ {
+  "id": 55,
+  "text": "I need my card as quick as possible",
+  "label": "card_delivery_estimate"
+ },
+ {
+  "id": 209,
+  "text": "Hello, i'd like to inform you of an issue i'm currently experiencing. The goods i have ordered from your website have still not arrived yet; it has been over 3 weeks. I would like to be issued a refund swiftly and be redirected to more competent people. Thank you for your assistance.",
+  "label": "request_refund"
+ },
+ {
+  "id": 300,
+  "text": "Why are you asking so many questions about me?",
+  "label": "why_verify_identity"
+ }
+]

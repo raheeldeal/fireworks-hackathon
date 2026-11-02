@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["brand", "product_type", "color", "size", "material", "price_usd", "quantity", "is_bundle"],
+  "properties": {
+    "brand": {"type": "string"},
+    "product_type": {"type": "string", "enum": ["t-shirt", "hoodie", "jacket", "jeans", "dress", "sneakers", "boots", "backpack", "wallet", "sunglasses", "watch", "headphones", "phone case", "water bottle", "coffee mug", "blender", "desk lamp", "office chair", "bed sheets", "bath towel", "yoga mat", "dog leash", "candle", "notebook"]},
+    "color": {"type": ["string", "null"], "enum": ["black", "white", "gray", "red", "blue", "navy", "green", "yellow", "orange", "pink", "purple", "brown", "beige", "silver", "gold", "multicolor", null]},
+    "size": {"type": ["string", "null"]},
+    "material": {"type": ["string", "null"], "enum": ["cotton", "polyester", "leather", "stainless steel", "plastic", "wood", "glass", "silicone", "nylon", "wool", "bamboo", "ceramic", "aluminum", "canvas", "linen", null]},
+    "price_usd": {"type": ["number", "null"]},
+    "quantity": {"type": "integer", "minimum": 1},
+    "is_bundle": {"type": "boolean"}
+  }
+}

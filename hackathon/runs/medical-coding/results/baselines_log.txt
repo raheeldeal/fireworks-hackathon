@@ -1,0 +1,962 @@
+✓ mc-210 gold=['E03'] pred=['E03'] f1=1.00 3.3s rt=1462
+✗ mc-417 gold=['I25', 'K80'] pred=[] f1=0.00 4.7s rt=2048
+✗ mc-356 gold=['E05', 'J18'] pred=[] f1=0.00 5.0s rt=2048
+✓ mc-344 gold=['F90'] pred=['F90'] f1=1.00 3.3s rt=1512
+✗ mc-087 gold=['A41', 'E55', 'I21', 'I82'] pred=[] f1=0.00 3.4s rt=2048
+✗ mc-281 gold=['E11', 'E55'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-454 gold=['B34', 'F17', 'J44'] pred=[] f1=0.00 5.3s rt=2048
+✗ mc-187 gold=['F41', 'G20', 'I73', 'M10'] pred=[] f1=0.00 3.4s rt=2048
+✓ mc-229 gold=['J01', 'N40'] pred=['J01', 'N40'] f1=1.00 3.9s rt=1807
+✓ mc-393 gold=['G30', 'J02', 'J18', 'L30'] pred=['G30', 'J02', 'J18', 'L30'] f1=1.00 4.0s rt=1902
+✗ mc-440 gold=['A41', 'I21', 'L03', 'N18'] pred=[] f1=0.00 5.3s rt=2046
+✗ mc-201 gold=['B34', 'E05', 'K80', 'N17'] pred=[] f1=0.00 4.3s rt=2048
+✗ mc-069 gold=['D64', 'I26', 'J44'] pred=[] f1=0.00 5.2s rt=2048
+✗ mc-189 gold=['B34', 'E55', 'F43', 'N40'] pred=[] f1=0.00 6.9s rt=2048
+✗ mc-205 gold=['E66', 'F10', 'I10', 'I73'] pred=[] f1=0.00 4.3s rt=2048
+✗ mc-396 gold=['J44'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-363 gold=['I10', 'K76'] pred=[] f1=0.00 4.1s rt=2047
+✓ mc-245 gold=['A09', 'F41', 'M06'] pred=['A09', 'F41', 'M06'] f1=1.00 3.8s rt=1388
+✓ mc-310 gold=['F90'] pred=['F90'] f1=1.00 3.0s rt=1365
+✓ mc-019 gold=['D50'] pred=['D50'] f1=1.00 4.6s rt=1809
+✗ mc-394 gold=['E05', 'K57', 'K58'] pred=[] f1=0.00 5.0s rt=2048
+✗ mc-475 gold=['I73', 'J02', 'N40'] pred=[] f1=0.00 4.9s rt=2048
+~ mc-036 gold=['A09', 'F43', 'J01', 'N17'] pred=['A09'] f1=0.40 5.4s rt=2040
+✗ mc-038 gold=['K57'] pred=[] f1=0.00 5.1s rt=2048
+✓ mc-373 gold=['E55', 'I50'] pred=['E55', 'I50'] f1=1.00 5.0s rt=1959
+✗ mc-098 gold=['I25', 'M06', 'M54'] pred=[] f1=0.00 4.7s rt=2048
+✗ mc-139 gold=['K80'] pred=[] f1=0.00 4.1s rt=2048
+✗ mc-018 gold=['K29'] pred=[] f1=0.00 5.3s rt=2048
+✗ mc-498 gold=['J44', 'M81'] pred=[] f1=0.00 6.6s rt=2047
+✗ mc-358 gold=['I10', 'J02', 'N17'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-317 gold=['E05', 'M06'] pred=[] f1=0.00 4.5s rt=2046
+✗ mc-305 gold=['I10', 'I21'] pred=[] f1=0.00 5.0s rt=2048
+✗ mc-211 gold=['D64', 'F32'] pred=[] f1=0.00 4.3s rt=2048
+✓ mc-381 gold=['I25', 'J45'] pred=['I25', 'J45'] f1=1.00 3.1s rt=1413
+✗ mc-223 gold=['I21', 'J18', 'M54', 'N18'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-470 gold=['B34', 'J20'] pred=[] f1=0.00 6.1s rt=2048
+✗ mc-499 gold=['J02', 'J45'] pred=[] f1=0.00 5.3s rt=2048
+✗ mc-221 gold=['A09', 'F17', 'F43'] pred=[] f1=0.00 5.6s rt=2048
+ERROR mc-153 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-43c64dc769d4489797ecd342932534d4"}
+✗ mc-153 gold=['K35'] pred=[] f1=0.00 0.0s rt=0
+✗ mc-409 gold=['F41', 'I50', 'K58'] pred=[] f1=0.00 7.0s rt=2048
+✗ mc-145 gold=['F41', 'G40'] pred=[] f1=0.00 5.7s rt=2048
+✗ mc-434 gold=['A09'] pred=[] f1=0.00 7.3s rt=2048
+✓ mc-161 gold=['F17', 'K76'] pred=['F17', 'K76'] f1=1.00 3.0s rt=1918
+✓ mc-141 gold=['E03', 'I26', 'L03', 'R10'] pred=['E03', 'I26', 'L03', 'R10'] f1=1.00 3.0s rt=1218
+✗ mc-014 gold=['E66', 'F43', 'G43'] pred=[] f1=0.00 7.0s rt=2048
+✗ mc-285 gold=['E66', 'L30'] pred=[] f1=0.00 3.2s rt=2048
+✓ mc-232 gold=['E66', 'F17', 'F43', 'I63'] pred=['E66', 'F17', 'F43', 'I63'] f1=1.00 4.2s rt=1993
+✓ mc-154 gold=['K21'] pred=['K21'] f1=1.00 5.3s rt=2026
+✗ mc-384 gold=['E03', 'F10', 'K35'] pred=[] f1=0.00 4.9s rt=2047
+✗ mc-059 gold=['A41'] pred=[] f1=0.00 3.2s rt=2048
+✗ mc-429 gold=['G47', 'J02', 'M79', 'M81'] pred=[] f1=0.00 3.2s rt=2048
+✗ mc-131 gold=['E55', 'G20', 'M54'] pred=[] f1=0.00 4.1s rt=2048
+✓ mc-130 gold=['I82', 'M81'] pred=['I82', 'M81'] f1=1.00 4.4s rt=1406
+✗ mc-348 gold=['I10', 'M06'] pred=[] f1=0.00 5.1s rt=2047
+✓ mc-486 gold=['F90', 'J20', 'K80', 'M06'] pred=['F90', 'J20', 'K80', 'M06'] f1=1.00 3.7s rt=1643
+✗ mc-441 gold=['G47', 'I21', 'K29', 'M06'] pred=[] f1=0.00 3.9s rt=2048
+✓ mc-286 gold=['F17', 'G20'] pred=['F17', 'G20'] f1=1.00 6.3s rt=1910
+✓ mc-414 gold=['J45', 'K21', 'M79'] pred=['J45', 'K21', 'M79'] f1=1.00 3.6s rt=1539
+✗ mc-163 gold=['E55', 'K57', 'M17', 'N18'] pred=[] f1=0.00 5.5s rt=2048
+✓ mc-413 gold=['F32', 'J45', 'L03', 'M54'] pred=['F32', 'J45', 'L03', 'M54'] f1=1.00 4.2s rt=1753
+✗ mc-315 gold=['I48', 'J06'] pred=[] f1=0.00 4.2s rt=2047
+✗ mc-276 gold=['F90', 'N39'] pred=[] f1=0.00 5.4s rt=2048
+✓ mc-462 gold=['I48'] pred=['I48'] f1=1.00 4.2s rt=1524
+✗ mc-192 gold=['A41', 'D50', 'K58', 'M54'] pred=[] f1=0.00 4.3s rt=2048
+✗ mc-112 gold=['A09', 'J18'] pred=[] f1=0.00 4.1s rt=2048
+✗ mc-146 gold=['E03', 'I50'] pred=[] f1=0.00 3.7s rt=2047
+✗ mc-448 gold=['E03', 'G47'] pred=[] f1=0.00 5.3s rt=2048
+✗ mc-185 gold=['I26', 'I48', 'K57'] pred=[] f1=0.00 4.8s rt=2048
+✓ mc-203 gold=['I82', 'J06'] pred=['I82', 'J06'] f1=1.00 3.7s rt=1663
+✗ mc-078 gold=['A41', 'L30', 'N18'] pred=[] f1=0.00 5.1s rt=2048
+✓ mc-274 gold=['J45'] pred=['J45'] f1=1.00 4.0s rt=1399
+✗ mc-360 gold=['M10', 'M54'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-113 gold=['I63'] pred=[] f1=0.00 5.0s rt=2048
+✗ mc-481 gold=['D50', 'E78', 'M81'] pred=[] f1=0.00 5.9s rt=2048
+✗ mc-231 gold=['A41'] pred=[] f1=0.00 5.3s rt=2048
+✗ mc-053 gold=['J44', 'M06', 'N39', 'N40'] pred=[] f1=0.00 4.0s rt=2048
+✗ mc-110 gold=['I73', 'M17'] pred=[] f1=0.00 5.0s rt=2048
+✗ mc-126 gold=['E03', 'K21'] pred=[] f1=0.00 7.6s rt=2048
+✗ mc-027 gold=['A41', 'G30'] pred=[] f1=0.00 3.8s rt=2047
+✓ mc-097 gold=['G43', 'I48'] pred=['G43', 'I48'] f1=1.00 4.4s rt=1693
+✓ mc-366 gold=['I21'] pred=['I21'] f1=1.00 3.5s rt=1809
+✗ mc-183 gold=['K35', 'N18', 'N40'] pred=[] f1=0.00 7.4s rt=2048
+✗ mc-277 gold=['I48', 'M17'] pred=[] f1=0.00 5.2s rt=2048
+✗ mc-156 gold=['G20', 'K35'] pred=[] f1=0.00 6.1s rt=2048
+✗ mc-122 gold=['E10', 'F32', 'F90', 'K76'] pred=[] f1=0.00 6.5s rt=2047
+✗ mc-379 gold=['L03'] pred=[] f1=0.00 6.5s rt=2048
+✓ mc-376 gold=['G20', 'G30'] pred=['G20', 'G30'] f1=1.00 4.2s rt=1493
+✓ mc-198 gold=['G20', 'K21'] pred=['G20', 'K21'] f1=1.00 7.6s rt=1950
+✗ mc-170 gold=['I63'] pred=[] f1=0.00 4.0s rt=2047
+✓ mc-280 gold=['I48'] pred=['I48'] f1=1.00 4.4s rt=1786
+✗ mc-410 gold=['D50'] pred=[] f1=0.00 4.4s rt=2048
+✓ mc-241 gold=['E03', 'F90', 'M79', 'N40'] pred=['E03', 'F90', 'M79', 'N40'] f1=1.00 3.1s rt=1220
+✗ mc-375 gold=['D50', 'F10', 'K57'] pred=[] f1=0.00 6.1s rt=2048
+✓ mc-096 gold=['M06', 'N39'] pred=['M06', 'N39'] f1=1.00 4.2s rt=1665
+ERROR mc-340 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-b806ddadbc6246e681c1788cc33afb6e"}
+✗ mc-340 gold=['F90'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-051 gold=['I48', 'L30'] pred=['I48', 'L30'] f1=1.00 5.8s rt=1869
+✗ mc-178 gold=['F17', 'F32', 'I21', 'N39'] pred=[] f1=0.00 4.7s rt=2048
+✗ mc-215 gold=['I50', 'J20', 'L40'] pred=[] f1=0.00 4.0s rt=2048
+✓ mc-057 gold=['K58'] pred=['K58'] f1=1.00 4.7s rt=2012
+✗ mc-083 gold=['L30', 'M06'] pred=[] f1=0.00 5.5s rt=2047
+✗ mc-031 gold=['I73', 'J45', 'L03', 'M10'] pred=[] f1=0.00 3.8s rt=2048
+✗ mc-243 gold=['E66', 'I48', 'L03'] pred=[] f1=0.00 5.3s rt=2048
+ERROR mc-282 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-be86933b960e451fbf97351af39df716"}
+✗ mc-282 gold=['J20'] pred=[] f1=0.00 0.0s rt=0
+✗ mc-147 gold=['I73', 'M17'] pred=[] f1=0.00 4.3s rt=2048
+✗ mc-257 gold=['E55', 'F43', 'L40'] pred=[] f1=0.00 5.7s rt=2048
+✗ mc-472 gold=['K35'] pred=[] f1=0.00 5.1s rt=2048
+✗ mc-196 gold=['J18', 'L30'] pred=[] f1=0.00 3.6s rt=2048
+✗ mc-064 gold=['E05', 'K76'] pred=[] f1=0.00 4.6s rt=2048
+✗ mc-072 gold=['I10', 'I26', 'L03'] pred=[] f1=0.00 4.7s rt=2048
+✗ mc-308 gold=['E05'] pred=[] f1=0.00 5.0s rt=2047
+✓ mc-181 gold=['I10', 'K57', 'N40'] pred=['I10', 'K57', 'N40'] f1=1.00 2.8s rt=1371
+✗ mc-092 gold=['A09', 'E55', 'G30'] pred=[] f1=0.00 7.3s rt=2048
+✗ mc-391 gold=['I25', 'N17', 'N18'] pred=[] f1=0.00 3.8s rt=2048
+✗ mc-431 gold=['F43', 'I82', 'K21', 'M54'] pred=[] f1=0.00 5.3s rt=2048
+✓ mc-445 gold=['G30', 'I25', 'J06'] pred=['G30', 'I25', 'J06'] f1=1.00 4.4s rt=1547
+✗ mc-212 gold=['F90', 'I82', 'N40'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-399 gold=['A41', 'J45', 'K29', 'N40'] pred=[] f1=0.00 6.0s rt=2048
+✗ mc-121 gold=['B34', 'D50', 'F10'] pred=[] f1=0.00 4.0s rt=2048
+✗ mc-081 gold=['G40', 'M06'] pred=[] f1=0.00 3.8s rt=2048
+✗ mc-015 gold=['J20'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-291 gold=['M81'] pred=[] f1=0.00 4.0s rt=2048
+✗ mc-028 gold=['E05', 'L30'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-253 gold=['E05', 'K29'] pred=[] f1=0.00 4.2s rt=2048
+✗ mc-144 gold=['J02', 'M10'] pred=[] f1=0.00 4.1s rt=2048
+✓ mc-226 gold=['E55', 'J06', 'M10'] pred=['E55', 'J06', 'M10'] f1=1.00 4.1s rt=1943
+✗ mc-442 gold=['K76'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-484 gold=['E78', 'I26'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-066 gold=['I25', 'J01', 'J44', 'N17'] pred=[] f1=0.00 6.3s rt=2048
+✗ mc-155 gold=['I50', 'I63', 'J44', 'L03'] pred=[] f1=0.00 5.4s rt=2048
+✓ mc-331 gold=['R10'] pred=['R10'] f1=1.00 6.7s rt=2007
+✗ mc-293 gold=['F43', 'G30', 'J02', 'M79'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-086 gold=['G43', 'G47', 'L03'] pred=[] f1=0.00 6.5s rt=2048
+✗ mc-275 gold=['D64', 'F10', 'I25', 'M17'] pred=[] f1=0.00 3.9s rt=2048
+✗ mc-433 gold=['M54'] pred=[] f1=0.00 5.5s rt=2048
+✗ mc-009 gold=['J20', 'R10'] pred=[] f1=0.00 5.6s rt=2047
+✗ mc-468 gold=['N18'] pred=[] f1=0.00 5.9s rt=2048
+✗ mc-010 gold=['A41', 'F10', 'L30'] pred=[] f1=0.00 5.5s rt=2048
+✓ mc-447 gold=['L40'] pred=['L40'] f1=1.00 3.1s rt=1245
+✗ mc-209 gold=['I73', 'K80'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-093 gold=['G40', 'G47', 'J18'] pred=[] f1=0.00 4.1s rt=2048
+✓ mc-461 gold=['L40'] pred=['L40'] f1=1.00 2.4s rt=1404
+✗ mc-319 gold=['I21'] pred=[] f1=0.00 5.5s rt=2048
+✗ mc-457 gold=['F90', 'M10', 'M79'] pred=[] f1=0.00 5.1s rt=2048
+✓ mc-172 gold=['E66', 'E78', 'I25'] pred=['E66', 'E78', 'I25'] f1=1.00 4.7s rt=1807
+✗ mc-306 gold=['F10', 'I25', 'J01', 'K80'] pred=[] f1=0.00 5.8s rt=2048
+✗ mc-125 gold=['A41', 'J20'] pred=[] f1=0.00 4.3s rt=2048
+✓ mc-193 gold=['J06', 'L40', 'N18'] pred=['J06', 'L40', 'N18'] f1=1.00 4.4s rt=1955
+✓ mc-312 gold=['E03', 'J45'] pred=['E03', 'J45'] f1=1.00 4.7s rt=1970
+✗ mc-177 gold=['I21', 'M17'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-296 gold=['K76', 'M17'] pred=[] f1=0.00 4.6s rt=2048
+✓ mc-430 gold=['G20'] pred=['G20'] f1=1.00 4.0s rt=1635
+✗ mc-327 gold=['I25', 'M17'] pred=[] f1=0.00 4.9s rt=2048
+✗ mc-483 gold=['A41'] pred=[] f1=0.00 4.9s rt=2048
+✗ mc-034 gold=['F41', 'L30'] pred=[] f1=0.00 3.4s rt=2048
+✓ mc-143 gold=['L40'] pred=['L40'] f1=1.00 4.5s rt=1618
+✓ mc-401 gold=['E78', 'F32', 'I48', 'J02'] pred=['E78', 'F32', 'I48', 'J02'] f1=1.00 4.8s rt=1498
+✗ mc-021 gold=['D50'] pred=[] f1=0.00 4.9s rt=2048
+✗ mc-065 gold=['D50', 'R10'] pred=[] f1=0.00 3.7s rt=2048
+✗ mc-248 gold=['E10', 'I21'] pred=[] f1=0.00 5.2s rt=2048
+✓ mc-003 gold=['F41'] pred=['F41'] f1=1.00 5.6s rt=1710
+✓ mc-295 gold=['E66', 'F43', 'M17'] pred=['E66', 'F43', 'M17'] f1=1.00 3.0s rt=1232
+✗ mc-029 gold=['M17'] pred=[] f1=0.00 4.1s rt=2048
+✗ mc-323 gold=['K76', 'N17'] pred=[] f1=0.00 5.7s rt=2048
+✓ mc-273 gold=['I48', 'J20', 'N18'] pred=['I48', 'J20', 'N18'] f1=1.00 5.1s rt=2024
+✗ mc-368 gold=['B34', 'G40', 'J44', 'K29'] pred=[] f1=0.00 4.5s rt=2048
+✗ mc-111 gold=['E66', 'I26', 'N17'] pred=[] f1=0.00 3.7s rt=2048
+✗ mc-214 gold=['F17', 'G40', 'J45', 'N39'] pred=[] f1=0.00 4.8s rt=2048
+✓ mc-382 gold=['A09', 'I63', 'J02', 'K80'] pred=['A09', 'I63', 'J02', 'K80'] f1=1.00 3.4s rt=1486
+✓ mc-090 gold=['G20', 'N39'] pred=['G20', 'N39'] f1=1.00 4.9s rt=1963
+✗ mc-332 gold=['D50', 'I10', 'J44'] pred=[] f1=0.00 6.7s rt=2048
+✓ mc-337 gold=['L03'] pred=['L03'] f1=1.00 5.0s rt=1801
+✓ mc-197 gold=['I63', 'L40'] pred=['I63', 'L40'] f1=1.00 5.1s rt=1707
+✗ mc-428 gold=['G43', 'K76'] pred=[] f1=0.00 4.3s rt=2048
+✓ mc-132 gold=['E10'] pred=['E10'] f1=1.00 3.1s rt=1387
+✗ mc-314 gold=['J01', 'K58', 'N39'] pred=[] f1=0.00 3.3s rt=2048
+✗ mc-142 gold=['F10', 'F90', 'K76'] pred=[] f1=0.00 4.8s rt=2048
+✗ mc-307 gold=['J06', 'M81'] pred=[] f1=0.00 3.3s rt=2048
+✗ mc-355 gold=['E03', 'G30', 'N39'] pred=[] f1=0.00 3.3s rt=2048
+✗ mc-095 gold=['G47', 'J45', 'K57'] pred=[] f1=0.00 4.6s rt=2048
+✓ mc-076 gold=['J01'] pred=['J01'] f1=1.00 3.3s rt=1390
+
+accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b + v1_plain: F1 0.286 | exact 0.283 | invalid 128 | p50 4.602s p95 6.653s | $0.424/1k | run cost $0.076 | ledger $1.024
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/medical-coding/results/nemotron-lightning-3p5-30b-a3b_v1_plain_s7.json
+✓ mc-344 gold=['F90'] pred=['F90'] f1=1.00 0.7s rt=36
+✓ mc-210 gold=['E03'] pred=['E03'] f1=1.00 1.0s rt=56
+~ mc-281 gold=['E11', 'E55'] pred=['E11', 'E55', 'M79'] f1=0.80 2.6s rt=337
+~ mc-087 gold=['A41', 'E55', 'I21', 'I82'] pred=['A41', 'E55', 'I21', 'I82', 'N39'] f1=0.89 2.5s rt=353
+✓ mc-356 gold=['E05', 'J18'] pred=['E05', 'J18'] f1=1.00 1.8s rt=228
+✓ mc-187 gold=['F41', 'G20', 'I73', 'M10'] pred=['F41', 'G20', 'I73', 'M10'] f1=1.00 1.1s rt=71
+✓ mc-417 gold=['I25', 'K80'] pred=['I25', 'K80'] f1=1.00 1.0s rt=78
+✓ mc-440 gold=['A41', 'I21', 'L03', 'N18'] pred=['A41', 'I21', 'L03', 'N18'] f1=1.00 1.6s rt=161
+✓ mc-229 gold=['J01', 'N40'] pred=['J01', 'N40'] f1=1.00 1.0s rt=100
+✓ mc-393 gold=['G30', 'J02', 'J18', 'L30'] pred=['G30', 'J02', 'J18', 'L30'] f1=1.00 1.2s rt=160
+✓ mc-069 gold=['D64', 'I26', 'J44'] pred=['D64', 'I26', 'J44'] f1=1.00 1.1s rt=128
+~ mc-454 gold=['B34', 'F17', 'J44'] pred=['F17', 'J06', 'J44'] f1=0.67 1.8s rt=231
+✓ mc-396 gold=['J44'] pred=['J44'] f1=1.00 3.6s rt=499
+✓ mc-363 gold=['I10', 'K76'] pred=['I10', 'K76'] f1=1.00 1.0s rt=76
+✓ mc-245 gold=['A09', 'F41', 'M06'] pred=['A09', 'F41', 'M06'] f1=1.00 1.6s rt=171
+✓ mc-019 gold=['D50'] pred=['D50'] f1=1.00 0.9s rt=71
+✓ mc-310 gold=['F90'] pred=['F90'] f1=1.00 1.0s rt=59
+✓ mc-373 gold=['E55', 'I50'] pred=['E55', 'I50'] f1=1.00 0.7s rt=28
+✓ mc-201 gold=['B34', 'E05', 'K80', 'N17'] pred=['B34', 'E05', 'K80', 'N17'] f1=1.00 2.9s rt=368
+✓ mc-394 gold=['E05', 'K57', 'K58'] pred=['E05', 'K57', 'K58'] f1=1.00 1.1s rt=97
+✓ mc-475 gold=['I73', 'J02', 'N40'] pred=['I73', 'J02', 'N40'] f1=1.00 1.2s rt=116
+✓ mc-153 gold=['K35'] pred=['K35'] f1=1.00 1.4s rt=159
+✓ mc-038 gold=['K57'] pred=['K57'] f1=1.00 2.0s rt=193
+✓ mc-098 gold=['I25', 'M06', 'M54'] pred=['I25', 'M06', 'M54'] f1=1.00 1.9s rt=186
+✓ mc-018 gold=['K29'] pred=['K29'] f1=1.00 0.9s rt=57
+✓ mc-036 gold=['A09', 'F43', 'J01', 'N17'] pred=['A09', 'F43', 'J01', 'N17'] f1=1.00 1.7s rt=139
+✓ mc-498 gold=['J44', 'M81'] pred=['J44', 'M81'] f1=1.00 1.6s rt=168
+✓ mc-139 gold=['K80'] pred=['K80'] f1=1.00 1.2s rt=120
+✓ mc-358 gold=['I10', 'J02', 'N17'] pred=['I10', 'J02', 'N17'] f1=1.00 1.3s rt=140
+✓ mc-305 gold=['I10', 'I21'] pred=['I10', 'I21'] f1=1.00 1.0s rt=100
+✓ mc-317 gold=['E05', 'M06'] pred=['E05', 'M06'] f1=1.00 0.9s rt=60
+ERROR mc-189 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-4a6f227741f74135b7d6116e9b7778ff"}
+✗ mc-189 gold=['B34', 'E55', 'F43', 'N40'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-381 gold=['I25', 'J45'] pred=['I25', 'J45'] f1=1.00 2.2s rt=215
+~ mc-211 gold=['D64', 'F32'] pred=['D50', 'F32'] f1=0.50 2.0s rt=161
+✓ mc-223 gold=['I21', 'J18', 'M54', 'N18'] pred=['I21', 'J18', 'M54', 'N18'] f1=1.00 1.0s rt=97
+✓ mc-221 gold=['A09', 'F17', 'F43'] pred=['A09', 'F17', 'F43'] f1=1.00 0.9s rt=67
+✓ mc-499 gold=['J02', 'J45'] pred=['J02', 'J45'] f1=1.00 1.2s rt=96
+✓ mc-409 gold=['F41', 'I50', 'K58'] pred=['F41', 'I50', 'K58'] f1=1.00 1.1s rt=103
+ERROR mc-205 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-0d494a2e6cd848d4a42c9536cbdde9f0"}
+✗ mc-205 gold=['E66', 'F10', 'I10', 'I73'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-470 gold=['B34', 'J20'] pred=['B34', 'J20'] f1=1.00 3.2s rt=415
+✓ mc-141 gold=['E03', 'I26', 'L03', 'R10'] pred=['E03', 'I26', 'L03', 'R10'] f1=1.00 1.1s rt=129
+✓ mc-145 gold=['F41', 'G40'] pred=['F41', 'G40'] f1=1.00 0.9s rt=55
+✓ mc-154 gold=['K21'] pred=['K21'] f1=1.00 1.0s rt=46
+✓ mc-014 gold=['E66', 'F43', 'G43'] pred=['E66', 'F43', 'G43'] f1=1.00 0.9s rt=67
+✓ mc-285 gold=['E66', 'L30'] pred=['E66', 'L30'] f1=1.00 1.5s rt=144
+✓ mc-232 gold=['E66', 'F17', 'F43', 'I63'] pred=['E66', 'F17', 'F43', 'I63'] f1=1.00 3.0s rt=380
+✓ mc-384 gold=['E03', 'F10', 'K35'] pred=['E03', 'F10', 'K35'] f1=1.00 1.0s rt=87
+~ mc-059 gold=['A41'] pred=['A41', 'N39'] f1=0.67 1.2s rt=99
+✓ mc-130 gold=['I82', 'M81'] pred=['I82', 'M81'] f1=1.00 1.4s rt=74
+✓ mc-161 gold=['F17', 'K76'] pred=['F17', 'K76'] f1=1.00 2.7s rt=315
+✓ mc-286 gold=['F17', 'G20'] pred=['F17', 'G20'] f1=1.00 1.9s rt=71
+✓ mc-434 gold=['A09'] pred=['A09'] f1=1.00 2.4s rt=266
+✓ mc-348 gold=['I10', 'M06'] pred=['I10', 'M06'] f1=1.00 1.4s rt=22
+✓ mc-163 gold=['E55', 'K57', 'M17', 'N18'] pred=['E55', 'K57', 'M17', 'N18'] f1=1.00 1.8s rt=133
+✓ mc-429 gold=['G47', 'J02', 'M79', 'M81'] pred=['G47', 'J02', 'M79', 'M81'] f1=1.00 2.8s rt=232
+✓ mc-486 gold=['F90', 'J20', 'K80', 'M06'] pred=['F90', 'J20', 'K80', 'M06'] f1=1.00 1.3s rt=77
+✓ mc-414 gold=['J45', 'K21', 'M79'] pred=['J45', 'K21', 'M79'] f1=1.00 0.9s rt=83
+✓ mc-441 gold=['G47', 'I21', 'K29', 'M06'] pred=['G47', 'I21', 'K29', 'M06'] f1=1.00 1.5s rt=195
+✓ mc-413 gold=['F32', 'J45', 'L03', 'M54'] pred=['F32', 'J45', 'L03', 'M54'] f1=1.00 1.0s rt=93
+✓ mc-315 gold=['I48', 'J06'] pred=['I48', 'J06'] f1=1.00 0.9s rt=59
+✓ mc-462 gold=['I48'] pred=['I48'] f1=1.00 0.8s rt=42
+~ mc-192 gold=['A41', 'D50', 'K58', 'M54'] pred=['A41', 'D50', 'K58', 'M54', 'N39'] f1=0.89 2.2s rt=286
+~ mc-112 gold=['A09', 'J18'] pred=['A09', 'J18', 'R10'] f1=0.80 1.0s rt=93
+✓ mc-146 gold=['E03', 'I50'] pred=['E03', 'I50'] f1=1.00 1.0s rt=82
+✓ mc-131 gold=['E55', 'G20', 'M54'] pred=['E55', 'G20', 'M54'] f1=1.00 0.6s rt=42
+✓ mc-203 gold=['I82', 'J06'] pred=['I82', 'J06'] f1=1.00 0.7s rt=41
+✓ mc-185 gold=['I26', 'I48', 'K57'] pred=['I26', 'I48', 'K57'] f1=1.00 1.4s rt=74
+✓ mc-078 gold=['A41', 'L30', 'N18'] pred=['A41', 'L30', 'N18'] f1=1.00 1.2s rt=156
+✓ mc-276 gold=['F90', 'N39'] pred=['F90', 'N39'] f1=1.00 0.8s rt=47
+✓ mc-113 gold=['I63'] pred=['I63'] f1=1.00 0.7s rt=54
+✓ mc-448 gold=['E03', 'G47'] pred=['E03', 'G47'] f1=1.00 4.2s rt=554
+~ mc-231 gold=['A41'] pred=['A41', 'N39'] f1=0.67 1.6s rt=225
+✓ mc-274 gold=['J45'] pred=['J45'] f1=1.00 0.6s rt=18
+✓ mc-360 gold=['M10', 'M54'] pred=['M10', 'M54'] f1=1.00 1.0s rt=71
+✓ mc-481 gold=['D50', 'E78', 'M81'] pred=['D50', 'E78', 'M81'] f1=1.00 1.0s rt=101
+✓ mc-126 gold=['E03', 'K21'] pred=['E03', 'K21'] f1=1.00 1.0s rt=87
+✓ mc-053 gold=['J44', 'M06', 'N39', 'N40'] pred=['J44', 'M06', 'N39', 'N40'] f1=1.00 0.9s rt=83
+✓ mc-183 gold=['K35', 'N18', 'N40'] pred=['K35', 'N18', 'N40'] f1=1.00 1.8s rt=206
+✓ mc-366 gold=['I21'] pred=['I21'] f1=1.00 1.2s rt=93
+✓ mc-110 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 1.0s rt=93
+✓ mc-277 gold=['I48', 'M17'] pred=['I48', 'M17'] f1=1.00 0.7s rt=35
+✓ mc-156 gold=['G20', 'K35'] pred=['G20', 'K35'] f1=1.00 1.3s rt=164
+✓ mc-340 gold=['F90'] pred=['F90'] f1=1.00 0.9s rt=28
+✓ mc-097 gold=['G43', 'I48'] pred=['G43', 'I48'] f1=1.00 14.4s rt=60
+✓ mc-122 gold=['E10', 'F32', 'F90', 'K76'] pred=['E10', 'F32', 'F90', 'K76'] f1=1.00 0.9s rt=66
+✓ mc-280 gold=['I48'] pred=['I48'] f1=1.00 0.8s rt=41
+✓ mc-198 gold=['G20', 'K21'] pred=['G20', 'K21'] f1=1.00 0.6s rt=24
+✓ mc-170 gold=['I63'] pred=['I63'] f1=1.00 1.5s rt=105
+✓ mc-376 gold=['G20', 'G30'] pred=['G20', 'G30'] f1=1.00 0.9s rt=20
+✓ mc-379 gold=['L03'] pred=['L03'] f1=1.00 1.1s rt=49
+✓ mc-375 gold=['D50', 'F10', 'K57'] pred=['D50', 'F10', 'K57'] f1=1.00 1.6s rt=97
+✓ mc-410 gold=['D50'] pred=['D50'] f1=1.00 1.9s rt=102
+~ mc-282 gold=['J20'] pred=['J02', 'J20'] f1=0.67 6.1s rt=745
+✓ mc-051 gold=['I48', 'L30'] pred=['I48', 'L30'] f1=1.00 2.7s rt=128
+✓ mc-241 gold=['E03', 'F90', 'M79', 'N40'] pred=['E03', 'F90', 'M79', 'N40'] f1=1.00 3.1s rt=296
+✓ mc-096 gold=['M06', 'N39'] pred=['M06', 'N39'] f1=1.00 1.8s rt=53
+✓ mc-257 gold=['E55', 'F43', 'L40'] pred=['E55', 'F43', 'L40'] f1=1.00 1.7s rt=119
+ERROR mc-027 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-ba580549bf20456cb2d8598589949827"}
+✗ mc-027 gold=['A41', 'G30'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-215 gold=['I50', 'J20', 'L40'] pred=['I50', 'J20', 'L40'] f1=1.00 1.7s rt=139
+✓ mc-083 gold=['L30', 'M06'] pred=['L30', 'M06'] f1=1.00 1.6s rt=69
+✓ mc-243 gold=['E66', 'I48', 'L03'] pred=['E66', 'I48', 'L03'] f1=1.00 1.8s rt=182
+✓ mc-147 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 1.1s rt=80
+✓ mc-178 gold=['F17', 'F32', 'I21', 'N39'] pred=['F17', 'F32', 'I21', 'N39'] f1=1.00 1.3s rt=115
+✓ mc-196 gold=['J18', 'L30'] pred=['J18', 'L30'] f1=1.00 1.1s rt=77
+✓ mc-057 gold=['K58'] pred=['K58'] f1=1.00 1.2s rt=67
+✓ mc-472 gold=['K35'] pred=['K35'] f1=1.00 1.4s rt=123
+✓ mc-092 gold=['A09', 'E55', 'G30'] pred=['A09', 'E55', 'G30'] f1=1.00 1.8s rt=196
+✓ mc-064 gold=['E05', 'K76'] pred=['E05', 'K76'] f1=1.00 1.7s rt=182
+~ mc-072 gold=['I10', 'I26', 'L03'] pred=['I26', 'L03'] f1=0.80 1.6s rt=204
+✓ mc-399 gold=['A41', 'J45', 'K29', 'N40'] pred=['A41', 'J45', 'K29', 'N40'] f1=1.00 1.9s rt=223
+✓ mc-308 gold=['E05'] pred=['E05'] f1=1.00 1.4s rt=156
+✓ mc-031 gold=['I73', 'J45', 'L03', 'M10'] pred=['I73', 'J45', 'L03', 'M10'] f1=1.00 1.1s rt=87
+✓ mc-431 gold=['F43', 'I82', 'K21', 'M54'] pred=['F43', 'I82', 'K21', 'M54'] f1=1.00 1.3s rt=123
+✓ mc-212 gold=['F90', 'I82', 'N40'] pred=['F90', 'I82', 'N40'] f1=1.00 0.7s rt=45
+✓ mc-121 gold=['B34', 'D50', 'F10'] pred=['B34', 'D50', 'F10'] f1=1.00 1.2s rt=119
+✓ mc-181 gold=['I10', 'K57', 'N40'] pred=['I10', 'K57', 'N40'] f1=1.00 1.8s rt=178
+✓ mc-081 gold=['G40', 'M06'] pred=['G40', 'M06'] f1=1.00 0.7s rt=33
+✓ mc-291 gold=['M81'] pred=['M81'] f1=1.00 1.6s rt=175
+✓ mc-445 gold=['G30', 'I25', 'J06'] pred=['G30', 'I25', 'J06'] f1=1.00 0.9s rt=73
+✓ mc-015 gold=['J20'] pred=['J20'] f1=1.00 0.7s rt=48
+✓ mc-253 gold=['E05', 'K29'] pred=['E05', 'K29'] f1=1.00 1.0s rt=110
+✓ mc-028 gold=['E05', 'L30'] pred=['E05', 'L30'] f1=1.00 1.7s rt=151
+✓ mc-144 gold=['J02', 'M10'] pred=['J02', 'M10'] f1=1.00 0.7s rt=50
+✓ mc-484 gold=['E78', 'I26'] pred=['E78', 'I26'] f1=1.00 1.4s rt=100
+✓ mc-066 gold=['I25', 'J01', 'J44', 'N17'] pred=['I25', 'J01', 'J44', 'N17'] f1=1.00 1.5s rt=185
+✓ mc-155 gold=['I50', 'I63', 'J44', 'L03'] pred=['I50', 'I63', 'J44', 'L03'] f1=1.00 1.1s rt=125
+✓ mc-226 gold=['E55', 'J06', 'M10'] pred=['E55', 'J06', 'M10'] f1=1.00 1.0s rt=92
+✓ mc-086 gold=['G43', 'G47', 'L03'] pred=['G43', 'G47', 'L03'] f1=1.00 0.8s rt=44
+✓ mc-331 gold=['R10'] pred=['R10'] f1=1.00 1.0s rt=54
+✓ mc-275 gold=['D64', 'F10', 'I25', 'M17'] pred=['D64', 'F10', 'I25', 'M17'] f1=1.00 1.8s rt=191
+~ mc-293 gold=['F43', 'G30', 'J02', 'M79'] pred=['F43', 'J02', 'M79'] f1=0.86 1.8s rt=193
+ERROR mc-391 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-a0c50e5928bd4c9ba6aeb4a0ac1e4389"}
+✗ mc-391 gold=['I25', 'N17', 'N18'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-319 gold=['I21'] pred=['I21'] f1=1.00 1.2s rt=111
+✓ mc-009 gold=['J20', 'R10'] pred=['J20', 'R10'] f1=1.00 3.3s rt=457
+~ mc-010 gold=['A41', 'F10', 'L30'] pred=['A41', 'F10', 'L30', 'N39'] f1=0.86 1.3s rt=129
+✓ mc-468 gold=['N18'] pred=['N18'] f1=1.00 0.9s rt=48
+✓ mc-447 gold=['L40'] pred=['L40'] f1=1.00 0.9s rt=52
+ERROR mc-442 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-3492f2f1071047e8957c2a4dd0eba15f"}
+✗ mc-442 gold=['K76'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-209 gold=['I73', 'K80'] pred=['I73', 'K80'] f1=1.00 2.6s rt=314
+✓ mc-461 gold=['L40'] pred=['L40'] f1=1.00 1.3s rt=43
+✓ mc-430 gold=['G20'] pred=['G20'] f1=1.00 1.3s rt=71
+✓ mc-457 gold=['F90', 'M10', 'M79'] pred=['F90', 'M10', 'M79'] f1=1.00 1.2s rt=114
+✓ mc-172 gold=['E66', 'E78', 'I25'] pred=['E66', 'E78', 'I25'] f1=1.00 1.4s rt=153
+✓ mc-125 gold=['A41', 'J20'] pred=['A41', 'J20'] f1=1.00 1.5s rt=121
+ERROR mc-433 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-33b71872816f4e6fbe8c3145b5bc8542"}
+✗ mc-433 gold=['M54'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-306 gold=['F10', 'I25', 'J01', 'K80'] pred=['F10', 'I25', 'J01', 'K80'] f1=1.00 1.2s rt=121
+ERROR mc-093 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-85bf0fcc49304c69a8c55701a5f20551"}
+✗ mc-093 gold=['G40', 'G47', 'J18'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-177 gold=['I21', 'M17'] pred=['I21', 'M17'] f1=1.00 0.9s rt=83
+✓ mc-312 gold=['E03', 'J45'] pred=['E03', 'J45'] f1=1.00 1.3s rt=61
+✓ mc-483 gold=['A41'] pred=['A41'] f1=1.00 1.1s rt=69
+✓ mc-327 gold=['I25', 'M17'] pred=['I25', 'M17'] f1=1.00 1.6s rt=163
+✓ mc-193 gold=['J06', 'L40', 'N18'] pred=['J06', 'L40', 'N18'] f1=1.00 1.2s rt=77
+✓ mc-034 gold=['F41', 'L30'] pred=['F41', 'L30'] f1=1.00 1.5s rt=89
+✓ mc-021 gold=['D50'] pred=['D50'] f1=1.00 1.2s rt=82
+✓ mc-401 gold=['E78', 'F32', 'I48', 'J02'] pred=['E78', 'F32', 'I48', 'J02'] f1=1.00 1.5s rt=130
+✓ mc-065 gold=['D50', 'R10'] pred=['D50', 'R10'] f1=1.00 1.5s rt=129
+✓ mc-248 gold=['E10', 'I21'] pred=['E10', 'I21'] f1=1.00 1.3s rt=103
+✓ mc-003 gold=['F41'] pred=['F41'] f1=1.00 1.4s rt=50
+✓ mc-323 gold=['K76', 'N17'] pred=['K76', 'N17'] f1=1.00 0.8s rt=42
+✓ mc-029 gold=['M17'] pred=['M17'] f1=1.00 1.1s rt=66
+✓ mc-111 gold=['E66', 'I26', 'N17'] pred=['E66', 'I26', 'N17'] f1=1.00 1.2s rt=111
+✓ mc-273 gold=['I48', 'J20', 'N18'] pred=['I48', 'J20', 'N18'] f1=1.00 1.0s rt=84
+✓ mc-368 gold=['B34', 'G40', 'J44', 'K29'] pred=['B34', 'G40', 'J44', 'K29'] f1=1.00 3.6s rt=492
+✓ mc-214 gold=['F17', 'G40', 'J45', 'N39'] pred=['F17', 'G40', 'J45', 'N39'] f1=1.00 1.2s rt=112
+ERROR mc-296 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-61070b8819024d9fa342343d6975180c"}
+✗ mc-296 gold=['K76', 'M17'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-090 gold=['G20', 'N39'] pred=['G20', 'N39'] f1=1.00 0.8s rt=57
+ERROR mc-143 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-de33f92f80324445b801bc37083bceca"}
+✗ mc-143 gold=['L40'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-197 gold=['I63', 'L40'] pred=['I63', 'L40'] f1=1.00 0.9s rt=73
+✓ mc-337 gold=['L03'] pred=['L03'] f1=1.00 0.7s rt=33
+✓ mc-332 gold=['D50', 'I10', 'J44'] pred=['D50', 'I10', 'J44'] f1=1.00 1.3s rt=141
+✓ mc-132 gold=['E10'] pred=['E10'] f1=1.00 1.2s rt=98
+ERROR mc-295 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-b2e8540b63a5409b9bba5eee782c67d5"}
+✗ mc-295 gold=['E66', 'F43', 'M17'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-314 gold=['J01', 'K58', 'N39'] pred=['J01', 'K58', 'N39'] f1=1.00 1.2s rt=92
+✓ mc-428 gold=['G43', 'K76'] pred=['G43', 'K76'] f1=1.00 1.1s rt=107
+✓ mc-095 gold=['G47', 'J45', 'K57'] pred=['G47', 'J45', 'K57'] f1=1.00 1.7s rt=206
+✓ mc-142 gold=['F10', 'F90', 'K76'] pred=['F10', 'F90', 'K76'] f1=1.00 1.1s rt=99
+✓ mc-307 gold=['J06', 'M81'] pred=['J06', 'M81'] f1=1.00 1.6s rt=169
+✓ mc-355 gold=['E03', 'G30', 'N39'] pred=['E03', 'G30', 'N39'] f1=1.00 1.4s rt=179
+ERROR mc-382 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-b32219d77d5449adaf1485e05fb1c8dc"}
+✗ mc-382 gold=['A09', 'I63', 'J02', 'K80'] pred=[] f1=0.00 0.0s rt=0
+ERROR mc-076 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-f2376511bfa740598cc45b74a14fc495"}
+✗ mc-076 gold=['J01'] pred=[] f1=0.00 0.0s rt=0
+
+accounts/fireworks/models/glm-5p3-flash + v1_plain: F1 0.917 | exact 0.867 | invalid 12 | p50 1.19s p95 2.944s | $0.187/1k | run cost $0.034 | ledger $1.068
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/medical-coding/results/glm-5p3-flash_v1_plain_s7.json
+✓ mc-344 gold=['F90'] pred=['F90'] f1=1.00 0.5s rt=74
+✓ mc-210 gold=['E03'] pred=['E03'] f1=1.00 0.8s rt=86
+~ mc-087 gold=['A41', 'E55', 'I21', 'I82'] pred=['A41', 'E55', 'I21', 'I82', 'N39'] f1=0.89 1.4s rt=296
+✓ mc-356 gold=['E05', 'J18'] pred=['E05', 'J18'] f1=1.00 1.0s rt=206
+~ mc-454 gold=['B34', 'F17', 'J44'] pred=['F17', 'J06', 'J44'] f1=0.67 0.8s rt=157
+✓ mc-281 gold=['E11', 'E55'] pred=['E11', 'E55'] f1=1.00 0.5s rt=79
+✓ mc-440 gold=['A41', 'I21', 'L03', 'N18'] pred=['A41', 'I21', 'L03', 'N18'] f1=1.00 1.1s rt=224
+✓ mc-069 gold=['D64', 'I26', 'J44'] pred=['D64', 'I26', 'J44'] f1=1.00 0.9s rt=159
+✓ mc-229 gold=['J01', 'N40'] pred=['J01', 'N40'] f1=1.00 0.7s rt=140
+~ mc-201 gold=['B34', 'E05', 'K80', 'N17'] pred=['E05', 'J06', 'K80', 'N17'] f1=0.75 2.0s rt=465
+✓ mc-393 gold=['G30', 'J02', 'J18', 'L30'] pred=['G30', 'J02', 'J18', 'L30'] f1=1.00 1.0s rt=205
+✓ mc-396 gold=['J44'] pred=['J44'] f1=1.00 0.9s rt=152
+✓ mc-417 gold=['I25', 'K80'] pred=['I25', 'K80'] f1=1.00 0.8s rt=157
+✓ mc-363 gold=['I10', 'K76'] pred=['I10', 'K76'] f1=1.00 0.7s rt=115
+✓ mc-245 gold=['A09', 'F41', 'M06'] pred=['A09', 'F41', 'M06'] f1=1.00 0.8s rt=159
+✓ mc-205 gold=['E66', 'F10', 'I10', 'I73'] pred=['E66', 'F10', 'I10', 'I73'] f1=1.00 1.0s rt=201
+✓ mc-310 gold=['F90'] pred=['F90'] f1=1.00 0.7s rt=90
+✓ mc-189 gold=['B34', 'E55', 'F43', 'N40'] pred=['B34', 'E55', 'F43', 'N40'] f1=1.00 0.9s rt=180
+✓ mc-394 gold=['E05', 'K57', 'K58'] pred=['E05', 'K57', 'K58'] f1=1.00 0.8s rt=142
+ERROR mc-187 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-c2484684d4f8405ab624c56bcde57219"}
+✗ mc-187 gold=['F41', 'G20', 'I73', 'M10'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-475 gold=['I73', 'J02', 'N40'] pred=['I73', 'J02', 'N40'] f1=1.00 0.9s rt=167
+✓ mc-373 gold=['E55', 'I50'] pred=['E55', 'I50'] f1=1.00 0.6s rt=107
+✓ mc-036 gold=['A09', 'F43', 'J01', 'N17'] pred=['A09', 'F43', 'J01', 'N17'] f1=1.00 1.1s rt=205
+✓ mc-038 gold=['K57'] pred=['K57'] f1=1.00 0.5s rt=82
+✓ mc-018 gold=['K29'] pred=['K29'] f1=1.00 0.8s rt=136
+✓ mc-139 gold=['K80'] pred=['K80'] f1=1.00 0.7s rt=107
+✓ mc-498 gold=['J44', 'M81'] pred=['J44', 'M81'] f1=1.00 0.8s rt=144
+✓ mc-098 gold=['I25', 'M06', 'M54'] pred=['I25', 'M06', 'M54'] f1=1.00 1.0s rt=198
+✓ mc-153 gold=['K35'] pred=['K35'] f1=1.00 0.5s rt=75
+✓ mc-305 gold=['I10', 'I21'] pred=['I10', 'I21'] f1=1.00 0.8s rt=141
+✓ mc-358 gold=['I10', 'J02', 'N17'] pred=['I10', 'J02', 'N17'] f1=1.00 1.0s rt=167
+✓ mc-381 gold=['I25', 'J45'] pred=['I25', 'J45'] f1=1.00 1.2s rt=235
+~ mc-470 gold=['B34', 'J20'] pred=['J06', 'J20'] f1=0.50 1.8s rt=429
+~ mc-211 gold=['D64', 'F32'] pred=['D50', 'F32'] f1=0.50 1.0s rt=199
+ERROR mc-019 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-dc6a048f63e748b0afdc187b68fa4dfb"}
+✗ mc-019 gold=['D50'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-221 gold=['A09', 'F17', 'F43'] pred=['A09', 'F17', 'F43'] f1=1.00 0.9s rt=177
+✓ mc-499 gold=['J02', 'J45'] pred=['J02', 'J45'] f1=1.00 0.6s rt=102
+✓ mc-317 gold=['E05', 'M06'] pred=['E05', 'M06'] f1=1.00 0.8s rt=132
+✓ mc-434 gold=['A09'] pred=['A09'] f1=1.00 0.7s rt=138
+✓ mc-141 gold=['E03', 'I26', 'L03', 'R10'] pred=['E03', 'I26', 'L03', 'R10'] f1=1.00 1.1s rt=212
+✓ mc-145 gold=['F41', 'G40'] pred=['F41', 'G40'] f1=1.00 0.6s rt=98
+✓ mc-161 gold=['F17', 'K76'] pred=['F17', 'K76'] f1=1.00 0.8s rt=131
+✓ mc-154 gold=['K21'] pred=['K21'] f1=1.00 0.5s rt=66
+✓ mc-285 gold=['E66', 'L30'] pred=['E66', 'L30'] f1=1.00 0.8s rt=138
+✓ mc-014 gold=['E66', 'F43', 'G43'] pred=['E66', 'F43', 'G43'] f1=1.00 0.9s rt=126
+✓ mc-232 gold=['E66', 'F17', 'F43', 'I63'] pred=['E66', 'F17', 'F43', 'I63'] f1=1.00 1.1s rt=236
+✓ mc-409 gold=['F41', 'I50', 'K58'] pred=['F41', 'I50', 'K58'] f1=1.00 0.8s rt=155
+✓ mc-384 gold=['E03', 'F10', 'K35'] pred=['E03', 'F10', 'K35'] f1=1.00 0.9s rt=177
+✓ mc-130 gold=['I82', 'M81'] pred=['I82', 'M81'] f1=1.00 1.0s rt=191
+✓ mc-286 gold=['F17', 'G20'] pred=['F17', 'G20'] f1=1.00 0.7s rt=124
+✓ mc-223 gold=['I21', 'J18', 'M54', 'N18'] pred=['I21', 'J18', 'M54', 'N18'] f1=1.00 1.0s rt=192
+✓ mc-348 gold=['I10', 'M06'] pred=['I10', 'M06'] f1=1.00 0.7s rt=109
+~ mc-059 gold=['A41'] pred=['A41', 'N39'] f1=0.67 0.7s rt=128
+✓ mc-131 gold=['E55', 'G20', 'M54'] pred=['E55', 'G20', 'M54'] f1=1.00 0.7s rt=128
+✓ mc-163 gold=['E55', 'K57', 'M17', 'N18'] pred=['E55', 'K57', 'M17', 'N18'] f1=1.00 1.1s rt=224
+✓ mc-486 gold=['F90', 'J20', 'K80', 'M06'] pred=['F90', 'J20', 'K80', 'M06'] f1=1.00 1.0s rt=192
+✓ mc-414 gold=['J45', 'K21', 'M79'] pred=['J45', 'K21', 'M79'] f1=1.00 1.0s rt=140
+✓ mc-315 gold=['I48', 'J06'] pred=['I48', 'J06'] f1=1.00 0.7s rt=132
+✓ mc-413 gold=['F32', 'J45', 'L03', 'M54'] pred=['F32', 'J45', 'L03', 'M54'] f1=1.00 0.9s rt=176
+✓ mc-276 gold=['F90', 'N39'] pred=['F90', 'N39'] f1=1.00 0.7s rt=123
+~ mc-192 gold=['A41', 'D50', 'K58', 'M54'] pred=['A41', 'D50', 'K58', 'M54', 'N39'] f1=0.89 1.0s rt=204
+✓ mc-448 gold=['E03', 'G47'] pred=['E03', 'G47'] f1=1.00 0.7s rt=110
+✓ mc-462 gold=['I48'] pred=['I48'] f1=1.00 0.6s rt=103
+✓ mc-112 gold=['A09', 'J18'] pred=['A09', 'J18'] f1=1.00 0.8s rt=166
+✓ mc-203 gold=['I82', 'J06'] pred=['I82', 'J06'] f1=1.00 0.8s rt=142
+✓ mc-185 gold=['I26', 'I48', 'K57'] pred=['I26', 'I48', 'K57'] f1=1.00 0.9s rt=173
+✓ mc-078 gold=['A41', 'L30', 'N18'] pred=['A41', 'L30', 'N18'] f1=1.00 1.4s rt=239
+✓ mc-274 gold=['J45'] pred=['J45'] f1=1.00 0.5s rt=72
+✓ mc-360 gold=['M10', 'M54'] pred=['M10', 'M54'] f1=1.00 0.9s rt=209
+✓ mc-113 gold=['I63'] pred=['I63'] f1=1.00 0.7s rt=101
+✓ mc-481 gold=['D50', 'E78', 'M81'] pred=['D50', 'E78', 'M81'] f1=1.00 0.8s rt=142
+ERROR mc-429 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-e039596ef1df493ca6de453bdfdc3cc7"}
+✗ mc-429 gold=['G47', 'J02', 'M79', 'M81'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-053 gold=['J44', 'M06', 'N39', 'N40'] pred=['J44', 'M06', 'N39', 'N40'] f1=1.00 0.9s rt=174
+~ mc-231 gold=['A41'] pred=['A41', 'N39'] f1=0.67 0.9s rt=135
+✓ mc-110 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 0.9s rt=177
+ERROR mc-441 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-eb0cd814806443afbc9d157c04df2467"}
+✗ mc-441 gold=['G47', 'I21', 'K29', 'M06'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-183 gold=['K35', 'N18', 'N40'] pred=['K35', 'N18', 'N40'] f1=1.00 0.7s rt=132
+✓ mc-126 gold=['E03', 'K21'] pred=['E03', 'K21'] f1=1.00 0.7s rt=122
+~ mc-027 gold=['A41', 'G30'] pred=['A41', 'G30', 'N39'] f1=0.80 1.1s rt=185
+ERROR mc-146 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-c78f3764fcc84f18b7fe7fcd05abf7c5"}
+✗ mc-146 gold=['E03', 'I50'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-156 gold=['G20', 'K35'] pred=['G20', 'K35'] f1=1.00 0.7s rt=114
+✓ mc-379 gold=['L03'] pred=['L03'] f1=1.00 0.6s rt=100
+✓ mc-097 gold=['G43', 'I48'] pred=['G43', 'I48'] f1=1.00 0.8s rt=151
+✓ mc-340 gold=['F90'] pred=['F90'] f1=1.00 0.5s rt=74
+✓ mc-122 gold=['E10', 'F32', 'F90', 'K76'] pred=['E10', 'F32', 'F90', 'K76'] f1=1.00 0.9s rt=169
+✓ mc-277 gold=['I48', 'M17'] pred=['I48', 'M17'] f1=1.00 1.0s rt=126
+✓ mc-198 gold=['G20', 'K21'] pred=['G20', 'K21'] f1=1.00 0.6s rt=89
+✓ mc-170 gold=['I63'] pred=['I63'] f1=1.00 1.2s rt=241
+✓ mc-410 gold=['D50'] pred=['D50'] f1=1.00 0.7s rt=114
+✓ mc-282 gold=['J20'] pred=['J20'] f1=1.00 0.9s rt=141
+ERROR mc-366 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-c99f247a1cd24b87843c05322fd171ed"}
+✗ mc-366 gold=['I21'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-375 gold=['D50', 'F10', 'K57'] pred=['D50', 'F10', 'K57'] f1=1.00 1.2s rt=235
+✓ mc-241 gold=['E03', 'F90', 'M79', 'N40'] pred=['E03', 'F90', 'M79', 'N40'] f1=1.00 1.0s rt=182
+✓ mc-376 gold=['G20', 'G30'] pred=['G20', 'G30'] f1=1.00 0.7s rt=121
+✓ mc-096 gold=['M06', 'N39'] pred=['M06', 'N39'] f1=1.00 0.8s rt=137
+✓ mc-178 gold=['F17', 'F32', 'I21', 'N39'] pred=['F17', 'F32', 'I21', 'N39'] f1=1.00 0.9s rt=189
+✓ mc-257 gold=['E55', 'F43', 'L40'] pred=['E55', 'F43', 'L40'] f1=1.00 1.3s rt=139
+✓ mc-051 gold=['I48', 'L30'] pred=['I48', 'L30'] f1=1.00 0.8s rt=155
+✓ mc-083 gold=['L30', 'M06'] pred=['L30', 'M06'] f1=1.00 0.8s rt=120
+✓ mc-215 gold=['I50', 'J20', 'L40'] pred=['I50', 'J20', 'L40'] f1=1.00 0.9s rt=182
+✓ mc-031 gold=['I73', 'J45', 'L03', 'M10'] pred=['I73', 'J45', 'L03', 'M10'] f1=1.00 0.9s rt=188
+✓ mc-057 gold=['K58'] pred=['K58'] f1=1.00 0.5s rt=75
+✓ mc-472 gold=['K35'] pred=['K35'] f1=1.00 0.5s rt=83
+✓ mc-243 gold=['E66', 'I48', 'L03'] pred=['E66', 'I48', 'L03'] f1=1.00 1.0s rt=209
+✓ mc-196 gold=['J18', 'L30'] pred=['J18', 'L30'] f1=1.00 1.6s rt=206
+✓ mc-092 gold=['A09', 'E55', 'G30'] pred=['A09', 'E55', 'G30'] f1=1.00 0.8s rt=116
+✓ mc-072 gold=['I10', 'I26', 'L03'] pred=['I10', 'I26', 'L03'] f1=1.00 0.9s rt=185
+✓ mc-308 gold=['E05'] pred=['E05'] f1=1.00 1.4s rt=282
+✓ mc-181 gold=['I10', 'K57', 'N40'] pred=['I10', 'K57', 'N40'] f1=1.00 0.8s rt=141
+ERROR mc-280 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-0bab86adf7d34e618444b81e774ea716"}
+✗ mc-280 gold=['I48'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-064 gold=['E05', 'K76'] pred=['E05', 'K76'] f1=1.00 0.8s rt=157
+✓ mc-399 gold=['A41', 'J45', 'K29', 'N40'] pred=['A41', 'J45', 'K29', 'N40'] f1=1.00 1.1s rt=219
+✓ mc-147 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 0.8s rt=152
+✓ mc-445 gold=['G30', 'I25', 'J06'] pred=['G30', 'I25', 'J06'] f1=1.00 1.1s rt=200
+~ mc-121 gold=['B34', 'D50', 'F10'] pred=['D50', 'F10'] f1=0.80 0.7s rt=129
+✓ mc-291 gold=['M81'] pred=['M81'] f1=1.00 1.0s rt=154
+✓ mc-212 gold=['F90', 'I82', 'N40'] pred=['F90', 'I82', 'N40'] f1=1.00 0.9s rt=170
+✓ mc-081 gold=['G40', 'M06'] pred=['G40', 'M06'] f1=1.00 0.7s rt=110
+✓ mc-015 gold=['J20'] pred=['J20'] f1=1.00 0.5s rt=79
+✓ mc-144 gold=['J02', 'M10'] pred=['J02', 'M10'] f1=1.00 0.7s rt=103
+✓ mc-253 gold=['E05', 'K29'] pred=['E05', 'K29'] f1=1.00 0.7s rt=133
+ERROR mc-431 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-51545531ae884e9aa191a8595fce1f30"}
+✗ mc-431 gold=['F43', 'I82', 'K21', 'M54'] pred=[] f1=0.00 0.0s rt=0
+ERROR mc-391 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-399cbff2d349412bb7a3b602c0fadff1"}
+✗ mc-391 gold=['I25', 'N17', 'N18'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-484 gold=['E78', 'I26'] pred=['E78', 'I26'] f1=1.00 0.7s rt=120
+✓ mc-066 gold=['I25', 'J01', 'J44', 'N17'] pred=['I25', 'J01', 'J44', 'N17'] f1=1.00 0.8s rt=151
+✓ mc-226 gold=['E55', 'J06', 'M10'] pred=['E55', 'J06', 'M10'] f1=1.00 0.7s rt=110
+✓ mc-331 gold=['R10'] pred=['R10'] f1=1.00 0.7s rt=137
+✓ mc-155 gold=['I50', 'I63', 'J44', 'L03'] pred=['I50', 'I63', 'J44', 'L03'] f1=1.00 1.1s rt=240
+~ mc-293 gold=['F43', 'G30', 'J02', 'M79'] pred=['F43', 'J02', 'M79'] f1=0.86 1.0s rt=202
+✓ mc-086 gold=['G43', 'G47', 'L03'] pred=['G43', 'G47', 'L03'] f1=1.00 0.7s rt=129
+✓ mc-433 gold=['M54'] pred=['M54'] f1=1.00 0.6s rt=86
+✓ mc-319 gold=['I21'] pred=['I21'] f1=1.00 0.7s rt=113
+✓ mc-009 gold=['J20', 'R10'] pred=['J20', 'R10'] f1=1.00 0.9s rt=168
+✓ mc-442 gold=['K76'] pred=['K76'] f1=1.00 0.9s rt=156
+✓ mc-468 gold=['N18'] pred=['N18'] f1=1.00 0.9s rt=111
+ERROR mc-028 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-7520ab8a927e420ebb70c66484b8ba02"}
+✗ mc-028 gold=['E05', 'L30'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-093 gold=['G40', 'G47', 'J18'] pred=['G40', 'G47', 'J18'] f1=1.00 0.9s rt=165
+✓ mc-447 gold=['L40'] pred=['L40'] f1=1.00 0.7s rt=101
+✓ mc-275 gold=['D64', 'F10', 'I25', 'M17'] pred=['D64', 'F10', 'I25', 'M17'] f1=1.00 1.8s rt=399
+✓ mc-172 gold=['E66', 'E78', 'I25'] pred=['E66', 'E78', 'I25'] f1=1.00 0.8s rt=156
+✓ mc-209 gold=['I73', 'K80'] pred=['I73', 'K80'] f1=1.00 0.6s rt=108
+✓ mc-430 gold=['G20'] pred=['G20'] f1=1.00 0.5s rt=76
+~ mc-010 gold=['A41', 'F10', 'L30'] pred=['A41', 'F10', 'L30', 'N39'] f1=0.86 1.0s rt=178
+✓ mc-457 gold=['F90', 'M10', 'M79'] pred=['F90', 'M10', 'M79'] f1=1.00 0.9s rt=176
+✓ mc-461 gold=['L40'] pred=['L40'] f1=1.00 0.7s rt=103
+~ mc-306 gold=['F10', 'I25', 'J01', 'K80'] pred=['E78', 'F10', 'I25', 'K80'] f1=0.75 1.6s rt=288
+✓ mc-193 gold=['J06', 'L40', 'N18'] pred=['J06', 'L40', 'N18'] f1=1.00 0.8s rt=134
+✓ mc-177 gold=['I21', 'M17'] pred=['I21', 'M17'] f1=1.00 0.7s rt=118
+✓ mc-312 gold=['E03', 'J45'] pred=['E03', 'J45'] f1=1.00 0.7s rt=116
+✓ mc-296 gold=['K76', 'M17'] pred=['K76', 'M17'] f1=1.00 0.9s rt=169
+~ mc-125 gold=['A41', 'J20'] pred=['J20'] f1=0.67 0.9s rt=159
+✓ mc-483 gold=['A41'] pred=['A41'] f1=1.00 0.7s rt=128
+✓ mc-143 gold=['L40'] pred=['L40'] f1=1.00 0.5s rt=70
+✓ mc-021 gold=['D50'] pred=['D50'] f1=1.00 0.6s rt=86
+✓ mc-401 gold=['E78', 'F32', 'I48', 'J02'] pred=['E78', 'F32', 'I48', 'J02'] f1=1.00 0.9s rt=196
+✓ mc-248 gold=['E10', 'I21'] pred=['E10', 'I21'] f1=1.00 0.7s rt=112
+✓ mc-327 gold=['I25', 'M17'] pred=['I25', 'M17'] f1=1.00 1.6s rt=272
+✓ mc-323 gold=['K76', 'N17'] pred=['K76', 'N17'] f1=1.00 0.9s rt=179
+✓ mc-003 gold=['F41'] pred=['F41'] f1=1.00 0.5s rt=89
+✓ mc-065 gold=['D50', 'R10'] pred=['D50', 'R10'] f1=1.00 1.0s rt=200
+✓ mc-029 gold=['M17'] pred=['M17'] f1=1.00 0.5s rt=83
+✓ mc-273 gold=['I48', 'J20', 'N18'] pred=['I48', 'J20', 'N18'] f1=1.00 0.9s rt=157
+✓ mc-111 gold=['E66', 'I26', 'N17'] pred=['E66', 'I26', 'N17'] f1=1.00 1.1s rt=216
+✓ mc-295 gold=['E66', 'F43', 'M17'] pred=['E66', 'F43', 'M17'] f1=1.00 0.7s rt=124
+✓ mc-382 gold=['A09', 'I63', 'J02', 'K80'] pred=['A09', 'I63', 'J02', 'K80'] f1=1.00 1.0s rt=201
+✓ mc-090 gold=['G20', 'N39'] pred=['G20', 'N39'] f1=1.00 0.7s rt=118
+ERROR mc-034 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-ba471eafae024b7ba046686b59cf7672"}
+✗ mc-034 gold=['F41', 'L30'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-197 gold=['I63', 'L40'] pred=['I63', 'L40'] f1=1.00 0.7s rt=126
+✓ mc-337 gold=['L03'] pred=['L03'] f1=1.00 0.5s rt=86
+✓ mc-132 gold=['E10'] pred=['E10'] f1=1.00 0.6s rt=98
+ERROR mc-368 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-6b54b04cb6af48e18b7ae3be1fc82c11"}
+✗ mc-368 gold=['B34', 'G40', 'J44', 'K29'] pred=[] f1=0.00 0.0s rt=0
+ERROR mc-214 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-378a1edb4e8c40988b305b152cb96af7"}
+✗ mc-214 gold=['F17', 'G40', 'J45', 'N39'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-142 gold=['F10', 'F90', 'K76'] pred=['F10', 'F90', 'K76'] f1=1.00 0.9s rt=186
+✓ mc-076 gold=['J01'] pred=['J01'] f1=1.00 0.6s rt=103
+✓ mc-428 gold=['G43', 'K76'] pred=['G43', 'K76'] f1=1.00 0.8s rt=151
+✓ mc-314 gold=['J01', 'K58', 'N39'] pred=['J01', 'K58', 'N39'] f1=1.00 1.0s rt=171
+✓ mc-095 gold=['G47', 'J45', 'K57'] pred=['G47', 'J45', 'K57'] f1=1.00 0.7s rt=124
+✓ mc-307 gold=['J06', 'M81'] pred=['J06', 'M81'] f1=1.00 0.9s rt=181
+✓ mc-355 gold=['E03', 'G30', 'N39'] pred=['E03', 'G30', 'N39'] f1=1.00 0.9s rt=160
+ERROR mc-332 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-72626e4e55a64c1a9cfabbab86c5b6dd"}
+✗ mc-332 gold=['D50', 'I10', 'J44'] pred=[] f1=0.00 0.0s rt=0
+
+accounts/fireworks/models/gpt-oss-120b + v1_plain: F1 0.901 | exact 0.844 | invalid 14 | p50 0.792s p95 1.273s | $0.216/1k | run cost $0.039 | ledger $1.107
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/medical-coding/results/gpt-oss-120b_v1_plain_s7.json
+✓ mc-210 gold=['E03'] pred=['E03'] f1=1.00 1.1s rt=69
+✓ mc-344 gold=['F90'] pred=['F90'] f1=1.00 1.2s rt=44
+✓ mc-417 gold=['I25', 'K80'] pred=['I25', 'K80'] f1=1.00 2.1s rt=138
+✓ mc-356 gold=['E05', 'J18'] pred=['E05', 'J18'] f1=1.00 2.8s rt=278
+~ mc-454 gold=['B34', 'F17', 'J44'] pred=['F17', 'J06', 'J44'] f1=0.67 2.7s rt=310
+✓ mc-229 gold=['J01', 'N40'] pred=['J01', 'N40'] f1=1.00 1.4s rt=91
+✓ mc-187 gold=['F41', 'G20', 'I73', 'M10'] pred=['F41', 'G20', 'I73', 'M10'] f1=1.00 2.2s rt=245
+~ mc-087 gold=['A41', 'E55', 'I21', 'I82'] pred=['A41', 'E55', 'I21', 'I82', 'N39'] f1=0.89 6.7s rt=836
+✓ mc-281 gold=['E11', 'E55'] pred=['E11', 'E55'] f1=1.00 8.9s rt=1156
+✓ mc-440 gold=['A41', 'I21', 'L03', 'N18'] pred=['A41', 'I21', 'L03', 'N18'] f1=1.00 4.6s rt=576
+✓ mc-069 gold=['D64', 'I26', 'J44'] pred=['D64', 'I26', 'J44'] f1=1.00 3.6s rt=412
+✓ mc-393 gold=['G30', 'J02', 'J18', 'L30'] pred=['G30', 'J02', 'J18', 'L30'] f1=1.00 3.2s rt=253
+✓ mc-189 gold=['B34', 'E55', 'F43', 'N40'] pred=['B34', 'E55', 'F43', 'N40'] f1=1.00 2.9s rt=293
+✓ mc-205 gold=['E66', 'F10', 'I10', 'I73'] pred=['E66', 'F10', 'I10', 'I73'] f1=1.00 2.3s rt=193
+✓ mc-363 gold=['I10', 'K76'] pred=['I10', 'K76'] f1=1.00 2.1s rt=150
+✓ mc-201 gold=['B34', 'E05', 'K80', 'N17'] pred=['B34', 'E05', 'K80', 'N17'] f1=1.00 5.8s rt=620
+✓ mc-019 gold=['D50'] pred=['D50'] f1=1.00 1.1s rt=50
+✓ mc-245 gold=['A09', 'F41', 'M06'] pred=['A09', 'F41', 'M06'] f1=1.00 1.6s rt=103
+✓ mc-396 gold=['J44'] pred=['J44'] f1=1.00 4.3s rt=368
+✓ mc-310 gold=['F90'] pred=['F90'] f1=1.00 1.8s rt=66
+✓ mc-394 gold=['E05', 'K57', 'K58'] pred=['E05', 'K57', 'K58'] f1=1.00 2.0s rt=94
+✓ mc-373 gold=['E55', 'I50'] pred=['E55', 'I50'] f1=1.00 2.2s rt=174
+✓ mc-036 gold=['A09', 'F43', 'J01', 'N17'] pred=['A09', 'F43', 'J01', 'N17'] f1=1.00 2.3s rt=200
+✓ mc-153 gold=['K35'] pred=['K35'] f1=1.00 2.7s rt=146
+✓ mc-098 gold=['I25', 'M06', 'M54'] pred=['I25', 'M06', 'M54'] f1=1.00 4.7s rt=501
+✓ mc-038 gold=['K57'] pred=['K57'] f1=1.00 2.0s rt=168
+✓ mc-498 gold=['J44', 'M81'] pred=['J44', 'M81'] f1=1.00 2.0s rt=138
+✓ mc-475 gold=['I73', 'J02', 'N40'] pred=['I73', 'J02', 'N40'] f1=1.00 2.8s rt=251
+✓ mc-358 gold=['I10', 'J02', 'N17'] pred=['I10', 'J02', 'N17'] f1=1.00 2.1s rt=103
+✓ mc-317 gold=['E05', 'M06'] pred=['E05', 'M06'] f1=1.00 6.4s rt=144
+✓ mc-139 gold=['K80'] pred=['K80'] f1=1.00 9.3s rt=222
+✓ mc-381 gold=['I25', 'J45'] pred=['I25', 'J45'] f1=1.00 3.6s rt=277
+✓ mc-305 gold=['I10', 'I21'] pred=['I10', 'I21'] f1=1.00 10.8s rt=313
+✓ mc-223 gold=['I21', 'J18', 'M54', 'N18'] pred=['I21', 'J18', 'M54', 'N18'] f1=1.00 4.0s rt=417
+✓ mc-221 gold=['A09', 'F17', 'F43'] pred=['A09', 'F17', 'F43'] f1=1.00 1.6s rt=127
+✓ mc-470 gold=['B34', 'J20'] pred=['B34', 'J20'] f1=1.00 8.7s rt=1113
+✓ mc-499 gold=['J02', 'J45'] pred=['J02', 'J45'] f1=1.00 4.1s rt=476
+✓ mc-409 gold=['F41', 'I50', 'K58'] pred=['F41', 'I50', 'K58'] f1=1.00 1.8s rt=142
+✓ mc-141 gold=['E03', 'I26', 'L03', 'R10'] pred=['E03', 'I26', 'L03', 'R10'] f1=1.00 2.5s rt=263
+ERROR mc-018 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-2f46ffcb54994017b942e47888b50988"}
+✗ mc-018 gold=['K29'] pred=[] f1=0.00 0.0s rt=0
+✗ mc-211 gold=['D64', 'F32'] pred=[] f1=0.00 15.0s rt=2048
+✓ mc-014 gold=['E66', 'F43', 'G43'] pred=['E66', 'F43', 'G43'] f1=1.00 1.6s rt=107
+✓ mc-434 gold=['A09'] pred=['A09'] f1=1.00 2.9s rt=188
+✓ mc-154 gold=['K21'] pred=['K21'] f1=1.00 1.0s rt=53
+✓ mc-285 gold=['E66', 'L30'] pred=['E66', 'L30'] f1=1.00 1.1s rt=79
+✓ mc-161 gold=['F17', 'K76'] pred=['F17', 'K76'] f1=1.00 4.5s rt=443
+✓ mc-145 gold=['F41', 'G40'] pred=['F41', 'G40'] f1=1.00 1.4s rt=84
+✓ mc-130 gold=['I82', 'M81'] pred=['I82', 'M81'] f1=1.00 2.0s rt=118
+✓ mc-232 gold=['E66', 'F17', 'F43', 'I63'] pred=['E66', 'F17', 'F43', 'I63'] f1=1.00 12.0s rt=1554
+✓ mc-384 gold=['E03', 'F10', 'K35'] pred=['E03', 'F10', 'K35'] f1=1.00 1.8s rt=140
+✓ mc-286 gold=['F17', 'G20'] pred=['F17', 'G20'] f1=1.00 1.4s rt=82
+~ mc-059 gold=['A41'] pred=['A41', 'N39'] f1=0.67 3.4s rt=319
+✓ mc-348 gold=['I10', 'M06'] pred=['I10', 'M06'] f1=1.00 1.2s rt=58
+✓ mc-486 gold=['F90', 'J20', 'K80', 'M06'] pred=['F90', 'J20', 'K80', 'M06'] f1=1.00 1.7s rt=156
+✓ mc-163 gold=['E55', 'K57', 'M17', 'N18'] pred=['E55', 'K57', 'M17', 'N18'] f1=1.00 3.2s rt=385
+✓ mc-414 gold=['J45', 'K21', 'M79'] pred=['J45', 'K21', 'M79'] f1=1.00 2.4s rt=162
+✓ mc-441 gold=['G47', 'I21', 'K29', 'M06'] pred=['G47', 'I21', 'K29', 'M06'] f1=1.00 3.3s rt=364
+✓ mc-276 gold=['F90', 'N39'] pred=['F90', 'N39'] f1=1.00 2.2s rt=179
+✓ mc-315 gold=['I48', 'J06'] pred=['I48', 'J06'] f1=1.00 2.7s rt=266
+✓ mc-462 gold=['I48'] pred=['I48'] f1=1.00 1.4s rt=104
+✓ mc-413 gold=['F32', 'J45', 'L03', 'M54'] pred=['F32', 'J45', 'L03', 'M54'] f1=1.00 2.5s rt=253
+✓ mc-448 gold=['E03', 'G47'] pred=['E03', 'G47'] f1=1.00 0.8s rt=12
+✓ mc-112 gold=['A09', 'J18'] pred=['A09', 'J18'] f1=1.00 2.1s rt=206
+✓ mc-146 gold=['E03', 'I50'] pred=['E03', 'I50'] f1=1.00 1.6s rt=105
+~ mc-192 gold=['A41', 'D50', 'K58', 'M54'] pred=['A41', 'D50', 'K58', 'M54', 'N39'] f1=0.89 4.0s rt=468
+✓ mc-185 gold=['I26', 'I48', 'K57'] pred=['I26', 'I48', 'K57'] f1=1.00 2.1s rt=205
+ERROR mc-131 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-f1bc15d3b97f4bc19335e14bde6ac77c"}
+✗ mc-131 gold=['E55', 'G20', 'M54'] pred=[] f1=0.00 0.0s rt=0
+ERROR mc-429 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-290dd751f1094555ac760e7d5576a62d"}
+✗ mc-429 gold=['G47', 'J02', 'M79', 'M81'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-203 gold=['I82', 'J06'] pred=['I82', 'J06'] f1=1.00 1.5s rt=111
+✓ mc-274 gold=['J45'] pred=['J45'] f1=1.00 0.7s rt=29
+✓ mc-360 gold=['M10', 'M54'] pred=['M10', 'M54'] f1=1.00 1.4s rt=132
+✓ mc-078 gold=['A41', 'L30', 'N18'] pred=['A41', 'L30', 'N18'] f1=1.00 3.7s rt=295
+~ mc-231 gold=['A41'] pred=['A41', 'N39'] f1=0.67 3.2s rt=327
+✓ mc-481 gold=['D50', 'E78', 'M81'] pred=['D50', 'E78', 'M81'] f1=1.00 3.3s rt=229
+✓ mc-110 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 1.7s rt=141
+✓ mc-053 gold=['J44', 'M06', 'N39', 'N40'] pred=['J44', 'M06', 'N39', 'N40'] f1=1.00 2.8s rt=261
+✓ mc-097 gold=['G43', 'I48'] pred=['G43', 'I48'] f1=1.00 1.7s rt=97
+✓ mc-183 gold=['K35', 'N18', 'N40'] pred=['K35', 'N18', 'N40'] f1=1.00 4.7s rt=430
+~ mc-027 gold=['A41', 'G30'] pred=['A41', 'G30', 'N39'] f1=0.80 3.6s rt=289
+✓ mc-366 gold=['I21'] pred=['I21'] f1=1.00 1.9s rt=140
+✓ mc-156 gold=['G20', 'K35'] pred=['G20', 'K35'] f1=1.00 1.6s rt=95
+✓ mc-277 gold=['I48', 'M17'] pred=['I48', 'M17'] f1=1.00 2.0s rt=144
+✓ mc-340 gold=['F90'] pred=['F90'] f1=1.00 0.8s rt=21
+ERROR mc-113 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-76ab92884a3b422ca5c3c8f5fb16fea1"}
+✗ mc-113 gold=['I63'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-122 gold=['E10', 'F32', 'F90', 'K76'] pred=['E10', 'F32', 'F90', 'K76'] f1=1.00 2.8s rt=285
+✓ mc-376 gold=['G20', 'G30'] pred=['G20', 'G30'] f1=1.00 1.9s rt=125
+✓ mc-198 gold=['G20', 'K21'] pred=['G20', 'K21'] f1=1.00 1.3s rt=95
+✓ mc-280 gold=['I48'] pred=['I48'] f1=1.00 1.9s rt=131
+✓ mc-170 gold=['I63'] pred=['I63'] f1=1.00 2.3s rt=204
+ERROR mc-126 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-b65fc76612554025a267e74cf7c7df89"}
+✗ mc-126 gold=['E03', 'K21'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-282 gold=['J20'] pred=['J20'] f1=1.00 3.2s rt=242
+✓ mc-410 gold=['D50'] pred=['D50'] f1=1.00 2.5s rt=50
+✓ mc-051 gold=['I48', 'L30'] pred=['I48', 'L30'] f1=1.00 2.5s rt=240
+✓ mc-375 gold=['D50', 'F10', 'K57'] pred=['D50', 'F10', 'K57'] f1=1.00 3.7s rt=368
+✓ mc-257 gold=['E55', 'F43', 'L40'] pred=['E55', 'F43', 'L40'] f1=1.00 2.9s rt=198
+✓ mc-241 gold=['E03', 'F90', 'M79', 'N40'] pred=['E03', 'F90', 'M79', 'N40'] f1=1.00 10.6s rt=1255
+✓ mc-178 gold=['F17', 'F32', 'I21', 'N39'] pred=['F17', 'F32', 'I21', 'N39'] f1=1.00 3.1s rt=288
+✓ mc-083 gold=['L30', 'M06'] pred=['L30', 'M06'] f1=1.00 2.7s rt=246
+✓ mc-057 gold=['K58'] pred=['K58'] f1=1.00 1.7s rt=130
+ERROR mc-379 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-1146e228f3c24be1878f7a471e796656"}
+✗ mc-379 gold=['L03'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-215 gold=['I50', 'J20', 'L40'] pred=['I50', 'J20', 'L40'] f1=1.00 2.5s rt=251
+✓ mc-243 gold=['E66', 'I48', 'L03'] pred=['E66', 'I48', 'L03'] f1=1.00 5.8s rt=376
+✓ mc-147 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 2.2s rt=156
+✓ mc-196 gold=['J18', 'L30'] pred=['J18', 'L30'] f1=1.00 1.5s rt=93
+✓ mc-472 gold=['K35'] pred=['K35'] f1=1.00 2.1s rt=156
+✓ mc-092 gold=['A09', 'E55', 'G30'] pred=['A09', 'E55', 'G30'] f1=1.00 1.5s rt=103
+✓ mc-064 gold=['E05', 'K76'] pred=['E05', 'K76'] f1=1.00 2.3s rt=150
+~ mc-072 gold=['I10', 'I26', 'L03'] pred=['I26', 'L03'] f1=0.80 6.4s rt=707
+✓ mc-031 gold=['I73', 'J45', 'L03', 'M10'] pred=['I73', 'J45', 'L03', 'M10'] f1=1.00 6.2s rt=642
+ERROR mc-096 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-6072cbb4807247789b1c4a92a6ebe4ba"}
+✗ mc-096 gold=['M06', 'N39'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-181 gold=['I10', 'K57', 'N40'] pred=['I10', 'K57', 'N40'] f1=1.00 1.4s rt=112
+✓ mc-308 gold=['E05'] pred=['E05'] f1=1.00 2.9s rt=275
+✓ mc-431 gold=['F43', 'I82', 'K21', 'M54'] pred=['F43', 'I82', 'K21', 'M54'] f1=1.00 2.5s rt=229
+✓ mc-399 gold=['A41', 'J45', 'K29', 'N40'] pred=['A41', 'J45', 'K29', 'N40'] f1=1.00 14.4s rt=1814
+✓ mc-445 gold=['G30', 'I25', 'J06'] pred=['G30', 'I25', 'J06'] f1=1.00 7.5s rt=857
+✓ mc-212 gold=['F90', 'I82', 'N40'] pred=['F90', 'I82', 'N40'] f1=1.00 3.0s rt=83
+✓ mc-291 gold=['M81'] pred=['M81'] f1=1.00 3.9s rt=414
+✓ mc-015 gold=['J20'] pred=['J20'] f1=1.00 1.0s rt=33
+✓ mc-121 gold=['B34', 'D50', 'F10'] pred=['B34', 'D50', 'F10'] f1=1.00 5.2s rt=536
+✓ mc-144 gold=['J02', 'M10'] pred=['J02', 'M10'] f1=1.00 0.8s rt=31
+✓ mc-028 gold=['E05', 'L30'] pred=['E05', 'L30'] f1=1.00 2.5s rt=212
+✓ mc-253 gold=['E05', 'K29'] pred=['E05', 'K29'] f1=1.00 1.8s rt=147
+✓ mc-442 gold=['K76'] pred=['K76'] f1=1.00 2.5s rt=226
+✓ mc-081 gold=['G40', 'M06'] pred=['G40', 'M06'] f1=1.00 1.3s rt=106
+✓ mc-484 gold=['E78', 'I26'] pred=['E78', 'I26'] f1=1.00 2.9s rt=270
+✓ mc-066 gold=['I25', 'J01', 'J44', 'N17'] pred=['I25', 'J01', 'J44', 'N17'] f1=1.00 4.7s rt=552
+✓ mc-226 gold=['E55', 'J06', 'M10'] pred=['E55', 'J06', 'M10'] f1=1.00 2.5s rt=102
+ERROR mc-391 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-98a1ae07327d499f8a167f05aca765a6"}
+✗ mc-391 gold=['I25', 'N17', 'N18'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-331 gold=['R10'] pred=['R10'] f1=1.00 1.5s rt=98
+✓ mc-086 gold=['G43', 'G47', 'L03'] pred=['G43', 'G47', 'L03'] f1=1.00 2.3s rt=202
+~ mc-155 gold=['I50', 'I63', 'J44', 'L03'] pred=['I50', 'J44', 'L03'] f1=0.86 13.4s rt=1704
+~ mc-293 gold=['F43', 'G30', 'J02', 'M79'] pred=['F43', 'J02', 'M79'] f1=0.86 3.6s rt=263
+✓ mc-275 gold=['D64', 'F10', 'I25', 'M17'] pred=['D64', 'F10', 'I25', 'M17'] f1=1.00 3.3s rt=343
+✓ mc-319 gold=['I21'] pred=['I21'] f1=1.00 2.4s rt=202
+✓ mc-009 gold=['J20', 'R10'] pred=['J20', 'R10'] f1=1.00 3.1s rt=314
+~ mc-010 gold=['A41', 'F10', 'L30'] pred=['A41', 'F10', 'L30', 'N39'] f1=0.86 3.0s rt=283
+✓ mc-093 gold=['G40', 'G47', 'J18'] pred=['G40', 'G47', 'J18'] f1=1.00 2.6s rt=262
+✓ mc-433 gold=['M54'] pred=['M54'] f1=1.00 1.2s rt=62
+✓ mc-461 gold=['L40'] pred=['L40'] f1=1.00 0.9s rt=53
+✓ mc-447 gold=['L40'] pred=['L40'] f1=1.00 1.8s rt=43
+✓ mc-430 gold=['G20'] pred=['G20'] f1=1.00 1.1s rt=50
+✓ mc-172 gold=['E66', 'E78', 'I25'] pred=['E66', 'E78', 'I25'] f1=1.00 2.1s rt=212
+✓ mc-468 gold=['N18'] pred=['N18'] f1=1.00 1.9s rt=136
+✓ mc-306 gold=['F10', 'I25', 'J01', 'K80'] pred=['F10', 'I25', 'J01', 'K80'] f1=1.00 1.0s rt=55
+✓ mc-457 gold=['F90', 'M10', 'M79'] pred=['F90', 'M10', 'M79'] f1=1.00 3.6s rt=349
+✓ mc-125 gold=['A41', 'J20'] pred=['A41', 'J20'] f1=1.00 3.1s rt=328
+✓ mc-193 gold=['J06', 'L40', 'N18'] pred=['J06', 'L40', 'N18'] f1=1.00 2.7s rt=88
+✓ mc-312 gold=['E03', 'J45'] pred=['E03', 'J45'] f1=1.00 1.7s rt=129
+✓ mc-177 gold=['I21', 'M17'] pred=['I21', 'M17'] f1=1.00 1.0s rt=50
+✓ mc-296 gold=['K76', 'M17'] pred=['K76', 'M17'] f1=1.00 1.4s rt=113
+✓ mc-483 gold=['A41'] pred=['A41'] f1=1.00 3.9s rt=449
+✓ mc-034 gold=['F41', 'L30'] pred=['F41', 'L30'] f1=1.00 3.2s rt=305
+✓ mc-327 gold=['I25', 'M17'] pred=['I25', 'M17'] f1=1.00 5.1s rt=585
+✓ mc-021 gold=['D50'] pred=['D50'] f1=1.00 1.1s rt=51
+✓ mc-401 gold=['E78', 'F32', 'I48', 'J02'] pred=['E78', 'F32', 'I48', 'J02'] f1=1.00 1.4s rt=100
+✓ mc-143 gold=['L40'] pred=['L40'] f1=1.00 0.7s rt=36
+✓ mc-209 gold=['I73', 'K80'] pred=['I73', 'K80'] f1=1.00 14.3s rt=2028
+✓ mc-248 gold=['E10', 'I21'] pred=['E10', 'I21'] f1=1.00 2.2s rt=214
+✓ mc-065 gold=['D50', 'R10'] pred=['D50', 'R10'] f1=1.00 2.0s rt=149
+✓ mc-029 gold=['M17'] pred=['M17'] f1=1.00 1.4s rt=54
+✓ mc-295 gold=['E66', 'F43', 'M17'] pred=['E66', 'F43', 'M17'] f1=1.00 2.0s rt=146
+✓ mc-111 gold=['E66', 'I26', 'N17'] pred=['E66', 'I26', 'N17'] f1=1.00 2.2s rt=203
+~ mc-368 gold=['B34', 'G40', 'J44', 'K29'] pred=['G40', 'J06', 'J44', 'K29'] f1=0.75 7.3s rt=861
+✓ mc-214 gold=['F17', 'G40', 'J45', 'N39'] pred=['F17', 'G40', 'J45', 'N39'] f1=1.00 2.0s rt=110
+✓ mc-382 gold=['A09', 'I63', 'J02', 'K80'] pred=['A09', 'I63', 'J02', 'K80'] f1=1.00 4.2s rt=389
+✓ mc-090 gold=['G20', 'N39'] pred=['G20', 'N39'] f1=1.00 1.5s rt=112
+✓ mc-273 gold=['I48', 'J20', 'N18'] pred=['I48', 'J20', 'N18'] f1=1.00 4.5s rt=244
+✓ mc-197 gold=['I63', 'L40'] pred=['I63', 'L40'] f1=1.00 2.4s rt=164
+✓ mc-003 gold=['F41'] pred=['F41'] f1=1.00 14.5s rt=67
+✓ mc-337 gold=['L03'] pred=['L03'] f1=1.00 1.8s rt=119
+✓ mc-332 gold=['D50', 'I10', 'J44'] pred=['D50', 'I10', 'J44'] f1=1.00 6.1s rt=246
+ERROR mc-323 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-6f4f6883427444bbb40b491bf17dd147"}
+✗ mc-323 gold=['K76', 'N17'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-142 gold=['F10', 'F90', 'K76'] pred=['F10', 'F90', 'K76'] f1=1.00 2.1s rt=166
+✓ mc-314 gold=['J01', 'K58', 'N39'] pred=['J01', 'K58', 'N39'] f1=1.00 1.5s rt=80
+✓ mc-132 gold=['E10'] pred=['E10'] f1=1.00 3.2s rt=226
+✓ mc-428 gold=['G43', 'K76'] pred=['G43', 'K76'] f1=1.00 2.0s rt=109
+✓ mc-095 gold=['G47', 'J45', 'K57'] pred=['G47', 'J45', 'K57'] f1=1.00 1.9s rt=146
+✓ mc-076 gold=['J01'] pred=['J01'] f1=1.00 1.5s rt=55
+✓ mc-355 gold=['E03', 'G30', 'N39'] pred=['E03', 'G30', 'N39'] f1=1.00 1.5s rt=94
+✓ mc-307 gold=['J06', 'M81'] pred=['J06', 'M81'] f1=1.00 2.6s rt=245
+
+accounts/fireworks/models/deepseek-v4p1-flash + v1_plain: F1 0.932 | exact 0.883 | invalid 10 | p50 2.245s p95 8.868s | $0.558/1k | run cost $0.101 | ledger $1.208
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/medical-coding/results/deepseek-v4p1-flash_v1_plain_s7.json
+✓ mc-344 gold=['F90'] pred=['F90'] f1=1.00 0.6s rt=0
+✓ mc-210 gold=['E03'] pred=['E03'] f1=1.00 0.7s rt=0
+~ mc-087 gold=['A41', 'E55', 'I21', 'I82'] pred=['A41', 'E55', 'I21', 'I82', 'N39'] f1=0.89 0.8s rt=0
+~ mc-281 gold=['E11', 'E55'] pred=['E11', 'E55', 'M79'] f1=0.80 0.5s rt=0
+~ mc-454 gold=['B34', 'F17', 'J44'] pred=['B34', 'F17', 'J06', 'J44', 'M79'] f1=0.75 0.6s rt=0
+✓ mc-417 gold=['I25', 'K80'] pred=['I25', 'K80'] f1=1.00 0.8s rt=0
+✓ mc-356 gold=['E05', 'J18'] pred=['E05', 'J18'] f1=1.00 0.6s rt=0
+✓ mc-229 gold=['J01', 'N40'] pred=['J01', 'N40'] f1=1.00 0.5s rt=0
+~ mc-201 gold=['B34', 'E05', 'K80', 'N17'] pred=['B34', 'E05', 'K80', 'N17', 'R10'] f1=0.89 0.7s rt=0
+✓ mc-393 gold=['G30', 'J02', 'J18', 'L30'] pred=['G30', 'J02', 'J18', 'L30'] f1=1.00 0.7s rt=0
+✓ mc-440 gold=['A41', 'I21', 'L03', 'N18'] pred=['A41', 'I21', 'L03', 'N18'] f1=1.00 0.6s rt=0
+✓ mc-189 gold=['B34', 'E55', 'F43', 'N40'] pred=['B34', 'E55', 'F43', 'N40'] f1=1.00 0.6s rt=0
+✓ mc-069 gold=['D64', 'I26', 'J44'] pred=['D64', 'I26', 'J44'] f1=1.00 0.6s rt=0
+✓ mc-396 gold=['J44'] pred=['J44'] f1=1.00 0.7s rt=0
+✓ mc-205 gold=['E66', 'F10', 'I10', 'I73'] pred=['E66', 'F10', 'I10', 'I73'] f1=1.00 0.6s rt=0
+✓ mc-363 gold=['I10', 'K76'] pred=['I10', 'K76'] f1=1.00 0.5s rt=0
+~ mc-245 gold=['A09', 'F41', 'M06'] pred=['A09', 'F41', 'M06', 'R10'] f1=0.86 0.8s rt=0
+✓ mc-019 gold=['D50'] pred=['D50'] f1=1.00 0.6s rt=0
+✓ mc-394 gold=['E05', 'K57', 'K58'] pred=['E05', 'K57', 'K58'] f1=1.00 0.5s rt=0
+✓ mc-310 gold=['F90'] pred=['F90'] f1=1.00 0.6s rt=0
+✓ mc-036 gold=['A09', 'F43', 'J01', 'N17'] pred=['A09', 'F43', 'J01', 'N17'] f1=1.00 0.6s rt=0
+ERROR mc-187 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-69442b96bc694459bcc2eade5952077b"}
+✗ mc-187 gold=['F41', 'G20', 'I73', 'M10'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-038 gold=['K57'] pred=['K57'] f1=1.00 0.5s rt=0
+✓ mc-098 gold=['I25', 'M06', 'M54'] pred=['I25', 'M06', 'M54'] f1=1.00 0.6s rt=0
+✓ mc-153 gold=['K35'] pred=['K35'] f1=1.00 0.5s rt=0
+✓ mc-018 gold=['K29'] pred=['K29'] f1=1.00 0.4s rt=0
+✓ mc-498 gold=['J44', 'M81'] pred=['J44', 'M81'] f1=1.00 0.5s rt=0
+✓ mc-358 gold=['I10', 'J02', 'N17'] pred=['I10', 'J02', 'N17'] f1=1.00 0.5s rt=0
+✓ mc-317 gold=['E05', 'M06'] pred=['E05', 'M06'] f1=1.00 0.6s rt=0
+✓ mc-305 gold=['I10', 'I21'] pred=['I10', 'I21'] f1=1.00 0.5s rt=0
+~ mc-211 gold=['D64', 'F32'] pred=['D50', 'F32'] f1=0.50 0.6s rt=0
+✓ mc-381 gold=['I25', 'J45'] pred=['I25', 'J45'] f1=1.00 0.6s rt=0
+~ mc-470 gold=['B34', 'J20'] pred=['B34', 'J02', 'J06', 'J20', 'M79'] f1=0.57 0.6s rt=0
+ERROR mc-373 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-c04243400fed4a7c8a07ab610ef44af4"}
+✗ mc-373 gold=['E55', 'I50'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-223 gold=['I21', 'J18', 'M54', 'N18'] pred=['I21', 'J18', 'M54', 'N18'] f1=1.00 0.6s rt=0
+✓ mc-221 gold=['A09', 'F17', 'F43'] pred=['A09', 'F17', 'F43'] f1=1.00 0.6s rt=0
+✓ mc-499 gold=['J02', 'J45'] pred=['J02', 'J45'] f1=1.00 0.6s rt=0
+ERROR mc-475 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-350bb5f6e1a34082b8556d337d7892e4"}
+✗ mc-475 gold=['I73', 'J02', 'N40'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-434 gold=['A09'] pred=['A09'] f1=1.00 0.5s rt=0
+✓ mc-141 gold=['E03', 'I26', 'L03', 'R10'] pred=['E03', 'I26', 'L03', 'R10'] f1=1.00 0.5s rt=0
+✓ mc-014 gold=['E66', 'F43', 'G43'] pred=['E66', 'F43', 'G43'] f1=1.00 0.6s rt=0
+✓ mc-161 gold=['F17', 'K76'] pred=['F17', 'K76'] f1=1.00 0.6s rt=0
+✓ mc-145 gold=['F41', 'G40'] pred=['F41', 'G40'] f1=1.00 0.6s rt=0
+✓ mc-285 gold=['E66', 'L30'] pred=['E66', 'L30'] f1=1.00 0.6s rt=0
+✓ mc-154 gold=['K21'] pred=['K21'] f1=1.00 0.6s rt=0
+~ mc-232 gold=['E66', 'F17', 'F43', 'I63'] pred=['E66', 'E78', 'F17', 'F43', 'I63'] f1=0.89 0.9s rt=0
+✓ mc-409 gold=['F41', 'I50', 'K58'] pred=['F41', 'I50', 'K58'] f1=1.00 0.5s rt=0
+✓ mc-130 gold=['I82', 'M81'] pred=['I82', 'M81'] f1=1.00 0.6s rt=0
+~ mc-059 gold=['A41'] pred=['A41', 'N39'] f1=0.67 0.6s rt=0
+✓ mc-384 gold=['E03', 'F10', 'K35'] pred=['E03', 'F10', 'K35'] f1=1.00 0.6s rt=0
+ERROR mc-139 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-130aaa26f898491abc55dff49f61d8f1"}
+✗ mc-139 gold=['K80'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-429 gold=['G47', 'J02', 'M79', 'M81'] pred=['G47', 'J02', 'M79', 'M81'] f1=1.00 0.7s rt=0
+✓ mc-486 gold=['F90', 'J20', 'K80', 'M06'] pred=['F90', 'J20', 'K80', 'M06'] f1=1.00 0.5s rt=0
+✓ mc-286 gold=['F17', 'G20'] pred=['F17', 'G20'] f1=1.00 0.5s rt=0
+✓ mc-348 gold=['I10', 'M06'] pred=['I10', 'M06'] f1=1.00 0.4s rt=0
+✓ mc-441 gold=['G47', 'I21', 'K29', 'M06'] pred=['G47', 'I21', 'K29', 'M06'] f1=1.00 0.5s rt=0
+✓ mc-315 gold=['I48', 'J06'] pred=['I48', 'J06'] f1=1.00 0.6s rt=0
+✓ mc-276 gold=['F90', 'N39'] pred=['F90', 'N39'] f1=1.00 0.6s rt=0
+✓ mc-163 gold=['E55', 'K57', 'M17', 'N18'] pred=['E55', 'K57', 'M17', 'N18'] f1=1.00 0.6s rt=0
+✓ mc-413 gold=['F32', 'J45', 'L03', 'M54'] pred=['F32', 'J45', 'L03', 'M54'] f1=1.00 0.6s rt=0
+✓ mc-414 gold=['J45', 'K21', 'M79'] pred=['J45', 'K21', 'M79'] f1=1.00 0.5s rt=0
+✓ mc-448 gold=['E03', 'G47'] pred=['E03', 'G47'] f1=1.00 0.6s rt=0
+✓ mc-112 gold=['A09', 'J18'] pred=['A09', 'J18'] f1=1.00 0.5s rt=0
+✓ mc-146 gold=['E03', 'I50'] pred=['E03', 'I50'] f1=1.00 0.5s rt=0
+~ mc-192 gold=['A41', 'D50', 'K58', 'M54'] pred=['A41', 'D50', 'K58', 'M54', 'N39'] f1=0.89 0.7s rt=0
+✓ mc-203 gold=['I82', 'J06'] pred=['I82', 'J06'] f1=1.00 0.6s rt=0
+✓ mc-185 gold=['I26', 'I48', 'K57'] pred=['I26', 'I48', 'K57'] f1=1.00 0.7s rt=0
+✓ mc-274 gold=['J45'] pred=['J45'] f1=1.00 0.5s rt=0
+✓ mc-360 gold=['M10', 'M54'] pred=['M10', 'M54'] f1=1.00 0.5s rt=0
+✓ mc-113 gold=['I63'] pred=['I63'] f1=1.00 0.7s rt=0
+✓ mc-481 gold=['D50', 'E78', 'M81'] pred=['D50', 'E78', 'M81'] f1=1.00 0.6s rt=0
+ERROR mc-131 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-aa7658ae40b941babd57fce6d5c3f41a"}
+✗ mc-131 gold=['E55', 'G20', 'M54'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-053 gold=['J44', 'M06', 'N39', 'N40'] pred=['J44', 'M06', 'N39', 'N40'] f1=1.00 0.5s rt=0
+~ mc-231 gold=['A41'] pred=['A41', 'N39'] f1=0.67 0.5s rt=0
+✓ mc-126 gold=['E03', 'K21'] pred=['E03', 'K21'] f1=1.00 0.9s rt=0
+✓ mc-183 gold=['K35', 'N18', 'N40'] pred=['K35', 'N18', 'N40'] f1=1.00 0.6s rt=0
+✓ mc-110 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 0.8s rt=0
+~ mc-027 gold=['A41', 'G30'] pred=['A41', 'G30', 'N39'] f1=0.80 0.7s rt=0
+✓ mc-366 gold=['I21'] pred=['I21'] f1=1.00 0.6s rt=0
+✓ mc-078 gold=['A41', 'L30', 'N18'] pred=['A41', 'L30', 'N18'] f1=1.00 0.6s rt=0
+✓ mc-156 gold=['G20', 'K35'] pred=['G20', 'K35'] f1=1.00 0.6s rt=0
+ERROR mc-462 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-5caff4148df548d3b212264b2e264a43"}
+✗ mc-462 gold=['I48'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-097 gold=['G43', 'I48'] pred=['G43', 'I48'] f1=1.00 0.8s rt=0
+✓ mc-122 gold=['E10', 'F32', 'F90', 'K76'] pred=['E10', 'F32', 'F90', 'K76'] f1=1.00 0.5s rt=0
+✓ mc-376 gold=['G20', 'G30'] pred=['G20', 'G30'] f1=1.00 0.6s rt=0
+✓ mc-379 gold=['L03'] pred=['L03'] f1=1.00 0.5s rt=0
+✓ mc-280 gold=['I48'] pred=['I48'] f1=1.00 0.5s rt=0
+✓ mc-198 gold=['G20', 'K21'] pred=['G20', 'K21'] f1=1.00 0.5s rt=0
+✓ mc-170 gold=['I63'] pred=['I63'] f1=1.00 0.5s rt=0
+✓ mc-410 gold=['D50'] pred=['D50'] f1=1.00 0.5s rt=0
+~ mc-282 gold=['J20'] pred=['J02', 'J20'] f1=0.67 0.6s rt=0
+✓ mc-241 gold=['E03', 'F90', 'M79', 'N40'] pred=['E03', 'F90', 'M79', 'N40'] f1=1.00 0.6s rt=0
+✓ mc-375 gold=['D50', 'F10', 'K57'] pred=['D50', 'F10', 'K57'] f1=1.00 0.6s rt=0
+✓ mc-096 gold=['M06', 'N39'] pred=['M06', 'N39'] f1=1.00 0.6s rt=0
+✓ mc-257 gold=['E55', 'F43', 'L40'] pred=['E55', 'F43', 'L40'] f1=1.00 0.7s rt=0
+✓ mc-051 gold=['I48', 'L30'] pred=['I48', 'L30'] f1=1.00 0.6s rt=0
+✓ mc-215 gold=['I50', 'J20', 'L40'] pred=['I50', 'J20', 'L40'] f1=1.00 0.6s rt=0
+✓ mc-083 gold=['L30', 'M06'] pred=['L30', 'M06'] f1=1.00 0.7s rt=0
+✓ mc-057 gold=['K58'] pred=['K58'] f1=1.00 0.6s rt=0
+✓ mc-243 gold=['E66', 'I48', 'L03'] pred=['E66', 'I48', 'L03'] f1=1.00 0.6s rt=0
+✓ mc-031 gold=['I73', 'J45', 'L03', 'M10'] pred=['I73', 'J45', 'L03', 'M10'] f1=1.00 0.6s rt=0
+✓ mc-147 gold=['I73', 'M17'] pred=['I73', 'M17'] f1=1.00 0.6s rt=0
+ERROR mc-277 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-ea206d0c33c04a829e51e6db8ac03df9"}
+✗ mc-277 gold=['I48', 'M17'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-178 gold=['F17', 'F32', 'I21', 'N39'] pred=['F17', 'F32', 'I21', 'N39'] f1=1.00 0.5s rt=0
+~ mc-472 gold=['K35'] pred=['K35', 'R10'] f1=0.67 0.7s rt=0
+✓ mc-072 gold=['I10', 'I26', 'L03'] pred=['I10', 'I26', 'L03'] f1=1.00 2.0s rt=130
+✓ mc-064 gold=['E05', 'K76'] pred=['E05', 'K76'] f1=1.00 0.5s rt=0
+ERROR mc-340 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-a84f9cf9dd0d45cdb1d7a68912531b7f"}
+✗ mc-340 gold=['F90'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-308 gold=['E05'] pred=['E05'] f1=1.00 0.5s rt=0
+✓ mc-181 gold=['I10', 'K57', 'N40'] pred=['I10', 'K57', 'N40'] f1=1.00 0.5s rt=0
+✓ mc-431 gold=['F43', 'I82', 'K21', 'M54'] pred=['F43', 'I82', 'K21', 'M54'] f1=1.00 0.6s rt=0
+✓ mc-391 gold=['I25', 'N17', 'N18'] pred=['I25', 'N17', 'N18'] f1=1.00 0.6s rt=0
+✓ mc-196 gold=['J18', 'L30'] pred=['J18', 'L30'] f1=1.00 0.5s rt=0
+✓ mc-212 gold=['F90', 'I82', 'N40'] pred=['F90', 'I82', 'N40'] f1=1.00 0.6s rt=0
+✓ mc-121 gold=['B34', 'D50', 'F10'] pred=['B34', 'D50', 'F10'] f1=1.00 0.6s rt=0
+✓ mc-291 gold=['M81'] pred=['M81'] f1=1.00 0.5s rt=12
+✓ mc-445 gold=['G30', 'I25', 'J06'] pred=['G30', 'I25', 'J06'] f1=1.00 0.7s rt=0
+✓ mc-081 gold=['G40', 'M06'] pred=['G40', 'M06'] f1=1.00 0.6s rt=0
+✓ mc-144 gold=['J02', 'M10'] pred=['J02', 'M10'] f1=1.00 0.8s rt=0
+✓ mc-028 gold=['E05', 'L30'] pred=['E05', 'L30'] f1=1.00 0.5s rt=0
+✓ mc-253 gold=['E05', 'K29'] pred=['E05', 'K29'] f1=1.00 0.4s rt=0
+✓ mc-092 gold=['A09', 'E55', 'G30'] pred=['A09', 'E55', 'G30'] f1=1.00 0.6s rt=0
+✓ mc-442 gold=['K76'] pred=['K76'] f1=1.00 0.5s rt=0
+✓ mc-399 gold=['A41', 'J45', 'K29', 'N40'] pred=['A41', 'J45', 'K29', 'N40'] f1=1.00 0.8s rt=22
+✓ mc-226 gold=['E55', 'J06', 'M10'] pred=['E55', 'J06', 'M10'] f1=1.00 0.5s rt=0
+✓ mc-066 gold=['I25', 'J01', 'J44', 'N17'] pred=['I25', 'J01', 'J44', 'N17'] f1=1.00 0.5s rt=0
+✓ mc-155 gold=['I50', 'I63', 'J44', 'L03'] pred=['I50', 'I63', 'J44', 'L03'] f1=1.00 0.5s rt=0
+✓ mc-086 gold=['G43', 'G47', 'L03'] pred=['G43', 'G47', 'L03'] f1=1.00 0.5s rt=0
+✓ mc-015 gold=['J20'] pred=['J20'] f1=1.00 0.5s rt=0
+✓ mc-331 gold=['R10'] pred=['R10'] f1=1.00 0.5s rt=0
+✓ mc-433 gold=['M54'] pred=['M54'] f1=1.00 0.5s rt=0
+~ mc-293 gold=['F43', 'G30', 'J02', 'M79'] pred=['F43', 'J02', 'M79'] f1=0.86 0.6s rt=0
+~ mc-275 gold=['D64', 'F10', 'I25', 'M17'] pred=['D50', 'D64', 'F10', 'I25', 'M17'] f1=0.89 0.5s rt=0
+~ mc-010 gold=['A41', 'F10', 'L30'] pred=['A41', 'F10', 'L30', 'N39'] f1=0.86 0.6s rt=0
+✓ mc-319 gold=['I21'] pred=['I21'] f1=1.00 0.4s rt=0
+✓ mc-468 gold=['N18'] pred=['N18'] f1=1.00 0.5s rt=0
+✓ mc-447 gold=['L40'] pred=['L40'] f1=1.00 0.6s rt=0
+✓ mc-093 gold=['G40', 'G47', 'J18'] pred=['G40', 'G47', 'J18'] f1=1.00 0.7s rt=0
+✓ mc-209 gold=['I73', 'K80'] pred=['I73', 'K80'] f1=1.00 0.6s rt=0
+✓ mc-172 gold=['E66', 'E78', 'I25'] pred=['E66', 'E78', 'I25'] f1=1.00 0.7s rt=0
+~ mc-009 gold=['J20', 'R10'] pred=['J02', 'J20', 'R10'] f1=0.80 0.5s rt=0
+✓ mc-457 gold=['F90', 'M10', 'M79'] pred=['F90', 'M10', 'M79'] f1=1.00 0.5s rt=0
+✓ mc-461 gold=['L40'] pred=['L40'] f1=1.00 0.5s rt=0
+✓ mc-430 gold=['G20'] pred=['G20'] f1=1.00 0.6s rt=0
+✓ mc-125 gold=['A41', 'J20'] pred=['A41', 'J20'] f1=1.00 0.6s rt=0
+✓ mc-306 gold=['F10', 'I25', 'J01', 'K80'] pred=['F10', 'I25', 'J01', 'K80'] f1=1.00 0.6s rt=0
+✓ mc-312 gold=['E03', 'J45'] pred=['E03', 'J45'] f1=1.00 0.5s rt=0
+✓ mc-177 gold=['I21', 'M17'] pred=['I21', 'M17'] f1=1.00 0.6s rt=0
+✓ mc-296 gold=['K76', 'M17'] pred=['K76', 'M17'] f1=1.00 0.6s rt=0
+✓ mc-327 gold=['I25', 'M17'] pred=['I25', 'M17'] f1=1.00 0.6s rt=0
+✓ mc-143 gold=['L40'] pred=['L40'] f1=1.00 0.5s rt=0
+✓ mc-034 gold=['F41', 'L30'] pred=['F41', 'L30'] f1=1.00 0.5s rt=0
+ERROR mc-484 gave up after 5 attempts: HTTP 429: {"error":{"message":"You have exceeded your rate limit for this API. Please try again later. For more information, see https://docs.fireworks.ai/guides/quotas_usage/rate-limits.","param":null,"code":"RATE_LIMIT_EXCEEDED","type":"error"},"request_id":"chatcmpl-27b1e6f8cada4360a5660fae94e4bbae"}
+✗ mc-484 gold=['E78', 'I26'] pred=[] f1=0.00 0.0s rt=0
+✓ mc-401 gold=['E78', 'F32', 'I48', 'J02'] pred=['E78', 'F32', 'I48', 'J02'] f1=1.00 0.6s rt=0
+✓ mc-248 gold=['E10', 'I21'] pred=['E10', 'I21'] f1=1.00 0.6s rt=0
+~ mc-483 gold=['A41'] pred=['A41', 'N17'] f1=0.67 0.9s rt=41
+✓ mc-021 gold=['D50'] pred=['D50'] f1=1.00 0.6s rt=0
+✓ mc-003 gold=['F41'] pred=['F41'] f1=1.00 0.6s rt=0
+✓ mc-323 gold=['K76', 'N17'] pred=['K76', 'N17'] f1=1.00 0.6s rt=0
+✓ mc-029 gold=['M17'] pred=['M17'] f1=1.00 0.5s rt=0
+✓ mc-111 gold=['E66', 'I26', 'N17'] pred=['E66', 'I26', 'N17'] f1=1.00 0.7s rt=0
+✓ mc-193 gold=['J06', 'L40', 'N18'] pred=['J06', 'L40', 'N18'] f1=1.00 0.6s rt=0
+✓ mc-273 gold=['I48', 'J20', 'N18'] pred=['I48', 'J20', 'N18'] f1=1.00 1.0s rt=0
+~ mc-368 gold=['B34', 'G40', 'J44', 'K29'] pred=['B34', 'G40', 'J02', 'J06', 'J44', 'K29'] f1=0.80 0.7s rt=0
+✓ mc-382 gold=['A09', 'I63', 'J02', 'K80'] pred=['A09', 'I63', 'J02', 'K80'] f1=1.00 0.6s rt=0
+✓ mc-214 gold=['F17', 'G40', 'J45', 'N39'] pred=['F17', 'G40', 'J45', 'N39'] f1=1.00 0.6s rt=0
+✓ mc-090 gold=['G20', 'N39'] pred=['G20', 'N39'] f1=1.00 0.6s rt=0
+✓ mc-332 gold=['D50', 'I10', 'J44'] pred=['D50', 'I10', 'J44'] f1=1.00 0.5s rt=0
+✓ mc-065 gold=['D50', 'R10'] pred=['D50', 'R10'] f1=1.00 0.6s rt=0
+✓ mc-197 gold=['I63', 'L40'] pred=['I63', 'L40'] f1=1.00 0.6s rt=0
+✓ mc-132 gold=['E10'] pred=['E10'] f1=1.00 0.5s rt=0
+✓ mc-428 gold=['G43', 'K76'] pred=['G43', 'K76'] f1=1.00 0.5s rt=0
+✓ mc-142 gold=['F10', 'F90', 'K76'] pred=['F10', 'F90', 'K76'] f1=1.00 0.6s rt=0
+✓ mc-337 gold=['L03'] pred=['L03'] f1=1.00 0.5s rt=0
+✓ mc-314 gold=['J01', 'K58', 'N39'] pred=['J01', 'K58', 'N39'] f1=1.00 0.5s rt=0
+✓ mc-076 gold=['J01'] pred=['J01'] f1=1.00 0.5s rt=0
+✓ mc-307 gold=['J06', 'M81'] pred=['J06', 'M81'] f1=1.00 0.4s rt=0
+✓ mc-355 gold=['E03', 'G30', 'N39'] pred=['E03', 'G30', 'N39'] f1=1.00 0.6s rt=0
+✓ mc-295 gold=['E66', 'F43', 'M17'] pred=['E66', 'F43', 'M17'] f1=1.00 0.5s rt=0
+✓ mc-095 gold=['G47', 'J45', 'K57'] pred=['G47', 'J45', 'K57'] f1=1.00 0.5s rt=0
+
+accounts/fireworks/models/glm-5p3 + v1_plain: F1 0.924 | exact 0.839 | invalid 9 | p50 0.573s p95 0.767s | $1.194/1k | run cost $0.215 | ledger $1.423
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/medical-coding/results/glm-5p3_v1_plain_s7.json

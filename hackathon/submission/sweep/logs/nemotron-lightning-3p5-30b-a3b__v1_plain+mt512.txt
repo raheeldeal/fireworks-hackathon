@@ -1,0 +1,134 @@
+✗ jira.move_to_sprint          -> invalid                      9.54s  We finished planning for the payment team, and the
+✗ browser.extract_text         -> invalid                      2.56s  Please give me all words what is showing on curren
+✗ slack.schedule_message       -> invalid                      1.58s  Please post message in #team-lunch channel tomorro
+✗ fs.get_file_info             -> invalid                      2.28s  I'm curious about the metadata of /home/ana/backup
+✓ slack.search_messages        -> slack.search_messages        1.16s  find every mention of "Q3 budget" in Slack history
+✗ db.execute_statement         -> invalid                      1.82s  Hi Marcus — the duplicate rows in the events table
+✗ drive.share_file             -> invalid                      1.51s  Hey, so my new intern Daniel starts Monday and he'
+✓ github.merge_pull_request    -> github.merge_pull_request    1.43s  Hey, so I've been reviewing Maria's pull request f
+✗ jira.update_ticket           -> jira.create_sprint           1.98s  Hi Dana — since the outage on March 14th, could yo
+✗ pagerduty.trigger_incident   -> invalid                      1.53s  Priya, the auth gateway started failing at 03:14 U
+✗ github.update_issue          -> invalid                      14.66s  retag issue #142 as 'ui' instead of 'frontend'
+✗ slack.add_reaction           -> invalid                      1.89s  Hey Alex — saw your message in #release-notes abou
+✓ slack.list_channels          -> slack.list_channels          0.96s  Hey Marcus, since we're rolling out the Q3 migrati
+✗ slack.send_message           -> invalid                      2.58s  I'd like the folks in #design to see a fresh note 
+✗ browser.type_text            -> invalid                      2.00s  The cursor is already sitting in the comment box o
+✗ browser.navigate             -> invalid                      3.61s  Hi Marcus — before our sync on March 14th, can you
+✓ github.create_pull_request   -> github.create_pull_request   1.59s  I just finished pushing my branch with the payment
+✓ reminders.list               -> reminders.list               1.46s  Hey, before I plan my week out — my sister's gradu
+✗ drive.upload_file            -> invalid                      2.04s  Hi Dana — since you're swamped, could you have the
+✗ github.get_file_contents     -> invalid                      2.53s  I'd like to see exactly what's inside the Dockerfi
+✗ calendar.find_free_time      -> invalid                      1.00s  when are me and Priya both free next Tuesday?
+✗ browser.fill_form            -> invalid                      3.33s  Hey, so I'm finally getting around to booking that
+✗ translate.detect_language    -> invalid                      1.24s  Hey, so I got this weird email this morning that's
+✓ fs.delete_file               -> fs.delete_file               1.04s  Hey, so I was cleaning up the project folder for t
+✗ drive.export_document        -> invalid                      2.02s  I'd like the board deck from last week's folder in
+✓ calendar.respond_to_invite   -> calendar.respond_to_invite   1.09s  Hi Marcus, can you let the assistant know I'm in f
+✗ gmail.mark_unread            -> invalid                      5.12s  mark that last email from Priya unread pls
+✗ stripe.create_subscription   -> invalid                      4.11s  put Priya Raman on the $49/mo growth plan starting
+✗ gmail.mark_unread            -> invalid                      4.11s  I opened the invoice email from Acme Corp this mor
+✗ fs.search_files              -> invalid                      1.04s  I did a bunch of exports last quarter and they all
+✓ weather.current              -> weather.current              1.00s  I'm standing in the parking lot at the trailhead n
+✗ notion.search                -> invalid                      1.11s  I vaguely recall a write-up on the migration plan 
+✓ fs.append_file               -> fs.append_file               1.30s  Hey Priya, can you have the bot drop 'deployed hot
+✓ slack.set_status             -> slack.set_status             1.29s  Please put status 'on vacation 🌴' for me, it shoul
+✗ gmail.archive_email          -> invalid                      14.12s  Please move out this email from BlueHarbor Insuran
+✗ notion.update_page           -> invalid                      1.68s  rename my Q3 roadmap page to 'Q3 Product Prioritie
+✗ fs.list_directory            -> invalid                      1.68s  I'm not sure what ended up on my Desktop after tha
+✗ fs.append_file               -> invalid                      3.83s  Please put the text 'Besuch 15.03: Lager geprüft' 
+✓ github.search_code           -> github.search_code           4.13s  Please help me, I want search in all our company r
+✗ github.create_pull_request   -> invalid                      8.47s  The work on my fix-typo-in-readme branch is commit
+✗ jira.create_ticket           -> invalid                      1.54s  Hi Daniel — can you have the assistant open a tick
+✗ pagerduty.resolve_incident   -> invalid                      1.45s  Sara, the PagerDuty alert for the EU API gateway (
+✓ db.run_query                 -> db.run_query                 1.73s  Hi Rachel — before Friday's audit, could you pull 
+✓ pagerduty.acknowledge_incident -> pagerduty.acknowledge_incident 1.01s  ack incident PD-4821 now pls
+✗ browser.extract_text         -> invalid                      1.55s  Hi Dana — since you're on the Acme vendor portal p
+✓ stripe.create_coupon         -> stripe.create_coupon         1.05s  make a 20% off coupon please
+✗ gmail.label_email            -> invalid                      1.69s  Please put label 'Wichtig' on email from Frau Webe
+✗ browser.download_file        -> invalid                      2.42s  There's a copy of the vendor pricing spreadsheet h
+✓ gmail.get_thread             -> gmail.get_thread             1.82s  I keep losing track of that long back-and-forth wi
+✗ stripe.cancel_subscription   -> invalid                      3.02s  The monthly charge on sub_1K9f2XqA keeps coming th
+✗ stripe.create_invoice        -> invalid                      2.22s  Hey, so I finished up that design work for Brightl
+✓ calendar.find_free_time      -> calendar.find_free_time      2.12s  Hey Dana — since the vendor call got pushed, can w
+✓ slack.create_channel         -> slack.create_channel         1.40s  new channel: q4-launch, purpose "Q4 product launch
+✗ github.request_review        -> invalid                      3.09s  On that open change in the payments repo — the one
+✗ stripe.cancel_subscription   -> invalid                      4.34s  Please stop my recurring payment plan, I am not ne
+✗ gmail.label_email            -> invalid                      0.52s  label that invoice email from Stripe as 'Finance'
+✗ calendar.update_event        -> invalid                      15.34s  Hey, so the quarterly review with the Hoffmann tea
+✗ gmail.search_emails          -> invalid                      82.91s  Please search my mailbox, I need email from Mr. Ta
+✗ stripe.refund_payment        -> invalid                      1.12s  Hello, please give back the money for payment pi_4
+✗ stripe.list_charges          -> invalid                      6.30s  show me all charges from last month
+✗ jira.add_comment             -> invalid                      117.74s  Hey, so I just finished debugging the payment gate
+✗ drive.search_files           -> drive.upload_file            1.28s  Sarah — the vendor contract PDF you sent on Nov 14
+✗ slack.reply_in_thread        -> invalid                      4.89s  In the channel where the team is discussing the se
+✓ jira.update_ticket           -> jira.update_ticket           0.73s  Please change the summary of ticket PAY-77 to "Fix
+✗ notion.query_database        -> invalid                      2.01s  Hi Marcus — before Friday's review, can you filter
+✗ pagerduty.list_oncall        -> invalid                      16.37s  Hey, quick question — the API monitoring keeps fir
+✗ drive.share_file             -> invalid                      73.21s  Marcus shouldn't have to keep emailing me for the 
+✗ github.search_code           -> invalid                      24.86s  Priya — before the March 14 standup, could you pul
+✗ browser.navigate             -> invalid                      109.00s  Hey, so I've been meaning to compare a few project
+✗ zoom.list_meetings           -> zoom.create_meeting          0.44s  I'd like to see what video calls are already booke
+✗ pagerduty.trigger_incident   -> invalid                      3.32s  page on-call for payments-api, prod is down
+✗ github.create_issue          -> invalid                      2.85s  Hi Marcus — remember the crash we saw in the mobil
+✗ drive.create_folder          -> invalid                      1.74s  I'd like an empty container named "Onboarding Mate
+✓ db.run_query                 -> db.run_query                 1.56s  I'm curious which rows live in the invoices table 
+✗ browser.fill_form            -> invalid                      1.81s  Please complete the registration form in open page
+✗ notion.search                -> invalid                      1.61s  Hey, I know I saw a page about the onboarding chec
+✗ drive.search_files           -> invalid                      1.99s  I remember Dana mentioned a slides deck from the i
+✗ stripe.list_charges          -> fs.list_directory            2.94s  Hey, so I'm doing the books for Bluebird Yoga Stud
+✗ slack.create_channel         -> invalid                      0.69s  Please make channel for new interns, name is "inte
+✓ jira.link_tickets            -> jira.link_tickets            1.75s  Make PROJ-142 block PROJ-98
+✗ notion.query_database        -> invalid                      1.49s  Hey, so I'm trying to plan our Q3 roadmap and I ke
+✗ jira.search_tickets          -> invalid                      1.64s  Please show me the tickets about login problem, I 
+✗ jira.search_tickets          -> invalid                      1.68s  find all open bugs in the mobile app project
+✓ jira.log_work                -> jira.log_work                1.42s  I worked yesterday 2 hours for fixing bug on ticke
+✗ calendar.create_event        -> invalid                      2.67s  I'd like everyone to be on the same page about the
+✗ stripe.create_payment_intent -> invalid                      1.41s  Sarah, can you have the assistant bill the client 
+✗ stripe.create_customer       -> invalid                      3.07s  Please make customer record for Mr. Hiroshi Tanaka
+✗ slack.upload_file            -> invalid                      2.15s  The #design-review folks need to see the mockup — 
+✗ calendar.delete_event        -> invalid                      2.41s  Hi Dana, since the Q3 roadmap sync you set for Oct
+✓ calendar.list_events         -> calendar.list_events         1.16s  Hey, so my manager wants me to put together a reca
+✗ fs.move_file                 -> invalid                      1.55s  Hi Sarah, could you make sure the file client_prop
+✗ zoom.create_meeting          -> invalid                      1.84s  set up a video call for tuesday 3pm with the desig
+✗ zoom.list_meetings           -> github.create_issue          1.39s  what meetings do I have coming up?
+✗ github.get_file_contents     -> invalid                      117.35s  show me package.json on main of acme/api-gateway
+✗ gmail.trash_email            -> invalid                      2.53s  Hi Dana — the email you forwarded me on March 12 (
+✗ jira.link_tickets            -> invalid                      0.61s  The billing fix and the refund issue in our tracke
+✗ github.create_branch         -> invalid                      2.26s  Hey Marcus, since we agreed in standup on the 14th
+✗ pagerduty.acknowledge_incident -> invalid                      60.42s  Hi Marcus — since you're already digging into the 
+✗ jira.create_ticket           -> github.create_issue          0.55s  new ticket: login page 500 error, P1, MOB project
+✓ db.describe_table            -> db.describe_table            2.50s  Please tell me what columns and indexes exists in 
+✗ calendar.update_event        -> invalid                      0.68s  move the 3pm design sync to 2:30
+✗ zoom.get_recording           -> invalid                      1.52s  Hi Marco — the client onboarding session from Nov 
+✗ drive.export_document        -> invalid                      3.53s  Hi Dana — before the audit on Nov 14, can you get 
+✓ db.explain_query             -> db.explain_query             1.95s  explain plan for select * from orders where status
+✗ github.comment_on_issue      -> invalid                      3.31s  Hey, so I was testing the login flow yesterday and
+✗ zoom.get_recording           -> invalid                      50.38s  Please can you get me the record and transcript of
+✗ github.create_release        -> invalid                      0.00s  Publish v2.4.0 on acme/api-server with the changel
+✓ jira.add_comment             -> jira.add_comment             1.70s  add comment to PROJ-1042: "deploy blocked on stagi
+✗ github.create_issue          -> invalid                      2.06s  open new bug issue on acme/widgets, title: Login f
+✗ notion.update_page           -> invalid                      0.00s  Please update title of page 'Recruiting Plan 2024'
+✓ gmail.create_draft           -> gmail.create_draft           0.94s  Please make draft email to Mr. Tanaka, subject is 
+✗ notion.add_database_row      -> invalid                      17.95s  My reading list database could use one more entry 
+✗ stripe.create_payment_intent -> invalid                      1.68s  Hey, so I sold a handmade lamp to a customer at th
+✗ fs.read_file                 -> invalid                      1.58s  Hi Sarah, can you grab the full contents of specs/
+✗ stripe.refund_payment        -> invalid                      0.00s  refund charge ch_8823fj in full pls
+✗ jira.create_sprint           -> invalid                      2.70s  We're kicking off the payments redesign next week 
+✓ jira.log_work                -> jira.log_work                2.11s  Hey, so I just spent pretty much the whole morning
+✗ fs.delete_file               -> invalid                      0.00s  There's an old backup at /var/backups/site_2023-11
+✗ gmail.forward_email          -> invalid                      0.00s  Hey, so my manager Dana just sent me that email ab
+✗ notion.create_page           -> invalid                      0.00s  I need somewhere new to dump my ideas for the rebr
+✗ zoom.create_meeting          -> invalid                      0.00s  Please make video meeting for client presentation 
+✗ browser.type_text            -> invalid                      0.00s  Mara — before you hit send on the Halverson invoic
+✗ github.create_branch         -> invalid                      0.00s  Please create new branch from develop, name is fea
+✗ github.list_pull_requests    -> invalid                      0.00s  show me open PRs in acme/api-gateway
+✗ gmail.archive_email          -> invalid                      0.00s  archive that last email from HR
+✗ gmail.send_email             -> invalid                      0.00s  My landlord needs to hear from me about the lease 
+✗ stripe.create_invoice        -> invalid                      0.00s  Our client at the consulting firm needs a bill for
+✗ stripe.create_customer       -> invalid                      2.40s  Sara — can you get Priya Nair set up in our paymen
+✓ weather.forecast             -> weather.forecast             34.18s  weather for Kyoto next 5 days pls
+✓ db.list_tables               -> db.list_tables               23.26s  what tables are in the db?
+✗ translate.text               -> invalid                      0.00s  Please change this text to French: 'The meeting is
+✗ github.close_issue           -> invalid                      20.51s  That ticket about the flaky CI tests in the number
+✓ gmail.send_email             -> gmail.send_email             4.34s  send email to ops@brightline.co re: server mainten
+✗ 

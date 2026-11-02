@@ -1,0 +1,1 @@
+Extract the action items from the meeting transcript. Return a JSON array where each element has the keys "owner" (first name), "task" (short description), and "due" (the deadline as stated, or null if none). Output only the JSON array.

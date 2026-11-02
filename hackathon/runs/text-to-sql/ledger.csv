@@ -1,0 +1,47 @@
+timestamp,model,in_tokens,out_tokens,cost,note
+2026-11-01T22:19:55,serverless-sampler:muse-glimmer-30b:base,36315,35229,0.243095,sft eval base n=180
+2026-11-01T22:25:38,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,31776,114068,0.024402,v1_plain n=180 seed=0
+2026-11-01T22:28:21,accounts/fireworks/models/glm-5p3-flash,33075,25173,0.017548,v1_plain n=180 seed=0
+2026-11-01T22:29:36,accounts/fireworks/models/gpt-oss-120b,44360,13371,0.014677,v1_plain n=180 seed=0
+2026-11-01T22:31:16,accounts/fireworks/models/deepseek-v4p1-flash,38670,51671,0.073606,v1_plain n=180 seed=0
+2026-11-01T22:34:05,accounts/fireworks/models/glm-5p3,33772,4982,0.069202,v1_plain n=180 seed=0
+2026-11-01T22:36:56,accounts/fireworks/models/kimi-k3,19742,14437,0.275781,v1_plain n=100 seed=0
+2026-11-01T22:39:24,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,95430,124368,0.029645,v2_rubric n=180 seed=0
+2026-11-01T22:43:40,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,192890,169459,0.043536,v3_fewshot n=180 seed=0
+2026-11-01T22:47:09,accounts/fireworks/models/glm-5p3-flash,89980,28689,0.027842,v2_rubric n=180 seed=0
+2026-11-01T22:50:11,accounts/fireworks/models/glm-5p3-flash,185980,25208,0.040501,v3_fewshot n=180 seed=0
+2026-11-01T22:52:24,accounts/fireworks/models/glm-5p3-flash,70880,26525,0.023894,v2_rubric_json n=180 seed=0
+2026-11-01T22:54:26,accounts/fireworks/models/glm-5p3-flash,535,195,0.000178,v1_plain_lptest n=3 seed=0
+2026-11-01T22:54:35,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1122,118,0.000080,v1_plain_nemotest n=6 seed=0
+2026-11-01T22:54:55,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1122,2661,0.000588,v1_plain_nemotest n=6 seed=0
+2026-11-01T22:55:04,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1122,116,0.000079,v1_plain_nemotest n=6 seed=0
+2026-11-01T23:01:57,accounts/fireworks/models/glm-5p3-flash,32434,25878,0.017804,v1_plain n=180 seed=1
+2026-11-01T23:02:12,accounts/fireworks/models/glm-5p3-flash,32820,27103,0.018475,v1_plain_lp n=180 seed=0
+2026-11-01T23:02:53,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,33906,4791,0.002654,v1_plain_nothink n=180 seed=0
+2026-11-01T23:06:56,accounts/fireworks/models/glm-5p3-flash,32967,27619,0.018755,v1_plain n=180 seed=2
+2026-11-01T23:08:05,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,93741,4477,0.005582,v2_rubric_nothink n=180 seed=0
+2026-11-01T23:11:53,accounts/fireworks/models/glm-5p3-flash,32736,26378,0.018099,v1_plain n=180 seed=3
+2026-11-01T23:13:02,accounts/fireworks/models/glm-5p3-flash,697,255,0.000232,refill glm-5p3-flash_v1_plain.json rows=2
+2026-11-01T23:13:54,accounts/fireworks/models/glm-5p3-flash,952,416,0.000351,refill glm-5p3-flash_v1_plain_lp.json rows=4
+2026-11-01T23:14:13,accounts/fireworks/models/glm-5p3-flash,1338,958,0.000680,refill glm-5p3-flash_v1_plain_seed1.json rows=8
+2026-11-01T23:14:23,accounts/fireworks/models/glm-5p3-flash,805,307,0.000274,refill glm-5p3-flash_v1_plain_seed2.json rows=3
+2026-11-01T23:14:44,accounts/fireworks/models/glm-5p3-flash,1036,940,0.000625,refill glm-5p3-flash_v1_plain_seed3.json rows=6
+2026-11-01T23:15:09,accounts/fireworks/models/glm-5p3-flash,2472,1039,0.000890,refill glm-5p3-flash_v2_rubric.json rows=5
+2026-11-01T23:15:10,accounts/fireworks/models/glm-5p3-flash,332,38,0.000069,refill glm-5p3-flash_v2_rubric_json.json rows=1
+2026-11-01T23:15:11,accounts/fireworks/models/glm-5p3-flash,972,79,0.000185,refill glm-5p3-flash_v3_fewshot.json rows=1
+2026-11-01T23:15:17,accounts/fireworks/models/kimi-k3,382,230,0.004596,refill kimi-k3_v1_plain.json rows=2
+2026-11-01T23:15:40,accounts/fireworks/models/kimi-k3,20124,15041,0.285987,v1_plain n=100 seed=1
+2026-11-01T23:15:53,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,189567,5007,0.010480,v3_fewshot_nothink n=180 seed=0
+2026-11-01T23:16:17,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,3727,13014,0.002789,refill nemotron-lightning-3p5-30b-a3b_v1_plain.json rows=20
+2026-11-01T23:16:29,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1597,229,0.000126,refill nemotron-lightning-3p5-30b-a3b_v1_plain_nothink.json rows=8
+2026-11-01T23:16:35,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,553,587,0.000145,refill nemotron-lightning-3p5-30b-a3b_v2_rubric.json rows=1
+2026-11-01T23:16:45,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,2242,103,0.000133,refill nemotron-lightning-3p5-30b-a3b_v2_rubric_nothink.json rows=4
+2026-11-01T23:17:05,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,6593,5793,0.001488,refill nemotron-lightning-3p5-30b-a3b_v3_fewshot.json rows=6
+2026-11-01T23:18:05,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,9916,278,0.000551,refill nemotron-lightning-3p5-30b-a3b_v3_fewshot_nothink.json rows=9
+2026-11-01T23:18:26,accounts/fireworks/models/kimi-k3,19958,13879,0.268059,v1_plain n=100 seed=2
+2026-11-01T23:21:54,accounts/fireworks/models/glm-5p3,33171,4972,0.068316,v1_plain n=180 seed=1
+2026-11-01T23:23:16,accounts/fireworks/models/glm-5p3,33772,5035,0.069435,v1_plain n=180 seed=2
+2026-11-01T23:23:24,accounts/fireworks/models/kimi-k3,166,81,0.001713,refill kimi-k3_v1_plain_seed2.json rows=1
+2026-11-01T23:23:25,accounts/fireworks/models/glm-5p3,601,68,0.001141,refill glm-5p3_v1_plain_seed1.json rows=2
+2026-11-01T23:50:42,serverless-train:muse-glimmer-30b,220686,0,0.000000,"LoRA SFT, promotional $0 (free until 2026-11-30)"
+2026-11-01T23:51:10,serverless-sampler:muse-glimmer-30b:tuned,36315,6581,0.103293,sft eval tuned n=180

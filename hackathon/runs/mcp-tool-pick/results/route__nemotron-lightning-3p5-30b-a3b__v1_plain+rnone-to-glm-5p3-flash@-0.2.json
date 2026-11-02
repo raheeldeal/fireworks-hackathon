@@ -1,0 +1,1456 @@
+{
+ "model": "route(nemotron-lightning-3p5-30b-a3b->glm-5p3-flash)",
+ "prompt": "v1_plain+rnone+route@-0.2",
+ "tag": "route@-0.2",
+ "n": 180,
+ "seed": 0,
+ "threshold": -0.2,
+ "escalation_rate": 0.156,
+ "accuracy": 0.95,
+ "invalid_outputs": 0,
+ "p50_latency_s": 0.257,
+ "p95_latency_s": 2.015,
+ "cost_per_1k_requests_usd": 0.1335,
+ "rows": [
+  {
+   "id": "q301",
+   "label": "jira.move_to_sprint",
+   "pred": "jira.move_to_sprint",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.278
+  },
+  {
+   "id": "q012",
+   "label": "browser.extract_text",
+   "pred": "browser.extract_text",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.246
+  },
+  {
+   "id": "q402",
+   "label": "slack.schedule_message",
+   "pred": "slack.schedule_message",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.872
+  },
+  {
+   "id": "q133",
+   "label": "fs.get_file_info",
+   "pred": "fs.get_file_info",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.371
+  },
+  {
+   "id": "q405",
+   "label": "slack.search_messages",
+   "pred": "slack.search_messages",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.235
+  },
+  {
+   "id": "q079",
+   "label": "db.execute_statement",
+   "pred": "db.execute_statement",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.595
+  },
+  {
+   "id": "q111",
+   "label": "drive.share_file",
+   "pred": "drive.share_file",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.401
+  },
+  {
+   "id": "q201",
+   "label": "github.merge_pull_request",
+   "pred": "github.merge_pull_request",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.53
+  },
+  {
+   "id": "q319",
+   "label": "jira.update_ticket",
+   "pred": "jira.update_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.203
+  },
+  {
+   "id": "q364",
+   "label": "pagerduty.trigger_incident",
+   "pred": "pagerduty.trigger_incident",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.233
+  },
+  {
+   "id": "q215",
+   "label": "github.update_issue",
+   "pred": "github.update_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.256
+  },
+  {
+   "id": "q384",
+   "label": "slack.add_reaction",
+   "pred": "github.create_issue",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.307
+  },
+  {
+   "id": "q394",
+   "label": "slack.list_channels",
+   "pred": "slack.list_channels",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.197
+  },
+  {
+   "id": "q413",
+   "label": "slack.send_message",
+   "pred": "slack.send_message",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.2
+  },
+  {
+   "id": "q033",
+   "label": "browser.type_text",
+   "pred": "browser.type_text",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.285
+  },
+  {
+   "id": "q024",
+   "label": "browser.navigate",
+   "pred": "browser.navigate",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.248
+  },
+  {
+   "id": "q181",
+   "label": "github.create_pull_request",
+   "pred": "github.create_pull_request",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.543
+  },
+  {
+   "id": "q376",
+   "label": "reminders.list",
+   "pred": "reminders.list",
+   "correct": true,
+   "escalated": false,
+   "latency": 1.204
+  },
+  {
+   "id": "q119",
+   "label": "drive.upload_file",
+   "pred": "drive.upload_file",
+   "correct": true,
+   "escalated": true,
+   "latency": 2.4050000000000002
+  },
+  {
+   "id": "q193",
+   "label": "github.get_file_contents",
+   "pred": "github.get_file_contents",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.204
+  },
+  {
+   "id": "q045",
+   "label": "calendar.find_free_time",
+   "pred": "calendar.find_free_time",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.235
+  },
+  {
+   "id": "q016",
+   "label": "browser.fill_form",
+   "pred": "browser.fill_form",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.299
+  },
+  {
+   "id": "q466",
+   "label": "translate.detect_language",
+   "pred": "translate.detect_language",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.282
+  },
+  {
+   "id": "q126",
+   "label": "fs.delete_file",
+   "pred": "fs.delete_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.274
+  },
+  {
+   "id": "q103",
+   "label": "drive.export_document",
+   "pred": "drive.export_document",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.257
+  },
+  {
+   "id": "q059",
+   "label": "calendar.respond_to_invite",
+   "pred": "calendar.respond_to_invite",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.457
+  },
+  {
+   "id": "q245",
+   "label": "gmail.mark_unread",
+   "pred": "gmail.mark_unread",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.193
+  },
+  {
+   "id": "q450",
+   "label": "stripe.create_subscription",
+   "pred": "stripe.create_subscription",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.595
+  },
+  {
+   "id": "q246",
+   "label": "gmail.mark_unread",
+   "pred": "gmail.mark_unread",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.276
+  },
+  {
+   "id": "q151",
+   "label": "fs.search_files",
+   "pred": "fs.search_files",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.345
+  },
+  {
+   "id": "q478",
+   "label": "weather.current",
+   "pred": "weather.current",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.206
+  },
+  {
+   "id": "q338",
+   "label": "notion.search",
+   "pred": "notion.search",
+   "correct": true,
+   "escalated": true,
+   "latency": 2.307
+  },
+  {
+   "id": "q124",
+   "label": "fs.append_file",
+   "pred": "fs.append_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.36
+  },
+  {
+   "id": "q417",
+   "label": "slack.set_status",
+   "pred": "slack.set_status",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.19
+  },
+  {
+   "id": "q222",
+   "label": "gmail.archive_email",
+   "pred": "gmail.archive_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.4
+  },
+  {
+   "id": "q340",
+   "label": "notion.update_page",
+   "pred": "notion.update_page",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.194
+  },
+  {
+   "id": "q138",
+   "label": "fs.list_directory",
+   "pred": "fs.list_directory",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.864
+  },
+  {
+   "id": "q122",
+   "label": "fs.append_file",
+   "pred": "fs.append_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.214
+  },
+  {
+   "id": "q212",
+   "label": "github.search_code",
+   "pred": "github.search_code",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.237
+  },
+  {
+   "id": "q183",
+   "label": "github.create_pull_request",
+   "pred": "github.create_pull_request",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.361
+  },
+  {
+   "id": "q289",
+   "label": "jira.create_ticket",
+   "pred": "jira.create_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.311
+  },
+  {
+   "id": "q359",
+   "label": "pagerduty.resolve_incident",
+   "pred": "pagerduty.resolve_incident",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.202
+  },
+  {
+   "id": "q094",
+   "label": "db.run_query",
+   "pred": "db.run_query",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.232
+  },
+  {
+   "id": "q345",
+   "label": "pagerduty.acknowledge_incident",
+   "pred": "pagerduty.acknowledge_incident",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.211
+  },
+  {
+   "id": "q014",
+   "label": "browser.extract_text",
+   "pred": "browser.extract_text",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.202
+  },
+  {
+   "id": "q430",
+   "label": "stripe.create_coupon",
+   "pred": "stripe.create_coupon",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.191
+  },
+  {
+   "id": "q242",
+   "label": "gmail.label_email",
+   "pred": "gmail.label_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.215
+  },
+  {
+   "id": "q008",
+   "label": "browser.download_file",
+   "pred": "drive.upload_file",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.32
+  },
+  {
+   "id": "q236",
+   "label": "gmail.get_thread",
+   "pred": "gmail.get_thread",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.264
+  },
+  {
+   "id": "q428",
+   "label": "stripe.cancel_subscription",
+   "pred": "stripe.cancel_subscription",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.252
+  },
+  {
+   "id": "q441",
+   "label": "stripe.create_invoice",
+   "pred": "stripe.create_invoice",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.682
+  },
+  {
+   "id": "q049",
+   "label": "calendar.find_free_time",
+   "pred": "calendar.find_free_time",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.201
+  },
+  {
+   "id": "q385",
+   "label": "slack.create_channel",
+   "pred": "slack.create_channel",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.264
+  },
+  {
+   "id": "q208",
+   "label": "github.request_review",
+   "pred": "github.request_review",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.241
+  },
+  {
+   "id": "q427",
+   "label": "stripe.cancel_subscription",
+   "pred": "stripe.cancel_subscription",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.475
+  },
+  {
+   "id": "q240",
+   "label": "gmail.label_email",
+   "pred": "gmail.label_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.329
+  },
+  {
+   "id": "q061",
+   "label": "calendar.update_event",
+   "pred": "calendar.update_event",
+   "correct": true,
+   "escalated": false,
+   "latency": 1.669
+  },
+  {
+   "id": "q257",
+   "label": "gmail.search_emails",
+   "pred": "gmail.search_emails",
+   "correct": true,
+   "escalated": false,
+   "latency": 1.153
+  },
+  {
+   "id": "q462",
+   "label": "stripe.refund_payment",
+   "pred": "stripe.refund_payment",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.222
+  },
+  {
+   "id": "q455",
+   "label": "stripe.list_charges",
+   "pred": "stripe.list_charges",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.201
+  },
+  {
+   "id": "q271",
+   "label": "jira.add_comment",
+   "pred": "jira.add_comment",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.225
+  },
+  {
+   "id": "q109",
+   "label": "drive.search_files",
+   "pred": "drive.search_files",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.186
+  },
+  {
+   "id": "q398",
+   "label": "slack.reply_in_thread",
+   "pred": "slack.reply_in_thread",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.25
+  },
+  {
+   "id": "q317",
+   "label": "jira.update_ticket",
+   "pred": "jira.update_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.213
+  },
+  {
+   "id": "q334",
+   "label": "notion.query_database",
+   "pred": "notion.query_database",
+   "correct": true,
+   "escalated": true,
+   "latency": 2.585
+  },
+  {
+   "id": "q351",
+   "label": "pagerduty.list_oncall",
+   "pred": "pagerduty.list_oncall",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.204
+  },
+  {
+   "id": "q113",
+   "label": "drive.share_file",
+   "pred": "drive.share_file",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.085
+  },
+  {
+   "id": "q214",
+   "label": "github.search_code",
+   "pred": "github.search_code",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.044
+  },
+  {
+   "id": "q021",
+   "label": "browser.navigate",
+   "pred": "browser.navigate",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.234
+  },
+  {
+   "id": "q498",
+   "label": "zoom.list_meetings",
+   "pred": "zoom.list_meetings",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.873
+  },
+  {
+   "id": "q360",
+   "label": "pagerduty.trigger_incident",
+   "pred": "pagerduty.trigger_incident",
+   "correct": true,
+   "escalated": false,
+   "latency": 1.528
+  },
+  {
+   "id": "q179",
+   "label": "github.create_issue",
+   "pred": "github.create_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.225
+  },
+  {
+   "id": "q098",
+   "label": "drive.create_folder",
+   "pred": "drive.create_folder",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.328
+  },
+  {
+   "id": "q093",
+   "label": "db.run_query",
+   "pred": "db.run_query",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.241
+  },
+  {
+   "id": "q017",
+   "label": "browser.fill_form",
+   "pred": "browser.fill_form",
+   "correct": true,
+   "escalated": false,
+   "latency": 1.48
+  },
+  {
+   "id": "q336",
+   "label": "notion.search",
+   "pred": "notion.search",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.365
+  },
+  {
+   "id": "q108",
+   "label": "drive.search_files",
+   "pred": "drive.search_files",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.295
+  },
+  {
+   "id": "q456",
+   "label": "stripe.list_charges",
+   "pred": "stripe.list_charges",
+   "correct": true,
+   "escalated": true,
+   "latency": 0.992
+  },
+  {
+   "id": "q387",
+   "label": "slack.create_channel",
+   "pred": "slack.create_channel",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.189
+  },
+  {
+   "id": "q290",
+   "label": "jira.link_tickets",
+   "pred": "jira.link_tickets",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.207
+  },
+  {
+   "id": "q331",
+   "label": "notion.query_database",
+   "pred": "jira.search_tickets",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.212
+  },
+  {
+   "id": "q307",
+   "label": "jira.search_tickets",
+   "pred": "jira.search_tickets",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.21
+  },
+  {
+   "id": "q305",
+   "label": "jira.search_tickets",
+   "pred": "github.search_code",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.233
+  },
+  {
+   "id": "q297",
+   "label": "jira.log_work",
+   "pred": "jira.log_work",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.217
+  },
+  {
+   "id": "q038",
+   "label": "calendar.create_event",
+   "pred": "calendar.create_event",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.413
+  },
+  {
+   "id": "q449",
+   "label": "stripe.create_payment_intent",
+   "pred": "stripe.create_payment_intent",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.25
+  },
+  {
+   "id": "q437",
+   "label": "stripe.create_customer",
+   "pred": "stripe.create_customer",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.249
+  },
+  {
+   "id": "q423",
+   "label": "slack.upload_file",
+   "pred": "slack.upload_file",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.847
+  },
+  {
+   "id": "q044",
+   "label": "calendar.delete_event",
+   "pred": "calendar.delete_event",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.218
+  },
+  {
+   "id": "q051",
+   "label": "calendar.list_events",
+   "pred": "calendar.list_events",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.241
+  },
+  {
+   "id": "q144",
+   "label": "fs.move_file",
+   "pred": "drive.upload_file",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.358
+  },
+  {
+   "id": "q485",
+   "label": "zoom.create_meeting",
+   "pred": "zoom.create_meeting",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.188
+  },
+  {
+   "id": "q495",
+   "label": "zoom.list_meetings",
+   "pred": "zoom.list_meetings",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.218
+  },
+  {
+   "id": "q190",
+   "label": "github.get_file_contents",
+   "pred": "github.get_file_contents",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.221
+  },
+  {
+   "id": "q269",
+   "label": "gmail.trash_email",
+   "pred": "gmail.trash_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.191
+  },
+  {
+   "id": "q293",
+   "label": "jira.link_tickets",
+   "pred": "github.update_issue",
+   "correct": false,
+   "escalated": false,
+   "latency": 2.994
+  },
+  {
+   "id": "q174",
+   "label": "github.create_branch",
+   "pred": "github.create_branch",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.203
+  },
+  {
+   "id": "q349",
+   "label": "pagerduty.acknowledge_incident",
+   "pred": "jira.assign_ticket",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.211
+  },
+  {
+   "id": "q285",
+   "label": "jira.create_ticket",
+   "pred": "jira.create_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.269
+  },
+  {
+   "id": "q072",
+   "label": "db.describe_table",
+   "pred": "db.describe_table",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.204
+  },
+  {
+   "id": "q060",
+   "label": "calendar.update_event",
+   "pred": "calendar.update_event",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.209
+  },
+  {
+   "id": "q494",
+   "label": "zoom.get_recording",
+   "pred": "zoom.get_recording",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.223
+  },
+  {
+   "id": "q104",
+   "label": "drive.export_document",
+   "pred": "drive.export_document",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.915
+  },
+  {
+   "id": "q080",
+   "label": "db.explain_query",
+   "pred": "db.explain_query",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.184
+  },
+  {
+   "id": "q166",
+   "label": "github.comment_on_issue",
+   "pred": "github.comment_on_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.338
+  },
+  {
+   "id": "q492",
+   "label": "zoom.get_recording",
+   "pred": "zoom.get_recording",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.261
+  },
+  {
+   "id": "q185",
+   "label": "github.create_release",
+   "pred": "github.create_release",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.241
+  },
+  {
+   "id": "q270",
+   "label": "jira.add_comment",
+   "pred": "jira.add_comment",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.312
+  },
+  {
+   "id": "q175",
+   "label": "github.create_issue",
+   "pred": "github.create_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.293
+  },
+  {
+   "id": "q342",
+   "label": "notion.update_page",
+   "pred": "notion.update_page",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.374
+  },
+  {
+   "id": "q227",
+   "label": "gmail.create_draft",
+   "pred": "gmail.create_draft",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.352
+  },
+  {
+   "id": "q323",
+   "label": "notion.add_database_row",
+   "pred": "notion.add_database_row",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.71
+  },
+  {
+   "id": "q446",
+   "label": "stripe.create_payment_intent",
+   "pred": "stripe.create_payment_intent",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.237
+  },
+  {
+   "id": "q149",
+   "label": "fs.read_file",
+   "pred": "fs.read_file",
+   "correct": true,
+   "escalated": true,
+   "latency": 2.121
+  },
+  {
+   "id": "q460",
+   "label": "stripe.refund_payment",
+   "pred": "stripe.refund_payment",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.467
+  },
+  {
+   "id": "q281",
+   "label": "jira.create_sprint",
+   "pred": "jira.create_sprint",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.236
+  },
+  {
+   "id": "q296",
+   "label": "jira.log_work",
+   "pred": "jira.log_work",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.236
+  },
+  {
+   "id": "q128",
+   "label": "fs.delete_file",
+   "pred": "fs.delete_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.204
+  },
+  {
+   "id": "q231",
+   "label": "gmail.forward_email",
+   "pred": "gmail.send_email",
+   "correct": false,
+   "escalated": false,
+   "latency": 2.16
+  },
+  {
+   "id": "q328",
+   "label": "notion.create_page",
+   "pred": "notion.create_page",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.25
+  },
+  {
+   "id": "q487",
+   "label": "zoom.create_meeting",
+   "pred": "zoom.create_meeting",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.183
+  },
+  {
+   "id": "q034",
+   "label": "browser.type_text",
+   "pred": "browser.type_text",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.9420000000000002
+  },
+  {
+   "id": "q172",
+   "label": "github.create_branch",
+   "pred": "github.create_branch",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.193
+  },
+  {
+   "id": "q195",
+   "label": "github.list_pull_requests",
+   "pred": "github.list_pull_requests",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.492
+  },
+  {
+   "id": "q220",
+   "label": "gmail.archive_email",
+   "pred": "gmail.archive_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.235
+  },
+  {
+   "id": "q263",
+   "label": "gmail.send_email",
+   "pred": "gmail.send_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.244
+  },
+  {
+   "id": "q443",
+   "label": "stripe.create_invoice",
+   "pred": "stripe.create_invoice",
+   "correct": true,
+   "escalated": true,
+   "latency": 2.9459999999999997
+  },
+  {
+   "id": "q439",
+   "label": "stripe.create_customer",
+   "pred": "stripe.create_customer",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.19
+  },
+  {
+   "id": "q480",
+   "label": "weather.forecast",
+   "pred": "weather.forecast",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.228
+  },
+  {
+   "id": "q085",
+   "label": "db.list_tables",
+   "pred": "db.list_tables",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.192
+  },
+  {
+   "id": "q472",
+   "label": "translate.text",
+   "pred": "translate.text",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.182
+  },
+  {
+   "id": "q163",
+   "label": "github.close_issue",
+   "pred": "github.close_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.389
+  },
+  {
+   "id": "q260",
+   "label": "gmail.send_email",
+   "pred": "gmail.send_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.216
+  },
+  {
+   "id": "q229",
+   "label": "gmail.create_draft",
+   "pred": "gmail.create_draft",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.665
+  },
+  {
+   "id": "q470",
+   "label": "translate.text",
+   "pred": "translate.text",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.203
+  },
+  {
+   "id": "q310",
+   "label": "jira.transition_ticket",
+   "pred": "jira.transition_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.402
+  },
+  {
+   "id": "q131",
+   "label": "fs.get_file_info",
+   "pred": "fs.get_file_info",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.229
+  },
+  {
+   "id": "q160",
+   "label": "github.close_issue",
+   "pred": "github.close_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.214
+  },
+  {
+   "id": "q158",
+   "label": "fs.write_file",
+   "pred": "fs.write_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 2.382
+  },
+  {
+   "id": "q087",
+   "label": "db.list_tables",
+   "pred": "db.list_tables",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.202
+  },
+  {
+   "id": "q070",
+   "label": "db.describe_table",
+   "pred": "db.describe_table",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.189
+  },
+  {
+   "id": "q169",
+   "label": "github.comment_on_issue",
+   "pred": "github.comment_on_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.198
+  },
+  {
+   "id": "q004",
+   "label": "browser.click",
+   "pred": "browser.click",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.276
+  },
+  {
+   "id": "q238",
+   "label": "gmail.get_thread",
+   "pred": "gmail.get_thread",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.266
+  },
+  {
+   "id": "q421",
+   "label": "slack.upload_file",
+   "pred": "slack.upload_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.257
+  },
+  {
+   "id": "q255",
+   "label": "gmail.search_emails",
+   "pred": "gmail.search_emails",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.268
+  },
+  {
+   "id": "q479",
+   "label": "weather.current",
+   "pred": "weather.current",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.191
+  },
+  {
+   "id": "q116",
+   "label": "drive.upload_file",
+   "pred": "drive.upload_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.189
+  },
+  {
+   "id": "q406",
+   "label": "slack.search_messages",
+   "pred": "slack.search_messages",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.236
+  },
+  {
+   "id": "q005",
+   "label": "browser.download_file",
+   "pred": "browser.download_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.276
+  },
+  {
+   "id": "q028",
+   "label": "browser.screenshot",
+   "pred": "browser.screenshot",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.228
+  },
+  {
+   "id": "q277",
+   "label": "jira.assign_ticket",
+   "pred": "jira.assign_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.199
+  },
+  {
+   "id": "q303",
+   "label": "jira.move_to_sprint",
+   "pred": "jira.move_to_sprint",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.024
+  },
+  {
+   "id": "q199",
+   "label": "github.list_pull_requests",
+   "pred": "github.list_pull_requests",
+   "correct": true,
+   "escalated": false,
+   "latency": 2.015
+  },
+  {
+   "id": "q452",
+   "label": "stripe.create_subscription",
+   "pred": "stripe.create_subscription",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.372
+  },
+  {
+   "id": "q157",
+   "label": "fs.write_file",
+   "pred": "fs.write_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.262
+  },
+  {
+   "id": "q096",
+   "label": "drive.create_folder",
+   "pred": "drive.create_folder",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.371
+  },
+  {
+   "id": "q365",
+   "label": "reminders.complete",
+   "pred": "reminders.complete",
+   "correct": true,
+   "escalated": true,
+   "latency": 2.004
+  },
+  {
+   "id": "q370",
+   "label": "reminders.create",
+   "pred": "reminders.create",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.249
+  },
+  {
+   "id": "q186",
+   "label": "github.create_release",
+   "pred": "github.create_release",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.183
+  },
+  {
+   "id": "q254",
+   "label": "gmail.reply_to_email",
+   "pred": "gmail.reply_to_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.362
+  },
+  {
+   "id": "q219",
+   "label": "github.update_issue",
+   "pred": "github.update_issue",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.221
+  },
+  {
+   "id": "q205",
+   "label": "github.request_review",
+   "pred": "github.request_review",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.293
+  },
+  {
+   "id": "q373",
+   "label": "reminders.create",
+   "pred": "reminders.create",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.169
+  },
+  {
+   "id": "q233",
+   "label": "gmail.forward_email",
+   "pred": "gmail.search_emails",
+   "correct": false,
+   "escalated": false,
+   "latency": 0.394
+  },
+  {
+   "id": "q275",
+   "label": "jira.assign_ticket",
+   "pred": "jira.assign_ticket",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.224
+  },
+  {
+   "id": "q084",
+   "label": "db.explain_query",
+   "pred": "db.explain_query",
+   "correct": true,
+   "escalated": true,
+   "latency": 3.007
+  },
+  {
+   "id": "q036",
+   "label": "calendar.create_event",
+   "pred": "calendar.create_event",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.18
+  },
+  {
+   "id": "q056",
+   "label": "calendar.respond_to_invite",
+   "pred": "calendar.respond_to_invite",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.325
+  },
+  {
+   "id": "q403",
+   "label": "slack.schedule_message",
+   "pred": "slack.schedule_message",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.259
+  },
+  {
+   "id": "q043",
+   "label": "calendar.delete_event",
+   "pred": "calendar.delete_event",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.346
+  },
+  {
+   "id": "q469",
+   "label": "translate.detect_language",
+   "pred": "translate.detect_language",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.099
+  },
+  {
+   "id": "q029",
+   "label": "browser.screenshot",
+   "pred": "browser.screenshot",
+   "correct": true,
+   "escalated": true,
+   "latency": 1.641
+  },
+  {
+   "id": "q433",
+   "label": "stripe.create_coupon",
+   "pred": "stripe.create_coupon",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.217
+  },
+  {
+   "id": "q148",
+   "label": "fs.read_file",
+   "pred": "fs.read_file",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.239
+  },
+  {
+   "id": "q068",
+   "label": "db.create_backup",
+   "pred": "db.create_backup",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.251
+  },
+  {
+   "id": "q135",
+   "label": "fs.list_directory",
+   "pred": "fs.list_directory",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.237
+  },
+  {
+   "id": "q416",
+   "label": "slack.set_status",
+   "pred": "slack.set_status",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.203
+  },
+  {
+   "id": "q483",
+   "label": "weather.forecast",
+   "pred": "weather.forecast",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.212
+  },
+  {
+   "id": "q253",
+   "label": "gmail.reply_to_email",
+   "pred": "gmail.reply_to_email",
+   "correct": true,
+   "escalated": false,
+   "latency": 0.236
+  }
+ ]
+}

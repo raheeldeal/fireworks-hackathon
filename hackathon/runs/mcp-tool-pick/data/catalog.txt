@@ -1,0 +1,100 @@
+github.create_issue: Open a new issue in a repository with title, body and labels.
+github.update_issue: Edit the title, body, labels or assignees of an existing issue.
+github.close_issue: Close an existing issue, optionally with a closing comment.
+github.comment_on_issue: Add a comment to an existing issue or pull request thread.
+github.create_pull_request: Open a pull request from a head branch into a base branch.
+github.merge_pull_request: Merge an open pull request using merge, squash or rebase.
+github.request_review: Request one or more users to review an open pull request.
+github.list_pull_requests: List pull requests in a repository filtered by state or author.
+github.search_code: Search file contents across repositories with a query string.
+github.get_file_contents: Read the contents of a file at a path and ref in a repository.
+github.create_branch: Create a new branch from an existing ref in a repository.
+github.create_release: Publish a tagged release with release notes and optional assets.
+slack.send_message: Post a new message to a channel or direct message.
+slack.reply_in_thread: Reply to an existing message inside its thread.
+slack.schedule_message: Schedule a message to be posted to a channel at a future time.
+slack.add_reaction: Add an emoji reaction to an existing message.
+slack.search_messages: Search message history across channels by keyword, user or date.
+slack.list_channels: List channels in the workspace with their names and member counts.
+slack.set_status: Set the current user's status text, emoji and expiry.
+slack.upload_file: Upload a file to a channel or thread with an optional comment.
+slack.create_channel: Create a new public or private channel with a name and purpose.
+calendar.create_event: Create a new calendar event with title, time, attendees and location.
+calendar.update_event: Change the time, title, attendees or location of an existing event.
+calendar.delete_event: Cancel and remove an existing event, notifying attendees.
+calendar.list_events: List events on a calendar within a date range.
+calendar.find_free_time: Find open time slots across one or more attendees' calendars.
+calendar.respond_to_invite: Accept, decline or tentatively accept an event invitation.
+reminders.create: Create a personal reminder that fires at a specific time or date.
+reminders.list: List upcoming personal reminders.
+reminders.complete: Mark a personal reminder as done.
+gmail.send_email: Compose and send a new email to one or more recipients.
+gmail.reply_to_email: Reply to an existing email thread, keeping the subject and recipients.
+gmail.forward_email: Forward an existing email to new recipients with an optional note.
+gmail.create_draft: Save an email as a draft without sending it.
+gmail.search_emails: Search the mailbox by sender, subject, date or keywords.
+gmail.get_thread: Read all messages in an email thread by thread id.
+gmail.label_email: Apply or remove a label on an email or thread.
+gmail.archive_email: Remove an email from the inbox without deleting it.
+gmail.trash_email: Move an email to the trash.
+gmail.mark_unread: Mark an email as unread so it shows as new in the inbox.
+jira.create_ticket: Create a new Jira ticket in a project with summary, type and priority.
+jira.update_ticket: Edit fields of an existing ticket such as summary, priority or assignee.
+jira.transition_ticket: Move a ticket to a different workflow status such as In Progress or Done.
+jira.assign_ticket: Assign an existing ticket to a user.
+jira.add_comment: Add a comment to an existing Jira ticket.
+jira.search_tickets: Search tickets with a JQL query or free text.
+jira.link_tickets: Create a relationship such as blocks or duplicates between two tickets.
+jira.create_sprint: Create a new sprint on a board with a start and end date.
+jira.move_to_sprint: Move one or more tickets into a sprint or the backlog.
+jira.log_work: Log time spent on a ticket.
+stripe.create_customer: Create a new customer record with name, email and metadata.
+stripe.create_payment_intent: Charge a customer by creating a payment intent for an amount.
+stripe.refund_payment: Refund all or part of a completed payment.
+stripe.create_subscription: Start a recurring subscription for a customer on a price plan.
+stripe.cancel_subscription: Cancel an active subscription immediately or at period end.
+stripe.create_invoice: Create and send an invoice to a customer for line items.
+stripe.list_charges: List charges for a customer or date range.
+stripe.create_coupon: Create a discount coupon with a percent or amount off.
+fs.read_file: Read the full contents of a file at a path.
+fs.write_file: Create or overwrite a file at a path with given contents.
+fs.append_file: Append contents to the end of an existing file.
+fs.list_directory: List files and folders inside a directory.
+fs.move_file: Move or rename a file or directory to a new path.
+fs.delete_file: Permanently delete a file at a path.
+fs.search_files: Find files whose name matches a glob pattern under a directory.
+fs.get_file_info: Get size, modification time and permissions of a file.
+db.run_query: Execute a read-only SQL SELECT query and return rows.
+db.execute_statement: Execute a SQL INSERT, UPDATE or DELETE statement.
+db.list_tables: List the tables in the connected database.
+db.describe_table: Show the columns, types and indexes of a table.
+db.explain_query: Show the execution plan for a SQL query without running it.
+db.create_backup: Create a full backup snapshot of the database.
+browser.navigate: Open a URL in the browser tab.
+browser.click: Click an element on the current page by selector or text.
+browser.type_text: Type text into an input field on the current page.
+browser.screenshot: Capture a screenshot of the current page.
+browser.extract_text: Return the visible text content of the current page.
+browser.fill_form: Fill multiple form fields at once and optionally submit.
+browser.download_file: Download a file from a URL to local disk.
+drive.upload_file: Upload a local file to a Drive folder.
+drive.share_file: Grant a user or group view, comment or edit access to a file.
+drive.search_files: Search Drive files by name, type, owner or content.
+drive.create_folder: Create a new folder, optionally inside a parent folder.
+drive.export_document: Export a Docs, Sheets or Slides file to PDF, DOCX or CSV.
+notion.create_page: Create a new page in a workspace or under a parent page.
+notion.update_page: Edit the title, properties or content blocks of an existing page.
+notion.search: Search pages and databases in the workspace by text.
+notion.add_database_row: Insert a new row with properties into a Notion database.
+notion.query_database: Query rows in a Notion database with filters and sorts.
+zoom.create_meeting: Schedule a new video meeting and get its join link.
+zoom.get_recording: Fetch the recording and transcript of a past meeting.
+zoom.list_meetings: List upcoming scheduled meetings for the user.
+weather.current: Get current weather conditions for a location.
+weather.forecast: Get a multi-day weather forecast for a location.
+translate.text: Translate text from one language to another.
+translate.detect_language: Detect the language of a piece of text.
+pagerduty.trigger_incident: Open a new incident on a service and page the on-call.
+pagerduty.acknowledge_incident: Acknowledge an open incident to stop escalation.
+pagerduty.resolve_incident: Mark an incident as resolved.
+pagerduty.list_oncall: Show who is currently on call for a schedule or service.

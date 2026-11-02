@@ -1,0 +1,4 @@
+test set: 150 rows, sha256 6143b59c7fc675b7
+data/train.jsonl: 247 rows, 0 overlap with test
+test set: 150 rows, sha256 6143b59c7fc675b7
+data/sft_train.jsonl: 247 rows, 0 overlap with test

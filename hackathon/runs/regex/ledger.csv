@@ -1,0 +1,38 @@
+timestamp,model,in_tokens,out_tokens,cost,note
+2026-11-01T22:12:23,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,0,0,0.000000,v1_plain_smoke
+2026-11-01T22:12:23,accounts/fireworks/models/glm-5p3-flash,0,0,0.000000,v1_plain_smoke
+2026-11-01T22:21:16,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,268,30,0.000019,v1_plain
+2026-11-01T22:21:17,accounts/fireworks/models/glm-5p3-flash,256,123,0.000100,v1_plain
+2026-11-01T22:24:26,accounts/fireworks/models/kimi-k3,7875,1437,0.045180,v1_plain
+2026-11-01T22:26:48,accounts/fireworks/models/glm-5p3-flash,12267,7288,0.005484,v1_plain
+2026-11-01T22:27:03,accounts/fireworks/models/gpt-oss-120b,23591,20732,0.015978,v1_plain
+2026-11-01T22:27:33,accounts/fireworks/models/deepseek-v4p1-flash,10533,1789,0.005307,v1_plain
+2026-11-01T22:28:17,accounts/fireworks/models/glm-5p3,12088,13754,0.077441,v1_plain
+2026-11-01T22:30:10,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,12426,2658,0.001153,v1_plain
+2026-11-01T23:54:40,accounts/fireworks/models/gpt-oss-120b,168465,14537,0.033992,v2_rubric
+2026-11-01T23:54:47,accounts/fireworks/models/glm-5p3-flash,156866,2574,0.024817,v2_rubric
+2026-11-01T23:54:52,accounts/fireworks/models/gpt-oss-120b,29465,20555,0.016753,v1_plain_json
+2026-11-01T23:55:46,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,646,655,0.000163,v1_plain repair
+2026-11-01T23:55:52,accounts/fireworks/models/deepseek-v4p1-flash,335,56,0.000168,v1_plain repair
+2026-11-01T23:55:54,accounts/fireworks/models/glm-5p3-flash,199,39,0.000049,v1_plain repair
+2026-11-01T23:55:58,accounts/fireworks/models/glm-5p3,378,135,0.001123,v1_plain repair
+2026-11-01T23:56:00,accounts/fireworks/models/gpt-oss-120b,474,241,0.000216,v1_plain repair
+2026-11-01T23:56:01,accounts/fireworks/models/kimi-k3,166,19,0.000783,v1_plain repair
+2026-11-01T23:56:23,accounts/fireworks/models/glm-5p3-flash,156866,2635,0.024847,v2_rubric
+2026-11-01T23:56:27,accounts/fireworks/models/glm-5p3-flash,156866,2556,0.024808,v2_rubric_conf
+2026-11-01T23:56:50,accounts/fireworks/models/glm-5p3-flash,12466,9323,0.006531,v1_plain_json
+2026-11-01T23:57:10,accounts/fireworks/models/glm-5p3,12466,22562,0.116725,v1_plain_mt2048
+2026-11-01T23:57:14,accounts/fireworks/models/glm-5p3-flash,12466,7388,0.005564,v1_plain
+2026-11-01T23:57:55,accounts/fireworks/models/glm-5p3-flash,156866,2662,0.024861,v2_rubric
+2026-11-01T23:58:14,accounts/fireworks/models/glm-5p3,156866,2307,0.229763,v2_rubric_mt2048
+2026-11-01T23:58:50,accounts/fireworks/models/glm-5p3-flash,12466,7695,0.005717,v1_plain
+2026-11-01T23:59:08,accounts/fireworks/models/kimi-k3,80241,1532,0.263703,v2_rubric
+2026-11-01T23:59:33,accounts/fireworks/models/glm-5p3-flash,39666,2393,0.007146,v1_plain_5shot
+2026-11-01T23:59:40,accounts/fireworks/models/glm-5p3-flash,156866,2668,0.024864,v2_rubric
+2026-11-02T00:00:15,accounts/fireworks/models/glm-5p3-flash,184066,2561,0.028890,v2_rubric_5shot
+2026-11-02T00:00:28,accounts/fireworks/models/glm-5p3-flash,12466,7882,0.005811,v1_plain
+2026-11-02T00:00:38,accounts/fireworks/models/glm-5p3-flash,6260,3478,0.002678,v1_plain_heldout
+2026-11-02T00:01:00,accounts/fireworks/models/glm-5p3-flash,78460,1392,0.012465,v2_rubric_heldout
+2026-11-02T00:08:25,accounts/fireworks/models/muse-glimmer-30b (sampler),15664,1718,0.039085,eval muse-glimmer-30b_base
+2026-11-02T02:27:42,accounts/fireworks/models/muse-glimmer-30b (serverless training),91922,0,0.000000,sft train (free until 2026-11-30)
+2026-11-02T02:30:04,accounts/fireworks/models/muse-glimmer-30b (sampler),15664,1917,0.040056,eval muse-glimmer-30b_sft

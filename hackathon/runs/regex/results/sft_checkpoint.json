@@ -1,0 +1,462 @@
+{
+ "checkpoint": "raheeldeal/run-dbd7ceaf3c2b49da983814d5d82777fd/regex-sft-1793615200-34243096",
+ "base_model": "accounts/fireworks/models/muse-glimmer-30b",
+ "rank": 8,
+ "epochs": 2,
+ "batch": 16,
+ "lr": 0.0001,
+ "examples": 500,
+ "tokens_per_epoch": 45961,
+ "trained_tokens_per_epoch": 7152,
+ "session": "ts-48dcb70ac3ed4963bb6de67e9f037353",
+ "log": [
+  {
+   "step": 1,
+   "epoch": 0,
+   "lr": 0.0001,
+   "loss": null,
+   "metrics": "{'loss:sum': 521.4370574951172, 'total_tokens:sum': 1521.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 262.0}"
+  },
+  {
+   "step": 2,
+   "epoch": 0,
+   "lr": 9.84375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 231.1568260192871, 'total_tokens:sum': 1505.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 284.0}"
+  },
+  {
+   "step": 3,
+   "epoch": 0,
+   "lr": 9.687500000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 175.0839958190918, 'total_tokens:sum': 1503.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 262.0}"
+  },
+  {
+   "step": 4,
+   "epoch": 0,
+   "lr": 9.53125e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 122.52241134643555, 'total_tokens:sum': 1372.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 177.0}"
+  },
+  {
+   "step": 5,
+   "epoch": 0,
+   "lr": 9.375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 135.77829360961914, 'total_tokens:sum': 1462.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 218.0}"
+  },
+  {
+   "step": 6,
+   "epoch": 0,
+   "lr": 9.21875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 128.4824981689453, 'total_tokens:sum': 1435.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 227.0}"
+  },
+  {
+   "step": 7,
+   "epoch": 0,
+   "lr": 9.062500000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 87.9092845916748, 'total_tokens:sum': 1488.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 258.0}"
+  },
+  {
+   "step": 8,
+   "epoch": 0,
+   "lr": 8.90625e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 82.54892635345459, 'total_tokens:sum': 1416.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 215.0}"
+  },
+  {
+   "step": 9,
+   "epoch": 0,
+   "lr": 8.75e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 71.45613622665405, 'total_tokens:sum': 1474.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 260.0}"
+  },
+  {
+   "step": 10,
+   "epoch": 0,
+   "lr": 8.593750000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 56.767913818359375, 'total_tokens:sum': 1419.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 209.0}"
+  },
+  {
+   "step": 11,
+   "epoch": 0,
+   "lr": 8.4375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 55.41195297241211, 'total_tokens:sum': 1431.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 210.0}"
+  },
+  {
+   "step": 12,
+   "epoch": 0,
+   "lr": 8.28125e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 65.63085842132568, 'total_tokens:sum': 1436.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 214.0}"
+  },
+  {
+   "step": 13,
+   "epoch": 0,
+   "lr": 8.125000000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 83.1321668624878, 'total_tokens:sum': 1446.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 227.0}"
+  },
+  {
+   "step": 14,
+   "epoch": 0,
+   "lr": 7.96875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 133.20300483703613, 'total_tokens:sum': 1446.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 219.0}"
+  },
+  {
+   "step": 15,
+   "epoch": 0,
+   "lr": 7.8125e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 53.91544437408447, 'total_tokens:sum': 1447.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 225.0}"
+  },
+  {
+   "step": 16,
+   "epoch": 0,
+   "lr": 7.65625e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 62.399603843688965, 'total_tokens:sum': 1437.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 218.0}"
+  },
+  {
+   "step": 17,
+   "epoch": 0,
+   "lr": 7.500000000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 58.81479072570801, 'total_tokens:sum': 1490.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 254.0}"
+  },
+  {
+   "step": 18,
+   "epoch": 0,
+   "lr": 7.34375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 34.80305290222168, 'total_tokens:sum': 1431.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 207.0}"
+  },
+  {
+   "step": 19,
+   "epoch": 0,
+   "lr": 7.1875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 77.0531873703003, 'total_tokens:sum': 1478.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 238.0}"
+  },
+  {
+   "step": 20,
+   "epoch": 0,
+   "lr": 7.031250000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 67.23568916320801, 'total_tokens:sum': 1492.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 248.0}"
+  },
+  {
+   "step": 21,
+   "epoch": 0,
+   "lr": 6.875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 76.82744216918945, 'total_tokens:sum': 1463.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 238.0}"
+  },
+  {
+   "step": 22,
+   "epoch": 0,
+   "lr": 6.71875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 72.83972549438477, 'total_tokens:sum': 1448.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 217.0}"
+  },
+  {
+   "step": 23,
+   "epoch": 0,
+   "lr": 6.562500000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 52.10143327713013, 'total_tokens:sum': 1455.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 231.0}"
+  },
+  {
+   "step": 24,
+   "epoch": 0,
+   "lr": 6.40625e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 51.75540208816528, 'total_tokens:sum': 1408.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 204.0}"
+  },
+  {
+   "step": 25,
+   "epoch": 0,
+   "lr": 6.25e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 57.62835693359375, 'total_tokens:sum': 1499.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 251.0}"
+  },
+  {
+   "step": 26,
+   "epoch": 0,
+   "lr": 6.0937500000000004e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 30.259037017822266, 'total_tokens:sum': 1457.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 229.0}"
+  },
+  {
+   "step": 27,
+   "epoch": 0,
+   "lr": 5.9375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 33.9395956993103, 'total_tokens:sum': 1473.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 230.0}"
+  },
+  {
+   "step": 28,
+   "epoch": 0,
+   "lr": 5.78125e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 52.271602630615234, 'total_tokens:sum': 1411.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 191.0}"
+  },
+  {
+   "step": 29,
+   "epoch": 0,
+   "lr": 5.6250000000000005e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 65.05683755874634, 'total_tokens:sum': 1471.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 234.0}"
+  },
+  {
+   "step": 30,
+   "epoch": 0,
+   "lr": 5.46875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 52.419711112976074, 'total_tokens:sum': 1422.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 191.0}"
+  },
+  {
+   "step": 31,
+   "epoch": 0,
+   "lr": 5.3125000000000004e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 43.73378610610962, 'total_tokens:sum': 1448.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 239.0}"
+  },
+  {
+   "step": 32,
+   "epoch": 0,
+   "lr": 5.15625e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 12.527234077453613, 'total_tokens:sum': 377.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 1.0, 'response_tokens': 65.0}"
+  },
+  {
+   "step": 33,
+   "epoch": 1,
+   "lr": 5e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 30.85453462600708, 'total_tokens:sum': 1411.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 198.0}"
+  },
+  {
+   "step": 34,
+   "epoch": 1,
+   "lr": 4.8437500000000005e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 45.3257155418396, 'total_tokens:sum': 1490.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 259.0}"
+  },
+  {
+   "step": 35,
+   "epoch": 1,
+   "lr": 4.6875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 36.889923095703125, 'total_tokens:sum': 1493.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 267.0}"
+  },
+  {
+   "step": 36,
+   "epoch": 1,
+   "lr": 4.5312500000000004e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 23.62437343597412, 'total_tokens:sum': 1463.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 236.0}"
+  },
+  {
+   "step": 37,
+   "epoch": 1,
+   "lr": 4.375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 19.11798095703125, 'total_tokens:sum': 1464.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 231.0}"
+  },
+  {
+   "step": 38,
+   "epoch": 1,
+   "lr": 4.21875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 33.30158996582031, 'total_tokens:sum': 1419.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 202.0}"
+  },
+  {
+   "step": 39,
+   "epoch": 1,
+   "lr": 4.0625000000000005e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 32.51786279678345, 'total_tokens:sum': 1456.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 229.0}"
+  },
+  {
+   "step": 40,
+   "epoch": 1,
+   "lr": 3.90625e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 24.674070358276367, 'total_tokens:sum': 1486.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 247.0}"
+  },
+  {
+   "step": 41,
+   "epoch": 1,
+   "lr": 3.7500000000000003e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 37.1000452041626, 'total_tokens:sum': 1437.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 208.0}"
+  },
+  {
+   "step": 42,
+   "epoch": 1,
+   "lr": 3.59375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 34.134777545928955, 'total_tokens:sum': 1436.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 211.0}"
+  },
+  {
+   "step": 43,
+   "epoch": 1,
+   "lr": 3.4375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 41.41076326370239, 'total_tokens:sum': 1476.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 269.0}"
+  },
+  {
+   "step": 44,
+   "epoch": 1,
+   "lr": 3.2812500000000005e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 14.46609878540039, 'total_tokens:sum': 1458.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 225.0}"
+  },
+  {
+   "step": 45,
+   "epoch": 1,
+   "lr": 3.125e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 24.658079624176025, 'total_tokens:sum': 1442.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 218.0}"
+  },
+  {
+   "step": 46,
+   "epoch": 1,
+   "lr": 2.96875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 35.63036298751831, 'total_tokens:sum': 1431.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 235.0}"
+  },
+  {
+   "step": 47,
+   "epoch": 1,
+   "lr": 2.8125000000000003e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 22.613577365875244, 'total_tokens:sum': 1451.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 223.0}"
+  },
+  {
+   "step": 48,
+   "epoch": 1,
+   "lr": 2.6562500000000002e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 19.05435848236084, 'total_tokens:sum': 1476.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 254.0}"
+  },
+  {
+   "step": 49,
+   "epoch": 1,
+   "lr": 2.5e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 14.759913444519043, 'total_tokens:sum': 1424.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 206.0}"
+  },
+  {
+   "step": 50,
+   "epoch": 1,
+   "lr": 2.34375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 16.520965576171875, 'total_tokens:sum': 1402.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 191.0}"
+  },
+  {
+   "step": 51,
+   "epoch": 1,
+   "lr": 2.1875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 44.66012096405029, 'total_tokens:sum': 1477.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 238.0}"
+  },
+  {
+   "step": 52,
+   "epoch": 1,
+   "lr": 2.0312500000000002e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 8.537757396697998, 'total_tokens:sum': 1394.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 184.0}"
+  },
+  {
+   "step": 53,
+   "epoch": 1,
+   "lr": 1.8750000000000002e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 17.574015140533447, 'total_tokens:sum': 1502.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 256.0}"
+  },
+  {
+   "step": 54,
+   "epoch": 1,
+   "lr": 1.71875e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 26.525129795074463, 'total_tokens:sum': 1469.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 234.0}"
+  },
+  {
+   "step": 55,
+   "epoch": 1,
+   "lr": 1.5625e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 8.641854763031006, 'total_tokens:sum': 1436.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 216.0}"
+  },
+  {
+   "step": 56,
+   "epoch": 1,
+   "lr": 1.4062500000000001e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 38.71595621109009, 'total_tokens:sum': 1486.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 248.0}"
+  },
+  {
+   "step": 57,
+   "epoch": 1,
+   "lr": 1.25e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 15.438470363616943, 'total_tokens:sum': 1471.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 237.0}"
+  },
+  {
+   "step": 58,
+   "epoch": 1,
+   "lr": 1.09375e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 18.59023094177246, 'total_tokens:sum': 1427.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 213.0}"
+  },
+  {
+   "step": 59,
+   "epoch": 1,
+   "lr": 1e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 20.374515056610107, 'total_tokens:sum': 1484.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 244.0}"
+  },
+  {
+   "step": 60,
+   "epoch": 1,
+   "lr": 1e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 18.352242469787598, 'total_tokens:sum': 1468.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 232.0}"
+  },
+  {
+   "step": 61,
+   "epoch": 1,
+   "lr": 1e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 11.580162048339844, 'total_tokens:sum': 1441.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 223.0}"
+  },
+  {
+   "step": 62,
+   "epoch": 1,
+   "lr": 1e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 18.218199729919434, 'total_tokens:sum': 1463.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 227.0}"
+  },
+  {
+   "step": 63,
+   "epoch": 1,
+   "lr": 1e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 14.178802490234375, 'total_tokens:sum': 1461.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 4.0, 'response_tokens': 241.0}"
+  },
+  {
+   "step": 64,
+   "epoch": 1,
+   "lr": 1e-05,
+   "loss": null,
+   "metrics": "{'loss:sum': 6.1000471115112305, 'total_tokens:sum': 367.0, 'dp_sharded_counts:min': 1.0, 'dp_sharded_counts:max': 1.0, 'local_input_sequences:sum': 1.0, 'response_tokens': 50.0}"
+  }
+ ]
+}

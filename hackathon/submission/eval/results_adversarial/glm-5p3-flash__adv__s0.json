@@ -1,0 +1,535 @@
+{
+ "model": "accounts/fireworks/models/glm-5p3-flash",
+ "prompt": "v1_plain",
+ "tag": "v1_plain",
+ "mock": false,
+ "n": 30,
+ "seed": 0,
+ "accuracy": 0.9667,
+ "top3_accuracy": 0.9667,
+ "invalid_outputs": 0,
+ "errors": 0,
+ "p50_latency_s": 0.776,
+ "p95_latency_s": 1.428,
+ "cost_per_1k_requests_usd": 0.2792,
+ "in_tokens": 49473,
+ "out_tokens": 1913,
+ "reasoning_tokens": 1755,
+ "avg_in_tokens": 1649.1,
+ "avg_out_tokens": 63.8,
+ "catalog_tokens_est": 1581,
+ "catalog_cost_share": 0.849,
+ "retrieval_recall": null,
+ "rows": [
+  {
+   "id": "adv000",
+   "text": "That message in #design about the new logo is perfect \u2014 can you give it a \ud83d\udc4d so the team knows it's approved? Don't change anything about my presence or availability.",
+   "label": "slack.add_reaction",
+   "raw": "slack.add_reaction",
+   "pred": "slack.add_reaction",
+   "ranked": [
+    "slack.add_reaction"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.755,
+   "in_tokens": 1652,
+   "out_tokens": 54,
+   "reasoning_tokens": 49,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv001",
+   "text": "We just discovered a login bug on mobile that needs tracking from scratch \u2014 please open a new Bug ticket in the PROD-SUP project called 'Mobile login fails on iOS 17', high priority.",
+   "label": "jira.create_ticket",
+   "raw": "jira.create_ticket",
+   "pred": "jira.create_ticket",
+   "ranked": [
+    "jira.create_ticket"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.779,
+   "in_tokens": 1655,
+   "out_tokens": 49,
+   "reasoning_tokens": 43,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv002",
+   "text": "hey cn u find any files w/ .png extn somewhere under my Downloads folder? like list all the pngs u see, no need to open em or move anything thx",
+   "label": "fs.search_files",
+   "raw": "fs.search_files",
+   "pred": "fs.search_files",
+   "ranked": [
+    "fs.search_files"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 1.428,
+   "in_tokens": 1652,
+   "out_tokens": 40,
+   "reasoning_tokens": 35,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv003",
+   "text": "Please check for me when was last time the report.pdf in documents folder got modified, and also how big is it and what permission it have?",
+   "label": "fs.get_file_info",
+   "raw": "fs.get_file_info",
+   "pred": "fs.get_file_info",
+   "ranked": [
+    "fs.get_file_info"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.736,
+   "in_tokens": 1644,
+   "out_tokens": 53,
+   "reasoning_tokens": 47,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv004",
+   "text": "I found all the Q3 receipts scattered across my Drive\u2014can you make a new folder called \"Q3 Receipts\" inside Finance so I can start putting them in one place?",
+   "label": "drive.create_folder",
+   "raw": "drive.create_folder",
+   "pred": "drive.create_folder",
+   "ranked": [
+    "drive.create_folder"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.737,
+   "in_tokens": 1652,
+   "out_tokens": 36,
+   "reasoning_tokens": 31,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv005",
+   "text": "Someone asked about the deploy steps in the thread under Anya's message in #ops; I already have the answer, just post it as a reply in that same thread.",
+   "label": "slack.reply_in_thread",
+   "raw": "slack.reply_in_thread",
+   "pred": "slack.reply_in_thread",
+   "ranked": [
+    "slack.reply_in_thread"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.7,
+   "in_tokens": 1650,
+   "out_tokens": 39,
+   "reasoning_tokens": 33,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv006",
+   "text": "wat reminders hv i got cming up this week jus wanna see em all real quick dont chnage anything",
+   "label": "reminders.list",
+   "raw": "reminders.list",
+   "pred": "reminders.list",
+   "ranked": [
+    "reminders.list"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.515,
+   "in_tokens": 1636,
+   "out_tokens": 20,
+   "reasoning_tokens": 15,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv007",
+   "text": "I already opened page with my order history, can you please read all text what is visible there? I want check if my refund was confirmed, but I don't want to go any other page.",
+   "label": "browser.extract_text",
+   "raw": "browser.extract_text",
+   "pred": "browser.extract_text",
+   "ranked": [
+    "browser.extract_text"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.924,
+   "in_tokens": 1655,
+   "out_tokens": 36,
+   "reasoning_tokens": 31,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv008",
+   "text": "I finished editing the quarterly_report.docx on my laptop\u2014can you put it into the shared Finance folder on Drive so everyone can grab the latest version?",
+   "label": "drive.upload_file",
+   "raw": "drive.upload_file",
+   "pred": "drive.upload_file",
+   "ranked": [
+    "drive.upload_file"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.774,
+   "in_tokens": 1646,
+   "out_tokens": 45,
+   "reasoning_tokens": 40,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv009",
+   "text": "Before I run the big migration script tonight, I want a full snapshot of the whole database saved so I can restore everything if something goes wrong.",
+   "label": "db.create_backup",
+   "raw": "db.create_backup",
+   "pred": "db.create_backup",
+   "ranked": [
+    "db.create_backup"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 1.32,
+   "in_tokens": 1644,
+   "out_tokens": 31,
+   "reasoning_tokens": 26,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv010",
+   "text": "hey can u put cust_8821 on the monthly pro plan price_44ab9c recurring pls need it started asap thx",
+   "label": "stripe.create_subscription",
+   "raw": "stripe.create_subscription",
+   "pred": "stripe.create_subscription",
+   "ranked": [
+    "stripe.create_subscription"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.729,
+   "in_tokens": 1644,
+   "out_tokens": 34,
+   "reasoning_tokens": 29,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv011",
+   "text": "On page which is already open, please click on blue button that say 'Submit order' \u2014 I tried before but nothing happened, maybe you have better luck with the clicking it.",
+   "label": "browser.click",
+   "raw": "browser.click",
+   "pred": "browser.click",
+   "ranked": [
+    "browser.click"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.567,
+   "in_tokens": 1651,
+   "out_tokens": 25,
+   "reasoning_tokens": 21,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv012",
+   "text": "Before I actually pull any data, can you show me how Postgres plans to execute this SELECT on orders joined with customers? I want to check whether it's doing a full table scan first.",
+   "label": "db.explain_query",
+   "raw": "db.explain_query",
+   "pred": "db.explain_query",
+   "ranked": [
+    "db.explain_query"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.907,
+   "in_tokens": 1654,
+   "out_tokens": 55,
+   "reasoning_tokens": 49,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv013",
+   "text": "I've already got the full contents of the quarterly report open on my screen\u2014no need to show me anything. Just relocate that file from the Drafts folder into the Archived folder on the shared drive.",
+   "label": "fs.move_file",
+   "raw": "fs.move_file",
+   "pred": "fs.move_file",
+   "ranked": [
+    "fs.move_file"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 1.12,
+   "in_tokens": 1656,
+   "out_tokens": 135,
+   "reasoning_tokens": 130,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv014",
+   "text": "hey the page thats alrdy open in the tab looks weird af, can u grab me a quick screnshot of it so i can show the devs wats going on plz",
+   "label": "browser.screenshot",
+   "raw": "browser.screenshot",
+   "pred": "browser.screenshot",
+   "ranked": [
+    "browser.screenshot"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.592,
+   "in_tokens": 1653,
+   "out_tokens": 27,
+   "reasoning_tokens": 22,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv015",
+   "text": "I want check all the charges that was made on my account during last month, please show me them with dates and amounts, I need review before I do the reconciliation.",
+   "label": "stripe.list_charges",
+   "raw": "stripe.list_charges",
+   "pred": "stripe.list_charges",
+   "ranked": [
+    "stripe.list_charges"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.68,
+   "in_tokens": 1649,
+   "out_tokens": 47,
+   "reasoning_tokens": 41,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv016",
+   "text": "I want to start a fresh message to the vendors list about the updated delivery schedule \u2014 nothing exists yet, so there's no thread to look up. Can you draft it and send it to them?",
+   "label": "gmail.send_email",
+   "raw": "slack.send_message",
+   "pred": "slack.send_message",
+   "ranked": [
+    "slack.send_message"
+   ],
+   "correct": false,
+   "top3": false,
+   "latency": 1.144,
+   "in_tokens": 1655,
+   "out_tokens": 123,
+   "reasoning_tokens": 118,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv017",
+   "text": "We found a login bug on the checkout page in the acme/api repo \u2014 open a new GitHub issue titled 'Login fails on checkout' with the bug label and our repro steps.",
+   "label": "github.create_issue",
+   "raw": "github.create_issue",
+   "pred": "github.create_issue",
+   "ranked": [
+    "github.create_issue"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.646,
+   "in_tokens": 1652,
+   "out_tokens": 44,
+   "reasoning_tokens": 39,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv018",
+   "text": "hey can u grab that pdf from the link i sent earlier n save it on my laptop plz, the one abut the quaterly report, thx",
+   "label": "browser.download_file",
+   "raw": "browser.download_file",
+   "pred": "browser.download_file",
+   "ranked": [
+    "browser.download_file"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 1.987,
+   "in_tokens": 1648,
+   "out_tokens": 265,
+   "reasoning_tokens": 260,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv019",
+   "text": "Please make new branch in our website repo, starting from commit on develop branch, so I can working on the payment fix separately.",
+   "label": "github.create_branch",
+   "raw": "github.create_branch",
+   "pred": "github.create_branch",
+   "ranked": [
+    "github.create_branch"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.717,
+   "in_tokens": 1641,
+   "out_tokens": 36,
+   "reasoning_tokens": 31,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv020",
+   "text": "Don't send this to the #launch channel right away\u2014wait until 9am Monday so the west coast team sees it: \"Release notes for v2.4 are live!\"",
+   "label": "slack.schedule_message",
+   "raw": "slack.schedule_message",
+   "pred": "slack.schedule_message",
+   "ranked": [
+    "slack.schedule_message"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 1.015,
+   "in_tokens": 1652,
+   "out_tokens": 32,
+   "reasoning_tokens": 27,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv021",
+   "text": "Please mark that long thread about the quarterly budget as 'Finance' in Gmail \u2014 I want to keep it in my inbox, just tagged so I can find it later.",
+   "label": "gmail.label_email",
+   "raw": "gmail.label_email",
+   "pred": "gmail.label_email",
+   "ranked": [
+    "gmail.label_email"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.822,
+   "in_tokens": 1649,
+   "out_tokens": 48,
+   "reasoning_tokens": 43,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv022",
+   "text": "hey can u post a msg in the #ops channel now sayn deploy finished all good thx everyone",
+   "label": "slack.send_message",
+   "raw": "slack.send_message",
+   "pred": "slack.send_message",
+   "ranked": [
+    "slack.send_message"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.753,
+   "in_tokens": 1636,
+   "out_tokens": 44,
+   "reasoning_tokens": 39,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv023",
+   "text": "I want to give 20 percent off discount to some customers, can you make coupon for holiday sale please? I tried before but it not worked.",
+   "label": "stripe.create_coupon",
+   "raw": "stripe.create_coupon",
+   "pred": "stripe.create_coupon",
+   "ranked": [
+    "stripe.create_coupon"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.757,
+   "in_tokens": 1645,
+   "out_tokens": 29,
+   "reasoning_tokens": 24,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv024",
+   "text": "The bug report about the login timeout in the acme/api repo has a misleading heading now that we know it's session-related \u2014 please change the issue title and add the 'auth' label.",
+   "label": "github.update_issue",
+   "raw": "github.update_issue",
+   "pred": "github.update_issue",
+   "ranked": [
+    "github.update_issue"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.772,
+   "in_tokens": 1654,
+   "out_tokens": 46,
+   "reasoning_tokens": 41,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv025",
+   "text": "I know I already wrote some notes about the Q3 pricing strategy somewhere in our workspace \u2014 can you find that page for me? I just need to locate it, not change anything.",
+   "label": "notion.search",
+   "raw": "notion.search",
+   "pred": "notion.search",
+   "ranked": [
+    "notion.search"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.871,
+   "in_tokens": 1652,
+   "out_tokens": 40,
+   "reasoning_tokens": 35,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv026",
+   "text": "db cluster issue from last nite is fixed now, pls close it out and mark that incident resolved in the paging system thx",
+   "label": "pagerduty.resolve_incident",
+   "raw": "pagerduty.resolve_incident",
+   "pred": "pagerduty.resolve_incident",
+   "ranked": [
+    "pagerduty.resolve_incident"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 2.041,
+   "in_tokens": 1641,
+   "out_tokens": 247,
+   "reasoning_tokens": 239,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv027",
+   "text": "I got invitation for quarterly budget meeting tomorrow, but I have conflict with dentist appointment. Please decline the invitation for me and maybe send tentative if decline is not possible.",
+   "label": "calendar.respond_to_invite",
+   "raw": "calendar.respond_to_invite",
+   "pred": "calendar.respond_to_invite",
+   "ranked": [
+    "calendar.respond_to_invite"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 1.067,
+   "in_tokens": 1648,
+   "out_tokens": 107,
+   "reasoning_tokens": 101,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv028",
+   "text": "Our newest client Priya Sharma just signed up, can you set up her profile in our billing system with email priya@acmecorp.com and note referral source as 'website'?",
+   "label": "stripe.create_customer",
+   "raw": "stripe.create_customer",
+   "pred": "stripe.create_customer",
+   "ranked": [
+    "stripe.create_customer"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.972,
+   "in_tokens": 1652,
+   "out_tokens": 61,
+   "reasoning_tokens": 56,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "adv029",
+   "text": "Please pass along that email from Maria about the Q3 budget to finance@acme.com and dana@acme.com, with a quick note saying the numbers are final so they can review.",
+   "label": "gmail.forward_email",
+   "raw": "gmail.forward_email",
+   "pred": "gmail.forward_email",
+   "ranked": [
+    "gmail.forward_email"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.948,
+   "in_tokens": 1655,
+   "out_tokens": 65,
+   "reasoning_tokens": 60,
+   "finish_reason": "stop"
+  }
+ ]
+}

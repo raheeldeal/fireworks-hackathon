@@ -1,0 +1,32 @@
+{
+ "nemotron-lightning-3p5-30b-a3b": {
+  "prompt_tokens_with_catalog": 1692,
+  "prompt_tokens_without_catalog": 56,
+  "catalog_tokens": 1636
+ },
+ "glm-5p3-flash": {
+  "prompt_tokens_with_catalog": 1617,
+  "prompt_tokens_without_catalog": 53,
+  "catalog_tokens": 1564
+ },
+ "gpt-oss-120b": {
+  "prompt_tokens_with_catalog": 1678,
+  "prompt_tokens_without_catalog": 112,
+  "catalog_tokens": 1566
+ },
+ "deepseek-v4p1-flash": {
+  "prompt_tokens_with_catalog": 1750,
+  "prompt_tokens_without_catalog": 70,
+  "catalog_tokens": 1680
+ },
+ "glm-5p3": {
+  "prompt_tokens_with_catalog": 1617,
+  "prompt_tokens_without_catalog": 53,
+  "catalog_tokens": 1564
+ },
+ "kimi-k3": {
+  "prompt_tokens_with_catalog": 1647,
+  "prompt_tokens_without_catalog": 71,
+  "catalog_tokens": 1576
+ }
+}

@@ -1,0 +1,5929 @@
+{
+ "model": "accounts/fireworks/models/kimi-k3",
+ "prompt": "v1_plain",
+ "mock": false,
+ "n": 70,
+ "seed": 0,
+ "errors": 0,
+ "accuracy": 0.9533,
+ "precision": 0.9245,
+ "recall": 0.9839,
+ "f1": 0.9533,
+ "due_acc": 0.9633,
+ "exact_row_acc": 0.6857,
+ "invalid_outputs": 0,
+ "p50_latency_s": 2.852,
+ "p95_latency_s": 4.177,
+ "cost_per_1k_requests_usd": 5.3259,
+ "avg_in_tokens": 781,
+ "avg_out_tokens": 199,
+ "avg_reasoning_tokens": 61,
+ "wall_s": 192.6,
+ "rows": [
+  {
+   "id": "ma-0001",
+   "gold": [
+    {
+     "owner": "Aisha",
+     "task": "ship the customer interviews for the security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Sam",
+     "task": "write up the FAQ for the office move",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Olivia",
+     "task": "summarize the one-pager on the new expense policy",
+     "due": "end of month"
+    },
+    {
+     "owner": "Olivia",
+     "task": "update the competitor comparison for the hiring plan for support",
+     "due": null
+    },
+    {
+     "owner": "Sam",
+     "task": "review the kickoff meeting for the security audit findings",
+     "due": "March 12"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Aisha\", \"task\": \"Put together customer interviews for the audit findings\", \"due\": null},\n  {\"owner\": \"Sam\", \"task\": \"Set up the audit remediation kickoff meeting\", \"due\": \"March 12\"},\n  {\"owner\": \"Sam\", \"task\": \"Write up the FAQ for the office move\", \"due\": \"Thursday\"},\n  {\"owner\": \"Olivia\", \"task\": \"Summarize the new expense policy into a one-pager\", \"due\": \"end of month\"},\n  {\"owner\": \"Olivia\", \"task\": \"Update the competitor comparison for the hiring plan discussion\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Aisha",
+     "task": "Put together customer interviews for the audit findings",
+     "due": null
+    },
+    {
+     "owner": "Sam",
+     "task": "Set up the audit remediation kickoff meeting",
+     "due": "March 12"
+    },
+    {
+     "owner": "Sam",
+     "task": "Write up the FAQ for the office move",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Olivia",
+     "task": "Summarize the new expense policy into a one-pager",
+     "due": "end of month"
+    },
+    {
+     "owner": "Olivia",
+     "task": "Update the competitor comparison for the hiring plan discussion",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 4,
+      "sim": 0.909,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.84,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 1,
+      "sim": 0.724,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.8515310287475586,
+   "in_tokens": 923,
+   "out_tokens": 209,
+   "reasoning_tokens": 51,
+   "cost": 0.005904,
+   "correct": true
+  },
+  {
+   "id": "ma-0004",
+   "gold": [
+    {
+     "owner": "Daniel",
+     "task": "ship the test plan for the Q3 roadmap",
+     "due": "Friday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "write up the spec for the pricing page",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "test the FAQ for the mobile checkout",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Daniel\",\n    \"task\": \"Put together the test plan for the Q3 roadmap\",\n    \"due\": \"Friday\"\n  },\n  {\n    \"owner\": \"Daniel\",\n    \"task\": \"Write up the spec for the pricing page\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Daniel\",\n    \"task\": \"Test the FAQ for mobile checkout and flag broken or confusing items\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Daniel",
+     "task": "Put together the test plan for the Q3 roadmap",
+     "due": "Friday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "Write up the spec for the pricing page",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "Test the FAQ for mobile checkout and flag broken or confusing items",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.889,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 1.9962499141693115,
+   "in_tokens": 748,
+   "out_tokens": 153,
+   "reasoning_tokens": 34,
+   "cost": 0.004539,
+   "correct": true
+  },
+  {
+   "id": "ma-0005",
+   "gold": [
+    {
+     "owner": "Lucas",
+     "task": "schedule the test plan for the quarterly budget",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Lucas",
+     "task": "send the Slack announcement about the offsite agenda",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "draft the metrics dashboard for the SOC 2 evidence",
+     "due": "March 12"
+    },
+    {
+     "owner": "Hannah",
+     "task": "fix the Slack announcement about the office move",
+     "due": null
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Hannah\", \"task\": \"Correct and pin the updated office move Slack announcement\", \"due\": null},\n  {\"owner\": \"Lucas\", \"task\": \"Schedule the test plan\", \"due\": \"end of day tomorrow\"},\n  {\"owner\": \"Lucas\", \"task\": \"Post the offsite agenda Slack announcement with doc link and dietary preferences note\", \"due\": \"next Wednesday\"},\n  {\"owner\": \"Nadia\", \"task\": \"Draft the SOC 2 evidence metrics dashboard\", \"due\": \"March 12\"}\n]",
+   "pred": [
+    {
+     "owner": "Hannah",
+     "task": "Correct and pin the updated office move Slack announcement",
+     "due": null
+    },
+    {
+     "owner": "Lucas",
+     "task": "Schedule the test plan",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Lucas",
+     "task": "Post the offsite agenda Slack announcement with doc link and dietary preferences note",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Draft the SOC 2 evidence metrics dashboard",
+     "due": "March 12"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.857,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 0,
+      "sim": 0.857,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.2041430473327637,
+   "in_tokens": 847,
+   "out_tokens": 222,
+   "reasoning_tokens": 91,
+   "cost": 0.005871,
+   "correct": true
+  },
+  {
+   "id": "ma-0007",
+   "gold": [
+    {
+     "owner": "Hannah",
+     "task": "circulate the budget estimate for the webinar deck",
+     "due": "tomorrow morning"
+    },
+    {
+     "owner": "Grace",
+     "task": "audit the timeline for the case study with Northwind",
+     "due": null
+    },
+    {
+     "owner": "Marcus",
+     "task": "schedule the kickoff meeting for the paid search campaign",
+     "due": "March 12"
+    },
+    {
+     "owner": "Marcus",
+     "task": "cancel the unused Datadog hosts",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Grace\", \"task\": \"Audit the Northwind case study timeline\", \"due\": null},\n  {\"owner\": \"Hannah\", \"task\": \"Circulate budget estimate for the webinar deck\", \"due\": \"tomorrow morning\"},\n  {\"owner\": \"Marcus\", \"task\": \"Schedule kickoff meeting for the paid search campaign\", \"due\": \"March 12\"},\n  {\"owner\": \"Marcus\", \"task\": \"Cancel unused Datadog hosts\", \"due\": null},\n  {\"owner\": \"Kenji\", \"task\": \"Sync design assets once timeline audit is done\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Grace",
+     "task": "Audit the Northwind case study timeline",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "Circulate budget estimate for the webinar deck",
+     "due": "tomorrow morning"
+    },
+    {
+     "owner": "Marcus",
+     "task": "Schedule kickoff meeting for the paid search campaign",
+     "due": "March 12"
+    },
+    {
+     "owner": "Marcus",
+     "task": "Cancel unused Datadog hosts",
+     "due": null
+    },
+    {
+     "owner": "Kenji",
+     "task": "Sync design assets once timeline audit is done",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 5,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     4
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 16.937185764312744,
+   "in_tokens": 747,
+   "out_tokens": 214,
+   "reasoning_tokens": 63,
+   "cost": 0.005451,
+   "correct": false
+  },
+  {
+   "id": "ma-0008",
+   "gold": [
+    {
+     "owner": "Fatima",
+     "task": "update the kickoff meeting for the flaky integration tests",
+     "due": "October 20"
+    },
+    {
+     "owner": "Raj",
+     "task": "set up the customer interviews for the search index",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Fatima",
+     "task": "share the stakeholder update on the API rate limiter",
+     "due": null
+    },
+    {
+     "owner": "Raj",
+     "task": "follow up on the metrics dashboard for the staging environment",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Fatima\", \"task\": \"Rework the kickoff meeting for the flaky integration tests\", \"due\": \"October 20\"},\n  {\"owner\": \"Raj\", \"task\": \"Set up customer interviews for the search index\", \"due\": \"end of the week\"},\n  {\"owner\": \"Fatima\", \"task\": \"Prepare and circulate the stakeholder update on the API rate limiter\", \"due\": null},\n  {\"owner\": \"Raj\", \"task\": \"Follow up on the metrics dashboard for staging\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Fatima",
+     "task": "Rework the kickoff meeting for the flaky integration tests",
+     "due": "October 20"
+    },
+    {
+     "owner": "Raj",
+     "task": "Set up customer interviews for the search index",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Fatima",
+     "task": "Prepare and circulate the stakeholder update on the API rate limiter",
+     "due": null
+    },
+    {
+     "owner": "Raj",
+     "task": "Follow up on the metrics dashboard for staging",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.921,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.918,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 1.908221960067749,
+   "in_tokens": 768,
+   "out_tokens": 139,
+   "reasoning_tokens": 4,
+   "cost": 0.004389,
+   "correct": true
+  },
+  {
+   "id": "ma-0009",
+   "gold": [
+    {
+     "owner": "Hannah",
+     "task": "clean up the timeline for the staging environment",
+     "due": "March 12"
+    },
+    {
+     "owner": "Hannah",
+     "task": "follow up on the one-pager on the flaky integration tests",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Hannah",
+     "task": "document the spec for the API rate limiter",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Clean up and send out the revised staging environment timeline\",\n    \"due\": \"March 12\"\n  },\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Write a one-pager on the flaky integration tests for leadership\",\n    \"due\": \"next Wednesday\"\n  },\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Write up the API rate limiter spec, covering token bucket vs fixed window tradeoffs\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Hannah",
+     "task": "Clean up and send out the revised staging environment timeline",
+     "due": "March 12"
+    },
+    {
+     "owner": "Hannah",
+     "task": "Write a one-pager on the flaky integration tests for leadership",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Hannah",
+     "task": "Write up the API rate limiter spec, covering token bucket vs fixed window tradeoffs",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.904,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.824,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.37776780128479,
+   "in_tokens": 835,
+   "out_tokens": 168,
+   "reasoning_tokens": 33,
+   "cost": 0.005025,
+   "correct": true
+  },
+  {
+   "id": "ma-0010",
+   "gold": [
+    {
+     "owner": "Fatima",
+     "task": "finalize the Slack announcement about the beta waitlist",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Diego",
+     "task": "document the one-pager on the free-tier limits",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "set up the kickoff meeting for the notifications redesign",
+     "due": "the 15th"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Fatima\",\n    \"task\": \"Finish and post the Slack announcement about the beta waitlist rollout\",\n    \"due\": \"Wednesday\"\n  },\n  {\n    \"owner\": \"Diego\",\n    \"task\": \"Create a one-pager on free-tier limits, including API rate limits, for support and marketing\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Sofia\",\n    \"task\": \"Schedule the notifications redesign kickoff meeting and send invites, including design\",\n    \"due\": \"before the 15th\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Fatima",
+     "task": "Finish and post the Slack announcement about the beta waitlist rollout",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Diego",
+     "task": "Create a one-pager on free-tier limits, including API rate limits, for support and marketing",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "Schedule the notifications redesign kickoff meeting and send invites, including design",
+     "due": "before the 15th"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.95,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.894,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.852,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.366964340209961,
+   "in_tokens": 730,
+   "out_tokens": 191,
+   "reasoning_tokens": 49,
+   "cost": 0.005055,
+   "correct": true
+  },
+  {
+   "id": "ma-0011",
+   "gold": [
+    {
+     "owner": "Daniel",
+     "task": "order the new laptops for the interns",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "fix the metrics dashboard for the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "schedule the test plan for the demo script",
+     "due": null
+    },
+    {
+     "owner": "Mei",
+     "task": "prepare the test plan for the Globex proposal",
+     "due": "Thursday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Noah\", \"task\": \"Fix the dashboard conversion numbers (broken field mapping/stage weights)\", \"due\": \"before the next pipeline review\"},\n  {\"owner\": \"Daniel\", \"task\": \"Set up test plan sessions for the demo script and add them to calendars\", \"due\": null},\n  {\"owner\": \"Mei\", \"task\": \"Write the full test plan section for the Globex proposal\", \"due\": \"Thursday\"},\n  {\"owner\": \"Fatima\", \"task\": \"Sanity-check the pricing assumptions in the Globex draft\", \"due\": null},\n  {\"owner\": \"Daniel\", \"task\": \"Order laptops for the incoming interns\", \"due\": \"before interns start in two weeks\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Noah",
+     "task": "Fix the dashboard conversion numbers (broken field mapping/stage weights)",
+     "due": "before the next pipeline review"
+    },
+    {
+     "owner": "Daniel",
+     "task": "Set up test plan sessions for the demo script and add them to calendars",
+     "due": null
+    },
+    {
+     "owner": "Mei",
+     "task": "Write the full test plan section for the Globex proposal",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Fatima",
+     "task": "Sanity-check the pricing assumptions in the Globex draft",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "Order laptops for the incoming interns",
+     "due": "before interns start in two weeks"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 5,
+    "tp": 3,
+    "due_correct": 2,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 4,
+      "sim": 0.913,
+      "due_ok": false
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 0.862,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 0.824,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     0,
+     3
+    ],
+    "unmatched_gold": [
+     1
+    ]
+   },
+   "latency": 2.978489875793457,
+   "in_tokens": 731,
+   "out_tokens": 218,
+   "reasoning_tokens": 45,
+   "cost": 0.005463,
+   "correct": false
+  },
+  {
+   "id": "ma-0012",
+   "gold": [
+    {
+     "owner": "Lucas",
+     "task": "reply to the Zendesk escalation from Contoso",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Lucas",
+     "task": "audit the customer interviews for the webinar deck",
+     "due": "Monday"
+    },
+    {
+     "owner": "Lucas",
+     "task": "rotate the production API keys",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Lucas",
+     "task": "summarize the spec for the partner newsletter",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Lucas\", \"task\": \"Reply to the Contoso escalation\", \"due\": \"the 28th\"},\n  {\"owner\": \"Lucas\", \"task\": \"Audit customer interviews for the webinar deck\", \"due\": \"Monday\"},\n  {\"owner\": \"Lucas\", \"task\": \"Rotate the production API keys\", \"due\": \"before the launch on the 9th\"},\n  {\"owner\": \"Lucas\", \"task\": \"Summarize the spec for the partner newsletter\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Lucas",
+     "task": "Reply to the Contoso escalation",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Lucas",
+     "task": "Audit customer interviews for the webinar deck",
+     "due": "Monday"
+    },
+    {
+     "owner": "Lucas",
+     "task": "Rotate the production API keys",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Lucas",
+     "task": "Summarize the spec for the partner newsletter",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.388463020324707,
+   "in_tokens": 886,
+   "out_tokens": 164,
+   "reasoning_tokens": 34,
+   "cost": 0.005118,
+   "correct": true
+  },
+  {
+   "id": "ma-0017",
+   "gold": [
+    {
+     "owner": "Sam",
+     "task": "schedule the metrics dashboard for the case study with Northwind",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "schedule the customer interviews for the paid search campaign",
+     "due": "the 15th"
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Sam\", \"task\": \"Set up the metrics dashboard with Northwind\", \"due\": null},\n  {\"owner\": \"Hannah\", \"task\": \"Schedule and run customer interviews for paid search campaign\", \"due\": \"the 15th\"}\n]",
+   "pred": [
+    {
+     "owner": "Sam",
+     "task": "Set up the metrics dashboard with Northwind",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "Schedule and run customer interviews for paid search campaign",
+     "due": "the 15th"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.931,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.392451047897339,
+   "in_tokens": 850,
+   "out_tokens": 240,
+   "reasoning_tokens": 169,
+   "cost": 0.00615,
+   "correct": true
+  },
+  {
+   "id": "ma-0021",
+   "gold": [
+    {
+     "owner": "Grace",
+     "task": "update the rollout checklist for the launch blog post",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "set up the competitor comparison for the partner newsletter",
+     "due": null
+    },
+    {
+     "owner": "Kenji",
+     "task": "add the new hires to the on-call rotation",
+     "due": "the end of the quarter"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Kenji\", \"task\": \"Add new hires to the on-call rotation\", \"due\": \"end of the quarter\"},\n  {\"owner\": \"Grace\", \"task\": \"Set up competitor comparison for the partner newsletter\", \"due\": null},\n  {\"owner\": \"Grace\", \"task\": \"Update the rollout checklist for the launch blog post\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Kenji",
+     "task": "Add new hires to the on-call rotation",
+     "due": "end of the quarter"
+    },
+    {
+     "owner": "Grace",
+     "task": "Set up competitor comparison for the partner newsletter",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "Update the rollout checklist for the launch blog post",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.0964720249176025,
+   "in_tokens": 818,
+   "out_tokens": 129,
+   "reasoning_tokens": 29,
+   "cost": 0.004389,
+   "correct": true
+  },
+  {
+   "id": "ma-0024",
+   "gold": [
+    {
+     "owner": "Mei",
+     "task": "document the FAQ for the flaky integration tests",
+     "due": "March 12"
+    },
+    {
+     "owner": "Chloe",
+     "task": "update the budget estimate for the staging environment",
+     "due": "March 12"
+    },
+    {
+     "owner": "Sam",
+     "task": "test the stakeholder update on the auth migration",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Mei\",\n    \"task\": \"Write FAQ about flaky integration tests and post it in the wiki\",\n    \"due\": \"March 12\"\n  },\n  {\n    \"owner\": \"Chloe\",\n    \"task\": \"Redo the staging environment cost estimate and send it to Finance\",\n    \"due\": \"March 12\"\n  },\n  {\n    \"owner\": \"Sam\",\n    \"task\": \"Run the auth migration stakeholder update past a small group and report back\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Mei",
+     "task": "Write FAQ about flaky integration tests and post it in the wiki",
+     "due": "March 12"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Redo the staging environment cost estimate and send it to Finance",
+     "due": "March 12"
+    },
+    {
+     "owner": "Sam",
+     "task": "Run the auth migration stakeholder update past a small group and report back",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.93,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.857,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.8,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.8968420028686523,
+   "in_tokens": 785,
+   "out_tokens": 177,
+   "reasoning_tokens": 45,
+   "cost": 0.00501,
+   "correct": true
+  },
+  {
+   "id": "ma-0027",
+   "gold": [
+    {
+     "owner": "Fatima",
+     "task": "benchmark the one-pager on the security audit findings",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Elena",
+     "task": "ping legal about the DPA template",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "upload the recording to the shared drive",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Fatima",
+     "task": "ship the metrics dashboard for the offsite agenda",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "test the stakeholder update on the security audit findings",
+     "due": "next Friday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Diego\", \"task\": \"Upload vendor demo recording to the shared drive\", \"due\": \"Wednesday\"},\n  {\"owner\": \"Fatima\", \"task\": \"Create one-pager summarizing security audit findings for leadership\", \"due\": \"next Wednesday\"},\n  {\"owner\": \"Elena\", \"task\": \"Ping legal to nudge the DPA template along\", \"due\": null},\n  {\"owner\": \"Fatima\", \"task\": \"Ship the metrics dashboard for the offsite\", \"due\": null},\n  {\"owner\": \"Fatima\", \"task\": \"Test the stakeholder update draft on people outside the team and gather feedback\", \"due\": \"next Friday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Diego",
+     "task": "Upload vendor demo recording to the shared drive",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Fatima",
+     "task": "Create one-pager summarizing security audit findings for leadership",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Elena",
+     "task": "Ping legal to nudge the DPA template along",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "Ship the metrics dashboard for the offsite",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "Test the stakeholder update draft on people outside the team and gather feedback",
+     "due": "next Friday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.885,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 0.868,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 4,
+      "sim": 0.657,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.913604974746704,
+   "in_tokens": 824,
+   "out_tokens": 225,
+   "reasoning_tokens": 61,
+   "cost": 0.005847,
+   "correct": true
+  },
+  {
+   "id": "ma-0031",
+   "gold": [
+    {
+     "owner": "Daniel",
+     "task": "update the competitor comparison for the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Lucas",
+     "task": "send the rollout checklist for the partner referral program",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "add the new hires to the on-call rotation",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "clean up the Slack announcement about the CRM cleanup",
+     "due": null
+    },
+    {
+     "owner": "Tom",
+     "task": "share the budget estimate for the pipeline review",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Daniel\", \"task\": \"Update the competitor comparison sheet\", \"due\": \"before the pipeline review\"},\n  {\"owner\": \"Tom\", \"task\": \"Prepare full budget estimate breakdown and share with the team\", \"due\": \"before the pipeline review\"},\n  {\"owner\": \"Lucas\", \"task\": \"Send out the partner referral program rollout checklist\", \"due\": null},\n  {\"owner\": \"Hannah\", \"task\": \"Rewrite the CRM cleanup announcement in Slack for clarity\", \"due\": null},\n  {\"owner\": \"Fatima\", \"task\": \"Add new hires to the on-call rotation\", \"due\": \"Monday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Daniel",
+     "task": "Update the competitor comparison sheet",
+     "due": "before the pipeline review"
+    },
+    {
+     "owner": "Tom",
+     "task": "Prepare full budget estimate breakdown and share with the team",
+     "due": "before the pipeline review"
+    },
+    {
+     "owner": "Lucas",
+     "task": "Send out the partner referral program rollout checklist",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "Rewrite the CRM cleanup announcement in Slack for clarity",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "Add new hires to the on-call rotation",
+     "due": "Monday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 2,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": false
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.903,
+      "due_ok": false
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 0.833,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 1,
+      "sim": 0.724,
+      "due_ok": false
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.272306203842163,
+   "in_tokens": 698,
+   "out_tokens": 229,
+   "reasoning_tokens": 73,
+   "cost": 0.005529,
+   "correct": false
+  },
+  {
+   "id": "ma-0034",
+   "gold": [
+    {
+     "owner": "Hannah",
+     "task": "book the conference room for the all-hands",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Aisha",
+     "task": "cancel the unused Datadog hosts",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "send the metrics dashboard for the admin dashboard",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Nadia",
+     "task": "schedule the Slack announcement about the Q3 roadmap",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "benchmark the kickoff meeting for the onboarding flow",
+     "due": "October 20"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Hannah\", \"task\": \"Book the conference room for the all-hands\", \"due\": \"end of day tomorrow\"},\n  {\"owner\": \"Nadia\", \"task\": \"Schedule the Slack announcement about the Q3 roadmap\", \"due\": null},\n  {\"owner\": \"Aisha\", \"task\": \"Cancel the unused Datadog hosts\", \"due\": null},\n  {\"owner\": \"Nadia\", \"task\": \"Send the metrics dashboard for the admin dashboard\", \"due\": \"the 15th\"},\n  {\"owner\": \"Nadia\", \"task\": \"Benchmark the kickoff meeting for the onboarding flow\", \"due\": \"October 20\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Hannah",
+     "task": "Book the conference room for the all-hands",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Schedule the Slack announcement about the Q3 roadmap",
+     "due": null
+    },
+    {
+     "owner": "Aisha",
+     "task": "Cancel the unused Datadog hosts",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "Send the metrics dashboard for the admin dashboard",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Benchmark the kickoff meeting for the onboarding flow",
+     "due": "October 20"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.756930112838745,
+   "in_tokens": 807,
+   "out_tokens": 224,
+   "reasoning_tokens": 63,
+   "cost": 0.005781,
+   "correct": true
+  },
+  {
+   "id": "ma-0035",
+   "gold": [
+    {
+     "owner": "Lucas",
+     "task": "send the calendar invite for the retro",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "prepare the stakeholder update on the customer survey",
+     "due": "Friday"
+    },
+    {
+     "owner": "Omar",
+     "task": "audit the test plan for the webinar deck",
+     "due": "June 30"
+    },
+    {
+     "owner": "Mei",
+     "task": "schedule the test plan for the case study with Northwind",
+     "due": "Tuesday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Lucas\",\n    \"task\": \"Send calendar invite for spring campaign retro\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Fatima\",\n    \"task\": \"Write up customer survey results as stakeholder update\",\n    \"due\": \"Friday\"\n  },\n  {\n    \"owner\": \"Omar\",\n    \"task\": \"Audit the test plan for the webinar deck\",\n    \"due\": \"June 30\"\n  },\n  {\n    \"owner\": \"Mei\",\n    \"task\": \"Schedule the test plan with Northwind\",\n    \"due\": \"Tuesday\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Lucas",
+     "task": "Send calendar invite for spring campaign retro",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "Write up customer survey results as stakeholder update",
+     "due": "Friday"
+    },
+    {
+     "owner": "Omar",
+     "task": "Audit the test plan for the webinar deck",
+     "due": "June 30"
+    },
+    {
+     "owner": "Mei",
+     "task": "Schedule the test plan with Northwind",
+     "due": "Tuesday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.895,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.0708200931549072,
+   "in_tokens": 774,
+   "out_tokens": 214,
+   "reasoning_tokens": 64,
+   "cost": 0.005532,
+   "correct": true
+  },
+  {
+   "id": "ma-0038",
+   "gold": [
+    {
+     "owner": "Kenji",
+     "task": "follow up on the Slack announcement about the security audit findings",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Kenji",
+     "task": "schedule the spec for the SOC 2 evidence",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "order the new laptops for the interns",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "add the new hires to the on-call rotation",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Grace",
+     "task": "draft the stakeholder update on the security audit findings",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Chase down the Slack announcement about the audit findings and determine what's outstanding\",\n    \"due\": \"the 28th\"\n  },\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Set up a session to spec out the SOC 2 evidence collection\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Jonas\",\n    \"task\": \"Order new laptops for the interns, double-checking the config before submitting\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Grace\",\n    \"task\": \"Add the new hires to the on-call rotation, pairing them with a senior primary\",\n    \"due\": \"next Tuesday\"\n  },\n  {\n    \"owner\": \"Grace\",\n    \"task\": \"Draft the stakeholder update on the audit findings\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Kenji",
+     "task": "Chase down the Slack announcement about the audit findings and determine what's outstanding",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Kenji",
+     "task": "Set up a session to spec out the SOC 2 evidence collection",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "Order new laptops for the interns, double-checking the config before submitting",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "Add the new hires to the on-call rotation, pairing them with a senior primary",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Grace",
+     "task": "Draft the stakeholder update on the audit findings",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.83,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.809,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 4.057593107223511,
+   "in_tokens": 676,
+   "out_tokens": 275,
+   "reasoning_tokens": 67,
+   "cost": 0.006153,
+   "correct": true
+  },
+  {
+   "id": "ma-0040",
+   "gold": [
+    {
+     "owner": "Kenji",
+     "task": "follow up on the budget estimate for the conference booth",
+     "due": null
+    },
+    {
+     "owner": "Olivia",
+     "task": "ship the customer interviews for the customer survey",
+     "due": "Friday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Contact vendor to get a budget estimate for the conference booth\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Olivia\",\n    \"task\": \"Complete customer survey interviews\",\n    \"due\": \"Friday\"\n  },\n  {\n    \"owner\": \"Diego\",\n    \"task\": \"Share notes on email campaign subject lines in the doc\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Kenji",
+     "task": "Contact vendor to get a budget estimate for the conference booth",
+     "due": null
+    },
+    {
+     "owner": "Olivia",
+     "task": "Complete customer survey interviews",
+     "due": "Friday"
+    },
+    {
+     "owner": "Diego",
+     "task": "Share notes on email campaign subject lines in the doc",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 3,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.912,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.901,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     2
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 5.484366178512573,
+   "in_tokens": 668,
+   "out_tokens": 172,
+   "reasoning_tokens": 55,
+   "cost": 0.004584,
+   "correct": false
+  },
+  {
+   "id": "ma-0041",
+   "gold": [
+    {
+     "owner": "Kenji",
+     "task": "ship the risks list for the pricing page",
+     "due": "Monday"
+    },
+    {
+     "owner": "Kenji",
+     "task": "finalize the timeline for the free-tier limits",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Kenji",
+     "task": "clean up the competitor comparison for the notifications redesign",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Write up the risks list for the pricing page based on legal notes and edge cases\",\n    \"due\": \"Monday\"\n  },\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Finalize the schedule/timeline for the free-tier limits rollout\",\n    \"due\": \"next Wednesday\"\n  },\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Clean up the competitor comparison doc for the notifications redesign\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Kenji",
+     "task": "Write up the risks list for the pricing page based on legal notes and edge cases",
+     "due": "Monday"
+    },
+    {
+     "owner": "Kenji",
+     "task": "Finalize the schedule/timeline for the free-tier limits rollout",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Kenji",
+     "task": "Clean up the competitor comparison doc for the notifications redesign",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.902,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 1.9194598197937012,
+   "in_tokens": 767,
+   "out_tokens": 145,
+   "reasoning_tokens": 14,
+   "cost": 0.004476,
+   "correct": true
+  },
+  {
+   "id": "ma-0042",
+   "gold": [
+    {
+     "owner": "Aisha",
+     "task": "finalize the one-pager on the mobile checkout",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Diego",
+     "task": "follow up on the risks list for the pricing page",
+     "due": "the end of the quarter"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Aisha\",\n    \"task\": \"Finalize the mobile checkout one-pager for the exec review\",\n    \"due\": \"end of the week\"\n  },\n  {\n    \"owner\": \"Diego\",\n    \"task\": \"Follow up on and close out the open risks list for the pricing page\",\n    \"due\": \"end of the quarter\"\n  },\n  {\n    \"owner\": \"All\",\n    \"task\": \"Add notes to the shared doc before the design review\",\n    \"due\": \"before the review next Tuesday\"\n  },\n  {\n    \"owner\": \"Elena\",\n    \"task\": \"Send the updated agenda to the team\",\n    \"due\": \"this afternoon\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Aisha",
+     "task": "Finalize the mobile checkout one-pager for the exec review",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Diego",
+     "task": "Follow up on and close out the open risks list for the pricing page",
+     "due": "end of the quarter"
+    },
+    {
+     "owner": "All",
+     "task": "Add notes to the shared doc before the design review",
+     "due": "before the review next Tuesday"
+    },
+    {
+     "owner": "Elena",
+     "task": "Send the updated agenda to the team",
+     "due": "this afternoon"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 4,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     2,
+     3
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 3.8586130142211914,
+   "in_tokens": 797,
+   "out_tokens": 260,
+   "reasoning_tokens": 89,
+   "cost": 0.006291,
+   "correct": false
+  },
+  {
+   "id": "ma-0043",
+   "gold": [
+    {
+     "owner": "Raj",
+     "task": "add the new hires to the on-call rotation",
+     "due": "October 20"
+    },
+    {
+     "owner": "Raj",
+     "task": "book the conference room for the all-hands",
+     "due": "tomorrow morning"
+    },
+    {
+     "owner": "Omar",
+     "task": "write up the metrics dashboard for the payments service",
+     "due": "June 30"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Raj\", \"task\": \"Add three new hires to the on-call rotation\", \"due\": \"October 20\"},\n  {\"owner\": \"Raj\", \"task\": \"Book the large conference room on floor four for the all-hands\", \"due\": \"tomorrow morning\"},\n  {\"owner\": \"Omar\", \"task\": \"Build metrics dashboard for the payments service\", \"due\": \"June 30\"},\n  {\"owner\": \"Omar\", \"task\": \"Ship the config change before the deploy freeze\", \"due\": \"Thursday EOD\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Raj",
+     "task": "Add three new hires to the on-call rotation",
+     "due": "October 20"
+    },
+    {
+     "owner": "Raj",
+     "task": "Book the large conference room on floor four for the all-hands",
+     "due": "tomorrow morning"
+    },
+    {
+     "owner": "Omar",
+     "task": "Build metrics dashboard for the payments service",
+     "due": "June 30"
+    },
+    {
+     "owner": "Omar",
+     "task": "Ship the config change before the deploy freeze",
+     "due": "Thursday EOD"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.919,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     3
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 2.7234692573547363,
+   "in_tokens": 703,
+   "out_tokens": 196,
+   "reasoning_tokens": 58,
+   "cost": 0.005049,
+   "correct": false
+  },
+  {
+   "id": "ma-0044",
+   "gold": [
+    {
+     "owner": "Raj",
+     "task": "fix the one-pager on the API rate limiter",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Sam",
+     "task": "draft the stakeholder update on the search index",
+     "due": null
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Raj\", \"task\": \"Fix the one-pager on the API rate limiter\", \"due\": \"end of day tomorrow\"},\n  {\"owner\": \"Sam\", \"task\": \"Put together a stakeholder update on the search index\", \"due\": null}\n]",
+   "pred": [
+    {
+     "owner": "Raj",
+     "task": "Fix the one-pager on the API rate limiter",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Sam",
+     "task": "Put together a stakeholder update on the search index",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.912,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.975883960723877,
+   "in_tokens": 740,
+   "out_tokens": 239,
+   "reasoning_tokens": 166,
+   "cost": 0.005805,
+   "correct": true
+  },
+  {
+   "id": "ma-0045",
+   "gold": [
+    {
+     "owner": "Nadia",
+     "task": "benchmark the summary of the new expense policy",
+     "due": "the end of the quarter"
+    },
+    {
+     "owner": "Nadia",
+     "task": "update the competitor comparison for the quarterly budget",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Sam",
+     "task": "update the one-pager on the security audit findings",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Nadia",
+     "task": "upload the recording to the shared drive",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "follow up on the customer interviews for the new expense policy",
+     "due": "Friday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Nadia\", \"task\": \"Benchmark the expense policy summary\", \"due\": \"end of the quarter\"},\n  {\"owner\": \"Nadia\", \"task\": \"Follow up on customer interviews\", \"due\": \"Friday\"},\n  {\"owner\": \"Nadia\", \"task\": \"Refresh the competitor comparison in the quarterly budget\", \"due\": \"before the launch on the 9th\"},\n  {\"owner\": \"Nadia\", \"task\": \"Upload the meeting recording to the shared drive\", \"due\": \"Thursday\"},\n  {\"owner\": \"Sam\", \"task\": \"Revise and send the security audit one-pager (verify severity ratings)\", \"due\": \"end of day tomorrow\"},\n  {\"owner\": \"Raj\", \"task\": \"Decide whether scheduling the risks list for the new expense policy is still needed\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Nadia",
+     "task": "Benchmark the expense policy summary",
+     "due": "end of the quarter"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Follow up on customer interviews",
+     "due": "Friday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Refresh the competitor comparison in the quarterly budget",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Upload the meeting recording to the shared drive",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Sam",
+     "task": "Revise and send the security audit one-pager (verify severity ratings)",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Raj",
+     "task": "Decide whether scheduling the risks list for the new expense policy is still needed",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 6,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.916,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 4,
+      "sim": 0.75,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     5
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 3.838550090789795,
+   "in_tokens": 799,
+   "out_tokens": 296,
+   "reasoning_tokens": 98,
+   "cost": 0.006837,
+   "correct": false
+  },
+  {
+   "id": "ma-0046",
+   "gold": [
+    {
+     "owner": "Grace",
+     "task": "review the kickoff meeting for the SOC 2 evidence",
+     "due": "the end of the quarter"
+    },
+    {
+     "owner": "Chloe",
+     "task": "benchmark the customer interviews for the office move",
+     "due": "two weeks from now"
+    },
+    {
+     "owner": "Grace",
+     "task": "renew the Figma seats",
+     "due": null
+    },
+    {
+     "owner": "Aisha",
+     "task": "post the hiring update in #general",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Aisha",
+     "task": "finalize the metrics dashboard for the SOC 2 evidence",
+     "due": "October 20"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Grace\", \"task\": \"Renew Figma seats after checking usage\", \"due\": null},\n  {\"owner\": \"Chloe\", \"task\": \"Benchmark interview logistics for both office locations\", \"due\": \"two weeks from now\"},\n  {\"owner\": \"Aisha\", \"task\": \"Finalize the metrics dashboard for SOC 2\", \"due\": \"October 20\"},\n  {\"owner\": \"Grace\", \"task\": \"Turn SOC 2 kickoff meeting notes into an evidence checklist\", \"due\": \"end of the quarter\"},\n  {\"owner\": \"Aisha\", \"task\": \"Post hiring update for open ops roles in #general\", \"due\": \"before the launch on the 9th\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Grace",
+     "task": "Renew Figma seats after checking usage",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "Benchmark interview logistics for both office locations",
+     "due": "two weeks from now"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Finalize the metrics dashboard for SOC 2",
+     "due": "October 20"
+    },
+    {
+     "owner": "Grace",
+     "task": "Turn SOC 2 kickoff meeting notes into an evidence checklist",
+     "due": "end of the quarter"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Post hiring update for open ops roles in #general",
+     "due": "before the launch on the 9th"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 3,
+      "sim": 0.896,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.674,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.0793871879577637,
+   "in_tokens": 801,
+   "out_tokens": 231,
+   "reasoning_tokens": 61,
+   "cost": 0.005868,
+   "correct": true
+  },
+  {
+   "id": "ma-0047",
+   "gold": [
+    {
+     "owner": "Chloe",
+     "task": "order the new laptops for the interns",
+     "due": "March 12"
+    },
+    {
+     "owner": "Omar",
+     "task": "send the competitor comparison for the hiring plan for support",
+     "due": "Friday"
+    },
+    {
+     "owner": "Grace",
+     "task": "ping legal about the DPA template",
+     "due": "Friday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Chloe\", \"task\": \"Order intern laptops (spec them out first)\", \"due\": \"March 12\"},\n  {\"owner\": \"Omar\", \"task\": \"Send competitor comparison for support hiring plan\", \"due\": \"Friday\"},\n  {\"owner\": \"Grace\", \"task\": \"Ping legal about the DPA template and push for an answer\", \"due\": \"Friday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Chloe",
+     "task": "Order intern laptops (spec them out first)",
+     "due": "March 12"
+    },
+    {
+     "owner": "Omar",
+     "task": "Send competitor comparison for support hiring plan",
+     "due": "Friday"
+    },
+    {
+     "owner": "Grace",
+     "task": "Ping legal about the DPA template and push for an answer",
+     "due": "Friday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.721,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.3603007793426514,
+   "in_tokens": 734,
+   "out_tokens": 145,
+   "reasoning_tokens": 41,
+   "cost": 0.004377,
+   "correct": true
+  },
+  {
+   "id": "ma-0048",
+   "gold": [
+    {
+     "owner": "Leila",
+     "task": "prepare the kickoff meeting for the churned accounts list",
+     "due": "the end of the quarter"
+    },
+    {
+     "owner": "Diego",
+     "task": "rotate the production API keys",
+     "due": "April 3"
+    },
+    {
+     "owner": "Diego",
+     "task": "share the kickoff meeting for the Acme renewal",
+     "due": "next Monday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Leila\", \"task\": \"Prepare win-back kickoff for churned accounts\", \"due\": \"end of the quarter\"},\n  {\"owner\": \"Diego\", \"task\": \"Send Acme renewal kickoff invite and materials\", \"due\": \"next Monday\"},\n  {\"owner\": \"Diego\", \"task\": \"Rotate production API keys\", \"due\": \"April 3\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Leila",
+     "task": "Prepare win-back kickoff for churned accounts",
+     "due": "end of the quarter"
+    },
+    {
+     "owner": "Diego",
+     "task": "Send Acme renewal kickoff invite and materials",
+     "due": "next Monday"
+    },
+    {
+     "owner": "Diego",
+     "task": "Rotate production API keys",
+     "due": "April 3"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.877,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 0.741,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.7987871170043945,
+   "in_tokens": 724,
+   "out_tokens": 148,
+   "reasoning_tokens": 44,
+   "cost": 0.004392,
+   "correct": true
+  },
+  {
+   "id": "ma-0049",
+   "gold": [
+    {
+     "owner": "Priya",
+     "task": "summarize the rollout checklist for the notifications redesign",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "summarize the test plan for the onboarding flow",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Victor",
+     "task": "follow up on the budget estimate for the beta waitlist",
+     "due": "Monday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "schedule the one-pager on the admin dashboard",
+     "due": "next Tuesday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Priya\", \"task\": \"Summarize the notifications redesign rollout checklist for the support team\", \"due\": null},\n  {\"owner\": \"Grace\", \"task\": \"Write up the usability test plan summary\", \"due\": \"the 28th\"},\n  {\"owner\": \"Nadia\", \"task\": \"Schedule the leadership one-pager review meeting and send the invite\", \"due\": \"next Tuesday\"},\n  {\"owner\": \"Victor\", \"task\": \"Follow up with finance on the beta waitlist budget estimate\", \"due\": \"Monday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Priya",
+     "task": "Summarize the notifications redesign rollout checklist for the support team",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "Write up the usability test plan summary",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Schedule the leadership one-pager review meeting and send the invite",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Victor",
+     "task": "Follow up with finance on the beta waitlist budget estimate",
+     "due": "Monday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 0.692,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     1
+    ],
+    "unmatched_gold": [
+     1
+    ]
+   },
+   "latency": 2.3595597743988037,
+   "in_tokens": 861,
+   "out_tokens": 181,
+   "reasoning_tokens": 43,
+   "cost": 0.005298,
+   "correct": false
+  },
+  {
+   "id": "ma-0052",
+   "gold": [
+    {
+     "owner": "Tom",
+     "task": "share the test plan for the payments service",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Sofia",
+     "task": "fix the spec for the iOS crash on login",
+     "due": "next Monday"
+    },
+    {
+     "owner": "Victor",
+     "task": "ship the summary of the search index",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Tom\", \"task\": \"Share draft of payments service test plan with the team\", \"due\": \"next Friday\"},\n  {\"owner\": \"Sofia\", \"task\": \"Fix and update the spec for the iOS login crash\", \"due\": \"next Monday\"},\n  {\"owner\": \"Omar\", \"task\": \"Re-triage iOS crash reports against the corrected spec\", \"due\": null},\n  {\"owner\": \"Victor\", \"task\": \"Write and circulate a summary of the search index, including the reindexing schedule\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Tom",
+     "task": "Share draft of payments service test plan with the team",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Sofia",
+     "task": "Fix and update the spec for the iOS login crash",
+     "due": "next Monday"
+    },
+    {
+     "owner": "Omar",
+     "task": "Re-triage iOS crash reports against the corrected spec",
+     "due": null
+    },
+    {
+     "owner": "Victor",
+     "task": "Write and circulate a summary of the search index, including the reindexing schedule",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 0.889,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     2
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 2.7622411251068115,
+   "in_tokens": 738,
+   "out_tokens": 207,
+   "reasoning_tokens": 64,
+   "cost": 0.005319,
+   "correct": false
+  },
+  {
+   "id": "ma-0056",
+   "gold": [
+    {
+     "owner": "Aisha",
+     "task": "draft the kickoff meeting for the churned accounts list",
+     "due": "end of month"
+    },
+    {
+     "owner": "Priya",
+     "task": "follow up on the risks list for the Globex proposal",
+     "due": "June 30"
+    },
+    {
+     "owner": "Leila",
+     "task": "document the risks list for the demo script",
+     "due": "Wednesday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Chase down answers (including legal input) on Globex procurement concerns list for revised proposal\",\n    \"due\": \"June 30\"\n  },\n  {\n    \"owner\": \"Aisha\",\n    \"task\": \"Organize win-back kickoff meeting for churned accounts list, including customer success, and send invite and agenda\",\n    \"due\": \"end of month\"\n  },\n  {\n    \"owner\": \"Leila\",\n    \"task\": \"Write risks/known limitations section for Initech demo script covering reporting gap and integration delay, and send for review\",\n    \"due\": \"Wednesday\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Priya",
+     "task": "Chase down answers (including legal input) on Globex procurement concerns list for revised proposal",
+     "due": "June 30"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Organize win-back kickoff meeting for churned accounts list, including customer success, and send invite and agenda",
+     "due": "end of month"
+    },
+    {
+     "owner": "Leila",
+     "task": "Write risks/known limitations section for Initech demo script covering reporting gap and integration delay, and send for review",
+     "due": "Wednesday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 0.925,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 0,
+      "sim": 0.755,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.708,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.032672882080078,
+   "in_tokens": 866,
+   "out_tokens": 225,
+   "reasoning_tokens": 65,
+   "cost": 0.005973,
+   "correct": true
+  },
+  {
+   "id": "ma-0059",
+   "gold": [
+    {
+     "owner": "Chloe",
+     "task": "schedule the timeline for the customer survey",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "benchmark the competitor comparison for the partner newsletter",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Leila",
+     "task": "share the Slack announcement about the case study with Northwind",
+     "due": "Thursday's standup"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Leila\", \"task\": \"Prepare and send Slack announcement for the Northwind case study\", \"due\": \"Thursday's standup\"},\n  {\"owner\": \"Chloe\", \"task\": \"Map out and circulate the customer survey timeline\", \"due\": null},\n  {\"owner\": \"Chloe\", \"task\": \"Verify competitor benchmarking data for the partner newsletter\", \"due\": \"end of day tomorrow\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Leila",
+     "task": "Prepare and send Slack announcement for the Northwind case study",
+     "due": "Thursday's standup"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Map out and circulate the customer survey timeline",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "Verify competitor benchmarking data for the partner newsletter",
+     "due": "end of day tomorrow"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 0.867,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 0.842,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.827,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.104698896408081,
+   "in_tokens": 817,
+   "out_tokens": 136,
+   "reasoning_tokens": 28,
+   "cost": 0.004491,
+   "correct": true
+  },
+  {
+   "id": "ma-0068",
+   "gold": [
+    {
+     "owner": "Nadia",
+     "task": "write up the customer interviews for the iOS crash on login",
+     "due": "October 20"
+    },
+    {
+     "owner": "Nadia",
+     "task": "order the new laptops for the interns",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "set up the test plan for the auth migration",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Nadia\",\n    \"task\": \"Write up customer interviews about the iOS login crash\",\n    \"due\": \"October 20\"\n  },\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Set up test plan for the auth migration\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Nadia\",\n    \"task\": \"Order new laptops for the interns\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Nadia",
+     "task": "Write up customer interviews about the iOS login crash",
+     "due": "October 20"
+    },
+    {
+     "owner": "Priya",
+     "task": "Set up test plan for the auth migration",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "Order new laptops for the interns",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.2917590141296387,
+   "in_tokens": 776,
+   "out_tokens": 153,
+   "reasoning_tokens": 35,
+   "cost": 0.004623,
+   "correct": true
+  },
+  {
+   "id": "ma-0075",
+   "gold": [
+    {
+     "owner": "Victor",
+     "task": "follow up on the one-pager on the mobile checkout",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Victor",
+     "task": "fix the FAQ for the beta waitlist",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "ping legal about the DPA template",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "finalize the customer interviews for the onboarding flow",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Victor\",\n    \"task\": \"Prepare mobile checkout one-pager for leadership, including payment retry logic\",\n    \"due\": \"before the launch on the 9th\"\n  },\n  {\n    \"owner\": \"Victor\",\n    \"task\": \"Fix beta waitlist FAQ wording (confirm actual wording with support)\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Jonas\",\n    \"task\": \"Finalize remaining onboarding flow interviews and send out synthesis\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Jonas\",\n    \"task\": \"Ping legal about DPA template review status\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Victor",
+     "task": "Prepare mobile checkout one-pager for leadership, including payment retry logic",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Victor",
+     "task": "Fix beta waitlist FAQ wording (confirm actual wording with support)",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "Finalize remaining onboarding flow interviews and send out synthesis",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "Ping legal about DPA template review status",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 0.886,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.877,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.3149988651275635,
+   "in_tokens": 800,
+   "out_tokens": 217,
+   "reasoning_tokens": 52,
+   "cost": 0.005655,
+   "correct": true
+  },
+  {
+   "id": "ma-0077",
+   "gold": [
+    {
+     "owner": "Elena",
+     "task": "schedule the Slack announcement about the data pipeline",
+     "due": "noon tomorrow"
+    },
+    {
+     "owner": "Noah",
+     "task": "clean up the metrics dashboard for the API rate limiter",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "renew the Figma seats",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Sam",
+     "task": "order the new laptops for the interns",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Elena\",\n    \"task\": \"Schedule Slack announcement about data pipeline migration going live\",\n    \"due\": \"noon tomorrow\"\n  },\n  {\n    \"owner\": \"Noah\",\n    \"task\": \"Clean up the rate limiter metrics dashboard\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Sam\",\n    \"task\": \"Order new laptops for the interns\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Renew the Figma seats\",\n    \"due\": \"end of the week\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Elena",
+     "task": "Schedule Slack announcement about data pipeline migration going live",
+     "due": "noon tomorrow"
+    },
+    {
+     "owner": "Noah",
+     "task": "Clean up the rate limiter metrics dashboard",
+     "due": null
+    },
+    {
+     "owner": "Sam",
+     "task": "Order new laptops for the interns",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "Renew the Figma seats",
+     "due": "end of the week"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.7608399391174316,
+   "in_tokens": 708,
+   "out_tokens": 193,
+   "reasoning_tokens": 44,
+   "cost": 0.005019,
+   "correct": true
+  },
+  {
+   "id": "ma-0082",
+   "gold": [
+    {
+     "owner": "Leila",
+     "task": "test the one-pager on the enterprise pricing tiers",
+     "due": null
+    },
+    {
+     "owner": "Leila",
+     "task": "audit the risks list for the partner referral program",
+     "due": "March 12"
+    },
+    {
+     "owner": "Hannah",
+     "task": "update the metrics dashboard for the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "update the FAQ for the Acme renewal",
+     "due": "end of day tomorrow"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Hannah\", \"task\": \"Update the metrics dashboard to reflect current pipeline stages\", \"due\": \"before the pipeline review\"},\n  {\"owner\": \"Priya\", \"task\": \"Refresh the FAQ to cover Acme's questions on support terms and renewal pricing\", \"due\": \"end of day tomorrow\"},\n  {\"owner\": \"Leila\", \"task\": \"Test the enterprise pricing one-pager with early-stage enterprise prospects\", \"due\": null},\n  {\"owner\": \"Leila\", \"task\": \"Audit the risk list for the partner referral program and flag gaps\", \"due\": \"March 12\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Hannah",
+     "task": "Update the metrics dashboard to reflect current pipeline stages",
+     "due": "before the pipeline review"
+    },
+    {
+     "owner": "Priya",
+     "task": "Refresh the FAQ to cover Acme's questions on support terms and renewal pricing",
+     "due": "end of day tomorrow"
+    },
+    {
+     "owner": "Leila",
+     "task": "Test the enterprise pricing one-pager with early-stage enterprise prospects",
+     "due": null
+    },
+    {
+     "owner": "Leila",
+     "task": "Audit the risk list for the partner referral program and flag gaps",
+     "due": "March 12"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 3,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 3,
+      "sim": 0.921,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 2,
+      "sim": 0.917,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 0.904,
+      "due_ok": false
+     },
+     {
+      "gold": 3,
+      "pred": 1,
+      "sim": 0.821,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.718135118484497,
+   "in_tokens": 883,
+   "out_tokens": 231,
+   "reasoning_tokens": 81,
+   "cost": 0.006114,
+   "correct": false
+  },
+  {
+   "id": "ma-0083",
+   "gold": [
+    {
+     "owner": "Hannah",
+     "task": "send the budget estimate for the iOS crash on login",
+     "due": "Thursday's standup"
+    },
+    {
+     "owner": "Mei",
+     "task": "test the competitor comparison for the search index",
+     "due": "Thursday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Put together the budget estimate for the iOS crash fix\",\n    \"due\": \"Thursday's standup\"\n  },\n  {\n    \"owner\": \"Mei\",\n    \"task\": \"Run the competitor comparison against the new search index (using the same query set as last time) and report back\",\n    \"due\": \"Thursday\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Hannah",
+     "task": "Put together the budget estimate for the iOS crash fix",
+     "due": "Thursday's standup"
+    },
+    {
+     "owner": "Mei",
+     "task": "Run the competitor comparison against the new search index (using the same query set as last time) and report back",
+     "due": "Thursday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.932,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.82,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.0960428714752197,
+   "in_tokens": 695,
+   "out_tokens": 138,
+   "reasoning_tokens": 33,
+   "cost": 0.004155,
+   "correct": true
+  },
+  {
+   "id": "ma-0084",
+   "gold": [
+    {
+     "owner": "Sam",
+     "task": "cancel the unused Datadog hosts",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Grace",
+     "task": "ping legal about the DPA template",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "review the FAQ for the data pipeline",
+     "due": "the next sync"
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Sam\", \"task\": \"Cancel the unused Datadog hosts\", \"due\": \"next Wednesday\"},\n  {\"owner\": \"Grace\", \"task\": \"Ping legal about the DPA template and get the latest draft moving\", \"due\": null},\n  {\"owner\": \"Priya\", \"task\": \"Review and update the FAQ for the data pipeline\", \"due\": \"the next sync\"}\n]",
+   "pred": [
+    {
+     "owner": "Sam",
+     "task": "Cancel the unused Datadog hosts",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Grace",
+     "task": "Ping legal about the DPA template and get the latest draft moving",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "Review and update the FAQ for the data pipeline",
+     "due": "the next sync"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.104508876800537,
+   "in_tokens": 793,
+   "out_tokens": 254,
+   "reasoning_tokens": 154,
+   "cost": 0.006189,
+   "correct": true
+  },
+  {
+   "id": "ma-0086",
+   "gold": [
+    {
+     "owner": "Mei",
+     "task": "set up the customer interviews for the payments service",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "schedule the competitor comparison for the iOS crash on login",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Fatima",
+     "task": "clean up the FAQ for the staging environment",
+     "due": "two weeks from now"
+    },
+    {
+     "owner": "Fatima",
+     "task": "ping legal about the DPA template",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Fatima\", \"task\": \"Clean up the staging FAQ\", \"due\": \"two weeks from now\"},\n  {\"owner\": \"Mei\", \"task\": \"Set up and schedule customer interviews for the payments service\", \"due\": null},\n  {\"owner\": \"Daniel\", \"task\": \"Run competitor comparison on iOS login crash and share results\", \"due\": \"the 15th\"},\n  {\"owner\": \"Fatima\", \"task\": \"Ping legal about the DPA template and clarify their questions\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Fatima",
+     "task": "Clean up the staging FAQ",
+     "due": "two weeks from now"
+    },
+    {
+     "owner": "Mei",
+     "task": "Set up and schedule customer interviews for the payments service",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "Run competitor comparison on iOS login crash and share results",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Fatima",
+     "task": "Ping legal about the DPA template and clarify their questions",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.892,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.4511070251464844,
+   "in_tokens": 755,
+   "out_tokens": 173,
+   "reasoning_tokens": 38,
+   "cost": 0.00486,
+   "correct": true
+  },
+  {
+   "id": "ma-0088",
+   "gold": [
+    {
+     "owner": "Sam",
+     "task": "set up the risks list for the Acme renewal",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Aisha",
+     "task": "prepare the spec for the partner referral program",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Victor",
+     "task": "summarize the kickoff meeting for the Globex proposal",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Sam\",\n    \"task\": \"Put together the risks list for the Acme renewal\",\n    \"due\": \"next Tuesday\"\n  },\n  {\n    \"owner\": \"Aisha\",\n    \"task\": \"Prepare the spec for the partner referral program\",\n    \"due\": \"end of the week\"\n  },\n  {\n    \"owner\": \"Victor\",\n    \"task\": \"Write up a summary of the Globex kickoff meeting\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Sam",
+     "task": "Put together the risks list for the Acme renewal",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Prepare the spec for the partner referral program",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Victor",
+     "task": "Write up a summary of the Globex kickoff meeting",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.92,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.805,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.180603265762329,
+   "in_tokens": 716,
+   "out_tokens": 159,
+   "reasoning_tokens": 34,
+   "cost": 0.004533,
+   "correct": true
+  },
+  {
+   "id": "ma-0092",
+   "gold": [
+    {
+     "owner": "Sofia",
+     "task": "fix the Slack announcement about the conference booth",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "upload the recording to the shared drive",
+     "due": null
+    },
+    {
+     "owner": "Kenji",
+     "task": "send the Slack announcement about the customer survey",
+     "due": "October 20"
+    },
+    {
+     "owner": "Chloe",
+     "task": "finalize the FAQ for the case study with Northwind",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Sofia\", \"task\": \"Correct the Slack post about the booth dates\", \"due\": null},\n  {\"owner\": \"Sofia\", \"task\": \"Double-check the registration link still works after editing\", \"due\": null},\n  {\"owner\": \"Kenji\", \"task\": \"Post the Slack announcement for the customer survey\", \"due\": \"October 20\"},\n  {\"owner\": \"Chloe\", \"task\": \"Finalize the FAQ for the Northwind case study and send it to their contact for review\", \"due\": null},\n  {\"owner\": \"Sofia\", \"task\": \"Upload the booth planning session recording to the shared drive\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Sofia",
+     "task": "Correct the Slack post about the booth dates",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "Double-check the registration link still works after editing",
+     "due": null
+    },
+    {
+     "owner": "Kenji",
+     "task": "Post the Slack announcement for the customer survey",
+     "due": "October 20"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Finalize the FAQ for the Northwind case study and send it to their contact for review",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "Upload the booth planning session recording to the shared drive",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 5,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.932,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.642,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     1
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 2.967931032180786,
+   "in_tokens": 793,
+   "out_tokens": 218,
+   "reasoning_tokens": 51,
+   "cost": 0.005649,
+   "correct": false
+  },
+  {
+   "id": "ma-0095",
+   "gold": [
+    {
+     "owner": "Raj",
+     "task": "test the budget estimate for the Q3 roadmap",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Nadia",
+     "task": "renew the Figma seats",
+     "due": "two weeks from now"
+    },
+    {
+     "owner": "Chloe",
+     "task": "prepare the metrics dashboard for the pricing page",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Victor",
+     "task": "share the test plan for the free-tier limits",
+     "due": "Thursday's standup"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Raj\",\n    \"task\": \"Test the budget estimate for the Q3 roadmap\",\n    \"due\": \"end of the week\"\n  },\n  {\n    \"owner\": \"Nadia\",\n    \"task\": \"Prepare the metrics dashboard for the pricing page\",\n    \"due\": \"Wednesday\"\n  },\n  {\n    \"owner\": \"Victor\",\n    \"task\": \"Share the test plan for the free-tier limits\",\n    \"due\": \"Thursday's standup\"\n  },\n  {\n    \"owner\": \"Nadia\",\n    \"task\": \"Renew the Figma seats\",\n    \"due\": \"two weeks from now\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Raj",
+     "task": "Test the budget estimate for the Q3 roadmap",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Prepare the metrics dashboard for the pricing page",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Victor",
+     "task": "Share the test plan for the free-tier limits",
+     "due": "Thursday's standup"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Renew the Figma seats",
+     "due": "two weeks from now"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     1
+    ],
+    "unmatched_gold": [
+     2
+    ]
+   },
+   "latency": 2.1876659393310547,
+   "in_tokens": 790,
+   "out_tokens": 170,
+   "reasoning_tokens": 12,
+   "cost": 0.00492,
+   "correct": false
+  },
+  {
+   "id": "ma-0097",
+   "gold": [
+    {
+     "owner": "Grace",
+     "task": "schedule the summary of the conference booth",
+     "due": "April 3"
+    },
+    {
+     "owner": "Leila",
+     "task": "post the hiring update in #general",
+     "due": null
+    },
+    {
+     "owner": "Leila",
+     "task": "document the FAQ for the partner newsletter",
+     "due": "Thursday's standup"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Leila\",\n    \"task\": \"Post hiring update in #general\",\n    \"due\": \"today\"\n  },\n  {\n    \"owner\": \"Grace\",\n    \"task\": \"Prepare conference booth summary for leadership\",\n    \"due\": \"April 3\"\n  },\n  {\n    \"owner\": \"Leila\",\n    \"task\": \"Write partner FAQ on co-branding rules for the newsletter\",\n    \"due\": \"Thursday's standup\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Leila",
+     "task": "Post hiring update in #general",
+     "due": "today"
+    },
+    {
+     "owner": "Grace",
+     "task": "Prepare conference booth summary for leadership",
+     "due": "April 3"
+    },
+    {
+     "owner": "Leila",
+     "task": "Write partner FAQ on co-branding rules for the newsletter",
+     "due": "Thursday's standup"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 2,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": false
+     },
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 0.842,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.83,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.357250213623047,
+   "in_tokens": 760,
+   "out_tokens": 156,
+   "reasoning_tokens": 35,
+   "cost": 0.00462,
+   "correct": false
+  },
+  {
+   "id": "ma-0099",
+   "gold": [
+    {
+     "owner": "Kenji",
+     "task": "review the FAQ for the conference booth",
+     "due": null
+    },
+    {
+     "owner": "Victor",
+     "task": "finalize the metrics dashboard for the launch blog post",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "follow up on the Slack announcement about the partner newsletter",
+     "due": "noon tomorrow"
+    },
+    {
+     "owner": "Hannah",
+     "task": "send the calendar invite for the retro",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Kenji\", \"task\": \"Review the booth FAQ sheet and flag outdated answers\", \"due\": null},\n  {\"owner\": \"Victor\", \"task\": \"Finalize the metrics dashboard for the launch blog post\", \"due\": null},\n  {\"owner\": \"Diego\", \"task\": \"Follow up on the Slack announcement and get partner confirmations for the newsletter\", \"due\": \"noon tomorrow\"},\n  {\"owner\": \"Hannah\", \"task\": \"Send calendar invite for the retro (mid-week, week after launch)\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Kenji",
+     "task": "Review the booth FAQ sheet and flag outdated answers",
+     "due": null
+    },
+    {
+     "owner": "Victor",
+     "task": "Finalize the metrics dashboard for the launch blog post",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "Follow up on the Slack announcement and get partner confirmations for the newsletter",
+     "due": "noon tomorrow"
+    },
+    {
+     "owner": "Hannah",
+     "task": "Send calendar invite for the retro (mid-week, week after launch)",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.936,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.744,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.381251811981201,
+   "in_tokens": 777,
+   "out_tokens": 168,
+   "reasoning_tokens": 30,
+   "cost": 0.004851,
+   "correct": true
+  },
+  {
+   "id": "ma-0100",
+   "gold": [
+    {
+     "owner": "Leila",
+     "task": "document the risks list for the vendor contract renewal",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Chloe",
+     "task": "cancel the unused Datadog hosts",
+     "due": "Friday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "share the spec for the security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "prepare the kickoff meeting for the office move",
+     "due": null
+    },
+    {
+     "owner": "Victor",
+     "task": "clean up the kickoff meeting for the vendor contract renewal",
+     "due": "end of month"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Leila\", \"task\": \"Put together risks list for vendor contract renewal\", \"due\": \"next Wednesday\"},\n  {\"owner\": \"Victor\", \"task\": \"Handle/clean up renewal kickoff meeting\", \"due\": \"end of month\"},\n  {\"owner\": \"Chloe\", \"task\": \"Cancel unused decommissioned Datadog hosts\", \"due\": \"Friday\"},\n  {\"owner\": \"Nadia\", \"task\": \"Share spec for security audit findings\", \"due\": null},\n  {\"owner\": \"Nadia\", \"task\": \"Prepare office move kickoff meeting and invite facilities\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Leila",
+     "task": "Put together risks list for vendor contract renewal",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Victor",
+     "task": "Handle/clean up renewal kickoff meeting",
+     "due": "end of month"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Cancel unused decommissioned Datadog hosts",
+     "due": "Friday"
+    },
+    {
+     "owner": "Nadia",
+     "task": "Share spec for security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "Prepare office move kickoff meeting and invite facilities",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 1,
+      "sim": 0.892,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.883,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.787057876586914,
+   "in_tokens": 848,
+   "out_tokens": 219,
+   "reasoning_tokens": 65,
+   "cost": 0.005829,
+   "correct": true
+  },
+  {
+   "id": "ma-0104",
+   "gold": [
+    {
+     "owner": "Olivia",
+     "task": "document the kickoff meeting for the SOC 2 evidence",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Olivia",
+     "task": "rotate the production API keys",
+     "due": "October 20"
+    },
+    {
+     "owner": "Sofia",
+     "task": "order the new laptops for the interns",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Sofia",
+     "task": "fix the budget estimate for the security audit findings",
+     "due": null
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Olivia\", \"task\": \"Write up SOC 2 kickoff documentation for the evidence file\", \"due\": \"next Wednesday\"},\n  {\"owner\": \"Olivia\", \"task\": \"Rotate production API keys\", \"due\": \"October 20\"},\n  {\"owner\": \"Sofia\", \"task\": \"Rework the security audit remediation budget estimate\", \"due\": null},\n  {\"owner\": \"Sofia\", \"task\": \"Order laptops for incoming interns\", \"due\": \"end of the week\"}\n]",
+   "pred": [
+    {
+     "owner": "Olivia",
+     "task": "Write up SOC 2 kickoff documentation for the evidence file",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Olivia",
+     "task": "Rotate production API keys",
+     "due": "October 20"
+    },
+    {
+     "owner": "Sofia",
+     "task": "Rework the security audit remediation budget estimate",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "Order laptops for incoming interns",
+     "due": "end of the week"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 0.913,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 0.822,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.791,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.9557929039001465,
+   "in_tokens": 848,
+   "out_tokens": 308,
+   "reasoning_tokens": 181,
+   "cost": 0.007164,
+   "correct": true
+  },
+  {
+   "id": "ma-0106",
+   "gold": [
+    {
+     "owner": "Omar",
+     "task": "share the timeline for the partner newsletter",
+     "due": "the next sync"
+    },
+    {
+     "owner": "Raj",
+     "task": "write up the summary of the customer survey",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Hannah",
+     "task": "review the FAQ for the webinar deck",
+     "due": "two weeks from now"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Omar\",\n    \"task\": \"Map out the partner newsletter content timeline and circulate the schedule\",\n    \"due\": \"before the next sync\"\n  },\n  {\n    \"owner\": \"Raj\",\n    \"task\": \"Write a summary of the customer survey findings for the leadership review\",\n    \"due\": \"end of the week\"\n  },\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Review the webinar FAQ section and flag what needs rewriting\",\n    \"due\": \"two weeks from now\"\n  },\n  {\n    \"owner\": \"Elena\",\n    \"task\": \"Check old notes on whether documenting the FAQ for the customer survey is still needed\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Omar",
+     "task": "Map out the partner newsletter content timeline and circulate the schedule",
+     "due": "before the next sync"
+    },
+    {
+     "owner": "Raj",
+     "task": "Write a summary of the customer survey findings for the leadership review",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Hannah",
+     "task": "Review the webinar FAQ section and flag what needs rewriting",
+     "due": "two weeks from now"
+    },
+    {
+     "owner": "Elena",
+     "task": "Check old notes on whether documenting the FAQ for the customer survey is still needed",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.9,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.878,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     3
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 3.173713207244873,
+   "in_tokens": 797,
+   "out_tokens": 235,
+   "reasoning_tokens": 61,
+   "cost": 0.005916,
+   "correct": false
+  },
+  {
+   "id": "ma-0109",
+   "gold": [
+    {
+     "owner": "Aisha",
+     "task": "test the rollout checklist for the admin dashboard",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Victor",
+     "task": "fix the FAQ for the mobile checkout",
+     "due": "the next sync"
+    },
+    {
+     "owner": "Victor",
+     "task": "circulate the FAQ for the free-tier limits",
+     "due": "April 3"
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Aisha\", \"task\": \"Test the admin dashboard rollout checklist end to end\", \"due\": \"Wednesday\"},\n  {\"owner\": \"Victor\", \"task\": \"Update the mobile checkout FAQ to reflect the new payment flow\", \"due\": \"next sync\"},\n  {\"owner\": \"Victor\", \"task\": \"Circulate the FAQ for the free-tier limits\", \"due\": \"April 3\"}\n]",
+   "pred": [
+    {
+     "owner": "Aisha",
+     "task": "Test the admin dashboard rollout checklist end to end",
+     "due": "Wednesday"
+    },
+    {
+     "owner": "Victor",
+     "task": "Update the mobile checkout FAQ to reflect the new payment flow",
+     "due": "next sync"
+    },
+    {
+     "owner": "Victor",
+     "task": "Circulate the FAQ for the free-tier limits",
+     "due": "April 3"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.905,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.7214629650115967,
+   "in_tokens": 738,
+   "out_tokens": 194,
+   "reasoning_tokens": 90,
+   "cost": 0.005124,
+   "correct": true
+  },
+  {
+   "id": "ma-0113",
+   "gold": [
+    {
+     "owner": "Mei",
+     "task": "summarize the rollout checklist for the pricing page",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "finalize the stakeholder update on the mobile checkout",
+     "due": "October 20"
+    },
+    {
+     "owner": "Grace",
+     "task": "fix the FAQ for the free-tier limits",
+     "due": "the next sync"
+    },
+    {
+     "owner": "Fatima",
+     "task": "post the hiring update in #general",
+     "due": "the next sync"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Mei\", \"task\": \"Compile the rollout checklist into one summary\", \"due\": null},\n  {\"owner\": \"Hannah\", \"task\": \"Finalize the mobile checkout stakeholder update\", \"due\": \"October 20\"},\n  {\"owner\": \"Grace\", \"task\": \"Correct the free-tier limits in the FAQ\", \"due\": \"by the next sync\"},\n  {\"owner\": \"Fatima\", \"task\": \"Post the hiring update in #general\", \"due\": \"by the next sync\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Mei",
+     "task": "Compile the rollout checklist into one summary",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "Finalize the mobile checkout stakeholder update",
+     "due": "October 20"
+    },
+    {
+     "owner": "Grace",
+     "task": "Correct the free-tier limits in the FAQ",
+     "due": "by the next sync"
+    },
+    {
+     "owner": "Fatima",
+     "task": "Post the hiring update in #general",
+     "due": "by the next sync"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.909,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.732,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.367598056793213,
+   "in_tokens": 827,
+   "out_tokens": 169,
+   "reasoning_tokens": 40,
+   "cost": 0.005016,
+   "correct": true
+  },
+  {
+   "id": "ma-0116",
+   "gold": [
+    {
+     "owner": "Tom",
+     "task": "share the timeline for the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Omar",
+     "task": "ping legal about the DPA template",
+     "due": "June 30"
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Tom\", \"task\": \"Put together and send the pipeline review timeline\", \"due\": null},\n  {\"owner\": \"Omar\", \"task\": \"Chase Legal for a response on the DPA template\", \"due\": \"June 30\"}\n]",
+   "pred": [
+    {
+     "owner": "Tom",
+     "task": "Put together and send the pipeline review timeline",
+     "due": null
+    },
+    {
+     "owner": "Omar",
+     "task": "Chase Legal for a response on the DPA template",
+     "due": "June 30"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.889,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.766,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 5.278549909591675,
+   "in_tokens": 759,
+   "out_tokens": 280,
+   "reasoning_tokens": 208,
+   "cost": 0.006477,
+   "correct": true
+  },
+  {
+   "id": "ma-0120",
+   "gold": [
+    {
+     "owner": "Mei",
+     "task": "benchmark the spec for the Q3 roadmap",
+     "due": "March 12"
+    },
+    {
+     "owner": "Grace",
+     "task": "ship the timeline for the onboarding flow",
+     "due": "next Monday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Mei\",\n    \"task\": \"Benchmark the Q3 roadmap spec\",\n    \"due\": \"March 12\"\n  },\n  {\n    \"owner\": \"Grace\",\n    \"task\": \"Put together and circulate the onboarding flow timeline with phased breakdown\",\n    \"due\": \"Next Monday\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Mei",
+     "task": "Benchmark the Q3 roadmap spec",
+     "due": "March 12"
+    },
+    {
+     "owner": "Grace",
+     "task": "Put together and circulate the onboarding flow timeline with phased breakdown",
+     "due": "Next Monday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.906,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 1.8962230682373047,
+   "in_tokens": 745,
+   "out_tokens": 112,
+   "reasoning_tokens": 24,
+   "cost": 0.003915,
+   "correct": true
+  },
+  {
+   "id": "ma-0121",
+   "gold": [
+    {
+     "owner": "Olivia",
+     "task": "circulate the FAQ for the iOS crash on login",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "upload the recording to the shared drive",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Daniel",
+     "task": "file the expense report for the offsite",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "prepare the one-pager on the payments service",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Olivia\", \"task\": \"Polish and circulate the iOS login crash FAQ to the team, including support\", \"due\": null},\n  {\"owner\": \"Nadia\", \"task\": \"Upload the meeting recording to the shared drive\", \"due\": \"before the launch on the 9th\"},\n  {\"owner\": \"Daniel\", \"task\": \"File the expense report for the offsite\", \"due\": null},\n  {\"owner\": \"Daniel\", \"task\": \"Write a one-pager on the payments service (architecture, status, risks) for leadership\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Olivia",
+     "task": "Polish and circulate the iOS login crash FAQ to the team, including support",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "Upload the meeting recording to the shared drive",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Daniel",
+     "task": "File the expense report for the offsite",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "Write a one-pager on the payments service (architecture, status, risks) for leadership",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 0.867,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.454077959060669,
+   "in_tokens": 705,
+   "out_tokens": 184,
+   "reasoning_tokens": 37,
+   "cost": 0.004875,
+   "correct": true
+  },
+  {
+   "id": "ma-0122",
+   "gold": [
+    {
+     "owner": "Priya",
+     "task": "document the risks list for the Globex proposal",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "summarize the timeline for the partner referral program",
+     "due": "end of month"
+    },
+    {
+     "owner": "Priya",
+     "task": "cancel the unused Datadog hosts",
+     "due": "April 3"
+    },
+    {
+     "owner": "Tom",
+     "task": "reply to the Zendesk escalation from Contoso",
+     "due": "the end of the quarter"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Document the consolidated Globex risks list\",\n    \"due\": \"next Friday\"\n  },\n  {\n    \"owner\": \"Daniel\",\n    \"task\": \"Write up a summary of the partner referral program timeline\",\n    \"due\": \"end of month\"\n  },\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Cancel the unused Datadog hosts\",\n    \"due\": \"April 3\"\n  },\n  {\n    \"owner\": \"Tom\",\n    \"task\": \"Reply to the Contoso Zendesk escalation about the licensing discrepancy\",\n    \"due\": \"end of the quarter\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Priya",
+     "task": "Document the consolidated Globex risks list",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "Write up a summary of the partner referral program timeline",
+     "due": "end of month"
+    },
+    {
+     "owner": "Priya",
+     "task": "Cancel the unused Datadog hosts",
+     "due": "April 3"
+    },
+    {
+     "owner": "Tom",
+     "task": "Reply to the Contoso Zendesk escalation about the licensing discrepancy",
+     "due": "end of the quarter"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.933,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 0.928,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.852,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.851736068725586,
+   "in_tokens": 771,
+   "out_tokens": 210,
+   "reasoning_tokens": 50,
+   "cost": 0.005463,
+   "correct": true
+  },
+  {
+   "id": "ma-0124",
+   "gold": [
+    {
+     "owner": "Jonas",
+     "task": "send the Slack announcement about the CRM cleanup",
+     "due": "noon tomorrow"
+    },
+    {
+     "owner": "Chloe",
+     "task": "book the conference room for the all-hands",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "update the Slack announcement about the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Tom",
+     "task": "write up the budget estimate for the partner referral program",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "set up the one-pager on the CRM cleanup",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Jonas\", \"task\": \"Send Slack announcement about CRM cleanup\", \"due\": \"noon tomorrow\"},\n  {\"owner\": \"Jonas\", \"task\": \"Create one-pager on CRM cleanup\", \"due\": null},\n  {\"owner\": \"Daniel\", \"task\": \"Update pipeline review Slack announcement with new date (22nd)\", \"due\": null},\n  {\"owner\": \"Chloe\", \"task\": \"Book conference room for all-hands\", \"due\": \"Thursday\"},\n  {\"owner\": \"Tom\", \"task\": \"Write budget estimate for partner referral program\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Jonas",
+     "task": "Send Slack announcement about CRM cleanup",
+     "due": "noon tomorrow"
+    },
+    {
+     "owner": "Jonas",
+     "task": "Create one-pager on CRM cleanup",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "Update pipeline review Slack announcement with new date (22nd)",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "Book conference room for all-hands",
+     "due": "Thursday"
+    },
+    {
+     "owner": "Tom",
+     "task": "Write budget estimate for partner referral program",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.932,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 1,
+      "sim": 0.913,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.7668678760528564,
+   "in_tokens": 787,
+   "out_tokens": 192,
+   "reasoning_tokens": 43,
+   "cost": 0.005241,
+   "correct": true
+  },
+  {
+   "id": "ma-0127",
+   "gold": [
+    {
+     "owner": "Nadia",
+     "task": "write up the test plan for the iOS crash on login",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Victor",
+     "task": "send the FAQ for the data pipeline",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "circulate the rollout checklist for the API rate limiter",
+     "due": null
+    },
+    {
+     "owner": "Marcus",
+     "task": "write up the summary of the auth migration",
+     "due": "before the launch on the 9th"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Nadia\", \"task\": \"Write test plan for iOS login crash fix\", \"due\": \"next Friday\"},\n  {\"owner\": \"Victor\", \"task\": \"Create and send FAQ for support's recurring data pipeline questions\", \"due\": null},\n  {\"owner\": \"Chloe\", \"task\": \"Draft and circulate API rate limiter rollout checklist including rollback plan\", \"due\": null},\n  {\"owner\": \"Marcus\", \"task\": \"Write auth migration summary covering legacy service cutover order\", \"due\": \"before the launch on the 9th\"},\n  {\"owner\": \"Victor\", \"task\": \"Ask QA to free up iOS 16.4 test phones\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Nadia",
+     "task": "Write test plan for iOS login crash fix",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Victor",
+     "task": "Create and send FAQ for support's recurring data pipeline questions",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "Draft and circulate API rate limiter rollout checklist including rollback plan",
+     "due": null
+    },
+    {
+     "owner": "Marcus",
+     "task": "Write auth migration summary covering legacy service cutover order",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Victor",
+     "task": "Ask QA to free up iOS 16.4 test phones",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 5,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     4
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 3.7129461765289307,
+   "in_tokens": 749,
+   "out_tokens": 258,
+   "reasoning_tokens": 84,
+   "cost": 0.006117,
+   "correct": false
+  },
+  {
+   "id": "ma-0130",
+   "gold": [
+    {
+     "owner": "Chloe",
+     "task": "document the Slack announcement about the office move",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Chloe",
+     "task": "schedule the stakeholder update on the new expense policy",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Chloe",
+     "task": "ping legal about the DPA template",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Kenji",
+     "task": "summarize the customer interviews for the SOC 2 evidence",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Chloe\",\n    \"task\": \"Draft and post the office move Slack announcement\",\n    \"due\": \"the 28th\"\n  },\n  {\n    \"owner\": \"Chloe\",\n    \"task\": \"Schedule the expense policy stakeholder update\",\n    \"due\": \"end of the week\"\n  },\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Write up customer interview summary for the SOC 2 evidence package\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Chloe\",\n    \"task\": \"Ping legal about the DPA template\",\n    \"due\": \"the 28th\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Chloe",
+     "task": "Draft and post the office move Slack announcement",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Schedule the expense policy stakeholder update",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Kenji",
+     "task": "Write up customer interview summary for the SOC 2 evidence package",
+     "due": null
+    },
+    {
+     "owner": "Chloe",
+     "task": "Ping legal about the DPA template",
+     "due": "the 28th"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 0.848,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.845,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.7679708003997803,
+   "in_tokens": 783,
+   "out_tokens": 208,
+   "reasoning_tokens": 48,
+   "cost": 0.005469,
+   "correct": true
+  },
+  {
+   "id": "ma-0134",
+   "gold": [
+    {
+     "owner": "Chloe",
+     "task": "review the summary of the offsite agenda",
+     "due": "Friday"
+    },
+    {
+     "owner": "Diego",
+     "task": "summarize the competitor comparison for the security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "test the one-pager on the office move",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Chloe\",\n    \"task\": \"Clean up the offsite agenda summary\",\n    \"due\": \"Friday\"\n  },\n  {\n    \"owner\": \"Diego\",\n    \"task\": \"Summarize the competitor comparison for the security audit findings\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Diego\",\n    \"task\": \"Test the office move one-pager for dates and logistics\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Chloe",
+     "task": "Clean up the offsite agenda summary",
+     "due": "Friday"
+    },
+    {
+     "owner": "Diego",
+     "task": "Summarize the competitor comparison for the security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "Test the office move one-pager for dates and logistics",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.88,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.2293479442596436,
+   "in_tokens": 796,
+   "out_tokens": 166,
+   "reasoning_tokens": 46,
+   "cost": 0.004878,
+   "correct": true
+  },
+  {
+   "id": "ma-0135",
+   "gold": [
+    {
+     "owner": "Lucas",
+     "task": "draft the stakeholder update on the auth migration",
+     "due": "April 3"
+    },
+    {
+     "owner": "Marcus",
+     "task": "send the risks list for the staging environment",
+     "due": "March 12"
+    },
+    {
+     "owner": "Lucas",
+     "task": "write up the Slack announcement about the iOS crash on login",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Lucas\",\n    \"task\": \"Draft the stakeholder update on the auth migration\",\n    \"due\": \"April 3\"\n  },\n  {\n    \"owner\": \"Marcus\",\n    \"task\": \"Put together a list of risks for the staging environment\",\n    \"due\": \"March 12\"\n  },\n  {\n    \"owner\": \"Lucas\",\n    \"task\": \"Write and post the Slack announcement about the iOS crash on login, including a workaround\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Pass the app cache clearing workaround to Lucas\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Lucas",
+     "task": "Draft the stakeholder update on the auth migration",
+     "due": "April 3"
+    },
+    {
+     "owner": "Marcus",
+     "task": "Put together a list of risks for the staging environment",
+     "due": "March 12"
+    },
+    {
+     "owner": "Lucas",
+     "task": "Write and post the Slack announcement about the iOS crash on login, including a workaround",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "Pass the app cache clearing workaround to Lucas",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.923,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     3
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 2.984096050262451,
+   "in_tokens": 811,
+   "out_tokens": 245,
+   "reasoning_tokens": 81,
+   "cost": 0.006108,
+   "correct": false
+  },
+  {
+   "id": "ma-0139",
+   "gold": [
+    {
+     "owner": "Nadia",
+     "task": "share the customer interviews for the pricing page",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "order the new laptops for the interns",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Tom",
+     "task": "document the risks list for the notifications redesign",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "summarize the stakeholder update on the onboarding flow",
+     "due": "next Friday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Nadia\", \"task\": \"Send interview notes to everyone\", \"due\": null},\n  {\"owner\": \"Tom\", \"task\": \"Put together the notifications redesign risks doc\", \"due\": null},\n  {\"owner\": \"Diego\", \"task\": \"Place laptop orders for interns\", \"due\": \"next Friday\"},\n  {\"owner\": \"Diego\", \"task\": \"Summarize stakeholder update on the onboarding flow\", \"due\": \"next Friday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Nadia",
+     "task": "Send interview notes to everyone",
+     "due": null
+    },
+    {
+     "owner": "Tom",
+     "task": "Put together the notifications redesign risks doc",
+     "due": null
+    },
+    {
+     "owner": "Diego",
+     "task": "Place laptop orders for interns",
+     "due": "next Friday"
+    },
+    {
+     "owner": "Diego",
+     "task": "Summarize stakeholder update on the onboarding flow",
+     "due": "next Friday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 0.828,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.769,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     0
+    ],
+    "unmatched_gold": [
+     0
+    ]
+   },
+   "latency": 2.6734020709991455,
+   "in_tokens": 816,
+   "out_tokens": 169,
+   "reasoning_tokens": 50,
+   "cost": 0.004983,
+   "correct": false
+  },
+  {
+   "id": "ma-0141",
+   "gold": [
+    {
+     "owner": "Marcus",
+     "task": "share the metrics dashboard for the payments service",
+     "due": "Friday"
+    },
+    {
+     "owner": "Noah",
+     "task": "finalize the FAQ for the iOS crash on login",
+     "due": "March 12"
+    },
+    {
+     "owner": "Sofia",
+     "task": "reply to the Zendesk escalation from Contoso",
+     "due": "next Monday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Marcus\", \"task\": \"Share the payments service metrics dashboard with the team\", \"due\": \"Friday\"},\n  {\"owner\": \"Noah\", \"task\": \"Finalize the iOS crash FAQ for the support team, including the workaround section for older devices\", \"due\": \"March 12\"},\n  {\"owner\": \"Sofia\", \"task\": \"Reply to Contoso's Zendesk escalation about the failed batch import with findings\", \"due\": \"next Monday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Marcus",
+     "task": "Share the payments service metrics dashboard with the team",
+     "due": "Friday"
+    },
+    {
+     "owner": "Noah",
+     "task": "Finalize the iOS crash FAQ for the support team, including the workaround section for older devices",
+     "due": "March 12"
+    },
+    {
+     "owner": "Sofia",
+     "task": "Reply to Contoso's Zendesk escalation about the failed batch import with findings",
+     "due": "next Monday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 3,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.928,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.88,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.1123101711273193,
+   "in_tokens": 808,
+   "out_tokens": 158,
+   "reasoning_tokens": 36,
+   "cost": 0.004794,
+   "correct": true
+  },
+  {
+   "id": "ma-0147",
+   "gold": [
+    {
+     "owner": "Leila",
+     "task": "update the risks list for the paid search campaign",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "fix the risks list for the partner newsletter",
+     "due": "April 3"
+    },
+    {
+     "owner": "Chloe",
+     "task": "prepare the risks list for the webinar deck",
+     "due": "Tuesday"
+    },
+    {
+     "owner": "Raj",
+     "task": "fix the FAQ for the launch blog post",
+     "due": "October 20"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Leila\", \"task\": \"Update the risks list for the paid search campaign\", \"due\": \"next Tuesday\"},\n  {\"owner\": \"Daniel\", \"task\": \"Fix the risks list for the partner newsletter\", \"due\": \"April 3\"},\n  {\"owner\": \"Chloe\", \"task\": \"Prepare the risks list for the webinar deck\", \"due\": \"Tuesday\"},\n  {\"owner\": \"Raj\", \"task\": \"Fix the FAQ for the launch blog post\", \"due\": \"October 20\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Leila",
+     "task": "Update the risks list for the paid search campaign",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Daniel",
+     "task": "Fix the risks list for the partner newsletter",
+     "due": "April 3"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Prepare the risks list for the webinar deck",
+     "due": "Tuesday"
+    },
+    {
+     "owner": "Raj",
+     "task": "Fix the FAQ for the launch blog post",
+     "due": "October 20"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.822519063949585,
+   "in_tokens": 807,
+   "out_tokens": 199,
+   "reasoning_tokens": 68,
+   "cost": 0.005406,
+   "correct": true
+  },
+  {
+   "id": "ma-0151",
+   "gold": [
+    {
+     "owner": "Daniel",
+     "task": "ship the one-pager on the webinar deck",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Raj",
+     "task": "benchmark the FAQ for the launch blog post",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "send the summary of the brand refresh",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Raj",
+     "task": "ship the FAQ for the case study with Northwind",
+     "due": "the 28th"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Nadia\",\n    \"task\": \"Put together and circulate the brand refresh messaging summary\",\n    \"due\": \"the 28th\"\n  },\n  {\n    \"owner\": \"Daniel\",\n    \"task\": \"Ship the webinar follow-up one-pager along with the deck\",\n    \"due\": \"next Tuesday\"\n  },\n  {\n    \"owner\": \"Raj\",\n    \"task\": \"Benchmark and build the FAQ section for the launch blog post\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Raj\",\n    \"task\": \"Create the FAQ to attach to the Northwind case study\",\n    \"due\": \"the 28th\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Nadia",
+     "task": "Put together and circulate the brand refresh messaging summary",
+     "due": "the 28th"
+    },
+    {
+     "owner": "Daniel",
+     "task": "Ship the webinar follow-up one-pager along with the deck",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Raj",
+     "task": "Benchmark and build the FAQ section for the launch blog post",
+     "due": null
+    },
+    {
+     "owner": "Raj",
+     "task": "Create the FAQ to attach to the Northwind case study",
+     "due": "the 28th"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 0.906,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 0.894,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.823442220687866,
+   "in_tokens": 781,
+   "out_tokens": 211,
+   "reasoning_tokens": 46,
+   "cost": 0.005508,
+   "correct": true
+  },
+  {
+   "id": "ma-0152",
+   "gold": [
+    {
+     "owner": "Kenji",
+     "task": "review the FAQ for the Q3 roadmap",
+     "due": null
+    },
+    {
+     "owner": "Hannah",
+     "task": "share the Slack announcement about the free-tier limits",
+     "due": null
+    },
+    {
+     "owner": "Olivia",
+     "task": "reply to the Zendesk escalation from Contoso",
+     "due": "tomorrow morning"
+    },
+    {
+     "owner": "Olivia",
+     "task": "clean up the FAQ for the pricing page",
+     "due": "next Tuesday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Review the FAQ for the Q3 roadmap and flag anything stale\",\n    \"due\": \"before the roadmap is finalized\"\n  },\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Share the Slack announcement about the free-tier limits\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Olivia\",\n    \"task\": \"Clean up the pricing page FAQ\",\n    \"due\": \"next Tuesday\"\n  },\n  {\n    \"owner\": \"Olivia\",\n    \"task\": \"Reply to the Zendesk escalation from Contoso\",\n    \"due\": \"tomorrow morning\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Kenji",
+     "task": "Review the FAQ for the Q3 roadmap and flag anything stale",
+     "due": "before the roadmap is finalized"
+    },
+    {
+     "owner": "Hannah",
+     "task": "Share the Slack announcement about the free-tier limits",
+     "due": null
+    },
+    {
+     "owner": "Olivia",
+     "task": "Clean up the pricing page FAQ",
+     "due": "next Tuesday"
+    },
+    {
+     "owner": "Olivia",
+     "task": "Reply to the Zendesk escalation from Contoso",
+     "due": "tomorrow morning"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 4,
+    "tp": 4,
+    "due_correct": 3,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": false
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.1100997924804688,
+   "in_tokens": 776,
+   "out_tokens": 165,
+   "reasoning_tokens": 4,
+   "cost": 0.004803,
+   "correct": false
+  },
+  {
+   "id": "ma-0156",
+   "gold": [
+    {
+     "owner": "Mei",
+     "task": "circulate the customer interviews for the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Tom",
+     "task": "order the new laptops for the interns",
+     "due": null
+    },
+    {
+     "owner": "Marcus",
+     "task": "fix the competitor comparison for the demo script",
+     "due": "Monday"
+    },
+    {
+     "owner": "Mei",
+     "task": "upload the recording to the shared drive",
+     "due": "the next sync"
+    },
+    {
+     "owner": "Marcus",
+     "task": "prepare the summary of the pipeline review",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Mei\", \"task\": \"Circulate customer interviews to the team ahead of the pipeline review\", \"due\": null},\n  {\"owner\": \"Marcus\", \"task\": \"Fix the competitor comparison in the demo script\", \"due\": \"Monday\"},\n  {\"owner\": \"Tom\", \"task\": \"Order new laptops for the interns (submit requisition)\", \"due\": \"today\"},\n  {\"owner\": \"Marcus\", \"task\": \"Prepare the summary of the pipeline review\", \"due\": null},\n  {\"owner\": \"Mei\", \"task\": \"Upload the meeting recording to the shared drive\", \"due\": \"by the next sync\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Mei",
+     "task": "Circulate customer interviews to the team ahead of the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Marcus",
+     "task": "Fix the competitor comparison in the demo script",
+     "due": "Monday"
+    },
+    {
+     "owner": "Tom",
+     "task": "Order new laptops for the interns (submit requisition)",
+     "due": "today"
+    },
+    {
+     "owner": "Marcus",
+     "task": "Prepare the summary of the pipeline review",
+     "due": null
+    },
+    {
+     "owner": "Mei",
+     "task": "Upload the meeting recording to the shared drive",
+     "due": "by the next sync"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 4,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": false
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.697073221206665,
+   "in_tokens": 753,
+   "out_tokens": 163,
+   "reasoning_tokens": 4,
+   "cost": 0.004704,
+   "correct": false
+  },
+  {
+   "id": "ma-0157",
+   "gold": [
+    {
+     "owner": "Mei",
+     "task": "finalize the FAQ for the Q3 roadmap",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Hannah",
+     "task": "prepare the one-pager on the admin dashboard",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Mei\",\n    \"task\": \"Finalize the FAQ for the Q3 roadmap\",\n    \"due\": \"the 15th\"\n  },\n  {\n    \"owner\": \"Hannah\",\n    \"task\": \"Draft the admin dashboard one-pager (covering role-based permissions) and circulate for feedback\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Mei",
+     "task": "Finalize the FAQ for the Q3 roadmap",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Hannah",
+     "task": "Draft the admin dashboard one-pager (covering role-based permissions) and circulate for feedback",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.862,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 1.9005792140960693,
+   "in_tokens": 750,
+   "out_tokens": 124,
+   "reasoning_tokens": 27,
+   "cost": 0.00411,
+   "correct": true
+  },
+  {
+   "id": "ma-0160",
+   "gold": [
+    {
+     "owner": "Noah",
+     "task": "finalize the budget estimate for the security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "document the summary of the offsite agenda",
+     "due": "the end of the quarter"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Noah\",\n    \"task\": \"Put together the budget estimate for the security audit findings\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Noah\",\n    \"task\": \"Write up and circulate a summary of the offsite agenda\",\n    \"due\": \"end of the quarter\"\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Noah",
+     "task": "Put together the budget estimate for the security audit findings",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "Write up and circulate a summary of the offsite agenda",
+     "due": "end of the quarter"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.897,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.83,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 6.561619997024536,
+   "in_tokens": 707,
+   "out_tokens": 125,
+   "reasoning_tokens": 33,
+   "cost": 0.003996,
+   "correct": true
+  },
+  {
+   "id": "ma-0164",
+   "gold": [
+    {
+     "owner": "Marcus",
+     "task": "upload the recording to the shared drive",
+     "due": null
+    },
+    {
+     "owner": "Nadia",
+     "task": "audit the timeline for the Globex proposal",
+     "due": "next Monday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Nadia\",\n    \"task\": \"Audit the Globex proposal timeline and flag unrealistic dates\",\n    \"due\": \"next Monday\"\n  },\n  {\n    \"owner\": \"Marcus\",\n    \"task\": \"Upload last week's product demo recording to the shared drive\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Nadia",
+     "task": "Audit the Globex proposal timeline and flag unrealistic dates",
+     "due": "next Monday"
+    },
+    {
+     "owner": "Marcus",
+     "task": "Upload last week's product demo recording to the shared drive",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 2,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.441473960876465,
+   "in_tokens": 808,
+   "out_tokens": 144,
+   "reasoning_tokens": 55,
+   "cost": 0.004584,
+   "correct": true
+  },
+  {
+   "id": "ma-0168",
+   "gold": [
+    {
+     "owner": "Diego",
+     "task": "schedule the FAQ for the new expense policy",
+     "due": "October 20"
+    },
+    {
+     "owner": "Aisha",
+     "task": "schedule the budget estimate for the vendor contract renewal",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "renew the Figma seats",
+     "due": "the 15th"
+    },
+    {
+     "owner": "Noah",
+     "task": "fix the rollout checklist for the office move",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Aisha",
+     "task": "document the test plan for the new expense policy",
+     "due": "end of the week"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Diego\", \"task\": \"Create and schedule expense policy FAQ\", \"due\": \"October 20\"},\n  {\"owner\": \"Aisha\", \"task\": \"Document test plan for expense policy\", \"due\": \"end of the week\"},\n  {\"owner\": \"Aisha\", \"task\": \"Prepare budget estimate for vendor contract renewal\", \"due\": null},\n  {\"owner\": \"Noah\", \"task\": \"Fix and update office move rollout checklist\", \"due\": \"next Wednesday\"},\n  {\"owner\": \"Noah\", \"task\": \"Renew Figma seats\", \"due\": \"before the 15th\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Diego",
+     "task": "Create and schedule expense policy FAQ",
+     "due": "October 20"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Document test plan for expense policy",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Prepare budget estimate for vendor contract renewal",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "Fix and update office move rollout checklist",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Noah",
+     "task": "Renew Figma seats",
+     "due": "before the 15th"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 2,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.931,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.907,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 3.364856004714966,
+   "in_tokens": 782,
+   "out_tokens": 212,
+   "reasoning_tokens": 59,
+   "cost": 0.005526,
+   "correct": true
+  },
+  {
+   "id": "ma-0170",
+   "gold": [
+    {
+     "owner": "Chloe",
+     "task": "post the hiring update in #general",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Chloe",
+     "task": "schedule the one-pager on the new expense policy",
+     "due": null
+    },
+    {
+     "owner": "Grace",
+     "task": "fix the Slack announcement about the security audit findings",
+     "due": "Tuesday"
+    }
+   ],
+   "raw": "[\n  {\"owner\": \"Grace\", \"task\": \"Rewrite and correct the Slack announcement about the security audit findings\", \"due\": \"Tuesday\"},\n  {\"owner\": \"Chloe\", \"task\": \"Post the hiring update in #general\", \"due\": \"before the launch on the 9th\"},\n  {\"owner\": \"Chloe\", \"task\": \"Schedule the expense policy one-pager to go out with the usual comms cadence\", \"due\": null},\n  {\"owner\": \"Sofia\", \"task\": \"Confirm the all-hands demo for launch morning with the events team\", \"due\": null}\n]",
+   "pred": [
+    {
+     "owner": "Grace",
+     "task": "Rewrite and correct the Slack announcement about the security audit findings",
+     "due": "Tuesday"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Post the hiring update in #general",
+     "due": "before the launch on the 9th"
+    },
+    {
+     "owner": "Chloe",
+     "task": "Schedule the expense policy one-pager to go out with the usual comms cadence",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "Confirm the all-hands demo for launch morning with the events team",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 4,
+    "tp": 3,
+    "due_correct": 3,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 0,
+      "sim": 0.96,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.943,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     3
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 4.177419662475586,
+   "in_tokens": 852,
+   "out_tokens": 314,
+   "reasoning_tokens": 170,
+   "cost": 0.007266,
+   "correct": false
+  },
+  {
+   "id": "ma-0171",
+   "gold": [
+    {
+     "owner": "Jonas",
+     "task": "order the new laptops for the interns",
+     "due": null
+    },
+    {
+     "owner": "Tom",
+     "task": "share the rollout checklist for the admin dashboard",
+     "due": null
+    },
+    {
+     "owner": "Kenji",
+     "task": "document the FAQ for the onboarding flow",
+     "due": "next Wednesday"
+    }
+   ],
+   "raw": "```json\n[\n  {\n    \"owner\": \"Jonas\",\n    \"task\": \"Order laptops for the incoming interns\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Tom\",\n    \"task\": \"Send around the admin dashboard rollout checklist\",\n    \"due\": \"after this meeting\"\n  },\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Write an FAQ for the onboarding flow and attach it to the help center\",\n    \"due\": \"next Wednesday\"\n  },\n  {\n    \"owner\": \"Kenji\",\n    \"task\": \"Mention video call freezing issues to IT if they keep happening\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Jonas\",\n    \"task\": \"Confirm once the laptop order goes through\",\n    \"due\": null\n  }\n]\n```",
+   "pred": [
+    {
+     "owner": "Jonas",
+     "task": "Order laptops for the incoming interns",
+     "due": null
+    },
+    {
+     "owner": "Tom",
+     "task": "Send around the admin dashboard rollout checklist",
+     "due": "after this meeting"
+    },
+    {
+     "owner": "Kenji",
+     "task": "Write an FAQ for the onboarding flow and attach it to the help center",
+     "due": "next Wednesday"
+    },
+    {
+     "owner": "Kenji",
+     "task": "Mention video call freezing issues to IT if they keep happening",
+     "due": null
+    },
+    {
+     "owner": "Jonas",
+     "task": "Confirm once the laptop order goes through",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 3,
+    "n_pred": 5,
+    "tp": 3,
+    "due_correct": 2,
+    "due_total": 3,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 1,
+      "sim": 0.917,
+      "due_ok": false
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.913,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 2,
+      "sim": 0.809,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     3,
+     4
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 3.722306251525879,
+   "in_tokens": 743,
+   "out_tokens": 258,
+   "reasoning_tokens": 69,
+   "cost": 0.006099,
+   "correct": false
+  },
+  {
+   "id": "ma-0183",
+   "gold": [
+    {
+     "owner": "Fatima",
+     "task": "test the test plan for the data pipeline",
+     "due": "April 3"
+    },
+    {
+     "owner": "Daniel",
+     "task": "file the expense report for the offsite",
+     "due": "the next sync"
+    },
+    {
+     "owner": "Fatima",
+     "task": "fix the spec for the API rate limiter",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "order the new laptops for the interns",
+     "due": "March 12"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Fatima\", \"task\": \"Validate the data pipeline test plan\", \"due\": \"April 3\"},\n  {\"owner\": \"Fatima\", \"task\": \"Correct the API rate limiter spec with updated burst limits\", \"due\": null},\n  {\"owner\": \"Daniel\", \"task\": \"Submit the offsite expense report\", \"due\": \"by the next sync\"},\n  {\"owner\": \"Mei\", \"task\": \"Review the auth migration spec write-up\", \"due\": null},\n  {\"owner\": \"Fatima\", \"task\": \"Order 16GB laptops for the interns\", \"due\": \"March 12\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Fatima",
+     "task": "Validate the data pipeline test plan",
+     "due": "April 3"
+    },
+    {
+     "owner": "Fatima",
+     "task": "Correct the API rate limiter spec with updated burst limits",
+     "due": null
+    },
+    {
+     "owner": "Daniel",
+     "task": "Submit the offsite expense report",
+     "due": "by the next sync"
+    },
+    {
+     "owner": "Mei",
+     "task": "Review the auth migration spec write-up",
+     "due": null
+    },
+    {
+     "owner": "Fatima",
+     "task": "Order 16GB laptops for the interns",
+     "due": "March 12"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 4,
+    "n_pred": 5,
+    "tp": 4,
+    "due_correct": 4,
+    "due_total": 4,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 0.913,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 4,
+      "sim": 0.913,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 0.898,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     3
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 3.551389217376709,
+   "in_tokens": 790,
+   "out_tokens": 270,
+   "reasoning_tokens": 114,
+   "cost": 0.00642,
+   "correct": false
+  },
+  {
+   "id": "ma-0185",
+   "gold": [
+    {
+     "owner": "Leila",
+     "task": "share the test plan for the API rate limiter",
+     "due": null
+    },
+    {
+     "owner": "Leila",
+     "task": "document the risks list for the staging environment",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "test the risks list for the data pipeline",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Mei",
+     "task": "summarize the customer interviews for the auth migration",
+     "due": "Thursday's standup"
+    },
+    {
+     "owner": "Sofia",
+     "task": "file the expense report for the offsite",
+     "due": "next Tuesday"
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Leila\", \"task\": \"Send out the API rate limiter test plan for team review\", \"due\": null},\n  {\"owner\": \"Sofia\", \"task\": \"Test the risks list for the data pipeline and report back\", \"due\": \"end of the week\"},\n  {\"owner\": \"Leila\", \"task\": \"Document the risks list for the staging environment\", \"due\": null},\n  {\"owner\": \"Mei\", \"task\": \"Summarize customer interview findings for the auth migration\", \"due\": \"Thursday's standup\"},\n  {\"owner\": \"Sofia\", \"task\": \"File the expense report for the offsite\", \"due\": \"next Tuesday\"}\n]\n```",
+   "pred": [
+    {
+     "owner": "Leila",
+     "task": "Send out the API rate limiter test plan for team review",
+     "due": null
+    },
+    {
+     "owner": "Sofia",
+     "task": "Test the risks list for the data pipeline and report back",
+     "due": "end of the week"
+    },
+    {
+     "owner": "Leila",
+     "task": "Document the risks list for the staging environment",
+     "due": null
+    },
+    {
+     "owner": "Mei",
+     "task": "Summarize customer interview findings for the auth migration",
+     "due": "Thursday's standup"
+    },
+    {
+     "owner": "Sofia",
+     "task": "File the expense report for the offsite",
+     "due": "next Tuesday"
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 1,
+      "pred": 2,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 0,
+      "pred": 0,
+      "sim": 0.897,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 3,
+      "sim": 0.896,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 2.87915301322937,
+   "in_tokens": 832,
+   "out_tokens": 225,
+   "reasoning_tokens": 56,
+   "cost": 0.005871,
+   "correct": true
+  }
+ ]
+}

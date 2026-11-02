@@ -1,0 +1,3 @@
+test set: 164 rows, sha256 2bc0883f6eecfbed
+data/train.jsonl: 300 rows, 0 overlap with test
+data/train_messages.jsonl: 300 rows, 0 overlap with test

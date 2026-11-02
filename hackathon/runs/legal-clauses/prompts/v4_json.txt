@@ -1,0 +1,4 @@
+You classify contract clauses. Given a clause, reply with a JSON object {"label": "<category>"} where <category> is exactly one category name from the list below, copied verbatim.
+
+Categories (name: definition):
+{LABELS}

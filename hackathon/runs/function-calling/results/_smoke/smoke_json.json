@@ -1,0 +1,188 @@
+{
+ "model": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+ "prompt": "v1_plain",
+ "mode": "json",
+ "shots": 0,
+ "tool_choice": "auto",
+ "response_format": "none",
+ "seed": 0,
+ "mock": false,
+ "n": 6,
+ "accuracy": 0.0,
+ "accuracy_partial": 0.0,
+ "invalid_outputs": 6,
+ "api_errors": 6,
+ "p50_latency_s": 0.148,
+ "p95_latency_s": 0.151,
+ "cost_per_1k_requests_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "in_tokens": 0,
+ "out_tokens": 0,
+ "reasoning_tokens": 0,
+ "accuracy_by_source": {
+  "live_simple": 0.0,
+  "multiple": 0.0,
+  "simple_python": 0.0,
+  "live_multiple": 0.0
+ },
+ "wall_s": 0.3,
+ "capped": false,
+ "rows": [
+  {
+   "id": "live_simple_227-118-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "text_to_speech.convert",
+    "arguments": {
+     "text": "我爱学习",
+     "language": "zh-CN",
+     "gender": "male",
+     "format": "wav"
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.151,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": "HTTP 412: {\"error\":{\"message\":\"Account raheeldeal is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices. Please go to https://fireworks.ai/account/billing for more information.\",\"param\":null,\"code\":\"PRECONDITION_FAILED\",\"type\":\"error\"},\"request_id\":\"chatcmpl-d4be5da",
+   "pred_source": "error"
+  },
+  {
+   "id": "multiple_77",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "artwork_search.find",
+    "arguments": {
+     "type": "sculpture",
+     "location": "New York"
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.148,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": "HTTP 412: {\"error\":{\"message\":\"Account raheeldeal is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices. Please go to https://fireworks.ai/account/billing for more information.\",\"param\":null,\"code\":\"PRECONDITION_FAILED\",\"type\":\"error\"},\"request_id\":\"chatcmpl-84273dc",
+   "pred_source": "error"
+  },
+  {
+   "id": "simple_python_291",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.149,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": "HTTP 412: {\"error\":{\"message\":\"Account raheeldeal is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices. Please go to https://fireworks.ai/account/billing for more information.\",\"param\":null,\"code\":\"PRECONDITION_FAILED\",\"type\":\"error\"},\"request_id\":\"chatcmpl-7ca7b6a",
+   "pred_source": "error"
+  },
+  {
+   "id": "multiple_163",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "metropolitan_museum.get_top_artworks",
+    "arguments": {
+     "number": 5,
+     "sort_by": "popularity"
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.153,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": "HTTP 412: {\"error\":{\"message\":\"Account raheeldeal is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices. Please go to https://fireworks.ai/account/billing for more information.\",\"param\":null,\"code\":\"PRECONDITION_FAILED\",\"type\":\"error\"},\"request_id\":\"chatcmpl-73da495",
+   "pred_source": "error"
+  },
+  {
+   "id": "live_multiple_68-29-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "ProjectDB",
+     "host": "http://foo.com",
+     "database": "project_data",
+     "username": "user1",
+     "password": "12345"
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.114,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": "HTTP 412: {\"error\":{\"message\":\"Account raheeldeal is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices. Please go to https://fireworks.ai/account/billing for more information.\",\"param\":null,\"code\":\"PRECONDITION_FAILED\",\"type\":\"error\"},\"request_id\":\"chatcmpl-64014bb",
+   "pred_source": "error"
+  },
+  {
+   "id": "multiple_143",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_slope_gradient",
+    "arguments": {
+     "point1": [
+      40.7128,
+      -74.006
+     ],
+     "point2": [
+      34.0522,
+      -118.2437
+     ]
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.105,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": "HTTP 412: {\"error\":{\"message\":\"Account raheeldeal is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices. Please go to https://fireworks.ai/account/billing for more information.\",\"param\":null,\"code\":\"PRECONDITION_FAILED\",\"type\":\"error\"},\"request_id\":\"chatcmpl-db78221",
+   "pred_source": "error"
+  }
+ ]
+}

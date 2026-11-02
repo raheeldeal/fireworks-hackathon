@@ -1,0 +1,63 @@
+{
+  "small": "results/gpt-oss-120b_v2_conf.json",
+  "big": "results/kimi-k3_v1_plain_n100.json",
+  "n": 100,
+  "sweep": [
+    {
+      "threshold": 0.5,
+      "escalated_frac": 0.0,
+      "accuracy": 0.87,
+      "cost_per_1k_requests_usd": 0.3155,
+      "p50_latency_s": 0.659,
+      "p95_latency_s": 1.38
+    },
+    {
+      "threshold": 0.6,
+      "escalated_frac": 0.0,
+      "accuracy": 0.87,
+      "cost_per_1k_requests_usd": 0.3155,
+      "p50_latency_s": 0.659,
+      "p95_latency_s": 1.38
+    },
+    {
+      "threshold": 0.7,
+      "escalated_frac": 0.01,
+      "accuracy": 0.86,
+      "cost_per_1k_requests_usd": 0.3715,
+      "p50_latency_s": 0.659,
+      "p95_latency_s": 1.38
+    },
+    {
+      "threshold": 0.8,
+      "escalated_frac": 0.08,
+      "accuracy": 0.87,
+      "cost_per_1k_requests_usd": 0.7634,
+      "p50_latency_s": 0.659,
+      "p95_latency_s": 3.646
+    },
+    {
+      "threshold": 0.9,
+      "escalated_frac": 0.18,
+      "accuracy": 0.87,
+      "cost_per_1k_requests_usd": 1.3232,
+      "p50_latency_s": 0.659,
+      "p95_latency_s": 4.131
+    },
+    {
+      "threshold": 0.95,
+      "escalated_frac": 0.26,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 1.771,
+      "p50_latency_s": 0.661,
+      "p95_latency_s": 4.131
+    },
+    {
+      "threshold": 1.01,
+      "escalated_frac": 1.0,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 5.9137,
+      "p50_latency_s": 2.558,
+      "p95_latency_s": 4.884
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+You extract product attributes from messy marketplace listings. Reply with ONLY a JSON object (no prose, no code fences) with exactly these keys and nothing else:
+- brand: the seller/maker brand exactly as spelled in the listing (drop ® ™). Never a marketplace name.
+- product_type: exactly one of: t-shirt, hoodie, jacket, jeans, dress, sneakers, boots, backpack, wallet, sunglasses, watch, headphones, phone case, water bottle, coffee mug, blender, desk lamp, office chair, bed sheets, bath towel, yoga mat, dog leash, candle, notebook.
+- color: the colour of the item actually being sold, one of: black, white, gray, red, blue, navy, green, yellow, orange, pink, purple, brown, beige, silver, gold, multicolor; null if no colour is stated. Colours listed as "also available in" are NOT the colour sold.
+- size: the size actually sold, copied as written (e.g. "M", "10", "Queen", "32oz", "One Size"); null if none is stated. A size range the line "comes in" is not the size sold.
+- material: one of: cotton, polyester, leather, stainless steel, plastic, wood, glass, silicone, nylon, wool, bamboo, ceramic, aluminum, canvas, linen; null if none stated.
+- price_usd: the price the buyer pays NOW as a number. The sale/now price beats the crossed-out/list/"was" price. Ignore shipping costs and "save $X" amounts. null if no price.
+- quantity: integer count of identical units in the listing ("pack of 3", "3-pack", "set of 3", "3 pcs" → 3). 1 if not stated. Accessories included do not count.
+- is_bundle: true only if two or more DIFFERENT item types are sold together (comes with a case, strap, cable, blocks...). A multi-pack of the same item is NOT a bundle (quantity > 1, is_bundle false).
+
+
+Examples:
+Listing:
+Illuminate your workspace with this sturdy wood desk lamp, designed to deliver focused light for reading, writing, or crafting. Each lamp arrives as part of a convenient 6-pack, so you can equip an entire office or share with teammates. The set comes WITH a fast‑charging USB‑C cable and a handy pen holder, keeping your desk tidy and your devices powered. The lamp features an adjustable arm and a smooth dimmer switch for custom brightness. ~ $101.26 ~ was the original price, now you save $28.58 with the current price of $72.68 per lamp. Shipping costs + $7.49 shipping, but enjoy free shipping over $35 on larger orders. The natural wood finish adds warmth without clashing with any décor. another great product from RedStar Mart. Perfect for home offices, study rooms, or collaborative spaces, this lighting solution blends functionality and style. Keywords: desk lamp, wood lamp, adjustable desk light, office lighting, study lamp, USB‑C lamp, pen holder lamp, bulk desk lamp, ergonomic lighting, workspace illumination.
+JSON:
+{"brand": "RedStar Mart", "product_type": "desk lamp", "color": null, "size": null, "material": "wood", "price_usd": 72.68, "quantity": 6, "is_bundle": true}
+
+Listing:
+ORANGE XXL JACKET - COMFORT & STYLE
+Stay warm with this orange jacket crafted from soft cotton, sized XXL for a relaxed fit. It’s designed for casual outings and features a zip front and cozy lining. by Addison Meadow, this single piece offers great value at $58.25. Also available in multicolor and yellow. + $3.99 shipping. 🧥✨
+JSON:
+{"brand": "Addison Meadow", "product_type": "jacket", "color": "orange", "size": "XXL", "material": "cotton", "price_usd": 58.25, "quantity": 1, "is_bundle": false}
+
+Listing:
+Anpole® Soft Bath Towel – vibrant purple, ultra‑absorbent and perfect for daily use. This plush towel feels luxurious against skin while quickly drying you off after a shower or swim. Ideal for home bathrooms, gyms, or travel. Price: $19.77 (4 count). A great addition to any bathroom collection.
+JSON:
+{"brand": "Anpole", "product_type": "bath towel", "color": "purple", "size": null, "material": null, "price_usd": 19.77, "quantity": 4, "is_bundle": false}
+
+Listing:
+Stylish Yellow Leather Dog Leash with Matching Collar
+Give your pup a dash of sunshine with this vibrant yellow leather dog leash, crafted by Palm Beach Jewelry for pet lovers who appreciate style and durability. Made from genuine leather, the leash feels sturdy yet flexible, providing a comfortable grip for long walks or quick jogs. The leash measures a perfect length for control while giving your dog freedom to explore.
+This single unit is priced at $13.09 – a great deal compared to the original $17.10 list price, saving $4.01 instantly. The leash comes WITH a matching collar and a convenient poop‑bag holder, so you have everything you need for a tidy outing. Both the leash and collar share the same high‑quality leather finish and bright yellow hue, creating a coordinated look that turns heads at the park.
+At this price, you receive a premium accessory without compromise. Ideal for everyday use, training sessions, or special events, this leash set combines fashion and function in one beautiful package.
+JSON:
+{"brand": "Palm Beach Jewelry", "product_type": "dog leash", "color": "yellow", "size": null, "material": "leather", "price_usd": 13.09, "quantity": 1, "is_bundle": true}
+
+Listing:
+Callaway® Premium Dog Leash – Durable Everyday Walk Companion
+
+Enjoy reliable control with this gray dog leash crafted from sturdy nylon. Size: 6ft, perfect for daily walks and training sessions. The reinforced clasp ensures a secure grip, while the lightweight design makes it comfortable for both you and your pet. This single‑unit leash offers a smooth slide through the hand, reducing strain on joints. Ideal for small to medium breeds, the leash features reflective stitching for added visibility during evening strolls. It’s also available in yellow and red, but the listed item is the classic gray you love. Easy to clean – just rinse with water. Upgrade your walking routine with a trusted brand that stands up to active lifestyles. The ergonomic handle reduces hand fatigue, and the durable stitching resists fraying even after months of use. Perfect for city sidewalks, parks, and hiking trails, this leash delivers dependable performance every time.
+
+dog leash, nylon leash, gray dog leash, 6ft leash, reflective dog leash, pet walking gear, Callaway dog accessories, durable pet leash, training leash, outdoor pet gear
+JSON:
+{"brand": "Callaway", "product_type": "dog leash", "color": "gray", "size": "6ft", "material": "nylon", "price_usd": null, "quantity": 1, "is_bundle": false}

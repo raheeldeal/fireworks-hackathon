@@ -1,0 +1,502 @@
+[
+ {
+  "name": "github.create_issue",
+  "server": "github",
+  "description": "Open a new issue in a repository with title, body and labels."
+ },
+ {
+  "name": "github.update_issue",
+  "server": "github",
+  "description": "Edit the title, body, labels or assignees of an existing issue."
+ },
+ {
+  "name": "github.close_issue",
+  "server": "github",
+  "description": "Close an existing issue, optionally with a closing comment."
+ },
+ {
+  "name": "github.comment_on_issue",
+  "server": "github",
+  "description": "Add a comment to an existing issue or pull request thread."
+ },
+ {
+  "name": "github.create_pull_request",
+  "server": "github",
+  "description": "Open a pull request from a head branch into a base branch."
+ },
+ {
+  "name": "github.merge_pull_request",
+  "server": "github",
+  "description": "Merge an open pull request using merge, squash or rebase."
+ },
+ {
+  "name": "github.request_review",
+  "server": "github",
+  "description": "Request one or more users to review an open pull request."
+ },
+ {
+  "name": "github.list_pull_requests",
+  "server": "github",
+  "description": "List pull requests in a repository filtered by state or author."
+ },
+ {
+  "name": "github.search_code",
+  "server": "github",
+  "description": "Search file contents across repositories with a query string."
+ },
+ {
+  "name": "github.get_file_contents",
+  "server": "github",
+  "description": "Read the contents of a file at a path and ref in a repository."
+ },
+ {
+  "name": "github.create_branch",
+  "server": "github",
+  "description": "Create a new branch from an existing ref in a repository."
+ },
+ {
+  "name": "github.create_release",
+  "server": "github",
+  "description": "Publish a tagged release with release notes and optional assets."
+ },
+ {
+  "name": "slack.send_message",
+  "server": "slack",
+  "description": "Post a new message to a channel or direct message."
+ },
+ {
+  "name": "slack.reply_in_thread",
+  "server": "slack",
+  "description": "Reply to an existing message inside its thread."
+ },
+ {
+  "name": "slack.schedule_message",
+  "server": "slack",
+  "description": "Schedule a message to be posted to a channel at a future time."
+ },
+ {
+  "name": "slack.add_reaction",
+  "server": "slack",
+  "description": "Add an emoji reaction to an existing message."
+ },
+ {
+  "name": "slack.search_messages",
+  "server": "slack",
+  "description": "Search message history across channels by keyword, user or date."
+ },
+ {
+  "name": "slack.list_channels",
+  "server": "slack",
+  "description": "List channels in the workspace with their names and member counts."
+ },
+ {
+  "name": "slack.set_status",
+  "server": "slack",
+  "description": "Set the current user's status text, emoji and expiry."
+ },
+ {
+  "name": "slack.upload_file",
+  "server": "slack",
+  "description": "Upload a file to a channel or thread with an optional comment."
+ },
+ {
+  "name": "slack.create_channel",
+  "server": "slack",
+  "description": "Create a new public or private channel with a name and purpose."
+ },
+ {
+  "name": "calendar.create_event",
+  "server": "calendar",
+  "description": "Create a new calendar event with title, time, attendees and location."
+ },
+ {
+  "name": "calendar.update_event",
+  "server": "calendar",
+  "description": "Change the time, title, attendees or location of an existing event."
+ },
+ {
+  "name": "calendar.delete_event",
+  "server": "calendar",
+  "description": "Cancel and remove an existing event, notifying attendees."
+ },
+ {
+  "name": "calendar.list_events",
+  "server": "calendar",
+  "description": "List events on a calendar within a date range."
+ },
+ {
+  "name": "calendar.find_free_time",
+  "server": "calendar",
+  "description": "Find open time slots across one or more attendees' calendars."
+ },
+ {
+  "name": "calendar.respond_to_invite",
+  "server": "calendar",
+  "description": "Accept, decline or tentatively accept an event invitation."
+ },
+ {
+  "name": "reminders.create",
+  "server": "reminders",
+  "description": "Create a personal reminder that fires at a specific time or date."
+ },
+ {
+  "name": "reminders.list",
+  "server": "reminders",
+  "description": "List upcoming personal reminders."
+ },
+ {
+  "name": "reminders.complete",
+  "server": "reminders",
+  "description": "Mark a personal reminder as done."
+ },
+ {
+  "name": "gmail.send_email",
+  "server": "gmail",
+  "description": "Compose and send a new email to one or more recipients."
+ },
+ {
+  "name": "gmail.reply_to_email",
+  "server": "gmail",
+  "description": "Reply to an existing email thread, keeping the subject and recipients."
+ },
+ {
+  "name": "gmail.forward_email",
+  "server": "gmail",
+  "description": "Forward an existing email to new recipients with an optional note."
+ },
+ {
+  "name": "gmail.create_draft",
+  "server": "gmail",
+  "description": "Save an email as a draft without sending it."
+ },
+ {
+  "name": "gmail.search_emails",
+  "server": "gmail",
+  "description": "Search the mailbox by sender, subject, date or keywords."
+ },
+ {
+  "name": "gmail.get_thread",
+  "server": "gmail",
+  "description": "Read all messages in an email thread by thread id."
+ },
+ {
+  "name": "gmail.label_email",
+  "server": "gmail",
+  "description": "Apply or remove a label on an email or thread."
+ },
+ {
+  "name": "gmail.archive_email",
+  "server": "gmail",
+  "description": "Remove an email from the inbox without deleting it."
+ },
+ {
+  "name": "gmail.trash_email",
+  "server": "gmail",
+  "description": "Move an email to the trash."
+ },
+ {
+  "name": "gmail.mark_unread",
+  "server": "gmail",
+  "description": "Mark an email as unread so it shows as new in the inbox."
+ },
+ {
+  "name": "jira.create_ticket",
+  "server": "jira",
+  "description": "Create a new Jira ticket in a project with summary, type and priority."
+ },
+ {
+  "name": "jira.update_ticket",
+  "server": "jira",
+  "description": "Edit fields of an existing ticket such as summary, priority or assignee."
+ },
+ {
+  "name": "jira.transition_ticket",
+  "server": "jira",
+  "description": "Move a ticket to a different workflow status such as In Progress or Done."
+ },
+ {
+  "name": "jira.assign_ticket",
+  "server": "jira",
+  "description": "Assign an existing ticket to a user."
+ },
+ {
+  "name": "jira.add_comment",
+  "server": "jira",
+  "description": "Add a comment to an existing Jira ticket."
+ },
+ {
+  "name": "jira.search_tickets",
+  "server": "jira",
+  "description": "Search tickets with a JQL query or free text."
+ },
+ {
+  "name": "jira.link_tickets",
+  "server": "jira",
+  "description": "Create a relationship such as blocks or duplicates between two tickets."
+ },
+ {
+  "name": "jira.create_sprint",
+  "server": "jira",
+  "description": "Create a new sprint on a board with a start and end date."
+ },
+ {
+  "name": "jira.move_to_sprint",
+  "server": "jira",
+  "description": "Move one or more tickets into a sprint or the backlog."
+ },
+ {
+  "name": "jira.log_work",
+  "server": "jira",
+  "description": "Log time spent on a ticket."
+ },
+ {
+  "name": "stripe.create_customer",
+  "server": "stripe",
+  "description": "Create a new customer record with name, email and metadata."
+ },
+ {
+  "name": "stripe.create_payment_intent",
+  "server": "stripe",
+  "description": "Charge a customer by creating a payment intent for an amount."
+ },
+ {
+  "name": "stripe.refund_payment",
+  "server": "stripe",
+  "description": "Refund all or part of a completed payment."
+ },
+ {
+  "name": "stripe.create_subscription",
+  "server": "stripe",
+  "description": "Start a recurring subscription for a customer on a price plan."
+ },
+ {
+  "name": "stripe.cancel_subscription",
+  "server": "stripe",
+  "description": "Cancel an active subscription immediately or at period end."
+ },
+ {
+  "name": "stripe.create_invoice",
+  "server": "stripe",
+  "description": "Create and send an invoice to a customer for line items."
+ },
+ {
+  "name": "stripe.list_charges",
+  "server": "stripe",
+  "description": "List charges for a customer or date range."
+ },
+ {
+  "name": "stripe.create_coupon",
+  "server": "stripe",
+  "description": "Create a discount coupon with a percent or amount off."
+ },
+ {
+  "name": "fs.read_file",
+  "server": "fs",
+  "description": "Read the full contents of a file at a path."
+ },
+ {
+  "name": "fs.write_file",
+  "server": "fs",
+  "description": "Create or overwrite a file at a path with given contents."
+ },
+ {
+  "name": "fs.append_file",
+  "server": "fs",
+  "description": "Append contents to the end of an existing file."
+ },
+ {
+  "name": "fs.list_directory",
+  "server": "fs",
+  "description": "List files and folders inside a directory."
+ },
+ {
+  "name": "fs.move_file",
+  "server": "fs",
+  "description": "Move or rename a file or directory to a new path."
+ },
+ {
+  "name": "fs.delete_file",
+  "server": "fs",
+  "description": "Permanently delete a file at a path."
+ },
+ {
+  "name": "fs.search_files",
+  "server": "fs",
+  "description": "Find files whose name matches a glob pattern under a directory."
+ },
+ {
+  "name": "fs.get_file_info",
+  "server": "fs",
+  "description": "Get size, modification time and permissions of a file."
+ },
+ {
+  "name": "db.run_query",
+  "server": "db",
+  "description": "Execute a read-only SQL SELECT query and return rows."
+ },
+ {
+  "name": "db.execute_statement",
+  "server": "db",
+  "description": "Execute a SQL INSERT, UPDATE or DELETE statement."
+ },
+ {
+  "name": "db.list_tables",
+  "server": "db",
+  "description": "List the tables in the connected database."
+ },
+ {
+  "name": "db.describe_table",
+  "server": "db",
+  "description": "Show the columns, types and indexes of a table."
+ },
+ {
+  "name": "db.explain_query",
+  "server": "db",
+  "description": "Show the execution plan for a SQL query without running it."
+ },
+ {
+  "name": "db.create_backup",
+  "server": "db",
+  "description": "Create a full backup snapshot of the database."
+ },
+ {
+  "name": "browser.navigate",
+  "server": "browser",
+  "description": "Open a URL in the browser tab."
+ },
+ {
+  "name": "browser.click",
+  "server": "browser",
+  "description": "Click an element on the current page by selector or text."
+ },
+ {
+  "name": "browser.type_text",
+  "server": "browser",
+  "description": "Type text into an input field on the current page."
+ },
+ {
+  "name": "browser.screenshot",
+  "server": "browser",
+  "description": "Capture a screenshot of the current page."
+ },
+ {
+  "name": "browser.extract_text",
+  "server": "browser",
+  "description": "Return the visible text content of the current page."
+ },
+ {
+  "name": "browser.fill_form",
+  "server": "browser",
+  "description": "Fill multiple form fields at once and optionally submit."
+ },
+ {
+  "name": "browser.download_file",
+  "server": "browser",
+  "description": "Download a file from a URL to local disk."
+ },
+ {
+  "name": "drive.upload_file",
+  "server": "drive",
+  "description": "Upload a local file to a Drive folder."
+ },
+ {
+  "name": "drive.share_file",
+  "server": "drive",
+  "description": "Grant a user or group view, comment or edit access to a file."
+ },
+ {
+  "name": "drive.search_files",
+  "server": "drive",
+  "description": "Search Drive files by name, type, owner or content."
+ },
+ {
+  "name": "drive.create_folder",
+  "server": "drive",
+  "description": "Create a new folder, optionally inside a parent folder."
+ },
+ {
+  "name": "drive.export_document",
+  "server": "drive",
+  "description": "Export a Docs, Sheets or Slides file to PDF, DOCX or CSV."
+ },
+ {
+  "name": "notion.create_page",
+  "server": "notion",
+  "description": "Create a new page in a workspace or under a parent page."
+ },
+ {
+  "name": "notion.update_page",
+  "server": "notion",
+  "description": "Edit the title, properties or content blocks of an existing page."
+ },
+ {
+  "name": "notion.search",
+  "server": "notion",
+  "description": "Search pages and databases in the workspace by text."
+ },
+ {
+  "name": "notion.add_database_row",
+  "server": "notion",
+  "description": "Insert a new row with properties into a Notion database."
+ },
+ {
+  "name": "notion.query_database",
+  "server": "notion",
+  "description": "Query rows in a Notion database with filters and sorts."
+ },
+ {
+  "name": "zoom.create_meeting",
+  "server": "zoom",
+  "description": "Schedule a new video meeting and get its join link."
+ },
+ {
+  "name": "zoom.get_recording",
+  "server": "zoom",
+  "description": "Fetch the recording and transcript of a past meeting."
+ },
+ {
+  "name": "zoom.list_meetings",
+  "server": "zoom",
+  "description": "List upcoming scheduled meetings for the user."
+ },
+ {
+  "name": "weather.current",
+  "server": "weather",
+  "description": "Get current weather conditions for a location."
+ },
+ {
+  "name": "weather.forecast",
+  "server": "weather",
+  "description": "Get a multi-day weather forecast for a location."
+ },
+ {
+  "name": "translate.text",
+  "server": "translate",
+  "description": "Translate text from one language to another."
+ },
+ {
+  "name": "translate.detect_language",
+  "server": "translate",
+  "description": "Detect the language of a piece of text."
+ },
+ {
+  "name": "pagerduty.trigger_incident",
+  "server": "pagerduty",
+  "description": "Open a new incident on a service and page the on-call."
+ },
+ {
+  "name": "pagerduty.acknowledge_incident",
+  "server": "pagerduty",
+  "description": "Acknowledge an open incident to stop escalation."
+ },
+ {
+  "name": "pagerduty.resolve_incident",
+  "server": "pagerduty",
+  "description": "Mark an incident as resolved."
+ },
+ {
+  "name": "pagerduty.list_oncall",
+  "server": "pagerduty",
+  "description": "Show who is currently on call for a schedule or service."
+ }
+]

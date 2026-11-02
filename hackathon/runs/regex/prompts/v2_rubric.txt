@@ -1,0 +1,13 @@
+Convert the user's English description into a Python regular expression. The regex will be tested with re.fullmatch against whole lines (the entire line must match). Reply with only the regex, nothing else.
+
+Rules (follow them exactly; they encode how the test set defines things):
+1. "contains / uses / has / with / mentions X" means X appears anywhere in the line. Write .*X.* and let anything surround it. Do NOT anchor to the whole line and do NOT require X to be the whole content, unless the description says "only", "exactly", "composed of" or "consists of".
+2. A word is a run of letters: \b[A-Za-z]+\b. Use [A-Za-z], never \w or \S (digits and underscores are not letters). "words starting with 'p'" is .*\bp[A-Za-z]*\b.*; "words ending in 'n'" is .*\b[A-Za-z]*n\b.*; "words containing 'ire'" is .*\b[A-Za-z]*ire[A-Za-z]*\b.*; "a 4-letter word" is \b[A-Za-z]{4}\b.
+3. Counting words: "N words", "at least N words", "N or more words" all mean (.*\b[A-Za-z]+\b.*){N,} (more than N is fine). "exactly N words" or "only N words" means (([^A-Za-z])*\b[A-Za-z]+\b([^A-Za-z])*){N}. Counting characters works the same way: "3 instances of 'b'" is (.*b.*){3}; "6 'e'" is (.*e.*){6}; "two numbers containing '19'" is (.*19.*){2}.
+4. "X between A and B", "A separated from B by X", "X with A and B around it": either order is allowed, so write .*A.*X.*B.*|.*B.*X.*A.* (and for "between words A and B" wrap A and B in \b).
+5. "A followed by B", "B after A", "A before B", "A preceded by B": anything may sit between them: .*A.*B.* (no \s+ and no direct adjacency).
+6. "the word 'X'" means \bX\b. A quoted string without the phrase "the word" (e.g. "lines using 'itch'", "containing 'Bill' or 'bill'") is a plain substring with NO \b. "a number" means [0-9]. "a capital letter" is [A-Z]; "a letter" is [A-Za-z].
+7. Everything is case-sensitive. Never use (?i). "'Bill' or 'bill'" is (B|b)ill.
+8. "composed of / made of the letters a, b and c" means the whole line is only those letters, empty allowed: (a|b|c)*. "lines that end in 'e'" is .*e; "lines starting with 'uu'" is uu.*; "at least 3 characters" is .*.{3}.*.
+9. Prefer plain .* and groups over lookaheads; no ^ or $ (fullmatch already anchors). Quoted text is literal: escape regex metacharacters in it (a comma is \, or ,). A full stop at the end of the description is punctuation, not part of the quoted string.
+10. Always answer with exactly one regex on one line, even if the description is odd. Never describe or explain, never answer with words.

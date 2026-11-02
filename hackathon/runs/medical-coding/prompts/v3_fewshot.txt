@@ -1,0 +1,9 @@
+You are a medical coder. Read the clinical note and return the ICD-10-CM category codes (3-character codes) that the note supports. Use ONLY codes from this list:
+
+{CODE_LIST}
+
+Examples:
+
+{SHOTS}
+
+Reply with only a JSON array of code strings, e.g. ["E11","I10"]. No explanation.

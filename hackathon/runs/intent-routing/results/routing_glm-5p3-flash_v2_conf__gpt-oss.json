@@ -1,0 +1,63 @@
+{
+  "small": "results/glm-5p3-flash_v2_conf.json",
+  "big": "results/gpt-oss-120b_v1_plain.json",
+  "n": 154,
+  "sweep": [
+    {
+      "threshold": 0.5,
+      "escalated_frac": 0.0,
+      "accuracy": 0.8182,
+      "cost_per_1k_requests_usd": 0.2954,
+      "p50_latency_s": 1.127,
+      "p95_latency_s": 3.116
+    },
+    {
+      "threshold": 0.6,
+      "escalated_frac": 0.039,
+      "accuracy": 0.8247,
+      "cost_per_1k_requests_usd": 0.3063,
+      "p50_latency_s": 1.127,
+      "p95_latency_s": 3.383
+    },
+    {
+      "threshold": 0.7,
+      "escalated_frac": 0.169,
+      "accuracy": 0.8312,
+      "cost_per_1k_requests_usd": 0.3428,
+      "p50_latency_s": 1.127,
+      "p95_latency_s": 4.383
+    },
+    {
+      "threshold": 0.8,
+      "escalated_frac": 0.312,
+      "accuracy": 0.8442,
+      "cost_per_1k_requests_usd": 0.3829,
+      "p50_latency_s": 1.132,
+      "p95_latency_s": 4.383
+    },
+    {
+      "threshold": 0.9,
+      "escalated_frac": 0.422,
+      "accuracy": 0.8442,
+      "cost_per_1k_requests_usd": 0.4139,
+      "p50_latency_s": 1.205,
+      "p95_latency_s": 4.383
+    },
+    {
+      "threshold": 0.95,
+      "escalated_frac": 0.669,
+      "accuracy": 0.8442,
+      "cost_per_1k_requests_usd": 0.4831,
+      "p50_latency_s": 1.655,
+      "p95_latency_s": 4.383
+    },
+    {
+      "threshold": 1.01,
+      "escalated_frac": 1.0,
+      "accuracy": 0.8442,
+      "cost_per_1k_requests_usd": 0.5761,
+      "p50_latency_s": 1.674,
+      "p95_latency_s": 4.383
+    }
+  ]
+}

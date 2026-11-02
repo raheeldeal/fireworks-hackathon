@@ -1,0 +1,10 @@
+{
+ "checkpoint": "raheeldeal/run-66794a7ab5ec4e4cafc592b2ba416ce1/t2sql-235039-cf7744c6",
+ "session": "ts-27f2844164ab40bb83aaa74679fa9a56",
+ "run": "run-66794a7ab5ec4e4cafc592b2ba416ce1",
+ "steps": 58,
+ "epochs": 2,
+ "rank": 8,
+ "lr": 0.0001,
+ "train_tokens": 220686
+}

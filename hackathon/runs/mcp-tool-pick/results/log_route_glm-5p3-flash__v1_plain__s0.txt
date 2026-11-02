@@ -1,0 +1,6 @@
+t= -0.02 escalate 6%  acc 0.989  p50 0.845s  $0.4544/1k
+t= -0.05 escalate 3%  acc 0.989  p50 0.835s  $0.3785/1k
+t= -0.10 escalate 2%  acc 0.989  p50 0.832s  $0.3369/1k
+t= -0.20 escalate 1%  acc 0.989  p50 0.829s  $0.2960/1k
+t= -0.50 escalate 1%  acc 0.989  p50 0.829s  $0.2960/1k
+t= -1.00 escalate 0%  acc 0.989  p50 0.827s  $0.2828/1k

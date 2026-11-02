@@ -1,0 +1,12 @@
+.venv*/
+venv*/
+__pycache__/
+.pytest_cache/
+**/raw_download/
+*.log
+.DS_Store
+**/cookbook/
+**/raw/
+**/raw_download/
+*.sqlite
+*.zip

@@ -1,0 +1,38 @@
+{
+ "model": "accounts/fireworks/models/deepseek-v4p1-flash",
+ "prompt": "v1_plain",
+ "tag": "",
+ "seed": 3,
+ "fewshot": 0,
+ "json_mode": false,
+ "no_think": true,
+ "reasoning_effort": null,
+ "mock": false,
+ "n": 1,
+ "accuracy": 1.0,
+ "macro_f1": 1.0,
+ "invalid_outputs": 0,
+ "p50_latency_s": 0.606,
+ "p95_latency_s": 0.606,
+ "in_tokens": 2362,
+ "out_tokens": 3,
+ "cost_usd": 0.0007,
+ "cost_per_1k_requests_usd": 0.7122,
+ "stopped_at_cap": false,
+ "rows": [
+  {
+   "id": "t157",
+   "text": "Other than with respect to any placement agent agreed to by the Company and the Purchasers or as set forth on Schedule 4.26, no Person will have, as a result of the transactions contemplated by the Transaction Documents, any valid right, interest or claim against or upon the Company or a Purchaser for any commission, fee or other compensation pursuant to any agreement, arrangement or understanding entered into by or on behalf of the Company. No Purchaser shall have any obligation with respect to any fees, or with respect to any claims made by or on behalf of other Persons for fees, in each case of the type contemplated by this Section\u00a04.26 that may be due in connection with the transactions contemplated by this Agreement or the Transaction Documents.",
+   "label": "Brokers",
+   "raw": "Brokers",
+   "pred": "Brokers",
+   "correct": true,
+   "latency": 0.606,
+   "in_tokens": 2362,
+   "out_tokens": 3,
+   "reasoning_tokens": 0,
+   "finish": "stop",
+   "confidence": 0.9997
+  }
+ ]
+}

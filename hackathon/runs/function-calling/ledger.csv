@@ -1,0 +1,51 @@
+timestamp,model,in_tokens,out_tokens,cost,note
+2026-11-01T22:30:16,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,165351,108573,0.029982,nemotron-lightning-3p5-30b-a3b_tools_v1_plain
+2026-11-01T22:37:08,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,113532,107447,0.027166,nemotron-lightning-3p5-30b-a3b_json_v1_plain
+2026-11-01T22:40:04,accounts/fireworks/models/glm-5p3-flash,132292,20892,0.030290,glm-5p3-flash_tools_v1_plain
+2026-11-01T22:46:20,accounts/fireworks/models/glm-5p3-flash,111707,24566,0.029039,glm-5p3-flash_json_v1_plain
+2026-11-01T22:52:02,accounts/fireworks/models/gpt-oss-120b,100302,21335,0.027846,gpt-oss-120b_tools_v1_plain
+2026-11-01T22:57:07,accounts/fireworks/models/gpt-oss-120b,124210,23042,0.032457,gpt-oss-120b_json_v1_plain
+2026-11-01T23:05:15,accounts/fireworks/models/deepseek-v4p1-flash,154621,21084,0.071687,deepseek-v4p1-flash_tools_v1_plain
+2026-11-01T23:13:10,accounts/fireworks/models/deepseek-v4p1-flash,117936,18647,0.057757,deepseek-v4p1-flash_json_v1_plain
+2026-11-01T23:16:29,accounts/fireworks/models/glm-5p3,131910,6096,0.211496,glm-5p3_tools_v1_plain_relow
+2026-11-01T23:18:28,accounts/fireworks/models/glm-5p3,50937,3382,0.086193,glm-5p3_json_v1_plain_relow
+2026-11-01T23:22:56,accounts/fireworks/models/kimi-k3,50050,11046,0.315840,kimi-k3_tools_v1_plain
+2026-11-01T23:26:11,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,128460,0.036993,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric
+2026-11-01T23:31:19,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,167932,142136,0.036824,nemotron-lightning-3p5-30b-a3b_json_v2_rubric
+2026-11-01T23:37:32,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,522908,154790,0.057103,nemotron-lightning-3p5-30b-a3b_json_v2_rubric_shots5
+2026-11-01T23:41:01,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,132997,0.037900,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_required
+2026-11-01T23:44:19,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,168442,143909,0.037204,nemotron-lightning-3p5-30b-a3b_json_v2_rubric_json_schema
+2026-11-01T23:46:46,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,116891,0.032129,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_seed1
+2026-11-01T23:48:43,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,119207,0.032592,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_seed2
+2026-11-01T23:50:51,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,119119,0.032575,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_seed3
+2026-11-01T23:53:12,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,130824,0.037466,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_seed1
+2026-11-01T23:58:03,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,126176,0.036536,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_seed2
+2026-11-02T00:00:06,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,132533,0.037808,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_seed3
+2026-11-02T00:01:05,nemotron-lightning-3p5-30b-a3b,15152,11362,0.000000,probe_nemotron_tools_mt4096
+2026-11-02T00:01:13,nemotron-lightning-3p5-30b-a3b,15152,10498,0.000000,probe_nemotron_tools_relow
+2026-11-02T00:01:56,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,15152,11362,0.003030,probe_nemotron_tools_mt4096 (cost recomputed; short-name price bug)
+2026-11-02T00:01:56,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,15152,10498,0.002857,probe_nemotron_tools_relow (cost recomputed; short-name price bug)
+2026-11-02T00:04:02,nemotron-lightning-3p5-30b-a3b,117442,132778,0.000000,nemotron-lightning-3p5-30b-a3b_json_v1_plain_mt4096
+2026-11-02T00:04:11,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,117442,132778,0.032428,nemotron-lightning-3p5-30b-a3b_json_v1_plain_mt4096 (cost recomputed; short-name price bug)
+2026-11-02T00:04:34,nemotron-lightning-3p5-30b-a3b,175020,154852,0.000000,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_mt4096
+2026-11-02T00:04:41,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,154852,0.039721,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_mt4096 (cost recomputed; short-name price bug)
+2026-11-02T00:04:46,nemotron-lightning-3p5-30b-a3b,226020,176050,0.000000,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_mt4096
+2026-11-02T00:04:58,accounts/fireworks/models/muse-glimmer-30b#sampler-base,116854,41788,0.432959,sft eval base
+2026-11-02T00:05:26,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,176050,0.046511,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_mt4096 (cost recomputed; short-name price bug)
+2026-11-02T00:07:52,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,164567,0.041664,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_mt4096_relow
+2026-11-02T00:09:14,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,233820,275411,0.066773,nemotron-lightning-3p5-30b-a3b_tools_v3_misses_mt4096
+2026-11-02T00:10:42,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,11054,0.010962,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_renone
+2026-11-02T00:11:05,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,117442,122508,0.030374,nemotron-lightning-3p5-30b-a3b_json_v1_plain_mt4096_seed1
+2026-11-02T00:11:51,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,226020,9630,0.013227,nemotron-lightning-3p5-30b-a3b_tools_v2_rubric_renone
+2026-11-02T00:12:15,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,117442,7715,0.007415,nemotron-lightning-3p5-30b-a3b_json_v1_plain_renone
+2026-11-02T00:12:45,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,9852,0.010721,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_required_renone
+2026-11-02T00:12:51,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,117442,127015,0.031275,nemotron-lightning-3p5-30b-a3b_json_v1_plain_mt4096_seed2
+2026-11-02T00:13:19,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,11052,0.010961,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_renone_seed1
+2026-11-02T00:13:46,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,10751,0.010901,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_renone_seed2
+2026-11-02T00:14:13,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,10957,0.010942,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_renone_seed3
+2026-11-02T00:14:36,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,117442,123843,0.030641,nemotron-lightning-3p5-30b-a3b_json_v1_plain_mt4096_seed3
+2026-11-02T00:14:57,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,9850,0.010721,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_required_renone_seed1
+2026-11-02T00:15:26,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,9864,0.010724,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_required_renone_seed2
+2026-11-02T00:15:53,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,175020,9874,0.010726,nemotron-lightning-3p5-30b-a3b_tools_v1_plain_required_renone_seed3
+2026-11-02T00:42:11,accounts/fireworks/models/muse-glimmer-30b#train,242394,0,0.000000,sft training (free promotion until 2026-11-30)
+2026-11-02T00:43:31,accounts/fireworks/models/muse-glimmer-30b#sampler-tuned,116854,7187,0.264106,sft eval tuned

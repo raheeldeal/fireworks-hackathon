@@ -1,0 +1,463 @@
+{
+  "model": "small",
+  "prompt": "v2_rubric",
+  "mock": true,
+  "n": 50,
+  "accuracy": 0.78,
+  "invalid_outputs": 0,
+  "p50_latency_s": 0.339,
+  "p95_latency_s": 0.437,
+  "cost_per_1k_requests_usd": 0.0128,
+  "rows": [
+    {
+      "id": 1,
+      "text": "I was charged twice for my subscription this month, please refund one.",
+      "label": "billing",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": false,
+      "latency": 0.3310153428568048
+    },
+    {
+      "id": 2,
+      "text": "The export button does nothing when I click it on Safari.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.251331741493537
+    },
+    {
+      "id": 3,
+      "text": "Would love a dark mode option in the mobile app.",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.43724182508812737
+    },
+    {
+      "id": 4,
+      "text": "I can't log in, it says my password is wrong but I just reset it.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.36842663649443774
+    },
+    {
+      "id": 5,
+      "text": "How do I invite a teammate to my workspace?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.33535644755705485
+    },
+    {
+      "id": 6,
+      "text": "Invoice from October shows the wrong company name.",
+      "label": "billing",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": false,
+      "latency": 0.3285964660417973
+    },
+    {
+      "id": 7,
+      "text": "App crashes every time I open the reports tab since the update.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.31173753421697636
+    },
+    {
+      "id": 8,
+      "text": "Can you add Slack notifications when a task is assigned to me?",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.4260206486102538
+    },
+    {
+      "id": 9,
+      "text": "My 2FA codes aren't being accepted and I'm locked out.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.3369586203522696
+    },
+    {
+      "id": 10,
+      "text": "Where do I change the default currency for my account?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.42953462917517876
+    },
+    {
+      "id": 11,
+      "text": "Why did my plan price go up from $29 to $39?",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.3132790688957737
+    },
+    {
+      "id": 12,
+      "text": "Dates in the CSV download are off by one day.",
+      "label": "bug",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": false,
+      "latency": 0.4690747097861582
+    },
+    {
+      "id": 13,
+      "text": "It would be great to bulk-edit tags instead of one at a time.",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.34009741509476094
+    },
+    {
+      "id": 14,
+      "text": "I never received the verification email after signing up.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.49045448245791823
+    },
+    {
+      "id": 15,
+      "text": "What's the difference between the Pro and Team plans?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.3274142935925523
+    },
+    {
+      "id": 16,
+      "text": "Please cancel my subscription and confirm I won't be billed again.",
+      "label": "billing",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": false,
+      "latency": 0.33266002785173554
+    },
+    {
+      "id": 17,
+      "text": "Search returns no results even for items I can see on screen.",
+      "label": "bug",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": false,
+      "latency": 0.4005678465751013
+    },
+    {
+      "id": 18,
+      "text": "Any chance of a Zapier integration?",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.33511815580006327
+    },
+    {
+      "id": 19,
+      "text": "Someone else seems to have access to my account, I see logins from another country.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.4014943140375273
+    },
+    {
+      "id": 20,
+      "text": "How do I export all my data?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.3731221092069755
+    },
+    {
+      "id": 21,
+      "text": "Need a receipt with VAT number for my expense report.",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.29893833660514985
+    },
+    {
+      "id": 22,
+      "text": "Images uploaded in comments show as broken links.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.3546024738066397
+    },
+    {
+      "id": 23,
+      "text": "Could we get keyboard shortcuts for common actions?",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.34388171063889605
+    },
+    {
+      "id": 24,
+      "text": "Trying to change my email address but the save button is greyed out.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.35565609820173827
+    },
+    {
+      "id": 25,
+      "text": "Is there a way to set up recurring tasks?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.3036107850026399
+    },
+    {
+      "id": 26,
+      "text": "Card declined but the money left my bank account.",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.3155741748472598
+    },
+    {
+      "id": 27,
+      "text": "Notifications arrive 3 hours late on Android.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.2370584698222586
+    },
+    {
+      "id": 28,
+      "text": "Please support SSO with Okta.",
+      "label": "feature_request",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": false,
+      "latency": 0.4036627145470816
+    },
+    {
+      "id": 29,
+      "text": "I deleted my account by accident, can it be restored?",
+      "label": "account_access",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": false,
+      "latency": 0.42754249940914096
+    },
+    {
+      "id": 30,
+      "text": "How do I change the timezone shown on reports?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.3278593548362847
+    },
+    {
+      "id": 31,
+      "text": "You billed me in USD but I'm in the UK, can I pay in GBP?",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.325644868350675
+    },
+    {
+      "id": 32,
+      "text": "Drag and drop reorders the wrong item about half the time.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.38935125803926074
+    },
+    {
+      "id": 33,
+      "text": "A weekly summary email would be really useful.",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.4312996899266178
+    },
+    {
+      "id": 34,
+      "text": "My account says suspended and I don't know why.",
+      "label": "account_access",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": false,
+      "latency": 0.3137200094737106
+    },
+    {
+      "id": 35,
+      "text": "Can you explain what the 'archive' action does versus delete?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.3813350945991231
+    },
+    {
+      "id": 36,
+      "text": "Downgraded to free last month but still got charged.",
+      "label": "billing",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": false,
+      "latency": 0.31296484711568207
+    },
+    {
+      "id": 37,
+      "text": "Getting a 500 error when I try to save a long description.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.31099908111113356
+    },
+    {
+      "id": 38,
+      "text": "Would be nice to export reports as PDF not just CSV.",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.39378807197536264
+    },
+    {
+      "id": 39,
+      "text": "The magic link to sign in expires before I can click it.",
+      "label": "account_access",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": true,
+      "latency": 0.3728797163725343
+    },
+    {
+      "id": 40,
+      "text": "Which browsers do you officially support?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.38514405689047937
+    },
+    {
+      "id": 41,
+      "text": "Refund still hasn't shown up after 10 business days.",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.26334468851923354
+    },
+    {
+      "id": 42,
+      "text": "Text in the sidebar overlaps when the window is narrow.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.2919337526017135
+    },
+    {
+      "id": 43,
+      "text": "Please let us customize the fields on the task form.",
+      "label": "feature_request",
+      "raw": "account_access",
+      "pred": "account_access",
+      "correct": false,
+      "latency": 0.32316094794494465
+    },
+    {
+      "id": 44,
+      "text": "I want to transfer ownership of the workspace to a colleague who is leaving... wait, to me, since they are leaving.",
+      "label": "account_access",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": false,
+      "latency": 0.30982414486408016
+    },
+    {
+      "id": 45,
+      "text": "How many users can I have on the starter plan?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.2663185440187186
+    },
+    {
+      "id": 46,
+      "text": "Can I get a discount for paying annually?",
+      "label": "billing",
+      "raw": "billing",
+      "pred": "billing",
+      "correct": true,
+      "latency": 0.39897740102759244
+    },
+    {
+      "id": 47,
+      "text": "Timer keeps running after I click stop.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.34948494088698184
+    },
+    {
+      "id": 48,
+      "text": "An API for creating tasks would unlock a lot for us.",
+      "label": "feature_request",
+      "raw": "feature_request",
+      "pred": "feature_request",
+      "correct": true,
+      "latency": 0.46235411888819017
+    },
+    {
+      "id": 49,
+      "text": "Password reset link goes to a 404 page.",
+      "label": "bug",
+      "raw": "bug",
+      "pred": "bug",
+      "correct": true,
+      "latency": 0.28700087421669296
+    },
+    {
+      "id": 50,
+      "text": "Do you have a guide for migrating from Trello?",
+      "label": "how_to",
+      "raw": "how_to",
+      "pred": "how_to",
+      "correct": true,
+      "latency": 0.36921264237581536
+    }
+  ]
+}

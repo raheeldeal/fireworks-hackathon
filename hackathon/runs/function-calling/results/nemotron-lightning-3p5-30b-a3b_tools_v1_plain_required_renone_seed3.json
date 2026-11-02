@@ -1,0 +1,6362 @@
+{
+ "model": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+ "prompt": "v1_plain",
+ "mode": "tools",
+ "shots": 0,
+ "tool_choice": "required",
+ "response_format": "none",
+ "seed": 3,
+ "mock": false,
+ "n": 200,
+ "accuracy": 0.91,
+ "accuracy_partial": 0.9525,
+ "invalid_outputs": 0,
+ "api_errors": 0,
+ "p50_latency_s": 0.391,
+ "p95_latency_s": 1.33,
+ "cost_per_1k_requests_usd": 0.0536,
+ "total_cost_usd": 0.01073,
+ "in_tokens": 175020,
+ "out_tokens": 9874,
+ "reasoning_tokens": 0,
+ "accuracy_by_source": {
+  "live_simple": 0.95,
+  "simple_python": 0.975,
+  "live_multiple": 0.814,
+  "multiple": 0.96
+ },
+ "wall_s": 27.0,
+ "capped": false,
+ "rows": [
+  {
+   "id": "live_simple_208-117-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Duane Whitaker"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "cast": "Duane Whitaker",
+     "directed_by": "Quentin Tarantino"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.368,
+   "in_tokens": 601,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": -0.0209,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-afbed9e9be51c545\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"cast\\\": \\\"Duane Whitaker\\\", \\\"directed_by\\\": \\\"Quentin Tarantino\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_187",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Seattle"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Seattle, Washington",
+     "include_temperature": true,
+     "include_humidity": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.378,
+   "in_tokens": 456,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": -0.0142,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-934d9c7522b7c586\", \"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"arguments\": \"{\\\"location\\\": \\\"Seattle, Washington\\\", \\\"include_temperature\\\": true, \\\"include_humidity\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_36",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "pred": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.305,
+   "in_tokens": 467,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0015,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-af2cf5634768b04b\", \"type\": \"function\", \"function\": {\"name\": \"get_shortest_driving_distance\", \"arguments\": \"{\\\"origin\\\": \\\"New York City\\\", \\\"destination\\\": \\\"Washington D.C.\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_700-164-16",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Hari Sama"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Hari Sama"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.294,
+   "in_tokens": 1098,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": -0.0029,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-baadb3d30677168d\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"directed_by\\\": \\\"Hari Sama\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_20-4-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "change_food",
+    "arguments": {
+     "food_item": "burger",
+     "modification_request": "no onions, extra cheese"
+    }
+   },
+   "pred": {
+    "name": "change_food",
+    "arguments": {
+     "food_item": "burger",
+     "modification_request": "no onions, extra cheese"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.353,
+   "in_tokens": 466,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0006,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a7050e204dcef04b\", \"type\": \"function\", \"function\": {\"name\": \"change_food\", \"arguments\": \"{\\\"food_item\\\": \\\"burger\\\", \\\"modification_request\\\": \\\"no onions, extra cheese\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_77",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "restaurant.find_nearby",
+    "arguments": {
+     "location": "Los Angeles, CA",
+     "dietary_preference": [
+      "Vegan"
+     ]
+    }
+   },
+   "pred": {
+    "name": "restaurant.find_nearby",
+    "arguments": {
+     "location": "Los Angeles, CA",
+     "dietary_preference": [
+      "Vegan"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.649,
+   "in_tokens": 459,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ac9f5c2150414abe\", \"type\": \"function\", \"function\": {\"name\": \"restaurant_find_nearby\", \"arguments\": \"{\\\"location\\\": \\\"Los Angeles, CA\\\", \\\"dietary_preference\\\": [\\\"Vegan\\\"]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_62",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "nature_park.find_nearby",
+    "arguments": {
+     "location": "Boston, MA",
+     "features": [
+      "Camping",
+      "Scenic View"
+     ]
+    }
+   },
+   "pred": {
+    "name": "nature_park.find_nearby",
+    "arguments": {
+     "location": "Boston, MA",
+     "features": [
+      "Camping",
+      "Scenic View"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.655,
+   "in_tokens": 610,
+   "out_tokens": 48,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8bb3daffd7d5dbcf\", \"type\": \"function\", \"function\": {\"name\": \"nature_park_find_nearby\", \"arguments\": \"{\\\"location\\\": \\\"Boston, MA\\\", \\\"features\\\": [\\\"Camping\\\", \\\"Scenic View\\\"]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_83",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "player_stats.get_all_time_goals",
+    "arguments": {
+     "player_name": "Lionel Messi",
+     "team_name": "Barcelona"
+    }
+   },
+   "pred": {
+    "name": "player_stats.get_all_time_goals",
+    "arguments": {
+     "player_name": "Lionel Messi",
+     "team_name": "Barcelona"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.362,
+   "in_tokens": 706,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": -0.0008,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a8e47176044862d3\", \"type\": \"function\", \"function\": {\"name\": \"player_stats_get_all_time_goals\", \"arguments\": \"{\\\"player_name\\\": \\\"Lionel Messi\\\", \\\"team_name\\\": \\\"Barcelona\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_43",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "biological.calc_energy",
+    "arguments": {
+     "mols": 5,
+     "substance": "C6H12O6"
+    }
+   },
+   "pred": {
+    "name": "biological.calc_energy",
+    "arguments": {
+     "mols": 5,
+     "substance": "C6H12O6"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.316,
+   "in_tokens": 716,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": -0.0011,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b2c2688a005554e7\", \"type\": \"function\", \"function\": {\"name\": \"biological_calc_energy\", \"arguments\": \"{\\\"mols\\\": 5, \\\"substance\\\": \\\"C6H12O6\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_507-149-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Flights_4_SearchOnewayFlight",
+    "arguments": {
+     "destination_airport": "New York",
+     "departure_date": "2023-03-14",
+     "number_of_tickets": 1
+    }
+   },
+   "pred": {
+    "name": "Flights_4_SearchOnewayFlight",
+    "arguments": {
+     "origin_airport": "LA",
+     "destination_airport": "New York",
+     "departure_date": "2025-03-14",
+     "seating_class": "Economy"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'origin_airport': got \"LA\", want one of []; arg 'departure_date': got \"2025-03-14\", want one of [\"2023-03-14\"]; missing arg 'number_of_tickets'",
+   "latency": 0.438,
+   "in_tokens": 2086,
+   "out_tokens": 84,
+   "reasoning_tokens": 0,
+   "confidence": -0.0073,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-88f5d61d4483db8a\", \"type\": \"function\", \"function\": {\"name\": \"Flights_4_SearchOnewayFlight\", \"arguments\": \"{\\\"origin_airport\\\": \\\"LA\\\", \\\"destination_airport\\\": \\\"New York\\\", \\\"departure_date\\\": \\\"2025-03-14\\\", \\\"seating_class\\\": \\\"Economy\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_923-191-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Chatuchak",
+     "start_available_date": "2024-03-19 13:00:00",
+     "service_id": 2
+    }
+   },
+   "pred": {
+    "name": "get_service_providers",
+    "arguments": {
+     "district_name": "Chatuchak",
+     "start_available_date": "2024-03-19 13:00:00",
+     "service_id": 2
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'province_id'",
+   "latency": 0.502,
+   "in_tokens": 1671,
+   "out_tokens": 69,
+   "reasoning_tokens": 0,
+   "confidence": -0.0182,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-82f70788dae169fc\", \"type\": \"function\", \"function\": {\"name\": \"get_service_providers\", \"arguments\": \"{\\\"district_name\\\": \\\"Chatuchak\\\", \\\"start_available_date\\\": \\\"2024-03-19 13:00:00\\\", \\\"service_id\\\": 2}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_980-215-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Phaya Thai District",
+     "is_excellent": true,
+     "service_id": 1
+    }
+   },
+   "pred": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Phaya Thai District",
+     "has_late_check_in": false,
+     "has_quality_problem": false
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'is_excellent'; missing arg 'service_id'",
+   "latency": 0.44,
+   "in_tokens": 1695,
+   "out_tokens": 68,
+   "reasoning_tokens": 0,
+   "confidence": -0.0071,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-90054ec9bf762427\", \"type\": \"function\", \"function\": {\"name\": \"get_service_providers\", \"arguments\": \"{\\\"province_id\\\": 1, \\\"district_name\\\": \\\"Phaya Thai District\\\", \\\"has_late_check_in\\\": false, \\\"has_quality_problem\\\": false}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_617-159-10",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Los Angeles, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Los Angeles, CA",
+     "date": "2025-03-10"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'date': got \"2025-03-10\", want one of [\"2023-03-10\"]",
+   "latency": 0.448,
+   "in_tokens": 1364,
+   "out_tokens": 61,
+   "reasoning_tokens": 0,
+   "confidence": -0.0054,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-aa87af30adad8efb\", \"type\": \"function\", \"function\": {\"name\": \"Events_3_FindEvents\", \"arguments\": \"{\\\"event_type\\\": \\\"Music\\\", \\\"city\\\": \\\"Los Angeles, CA\\\", \\\"date\\\": \\\"2025-03-10\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_181",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "soccer.get_last_match",
+    "arguments": {
+     "team_name": "Liverpool F.C.",
+     "include_stats": true
+    }
+   },
+   "pred": {
+    "name": "soccer.get_last_match",
+    "arguments": {
+     "team_name": "Liverpool F.C.",
+     "include_stats": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.366,
+   "in_tokens": 948,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0071,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8cbe655016f814b6\", \"type\": \"function\", \"function\": {\"name\": \"soccer_get_last_match\", \"arguments\": \"{\\\"team_name\\\": \\\"Liverpool F.C.\\\", \\\"include_stats\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_7",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "wildlife_population.assess_growth",
+    "arguments": {
+     "species": "deer",
+     "location": "Washington state",
+     "duration": 10
+    }
+   },
+   "pred": {
+    "name": "wildlife_population.assess_growth",
+    "arguments": {
+     "species": "deer",
+     "location": "Washington state",
+     "duration": 10
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.589,
+   "in_tokens": 676,
+   "out_tokens": 120,
+   "reasoning_tokens": 0,
+   "confidence": -0.0024,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-92e53c21577d0b9a\", \"type\": \"function\", \"function\": {\"name\": \"wildlife_population_assess_growth\", \"arguments\": \"{\\\"species\\\": \\\"deer\\\", \\\"location\\\": \\\"Washington state\\\", \\\"duration\\\": 10}\"}, \"name\": null}, {\"index\": 1, \"id\": \"chatcmpl-tool-bf4e67d8b91e6378\", \"type\": \"function\", \"function\": {\"name\": \"ecological_impact_analyze\", \"arguments\": \"{\\\"species\\\": \\\"deer\\",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_128-50-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "generate_human_image",
+    "arguments": {
+     "prompt": "a man wearing a red dress"
+    }
+   },
+   "pred": {
+    "name": "generate_image",
+    "arguments": {
+     "prompt": "a man wearing a red dress"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": false,
+   "name_ok": false,
+   "reason": "name: got generate_image, want generate_human_image",
+   "latency": 0.355,
+   "in_tokens": 1701,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": -0.0034,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9bb559173ed50d88\", \"type\": \"function\", \"function\": {\"name\": \"generate_image\", \"arguments\": \"{\\\"prompt\\\": \\\"a man wearing a red dress\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_467-145-18",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Portland, OR",
+     "free_entry": "False",
+     "category": "Historical Landmark",
+     "good_for_kids": "True"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Portland, OR",
+     "category": "Historical Landmark",
+     "good_for_kids": "True",
+     "free_entry": "False"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.446,
+   "in_tokens": 2240,
+   "out_tokens": 70,
+   "reasoning_tokens": 0,
+   "confidence": -0.0035,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b126afc130544912\", \"type\": \"function\", \"function\": {\"name\": \"Travel_1_FindAttractions\", \"arguments\": \"{\\\"location\\\": \\\"Portland, OR\\\", \\\"category\\\": \\\"Historical Landmark\\\", \\\"good_for_kids\\\": \\\"True\\\", \\\"free_entry\\\": \\\"False\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_42",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_final_temperature",
+    "arguments": {
+     "quantity1": 2,
+     "temperature1": 300,
+     "quantity2": 3,
+     "temperature2": 400
+    }
+   },
+   "pred": {
+    "name": "calculate_final_temperature",
+    "arguments": {
+     "quantity1": 2,
+     "temperature1": 300,
+     "quantity2": 3,
+     "temperature2": 400
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.425,
+   "in_tokens": 635,
+   "out_tokens": 64,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bd590d15b9d12c15\", \"type\": \"function\", \"function\": {\"name\": \"calculate_final_temperature\", \"arguments\": \"{\\\"quantity1\\\": 2, \\\"temperature1\\\": 300, \\\"quantity2\\\": 3, \\\"temperature2\\\": 400}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_273",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "museum.get_hours",
+    "arguments": {
+     "name": "Louvre Museum",
+     "location": "Paris"
+    }
+   },
+   "pred": {
+    "name": "museum.get_hours",
+    "arguments": {
+     "name": "Louvre Museum",
+     "location": "Paris"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.298,
+   "in_tokens": 451,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": -0.0022,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b16e01f9b6e6372d\", \"type\": \"function\", \"function\": {\"name\": \"museum_get_hours\", \"arguments\": \"{\\\"name\\\": \\\"Louvre Museum\\\", \\\"location\\\": \\\"Paris\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_292",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "compose_melody",
+    "arguments": {
+     "progression": [
+      "C",
+      "F",
+      "G"
+     ],
+     "measures": 4
+    }
+   },
+   "pred": {
+    "name": "compose_melody",
+    "arguments": {
+     "progression": [
+      "C",
+      "F",
+      "G"
+     ],
+     "measures": 4,
+     "instrument": "Piano"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.34,
+   "in_tokens": 475,
+   "out_tokens": 57,
+   "reasoning_tokens": 0,
+   "confidence": -0.0028,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8fa3ee969cb4bfa1\", \"type\": \"function\", \"function\": {\"name\": \"compose_melody\", \"arguments\": \"{\\\"progression\\\": [\\\"C\\\", \\\"F\\\", \\\"G\\\"], \\\"measures\\\": 4, \\\"instrument\\\": \\\"Piano\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_47-18-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "order_status_check",
+    "arguments": {
+     "order_id": "123456789",
+     "product": "Smart LED TV"
+    }
+   },
+   "pred": {
+    "name": "order_status_check",
+    "arguments": {
+     "order_id": "123456789",
+     "product": "Smart LED TV"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.958,
+   "in_tokens": 989,
+   "out_tokens": 46,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a6cab71beb258c4c\", \"type\": \"function\", \"function\": {\"name\": \"order_status_check\", \"arguments\": \"{\\\"order_id\\\": \\\"123456789\\\", \\\"product\\\": \\\"Smart LED TV\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_342",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "game_list.get_games",
+    "arguments": {
+     "release_year": 2019,
+     "multiplayer": true,
+     "ESRB_rating": "Everyone"
+    }
+   },
+   "pred": {
+    "name": "game_list.get_games",
+    "arguments": {
+     "release_year": 2019,
+     "multiplayer": true,
+     "ESRB_rating": "Everyone"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.421,
+   "in_tokens": 469,
+   "out_tokens": 54,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a789cd893ff5caef\", \"type\": \"function\", \"function\": {\"name\": \"game_list_get_games\", \"arguments\": \"{\\\"release_year\\\": 2019, \\\"multiplayer\\\": true, \\\"ESRB_rating\\\": \\\"Everyone\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_535-151-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Belvedere, CA"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Belvedere, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.445,
+   "in_tokens": 781,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0155,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b09233db9e4cd40c\", \"type\": \"function\", \"function\": {\"name\": \"Events_3_FindEvents\", \"arguments\": \"{\\\"event_type\\\": \\\"Music\\\", \\\"city\\\": \\\"Belvedere, CA\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_173-99-7",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "start calc"
+    }
+   },
+   "pred": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "start calc"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.503,
+   "in_tokens": 431,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a170ae543f74ce3a\", \"type\": \"function\", \"function\": {\"name\": \"cmd_controller_execute\", \"arguments\": \"{\\\"command\\\": \\\"start calc\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_708-164-24",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Steven Spielberg",
+     "genre": "Sci-fi"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Sci-fi",
+     "directed_by": "Steven Spielberg"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.567,
+   "in_tokens": 1093,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0186,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-82e402253bcc7f7d\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"genre\\\": \\\"Sci-fi\\\", \\\"directed_by\\\": \\\"Steven Spielberg\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_694-164-10",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "cast": "Javier Bardem"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "cast": "Javier Bardem"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.558,
+   "in_tokens": 1102,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": -0.0033,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-89760c6364da9ea6\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"cast\\\": \\\"Javier Bardem\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_238-125-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Dil Nu artist:Maninder Buttar"
+    }
+   },
+   "pred": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Dil Nu artist:Maninder Buttar"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.579,
+   "in_tokens": 519,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0009,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b5c64ca51e607fb0\", \"type\": \"function\", \"function\": {\"name\": \"play_spotify_song\", \"arguments\": \"{\\\"query\\\": \\\"track:Dil Nu artist:Maninder Buttar\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_104",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "pred": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "destination": "Washington D.C.",
+     "origin": "New York City"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.32,
+   "in_tokens": 853,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0146,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b8a0183ed9f93d49\", \"type\": \"function\", \"function\": {\"name\": \"get_shortest_driving_distance\", \"arguments\": \"{\\\"destination\\\": \\\"Washington D.C.\\\", \\\"origin\\\": \\\"New York City\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_135",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_return_on_investment",
+    "arguments": {
+     "purchase_price": 20,
+     "sale_price": 25,
+     "dividend": 2
+    }
+   },
+   "pred": {
+    "name": "calculate_return_on_investment",
+    "arguments": {
+     "purchase_price": 20,
+     "sale_price": 25,
+     "dividend": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.427,
+   "in_tokens": 486,
+   "out_tokens": 54,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b904fdded9ab14d7\", \"type\": \"function\", \"function\": {\"name\": \"calculate_return_on_investment\", \"arguments\": \"{\\\"purchase_price\\\": 20, \\\"sale_price\\\": 25, \\\"dividend\\\": 2}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_199",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "forest_growth_forecast",
+    "arguments": {
+     "location": "Yellowstone",
+     "years": 5,
+     "include_human_impact": true
+    }
+   },
+   "pred": {
+    "name": "forest_growth_forecast",
+    "arguments": {
+     "location": "Yellowstone",
+     "years": 5,
+     "include_human_impact": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.38,
+   "in_tokens": 737,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9bdcac6b2bed6e95\", \"type\": \"function\", \"function\": {\"name\": \"forest_growth_forecast\", \"arguments\": \"{\\\"location\\\": \\\"Yellowstone\\\", \\\"years\\\": 5, \\\"include_human_impact\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_33",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_directions",
+    "arguments": {
+     "start_location": "Sydney",
+     "end_location": "Melbourne"
+    }
+   },
+   "pred": {
+    "name": "get_directions",
+    "arguments": {
+     "start_location": "Sydney",
+     "end_location": "Melbourne",
+     "route_type": "fastest"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.375,
+   "in_tokens": 471,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b4e5367b265a2835\", \"type\": \"function\", \"function\": {\"name\": \"get_directions\", \"arguments\": \"{\\\"start_location\\\": \\\"Sydney\\\", \\\"end_location\\\": \\\"Melbourne\\\", \\\"route_type\\\": \\\"fastest\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_122-46-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_time_to_collision",
+    "arguments": {
+     "ego_velocity": 50.0,
+     "ego_acceleration": -2.0,
+     "leading_object_velocity": 30.0,
+     "leading_object_acceleration": -1.0,
+     "initial_distance": 100.0
+    }
+   },
+   "pred": {
+    "name": "get_time_to_collision",
+    "arguments": {
+     "ego_velocity": 50,
+     "ego_acceleration": -2,
+     "leading_object_velocity": 30,
+     "leading_object_acceleration": -1,
+     "initial_distance": 100
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.595,
+   "in_tokens": 1564,
+   "out_tokens": 83,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-98fffe68fff6104f\", \"type\": \"function\", \"function\": {\"name\": \"get_time_to_collision\", \"arguments\": \"{\\\"ego_velocity\\\": 50, \\\"ego_acceleration\\\": -2, \\\"leading_object_velocity\\\": 30, \\\"leading_object_acceleration\\\": -1, \\\"initial_distance\\\": 100}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_88-49-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "log_food",
+    "arguments": {
+     "food_name": "chai tea",
+     "portion_amount": 16.0,
+     "portion_unit": "ounces",
+     "meal_name": "snack"
+    }
+   },
+   "pred": {
+    "name": "log_food",
+    "arguments": {
+     "food_name": "chai tea",
+     "portion_amount": 16,
+     "portion_unit": "ounces",
+     "meal_name": "snack"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.409,
+   "in_tokens": 603,
+   "out_tokens": 63,
+   "reasoning_tokens": 0,
+   "confidence": -0.0057,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8bd57d98a5c056ff\", \"type\": \"function\", \"function\": {\"name\": \"log_food\", \"arguments\": \"{\\\"food_name\\\": \\\"chai tea\\\", \\\"portion_amount\\\": 16, \\\"portion_unit\\\": \\\"ounces\\\", \\\"meal_name\\\": \\\"snack\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_109-66-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "record",
+    "arguments": {
+     "faq_auto_withdraw_start": [
+      "Can I schedule automatic withdrawals for different dates?"
+     ],
+     "payment_information_start": [
+      "How much do I owe on my home equity loan?"
+     ],
+     "pma_income_requirements_start": [
+      "Can I use bonuses or commissions as part of my income for a loan application?",
+      "Will my income be verified during the loan application process?",
+      "Is there a minimum income threshold for loan approval?"
+     ]
+    }
+   },
+   "pred": {
+    "name": "record",
+    "arguments": {
+     "pma_income_requirements_start": [
+      "Can I use bonuses or commissions as part of my income for a loan application?",
+      "Will my income be verified during the loan application process?",
+      "Is there a minimum income threshold for loan approval?"
+     ],
+     "faq_auto_withdraw_start": [
+      "Can I schedule automatic withdrawals for different dates?"
+     ],
+     "payment_information_start": [
+      "How much do I owe on my home equity loan?"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.552,
+   "in_tokens": 662,
+   "out_tokens": 115,
+   "reasoning_tokens": 0,
+   "confidence": -0.0022,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8dd5a70f3539df8f\", \"type\": \"function\", \"function\": {\"name\": \"record\", \"arguments\": \"{\\\"pma_income_requirements_start\\\": [\\\"Can I use bonuses or commissions as part of my income for a loan application?\\\", \\\"Will my income be verified during the loan application process?\\\", \\\"Is there a minimum income threshold for loan approval?\\\"], \\\"faq_auto_withdraw_start\\\": [\\",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_769-171-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Services_1_FindProvider",
+    "arguments": {
+     "city": "Mill Valley, CA"
+    }
+   },
+   "pred": {
+    "name": "Services_1_FindProvider",
+    "arguments": {
+     "city": "Mill Valley, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.29,
+   "in_tokens": 1649,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": -0.0025,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-99f36be194ff8669\", \"type\": \"function\", \"function\": {\"name\": \"Services_1_FindProvider\", \"arguments\": \"{\\\"city\\\": \\\"Mill Valley, CA\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_19-4-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "ControlAppliance.execute",
+    "arguments": {
+     "command": "거실, 에어컨, 실행"
+    }
+   },
+   "pred": {
+    "name": "ControlAppliance.execute",
+    "arguments": {
+     "command": "거실, 에어컨, 실행"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.343,
+   "in_tokens": 1663,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8e55f01470644a55\", \"type\": \"function\", \"function\": {\"name\": \"ControlAppliance_execute\", \"arguments\": \"{\\\"command\\\": \\\"\\uac70\\uc2e4, \\uc5d0\\uc5b4\\ucee8, \\uc2e4\\ud589\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_125",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "predict_house_price",
+    "arguments": {
+     "area": 2500,
+     "rooms": 5,
+     "year": 1990,
+     "location": "San Francisco"
+    }
+   },
+   "pred": {
+    "name": "predict_house_price",
+    "arguments": {
+     "area": 2500,
+     "rooms": 5,
+     "year": 1990,
+     "location": "San Francisco"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.407,
+   "in_tokens": 507,
+   "out_tokens": 63,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9b85fa3034616884\", \"type\": \"function\", \"function\": {\"name\": \"predict_house_price\", \"arguments\": \"{\\\"area\\\": 2500, \\\"rooms\\\": 5, \\\"year\\\": 1990, \\\"location\\\": \\\"San Francisco\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_89",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "recipe_search",
+    "arguments": {
+     "ingredients": [
+      "chicken",
+      "mushrooms"
+     ],
+     "calories": 500
+    }
+   },
+   "pred": {
+    "name": "recipe_search",
+    "arguments": {
+     "ingredients": [
+      "chicken",
+      "mushrooms"
+     ],
+     "calories": 500,
+     "meal": "lunch"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.372,
+   "in_tokens": 851,
+   "out_tokens": 55,
+   "reasoning_tokens": 0,
+   "confidence": -0.0003,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8f4c60c5b3c66fc0\", \"type\": \"function\", \"function\": {\"name\": \"recipe_search\", \"arguments\": \"{\\\"ingredients\\\": [\\\"chicken\\\", \\\"mushrooms\\\"], \\\"calories\\\": 500, \\\"meal\\\": \\\"lunch\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_136",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "get_crime_rate",
+    "arguments": {
+     "city": "San Francisco",
+     "state": "California",
+     "type": "violent",
+     "year": 2020
+    }
+   },
+   "pred": {
+    "name": "get_crime_rate",
+    "arguments": {
+     "city": "San Francisco",
+     "state": "California",
+     "type": "violent crime",
+     "year": 2020
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'type': got \"violent crime\", want one of [\"violent\", \"Violent\"]",
+   "latency": 0.399,
+   "in_tokens": 670,
+   "out_tokens": 61,
+   "reasoning_tokens": 0,
+   "confidence": -0.0074,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9f59928a38f2a09c\", \"type\": \"function\", \"function\": {\"name\": \"get_crime_rate\", \"arguments\": \"{\\\"city\\\": \\\"San Francisco\\\", \\\"state\\\": \\\"California\\\", \\\"type\\\": \\\"violent crime\\\", \\\"year\\\": 2020}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_127-82-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "telemetry.flowrules.interfaceInfo.get",
+    "arguments": {
+     "fabricName": "test-de",
+     "nodeId": 5,
+     "podId": 1,
+     "interfaceType": "ethernet",
+     "infoType": "status"
+    }
+   },
+   "pred": {
+    "name": "telemetry.flowrules.interfaceInfo.get",
+    "arguments": {
+     "fabricName": "test-de",
+     "nodeId": 5,
+     "podId": 1,
+     "interfaceType": "ethernet",
+     "infoType": "status"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.705,
+   "in_tokens": 637,
+   "out_tokens": 77,
+   "reasoning_tokens": 0,
+   "confidence": -0.0004,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a9dbea5ee8930bb6\", \"type\": \"function\", \"function\": {\"name\": \"telemetry_flowrules_interfaceInfo_get\", \"arguments\": \"{\\\"fabricName\\\": \\\"test-de\\\", \\\"nodeId\\\": 5, \\\"podId\\\": 1, \\\"interfaceType\\\": \\\"ethernet\\\", \\\"infoType\\\": \\\"status\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_175",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "sports_ranking.get_top_player",
+    "arguments": {
+     "sport": "tennis",
+     "gender": "women"
+    }
+   },
+   "pred": {
+    "name": "sports_ranking.get_top_player",
+    "arguments": {
+     "sport": "tennis",
+     "gender": "women"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.303,
+   "in_tokens": 978,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0146,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a576291ef81e6dad\", \"type\": \"function\", \"function\": {\"name\": \"sports_ranking_get_top_player\", \"arguments\": \"{\\\"sport\\\": \\\"tennis\\\", \\\"gender\\\": \\\"women\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_76",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "sculpture.create_custom",
+    "arguments": {
+     "item": "horse",
+     "material": "Bronze"
+    }
+   },
+   "pred": {
+    "name": "sculpture.create_custom",
+    "arguments": {
+     "item": "horse",
+     "material": "Bronze"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.333,
+   "in_tokens": 663,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0015,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-abe7f9bbeac4592c\", \"type\": \"function\", \"function\": {\"name\": \"sculpture_create_custom\", \"arguments\": \"{\\\"item\\\": \\\"horse\\\", \\\"material\\\": \\\"Bronze\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_108",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "run_linear_regression",
+    "arguments": {
+     "predictors": [
+      "Age",
+      "Income",
+      "Education"
+     ],
+     "target": "Purchase_Amount",
+     "standardize": true
+    }
+   },
+   "pred": {
+    "name": "run_linear_regression",
+    "arguments": {
+     "predictors": [
+      "Age",
+      "Income",
+      "Education"
+     ],
+     "target": "Purchase_Amount",
+     "standardize": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.384,
+   "in_tokens": 483,
+   "out_tokens": 58,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-96a08e0951322fad\", \"type\": \"function\", \"function\": {\"name\": \"run_linear_regression\", \"arguments\": \"{\\\"predictors\\\": [\\\"Age\\\", \\\"Income\\\", \\\"Education\\\"], \\\"target\\\": \\\"Purchase_Amount\\\", \\\"standardize\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_91",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "recipe.find",
+    "arguments": {
+     "mainIngredient": "apple pie",
+     "ingredientLimit": 4
+    }
+   },
+   "pred": {
+    "name": "recipe.find",
+    "arguments": {
+     "mainIngredient": "apple",
+     "ingredientLimit": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.399,
+   "in_tokens": 566,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": -0.0127,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a49eb596d8e2acca\", \"type\": \"function\", \"function\": {\"name\": \"recipe_find\", \"arguments\": \"{\\\"mainIngredient\\\": \\\"apple\\\", \\\"ingredientLimit\\\": 4}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_61-29-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "todo",
+    "arguments": {
+     "type": "add",
+     "content": "go to gym tomorrow."
+    }
+   },
+   "pred": {
+    "name": "todo",
+    "arguments": {
+     "type": "add",
+     "content": "go to gym tomorrow."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.278,
+   "in_tokens": 463,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": -0.0028,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9d470540b1af44bf\", \"type\": \"function\", \"function\": {\"name\": \"todo\", \"arguments\": \"{\\\"type\\\": \\\"add\\\", \\\"content\\\": \\\"go to gym tomorrow.\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_183-108-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "getDataForProfessional",
+    "arguments": {
+     "avg_rating": 2.0,
+     "province_id": 1,
+     "service_id": 1
+    }
+   },
+   "pred": {
+    "name": "getDataForProfessional",
+    "arguments": {
+     "province_id": 1,
+     "avg_rating": 2,
+     "service_id": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.97,
+   "in_tokens": 632,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": -0.0073,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8cd379cf33bb5204\", \"type\": \"function\", \"function\": {\"name\": \"getDataForProfessional\", \"arguments\": \"{\\\"province_id\\\": 1, \\\"avg_rating\\\": 2, \\\"service_id\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_329-132-19",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "quentin tarantino",
+     "cast": "eric stoltz"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Eric Stoltz"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.903,
+   "in_tokens": 1406,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": -0.015,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b928a41392751649\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"directed_by\\\": \\\"Quentin Tarantino\\\", \\\"cast\\\": \\\"Eric Stoltz\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_353",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "find_recipes",
+    "arguments": {
+     "diet": "gluten-free",
+     "meal_type": "dinner"
+    }
+   },
+   "pred": {
+    "name": "find_recipes",
+    "arguments": {
+     "diet": "gluten-free",
+     "meal_type": "dinner"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.061,
+   "in_tokens": 481,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-be3ecf01064e4109\", \"type\": \"function\", \"function\": {\"name\": \"find_recipes\", \"arguments\": \"{\\\"diet\\\": \\\"gluten-free\\\", \\\"meal_type\\\": \\\"dinner\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_165",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "guitar_price.find",
+    "arguments": {
+     "model": "Gibson Les Paul",
+     "condition": "Excellent",
+     "location": "Chicago"
+    }
+   },
+   "pred": {
+    "name": "guitar_price.find",
+    "arguments": {
+     "model": "Gibson Les Paul",
+     "condition": "Excellent",
+     "location": "Chicago"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.425,
+   "in_tokens": 763,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": -0.0009,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b35f1cd448518954\", \"type\": \"function\", \"function\": {\"name\": \"guitar_price_find\", \"arguments\": \"{\\\"model\\\": \\\"Gibson Les Paul\\\", \\\"condition\\\": \\\"Excellent\\\", \\\"location\\\": \\\"Chicago\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_178",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_lawsuit_details",
+    "arguments": {
+     "case_number": "LAX2019080202",
+     "court_location": "Los Angeles"
+    }
+   },
+   "pred": {
+    "name": "get_lawsuit_details",
+    "arguments": {
+     "case_number": "LAX2019080202",
+     "court_location": "Los Angeles"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.395,
+   "in_tokens": 515,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": -0.0003,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-829cc6965a6fc6dc\", \"type\": \"function\", \"function\": {\"name\": \"get_lawsuit_details\", \"arguments\": \"{\\\"case_number\\\": \\\"LAX2019080202\\\", \\\"court_location\\\": \\\"Los Angeles\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_142",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_stock_price",
+    "arguments": {
+     "company_name": "Amazon",
+     "date": "2022-03-11"
+    }
+   },
+   "pred": {
+    "name": "get_stock_price",
+    "arguments": {
+     "company_name": "Amazon",
+     "date": "2022-03-11",
+     "exchange": "NASDAQ"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.354,
+   "in_tokens": 478,
+   "out_tokens": 57,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9c5f807f5044ae17\", \"type\": \"function\", \"function\": {\"name\": \"get_stock_price\", \"arguments\": \"{\\\"company_name\\\": \\\"Amazon\\\", \\\"date\\\": \\\"2022-03-11\\\", \\\"exchange\\\": \\\"NASDAQ\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_190",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "book_hotel",
+    "arguments": {
+     "hotel_name": "Hilton Hotel",
+     "location": "Chicago",
+     "room_type": "single",
+     "start_date": "2022-12-10",
+     "nights": 2
+    }
+   },
+   "pred": {
+    "name": "book_hotel",
+    "arguments": {
+     "hotel_name": "Hilton Hotel",
+     "location": "Chicago",
+     "room_type": "single",
+     "start_date": "2022-12-10",
+     "nights": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.421,
+   "in_tokens": 801,
+   "out_tokens": 81,
+   "reasoning_tokens": 0,
+   "confidence": -0.005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a68ad216ff58907c\", \"type\": \"function\", \"function\": {\"name\": \"book_hotel\", \"arguments\": \"{\\\"hotel_name\\\": \\\"Hilton Hotel\\\", \\\"location\\\": \\\"Chicago\\\", \\\"room_type\\\": \\\"single\\\", \\\"start_date\\\": \\\"2022-12-10\\\", \\\"nights\\\": 2}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_243",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_discoverer",
+    "arguments": {
+     "discovery": "neutron",
+     "detail": true
+    }
+   },
+   "pred": {
+    "name": "get_discoverer",
+    "arguments": {
+     "discovery": "neutron",
+     "detail": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.319,
+   "in_tokens": 429,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": -0.0172,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b71114b36aa0ef81\", \"type\": \"function\", \"function\": {\"name\": \"get_discoverer\", \"arguments\": \"{\\\"discovery\\\": \\\"neutron\\\", \\\"detail\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_316",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_sport_ranking",
+    "arguments": {
+     "sport": "Tennis",
+     "player_name": "Serena Williams"
+    }
+   },
+   "pred": {
+    "name": "get_sport_ranking",
+    "arguments": {
+     "sport": "Tennis",
+     "player_name": "Serena Williams"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.355,
+   "in_tokens": 468,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0063,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-adc09af391ffe229\", \"type\": \"function\", \"function\": {\"name\": \"get_sport_ranking\", \"arguments\": \"{\\\"sport\\\": \\\"Tennis\\\", \\\"player_name\\\": \\\"Serena Williams\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_869-182-6",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "San Rafael, CA",
+     "show_type": "imax"
+    }
+   },
+   "pred": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "San Rafael, CA",
+     "show_type": "imax"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.352,
+   "in_tokens": 2138,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0028,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-84edd32ef82448aa\", \"type\": \"function\", \"function\": {\"name\": \"Movies_1_FindMovies\", \"arguments\": \"{\\\"location\\\": \\\"San Rafael, CA\\\", \\\"show_type\\\": \\\"imax\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_77",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "artwork_search.find",
+    "arguments": {
+     "type": "sculpture",
+     "location": "New York"
+    }
+   },
+   "pred": {
+    "name": "artwork_search.find",
+    "arguments": {
+     "type": "sculpture",
+     "location": "New York",
+     "era": "contemporary"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.422,
+   "in_tokens": 722,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": -0.0021,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-994677368c941617\", \"type\": \"function\", \"function\": {\"name\": \"artwork_search_find\", \"arguments\": \"{\\\"type\\\": \\\"sculpture\\\", \\\"location\\\": \\\"New York\\\", \\\"era\\\": \\\"contemporary\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_121-77-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "generate_chart",
+    "arguments": {
+     "data_labels": [
+      "Software Engineer",
+      "Graphic Designer",
+      "Data Analyst",
+      "Sales Manager",
+      "Nurse"
+     ],
+     "data_values": [
+      90000,
+      50000,
+      70000,
+      60000,
+      80000
+     ]
+    }
+   },
+   "pred": {
+    "name": "generate_chart",
+    "arguments": {
+     "data_labels": [
+      "Software Engineer",
+      "Graphic Designer",
+      "Data Analyst",
+      "Sales Manager",
+      "Nurse"
+     ],
+     "data_values": [
+      90000,
+      50000,
+      70000,
+      60000,
+      80000
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.41,
+   "in_tokens": 557,
+   "out_tokens": 88,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9b4ffa0b204621b8\", \"type\": \"function\", \"function\": {\"name\": \"generate_chart\", \"arguments\": \"{\\\"data_labels\\\": [\\\"Software Engineer\\\", \\\"Graphic Designer\\\", \\\"Data Analyst\\\", \\\"Sales Manager\\\", \\\"Nurse\\\"], \\\"data_values\\\": [90000, 50000, 70000, 60000, 80000]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_247-129-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "pred": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.289,
+   "in_tokens": 342,
+   "out_tokens": 19,
+   "reasoning_tokens": 0,
+   "confidence": -0.0011,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-988ef1b1344ab3d3\", \"type\": \"function\", \"function\": {\"name\": \"version_api_VersionApi_get_version\", \"arguments\": \"{}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_550-152-12",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Denver, CO",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 2,
+     "in_unit_laundry": true
+    }
+   },
+   "pred": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Denver, CO",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 2,
+     "in_unit_laundry": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.573,
+   "in_tokens": 1208,
+   "out_tokens": 87,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-afe2b7b311ce344f\", \"type\": \"function\", \"function\": {\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": \"{\\\"area\\\": \\\"Denver, CO\\\", \\\"intent\\\": \\\"rent\\\", \\\"number_of_beds\\\": 2, \\\"number_of_baths\\\": 2, \\\"in_unit_laundry\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_730-167-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "San Leandro, California",
+     "intent": "buy",
+     "number_of_beds": 3,
+     "number_of_baths": 2,
+     "in_unit_laundry": "True"
+    }
+   },
+   "pred": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "San Leandro, CA",
+     "intent": "buy",
+     "number_of_beds": 3,
+     "number_of_baths": 2,
+     "in_unit_laundry": "True"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.539,
+   "in_tokens": 1361,
+   "out_tokens": 87,
+   "reasoning_tokens": 0,
+   "confidence": -0.0022,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a118f5d154e037e8\", \"type\": \"function\", \"function\": {\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": \"{\\\"area\\\": \\\"San Leandro, CA\\\", \\\"intent\\\": \\\"buy\\\", \\\"number_of_beds\\\": 3, \\\"number_of_baths\\\": 2, \\\"in_unit_laundry\\\": \\\"True\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_7-3-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "create_workspace",
+    "arguments": {
+     "name": "DevelopersHub",
+     "base_branch": "master"
+    }
+   },
+   "pred": {
+    "name": "create_workspace",
+    "arguments": {
+     "name": "DevelopersHub",
+     "base_branch": "master"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.338,
+   "in_tokens": 1020,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-80785e8a7463a7e6\", \"type\": \"function\", \"function\": {\"name\": \"create_workspace\", \"arguments\": \"{\\\"name\\\": \\\"DevelopersHub\\\", \\\"base_branch\\\": \\\"master\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_104-43-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "open_project",
+    "arguments": {
+     "path": "/foo/bar"
+    }
+   },
+   "pred": {
+    "name": "open_project",
+    "arguments": {
+     "path": "/foo/bar"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.552,
+   "in_tokens": 2269,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": -0.0104,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9534ca6968b51928\", \"type\": \"function\", \"function\": {\"name\": \"open_project\", \"arguments\": \"{\\\"path\\\": \\\"/foo/bar\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_588-157-9",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Horror",
+     "starring": "Arthur Lowe"
+    }
+   },
+   "pred": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Horror",
+     "starring": "Arthur Lowe"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.394,
+   "in_tokens": 822,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-928b1e9b0427fd39\", \"type\": \"function\", \"function\": {\"name\": \"Media_3_FindMovies\", \"arguments\": \"{\\\"genre\\\": \\\"Horror\\\", \\\"starring\\\": \\\"Arthur Lowe\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_234-123-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "book_flight",
+    "arguments": {
+     "departure_location": "New York, NY",
+     "departure_time": "20/06/2022 17:00"
+    }
+   },
+   "pred": {
+    "name": "book_flight",
+    "arguments": {
+     "departure_location": "New York, NY",
+     "departure_time": "20/06/2022 17:00"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.355,
+   "in_tokens": 567,
+   "out_tokens": 59,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-86eee75e411cc263\", \"type\": \"function\", \"function\": {\"name\": \"book_flight\", \"arguments\": \"{\\\"departure_location\\\": \\\"New York, NY\\\", \\\"departure_time\\\": \\\"20/06/2022 17:00\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_12",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "pred": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.286,
+   "in_tokens": 407,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": -0.0026,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-91be410b6a829d2a\", \"type\": \"function\", \"function\": {\"name\": \"geometry_circumference\", \"arguments\": \"{\\\"radius\\\": 3}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_133",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_mutual_fund_balance",
+    "arguments": {
+     "investment_amount": 50000,
+     "annual_yield": 0.05,
+     "years": 3
+    }
+   },
+   "pred": {
+    "name": "calculate_mutual_fund_balance",
+    "arguments": {
+     "investment_amount": 50000,
+     "annual_yield": 0.05,
+     "years": 3
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.302,
+   "in_tokens": 609,
+   "out_tokens": 61,
+   "reasoning_tokens": 0,
+   "confidence": -0.0104,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b3938e1f2c76d36a\", \"type\": \"function\", \"function\": {\"name\": \"calculate_mutual_fund_balance\", \"arguments\": \"{\\\"investment_amount\\\": 50000, \\\"annual_yield\\\": 0.05, \\\"years\\\": 3}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_168-68-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_adriel_profile",
+    "arguments": {
+     "user_id": 12345,
+     "include_private": true
+    }
+   },
+   "pred": {
+    "name": "get_adriel_profile",
+    "arguments": {
+     "user_id": 12345
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'include_private'",
+   "latency": 0.317,
+   "in_tokens": 1354,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": -0.0097,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-918b4383d0794d3b\", \"type\": \"function\", \"function\": {\"name\": \"get_adriel_profile\", \"arguments\": \"{\\\"user_id\\\": 12345}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_652-161-20",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "track": "any",
+     "artist": "Outsider"
+    }
+   },
+   "pred": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "track": "Outsider",
+     "artist": "Outsider",
+     "device": "Living room"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'track': got \"Outsider\", want one of [\"any\"]",
+   "latency": 0.397,
+   "in_tokens": 1693,
+   "out_tokens": 52,
+   "reasoning_tokens": 0,
+   "confidence": -0.0222,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b4c591da5f98f88a\", \"type\": \"function\", \"function\": {\"name\": \"Music_3_PlayMedia\", \"arguments\": \"{\\\"track\\\": \\\"Outsider\\\", \\\"artist\\\": \\\"Outsider\\\", \\\"device\\\": \\\"Living room\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_294-130-3",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Hotels_2_SearchHouse",
+    "arguments": {
+     "where_to": "Kuala Lumpur, Malaysia",
+     "number_of_adults": 1,
+     "rating": 3.8
+    }
+   },
+   "pred": {
+    "name": "Hotels_2_SearchHouse",
+    "arguments": {
+     "where_to": "Kuala Lumpur, Malaysia",
+     "rating": 3.8,
+     "number_of_adults": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.514,
+   "in_tokens": 902,
+   "out_tokens": 60,
+   "reasoning_tokens": 0,
+   "confidence": -0.0038,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a68458334e3b8e88\", \"type\": \"function\", \"function\": {\"name\": \"Hotels_2_SearchHouse\", \"arguments\": \"{\\\"where_to\\\": \\\"Kuala Lumpur, Malaysia\\\", \\\"rating\\\": 3.8, \\\"number_of_adults\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_217",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "fMRI.analyze",
+    "arguments": {
+     "data_source": "~/data/myfMRI.nii",
+     "sequence_type": "multi-band",
+     "smooth": 6,
+     "voxel_size": 2
+    }
+   },
+   "pred": {
+    "name": "fMRI.analyze",
+    "arguments": {
+     "data_source": "~/data/myfMRI.nii",
+     "sequence_type": "multi-band",
+     "smooth": 6,
+     "voxel_size": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.365,
+   "in_tokens": 522,
+   "out_tokens": 67,
+   "reasoning_tokens": 0,
+   "confidence": -0.0068,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a2505f86d15c6253\", \"type\": \"function\", \"function\": {\"name\": \"fMRI_analyze\", \"arguments\": \"{\\\"data_source\\\": \\\"~/data/myfMRI.nii\\\", \\\"sequence_type\\\": \\\"multi-band\\\", \\\"smooth\\\": 6, \\\"voxel_size\\\": 2}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_62-29-2",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "todo",
+    "arguments": {
+     "type": "delete",
+     "content": "ravi"
+    }
+   },
+   "pred": {
+    "name": "todo",
+    "arguments": {
+     "type": "delete",
+     "content": "ravi"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.307,
+   "in_tokens": 472,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a3691b98269cd93f\", \"type\": \"function\", \"function\": {\"name\": \"todo\", \"arguments\": \"{\\\"type\\\": \\\"delete\\\", \\\"content\\\": \\\"ravi\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_79",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "exhibition_info",
+    "arguments": {
+     "museum_name": "Museum of Modern Art"
+    }
+   },
+   "pred": {
+    "name": "exhibition_info",
+    "arguments": {
+     "museum_name": "Museum of Modern Art",
+     "month": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.283,
+   "in_tokens": 552,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0111,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bc08124ec2ccfb9e\", \"type\": \"function\", \"function\": {\"name\": \"exhibition_info\", \"arguments\": \"{\\\"museum_name\\\": \\\"Museum of Modern Art\\\", \\\"month\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_230-103-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_contact_information",
+    "arguments": {
+     "name": "Liam Neeson"
+    }
+   },
+   "pred": {
+    "name": "get_contact_information",
+    "arguments": {
+     "name": "Liam Neeson"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.312,
+   "in_tokens": 765,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": -0.0004,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a1daad5f30cf1ab5\", \"type\": \"function\", \"function\": {\"name\": \"get_contact_information\", \"arguments\": \"{\\\"name\\\": \\\"Liam Neeson\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_128-83-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "requests.get",
+    "arguments": {
+     "url": "https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?fabricName=PEK-ACI",
+     "fabricName": "PEK-ACI"
+    }
+   },
+   "pred": {
+    "name": "requests.get",
+    "arguments": {
+     "url": "https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?fabricName={fabricName}",
+     "fabricName": "PEK-ACI"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'url': got \"https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemet, want one of [\"https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?",
+   "latency": 0.462,
+   "in_tokens": 572,
+   "out_tokens": 81,
+   "reasoning_tokens": 0,
+   "confidence": -0.0104,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a19044be455a45ba\", \"type\": \"function\", \"function\": {\"name\": \"requests_get\", \"arguments\": \"{\\\"url\\\": \\\"https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?fabricName={fabricName}\\\", \\\"fabricName\\\": \\\"PEK-ACI\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_823-177-6",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_BuyEventTickets",
+    "arguments": {
+     "event_name": "Brockhampton",
+     "number_of_tickets": 4,
+     "date": "2023-03-13",
+     "city": "Berkeley, CA"
+    }
+   },
+   "pred": {
+    "name": "Events_3_BuyEventTickets",
+    "arguments": {
+     "event_name": "Brockhampton",
+     "number_of_tickets": 4,
+     "date": "2025-03-13",
+     "city": "Berkeley, CA"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'date': got \"2025-03-13\", want one of [\"2023-03-13\"]",
+   "latency": 0.699,
+   "in_tokens": 1479,
+   "out_tokens": 77,
+   "reasoning_tokens": 0,
+   "confidence": -0.0019,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a79188c7abdab24f\", \"type\": \"function\", \"function\": {\"name\": \"Events_3_BuyEventTickets\", \"arguments\": \"{\\\"event_name\\\": \\\"Brockhampton\\\", \\\"number_of_tickets\\\": 4, \\\"date\\\": \\\"2025-03-13\\\", \\\"city\\\": \\\"Berkeley, CA\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_796-175-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sunol, CA"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sunol, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.287,
+   "in_tokens": 1917,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": -0.0038,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a145f1218642046e\", \"type\": \"function\", \"function\": {\"name\": \"Weather_1_GetWeather\", \"arguments\": \"{\\\"city\\\": \\\"Sunol, CA\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_91-52-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "fetchPerson",
+    "arguments": {
+     "id": 4
+    }
+   },
+   "pred": {
+    "name": "fetchPerson",
+    "arguments": {
+     "id": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.421,
+   "in_tokens": 379,
+   "out_tokens": 23,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-94786737ba2fbd10\", \"type\": \"function\", \"function\": {\"name\": \"fetchPerson\", \"arguments\": \"{\\\"id\\\": 4}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_113-69-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "calculate_dynamic_pricing",
+    "arguments": {
+     "geolocation": "34.0522, -118.2437",
+     "base_price": 100.0,
+     "minimum_price": 90.0
+    }
+   },
+   "pred": {
+    "name": "calculate_dynamic_pricing",
+    "arguments": {
+     "geolocation": "34.0522, -118.2437",
+     "base_price": 100,
+     "minimum_price": 90
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.389,
+   "in_tokens": 670,
+   "out_tokens": 69,
+   "reasoning_tokens": 0,
+   "confidence": -0.0033,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a5ff706c0f77e137\", \"type\": \"function\", \"function\": {\"name\": \"calculate_dynamic_pricing\", \"arguments\": \"{\\\"geolocation\\\": \\\"34.0522, -118.2437\\\", \\\"base_price\\\": 100, \\\"minimum_price\\\": 90}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_229",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_bigfive_scores",
+    "arguments": {
+     "characteristics": [
+      "efficient",
+      "organized",
+      "easy going",
+      "compassionate"
+     ]
+    }
+   },
+   "pred": {
+    "name": "get_bigfive_scores",
+    "arguments": {
+     "characteristics": [
+      "efficient",
+      "organized",
+      "easy going",
+      "compassionate"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.389,
+   "in_tokens": 451,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0037,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bd0de1c5952b989e\", \"type\": \"function\", \"function\": {\"name\": \"get_bigfive_scores\", \"arguments\": \"{\\\"characteristics\\\": [\\\"efficient\\\", \\\"organized\\\", \\\"easy going\\\", \\\"compassionate\\\"]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_22-5-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "BURGER"
+    }
+   },
+   "pred": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "BURGER"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.27,
+   "in_tokens": 440,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": -0.0109,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-825ac52d9243457b\", \"type\": \"function\", \"function\": {\"name\": \"ChaFod\", \"arguments\": \"{\\\"TheFod\\\": \\\"BURGER\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_82-37-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "host": "192.168.0.5"
+    }
+   },
+   "pred": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "host": "192.168.0.5",
+     "port": 5432,
+     "database": "postgres",
+     "username": "postgres",
+     "password": "postgres"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.568,
+   "in_tokens": 1219,
+   "out_tokens": 82,
+   "reasoning_tokens": 0,
+   "confidence": -0.0059,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-aebf6fea8368cf8f\", \"type\": \"function\", \"function\": {\"name\": \"add_postgres_server\", \"arguments\": \"{\\\"host\\\": \\\"192.168.0.5\\\", \\\"port\\\": 5432, \\\"database\\\": \\\"postgres\\\", \\\"username\\\": \\\"postgres\\\", \\\"password\\\": \\\"postgres\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_23",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "basketball.player_stats.get",
+    "arguments": {
+     "player_name": "LeBron James",
+     "stats_fields": [
+      "points per game",
+      "assists",
+      "minutes per game"
+     ]
+    }
+   },
+   "pred": {
+    "name": "basketball.player_stats.get",
+    "arguments": {
+     "player_name": "LeBron James",
+     "stats_fields": [
+      "points",
+      "assists",
+      "minutes"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.569,
+   "in_tokens": 807,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": -0.0007,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a5598291141bc630\", \"type\": \"function\", \"function\": {\"name\": \"basketball_player_stats_get\", \"arguments\": \"{\\\"player_name\\\": \\\"LeBron James\\\", \\\"stats_fields\\\": [\\\"points\\\", \\\"assists\\\", \\\"minutes\\\"]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_693-164-9",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Drama",
+     "cast": "Utkarsh Ambudkar"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Drama",
+     "cast": "Utkarsh Ambudkar"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.351,
+   "in_tokens": 1101,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": -0.0025,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8582e5e13f277f11\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"genre\\\": \\\"Drama\\\", \\\"cast\\\": \\\"Utkarsh Ambudkar\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_25",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "video_games.store_price",
+    "arguments": {
+     "game_title": "Assassins Creed Valhalla",
+     "platform": "PlayStation"
+    }
+   },
+   "pred": {
+    "name": "video_games.store_price",
+    "arguments": {
+     "game_title": "Assassins Creed Valhalla",
+     "platform": "PlayStation",
+     "region": "United States"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.356,
+   "in_tokens": 802,
+   "out_tokens": 56,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8e8927b00c991e33\", \"type\": \"function\", \"function\": {\"name\": \"video_games_store_price\", \"arguments\": \"{\\\"game_title\\\": \\\"Assassins Creed Valhalla\\\", \\\"platform\\\": \\\"PlayStation\\\", \\\"region\\\": \\\"United States\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_239-107-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "search_web_tool",
+    "arguments": {
+     "query": "apple"
+    }
+   },
+   "pred": {
+    "name": "search_web_tool",
+    "arguments": {
+     "query": "apple",
+     "num_results": 5,
+     "source": "text"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'num_results': got 5, want one of [3]",
+   "latency": 0.648,
+   "in_tokens": 1538,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": -0.0085,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9bdb314fba9cb59a\", \"type\": \"function\", \"function\": {\"name\": \"search_web_tool\", \"arguments\": \"{\\\"query\\\": \\\"apple\\\", \\\"num_results\\\": 5, \\\"source\\\": \\\"text\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_242-126-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "set_volume",
+    "arguments": {
+     "volume": 20
+    }
+   },
+   "pred": {
+    "name": "set_volume",
+    "arguments": {
+     "volume": 20
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.345,
+   "in_tokens": 405,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-be443d6ea4ac3e19\", \"type\": \"function\", \"function\": {\"name\": \"set_volume\", \"arguments\": \"{\\\"volume\\\": 20}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_359-134-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Josh Cooley",
+     "genre": "Animation",
+     "cast": "Bill Hader"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Josh Cooley",
+     "genre": "Animation",
+     "cast": "Bill Hader"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.367,
+   "in_tokens": 1205,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": -0.0168,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a7fb8ebf005395e6\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"directed_by\\\": \\\"Josh Cooley\\\", \\\"genre\\\": \\\"Animation\\\", \\\"cast\\\": \\\"Bill Hader\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_883-184-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "New York, NY",
+     "to_city": "Boston, MA",
+     "departure_date": "2023-04-20"
+    }
+   },
+   "pred": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "New York, NY",
+     "to_city": "Boston, MA",
+     "departure_date": "2023-04-20"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.382,
+   "in_tokens": 2103,
+   "out_tokens": 68,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9a749e072e3cd963\", \"type\": \"function\", \"function\": {\"name\": \"Buses_3_FindBus\", \"arguments\": \"{\\\"from_city\\\": \\\"New York, NY\\\", \\\"to_city\\\": \\\"Boston, MA\\\", \\\"departure_date\\\": \\\"2023-04-20\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_2",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "country_info.capital",
+    "arguments": {
+     "country": "Brazil"
+    }
+   },
+   "pred": {
+    "name": "country_info.capital",
+    "arguments": {
+     "country": "Brazil"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.318,
+   "in_tokens": 515,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a57812afcab97d08\", \"type\": \"function\", \"function\": {\"name\": \"country_info_capital\", \"arguments\": \"{\\\"country\\\": \\\"Brazil\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_89",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "db_fetch_records",
+    "arguments": {
+     "database_name": "StudentDB",
+     "table_name": "students",
+     "conditions": {
+      "department": [
+       "Science"
+      ],
+      "school": [
+       "Bluebird High School",
+       "Bluebird HS"
+      ]
+     }
+    }
+   },
+   "pred": {
+    "name": "db_fetch_records",
+    "arguments": {
+     "database_name": "StudentDB",
+     "table_name": "students",
+     "conditions": {
+      "school": "Bluebird High School",
+      "department": "Science"
+     }
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'conditions': got {\"school\": \"Bluebird High School\", \"department\": \"Science\"}, want one of [{\"department\": [\"Science\"], \"school\": [\"Bluebird High School\", \"Bluebird HS\"]}]",
+   "latency": 0.575,
+   "in_tokens": 558,
+   "out_tokens": 62,
+   "reasoning_tokens": 0,
+   "confidence": -0.006,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-81fda9f6a65846db\", \"type\": \"function\", \"function\": {\"name\": \"db_fetch_records\", \"arguments\": \"{\\\"database_name\\\": \\\"StudentDB\\\", \\\"table_name\\\": \\\"students\\\", \\\"conditions\\\": {\\\"school\\\": \\\"Bluebird High School\\\", \\\"department\\\": \\\"Science\\\"}}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_170",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "soccer_stat.get_player_stats",
+    "arguments": {
+     "player_name": "Cristiano Ronaldo",
+     "season": "2019-2020"
+    }
+   },
+   "pred": {
+    "name": "soccer_stat.get_player_stats",
+    "arguments": {
+     "player_name": "Cristiano Ronaldo",
+     "season": "2019-2020"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.629,
+   "in_tokens": 912,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": -0.0019,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9d76ddf317007c48\", \"type\": \"function\", \"function\": {\"name\": \"soccer_stat_get_player_stats\", \"arguments\": \"{\\\"player_name\\\": \\\"Cristiano Ronaldo\\\", \\\"season\\\": \\\"2019-2020\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_393",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "convert_currency",
+    "arguments": {
+     "base_currency": "JPY",
+     "target_currency": "USD",
+     "amount": 20000
+    }
+   },
+   "pred": {
+    "name": "convert_currency",
+    "arguments": {
+     "base_currency": "JPY",
+     "target_currency": "USD",
+     "amount": 20000
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.497,
+   "in_tokens": 454,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": -0.0012,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9caa9a81d0900eca\", \"type\": \"function\", \"function\": {\"name\": \"convert_currency\", \"arguments\": \"{\\\"base_currency\\\": \\\"JPY\\\", \\\"target_currency\\\": \\\"USD\\\", \\\"amount\\\": 20000}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_278-128-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "Oakland, CA"
+    }
+   },
+   "pred": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "Oakland, CA",
+     "price_range": "moderate"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.465,
+   "in_tokens": 1279,
+   "out_tokens": 58,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b4b3c4972bc88676\", \"type\": \"function\", \"function\": {\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": \"{\\\"category\\\": \\\"Italian\\\", \\\"location\\\": \\\"Oakland, CA\\\", \\\"price_range\\\": \\\"moderate\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_64",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "uv_index.get_future",
+    "arguments": {
+     "location": "Tokyo",
+     "date": "06-01-2023"
+    }
+   },
+   "pred": {
+    "name": "uv_index.get_future",
+    "arguments": {
+     "location": "Tokyo",
+     "date": "06-01-2023"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.394,
+   "in_tokens": 673,
+   "out_tokens": 46,
+   "reasoning_tokens": 0,
+   "confidence": -0.0007,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a0adc18d6c58474c\", \"type\": \"function\", \"function\": {\"name\": \"uv_index_get_future\", \"arguments\": \"{\\\"location\\\": \\\"Tokyo\\\", \\\"date\\\": \\\"06-01-2023\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_227-118-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "text_to_speech.convert",
+    "arguments": {
+     "text": "我爱学习",
+     "language": "zh-CN",
+     "gender": "male",
+     "format": "wav"
+    }
+   },
+   "pred": {
+    "name": "text_to_speech.convert",
+    "arguments": {
+     "text": "我爱学习",
+     "language": "zh-CN",
+     "gender": "male",
+     "format": "wav"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.406,
+   "in_tokens": 663,
+   "out_tokens": 65,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-833332ef12f3fd37\", \"type\": \"function\", \"function\": {\"name\": \"text_to_speech_convert\", \"arguments\": \"{\\\"text\\\": \\\"\\u6211\\u7231\\u5b66\\u4e60\\\", \\\"language\\\": \\\"zh-CN\\\", \\\"gender\\\": \\\"male\\\", \\\"format\\\": \\\"wav\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_907-186-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Trains_1_FindTrains",
+    "arguments": {
+     "_from": "Philadelphia, PA",
+     "to": "New York, NY",
+     "date_of_journey": "03/08/2023"
+    }
+   },
+   "pred": {
+    "name": "Trains_1_FindTrains",
+    "arguments": {
+     "_from": "Philadelphia, PA",
+     "to": "New York, NY",
+     "date_of_journey": "03/08/2023",
+     "_class": "Value",
+     "number_of_adults": 1
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "extra arg '_class'; extra arg 'number_of_adults'",
+   "latency": 0.493,
+   "in_tokens": 1705,
+   "out_tokens": 92,
+   "reasoning_tokens": 0,
+   "confidence": -0.0076,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a81970fba46eba92\", \"type\": \"function\", \"function\": {\"name\": \"Trains_1_FindTrains\", \"arguments\": \"{\\\"_from\\\": \\\"Philadelphia, PA\\\", \\\"to\\\": \\\"New York, NY\\\", \\\"date_of_journey\\\": \\\"03/08/2023\\\", \\\"_class\\\": \\\"Value\\\", \\\"number_of_adults\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_68-29-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "ProjectDB",
+     "host": "http://foo.com",
+     "database": "project_data",
+     "username": "user1",
+     "password": "12345"
+    }
+   },
+   "pred": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "ProjectDB",
+     "host": "http://foo.com",
+     "port": 5432,
+     "database": "project_data",
+     "username": "user1",
+     "password": "12345"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.259,
+   "in_tokens": 785,
+   "out_tokens": 90,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-80445017251e5dbc\", \"type\": \"function\", \"function\": {\"name\": \"add_postgres_server\", \"arguments\": \"{\\\"nickname\\\": \\\"ProjectDB\\\", \\\"host\\\": \\\"http://foo.com\\\", \\\"port\\\": 5432, \\\"database\\\": \\\"project_data\\\", \\\"username\\\": \\\"user1\\\", \\\"password\\\": \\\"12345\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_70",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_vehicle_emission",
+    "arguments": {
+     "vehicle_type": "gas",
+     "miles_driven": 1500
+    }
+   },
+   "pred": {
+    "name": "calculate_vehicle_emission",
+    "arguments": {
+     "vehicle_type": "gas",
+     "miles_driven": 1500
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.369,
+   "in_tokens": 510,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8155064919d88c1a\", \"type\": \"function\", \"function\": {\"name\": \"calculate_vehicle_emission\", \"arguments\": \"{\\\"vehicle_type\\\": \\\"gas\\\", \\\"miles_driven\\\": 1500}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_77-35-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "X",
+     "host": "http://plga.ca",
+     "database": "postgres",
+     "username": "admin",
+     "password": "secure_password123"
+    }
+   },
+   "pred": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "X",
+     "host": "http://plga.ca",
+     "port": 5432,
+     "database": "postgres",
+     "username": "admin",
+     "password": "secure_password123"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.437,
+   "in_tokens": 1291,
+   "out_tokens": 89,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a893a529310a4692\", \"type\": \"function\", \"function\": {\"name\": \"add_postgres_server\", \"arguments\": \"{\\\"nickname\\\": \\\"X\\\", \\\"host\\\": \\\"http://plga.ca\\\", \\\"port\\\": 5432, \\\"database\\\": \\\"postgres\\\", \\\"username\\\": \\\"admin\\\", \\\"password\\\": \\\"secure_password123\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_85-46-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "open_meteo_api.fetch_weather_data",
+    "arguments": {
+     "coordinates": [
+      37.8715,
+      -122.273
+     ]
+    }
+   },
+   "pred": {
+    "name": "open_meteo_api.fetch_weather_data",
+    "arguments": {
+     "coordinates": [
+      37.8715,
+      -122.273
+     ],
+     "units": "Celsius"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.409,
+   "in_tokens": 505,
+   "out_tokens": 58,
+   "reasoning_tokens": 0,
+   "confidence": -0.0143,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b6a670c055ff258d\", \"type\": \"function\", \"function\": {\"name\": \"open_meteo_api_fetch_weather_data\", \"arguments\": \"{\\\"coordinates\\\": [37.8715, -122.273], \\\"units\\\": \\\"Celsius\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_379",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_current_time",
+    "arguments": {
+     "location": "Sydney",
+     "country": "Australia"
+    }
+   },
+   "pred": {
+    "name": "get_current_time",
+    "arguments": {
+     "location": "Sydney",
+     "country": "Australia"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.545,
+   "in_tokens": 436,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a359699cbdd1c7eb\", \"type\": \"function\", \"function\": {\"name\": \"get_current_time\", \"arguments\": \"{\\\"location\\\": \\\"Sydney\\\", \\\"country\\\": \\\"Australia\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_192-116-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Pacifica",
+     "date": "2023-04-11"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Pacifica",
+     "date": "2023-04-11"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.705,
+   "in_tokens": 459,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bd9de3f67cfc5c74\", \"type\": \"function\", \"function\": {\"name\": \"Weather_1_GetWeather\", \"arguments\": \"{\\\"city\\\": \\\"Pacifica\\\", \\\"date\\\": \\\"2023-04-11\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_87",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "games.update.find",
+    "arguments": {
+     "game": "Cyberpunk 2077",
+     "platform": "Xbox"
+    }
+   },
+   "pred": {
+    "name": "games.update.find",
+    "arguments": {
+     "game": "Cyberpunk 2077",
+     "platform": "Xbox"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.369,
+   "in_tokens": 699,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0004,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8cfbf7467fc39813\", \"type\": \"function\", \"function\": {\"name\": \"games_update_find\", \"arguments\": \"{\\\"game\\\": \\\"Cyberpunk 2077\\\", \\\"platform\\\": \\\"Xbox\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_104-61-2",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "calculate_tax",
+    "arguments": {
+     "purchase_amount": 250.0,
+     "state": "NY"
+    }
+   },
+   "pred": {
+    "name": "calculate_tax",
+    "arguments": {
+     "purchase_amount": 250,
+     "state": "NY"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.398,
+   "in_tokens": 695,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b27681926fb7b0ac\", \"type\": \"function\", \"function\": {\"name\": \"calculate_tax\", \"arguments\": \"{\\\"purchase_amount\\\": 250, \\\"state\\\": \\\"NY\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_90-51-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "temperature",
+    "arguments": {
+     "location": "Paris, France"
+    }
+   },
+   "pred": {
+    "name": "temperature",
+    "arguments": {
+     "location": "Paris, France"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.391,
+   "in_tokens": 529,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": -0.0113,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bbad81f925ff744a\", \"type\": \"function\", \"function\": {\"name\": \"temperature\", \"arguments\": \"{\\\"location\\\": \\\"Paris, France\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_328",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "boardgame.get_info",
+    "arguments": {
+     "name": "Ticket to Ride",
+     "parameters": [
+      "rating",
+      "player count"
+     ]
+    }
+   },
+   "pred": {
+    "name": "boardgame.get_info",
+    "arguments": {
+     "name": "Ticket to Ride",
+     "parameters": [
+      "rating",
+      "player count"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.85,
+   "in_tokens": 476,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b708d3661e9eb277\", \"type\": \"function\", \"function\": {\"name\": \"boardgame_get_info\", \"arguments\": \"{\\\"name\\\": \\\"Ticket to Ride\\\", \\\"parameters\\\": [\\\"rating\\\", \\\"player count\\\"]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_644-161-12",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "genre": "Pop"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "genre": "Pop"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.289,
+   "in_tokens": 1704,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": -0.004,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bb99dffcfef6ab0a\", \"type\": \"function\", \"function\": {\"name\": \"Music_3_LookupMusic\", \"arguments\": \"{\\\"genre\\\": \\\"Pop\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_23-5-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "PIZZA"
+    }
+   },
+   "pred": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "PIZZA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.421,
+   "in_tokens": 431,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": -0.0035,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-91f0a352f4beca8b\", \"type\": \"function\", \"function\": {\"name\": \"ChaFod\", \"arguments\": \"{\\\"TheFod\\\": \\\"PIZZA\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_30",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "rectangle.area",
+    "arguments": {
+     "length": 12,
+     "width": 5
+    }
+   },
+   "pred": {
+    "name": "rectangle.area",
+    "arguments": {
+     "length": 12,
+     "width": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.386,
+   "in_tokens": 643,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8f2eeea15b8d36ba\", \"type\": \"function\", \"function\": {\"name\": \"rectangle_area\", \"arguments\": \"{\\\"length\\\": 12, \\\"width\\\": 5}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_143",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_slope_gradient",
+    "arguments": {
+     "point1": [
+      40.7128,
+      -74.006
+     ],
+     "point2": [
+      34.0522,
+      -118.2437
+     ]
+    }
+   },
+   "pred": {
+    "name": "calculate_slope_gradient",
+    "arguments": {
+     "point1": [
+      40.7128,
+      -74.006
+     ],
+     "point2": [
+      34.0522,
+      -118.2437
+     ],
+     "unit": "degree"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.451,
+   "in_tokens": 948,
+   "out_tokens": 81,
+   "reasoning_tokens": 0,
+   "confidence": -0.0003,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a56931db106707b8\", \"type\": \"function\", \"function\": {\"name\": \"calculate_slope_gradient\", \"arguments\": \"{\\\"point1\\\": [40.7128, -74.006], \\\"point2\\\": [34.0522, -118.2437], \\\"unit\\\": \\\"degree\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_958-204-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "partner.sips",
+    "arguments": {
+     "status": "active"
+    }
+   },
+   "pred": {
+    "name": "partner.sips",
+    "arguments": {
+     "status": "active"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.771,
+   "in_tokens": 724,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-824f179c3191c5ef\", \"type\": \"function\", \"function\": {\"name\": \"partner_sips\", \"arguments\": \"{\\\"status\\\": \\\"active\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_846-179-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "San Francisco, CA",
+     "price_range": "moderate"
+    }
+   },
+   "pred": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "San Francisco, CA",
+     "price_range": "moderate"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.455,
+   "in_tokens": 1097,
+   "out_tokens": 57,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9b1d89978f4f35f8\", \"type\": \"function\", \"function\": {\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": \"{\\\"category\\\": \\\"Italian\\\", \\\"location\\\": \\\"San Francisco, CA\\\", \\\"price_range\\\": \\\"moderate\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_161",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "find_exhibition",
+    "arguments": {
+     "location": "New York",
+     "art_form": "sculpture"
+    }
+   },
+   "pred": {
+    "name": "find_exhibition",
+    "arguments": {
+     "location": "New York, NY",
+     "art_form": "sculpture",
+     "user_ratings": "high",
+     "month": "upcoming"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.417,
+   "in_tokens": 871,
+   "out_tokens": 64,
+   "reasoning_tokens": 0,
+   "confidence": -0.027,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a9cd57e7d38b1efb\", \"type\": \"function\", \"function\": {\"name\": \"find_exhibition\", \"arguments\": \"{\\\"location\\\": \\\"New York, NY\\\", \\\"art_form\\\": \\\"sculpture\\\", \\\"user_ratings\\\": \\\"high\\\", \\\"month\\\": \\\"upcoming\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_182",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "multiplayer_game_finder",
+    "arguments": {
+     "platform": "Windows 10",
+     "rating": 4.5
+    }
+   },
+   "pred": {
+    "name": "multiplayer_game_finder",
+    "arguments": {
+     "platform": "Windows 10",
+     "rating": 4.5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.368,
+   "in_tokens": 1084,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b86006fc82b084db\", \"type\": \"function\", \"function\": {\"name\": \"multiplayer_game_finder\", \"arguments\": \"{\\\"platform\\\": \\\"Windows 10\\\", \\\"rating\\\": 4.5}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_11",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_triangle_area",
+    "arguments": {
+     "base": 10,
+     "height": 5
+    }
+   },
+   "pred": {
+    "name": "calculate_triangle_area",
+    "arguments": {
+     "base": 10,
+     "height": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.339,
+   "in_tokens": 420,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8c686fb9adcdb282\", \"type\": \"function\", \"function\": {\"name\": \"calculate_triangle_area\", \"arguments\": \"{\\\"base\\\": 10, \\\"height\\\": 5}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_149-95-6",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "echo hi"
+    }
+   },
+   "pred": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "echo hi"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.271,
+   "in_tokens": 470,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": -0.0041,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b3328872d57a7080\", \"type\": \"function\", \"function\": {\"name\": \"cmd_controller_execute\", \"arguments\": \"{\\\"command\\\": \\\"echo hi\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_291",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "pred": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16,
+     "tempo": 120
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.357,
+   "in_tokens": 535,
+   "out_tokens": 64,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-848395cb47c073fe\", \"type\": \"function\", \"function\": {\"name\": \"music_generator_generate_melody\", \"arguments\": \"{\\\"key\\\": \\\"C\\\", \\\"start_note\\\": \\\"C4\\\", \\\"length\\\": 16, \\\"tempo\\\": 120}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_61",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "diabetes_prediction",
+    "arguments": {
+     "weight": 150,
+     "height": 70,
+     "activity_level": "lightly active"
+    }
+   },
+   "pred": {
+    "name": "diabetes_prediction",
+    "arguments": {
+     "weight": 150,
+     "height": 70,
+     "activity_level": "lightly active"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.524,
+   "in_tokens": 500,
+   "out_tokens": 52,
+   "reasoning_tokens": 0,
+   "confidence": -0.0003,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a3c4f4523b58a420\", \"type\": \"function\", \"function\": {\"name\": \"diabetes_prediction\", \"arguments\": \"{\\\"weight\\\": 150, \\\"height\\\": 70, \\\"activity_level\\\": \\\"lightly active\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_650-161-18",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "album": "Raees"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "album": "Raees"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.298,
+   "in_tokens": 1700,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": -0.0075,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-87eef7baa98d6fa9\", \"type\": \"function\", \"function\": {\"name\": \"Music_3_LookupMusic\", \"arguments\": \"{\\\"album\\\": \\\"Raees\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_207",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_shortest_distance",
+    "arguments": {
+     "start_location": "New York, USA",
+     "end_location": "Miami, USA",
+     "route_preference": "Shortest"
+    }
+   },
+   "pred": {
+    "name": "calculate_shortest_distance",
+    "arguments": {
+     "start_location": "New York, USA",
+     "end_location": "Miami, USA",
+     "route_preference": "Shortest"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.356,
+   "in_tokens": 462,
+   "out_tokens": 57,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b249249e20d80768\", \"type\": \"function\", \"function\": {\"name\": \"calculate_shortest_distance\", \"arguments\": \"{\\\"start_location\\\": \\\"New York, USA\\\", \\\"end_location\\\": \\\"Miami, USA\\\", \\\"route_preference\\\": \\\"Shortest\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_184",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "recipe_search",
+    "arguments": {
+     "dietary_restriction": "Vegetarian",
+     "ingredients": [
+      "pasta",
+      "cheese"
+     ],
+     "servings": 2
+    }
+   },
+   "pred": {
+    "name": "recipe_search",
+    "arguments": {
+     "dietary_restriction": "Vegetarian",
+     "ingredients": [
+      "pasta",
+      "cheese"
+     ],
+     "servings": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.505,
+   "in_tokens": 756,
+   "out_tokens": 56,
+   "reasoning_tokens": 0,
+   "confidence": -0.003,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-90716fbaebfed7d5\", \"type\": \"function\", \"function\": {\"name\": \"recipe_search\", \"arguments\": \"{\\\"dietary_restriction\\\": \\\"Vegetarian\\\", \\\"ingredients\\\": [\\\"pasta\\\", \\\"cheese\\\"], \\\"servings\\\": 2}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_460-145-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "New York, NY",
+     "free_entry": "True",
+     "category": "Park",
+     "good_for_kids": "True"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "New York, NY",
+     "category": "Park",
+     "free_entry": "True",
+     "good_for_kids": "True"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.682,
+   "in_tokens": 2225,
+   "out_tokens": 67,
+   "reasoning_tokens": 0,
+   "confidence": -0.0007,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-81356750bc83d8bd\", \"type\": \"function\", \"function\": {\"name\": \"Travel_1_FindAttractions\", \"arguments\": \"{\\\"location\\\": \\\"New York, NY\\\", \\\"category\\\": \\\"Park\\\", \\\"free_entry\\\": \\\"True\\\", \\\"good_for_kids\\\": \\\"True\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_798-175-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Long Beach, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Long Beach, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.597,
+   "in_tokens": 1923,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8032b25c51c22dda\", \"type\": \"function\", \"function\": {\"name\": \"Weather_1_GetWeather\", \"arguments\": \"{\\\"city\\\": \\\"Long Beach, CA\\\", \\\"date\\\": \\\"2023-03-10\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_207-116-15",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sacramento",
+     "date": "2023-04-22"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sacramento",
+     "date": "2023-04-22"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.366,
+   "in_tokens": 461,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8047eec3719bfe7c\", \"type\": \"function\", \"function\": {\"name\": \"Weather_1_GetWeather\", \"arguments\": \"{\\\"city\\\": \\\"Sacramento\\\", \\\"date\\\": \\\"2023-04-22\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_1012-241-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_synthetic_locations",
+    "arguments": {
+     "sort": "created_at",
+     "offset": 0,
+     "limit": 50,
+     "filter": "details:alpha,beta,gamma"
+    }
+   },
+   "pred": {
+    "name": "get_synthetic_locations",
+    "arguments": {
+     "sort": "created_at",
+     "offset": 0,
+     "limit": 50,
+     "filter": "name:alpha OR name:beta OR name:gamma"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'filter': got \"name:alpha OR name:beta OR name:gamma\", want one of [\"details:alpha,beta,gamma\"]",
+   "latency": 0.376,
+   "in_tokens": 943,
+   "out_tokens": 68,
+   "reasoning_tokens": 0,
+   "confidence": -0.0212,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-af618fa2138f3ff2\", \"type\": \"function\", \"function\": {\"name\": \"get_synthetic_locations\", \"arguments\": \"{\\\"sort\\\": \\\"created_at\\\", \\\"offset\\\": 0, \\\"limit\\\": 50, \\\"filter\\\": \\\"name:alpha OR name:beta OR name:gamma\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_33",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_integral",
+    "arguments": {
+     "func": "3x**2",
+     "a": 1,
+     "b": 2
+    }
+   },
+   "pred": {
+    "name": "calculate_integral",
+    "arguments": {
+     "func": "3x^2",
+     "a": 1,
+     "b": 2
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'func': got \"3x^2\", want one of [\"3x**2\", \"lambda x: 3x**2\"]",
+   "latency": 0.672,
+   "in_tokens": 609,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": -0.0022,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ac0acc9e8d7334f0\", \"type\": \"function\", \"function\": {\"name\": \"calculate_integral\", \"arguments\": \"{\\\"func\\\": \\\"3x^2\\\", \\\"a\\\": 1, \\\"b\\\": 2}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_99-59-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "connectBluetooth",
+    "arguments": {
+     "device_name": "ue boom"
+    }
+   },
+   "pred": {
+    "name": "connectBluetooth",
+    "arguments": {
+     "device_name": "ue boom"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.507,
+   "in_tokens": 471,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": -0.0018,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a3100070402796c4\", \"type\": \"function\", \"function\": {\"name\": \"connectBluetooth\", \"arguments\": \"{\\\"device_name\\\": \\\"ue boom\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_60",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "mutation_type.find",
+    "arguments": {
+     "snp_id": "rs6034464"
+    }
+   },
+   "pred": {
+    "name": "mutation_type.find",
+    "arguments": {
+     "snp_id": "rs6034464"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.522,
+   "in_tokens": 453,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": -0.001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bfce1fe725ee5b6b\", \"type\": \"function\", \"function\": {\"name\": \"mutation_type_find\", \"arguments\": \"{\\\"snp_id\\\": \\\"rs6034464\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_805-175-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Vancouver, BC",
+     "date": "2023-03-02"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Vancouver, BC",
+     "date": "2023-03-02"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.417,
+   "in_tokens": 1926,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8aed6028f2ac3011\", \"type\": \"function\", \"function\": {\"name\": \"Weather_1_GetWeather\", \"arguments\": \"{\\\"city\\\": \\\"Vancouver, BC\\\", \\\"date\\\": \\\"2023-03-02\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_27",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "final_velocity",
+    "arguments": {
+     "initial_velocity": 10,
+     "acceleration": 2,
+     "time": 5
+    }
+   },
+   "pred": {
+    "name": "final_velocity",
+    "arguments": {
+     "initial_velocity": 10,
+     "acceleration": 2,
+     "time": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.344,
+   "in_tokens": 489,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-aec3802df05d07e7\", \"type\": \"function\", \"function\": {\"name\": \"final_velocity\", \"arguments\": \"{\\\"initial_velocity\\\": 10, \\\"acceleration\\\": 2, \\\"time\\\": 5}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_990-221-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "releases_api.ReleasesApi.delete_release",
+    "arguments": {
+     "releaseId": "RL50"
+    }
+   },
+   "pred": {
+    "name": "releases_api.ReleasesApi.delete_release",
+    "arguments": {
+     "releaseId": "RL50"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.288,
+   "in_tokens": 714,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-87cf0f7d743ed72b\", \"type\": \"function\", \"function\": {\"name\": \"releases_api_ReleasesApi_delete_release\", \"arguments\": \"{\\\"releaseId\\\": \\\"RL50\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_940-194-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "baby shark"
+    }
+   },
+   "pred": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "baby shark",
+     "autoplay": true,
+     "volume": 50
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'autoplay': got true, want one of [false]",
+   "latency": 0.404,
+   "in_tokens": 1143,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": -0.0159,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9fdb47cb3c045670\", \"type\": \"function\", \"function\": {\"name\": \"play_spotify_song\", \"arguments\": \"{\\\"query\\\": \\\"baby shark\\\", \\\"autoplay\\\": true, \\\"volume\\\": 50}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_759-169-14",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Comedy"
+    }
+   },
+   "pred": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Comedy",
+     "starring": "Any"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.319,
+   "in_tokens": 1762,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0145,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-91c8511263f1882f\", \"type\": \"function\", \"function\": {\"name\": \"Media_3_FindMovies\", \"arguments\": \"{\\\"genre\\\": \\\"Comedy\\\", \\\"starring\\\": \\\"Any\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_50",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "entropy_change.calculate",
+    "arguments": {
+     "substance": "ice",
+     "mass": 1,
+     "initial_temperature": 0,
+     "final_temperature": 100
+    }
+   },
+   "pred": {
+    "name": "entropy_change.calculate",
+    "arguments": {
+     "substance": "ice",
+     "mass": 1,
+     "initial_temperature": 0,
+     "final_temperature": 100,
+     "pressure": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.425,
+   "in_tokens": 571,
+   "out_tokens": 73,
+   "reasoning_tokens": 0,
+   "confidence": -0.0009,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bf7559eec07c8136\", \"type\": \"function\", \"function\": {\"name\": \"entropy_change_calculate\", \"arguments\": \"{\\\"substance\\\": \\\"ice\\\", \\\"mass\\\": 1, \\\"initial_temperature\\\": 0, \\\"final_temperature\\\": 100, \\\"pressure\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_235-124-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Friends artist:Marshmello"
+    }
+   },
+   "pred": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Friends artist:Marshmello"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.345,
+   "in_tokens": 525,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": -0.0006,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-985a52ee227e6de8\", \"type\": \"function\", \"function\": {\"name\": \"play_spotify_song\", \"arguments\": \"{\\\"query\\\": \\\"track:Friends artist:Marshmello\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_124",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "probabilities.calculate_single",
+    "arguments": {
+     "total_outcomes": 52,
+     "event_outcomes": 4
+    }
+   },
+   "pred": {
+    "name": "probabilities.calculate_single",
+    "arguments": {
+     "total_outcomes": 52,
+     "event_outcomes": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.382,
+   "in_tokens": 786,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0049,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9d7f58125190cac0\", \"type\": \"function\", \"function\": {\"name\": \"probabilities_calculate_single\", \"arguments\": \"{\\\"total_outcomes\\\": 52, \\\"event_outcomes\\\": 4}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_191-115-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "raptor.mpn.specs",
+    "arguments": {
+     "identifier": "3pak7"
+    }
+   },
+   "pred": {
+    "name": "raptor.mpn.specs",
+    "arguments": {
+     "identifier": "3pak7",
+     "search_type": "MPN"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.31,
+   "in_tokens": 523,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": -0.002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a7be867ec46411a5\", \"type\": \"function\", \"function\": {\"name\": \"raptor_mpn_specs\", \"arguments\": \"{\\\"identifier\\\": \\\"3pak7\\\", \\\"search_type\\\": \\\"MPN\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_74",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_bacteria_evolution_rate",
+    "arguments": {
+     "start_population": 5000,
+     "duplication_frequency": 1,
+     "duration": 6
+    }
+   },
+   "pred": {
+    "name": "calculate_bacteria_evolution_rate",
+    "arguments": {
+     "start_population": 5000,
+     "duplication_frequency": 1,
+     "duration": 6
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.386,
+   "in_tokens": 517,
+   "out_tokens": 57,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-88ec95801a645cdc\", \"type\": \"function\", \"function\": {\"name\": \"calculate_bacteria_evolution_rate\", \"arguments\": \"{\\\"start_population\\\": 5000, \\\"duplication_frequency\\\": 1, \\\"duration\\\": 6}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_56",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane"
+    }
+   },
+   "pred": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane",
+     "include_description": false
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.321,
+   "in_tokens": 420,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0036,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8c1c58835a5ac49f\", \"type\": \"function\", \"function\": {\"name\": \"cellbio_get_proteins\", \"arguments\": \"{\\\"cell_compartment\\\": \\\"plasma membrane\\\", \\\"include_description\\\": false}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_688-164-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Family",
+     "cast": "Carol Sutton"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Family",
+     "cast": "Carol Sutton"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.388,
+   "in_tokens": 1091,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0012,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bffd4cb936195b4a\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"genre\\\": \\\"Family\\\", \\\"cast\\\": \\\"Carol Sutton\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_782-173-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Services_4_FindProvider",
+    "arguments": {
+     "city": "Sausalito, CA",
+     "type": "Psychologist"
+    }
+   },
+   "pred": {
+    "name": "Services_4_FindProvider",
+    "arguments": {
+     "city": "Sausalito, CA",
+     "type": "Psychologist"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.307,
+   "in_tokens": 851,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0075,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a2ee7674f4c58307\", \"type\": \"function\", \"function\": {\"name\": \"Services_4_FindProvider\", \"arguments\": \"{\\\"city\\\": \\\"Sausalito, CA\\\", \\\"type\\\": \\\"Psychologist\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_628-160-8",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Payment_1_RequestPayment",
+    "arguments": {
+     "receiver": "Diego",
+     "amount": 108.0
+    }
+   },
+   "pred": {
+    "name": "Payment_1_RequestPayment",
+    "arguments": {
+     "receiver": "Diego",
+     "amount": 108
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.329,
+   "in_tokens": 742,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0058,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a014cdf73b8c4324\", \"type\": \"function\", \"function\": {\"name\": \"Payment_1_RequestPayment\", \"arguments\": \"{\\\"receiver\\\": \\\"Diego\\\", \\\"amount\\\": 108}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_32-9-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "answer.string",
+    "arguments": {
+     "answer": "Logistic regression is not present in the text, therefore I cannot answer this question."
+    }
+   },
+   "pred": {
+    "name": "answer.string",
+    "arguments": {
+     "answer": "Logistic regression is not present in the text, therefore I cannot answer this question."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.417,
+   "in_tokens": 434,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": -0.0113,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8b296a0cdcf1526b\", \"type\": \"function\", \"function\": {\"name\": \"answer_string\", \"arguments\": \"{\\\"answer\\\": \\\"Logistic regression is not present in the text, therefore I cannot answer this question.\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_105",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_magnetic_field",
+    "arguments": {
+     "current": 5,
+     "radius": 4
+    }
+   },
+   "pred": {
+    "name": "calculate_magnetic_field",
+    "arguments": {
+     "current": 5,
+     "radius": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.315,
+   "in_tokens": 803,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b86c99c70be0622a\", \"type\": \"function\", \"function\": {\"name\": \"calculate_magnetic_field\", \"arguments\": \"{\\\"current\\\": 5, \\\"radius\\\": 4}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_0-0-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_user_info",
+    "arguments": {
+     "user_id": 7890,
+     "special": "black"
+    }
+   },
+   "pred": {
+    "name": "get_user_info",
+    "arguments": {
+     "user_id": 7890,
+     "special": "black"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.33,
+   "in_tokens": 447,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9fb5ddf23703a898\", \"type\": \"function\", \"function\": {\"name\": \"get_user_info\", \"arguments\": \"{\\\"user_id\\\": 7890, \\\"special\\\": \\\"black\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_218",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "patient.get_mri_report",
+    "arguments": {
+     "patient_id": "546382",
+     "status": "concluded"
+    }
+   },
+   "pred": {
+    "name": "patient.get_mri_report",
+    "arguments": {
+     "patient_id": "546382",
+     "status": "concluded",
+     "mri_type": "brain"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.365,
+   "in_tokens": 512,
+   "out_tokens": 55,
+   "reasoning_tokens": 0,
+   "confidence": -0.0128,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b65fc2afda8fe34f\", \"type\": \"function\", \"function\": {\"name\": \"patient_get_mri_report\", \"arguments\": \"{\\\"patient_id\\\": \\\"546382\\\", \\\"status\\\": \\\"concluded\\\", \\\"mri_type\\\": \\\"brain\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_474-145-25",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Paris, France",
+     "free_entry": "True",
+     "category": "Museum",
+     "good_for_kids": "True"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Paris, France",
+     "category": "Museum",
+     "free_entry": "True",
+     "good_for_kids": "True"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.421,
+   "in_tokens": 2223,
+   "out_tokens": 67,
+   "reasoning_tokens": 0,
+   "confidence": -0.0057,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-957f4f4fcab9119b\", \"type\": \"function\", \"function\": {\"name\": \"Travel_1_FindAttractions\", \"arguments\": \"{\\\"location\\\": \\\"Paris, France\\\", \\\"category\\\": \\\"Museum\\\", \\\"free_entry\\\": \\\"True\\\", \\\"good_for_kids\\\": \\\"True\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_71",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "get_population",
+    "arguments": {
+     "year": 1954,
+     "category": "veterans"
+    }
+   },
+   "pred": {
+    "name": "get_population",
+    "arguments": {
+     "year": 1954,
+     "category": "veterans"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.471,
+   "in_tokens": 666,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": -0.002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-987ade1c3759d7ca\", \"type\": \"function\", \"function\": {\"name\": \"get_population\", \"arguments\": \"{\\\"year\\\": 1954, \\\"category\\\": \\\"veterans\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_562-155-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Seattle, WA"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Seattle, WA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.358,
+   "in_tokens": 2102,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0008,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8d661026499d9458\", \"type\": \"function\", \"function\": {\"name\": \"Events_3_FindEvents\", \"arguments\": \"{\\\"event_type\\\": \\\"Theater\\\", \\\"city\\\": \\\"Seattle, WA\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_518-150-6",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Sonoma, CA",
+     "genre": "Action"
+    }
+   },
+   "pred": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Sonoma, CA",
+     "genre": "Action"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.331,
+   "in_tokens": 2020,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0125,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9920b5ef2b2236df\", \"type\": \"function\", \"function\": {\"name\": \"Movies_1_FindMovies\", \"arguments\": \"{\\\"location\\\": \\\"Sonoma, CA\\\", \\\"genre\\\": \\\"Action\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_524-151-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Chicago, IL"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Chicago, IL"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.341,
+   "in_tokens": 770,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": -0.0069,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ad22080411f6af7a\", \"type\": \"function\", \"function\": {\"name\": \"Events_3_FindEvents\", \"arguments\": \"{\\\"event_type\\\": \\\"Theater\\\", \\\"city\\\": \\\"Chicago, IL\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_38",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "library.search_book",
+    "arguments": {
+     "book_name": "The Alchemist",
+     "city": "New York"
+    }
+   },
+   "pred": {
+    "name": "library.search_book",
+    "arguments": {
+     "book_name": "The Alchemist",
+     "city": "New York"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.351,
+   "in_tokens": 664,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0026,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8942300f9d1bb872\", \"type\": \"function\", \"function\": {\"name\": \"library_search_book\", \"arguments\": \"{\\\"book_name\\\": \\\"The Alchemist\\\", \\\"city\\\": \\\"New York\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_111",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "random.normalvariate",
+    "arguments": {
+     "mu": 0,
+     "sigma": 1
+    }
+   },
+   "pred": {
+    "name": "random.normalvariate",
+    "arguments": {
+     "mu": 0,
+     "sigma": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.324,
+   "in_tokens": 418,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b4405410d3c7500b\", \"type\": \"function\", \"function\": {\"name\": \"random_normalvariate\", \"arguments\": \"{\\\"mu\\\": 0, \\\"sigma\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_350-133-14",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "artist": "Jinjer",
+     "genre": "Metal"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "artist": "Jinjer",
+     "genre": "Metal"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.332,
+   "in_tokens": 1212,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0008,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a0be73d06e60a3ae\", \"type\": \"function\", \"function\": {\"name\": \"Music_3_LookupMusic\", \"arguments\": \"{\\\"artist\\\": \\\"Jinjer\\\", \\\"genre\\\": \\\"Metal\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_98",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "pred": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.306,
+   "in_tokens": 924,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": -0.0013,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ac0824ba812e1e1e\", \"type\": \"function\", \"function\": {\"name\": \"geometry_circumference\", \"arguments\": \"{\\\"radius\\\": 3}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_96-57-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Boston, MA"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Boston, MA",
+     "unit": "fahrenheit"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.33,
+   "in_tokens": 468,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0184,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-973c882bbe2b6d0d\", \"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"arguments\": \"{\\\"location\\\": \\\"Boston, MA\\\", \\\"unit\\\": \\\"fahrenheit\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_888-184-5",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "Los Angeles, CA",
+     "to_city": "San Diego, CA",
+     "departure_date": "2023-10-01"
+    }
+   },
+   "pred": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "Los Angeles, CA",
+     "to_city": "San Diego, CA",
+     "departure_date": "2023-10-01"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.372,
+   "in_tokens": 2110,
+   "out_tokens": 69,
+   "reasoning_tokens": 0,
+   "confidence": -0.0007,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bdee81f203cf6700\", \"type\": \"function\", \"function\": {\"name\": \"Buses_3_FindBus\", \"arguments\": \"{\\\"from_city\\\": \\\"Los Angeles, CA\\\", \\\"to_city\\\": \\\"San Diego, CA\\\", \\\"departure_date\\\": \\\"2023-10-01\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_58",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "lawyer.search",
+    "arguments": {
+     "location": "Los Angeles",
+     "expertise": "Divorce"
+    }
+   },
+   "pred": {
+    "name": "lawyer.search",
+    "arguments": {
+     "location": "Los Angeles, CA",
+     "expertise": "divorce"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.344,
+   "in_tokens": 562,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0171,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b610a6621abd8e91\", \"type\": \"function\", \"function\": {\"name\": \"lawyer_search\", \"arguments\": \"{\\\"location\\\": \\\"Los Angeles, CA\\\", \\\"expertise\\\": \\\"divorce\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_126",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "t_test",
+    "arguments": {
+     "dataset_A": [
+      12,
+      24,
+      36
+     ],
+     "dataset_B": [
+      15,
+      30,
+      45
+     ]
+    }
+   },
+   "pred": {
+    "name": "t_test",
+    "arguments": {
+     "dataset_A": [
+      12,
+      24,
+      36
+     ],
+     "dataset_B": [
+      15,
+      30,
+      45
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.382,
+   "in_tokens": 830,
+   "out_tokens": 55,
+   "reasoning_tokens": 0,
+   "confidence": -0.0003,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-beed79de223097b3\", \"type\": \"function\", \"function\": {\"name\": \"t_test\", \"arguments\": \"{\\\"dataset_A\\\": [12, 24, 36], \\\"dataset_B\\\": [15, 30, 45]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_15",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "solarFarm.potential",
+    "arguments": {
+     "coordinates": [
+      43.653225,
+      -79.383186
+     ],
+     "panelArea": 80000,
+     "month": "December"
+    }
+   },
+   "pred": {
+    "name": "solarFarm.potential",
+    "arguments": {
+     "coordinates": [
+      43.653225,
+      -79.383186
+     ],
+     "panelArea": 80000,
+     "month": "December"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.426,
+   "in_tokens": 726,
+   "out_tokens": 73,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ad272a24d1b14f50\", \"type\": \"function\", \"function\": {\"name\": \"solarFarm_potential\", \"arguments\": \"{\\\"coordinates\\\": [43.653225, -79.383186], \\\"panelArea\\\": 80000, \\\"month\\\": \\\"December\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_372-134-17",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Joel Zwick",
+     "genre": "Comedy",
+     "cast": "Fiona Reid"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Comedy",
+     "directed_by": "Joel Zwick",
+     "cast": "Fiona Reid"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.408,
+   "in_tokens": 1203,
+   "out_tokens": 55,
+   "reasoning_tokens": 0,
+   "confidence": -0.0093,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-974b8afc624c2f17\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"genre\\\": \\\"Comedy\\\", \\\"directed_by\\\": \\\"Joel Zwick\\\", \\\"cast\\\": \\\"Fiona Reid\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_118-74-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_temperature",
+    "arguments": {
+     "units": "Celsius",
+     "location": "Hyderabad, India"
+    }
+   },
+   "pred": {
+    "name": "get_temperature",
+    "arguments": {
+     "location": "Hyderabad, India",
+     "units": "Celsius"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.339,
+   "in_tokens": 527,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0013,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a449eaa745e134fa\", \"type\": \"function\", \"function\": {\"name\": \"get_temperature\", \"arguments\": \"{\\\"location\\\": \\\"Hyderabad, India\\\", \\\"units\\\": \\\"Celsius\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_431-141-20",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Danville, CA",
+     "theater_name": "Century Blackhawk Plaza",
+     "show_type": "imax"
+    }
+   },
+   "pred": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Danville, CA",
+     "theater_name": "Century Blackhawk Plaza",
+     "show_type": "imax"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.534,
+   "in_tokens": 1318,
+   "out_tokens": 60,
+   "reasoning_tokens": 0,
+   "confidence": -0.0011,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-af654bdde4b581f4\", \"type\": \"function\", \"function\": {\"name\": \"Movies_1_FindMovies\", \"arguments\": \"{\\\"location\\\": \\\"Danville, CA\\\", \\\"theater_name\\\": \\\"Century Blackhawk Plaza\\\", \\\"show_type\\\": \\\"imax\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_193-116-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "New York",
+     "date": "2023-03-08"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "New York",
+     "date": "2023-03-08"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.374,
+   "in_tokens": 459,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-81f02eadf297e1bc\", \"type\": \"function\", \"function\": {\"name\": \"Weather_1_GetWeather\", \"arguments\": \"{\\\"city\\\": \\\"New York\\\", \\\"date\\\": \\\"2023-03-08\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_110-43-8",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "list_files",
+    "arguments": {
+     "type": "txt",
+     "include_hidden": true
+    }
+   },
+   "pred": {
+    "name": "list_files",
+    "arguments": {
+     "type": "txt",
+     "include_hidden": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.32,
+   "in_tokens": 2267,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": -0.0076,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bd007513ae1d971d\", \"type\": \"function\", \"function\": {\"name\": \"list_files\", \"arguments\": \"{\\\"type\\\": \\\"txt\\\", \\\"include_hidden\\\": true}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_18-3-14",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Moscow, Russia",
+     "unit": "celsius"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Moscow, Russia",
+     "unit": "celsius"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.343,
+   "in_tokens": 487,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0039,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a50365cfea35d434\", \"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"arguments\": \"{\\\"location\\\": \\\"Moscow, Russia\\\", \\\"unit\\\": \\\"celsius\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_78-35-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "dartfx_help",
+    "arguments": {
+     "topic": "charts",
+     "language": "Spanish"
+    }
+   },
+   "pred": {
+    "name": "dartfx_help",
+    "arguments": {
+     "topic": "charts",
+     "language": "Spanish"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.392,
+   "in_tokens": 1243,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": -0.0023,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ad3351a756ea4c6f\", \"type\": \"function\", \"function\": {\"name\": \"dartfx_help\", \"arguments\": \"{\\\"topic\\\": \\\"charts\\\", \\\"language\\\": \\\"Spanish\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_68",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "library.search_books",
+    "arguments": {
+     "location": "New York",
+     "genre": "Historical Fiction"
+    }
+   },
+   "pred": {
+    "name": "library.search_books",
+    "arguments": {
+     "location": "New York public library",
+     "genre": "historical fiction"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.367,
+   "in_tokens": 665,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0091,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a545bf41be6e6def\", \"type\": \"function\", \"function\": {\"name\": \"library_search_books\", \"arguments\": \"{\\\"location\\\": \\\"New York public library\\\", \\\"genre\\\": \\\"historical fiction\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_118",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "imdb.find_movies_by_actor",
+    "arguments": {
+     "actor_name": "Leonardo DiCaprio",
+     "year": 2010
+    }
+   },
+   "pred": {
+    "name": "imdb.find_movies_by_actor",
+    "arguments": {
+     "actor_name": "Leonardo DiCaprio",
+     "year": 2010
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.345,
+   "in_tokens": 948,
+   "out_tokens": 48,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8bc4212e4206fb17\", \"type\": \"function\", \"function\": {\"name\": \"imdb_find_movies_by_actor\", \"arguments\": \"{\\\"actor_name\\\": \\\"Leonardo DiCaprio\\\", \\\"year\\\": 2010}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_121",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "geometry.area_triangle",
+    "arguments": {
+     "base": 6,
+     "height": 10
+    }
+   },
+   "pred": {
+    "name": "geometry.area_triangle",
+    "arguments": {
+     "base": 6,
+     "height": 10
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.391,
+   "in_tokens": 768,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": -0.0013,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a7eb7cc7ecbed516\", \"type\": \"function\", \"function\": {\"name\": \"geometry_area_triangle\", \"arguments\": \"{\\\"base\\\": 6, \\\"height\\\": 10}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_356-134-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Lawrence Bender"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Lawrence Bender"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.406,
+   "in_tokens": 1214,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": -0.0063,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-94c83fc0176e6ba4\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"directed_by\\\": \\\"Quentin Tarantino\\\", \\\"cast\\\": \\\"Lawrence Bender\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_159",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_paint_needed",
+    "arguments": {
+     "coverage_rate": 400,
+     "length": 30,
+     "height": 12
+    }
+   },
+   "pred": {
+    "name": "calculate_paint_needed",
+    "arguments": {
+     "coverage_rate": 400,
+     "length": 30,
+     "height": 12
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.365,
+   "in_tokens": 772,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9d59e637e890eac9\", \"type\": \"function\", \"function\": {\"name\": \"calculate_paint_needed\", \"arguments\": \"{\\\"coverage_rate\\\": 400, \\\"length\\\": 30, \\\"height\\\": 12}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_983-215-7",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_service_providers",
+    "arguments": {
+     "avg_rating": 5.0,
+     "province_id": 1,
+     "district_name": "Watthana District",
+     "start_available_date": "2024-03-22 11:00:00",
+     "end_available_date": "2024-03-22 13:00:00"
+    }
+   },
+   "pred": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Watthana District",
+     "start_available_date": "2024-03-22 11:00:00",
+     "end_available_date": "2024-03-22 13:00:00",
+     "avg_rating": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.511,
+   "in_tokens": 1717,
+   "out_tokens": 111,
+   "reasoning_tokens": 0,
+   "confidence": -0.0076,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b42c907cd879fe5f\", \"type\": \"function\", \"function\": {\"name\": \"get_service_providers\", \"arguments\": \"{\\\"province_id\\\": 1, \\\"district_name\\\": \\\"Watthana District\\\", \\\"start_available_date\\\": \\\"2024-03-22 11:00:00\\\", \\\"end_available_date\\\": \\\"2024-03-22 13:00:00\\\", \\\"avg_rating\\\": 5}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_82",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_average",
+    "arguments": {
+     "numbers": [
+      12.0,
+      15.0,
+      18.0,
+      20.0,
+      21.0,
+      26.0,
+      30.0
+     ]
+    }
+   },
+   "pred": {
+    "name": "calculate_average",
+    "arguments": {
+     "numbers": [
+      12,
+      15,
+      18,
+      20,
+      21,
+      26,
+      30
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.589,
+   "in_tokens": 409,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9606b9408c6851ee\", \"type\": \"function\", \"function\": {\"name\": \"calculate_average\", \"arguments\": \"{\\\"numbers\\\": [12, 15, 18, 20, 21, 26, 30]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_94-41-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "list_servers",
+    "arguments": {}
+   },
+   "pred": {
+    "name": "list_servers",
+    "arguments": {
+     "type": "all"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.415,
+   "in_tokens": 1503,
+   "out_tokens": 24,
+   "reasoning_tokens": 0,
+   "confidence": -0.0094,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9432dde42dbc9f77\", \"type\": \"function\", \"function\": {\"name\": \"list_servers\", \"arguments\": \"{\\\"type\\\": \\\"all\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_164",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "instrument_price.get",
+    "arguments": {
+     "brand": "Fender",
+     "model": "American Professional II Stratocaster",
+     "finish": "Rosewood"
+    }
+   },
+   "pred": {
+    "name": "instrument_price.get",
+    "arguments": {
+     "brand": "Fender",
+     "model": "American Professional II Stratocaster",
+     "finish": "Rosewood"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.68,
+   "in_tokens": 984,
+   "out_tokens": 52,
+   "reasoning_tokens": 0,
+   "confidence": -0.0012,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-83e3ffe3cf436ca8\", \"type\": \"function\", \"function\": {\"name\": \"instrument_price_get\", \"arguments\": \"{\\\"brand\\\": \\\"Fender\\\", \\\"model\\\": \\\"American Professional II Stratocaster\\\", \\\"finish\\\": \\\"Rosewood\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_392",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "latest_exchange_rate",
+    "arguments": {
+     "source_currency": "GBP",
+     "target_currency": "JPY"
+    }
+   },
+   "pred": {
+    "name": "latest_exchange_rate",
+    "arguments": {
+     "source_currency": "GBP",
+     "target_currency": "JPY"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.33,
+   "in_tokens": 456,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0002,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9adbb327f5b1ffe8\", \"type\": \"function\", \"function\": {\"name\": \"latest_exchange_rate\", \"arguments\": \"{\\\"source_currency\\\": \\\"GBP\\\", \\\"target_currency\\\": \\\"JPY\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_102",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_distance",
+    "arguments": {
+     "body1": "Earth",
+     "body2": "Moon",
+     "unit": "mi"
+    }
+   },
+   "pred": {
+    "name": "calculate_distance",
+    "arguments": {
+     "body1": "Earth",
+     "body2": "Moon",
+     "unit": "miles"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.398,
+   "in_tokens": 437,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": -0.0004,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8112c091425f84cd\", \"type\": \"function\", \"function\": {\"name\": \"calculate_distance\", \"arguments\": \"{\\\"body1\\\": \\\"Earth\\\", \\\"body2\\\": \\\"Moon\\\", \\\"unit\\\": \\\"miles\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_167",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "pred": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16,
+     "tempo": 120
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.377,
+   "in_tokens": 900,
+   "out_tokens": 64,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b4a3b64de8586424\", \"type\": \"function\", \"function\": {\"name\": \"music_generator_generate_melody\", \"arguments\": \"{\\\"key\\\": \\\"C\\\", \\\"start_note\\\": \\\"C4\\\", \\\"length\\\": 16, \\\"tempo\\\": 120}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_219-117-11",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Simon Curtis",
+     "genre": "Drama",
+     "cast": "McKinley Belcher III"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Simon Curtis",
+     "genre": "Drama",
+     "cast": "McKinley Belcher III"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.387,
+   "in_tokens": 604,
+   "out_tokens": 56,
+   "reasoning_tokens": 0,
+   "confidence": -0.0025,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-ad6da5b5f3dec037\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"directed_by\\\": \\\"Simon Curtis\\\", \\\"genre\\\": \\\"Drama\\\", \\\"cast\\\": \\\"McKinley Belcher III\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_197-89-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_tickets",
+    "arguments": {
+     "customer": "阿迪达斯",
+     "priority": 4
+    }
+   },
+   "pred": {
+    "name": "get_tickets",
+    "arguments": {
+     "customer": "阿迪达斯",
+     "priority": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.347,
+   "in_tokens": 612,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": -0.0023,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b6a5412bcc187c77\", \"type\": \"function\", \"function\": {\"name\": \"get_tickets\", \"arguments\": \"{\\\"customer\\\": \\\"\\u963f\\u8fea\\u8fbe\\u65af\\\", \\\"priority\\\": 4}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_140",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "lawsuits_search",
+    "arguments": {
+     "company_name": "Google",
+     "location": "California",
+     "year": 2020
+    }
+   },
+   "pred": {
+    "name": "lawsuits_search",
+    "arguments": {
+     "company_name": "Google",
+     "location": "California",
+     "year": 2020
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.367,
+   "in_tokens": 781,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bf96f037ef979587\", \"type\": \"function\", \"function\": {\"name\": \"lawsuits_search\", \"arguments\": \"{\\\"company_name\\\": \\\"Google\\\", \\\"location\\\": \\\"California\\\", \\\"year\\\": 2020}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_21",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "generate_sound_wave",
+    "arguments": {
+     "frequency": 440,
+     "duration": 5
+    }
+   },
+   "pred": {
+    "name": "generate_sound_wave",
+    "arguments": {
+     "frequency": 440,
+     "duration": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.3,
+   "in_tokens": 641,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": -0.0041,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a6f20b60cc7017f0\", \"type\": \"function\", \"function\": {\"name\": \"generate_sound_wave\", \"arguments\": \"{\\\"frequency\\\": 440, \\\"duration\\\": 5}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_103",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "mathematics.calculate_area_under_curve",
+    "arguments": {
+     "polynomial": [
+      3.0,
+      2.0,
+      -4.0
+     ],
+     "limits": [
+      -1.0,
+      2.0
+     ]
+    }
+   },
+   "pred": {
+    "name": "mathematics.calculate_area_under_curve",
+    "arguments": {
+     "polynomial": [
+      3,
+      2,
+      -4
+     ],
+     "limits": [
+      -1,
+      2
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.504,
+   "in_tokens": 514,
+   "out_tokens": 55,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-994ab562e0d867a6\", \"type\": \"function\", \"function\": {\"name\": \"mathematics_calculate_area_under_curve\", \"arguments\": \"{\\\"polynomial\\\": [3, 2, -4], \\\"limits\\\": [-1, 2]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_225-99-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "pred": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.363,
+   "in_tokens": 877,
+   "out_tokens": 19,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8e40d97cc7ed0c8e\", \"type\": \"function\", \"function\": {\"name\": \"version_api_VersionApi_get_version\", \"arguments\": \"{}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_63",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "air_quality_forecast",
+    "arguments": {
+     "location": "New York",
+     "days": 7
+    }
+   },
+   "pred": {
+    "name": "air_quality_forecast",
+    "arguments": {
+     "location": "New York",
+     "days": 7
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.37,
+   "in_tokens": 654,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-89270dc640081f75\", \"type\": \"function\", \"function\": {\"name\": \"air_quality_forecast\", \"arguments\": \"{\\\"location\\\": \\\"New York\\\", \\\"days\\\": 7}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_221-117-13",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "James Gray"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "James Gray",
+     "genre": "dontcare",
+     "cast": "dontcare"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.367,
+   "in_tokens": 606,
+   "out_tokens": 52,
+   "reasoning_tokens": 0,
+   "confidence": -0.0027,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b9f931148e2e4ae8\", \"type\": \"function\", \"function\": {\"name\": \"Movies_3_FindMovies\", \"arguments\": \"{\\\"directed_by\\\": \\\"James Gray\\\", \\\"genre\\\": \\\"dontcare\\\", \\\"cast\\\": \\\"dontcare\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_789-174-3",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Berkeley, CA",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 1
+    }
+   },
+   "pred": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Berkeley, CA",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.509,
+   "in_tokens": 881,
+   "out_tokens": 72,
+   "reasoning_tokens": 0,
+   "confidence": -0.0074,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a87a933632f9a1bf\", \"type\": \"function\", \"function\": {\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": \"{\\\"area\\\": \\\"Berkeley, CA\\\", \\\"intent\\\": \\\"rent\\\", \\\"number_of_beds\\\": 2, \\\"number_of_baths\\\": 1}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_163",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "metropolitan_museum.get_top_artworks",
+    "arguments": {
+     "number": 5,
+     "sort_by": "popularity"
+    }
+   },
+   "pred": {
+    "name": "metropolitan_museum.get_top_artworks",
+    "arguments": {
+     "number": 5,
+     "sort_by": "popularity"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.306,
+   "in_tokens": 675,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": -0.0001,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a9b607726b0229c0\", \"type\": \"function\", \"function\": {\"name\": \"metropolitan_museum_get_top_artworks\", \"arguments\": \"{\\\"number\\\": 5, \\\"sort_by\\\": \\\"popularity\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_71-35-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "extract_parameters_v1",
+    "arguments": {
+     "demographics": [
+      "millennials"
+     ],
+     "targets": [
+      "brand:Apple"
+     ],
+     "metrics": [
+      "view"
+     ],
+     "min_date": "2022-07-01"
+    }
+   },
+   "pred": {
+    "name": "extract_parameters_v1",
+    "arguments": {
+     "demographics": [
+      "millennials"
+     ],
+     "targets": [
+      "brand:Apple"
+     ],
+     "metrics": "view",
+     "country": "None",
+     "min_date": "2022-07-01",
+     "max_date": "None",
+     "interval": "month"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'metrics': got \"view\", want one of [[\"view\"]]; arg 'country': got \"None\", want one of [null]; arg 'max_date': got \"None\", want one of [null]; arg 'interval': got \"month\", want one of [null]",
+   "latency": 0.586,
+   "in_tokens": 867,
+   "out_tokens": 105,
+   "reasoning_tokens": 0,
+   "confidence": -0.0098,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-bb147ba1452fa47a\", \"type\": \"function\", \"function\": {\"name\": \"extract_parameters_v1\", \"arguments\": \"{\\\"demographics\\\": [\\\"millennials\\\"], \\\"targets\\\": [\\\"brand:Apple\\\"], \\\"metrics\\\": \\\"view\\\", \\\"country\\\": \\\"None\\\", \\\"min_date\\\": \\\"2022-07-01\\\", \\\"max_date\\\": \\\"None\\\", \\\"interval\\\": \\\"month\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_221-95-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "segment",
+    "arguments": {
+     "img_path": "./yoha.jpg"
+    }
+   },
+   "pred": {
+    "name": "segment",
+    "arguments": {
+     "img_path": "./yoha.jpg"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.313,
+   "in_tokens": 606,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-942f1fc537915a2d\", \"type\": \"function\", \"function\": {\"name\": \"segment\", \"arguments\": \"{\\\"img_path\\\": \\\"./yoha.jpg\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_834-178-9",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "artist": "Teodora",
+     "device": "Kitchen",
+     "album": "Borbena"
+    }
+   },
+   "pred": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "track": "Borbena",
+     "artist": "Teodora",
+     "album": "Borbena",
+     "device": "Kitchen"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.386,
+   "in_tokens": 1163,
+   "out_tokens": 64,
+   "reasoning_tokens": 0,
+   "confidence": -0.0205,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8497edac7230a199\", \"type\": \"function\", \"function\": {\"name\": \"Music_3_PlayMedia\", \"arguments\": \"{\\\"track\\\": \\\"Borbena\\\", \\\"artist\\\": \\\"Teodora\\\", \\\"album\\\": \\\"Borbena\\\", \\\"device\\\": \\\"Kitchen\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_965-207-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "transfer_to_human_agent",
+    "arguments": {
+     "statement": "I've submitted a complaint and would like to discuss its status with a human agent."
+    }
+   },
+   "pred": {
+    "name": "transfer_to_human_agent",
+    "arguments": {
+     "statement": "User has submitted a complaint and wants to discuss its status with a human agent."
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'statement': got \"User has submitted a complaint and wants to discuss its sta, want one of [\"I've submitted a complaint and would like to discuss its status with a human a",
+   "latency": 0.353,
+   "in_tokens": 527,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0221,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8d6cfc32c05657ab\", \"type\": \"function\", \"function\": {\"name\": \"transfer_to_human_agent\", \"arguments\": \"{\\\"statement\\\": \\\"User has submitted a complaint and wants to discuss its status with a human agent.\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_92-53-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "play_artist",
+    "arguments": {
+     "artist_name": "Käärijä"
+    }
+   },
+   "pred": {
+    "name": "play_artist",
+    "arguments": {
+     "artist_name": "Käärijä"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.26,
+   "in_tokens": 391,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": -0.0,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-8a1d79aa088fe297\", \"type\": \"function\", \"function\": {\"name\": \"play_artist\", \"arguments\": \"{\\\"artist_name\\\": \\\"K\\u00e4\\u00e4rij\\u00e4\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_46",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "sort_list",
+    "arguments": {
+     "elements": [
+      "Sam",
+      "Alice",
+      "Jack"
+     ]
+    }
+   },
+   "pred": {
+    "name": "sort_list",
+    "arguments": {
+     "elements": [
+      "Sam",
+      "Alice",
+      "Jack"
+     ],
+     "order": "asc"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.405,
+   "in_tokens": 656,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": -0.0006,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-af07af03e5eb0436\", \"type\": \"function\", \"function\": {\"name\": \"sort_list\", \"arguments\": \"{\\\"elements\\\": [\\\"Sam\\\", \\\"Alice\\\", \\\"Jack\\\"], \\\"order\\\": \\\"asc\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_312",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "player_statistic",
+    "arguments": {
+     "player_name": "Ronaldo",
+     "year": 2021
+    }
+   },
+   "pred": {
+    "name": "player_statistic",
+    "arguments": {
+     "player_name": "Ronaldo",
+     "year": 2021
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.328,
+   "in_tokens": 453,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": -0.0019,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b99878f3d170937b\", \"type\": \"function\", \"function\": {\"name\": \"player_statistic\", \"arguments\": \"{\\\"player_name\\\": \\\"Ronaldo\\\", \\\"year\\\": 2021}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "simple_python_190",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "park_information",
+    "arguments": {
+     "park_name": "Yellowstone",
+     "information": [
+      "Elevation",
+      "Area"
+     ]
+    }
+   },
+   "pred": {
+    "name": "park_information",
+    "arguments": {
+     "park_name": "Yellowstone National Park",
+     "information": [
+      "Elevation",
+      "Area"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.298,
+   "in_tokens": 444,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": -0.0005,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-84a536ca0a58870f\", \"type\": \"function\", \"function\": {\"name\": \"park_information\", \"arguments\": \"{\\\"park_name\\\": \\\"Yellowstone National Park\\\", \\\"information\\\": [\\\"Elevation\\\", \\\"Area\\\"]}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_simple_13-3-9",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Shanghai, China",
+     "unit": "celsius"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Shanghai, China",
+     "unit": "celsius"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.462,
+   "in_tokens": 502,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": -0.0077,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-b3aca887d26bfb58\", \"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"arguments\": \"{\\\"location\\\": \\\"Shanghai, China\\\", \\\"unit\\\": \\\"celsius\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "live_multiple_456-145-7",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "London, UK",
+     "free_entry": "True",
+     "category": "Performing Arts Venue"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "London, UK",
+     "free_entry": "True",
+     "category": "Performing Arts Venue"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.356,
+   "in_tokens": 2218,
+   "out_tokens": 56,
+   "reasoning_tokens": 0,
+   "confidence": -0.0077,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-9e97b484582c00a1\", \"type\": \"function\", \"function\": {\"name\": \"Travel_1_FindAttractions\", \"arguments\": \"{\\\"location\\\": \\\"London, UK\\\", \\\"free_entry\\\": \\\"True\\\", \\\"category\\\": \\\"Performing Arts Venue\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  },
+  {
+   "id": "multiple_109",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane"
+    }
+   },
+   "pred": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.345,
+   "in_tokens": 792,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": -0.0088,
+   "raw": "[{\"index\": 0, \"id\": \"chatcmpl-tool-a847eea37d9e5c21\", \"type\": \"function\", \"function\": {\"name\": \"cellbio_get_proteins\", \"arguments\": \"{\\\"cell_compartment\\\": \\\"plasma membrane\\\"}\"}, \"name\": null}]",
+   "pred_source": "tool_calls"
+  }
+ ]
+}

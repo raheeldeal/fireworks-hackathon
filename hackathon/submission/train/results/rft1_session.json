@@ -1,0 +1,16 @@
+{
+ "session": "ts-9e2c425b502f41efa846da14854ddfe6",
+ "session_name": "accounts/raheeldeal/trainingSessions/ts-9e2c425b502f41efa846da14854ddfe6",
+ "run": "run-933d2ba2f38049f5bde4142e5787cfc3",
+ "started": "2026-11-02T09:11:09",
+ "tag": "rft1",
+ "data": "data/rft_round1.jsonl",
+ "rows": 313,
+ "tokens_per_epoch": 24437,
+ "loss_tokens_per_epoch": 2403,
+ "epochs": 2,
+ "batch": 16,
+ "lr": 0.0001,
+ "rank": 8,
+ "log": []
+}

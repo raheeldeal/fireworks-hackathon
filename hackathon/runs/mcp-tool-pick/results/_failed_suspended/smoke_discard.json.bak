@@ -1,0 +1,139 @@
+{
+ "model": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+ "prompt": "v1_plain+rnone",
+ "tag": "smoke",
+ "mock": false,
+ "n": 6,
+ "seed": 0,
+ "accuracy": 0.8333,
+ "top3_accuracy": 0.8333,
+ "invalid_outputs": 0,
+ "errors": 0,
+ "p50_latency_s": 0.258,
+ "p95_latency_s": 0.271,
+ "cost_per_1k_requests_usd": 0.0873,
+ "in_tokens": 10356,
+ "out_tokens": 30,
+ "reasoning_tokens": 0,
+ "avg_in_tokens": 1726.0,
+ "avg_out_tokens": 5.0,
+ "catalog_tokens_est": 1872,
+ "catalog_cost_share": 1.072,
+ "retrieval_recall": null,
+ "rows": [
+  {
+   "id": "q301",
+   "text": "We finished planning for the payment team, and the three tickets PAY-77, PAY-78 and PAY-81 are currently sitting in the backlog but they really belong in the Q3 hardening sprint that starts Monday, could you put them there?",
+   "label": "jira.move_to_sprint",
+   "raw": "jira.move_to_sprint",
+   "pred": "jira.move_to_sprint",
+   "ranked": [
+    "jira.move_to_sprint"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.271,
+   "in_tokens": 1746,
+   "out_tokens": 7,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "first_token_logprob": -0.04106751,
+   "sum_logprob": -0.07086875000000001
+  },
+  {
+   "id": "q012",
+   "text": "Please give me all words what is showing on current page, I need to check if my order confirmation from NordicShop is correct before I reply to them.",
+   "label": "browser.extract_text",
+   "raw": "browser.extract_text",
+   "pred": "browser.extract_text",
+   "ranked": [
+    "browser.extract_text"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.254,
+   "in_tokens": 1721,
+   "out_tokens": 4,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "first_token_logprob": -0.00927674,
+   "sum_logprob": -0.01375403
+  },
+  {
+   "id": "q402",
+   "text": "Please post message in #team-lunch channel tomorrow 12 o'clock: pizza order close at 11:45, everyone must submit choice before. Thank you!",
+   "label": "slack.schedule_message",
+   "raw": "slack.schedule_message",
+   "pred": "slack.schedule_message",
+   "ranked": [
+    "slack.schedule_message"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.249,
+   "in_tokens": 1726,
+   "out_tokens": 5,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "first_token_logprob": -0.03557149,
+   "sum_logprob": -0.12531183
+  },
+  {
+   "id": "q133",
+   "text": "I'm curious about the metadata of /home/ana/backup.tar.gz \u2014 things like how much space it takes up and when it was last altered, without opening it.",
+   "label": "fs.get_file_info",
+   "raw": "fs.get_file_info",
+   "pred": "fs.get_file_info",
+   "ranked": [
+    "fs.get_file_info"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.261,
+   "in_tokens": 1725,
+   "out_tokens": 5,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "first_token_logprob": -0.02887453,
+   "sum_logprob": -0.08377467999999999
+  },
+  {
+   "id": "q405",
+   "text": "find every mention of \"Q3 budget\" in Slack history",
+   "label": "slack.search_messages",
+   "raw": "slack.search_messages",
+   "pred": "slack.search_messages",
+   "ranked": [
+    "slack.search_messages"
+   ],
+   "correct": true,
+   "top3": true,
+   "latency": 0.252,
+   "in_tokens": 1703,
+   "out_tokens": 5,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "first_token_logprob": -0.01130709,
+   "sum_logprob": -0.058567089999999995
+  },
+  {
+   "id": "q079",
+   "text": "Hi Marcus \u2014 the duplicate rows in the events table from the Oct 12 import (event_id 556-560) need to go before the sync runs tonight. Can the assistant clean those up?",
+   "label": "db.execute_statement",
+   "raw": "db.run_query",
+   "pred": "db.run_query",
+   "ranked": [
+    "db.run_query"
+   ],
+   "correct": false,
+   "top3": false,
+   "latency": 0.436,
+   "in_tokens": 1735,
+   "out_tokens": 4,
+   "reasoning_tokens": 0,
+   "finish_reason": "stop",
+   "first_token_logprob": -0.35375962,
+   "sum_logprob": -1.3022554400000002
+  }
+ ]
+}

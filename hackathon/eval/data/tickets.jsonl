@@ -1,0 +1,50 @@
+{"id": 1, "text": "I was charged twice for my subscription this month, please refund one.", "label": "billing"}
+{"id": 2, "text": "The export button does nothing when I click it on Safari.", "label": "bug"}
+{"id": 3, "text": "Would love a dark mode option in the mobile app.", "label": "feature_request"}
+{"id": 4, "text": "I can't log in, it says my password is wrong but I just reset it.", "label": "account_access"}
+{"id": 5, "text": "How do I invite a teammate to my workspace?", "label": "how_to"}
+{"id": 6, "text": "Invoice from October shows the wrong company name.", "label": "billing"}
+{"id": 7, "text": "App crashes every time I open the reports tab since the update.", "label": "bug"}
+{"id": 8, "text": "Can you add Slack notifications when a task is assigned to me?", "label": "feature_request"}
+{"id": 9, "text": "My 2FA codes aren't being accepted and I'm locked out.", "label": "account_access"}
+{"id": 10, "text": "Where do I change the default currency for my account?", "label": "how_to"}
+{"id": 11, "text": "Why did my plan price go up from $29 to $39?", "label": "billing"}
+{"id": 12, "text": "Dates in the CSV download are off by one day.", "label": "bug"}
+{"id": 13, "text": "It would be great to bulk-edit tags instead of one at a time.", "label": "feature_request"}
+{"id": 14, "text": "I never received the verification email after signing up.", "label": "account_access"}
+{"id": 15, "text": "What's the difference between the Pro and Team plans?", "label": "how_to"}
+{"id": 16, "text": "Please cancel my subscription and confirm I won't be billed again.", "label": "billing"}
+{"id": 17, "text": "Search returns no results even for items I can see on screen.", "label": "bug"}
+{"id": 18, "text": "Any chance of a Zapier integration?", "label": "feature_request"}
+{"id": 19, "text": "Someone else seems to have access to my account, I see logins from another country.", "label": "account_access"}
+{"id": 20, "text": "How do I export all my data?", "label": "how_to"}
+{"id": 21, "text": "Need a receipt with VAT number for my expense report.", "label": "billing"}
+{"id": 22, "text": "Images uploaded in comments show as broken links.", "label": "bug"}
+{"id": 23, "text": "Could we get keyboard shortcuts for common actions?", "label": "feature_request"}
+{"id": 24, "text": "Trying to change my email address but the save button is greyed out.", "label": "account_access"}
+{"id": 25, "text": "Is there a way to set up recurring tasks?", "label": "how_to"}
+{"id": 26, "text": "Card declined but the money left my bank account.", "label": "billing"}
+{"id": 27, "text": "Notifications arrive 3 hours late on Android.", "label": "bug"}
+{"id": 28, "text": "Please support SSO with Okta.", "label": "feature_request"}
+{"id": 29, "text": "I deleted my account by accident, can it be restored?", "label": "account_access"}
+{"id": 30, "text": "How do I change the timezone shown on reports?", "label": "how_to"}
+{"id": 31, "text": "You billed me in USD but I'm in the UK, can I pay in GBP?", "label": "billing"}
+{"id": 32, "text": "Drag and drop reorders the wrong item about half the time.", "label": "bug"}
+{"id": 33, "text": "A weekly summary email would be really useful.", "label": "feature_request"}
+{"id": 34, "text": "My account says suspended and I don't know why.", "label": "account_access"}
+{"id": 35, "text": "Can you explain what the 'archive' action does versus delete?", "label": "how_to"}
+{"id": 36, "text": "Downgraded to free last month but still got charged.", "label": "billing"}
+{"id": 37, "text": "Getting a 500 error when I try to save a long description.", "label": "bug"}
+{"id": 38, "text": "Would be nice to export reports as PDF not just CSV.", "label": "feature_request"}
+{"id": 39, "text": "The magic link to sign in expires before I can click it.", "label": "account_access"}
+{"id": 40, "text": "Which browsers do you officially support?", "label": "how_to"}
+{"id": 41, "text": "Refund still hasn't shown up after 10 business days.", "label": "billing"}
+{"id": 42, "text": "Text in the sidebar overlaps when the window is narrow.", "label": "bug"}
+{"id": 43, "text": "Please let us customize the fields on the task form.", "label": "feature_request"}
+{"id": 44, "text": "I want to transfer ownership of the workspace to a colleague who is leaving... wait, to me, since they are leaving.", "label": "account_access"}
+{"id": 45, "text": "How many users can I have on the starter plan?", "label": "how_to"}
+{"id": 46, "text": "Can I get a discount for paying annually?", "label": "billing"}
+{"id": 47, "text": "Timer keeps running after I click stop.", "label": "bug"}
+{"id": 48, "text": "An API for creating tasks would unlock a lot for us.", "label": "feature_request"}
+{"id": 49, "text": "Password reset link goes to a 404 page.", "label": "bug"}
+{"id": 50, "text": "Do you have a guide for migrating from Trello?", "label": "how_to"}

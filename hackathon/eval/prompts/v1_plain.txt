@@ -1,0 +1,2 @@
+Classify the support ticket into exactly one category: billing, bug, feature_request, account_access, how_to.
+Reply with only the category name.

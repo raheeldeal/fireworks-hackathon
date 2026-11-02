@@ -1,0 +1,40 @@
+[22:10:19] account not ready (HTTP 412); sleeping 300s
+[22:15:20] account OK, starting
+[22:15:20] account not ready (HTTP 412); sleeping 300s
+[22:15:20] run glm-5p3-flash v1_plain seed 0
+[22:20:20] run nemotron-lightning-3p5-30b-a3b v1_plain seed 0
+[22:32:21] account not ready (HTTP 429); sleeping 300s
+[22:32:21] run deepseek-v4p1-flash v1_plain seed 0
+[22:37:21] run gpt-oss-120b v1_plain seed 0
+[22:47:39] account not ready (HTTP 429); sleeping 300s
+[22:47:40] run glm-5p3 v1_plain seed 0
+[22:52:40] account not ready (HTTP 429); sleeping 300s
+[22:57:40] run kimi-k3 v1_plain seed 0
+[23:02:53] SFT submit failed (see results/log_sft_submit.txt)
+[23:02:53] account not ready (HTTP 429); sleeping 300s
+[23:02:53] run nemotron-lightning-3p5-30b-a3b v1_plain+rnone seed 0
+[23:07:53] run glm-5p3-flash v1_plain+rlow seed 0
+[23:14:15] account not ready (HTTP 429); sleeping 300s
+[23:14:15] account not ready (HTTP 429); sleeping 300s
+[23:19:15] run nemotron-lightning-3p5-30b-a3b v2_rubric seed 0
+[23:19:15] run glm-5p3-flash v2_rubric seed 0
+[23:24:27] run glm-5p3-flash v1_plain+5shot seed 0
+[23:24:27] run nemotron-lightning-3p5-30b-a3b v1_plain+5shot seed 0
+[23:28:20] run glm-5p3-flash v4_json seed 0
+[23:28:20] run nemotron-lightning-3p5-30b-a3b v4_json seed 0
+[23:35:18] run glm-5p3-flash v3_top3 seed 0
+[23:35:18] run nemotron-lightning-3p5-30b-a3b v3_top3 seed 0
+[23:40:05] run nemotron-lightning-3p5-30b-a3b v1_plain+retr10 seed 0
+[23:40:05] run glm-5p3-flash v1_plain+retr10 seed 0
+[23:43:43] run nemotron-lightning-3p5-30b-a3b v2_rubric+rnone seed 0
+[23:43:43] run nemotron-lightning-3p5-30b-a3b v1_plain+retr20 seed 0
+[23:46:15] run glm-5p3-flash v2_rubric+5shot seed 0
+[23:46:15] run nemotron-lightning-3p5-30b-a3b v2_rubric+5shot seed 0
+[23:48:27] best small config: glm-5p3-flash v2_rubric+5shot
+[23:48:27] run nemotron-lightning-3p5-30b-a3b v1_plain seed 1
+[23:48:27] run glm-5p3-flash v2_rubric+5shot seed 1
+[23:50:42] run glm-5p3-flash v2_rubric+5shot seed 2
+[23:50:42] run nemotron-lightning-3p5-30b-a3b v1_plain seed 2
+saved frontier.png with 40 points
+ledger total: $2.3944
+[23:53:04] ALL DONE

@@ -1,0 +1,4 @@
+You are a tool router. Given the tool catalog below and a user request, respond with a JSON object {"tool": "<exact tool name from the catalog>", "confidence": <number from 0 to 1, your probability that this tool is the right one>} and nothing else.
+
+CATALOG:
+{CATALOG}

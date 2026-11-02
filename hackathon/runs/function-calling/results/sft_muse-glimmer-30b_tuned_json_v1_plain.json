@@ -1,0 +1,6517 @@
+{
+ "model": "accounts/fireworks/models/muse-glimmer-30b#lora-sft-tuned",
+ "prompt": "v1_plain",
+ "mode": "json",
+ "shots": 0,
+ "tool_choice": "n/a",
+ "response_format": "none",
+ "seed": 0,
+ "mock": false,
+ "n": 200,
+ "accuracy": 0.895,
+ "accuracy_partial": 0.9425,
+ "invalid_outputs": 1,
+ "api_errors": 0,
+ "p50_latency_s": 0.0,
+ "p95_latency_s": 2.598,
+ "cost_per_1k_requests_usd": 1.3205,
+ "total_cost_usd": 0.26411,
+ "in_tokens": 116854,
+ "out_tokens": 7187,
+ "reasoning_tokens": 0,
+ "accuracy_by_source": {
+  "live_simple": 0.85,
+  "multiple": 0.92,
+  "simple_python": 0.975,
+  "live_multiple": 0.857
+ },
+ "wall_s": 76.5,
+ "note": "cost at serverless-training sampler rates (prefill $1.96/M, sample $4.88/M); production serving would be an on-demand deployment",
+ "rows": [
+  {
+   "id": "live_simple_227-118-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "text_to_speech.convert",
+    "arguments": {
+     "text": "我爱学习",
+     "language": "zh-CN",
+     "gender": "male",
+     "format": "wav"
+    }
+   },
+   "pred": {
+    "name": "text_to_speech.convert",
+    "arguments": {
+     "text": "我爱学习",
+     "language": "zh-CN",
+     "gender": "male",
+     "format": "wav"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.345,
+   "in_tokens": 407,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"text_to_speech.convert\", \"arguments\": {\"text\": \"我爱学习\", \"language\": \"zh-CN\", \"gender\": \"male\", \"format\": \"wav\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_77",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "artwork_search.find",
+    "arguments": {
+     "type": "sculpture",
+     "location": "New York"
+    }
+   },
+   "pred": {
+    "name": "artwork_search.find",
+    "arguments": {
+     "type": "sculpture",
+     "location": "New York"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 454,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"artwork_search.find\", \"arguments\": {\"type\": \"sculpture\", \"location\": \"New York\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_291",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "pred": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 310,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"music_generator.generate_melody\", \"arguments\": {\"key\": \"C\", \"start_note\": \"C4\", \"length\": 16}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_163",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "metropolitan_museum.get_top_artworks",
+    "arguments": {
+     "number": 5,
+     "sort_by": "popularity"
+    }
+   },
+   "pred": {
+    "name": "metropolitan_museum.get_top_artworks",
+    "arguments": {
+     "number": 5,
+     "sort_by": "popularity"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 416,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"metropolitan_museum.get_top_artworks\", \"arguments\": {\"number\": 5, \"sort_by\": \"popularity\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_68-29-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "ProjectDB",
+     "host": "http://foo.com",
+     "database": "project_data",
+     "username": "user1",
+     "password": "12345"
+    }
+   },
+   "pred": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "ProjectDB",
+     "host": "http://foo.com",
+     "port": 5432,
+     "database": "project_data",
+     "username": "user1",
+     "password": "12345"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.432,
+   "in_tokens": 504,
+   "out_tokens": 60,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"ProjectDB\", \"host\": \"http://foo.com\", \"port\": 5432, \"database\": \"project_data\", \"username\": \"user1\", \"password\": \"12345\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_143",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_slope_gradient",
+    "arguments": {
+     "point1": [
+      40.7128,
+      -74.006
+     ],
+     "point2": [
+      34.0522,
+      -118.2437
+     ]
+    }
+   },
+   "pred": {
+    "name": "calculate_slope_gradient",
+    "arguments": {
+     "point1": [
+      40.7128,
+      -74.006
+     ],
+     "point2": [
+      34.0522,
+      -118.2437
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 622,
+   "out_tokens": 48,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_slope_gradient\", \"arguments\": {\"point1\": [40.7128, -74.006], \"point2\": [34.0522, -118.2437]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_83",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "player_stats.get_all_time_goals",
+    "arguments": {
+     "player_name": "Lionel Messi",
+     "team_name": "Barcelona"
+    }
+   },
+   "pred": {
+    "name": "player_stats.get_all_time_goals",
+    "arguments": {
+     "player_name": "Lionel Messi",
+     "team_name": "Barcelona"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 439,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"player_stats.get_all_time_goals\", \"arguments\": {\"player_name\": \"Lionel Messi\", \"team_name\": \"Barcelona\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_110-43-8",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "list_files",
+    "arguments": {
+     "type": "txt",
+     "include_hidden": true
+    }
+   },
+   "pred": {
+    "name": "list_files",
+    "arguments": {
+     "type": "txt",
+     "include_hidden": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1690,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"list_files\", \"arguments\": {\"type\": \"txt\", \"include_hidden\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_184",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "recipe_search",
+    "arguments": {
+     "dietary_restriction": "Vegetarian",
+     "ingredients": [
+      "pasta",
+      "cheese"
+     ],
+     "servings": 2
+    }
+   },
+   "pred": {
+    "name": "recipe_search",
+    "arguments": {
+     "dietary_restriction": "Vegetarian",
+     "ingredients": [
+      "pasta",
+      "cheese"
+     ],
+     "servings": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.411,
+   "in_tokens": 477,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"recipe_search\", \"arguments\": {\"dietary_restriction\": \"Vegetarian\", \"ingredients\": [\"pasta\", \"cheese\"], \"servings\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_111",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "random.normalvariate",
+    "arguments": {
+     "mu": 0,
+     "sigma": 1
+    }
+   },
+   "pred": {
+    "name": "random.normalvariate",
+    "arguments": {
+     "mu": 0,
+     "sigma": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 218,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"random.normalvariate\", \"arguments\": {\"mu\": 0, \"sigma\": 1}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_78-35-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "dartfx_help",
+    "arguments": {
+     "topic": "charts",
+     "language": "Spanish"
+    }
+   },
+   "pred": {
+    "name": "dartfx_help",
+    "arguments": {
+     "topic": "charts",
+     "language": "Spanish"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 883,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"dartfx_help\", \"arguments\": {\"topic\": \"charts\", \"language\": \"Spanish\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_207-116-15",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sacramento",
+     "date": "2023-04-22"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sacramento",
+     "date": "2023-04-22"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 254,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Sacramento\", \"date\": \"2023-04-22\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_292",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "compose_melody",
+    "arguments": {
+     "progression": [
+      "C",
+      "F",
+      "G"
+     ],
+     "measures": 4
+    }
+   },
+   "pred": {
+    "name": "compose_melody",
+    "arguments": {
+     "progression": [
+      "C",
+      "F",
+      "G"
+     ],
+     "measures": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 259,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"compose_melody\", \"arguments\": {\"progression\": [\"C\", \"F\", \"G\"], \"measures\": 4}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_278-128-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "Oakland, CA"
+    }
+   },
+   "pred": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "Oakland, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 908,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"Oakland, CA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_36",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "pred": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 255,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_shortest_driving_distance\", \"arguments\": {\"origin\": \"New York City\", \"destination\": \"Washington D.C.\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_958-204-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "partner.sips",
+    "arguments": {
+     "status": "active"
+    }
+   },
+   "pred": {
+    "name": "partner.sips",
+    "arguments": {
+     "status": "active"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.699,
+   "in_tokens": 469,
+   "out_tokens": 21,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"partner.sips\", \"arguments\": {\"status\": \"active\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_221-95-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "segment",
+    "arguments": {
+     "img_path": "./yoha.jpg"
+    }
+   },
+   "pred": {
+    "name": "segment",
+    "arguments": {
+     "img_path": "./yoha.jpg"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 377,
+   "out_tokens": 22,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"segment\", \"arguments\": {\"img_path\": \"./yoha.jpg\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_229",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_bigfive_scores",
+    "arguments": {
+     "characteristics": [
+      "efficient",
+      "organized",
+      "easy going",
+      "compassionate"
+     ]
+    }
+   },
+   "pred": {
+    "name": "get_bigfive_scores",
+    "arguments": {
+     "characteristics": [
+      "efficient",
+      "organized",
+      "easy going",
+      "compassionate"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.185,
+   "in_tokens": 240,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_bigfive_scores\", \"arguments\": {\"characteristics\": [\"efficient\", \"organized\", \"easy going\", \"compassionate\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_33",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_directions",
+    "arguments": {
+     "start_location": "Sydney",
+     "end_location": "Melbourne"
+    }
+   },
+   "pred": {
+    "name": "get_directions",
+    "arguments": {
+     "start_location": "Sydney",
+     "end_location": "Melbourne"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 257,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_directions\", \"arguments\": {\"start_location\": \"Sydney\", \"end_location\": \"Melbourne\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_61",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "diabetes_prediction",
+    "arguments": {
+     "weight": 150,
+     "height": 70,
+     "activity_level": "lightly active"
+    }
+   },
+   "pred": {
+    "name": "diabetes_prediction",
+    "arguments": {
+     "weight": 150,
+     "height": 70,
+     "activity_level": "lightly active"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.664,
+   "in_tokens": 280,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"diabetes_prediction\", \"arguments\": {\"weight\": 150, \"height\": 70, \"activity_level\": \"lightly active\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_121-77-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "generate_chart",
+    "arguments": {
+     "data_labels": [
+      "Software Engineer",
+      "Graphic Designer",
+      "Data Analyst",
+      "Sales Manager",
+      "Nurse"
+     ],
+     "data_values": [
+      90000,
+      50000,
+      70000,
+      60000,
+      80000
+     ]
+    }
+   },
+   "pred": {
+    "name": "generate_chart",
+    "arguments": {
+     "data_labels": [
+      "Software Engineer",
+      "Graphic Designer",
+      "Data Analyst",
+      "Sales Manager",
+      "Nurse"
+     ],
+     "data_values": [
+      90000.0,
+      50000.0,
+      70000.0,
+      60000.0,
+      80000.0
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.088,
+   "in_tokens": 334,
+   "out_tokens": 73,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"generate_chart\", \"arguments\": {\"data_labels\": [\"Software Engineer\", \"Graphic Designer\", \"Data Analyst\", \"Sales Manager\", \"Nurse\"], \"data_values\": [90000.0, 50000.0, 70000.0, 60000.0, 80000.0]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_104-43-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "open_project",
+    "arguments": {
+     "path": "/foo/bar"
+    }
+   },
+   "pred": {
+    "name": "open_project",
+    "arguments": {
+     "path": "/foo/bar"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1691,
+   "out_tokens": 21,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"open_project\", \"arguments\": {\"path\": \"/foo/bar\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_61-29-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "todo",
+    "arguments": {
+     "type": "add",
+     "content": "go to gym tomorrow."
+    }
+   },
+   "pred": {
+    "name": "todo",
+    "arguments": {
+     "type": "add",
+     "content": "go to gym tomorrow."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 261,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"todo\", \"arguments\": {\"type\": \"add\", \"content\": \"go to gym tomorrow.\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_769-171-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Services_1_FindProvider",
+    "arguments": {
+     "city": "Mill Valley, CA"
+    }
+   },
+   "pred": {
+    "name": "Services_1_FindProvider",
+    "arguments": {
+     "city": "Mill Valley, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1206,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Mill Valley, CA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_350-133-14",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "artist": "Jinjer",
+     "genre": "Metal"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "artist": "Jinjer",
+     "genre": "Metal"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 861,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Jinjer\", \"genre\": \"Metal\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_2",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "country_info.capital",
+    "arguments": {
+     "country": "Brazil"
+    }
+   },
+   "pred": {
+    "name": "country_info.capital",
+    "arguments": {
+     "country": "Brazil"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 296,
+   "out_tokens": 22,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"country_info.capital\", \"arguments\": {\"country\": \"Brazil\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_50",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "entropy_change.calculate",
+    "arguments": {
+     "substance": "ice",
+     "mass": 1,
+     "initial_temperature": 0,
+     "final_temperature": 100
+    }
+   },
+   "pred": {
+    "name": "entropy_change.calculate",
+    "arguments": {
+     "substance": "ice",
+     "mass": 1,
+     "initial_temperature": 0,
+     "final_temperature": 100
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.365,
+   "in_tokens": 333,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"entropy_change.calculate\", \"arguments\": {\"substance\": \"ice\", \"mass\": 1, \"initial_temperature\": 0, \"final_temperature\": 100}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_694-164-10",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "cast": "Javier Bardem"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "cast": "Javier Bardem"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 794,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Javier Bardem\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_708-164-24",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Steven Spielberg",
+     "genre": "Sci-fi"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Steven Spielberg",
+     "genre": "Sci-fi"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 787,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_183-108-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "getDataForProfessional",
+    "arguments": {
+     "avg_rating": 2.0,
+     "province_id": 1,
+     "service_id": 1
+    }
+   },
+   "pred": {
+    "name": "getDataForProfessional",
+    "arguments": {
+     "province_id": 1
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'avg_rating'; missing arg 'service_id'",
+   "latency": 0.0,
+   "in_tokens": 420,
+   "out_tokens": 23,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"getDataForProfessional\", \"arguments\": {\"province_id\": 1}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_70",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_vehicle_emission",
+    "arguments": {
+     "vehicle_type": "gas",
+     "miles_driven": 1500
+    }
+   },
+   "pred": {
+    "name": "calculate_vehicle_emission",
+    "arguments": {
+     "vehicle_type": "gas",
+     "miles_driven": 1500
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.941,
+   "in_tokens": 289,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_vehicle_emission\", \"arguments\": {\"vehicle_type\": \"gas\", \"miles_driven\": 1500}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_27",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "final_velocity",
+    "arguments": {
+     "initial_velocity": 10,
+     "acceleration": 2,
+     "time": 5
+    }
+   },
+   "pred": {
+    "name": "final_velocity",
+    "arguments": {
+     "initial_velocity": 10,
+     "acceleration": 2,
+     "time": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.018,
+   "in_tokens": 271,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"final_velocity\", \"arguments\": {\"initial_velocity\": 10, \"acceleration\": 2, \"time\": 5}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_535-151-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Belvedere, CA"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Belvedere, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.009,
+   "in_tokens": 519,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"Belvedere, CA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_190",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "park_information",
+    "arguments": {
+     "park_name": "Yellowstone",
+     "information": [
+      "Elevation",
+      "Area"
+     ]
+    }
+   },
+   "pred": {
+    "name": "park_information",
+    "arguments": {
+     "park_name": "Yellowstone National Park",
+     "information": [
+      "Elevation",
+      "Area"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.003,
+   "in_tokens": 239,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"park_information\", \"arguments\": {\"park_name\": \"Yellowstone National Park\", \"information\": [\"Elevation\", \"Area\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_96-57-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Boston, MA"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Boston, MA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 262,
+   "out_tokens": 23,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Boston, MA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_85-46-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "open_meteo_api.fetch_weather_data",
+    "arguments": {
+     "coordinates": [
+      37.8715,
+      -122.273
+     ]
+    }
+   },
+   "pred": null,
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": true,
+   "name_ok": false,
+   "reason": "invalid: no parseable call",
+   "latency": 0.0,
+   "in_tokens": 284,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"open_meteo_api.fetch_weather_data\", \"arguments\": {\"coordinates\": [37.8715, -122.273]}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_273",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "museum.get_hours",
+    "arguments": {
+     "name": "Louvre Museum",
+     "location": "Paris"
+    }
+   },
+   "pred": {
+    "name": "museum.get_hours",
+    "arguments": {
+     "name": "Louvre Museum",
+     "location": "Paris"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 241,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"museum.get_hours\", \"arguments\": {\"name\": \"Louvre Museum\", \"location\": \"Paris\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_149-95-6",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "echo hi"
+    }
+   },
+   "pred": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "echo hi"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 263,
+   "out_tokens": 22,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"cmd_controller.execute\", \"arguments\": {\"command\": \"echo hi\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_392",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "latest_exchange_rate",
+    "arguments": {
+     "source_currency": "GBP",
+     "target_currency": "JPY"
+    }
+   },
+   "pred": {
+    "name": "latest_exchange_rate",
+    "arguments": {
+     "source_currency": "GBP",
+     "target_currency": "JPY"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 4.084,
+   "in_tokens": 245,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"latest_exchange_rate\", \"arguments\": {\"source_currency\": \"GBP\", \"target_currency\": \"JPY\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_907-186-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Trains_1_FindTrains",
+    "arguments": {
+     "_from": "Philadelphia, PA",
+     "to": "New York, NY",
+     "date_of_journey": "03/08/2023"
+    }
+   },
+   "pred": {
+    "name": "Trains_1_FindTrains",
+    "arguments": {
+     "_from": "Philadelphia, PA",
+     "to": "New York, NY",
+     "date_of_journey": "03/08/2023"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.424,
+   "in_tokens": 1256,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Trains_1_FindTrains\", \"arguments\": {\"_from\": \"Philadelphia, PA\", \"to\": \"New York, NY\", \"date_of_journey\": \"03/08/2023\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_118",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "imdb.find_movies_by_actor",
+    "arguments": {
+     "actor_name": "Leonardo DiCaprio",
+     "year": 2010
+    }
+   },
+   "pred": {
+    "name": "imdb.find_movies_by_actor",
+    "arguments": {
+     "actor_name": "Leonardo DiCaprio",
+     "year": 2010
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 629,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"imdb.find_movies_by_actor\", \"arguments\": {\"actor_name\": \"Leonardo DiCaprio\", \"year\": 2010}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_124",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "probabilities.calculate_single",
+    "arguments": {
+     "total_outcomes": 52,
+     "event_outcomes": 4
+    }
+   },
+   "pred": {
+    "name": "probabilities.calculate_single",
+    "arguments": {
+     "total_outcomes": 52,
+     "event_outcomes": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 498,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"probabilities.calculate_single\", \"arguments\": {\"total_outcomes\": 52, \"event_outcomes\": 4}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_192-116-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Pacifica",
+     "date": "2023-04-11"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Pacifica",
+     "date": "2023-04-11"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 252,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Pacifica\", \"date\": \"2023-04-11\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_23",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "basketball.player_stats.get",
+    "arguments": {
+     "player_name": "LeBron James",
+     "stats_fields": [
+      "points per game",
+      "assists",
+      "minutes per game"
+     ]
+    }
+   },
+   "pred": {
+    "name": "basketball.player_stats.get",
+    "arguments": {
+     "player_name": "LeBron James",
+     "stats_fields": [
+      "points",
+      "assists",
+      "minutes"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 524,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"basketball.player_stats.get\", \"arguments\": {\"player_name\": \"LeBron James\", \"stats_fields\": [\"points\", \"assists\", \"minutes\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_798-175-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Long Beach, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Long Beach, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1428,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Long Beach, CA\", \"date\": \"2023-03-10\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_88-49-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "log_food",
+    "arguments": {
+     "food_name": "chai tea",
+     "portion_amount": 16.0,
+     "portion_unit": "ounces",
+     "meal_name": "snack"
+    }
+   },
+   "pred": {
+    "name": "log_food",
+    "arguments": {
+     "food_name": "chai tea with half and half",
+     "portion_amount": 16.0,
+     "portion_unit": "ounces",
+     "meal_name": "snack"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'food_name': got \"chai tea with half and half\", want one of [\"chai tea\"]",
+   "latency": 0.0,
+   "in_tokens": 371,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"log_food\", \"arguments\": {\"food_name\": \"chai tea with half and half\", \"portion_amount\": 16.0, \"portion_unit\": \"ounces\", \"meal_name\": \"snack\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_22-5-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "BURGER"
+    }
+   },
+   "pred": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "BURGER"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 244,
+   "out_tokens": 24,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"ChaFod\", \"arguments\": {\"TheFod\": \"BURGER\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_20-4-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "change_food",
+    "arguments": {
+     "food_item": "burger",
+     "modification_request": "no onions, extra cheese"
+    }
+   },
+   "pred": {
+    "name": "change_food",
+    "arguments": {
+     "food_item": "burger",
+     "modification_request": "no onions,extra cheese"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'modification_request': got \"no onions,extra cheese\", want one of [\"no onions, extra cheese\"]",
+   "latency": 1.561,
+   "in_tokens": 261,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"change_food\", \"arguments\": {\"food_item\": \"burger\", \"modification_request\": \"no onions,extra cheese\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_90-51-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "temperature",
+    "arguments": {
+     "location": "Paris, France"
+    }
+   },
+   "pred": {
+    "name": "temperature",
+    "arguments": {
+     "location": "Paris, France"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 300,
+   "out_tokens": 21,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"temperature\", \"arguments\": {\"location\": \"Paris, France\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_103",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "mathematics.calculate_area_under_curve",
+    "arguments": {
+     "polynomial": [
+      3.0,
+      2.0,
+      -4.0
+     ],
+     "limits": [
+      -1.0,
+      2.0
+     ]
+    }
+   },
+   "pred": {
+    "name": "mathematics.calculate_area_under_curve",
+    "arguments": {
+     "polynomial": [
+      3.0,
+      2.0,
+      -4.0
+     ],
+     "limits": [
+      -1.0,
+      2.0
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.291,
+   "in_tokens": 304,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"mathematics.calculate_area_under_curve\", \"arguments\": {\"polynomial\": [3.0, 2.0, -4.0], \"limits\": [-1.0, 2.0]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_730-167-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "San Leandro, California",
+     "intent": "buy",
+     "number_of_beds": 3,
+     "number_of_baths": 2,
+     "in_unit_laundry": "True"
+    }
+   },
+   "pred": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "San Leandro, CA",
+     "intent": "buy",
+     "number_of_beds": 3,
+     "number_of_baths": 2
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'in_unit_laundry'",
+   "latency": 0.077,
+   "in_tokens": 959,
+   "out_tokens": 54,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"San Leandro, CA\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_165",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "guitar_price.find",
+    "arguments": {
+     "model": "Gibson Les Paul",
+     "condition": "Excellent",
+     "location": "Chicago"
+    }
+   },
+   "pred": {
+    "name": "guitar_price.find",
+    "arguments": {
+     "model": "Gibson Les Paul",
+     "condition": "Excellent",
+     "location": "Chicago"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 482,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"guitar_price.find\", \"arguments\": {\"model\": \"Gibson Les Paul\", \"condition\": \"Excellent\", \"location\": \"Chicago\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_207",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_shortest_distance",
+    "arguments": {
+     "start_location": "New York, USA",
+     "end_location": "Miami, USA",
+     "route_preference": "Shortest"
+    }
+   },
+   "pred": {
+    "name": "calculate_shortest_distance",
+    "arguments": {
+     "start_location": "New York, USA",
+     "end_location": "Miami, USA",
+     "route_preference": "Shortest"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 251,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_shortest_distance\", \"arguments\": {\"start_location\": \"New York, USA\", \"end_location\": \"Miami, USA\", \"route_preference\": \"Shortest\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_161",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "find_exhibition",
+    "arguments": {
+     "location": "New York",
+     "art_form": "sculpture"
+    }
+   },
+   "pred": {
+    "name": "find_exhibition",
+    "arguments": {
+     "location": "New York",
+     "art_form": "sculpture"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 3.48,
+   "in_tokens": 563,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"find_exhibition\", \"arguments\": {\"location\": \"New York\", \"art_form\": \"sculpture\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_759-169-14",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Comedy"
+    }
+   },
+   "pred": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Comedy"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1312,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Media_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_518-150-6",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Sonoma, CA",
+     "genre": "Action"
+    }
+   },
+   "pred": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Sonoma, CA",
+     "genre": "Action"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.094,
+   "in_tokens": 1516,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Sonoma, CA\", \"genre\": \"Action\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_128-50-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "generate_human_image",
+    "arguments": {
+     "prompt": "a man wearing a red dress"
+    }
+   },
+   "pred": {
+    "name": "generate_human_image",
+    "arguments": {
+     "prompt": "a man wearing a red dress"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1214,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"generate_human_image\", \"arguments\": {\"prompt\": \"a man wearing a red dress\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_243",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_discoverer",
+    "arguments": {
+     "discovery": "neutron",
+     "detail": true
+    }
+   },
+   "pred": {
+    "name": "get_discoverer",
+    "arguments": {
+     "discovery": "neutron",
+     "detail": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 228,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_discoverer\", \"arguments\": {\"discovery\": \"neutron\", \"detail\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_796-175-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sunol, CA"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Sunol, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1425,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Sunol, CA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_225-99-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "pred": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 3.065,
+   "in_tokens": 605,
+   "out_tokens": 20,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"version_api.VersionApi.get_version\", \"arguments\": {}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_109",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane"
+    }
+   },
+   "pred": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane",
+     "include_description": true
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'include_description': got true, want one of [false]",
+   "latency": 0.201,
+   "in_tokens": 518,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"cellbio.get_proteins\", \"arguments\": {\"cell_compartment\": \"plasma membrane\", \"include_description\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_1012-241-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_synthetic_locations",
+    "arguments": {
+     "sort": "created_at",
+     "offset": 0,
+     "limit": 50,
+     "filter": "details:alpha,beta,gamma"
+    }
+   },
+   "pred": {
+    "name": "get_synthetic_locations",
+    "arguments": {
+     "sort": "created_at",
+     "offset": 0,
+     "limit": 50,
+     "filter": "name:alpha,beta,gamma"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'filter': got \"name:alpha,beta,gamma\", want one of [\"details:alpha,beta,gamma\"]",
+   "latency": 0.211,
+   "in_tokens": 651,
+   "out_tokens": 47,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_synthetic_locations\", \"arguments\": {\"sort\": \"created_at\", \"offset\": 0, \"limit\": 50, \"filter\": \"name:alpha,beta,gamma\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_187",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Seattle"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Seattle"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 242,
+   "out_tokens": 21,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Seattle\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_76",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "sculpture.create_custom",
+    "arguments": {
+     "item": "horse",
+     "material": "Bronze"
+    }
+   },
+   "pred": {
+    "name": "sculpture.create_custom",
+    "arguments": {
+     "item": "horse",
+     "material": "Bronze"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 408,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"sculpture.create_custom\", \"arguments\": {\"item\": \"horse\", \"material\": \"Bronze\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_77-35-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "X",
+     "host": "http://plga.ca",
+     "database": "postgres",
+     "username": "admin",
+     "password": "secure_password123"
+    }
+   },
+   "pred": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "nickname": "X",
+     "host": "http://plga.ca",
+     "port": 5432,
+     "database": "postgres",
+     "username": "admin",
+     "password": "secure_password123"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.149,
+   "in_tokens": 925,
+   "out_tokens": 59,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"X\", \"host\": \"http://plga.ca\", \"port\": 5432, \"database\": \"postgres\", \"username\": \"admin\", \"password\": \"secure_password123\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_136",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "get_crime_rate",
+    "arguments": {
+     "city": "San Francisco",
+     "state": "California",
+     "type": "violent",
+     "year": 2020
+    }
+   },
+   "pred": {
+    "name": "get_crime_rate",
+    "arguments": {
+     "city": "San Francisco",
+     "state": "California",
+     "type": "violent crime",
+     "year": 2020
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'type': got \"violent crime\", want one of [\"violent\", \"Violent\"]",
+   "latency": 0.0,
+   "in_tokens": 400,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_crime_rate\", \"arguments\": {\"city\": \"San Francisco\", \"state\": \"California\", \"type\": \"violent crime\", \"year\": 2020}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_221-117-13",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "James Gray"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "James Gray"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 383,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"James Gray\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_181",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "soccer.get_last_match",
+    "arguments": {
+     "team_name": "Liverpool F.C.",
+     "include_stats": true
+    }
+   },
+   "pred": {
+    "name": "soccer.get_last_match",
+    "arguments": {
+     "team_name": "Liverpool F.C.",
+     "include_stats": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 618,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"soccer.get_last_match\", \"arguments\": {\"team_name\": \"Liverpool F.C.\", \"include_stats\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_193-116-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "New York",
+     "date": "2023-03-08"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "New York",
+     "date": "2023-03-08"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.389,
+   "in_tokens": 253,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"New York\", \"date\": \"2023-03-08\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_700-164-16",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Hari Sama"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Hari Sama"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 789,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Hari Sama\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_379",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_current_time",
+    "arguments": {
+     "location": "Sydney",
+     "country": "Australia"
+    }
+   },
+   "pred": {
+    "name": "get_current_time",
+    "arguments": {
+     "location": "Sydney",
+     "country": "Australia"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 225,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_current_time\", \"arguments\": {\"location\": \"Sydney\", \"country\": \"Australia\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_191-115-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "raptor.mpn.specs",
+    "arguments": {
+     "identifier": "3pak7"
+    }
+   },
+   "pred": {
+    "name": "raptor.mpn.specs",
+    "arguments": {
+     "identifier": "3pak7"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 297,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"raptor.mpn.specs\", \"arguments\": {\"identifier\": \"3pak7\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_990-221-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "releases_api.ReleasesApi.delete_release",
+    "arguments": {
+     "releaseId": "RL50"
+    }
+   },
+   "pred": {
+    "name": "releases_api.ReleasesApi.delete_release",
+    "arguments": {
+     "releaseId": "RL50"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 454,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"releases_api.ReleasesApi.delete_release\", \"arguments\": {\"releaseId\": \"RL50\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_125",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "predict_house_price",
+    "arguments": {
+     "area": 2500,
+     "rooms": 5,
+     "year": 1990,
+     "location": "San Francisco"
+    }
+   },
+   "pred": {
+    "name": "predict_house_price",
+    "arguments": {
+     "area": 2500,
+     "rooms": 5,
+     "year": 1990,
+     "location": "San Francisco"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.111,
+   "in_tokens": 281,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"predict_house_price\", \"arguments\": {\"area\": 2500, \"rooms\": 5, \"year\": 1990, \"location\": \"San Francisco\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_234-123-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "book_flight",
+    "arguments": {
+     "departure_location": "New York, NY",
+     "departure_time": "20/06/2022 17:00"
+    }
+   },
+   "pred": {
+    "name": "book_flight",
+    "arguments": {
+     "departure_location": "New York, NY",
+     "departure_time": "20/06/2022 17:00"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.047,
+   "in_tokens": 344,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"book_flight\", \"arguments\": {\"departure_location\": \"New York, NY\", \"departure_time\": \"20/06/2022 17:00\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_87",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "games.update.find",
+    "arguments": {
+     "game": "Cyberpunk 2077",
+     "platform": "Xbox"
+    }
+   },
+   "pred": {
+    "name": "games.update.find",
+    "arguments": {
+     "game": "Cyberpunk 2077",
+     "platform": "Xbox"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.321,
+   "in_tokens": 440,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"games.update.find\", \"arguments\": {\"game\": \"Cyberpunk 2077\", \"platform\": \"Xbox\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_393",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "convert_currency",
+    "arguments": {
+     "base_currency": "JPY",
+     "target_currency": "USD",
+     "amount": 20000
+    }
+   },
+   "pred": {
+    "name": "convert_currency",
+    "arguments": {
+     "base_currency": "JPY",
+     "target_currency": "USD",
+     "amount": 20000
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.026,
+   "in_tokens": 243,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"convert_currency\", \"arguments\": {\"base_currency\": \"JPY\", \"target_currency\": \"USD\", \"amount\": 20000}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_18-3-14",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Moscow, Russia",
+     "unit": "celsius"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Moscow, Russia",
+     "unit": "celsius"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 281,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Moscow, Russia\", \"unit\": \"celsius\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_23-5-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "PIZZA"
+    }
+   },
+   "pred": {
+    "name": "ChaFod",
+    "arguments": {
+     "TheFod": "PIZZA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 235,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"ChaFod\", \"arguments\": {\"TheFod\": \"PIZZA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_7",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "wildlife_population.assess_growth",
+    "arguments": {
+     "species": "deer",
+     "location": "Washington state",
+     "duration": 10
+    }
+   },
+   "pred": {
+    "name": "wildlife_population.assess_growth",
+    "arguments": {
+     "species": "deer",
+     "location": "Washington state",
+     "duration": 10
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.09,
+   "in_tokens": 418,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"wildlife_population.assess_growth\", \"arguments\": {\"species\": \"deer\", \"location\": \"Washington state\", \"duration\": 10}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_190",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "book_hotel",
+    "arguments": {
+     "hotel_name": "Hilton Hotel",
+     "location": "Chicago",
+     "room_type": "single",
+     "start_date": "2022-12-10",
+     "nights": 2
+    }
+   },
+   "pred": {
+    "name": "book_hotel",
+    "arguments": {
+     "hotel_name": "Hilton Hotel",
+     "location": "Chicago",
+     "room_type": "single",
+     "start_date": "2022-12-10",
+     "nights": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.556,
+   "in_tokens": 513,
+   "out_tokens": 55,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"book_hotel\", \"arguments\": {\"hotel_name\": \"Hilton Hotel\", \"location\": \"Chicago\", \"room_type\": \"single\", \"start_date\": \"2022-12-10\", \"nights\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_33",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_integral",
+    "arguments": {
+     "func": "3x**2",
+     "a": 1,
+     "b": 2
+    }
+   },
+   "pred": {
+    "name": "calculate_integral",
+    "arguments": {
+     "func": "3x^2",
+     "a": 1,
+     "b": 2
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'func': got \"3x^2\", want one of [\"3x**2\", \"lambda x: 3x**2\"]",
+   "latency": 0.0,
+   "in_tokens": 363,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_integral\", \"arguments\": {\"func\": \"3x^2\", \"a\": 1, \"b\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_104",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "pred": {
+    "name": "get_shortest_driving_distance",
+    "arguments": {
+     "origin": "New York City",
+     "destination": "Washington D.C."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 557,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_shortest_driving_distance\", \"arguments\": {\"origin\": \"New York City\", \"destination\": \"Washington D.C.\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_235-124-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Friends artist:Marshmello"
+    }
+   },
+   "pred": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Friends artist:Marshmello"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.271,
+   "in_tokens": 301,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"play_spotify_song\", \"arguments\": {\"query\": \"track:Friends artist:Marshmello\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_12",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "pred": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 208,
+   "out_tokens": 23,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"geometry.circumference\", \"arguments\": {\"radius\": 3}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_175",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "sports_ranking.get_top_player",
+    "arguments": {
+     "sport": "tennis",
+     "gender": "women"
+    }
+   },
+   "pred": {
+    "name": "sports_ranking.get_top_player",
+    "arguments": {
+     "sport": "tennis",
+     "gender": "women"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.032,
+   "in_tokens": 640,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"sports_ranking.get_top_player\", \"arguments\": {\"sport\": \"tennis\", \"gender\": \"women\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_56",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane"
+    }
+   },
+   "pred": {
+    "name": "cellbio.get_proteins",
+    "arguments": {
+     "cell_compartment": "plasma membrane"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 221,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"cellbio.get_proteins\", \"arguments\": {\"cell_compartment\": \"plasma membrane\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_89",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "recipe_search",
+    "arguments": {
+     "ingredients": [
+      "chicken",
+      "mushrooms"
+     ],
+     "calories": 500
+    }
+   },
+   "pred": {
+    "name": "recipe_search",
+    "arguments": {
+     "ingredients": [
+      "chicken",
+      "mushrooms"
+     ],
+     "calories": 500
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.025,
+   "in_tokens": 562,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"recipe_search\", \"arguments\": {\"ingredients\": [\"chicken\", \"mushrooms\"], \"calories\": 500}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_507-149-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Flights_4_SearchOnewayFlight",
+    "arguments": {
+     "destination_airport": "New York",
+     "departure_date": "2023-03-14",
+     "number_of_tickets": 1
+    }
+   },
+   "pred": {
+    "name": "Flights_4_SearchOnewayFlight",
+    "arguments": {
+     "origin_airport": "LAX",
+     "destination_airport": "JFK",
+     "departure_date": "2023-03-14"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'origin_airport': got \"LAX\", want one of []; arg 'destination_airport': got \"JFK\", want one of [\"New York\"]; missing arg 'number_of_tickets'",
+   "latency": 0.333,
+   "in_tokens": 1548,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Flights_4_SearchOnewayFlight\", \"arguments\": {\"origin_airport\": \"LAX\", \"destination_airport\": \"JFK\", \"departure_date\": \"2023-03-14\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_32-9-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "answer.string",
+    "arguments": {
+     "answer": "Logistic regression is not present in the text, therefore I cannot answer this question."
+    }
+   },
+   "pred": {
+    "name": "answer.string",
+    "arguments": {
+     "answer": ""
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'answer': got \"\", want one of [\"Logistic regression is not present in the text, therefore I cannot answer this",
+   "latency": 0.0,
+   "in_tokens": 244,
+   "out_tokens": 19,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"answer.string\", \"arguments\": {\"answer\": \"\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_133",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_mutual_fund_balance",
+    "arguments": {
+     "investment_amount": 50000,
+     "annual_yield": 0.05,
+     "years": 3
+    }
+   },
+   "pred": {
+    "name": "calculate_mutual_fund_balance",
+    "arguments": {
+     "investment_amount": 50000,
+     "annual_yield": 0.05,
+     "years": 3
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 366,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_mutual_fund_balance\", \"arguments\": {\"investment_amount\": 50000, \"annual_yield\": 0.05, \"years\": 3}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_104-61-2",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "calculate_tax",
+    "arguments": {
+     "purchase_amount": 250.0,
+     "state": "NY"
+    }
+   },
+   "pred": {
+    "name": "calculate_tax",
+    "arguments": {
+     "purchase_amount": 250.0,
+     "state": "NY"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 3.179,
+   "in_tokens": 423,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_tax\", \"arguments\": {\"purchase_amount\": 250.0, \"state\": \"NY\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_79",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "exhibition_info",
+    "arguments": {
+     "museum_name": "Museum of Modern Art"
+    }
+   },
+   "pred": {
+    "name": "exhibition_info",
+    "arguments": {
+     "museum_name": "Museum of Modern Art, New York"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.001,
+   "in_tokens": 322,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"exhibition_info\", \"arguments\": {\"museum_name\": \"Museum of Modern Art, New York\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_98",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "pred": {
+    "name": "geometry.circumference",
+    "arguments": {
+     "radius": 3
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 614,
+   "out_tokens": 23,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"geometry.circumference\", \"arguments\": {\"radius\": 3}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_312",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "player_statistic",
+    "arguments": {
+     "player_name": "Ronaldo",
+     "year": 2021
+    }
+   },
+   "pred": {
+    "name": "player_statistic",
+    "arguments": {
+     "player_name": "Ronaldo",
+     "year": 2021
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.02,
+   "in_tokens": 239,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"player_statistic\", \"arguments\": {\"player_name\": \"Ronaldo\", \"year\": 2021}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_316",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_sport_ranking",
+    "arguments": {
+     "sport": "Tennis",
+     "player_name": "Serena Williams"
+    }
+   },
+   "pred": {
+    "name": "get_sport_ranking",
+    "arguments": {
+     "sport": "Tennis",
+     "player_name": "Serena Williams",
+     "gender": "female"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.128,
+   "in_tokens": 251,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_sport_ranking\", \"arguments\": {\"sport\": \"Tennis\", \"player_name\": \"Serena Williams\", \"gender\": \"female\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_89",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "db_fetch_records",
+    "arguments": {
+     "database_name": "StudentDB",
+     "table_name": "students",
+     "conditions": {
+      "department": [
+       "Science"
+      ],
+      "school": [
+       "Bluebird High School",
+       "Bluebird HS"
+      ]
+     }
+    }
+   },
+   "pred": {
+    "name": "db_fetch_records",
+    "arguments": {
+     "database_name": "StudentDB",
+     "table_name": "students",
+     "conditions": {
+      "department": [
+       "Science"
+      ],
+      "school": [
+       "Bluebird High School"
+      ]
+     }
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'conditions': got {\"department\": [\"Science\"], \"school\": [\"Bluebird High School, want one of [{\"department\": [\"Science\"], \"school\": [\"Bluebird High School\", \"Bluebird HS\"]}]",
+   "latency": 0.167,
+   "in_tokens": 335,
+   "out_tokens": 49,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"db_fetch_records\", \"arguments\": {\"database_name\": \"StudentDB\", \"table_name\": \"students\", \"conditions\": {\"department\": [\"Science\"], \"school\": [\"Bluebird High School\"]}}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_644-161-12",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "genre": "Pop"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "genre": "Pop"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1251,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"genre\": \"Pop\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_105",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_magnetic_field",
+    "arguments": {
+     "current": 5,
+     "radius": 4
+    }
+   },
+   "pred": {
+    "name": "calculate_magnetic_field",
+    "arguments": {
+     "current": 5,
+     "radius": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 517,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_magnetic_field\", \"arguments\": {\"current\": 5, \"radius\": 4}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_159",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_paint_needed",
+    "arguments": {
+     "coverage_rate": 400,
+     "length": 30,
+     "height": 12
+    }
+   },
+   "pred": {
+    "name": "calculate_paint_needed",
+    "arguments": {
+     "coverage_rate": 400,
+     "length": 30,
+     "height": 12
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 494,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_paint_needed\", \"arguments\": {\"coverage_rate\": 400, \"length\": 30, \"height\": 12}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_980-215-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Phaya Thai District",
+     "is_excellent": true,
+     "service_id": 1
+    }
+   },
+   "pred": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Phaya Thai District",
+     "service_id": 1
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'is_excellent'",
+   "latency": 4.074,
+   "in_tokens": 1220,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_service_providers\", \"arguments\": {\"province_id\": 1, \"district_name\": \"Phaya Thai District\", \"service_id\": 1}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_167",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "pred": {
+    "name": "music_generator.generate_melody",
+    "arguments": {
+     "key": "C",
+     "start_note": "C4",
+     "length": 16
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 589,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"music_generator.generate_melody\", \"arguments\": {\"key\": \"C\", \"start_note\": \"C4\", \"length\": 16}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_460-145-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "New York, NY",
+     "free_entry": "True",
+     "category": "Park",
+     "good_for_kids": "True"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "New York, NY",
+     "free_entry": "True",
+     "category": "Park",
+     "good_for_kids": "True"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.175,
+   "in_tokens": 1683,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"New York, NY\", \"free_entry\": \"True\", \"category\": \"Park\", \"good_for_kids\": \"True\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_353",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "find_recipes",
+    "arguments": {
+     "diet": "gluten-free",
+     "meal_type": "dinner"
+    }
+   },
+   "pred": {
+    "name": "find_recipes",
+    "arguments": {
+     "diet": "gluten-free",
+     "meal_type": "dinner"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 270,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"find_recipes\", \"arguments\": {\"diet\": \"gluten-free\", \"meal_type\": \"dinner\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_782-173-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Services_4_FindProvider",
+    "arguments": {
+     "city": "Sausalito, CA",
+     "type": "Psychologist"
+    }
+   },
+   "pred": {
+    "name": "Services_4_FindProvider",
+    "arguments": {
+     "city": "Sausalito, CA",
+     "type": "Psychologist"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 579,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Sausalito, CA\", \"type\": \"Psychologist\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_693-164-9",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Drama",
+     "cast": "Utkarsh Ambudkar"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Drama",
+     "cast": "Utkarsh Ambudkar"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 793,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Drama\", \"cast\": \"Utkarsh Ambudkar\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_652-161-20",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "track": "any",
+     "artist": "Outsider"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "artist": "Outsider"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.0,
+   "invalid": false,
+   "name_ok": false,
+   "reason": "name: got Music_3_LookupMusic, want Music_3_PlayMedia; missing arg 'track'",
+   "latency": 0.0,
+   "in_tokens": 1239,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Outsider\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_218",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "patient.get_mri_report",
+    "arguments": {
+     "patient_id": "546382",
+     "status": "concluded"
+    }
+   },
+   "pred": {
+    "name": "patient.get_mri_report",
+    "arguments": {
+     "patient_id": "546382",
+     "status": "concluded"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 291,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"patient.get_mri_report\", \"arguments\": {\"patient_id\": \"546382\", \"status\": \"concluded\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_91-52-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "fetchPerson",
+    "arguments": {
+     "id": 4
+    }
+   },
+   "pred": {
+    "name": "fetchPerson",
+    "arguments": {
+     "id": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 190,
+   "out_tokens": 20,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"fetchPerson\", \"arguments\": {\"id\": 4}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_15",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "solarFarm.potential",
+    "arguments": {
+     "coordinates": [
+      43.653225,
+      -79.383186
+     ],
+     "panelArea": 80000,
+     "month": "December"
+    }
+   },
+   "pred": {
+    "name": "solarFarm.potential",
+    "arguments": {
+     "coordinates": [
+      43.653225,
+      -79.383186
+     ],
+     "panelArea": 80000,
+     "month": "December"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 450,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"solarFarm.potential\", \"arguments\": {\"coordinates\": [43.653225, -79.383186], \"panelArea\": 80000, \"month\": \"December\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_62",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "nature_park.find_nearby",
+    "arguments": {
+     "location": "Boston, MA",
+     "features": [
+      "Camping",
+      "Scenic View"
+     ]
+    }
+   },
+   "pred": {
+    "name": "nature_park.find_nearby",
+    "arguments": {
+     "location": "Boston, MA",
+     "features": [
+      "Camping",
+      "Scenic View"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 5.419,
+   "in_tokens": 375,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"nature_park.find_nearby\", \"arguments\": {\"location\": \"Boston, MA\", \"features\": [\"Camping\", \"Scenic View\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_71",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "get_population",
+    "arguments": {
+     "year": 1954,
+     "category": "veterans"
+    }
+   },
+   "pred": {
+    "name": "get_population",
+    "arguments": {
+     "year": 1954,
+     "category": "veterans"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 410,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_population\", \"arguments\": {\"year\": 1954, \"category\": \"veterans\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_199",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "forest_growth_forecast",
+    "arguments": {
+     "location": "Yellowstone",
+     "years": 5,
+     "include_human_impact": true
+    }
+   },
+   "pred": {
+    "name": "forest_growth_forecast",
+    "arguments": {
+     "location": "Yellowstone",
+     "years": 5,
+     "include_human_impact": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.013,
+   "in_tokens": 478,
+   "out_tokens": 39,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"forest_growth_forecast\", \"arguments\": {\"location\": \"Yellowstone\", \"years\": 5, \"include_human_impact\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_888-184-5",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "Los Angeles, CA",
+     "to_city": "San Diego, CA",
+     "departure_date": "2023-10-01"
+    }
+   },
+   "pred": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "Los Angeles, CA",
+     "to_city": "San Diego, CA",
+     "departure_date": "2023-10-01"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.206,
+   "in_tokens": 1592,
+   "out_tokens": 52,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Los Angeles, CA\", \"to_city\": \"San Diego, CA\", \"departure_date\": \"2023-10-01\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_650-161-18",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "album": "Raees"
+    }
+   },
+   "pred": {
+    "name": "Music_3_LookupMusic",
+    "arguments": {
+     "album": "Raees"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1244,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"album\": \"Raees\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_359-134-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Josh Cooley",
+     "genre": "Animation",
+     "cast": "Bill Hader"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Josh Cooley",
+     "genre": "Animation",
+     "cast": "Bill Hader"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 849,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Josh Cooley\", \"genre\": \"Animation\", \"cast\": \"Bill Hader\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_43",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "biological.calc_energy",
+    "arguments": {
+     "mols": 5,
+     "substance": "C6H12O6"
+    }
+   },
+   "pred": {
+    "name": "biological.calc_energy",
+    "arguments": {
+     "mols": 5,
+     "substance": "C6H12O6"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 444,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"biological.calc_energy\", \"arguments\": {\"mols\": 5, \"substance\": \"C6H12O6\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_25",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "video_games.store_price",
+    "arguments": {
+     "game_title": "Assassins Creed Valhalla",
+     "platform": "PlayStation"
+    }
+   },
+   "pred": {
+    "name": "video_games.store_price",
+    "arguments": {
+     "game_title": "Assassins Creed Valhalla",
+     "platform": "PlayStation"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 522,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"video_games.store_price\", \"arguments\": {\"game_title\": \"Assassins Creed Valhalla\", \"platform\": \"PlayStation\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_617-159-10",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Los Angeles, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Music",
+     "city": "Los Angeles, CA",
+     "date": "2023-03-10"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 980,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"Los Angeles, CA\", \"date\": \"2023-03-10\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_883-184-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "New York, NY",
+     "to_city": "Boston, MA",
+     "departure_date": "2023-04-20"
+    }
+   },
+   "pred": {
+    "name": "Buses_3_FindBus",
+    "arguments": {
+     "from_city": "New York, NY",
+     "to_city": "Boston, MA",
+     "departure_date": "2023-04-20"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1586,
+   "out_tokens": 51,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"New York, NY\", \"to_city\": \"Boston, MA\", \"departure_date\": \"2023-04-20\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_789-174-3",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Berkeley, CA",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 1
+    }
+   },
+   "pred": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Berkeley, CA",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 1
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 2.598,
+   "in_tokens": 595,
+   "out_tokens": 54,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_92-53-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "play_artist",
+    "arguments": {
+     "artist_name": "Käärijä"
+    }
+   },
+   "pred": {
+    "name": "play_artist",
+    "arguments": {
+     "artist_name": "Käärijä"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 200,
+   "out_tokens": 25,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"play_artist\", \"arguments\": {\"artist_name\": \"Käärijä\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_108",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "run_linear_regression",
+    "arguments": {
+     "predictors": [
+      "Age",
+      "Income",
+      "Education"
+     ],
+     "target": "Purchase_Amount",
+     "standardize": true
+    }
+   },
+   "pred": {
+    "name": "run_linear_regression",
+    "arguments": {
+     "predictors": [
+      "Age",
+      "Income",
+      "Education"
+     ],
+     "target": "Purchase_Amount",
+     "standardize": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 268,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"run_linear_regression\", \"arguments\": {\"predictors\": [\"Age\", \"Income\", \"Education\"], \"target\": \"Purchase_Amount\", \"standardize\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_60",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "mutation_type.find",
+    "arguments": {
+     "snp_id": "rs6034464"
+    }
+   },
+   "pred": {
+    "name": "mutation_type.find",
+    "arguments": {
+     "snp_id": "rs6034464"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 247,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"mutation_type.find\", \"arguments\": {\"snp_id\": \"rs6034464\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_329-132-19",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "quentin tarantino",
+     "cast": "eric stoltz"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "quentin tarantino",
+     "cast": "eric stoltz"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1031,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"quentin tarantino\", \"cast\": \"eric stoltz\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_91",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "recipe.find",
+    "arguments": {
+     "mainIngredient": "apple pie",
+     "ingredientLimit": 4
+    }
+   },
+   "pred": {
+    "name": "recipe.find",
+    "arguments": {
+     "mainIngredient": "apple",
+     "ingredientLimit": 5
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'ingredientlimit': got 5, want one of [4]",
+   "latency": 0.0,
+   "in_tokens": 336,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"recipe.find\", \"arguments\": {\"mainIngredient\": \"apple\", \"ingredientLimit\": 5}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_524-151-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Chicago, IL"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Chicago, IL"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 510,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"Chicago, IL\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_238-125-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Dil Nu artist:Maninder Buttar"
+    }
+   },
+   "pred": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Dil Nu artist:Maninder Buttar"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 301,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"play_spotify_song\", \"arguments\": {\"query\": \"track:Dil Nu artist:Maninder Buttar\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_109-66-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "record",
+    "arguments": {
+     "faq_auto_withdraw_start": [
+      "Can I schedule automatic withdrawals for different dates?"
+     ],
+     "payment_information_start": [
+      "How much do I owe on my home equity loan?"
+     ],
+     "pma_income_requirements_start": [
+      "Can I use bonuses or commissions as part of my income for a loan application?",
+      "Will my income be verified during the loan application process?",
+      "Is there a minimum income threshold for loan approval?"
+     ]
+    }
+   },
+   "pred": {
+    "name": "record",
+    "arguments": {
+     "faq_auto_withdraw_start": [
+      "Can I schedule automatic withdrawals for different dates?"
+     ],
+     "payment_information_start": [
+      "How much do I owe on my home equity loan?"
+     ],
+     "pma_income_requirements_start": [
+      "Can I use bonuses or commissions as part of my income for a loan application?",
+      "Will my income be verified during the loan application process?",
+      "Is there a minimum income threshold for loan approval?"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.362,
+   "in_tokens": 412,
+   "out_tokens": 99,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"record\", \"arguments\": {\"faq_auto_withdraw_start\": [\"Can I schedule automatic withdrawals for different dates?\"], \"payment_information_start\": [\"How much do I owe on my home equity loan?\"], \"pma_income_requirements_start\": [\"Can I use bonuses or commissions as part of my income for a loan application?\", \"Will my income be verified during the loan application process?\", \"Is there a",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_0-0-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_user_info",
+    "arguments": {
+     "user_id": 7890,
+     "special": "black"
+    }
+   },
+   "pred": {
+    "name": "get_user_info",
+    "arguments": {
+     "user_id": 7890,
+     "special": "black"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 243,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_user_info\", \"arguments\": {\"user_id\": 7890, \"special\": \"black\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_923-191-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Chatuchak",
+     "start_available_date": "2024-03-19 13:00:00",
+     "service_id": 2
+    }
+   },
+   "pred": {
+    "name": "get_service_providers",
+    "arguments": {
+     "province_id": 1,
+     "district_name": "Chatuchak",
+     "start_available_date": "2024-03-19 13:00:00",
+     "end_available_date": "2024-03-19 13:00:00",
+     "service_id": 2
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'end_available_date': got \"2024-03-19 13:00:00\", want one of [null]",
+   "latency": 0.0,
+   "in_tokens": 1174,
+   "out_tokens": 77,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_service_providers\", \"arguments\": {\"province_id\": 1, \"district_name\": \"Chatuchak\", \"start_available_date\": \"2024-03-19 13:00:00\", \"end_available_date\": \"2024-03-19 13:00:00\", \"service_id\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_170",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "soccer_stat.get_player_stats",
+    "arguments": {
+     "player_name": "Cristiano Ronaldo",
+     "season": "2019-2020"
+    }
+   },
+   "pred": {
+    "name": "soccer_stat.get_player_stats",
+    "arguments": {
+     "player_name": "Cristiano Ronaldo",
+     "season": "2019-2020"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 600,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"soccer_stat.get_player_stats\", \"arguments\": {\"player_name\": \"Cristiano Ronaldo\", \"season\": \"2019-2020\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_11",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_triangle_area",
+    "arguments": {
+     "base": 10,
+     "height": 5
+    }
+   },
+   "pred": {
+    "name": "calculate_triangle_area",
+    "arguments": {
+     "base": 10,
+     "height": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 220,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_triangle_area\", \"arguments\": {\"base\": 10, \"height\": 5}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_983-215-7",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_service_providers",
+    "arguments": {
+     "avg_rating": 5.0,
+     "province_id": 1,
+     "district_name": "Watthana District",
+     "start_available_date": "2024-03-22 11:00:00",
+     "end_available_date": "2024-03-22 13:00:00"
+    }
+   },
+   "pred": {
+    "name": "get_service_providers",
+    "arguments": {
+     "avg_rating": 5.0,
+     "province_id": 1,
+     "district_name": "Watthana District",
+     "start_available_date": "2024-03-22 11:00:00",
+     "end_available_date": "2024-03-22 13:00:00"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.233,
+   "in_tokens": 1237,
+   "out_tokens": 80,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": 5.0, \"province_id\": 1, \"district_name\": \"Watthana District\", \"start_available_date\": \"2024-03-22 11:00:00\", \"end_available_date\": \"2024-03-22 13:00:00\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_122-46-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_time_to_collision",
+    "arguments": {
+     "ego_velocity": 50.0,
+     "ego_acceleration": -2.0,
+     "leading_object_velocity": 30.0,
+     "leading_object_acceleration": -1.0,
+     "initial_distance": 100.0
+    }
+   },
+   "pred": {
+    "name": "get_time_to_collision",
+    "arguments": {
+     "ego_velocity": 50.0,
+     "ego_acceleration": -2.0,
+     "leading_object_velocity": 30.0,
+     "leading_object_acceleration": -1.0,
+     "initial_distance": 100.0
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1184,
+   "out_tokens": 65,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_time_to_collision\", \"arguments\": {\"ego_velocity\": 50.0, \"ego_acceleration\": -2.0, \"leading_object_velocity\": 30.0, \"leading_object_acceleration\": -1.0, \"initial_distance\": 100.0}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_19-4-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "ControlAppliance.execute",
+    "arguments": {
+     "command": "거실, 에어컨, 실행"
+    }
+   },
+   "pred": {
+    "name": "ControlAppliance.execute",
+    "arguments": {
+     "command": "거실, 에어컨, 실행"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1234,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"ControlAppliance.execute\", \"arguments\": {\"command\": \"거실, 에어컨, 실행\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_628-160-8",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Payment_1_RequestPayment",
+    "arguments": {
+     "receiver": "Diego",
+     "amount": 108.0
+    }
+   },
+   "pred": {
+    "name": "Payment_1_RequestPayment",
+    "arguments": {
+     "receiver": "Diego",
+     "amount": 108.0
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 471,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Payment_1_RequestPayment\", \"arguments\": {\"receiver\": \"Diego\", \"amount\": 108.0}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_77",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "restaurant.find_nearby",
+    "arguments": {
+     "location": "Los Angeles, CA",
+     "dietary_preference": [
+      "Vegan"
+     ]
+    }
+   },
+   "pred": {
+    "name": "restaurant.find_nearby",
+    "arguments": {
+     "location": "Los Angeles, CA",
+     "dietary_preference": [
+      "Vegan"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 250,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"restaurant.find_nearby\", \"arguments\": {\"location\": \"Los Angeles, CA\", \"dietary_preference\": [\"Vegan\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_140",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "lawsuits_search",
+    "arguments": {
+     "company_name": "Google",
+     "location": "California",
+     "year": 2020
+    }
+   },
+   "pred": {
+    "name": "lawsuits_search",
+    "arguments": {
+     "company_name": "Google",
+     "location": "California",
+     "year": 2020
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 495,
+   "out_tokens": 36,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"lawsuits_search\", \"arguments\": {\"company_name\": \"Google\", \"location\": \"California\", \"year\": 2020}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_13-3-9",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Shanghai, China",
+     "unit": "celsius"
+    }
+   },
+   "pred": {
+    "name": "get_current_weather",
+    "arguments": {
+     "location": "Shanghai, China",
+     "unit": "celsius"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 288,
+   "out_tokens": 31,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Shanghai, China\", \"unit\": \"celsius\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_197-89-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_tickets",
+    "arguments": {
+     "customer": "阿迪达斯",
+     "priority": 4
+    }
+   },
+   "pred": {
+    "name": "get_tickets",
+    "arguments": {
+     "customer": "阿迪达斯",
+     "priority": 4
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 377,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_tickets\", \"arguments\": {\"customer\": \"阿迪达斯\", \"priority\": 4}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_63",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "air_quality_forecast",
+    "arguments": {
+     "location": "New York",
+     "days": 7
+    }
+   },
+   "pred": {
+    "name": "air_quality_forecast",
+    "arguments": {
+     "location": "New York",
+     "days": 7
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 401,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"air_quality_forecast\", \"arguments\": {\"location\": \"New York\", \"days\": 7}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_467-145-18",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Portland, OR",
+     "free_entry": "False",
+     "category": "Historical Landmark",
+     "good_for_kids": "True"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Portland, OR",
+     "free_entry": "False",
+     "category": "Historical Landmark",
+     "good_for_kids": "True"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 9.131,
+   "in_tokens": 1697,
+   "out_tokens": 52,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Portland, OR\", \"free_entry\": \"False\", \"category\": \"Historical Landmark\", \"good_for_kids\": \"True\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_182",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "multiplayer_game_finder",
+    "arguments": {
+     "platform": "Windows 10",
+     "rating": 4.5
+    }
+   },
+   "pred": {
+    "name": "multiplayer_game_finder",
+    "arguments": {
+     "platform": "Windows 10",
+     "rating": 4.5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 725,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"multiplayer_game_finder\", \"arguments\": {\"platform\": \"Windows 10\", \"rating\": 4.5}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_127-82-1",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "telemetry.flowrules.interfaceInfo.get",
+    "arguments": {
+     "fabricName": "test-de",
+     "nodeId": 5,
+     "podId": 1,
+     "interfaceType": "ethernet",
+     "infoType": "status"
+    }
+   },
+   "pred": {
+    "name": "telemetry.flowrules.interfaceInfo.get",
+    "arguments": {
+     "fabricName": "test-de",
+     "nodeId": 5,
+     "podId": 1,
+     "interfaceType": "ethernet",
+     "infoType": "status"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 396,
+   "out_tokens": 56,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"telemetry.flowrules.interfaceInfo.get\", \"arguments\": {\"fabricName\": \"test-de\", \"nodeId\": 5, \"podId\": 1, \"interfaceType\": \"ethernet\", \"infoType\": \"status\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_242-126-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "set_volume",
+    "arguments": {
+     "volume": 20
+    }
+   },
+   "pred": {
+    "name": "set_volume",
+    "arguments": {
+     "volume": 20
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 209,
+   "out_tokens": 20,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"set_volume\", \"arguments\": {\"volume\": 20}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_30",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "rectangle.area",
+    "arguments": {
+     "length": 12,
+     "width": 5
+    }
+   },
+   "pred": {
+    "name": "rectangle.area",
+    "arguments": {
+     "length": 12,
+     "width": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 382,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"rectangle.area\", \"arguments\": {\"length\": 12, \"width\": 5}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_58",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "lawyer.search",
+    "arguments": {
+     "location": "Los Angeles",
+     "expertise": "Divorce"
+    }
+   },
+   "pred": {
+    "name": "lawyer.search",
+    "arguments": {
+     "location": "Los Angeles, CA",
+     "expertise": "Divorce"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.15,
+   "in_tokens": 333,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"lawyer.search\", \"arguments\": {\"location\": \"Los Angeles, CA\", \"expertise\": \"Divorce\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_834-178-9",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "artist": "Teodora",
+     "device": "Kitchen",
+     "album": "Borbena"
+    }
+   },
+   "pred": {
+    "name": "Music_3_PlayMedia",
+    "arguments": {
+     "track": "any",
+     "artist": "Teodora",
+     "device": "Kitchen",
+     "album": "Borbene"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'track': got \"any\", want one of [\"Borbena\"]; arg 'album': got \"Borbene\", want one of [\"Borbena\"]",
+   "latency": 0.231,
+   "in_tokens": 814,
+   "out_tokens": 46,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Teodora\", \"device\": \"Kitchen\", \"album\": \"Borbene\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_294-130-3",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Hotels_2_SearchHouse",
+    "arguments": {
+     "where_to": "Kuala Lumpur, Malaysia",
+     "number_of_adults": 1,
+     "rating": 3.8
+    }
+   },
+   "pred": {
+    "name": "Hotels_2_SearchHouse",
+    "arguments": {
+     "where_to": "Kuala Lumpur, Malaysia",
+     "number_of_adults": 1,
+     "rating": 3.8
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.008,
+   "in_tokens": 612,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Kuala Lumpur, Malaysia\", \"number_of_adults\": 1, \"rating\": 3.8}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_328",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "boardgame.get_info",
+    "arguments": {
+     "name": "Ticket to Ride",
+     "parameters": [
+      "rating",
+      "player count"
+     ]
+    }
+   },
+   "pred": {
+    "name": "boardgame.get_info",
+    "arguments": {
+     "name": "Ticket to Ride",
+     "parameters": [
+      "player count",
+      "rating"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 261,
+   "out_tokens": 35,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"boardgame.get_info\", \"arguments\": {\"name\": \"Ticket to Ride\", \"parameters\": [\"player count\", \"rating\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_456-145-7",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "London, UK",
+     "free_entry": "True",
+     "category": "Performing Arts Venue"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "London, UK",
+     "free_entry": "True",
+     "category": "Performing Arts Venue"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.003,
+   "in_tokens": 1678,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"London, UK\", \"free_entry\": \"True\", \"category\": \"Performing Arts Venue\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_118-74-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "get_temperature",
+    "arguments": {
+     "units": "Celsius",
+     "location": "Hyderabad, India"
+    }
+   },
+   "pred": {
+    "name": "get_temperature",
+    "arguments": {
+     "units": "Celsius",
+     "location": "Hyderabad, India"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 307,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_temperature\", \"arguments\": {\"units\": \"Celsius\", \"location\": \"Hyderabad, India\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_869-182-6",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "San Rafael, CA",
+     "show_type": "imax"
+    }
+   },
+   "pred": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "San Rafael, CA",
+     "show_type": "imax"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.127,
+   "in_tokens": 1617,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"San Rafael, CA\", \"show_type\": \"imax\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_46",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "sort_list",
+    "arguments": {
+     "elements": [
+      "Sam",
+      "Alice",
+      "Jack"
+     ]
+    }
+   },
+   "pred": {
+    "name": "sort_list",
+    "arguments": {
+     "elements": [
+      "Sam",
+      "Alice",
+      "Jack"
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 410,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"sort_list\", \"arguments\": {\"elements\": [\"Sam\", \"Alice\", \"Jack\"]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_71-35-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "extract_parameters_v1",
+    "arguments": {
+     "demographics": [
+      "millennials"
+     ],
+     "targets": [
+      "brand:Apple"
+     ],
+     "metrics": [
+      "view"
+     ],
+     "min_date": "2022-07-01"
+    }
+   },
+   "pred": {
+    "name": "extract_parameters_v1",
+    "arguments": {
+     "demographics": [
+      "millennials"
+     ],
+     "targets": [
+      "brand:Apple"
+     ],
+     "metrics": [
+      "view"
+     ],
+     "min_date": "2022-07-01"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.404,
+   "in_tokens": 562,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"extract_parameters_v1\", \"arguments\": {\"demographics\": [\"millennials\"], \"targets\": [\"brand:Apple\"], \"metrics\": [\"view\"], \"min_date\": \"2022-07-01\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_62-29-2",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "todo",
+    "arguments": {
+     "type": "delete",
+     "content": "ravi"
+    }
+   },
+   "pred": {
+    "name": "todo",
+    "arguments": {
+     "type": "delete",
+     "content": "ravi"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 270,
+   "out_tokens": 26,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"todo\", \"arguments\": {\"type\": \"delete\", \"content\": \"ravi\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_846-179-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "San Francisco, CA",
+     "price_range": "moderate"
+    }
+   },
+   "pred": {
+    "name": "Restaurants_2_FindRestaurants",
+    "arguments": {
+     "category": "Italian",
+     "location": "San Francisco, CA",
+     "price_range": "moderate"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 764,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"San Francisco, CA\", \"price_range\": \"moderate\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_208-117-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Duane Whitaker"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Duane Whitaker"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 378,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Quentin Tarantino\", \"cast\": \"Duane Whitaker\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_99-59-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "connectBluetooth",
+    "arguments": {
+     "device_name": "ue boom"
+    }
+   },
+   "pred": {
+    "name": "connectBluetooth",
+    "arguments": {
+     "device_name": "ue boom"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 253,
+   "out_tokens": 22,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"connectBluetooth\", \"arguments\": {\"device_name\": \"ue boom\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_965-207-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "transfer_to_human_agent",
+    "arguments": {
+     "statement": "I've submitted a complaint and would like to discuss its status with a human agent."
+    }
+   },
+   "pred": {
+    "name": "transfer_to_human_agent",
+    "arguments": {
+     "statement": "I've submitted a complaint and would like to discuss its status with a human agent."
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 336,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"transfer_to_human_agent\", \"arguments\": {\"statement\": \"I've submitted a complaint and would like to discuss its status with a human agent.\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_64",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "uv_index.get_future",
+    "arguments": {
+     "location": "Tokyo",
+     "date": "06-01-2023"
+    }
+   },
+   "pred": {
+    "name": "uv_index.get_future",
+    "arguments": {
+     "location": "Tokyo",
+     "date": "06-01-2023"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 412,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"uv_index.get_future\", \"arguments\": {\"location\": \"Tokyo\", \"date\": \"06-01-2023\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_94-41-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "list_servers",
+    "arguments": {}
+   },
+   "pred": {
+    "name": "list_servers",
+    "arguments": {}
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1078,
+   "out_tokens": 16,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"list_servers\", \"arguments\": {}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_102",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_distance",
+    "arguments": {
+     "body1": "Earth",
+     "body2": "Moon",
+     "unit": "mi"
+    }
+   },
+   "pred": {
+    "name": "calculate_distance",
+    "arguments": {
+     "body1": "Earth",
+     "body2": "Moon",
+     "unit": "miles"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 228,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_distance\", \"arguments\": {\"body1\": \"Earth\", \"body2\": \"Moon\", \"unit\": \"miles\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_74",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_bacteria_evolution_rate",
+    "arguments": {
+     "start_population": 5000,
+     "duplication_frequency": 1,
+     "duration": 6
+    }
+   },
+   "pred": {
+    "name": "calculate_bacteria_evolution_rate",
+    "arguments": {
+     "start_population": 5000,
+     "duplication_frequency": 1,
+     "duration": 6
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 292,
+   "out_tokens": 42,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_bacteria_evolution_rate\", \"arguments\": {\"start_population\": 5000, \"duplication_frequency\": 1, \"duration\": 6}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_474-145-25",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Paris, France",
+     "free_entry": "True",
+     "category": "Museum",
+     "good_for_kids": "True"
+    }
+   },
+   "pred": {
+    "name": "Travel_1_FindAttractions",
+    "arguments": {
+     "location": "Paris, France",
+     "free_entry": "True",
+     "category": "Museum",
+     "good_for_kids": "True"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 3.057,
+   "in_tokens": 1682,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Paris, France\", \"free_entry\": \"True\", \"category\": \"Museum\", \"good_for_kids\": \"True\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_135",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_return_on_investment",
+    "arguments": {
+     "purchase_price": 20,
+     "sale_price": 25,
+     "dividend": 2
+    }
+   },
+   "pred": {
+    "name": "calculate_return_on_investment",
+    "arguments": {
+     "purchase_price": 20,
+     "sale_price": 25,
+     "dividend": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 267,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_return_on_investment\", \"arguments\": {\"purchase_price\": 20, \"sale_price\": 25, \"dividend\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_217",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "fMRI.analyze",
+    "arguments": {
+     "data_source": "~/data/myfMRI.nii",
+     "sequence_type": "multi-band",
+     "smooth": 6,
+     "voxel_size": 2
+    }
+   },
+   "pred": {
+    "name": "fMRI.analyze",
+    "arguments": {
+     "data_source": "~/data/myfMRI.nii",
+     "sequence_type": "multi-band",
+     "smooth": 6,
+     "voxel_size": 2
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.391,
+   "in_tokens": 290,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"fMRI.analyze\", \"arguments\": {\"data_source\": \"~/data/myfMRI.nii\", \"sequence_type\": \"multi-band\", \"smooth\": 6, \"voxel_size\": 2}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_82-37-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "host": "192.168.0.5"
+    }
+   },
+   "pred": {
+    "name": "add_postgres_server",
+    "arguments": {
+     "host": "192.168.0.5"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 867,
+   "out_tokens": 28,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"add_postgres_server\", \"arguments\": {\"host\": \"192.168.0.5\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_805-175-11",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Vancouver, BC",
+     "date": "2023-03-02"
+    }
+   },
+   "pred": {
+    "name": "Weather_1_GetWeather",
+    "arguments": {
+     "city": "Vancouver, CA",
+     "date": "2023-03-02"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'city': got \"Vancouver, CA\", want one of [\"Vancouver, BC\"]",
+   "latency": 0.0,
+   "in_tokens": 1430,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Vancouver, CA\", \"date\": \"2023-03-02\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_178",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_lawsuit_details",
+    "arguments": {
+     "case_number": "LAX2019080202",
+     "court_location": "Los Angeles"
+    }
+   },
+   "pred": {
+    "name": "get_lawsuit_details",
+    "arguments": {
+     "case_number": "LAX2019080202",
+     "court_location": "Los Angeles"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 292,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_lawsuit_details\", \"arguments\": {\"case_number\": \"LAX2019080202\", \"court_location\": \"Los Angeles\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_372-134-17",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Joel Zwick",
+     "genre": "Comedy",
+     "cast": "Fiona Reid"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Joel Zwick",
+     "genre": "Comedy",
+     "cast": "Fiona Reid"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 848,
+   "out_tokens": 44,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Joel Zwick\", \"genre\": \"Comedy\", \"cast\": \"Fiona Reid\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_550-152-12",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Denver, CO",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 2,
+     "in_unit_laundry": true
+    }
+   },
+   "pred": {
+    "name": "Homes_2_FindHomeByArea",
+    "arguments": {
+     "area": "Denver, CO",
+     "intent": "rent",
+     "number_of_beds": 2,
+     "number_of_baths": 2,
+     "in_unit_laundry": true
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.263,
+   "in_tokens": 843,
+   "out_tokens": 62,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Denver, CO\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 2, \"in_unit_laundry\": true}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_168-68-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_adriel_profile",
+    "arguments": {
+     "user_id": 12345,
+     "include_private": true
+    }
+   },
+   "pred": {
+    "name": "get_adriel_profile",
+    "arguments": {
+     "user_id": 12345
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "missing arg 'include_private'",
+   "latency": 0.0,
+   "in_tokens": 954,
+   "out_tokens": 24,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_adriel_profile\", \"arguments\": {\"user_id\": 12345}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_173-99-7",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "start calc"
+    }
+   },
+   "pred": {
+    "name": "cmd_controller.execute",
+    "arguments": {
+     "command": "start calc"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 241,
+   "out_tokens": 22,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"cmd_controller.execute\", \"arguments\": {\"command\": \"start calc\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_688-164-4",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Family",
+     "cast": "Carol Sutton"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "genre": "Family",
+     "cast": "Carol Sutton"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 784,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_82",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "calculate_average",
+    "arguments": {
+     "numbers": [
+      12.0,
+      15.0,
+      18.0,
+      20.0,
+      21.0,
+      26.0,
+      30.0
+     ]
+    }
+   },
+   "pred": {
+    "name": "calculate_average",
+    "arguments": {
+     "numbers": [
+      12.0,
+      15.0,
+      18.0,
+      20.0,
+      21.0,
+      26.0,
+      30.0
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 4.691,
+   "in_tokens": 209,
+   "out_tokens": 53,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_average\", \"arguments\": {\"numbers\": [12.0, 15.0, 18.0, 20.0, 21.0, 26.0, 30.0]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_940-194-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "baby shark"
+    }
+   },
+   "pred": {
+    "name": "play_spotify_song",
+    "arguments": {
+     "query": "track:Baby Shark artist:Pinkfong"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'query': got \"track:Baby Shark artist:Pinkfong\", want one of [\"baby shark\", \"Baby Shark\"]",
+   "latency": 0.0,
+   "in_tokens": 824,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"play_spotify_song\", \"arguments\": {\"query\": \"track:Baby Shark artist:Pinkfong\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_126",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "t_test",
+    "arguments": {
+     "dataset_A": [
+      12,
+      24,
+      36
+     ],
+     "dataset_B": [
+      15,
+      30,
+      45
+     ]
+    }
+   },
+   "pred": {
+    "name": "t_test",
+    "arguments": {
+     "dataset_A": [
+      12,
+      24,
+      36
+     ],
+     "dataset_B": [
+      15,
+      30,
+      45
+     ]
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 532,
+   "out_tokens": 41,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"t_test\", \"arguments\": {\"dataset_A\": [12, 24, 36], \"dataset_B\": [15, 30, 45]}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_431-141-20",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Danville, CA",
+     "theater_name": "Century Blackhawk Plaza",
+     "show_type": "imax"
+    }
+   },
+   "pred": {
+    "name": "Movies_1_FindMovies",
+    "arguments": {
+     "location": "Danville, CA",
+     "theater_name": "Century Blackhawk Plaza",
+     "show_type": "imax"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 942,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Danville, CA\", \"theater_name\": \"Century Blackhawk Plaza\", \"show_type\": \"imax\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_113-69-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "calculate_dynamic_pricing",
+    "arguments": {
+     "geolocation": "34.0522, -118.2437",
+     "base_price": 100.0,
+     "minimum_price": 90.0
+    }
+   },
+   "pred": {
+    "name": "calculate_dynamic_pricing",
+    "arguments": {
+     "geolocation": "34.0522, -118.2437",
+     "base_price": 100.0,
+     "minimum_price": 90.0
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 412,
+   "out_tokens": 50,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_dynamic_pricing\", \"arguments\": {\"geolocation\": \"34.0522, -118.2437\", \"base_price\": 100.0, \"minimum_price\": 90.0}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_247-129-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "pred": {
+    "name": "version_api.VersionApi.get_version",
+    "arguments": {}
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 164,
+   "out_tokens": 20,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"version_api.VersionApi.get_version\", \"arguments\": {}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_142",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "get_stock_price",
+    "arguments": {
+     "company_name": "Amazon",
+     "date": "2022-03-11"
+    }
+   },
+   "pred": {
+    "name": "get_stock_price",
+    "arguments": {
+     "company_name": "Amazon",
+     "date": "2022-03-11"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 258,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_stock_price\", \"arguments\": {\"company_name\": \"Amazon\", \"date\": \"2022-03-11\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_128-83-0",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "requests.get",
+    "arguments": {
+     "url": "https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?fabricName=PEK-ACI",
+     "fabricName": "PEK-ACI"
+    }
+   },
+   "pred": {
+    "name": "requests.get",
+    "arguments": {
+     "url": "https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?fabricName={fabricName}",
+     "fabricName": "PEK-ACI"
+    }
+   },
+   "strict": 0.0,
+   "partial": 0.5,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "arg 'url': got \"https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemet, want one of [\"https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?",
+   "latency": 2.953,
+   "in_tokens": 353,
+   "out_tokens": 61,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://192.168.11.33/sedgeapi/v1/cisco-nir/api/api/telemetry/flowrules/nodes?fabricName={fabricName}\", \"fabricName\": \"PEK-ACI\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_164",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "instrument_price.get",
+    "arguments": {
+     "brand": "Fender",
+     "model": "American Professional II Stratocaster",
+     "finish": "Rosewood"
+    }
+   },
+   "pred": {
+    "name": "instrument_price.get",
+    "arguments": {
+     "brand": "Fender",
+     "model": "American Professional II Stratocaster",
+     "finish": "Rosewood"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 657,
+   "out_tokens": 40,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"instrument_price.get\", \"arguments\": {\"brand\": \"Fender\", \"model\": \"American Professional II Stratocaster\", \"finish\": \"Rosewood\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_230-103-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "get_contact_information",
+    "arguments": {
+     "name": "Liam Neeson"
+    }
+   },
+   "pred": {
+    "name": "get_contact_information",
+    "arguments": {
+     "name": "Liam Neeson"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 507,
+   "out_tokens": 24,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"get_contact_information\", \"arguments\": {\"name\": \"Liam Neeson\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_562-155-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Seattle, WA"
+    }
+   },
+   "pred": {
+    "name": "Events_3_FindEvents",
+    "arguments": {
+     "event_type": "Theater",
+     "city": "Seattle, WA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 1586,
+   "out_tokens": 34,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"Seattle, WA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_21",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "generate_sound_wave",
+    "arguments": {
+     "frequency": 440,
+     "duration": 5
+    }
+   },
+   "pred": {
+    "name": "generate_sound_wave",
+    "arguments": {
+     "frequency": 440,
+     "duration": 5
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.249,
+   "in_tokens": 393,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"generate_sound_wave\", \"arguments\": {\"frequency\": 440, \"duration\": 5}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_356-134-1",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Lawrence Bender"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Quentin Tarantino",
+     "cast": "Lawrence Bender"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.192,
+   "in_tokens": 856,
+   "out_tokens": 37,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Quentin Tarantino\", \"cast\": \"Lawrence Bender\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_38",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "library.search_book",
+    "arguments": {
+     "book_name": "The Alchemist",
+     "city": "New York"
+    }
+   },
+   "pred": {
+    "name": "library.search_book",
+    "arguments": {
+     "book_name": "The Alchemist",
+     "city": "New York"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 409,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"library.search_book\", \"arguments\": {\"book_name\": \"The Alchemist\", \"city\": \"New York\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_121",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "geometry.area_triangle",
+    "arguments": {
+     "base": 6,
+     "height": 10
+    }
+   },
+   "pred": {
+    "name": "geometry.area_triangle",
+    "arguments": {
+     "base": 6,
+     "height": 10
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 483,
+   "out_tokens": 27,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"geometry.area_triangle\", \"arguments\": {\"base\": 6, \"height\": 10}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_823-177-6",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Events_3_BuyEventTickets",
+    "arguments": {
+     "event_name": "Brockhampton",
+     "number_of_tickets": 4,
+     "date": "2023-03-13",
+     "city": "Berkeley, CA"
+    }
+   },
+   "pred": {
+    "name": "Events_3_BuyEventTickets",
+    "arguments": {
+     "event_name": "Brockhampton",
+     "number_of_tickets": 4,
+     "date": "2023-03-13",
+     "city": "Berkeley, CA"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.326,
+   "in_tokens": 1072,
+   "out_tokens": 57,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Events_3_BuyEventTickets\", \"arguments\": {\"event_name\": \"Brockhampton\", \"number_of_tickets\": 4, \"date\": \"2023-03-13\", \"city\": \"Berkeley, CA\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_588-157-9",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Horror",
+     "starring": "Arthur Lowe"
+    }
+   },
+   "pred": {
+    "name": "Media_3_FindMovies",
+    "arguments": {
+     "genre": "Horror",
+     "starring": "Arthur Lowe"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 558,
+   "out_tokens": 33,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Media_3_FindMovies\", \"arguments\": {\"genre\": \"Horror\", \"starring\": \"Arthur Lowe\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_simple_219-117-11",
+   "source": "BFCL_v4_live_simple.json",
+   "gold": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Simon Curtis",
+     "genre": "Drama",
+     "cast": "McKinley Belcher III"
+    }
+   },
+   "pred": {
+    "name": "Movies_3_FindMovies",
+    "arguments": {
+     "directed_by": "Simon Curtis",
+     "genre": "Drama",
+     "cast": "McKinley Belcher III"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 381,
+   "out_tokens": 45,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Simon Curtis\", \"genre\": \"Drama\", \"cast\": \"McKinley Belcher III\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_47-18-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "order_status_check",
+    "arguments": {
+     "order_id": "123456789",
+     "product": "Smart LED TV"
+    }
+   },
+   "pred": {
+    "name": "order_status_check",
+    "arguments": {
+     "order_id": "123456789",
+     "product": "Smart LED TV"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 680,
+   "out_tokens": 32,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"order_status_check\", \"arguments\": {\"order_id\": \"123456789\", \"product\": \"Smart LED TV\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_7-3-2",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "create_workspace",
+    "arguments": {
+     "name": "DevelopersHub",
+     "base_branch": "master"
+    }
+   },
+   "pred": {
+    "name": "create_workspace",
+    "arguments": {
+     "name": "DevelopersHub",
+     "base_branch": "master"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 706,
+   "out_tokens": 29,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"create_workspace\", \"arguments\": {\"name\": \"DevelopersHub\", \"base_branch\": \"master\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "live_multiple_239-107-0",
+   "source": "BFCL_v4_live_multiple.json",
+   "gold": {
+    "name": "search_web_tool",
+    "arguments": {
+     "query": "apple"
+    }
+   },
+   "pred": {
+    "name": "search_web_tool",
+    "arguments": {
+     "query": "apple"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 1.246,
+   "in_tokens": 1156,
+   "out_tokens": 21,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"search_web_tool\", \"arguments\": {\"query\": \"apple\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "simple_python_342",
+   "source": "BFCL_v4_simple_python.json",
+   "gold": {
+    "name": "game_list.get_games",
+    "arguments": {
+     "release_year": 2019,
+     "multiplayer": true,
+     "ESRB_rating": "Everyone"
+    }
+   },
+   "pred": {
+    "name": "game_list.get_games",
+    "arguments": {
+     "release_year": 2019,
+     "multiplayer": true,
+     "ESRB_rating": "Everyone"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.251,
+   "in_tokens": 255,
+   "out_tokens": 38,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"game_list.get_games\", \"arguments\": {\"release_year\": 2019, \"multiplayer\": true, \"ESRB_rating\": \"Everyone\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_68",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "library.search_books",
+    "arguments": {
+     "location": "New York",
+     "genre": "Historical Fiction"
+    }
+   },
+   "pred": {
+    "name": "library.search_books",
+    "arguments": {
+     "location": "New York",
+     "genre": "historical fiction"
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.0,
+   "in_tokens": 395,
+   "out_tokens": 30,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"library.search_books\", \"arguments\": {\"location\": \"New York\", \"genre\": \"historical fiction\"}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  },
+  {
+   "id": "multiple_42",
+   "source": "BFCL_v4_multiple.json",
+   "gold": {
+    "name": "calculate_final_temperature",
+    "arguments": {
+     "quantity1": 2,
+     "temperature1": 300,
+     "quantity2": 3,
+     "temperature2": 400
+    }
+   },
+   "pred": {
+    "name": "calculate_final_temperature",
+    "arguments": {
+     "quantity1": 2,
+     "temperature1": 300,
+     "quantity2": 3,
+     "temperature2": 400
+    }
+   },
+   "strict": 1.0,
+   "partial": 1.0,
+   "invalid": false,
+   "name_ok": true,
+   "reason": "ok",
+   "latency": 0.073,
+   "in_tokens": 385,
+   "out_tokens": 43,
+   "reasoning_tokens": 0,
+   "confidence": null,
+   "raw": " to=user{\"name\": \"calculate_final_temperature\", \"arguments\": {\"quantity1\": 2, \"temperature1\": 300, \"quantity2\": 3, \"temperature2\": 400}}",
+   "pred_source": "content",
+   "stop_reason": "stop"
+  }
+ ]
+}

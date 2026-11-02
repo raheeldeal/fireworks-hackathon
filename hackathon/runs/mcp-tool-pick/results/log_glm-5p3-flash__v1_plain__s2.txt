@@ -1,0 +1,183 @@
+✓ drive.export_document        -> drive.export_document        1.35s  Hi Dana — before the audit on Nov 14, can you get 
+✓ notion.query_database        -> notion.query_database        2.37s  Hey, so I'm trying to plan our Q3 roadmap and I ke
+✓ github.close_issue           -> github.close_issue           0.69s  close issue #412 in acme/api repo, done
+✓ gmail.search_emails          -> gmail.search_emails          0.66s  Please search my mailbox, I need email from Mr. Ta
+✓ calendar.respond_to_invite   -> calendar.respond_to_invite   0.84s  Hi Marcus, can you let the assistant know I'm in f
+✓ stripe.list_charges          -> stripe.list_charges          0.82s  Hey, so I'm doing the books for Bluebird Yoga Stud
+✓ drive.upload_file            -> drive.upload_file            3.21s  Hi Dana — since you're swamped, could you have the
+✓ translate.detect_language    -> translate.detect_language    1.69s  Hey, so I got this weird email this morning that's
+✓ jira.add_comment             -> jira.add_comment             0.73s  add comment to PROJ-1042: "deploy blocked on stagi
+✓ fs.append_file               -> fs.append_file               0.76s  Hey Priya, can you have the bot drop 'deployed hot
+✓ db.describe_table            -> db.describe_table            0.76s  Please tell me what columns and indexes exists in 
+✓ pagerduty.trigger_incident   -> pagerduty.trigger_incident   0.61s  page on-call for payments-api, prod is down
+✓ slack.list_channels          -> slack.list_channels          0.54s  Hey Marcus, since we're rolling out the Q3 migrati
+✓ weather.current              -> weather.current              0.61s  I'm standing in the parking lot at the trailhead n
+✓ jira.move_to_sprint          -> jira.move_to_sprint          0.80s  The API-302, API-303 and API-305 items are still p
+✓ reminders.complete           -> reminders.complete           1.07s  done with the dentist one, tick it off
+✓ gmail.reply_to_email         -> gmail.reply_to_email         13.83s  On the thread from Delta Logistics about the shipm
+✓ github.update_issue          -> github.update_issue          0.98s  Hi Marcus — can you have the bot update issue #203
+✓ jira.create_ticket           -> jira.create_ticket           1.00s  new ticket: login page 500 error, P1, MOB project
+✓ jira.create_sprint           -> jira.create_sprint           0.68s  We're kicking off the payments redesign next week 
+✓ fs.append_file               -> fs.append_file               0.56s  Please put the text 'Besuch 15.03: Lager geprüft' 
+✓ drive.search_files           -> drive.search_files           2.97s  I remember Dana mentioned a slides deck from the i
+✓ github.request_review        -> github.request_review        1.21s  On that open change in the payments repo — the one
+✓ jira.log_work                -> jira.log_work                0.71s  Hey, so I just spent pretty much the whole morning
+✓ db.explain_query             -> db.explain_query             1.57s  Hi Marcus — before tomorrow's standup (the 14th), 
+✓ calendar.find_free_time      -> calendar.find_free_time      0.69s  when are me and Priya both free next Tuesday?
+✓ github.get_file_contents     -> github.get_file_contents     1.07s  I'd like to see exactly what's inside the Dockerfi
+✓ fs.list_directory            -> fs.list_directory            0.90s  I'm not sure what ended up on my Desktop after tha
+✓ stripe.create_customer       -> stripe.create_customer       0.74s  Please make customer record for Mr. Hiroshi Tanaka
+✓ jira.assign_ticket           -> jira.assign_ticket           0.60s  Please give ticket DATA-88 to Tomas, he is availab
+✓ stripe.create_payment_intent -> stripe.create_payment_intent 0.80s  Hey, so I sold a handmade lamp to a customer at th
+✓ stripe.cancel_subscription   -> stripe.cancel_subscription   0.64s  The monthly charge on sub_1K9f2XqA keeps coming th
+✓ calendar.create_event        -> calendar.create_event        0.86s  Hey, so my manager finally approved the budget rev
+✓ db.run_query                 -> db.run_query                 0.69s  I'm curious which rows live in the invoices table 
+✓ jira.move_to_sprint          -> jira.move_to_sprint          0.82s  We finished planning for the payment team, and the
+✓ slack.set_status             -> slack.set_status             0.73s  Please put status 'on vacation 🌴' for me, it shoul
+✓ stripe.create_invoice        -> stripe.create_invoice        0.96s  Hey, so I finished up that design work for Brightl
+✓ github.update_issue          -> github.update_issue          0.70s  retag issue #142 as 'ui' instead of 'frontend'
+✓ jira.update_ticket           -> jira.update_ticket           0.92s  Hi Dana — since the outage on March 14th, could yo
+✓ github.create_pull_request   -> github.create_pull_request   0.72s  I just finished pushing my branch with the payment
+✓ gmail.archive_email          -> gmail.archive_email          4.17s  archive that last email from HR
+✓ gmail.label_email            -> gmail.label_email            1.67s  label that invoice email from Stripe as 'Finance'
+✓ calendar.delete_event        -> calendar.delete_event        1.78s  The vendor walkthrough on the 22nd isn't going to 
+✓ browser.download_file        -> browser.download_file        0.93s  There's a copy of the vendor pricing spreadsheet h
+✓ slack.search_messages        -> slack.search_messages        0.73s  find every mention of "Q3 budget" in Slack history
+✓ calendar.delete_event        -> calendar.delete_event        0.75s  Hi Dana, since the Q3 roadmap sync you set for Oct
+✓ db.execute_statement         -> db.execute_statement         0.97s  Hi Marcus — the duplicate rows in the events table
+✓ browser.fill_form            -> browser.fill_form            1.06s  Please complete the registration form in open page
+✓ stripe.create_payment_intent -> stripe.create_payment_intent 1.18s  Sarah, can you have the assistant bill the client 
+✓ browser.navigate             -> browser.navigate             0.72s  Hi Marcus — before our sync on March 14th, can you
+✓ slack.add_reaction           -> slack.add_reaction           0.68s  Hey Alex — saw your message in #release-notes abou
+✓ jira.link_tickets            -> jira.link_tickets            0.79s  Make PROJ-142 block PROJ-98
+✓ weather.forecast             -> weather.forecast             0.72s  I'm trying to figure out if the weekend trip to th
+✓ notion.add_database_row      -> notion.add_database_row      0.80s  My reading list database could use one more entry 
+✓ slack.schedule_message       -> slack.schedule_message       3.27s  Please post message in #team-lunch channel tomorro
+✓ gmail.get_thread             -> gmail.get_thread             0.73s  I keep losing track of that long back-and-forth wi
+✓ jira.assign_ticket           -> jira.assign_ticket           0.64s  assign PROJ-142 to Sarah Chen
+✓ stripe.create_subscription   -> stripe.create_subscription   1.28s  put Priya Raman on the $49/mo growth plan starting
+✓ fs.get_file_info             -> fs.get_file_info             0.62s  I'm curious about the metadata of /home/ana/backup
+✓ calendar.update_event        -> calendar.update_event        0.82s  Hey, so the quarterly review with the Hoffmann tea
+✓ gmail.search_emails          -> gmail.search_emails          0.82s  find emails from HR about open enrollment last mon
+✓ github.list_pull_requests    -> github.list_pull_requests    0.61s  Hi Daniel — before our standup on March 14th, can 
+✓ jira.search_tickets          -> jira.search_tickets          1.49s  find all open bugs in the mobile app project
+✓ gmail.forward_email          -> gmail.forward_email          1.53s  Hey, so my manager Dana just sent me that email ab
+✓ zoom.list_meetings           -> zoom.list_meetings           0.71s  I'd like to see what video calls are already booke
+✓ reminders.list               -> reminders.list               0.57s  Hey, before I plan my week out — my sister's gradu
+✓ slack.upload_file            -> slack.upload_file            0.73s  The #design-review folks need to see the mockup — 
+✓ zoom.get_recording           -> zoom.get_recording           0.75s  Please can you get me the record and transcript of
+✓ fs.search_files              -> fs.search_files              0.80s  I did a bunch of exports last quarter and they all
+✓ jira.transition_ticket       -> jira.transition_ticket       0.67s  move PROJ-842 to done pls
+✓ drive.upload_file            -> drive.upload_file            0.78s  Hey, so I finished editing the budget spreadsheet 
+✓ slack.schedule_message       -> slack.schedule_message       0.72s  I'd like the release notes to land in the #eng-upd
+✓ slack.send_message           -> slack.send_message           0.75s  I'd like the folks in #design to see a fresh note 
+✓ drive.export_document        -> drive.export_document        3.07s  I'd like the board deck from last week's folder in
+✓ browser.extract_text         -> browser.extract_text         0.76s  Please give me all words what is showing on curren
+✓ db.create_backup             -> db.create_backup             0.67s  I'd feel a lot safer if we had a restore point of 
+✓ drive.create_folder          -> drive.create_folder          0.83s  Hey, so we're kicking off the Hendricks account ne
+✓ browser.download_file        -> browser.download_file        0.79s  grab https://cdn.example.com/reports/q3-sales.pdf 
+✓ github.create_release        -> github.create_release        1.51s  We just finished tagging 3.1.0 for the analytics d
+✗ gmail.forward_email          -> gmail.search_emails          3.42s  That message Ana sent me yesterday regarding the H
+✓ gmail.mark_unread            -> gmail.mark_unread            1.67s  mark that last email from Priya unread pls
+✓ github.list_pull_requests    -> github.list_pull_requests    0.68s  show me open PRs in acme/api-gateway
+✓ slack.create_channel         -> slack.create_channel         0.63s  new channel: q4-launch, purpose "Q4 product launch
+✓ notion.search                -> notion.search                1.40s  Hey, I know I saw a page about the onboarding chec
+✓ stripe.create_invoice        -> stripe.create_invoice        0.70s  Our client at the consulting firm needs a bill for
+✓ zoom.create_meeting          -> zoom.create_meeting          0.68s  Please make video meeting for client presentation 
+✓ gmail.send_email             -> gmail.send_email             0.43s  My landlord needs to hear from me about the lease 
+✓ drive.share_file             -> drive.share_file             0.81s  Marcus shouldn't have to keep emailing me for the 
+✓ db.explain_query             -> db.explain_query             1.20s  explain plan for select * from orders where status
+✓ reminders.create             -> reminders.create             0.57s  remind me at 7am tmrw to take out trash
+✓ github.search_code           -> github.search_code           0.58s  Please help me, I want search in all our company r
+✓ github.create_pull_request   -> github.create_pull_request   1.40s  The work on my fix-typo-in-readme branch is commit
+✗ drive.search_files           -> gmail.search_emails          2.55s  Sarah — the vendor contract PDF you sent on Nov 14
+✓ gmail.reply_to_email         -> gmail.reply_to_email         0.90s  Hey Dana, can you have the assistant write back to
+✓ stripe.create_coupon         -> stripe.create_coupon         0.86s  Our Black Friday campaign needs a promotional code
+✓ slack.set_status             -> slack.set_status             0.82s  Hey, so I'm heading into the quarterly planning of
+✓ calendar.list_events         -> calendar.list_events         0.89s  Hey, so my manager wants me to put together a reca
+✓ stripe.create_customer       -> stripe.create_customer       0.88s  Sara — can you get Priya Nair set up in our paymen
+✓ gmail.mark_unread            -> gmail.mark_unread            1.18s  I opened the invoice email from Acme Corp this mor
+✓ notion.update_page           -> notion.update_page           0.83s  Please update title of page 'Recruiting Plan 2024'
+✓ fs.delete_file               -> fs.delete_file               0.86s  There's an old backup at /var/backups/site_2023-11
+✓ browser.screenshot           -> browser.screenshot           0.51s  I'd like a visual record of whatever is currently 
+✓ github.comment_on_issue      -> github.comment_on_issue      0.70s  Hey, so I was testing the login flow yesterday and
+✓ github.create_issue          -> github.create_issue          0.85s  Hi Marcus — remember the crash we saw in the mobil
+✓ db.list_tables               -> db.list_tables               1.09s  what tables are in the db?
+✓ drive.create_folder          -> drive.create_folder          0.87s  I'd like an empty container named "Onboarding Mate
+✓ db.describe_table            -> db.describe_table            0.66s  show me the schema of the customers table
+✗ browser.type_text            -> reminders.create             1.76s  Mara — before you hit send on the Halverson invoic
+✓ stripe.refund_payment        -> stripe.refund_payment        0.67s  Hello, please give back the money for payment pi_4
+✓ calendar.create_event        -> calendar.create_event        5.07s  I'd like everyone to be on the same page about the
+✓ browser.click                -> browser.click                0.75s  Hey Mira — the Acme dashboard is up in the browser
+✓ zoom.get_recording           -> zoom.get_recording           0.80s  Hi Marco — the client onboarding session from Nov 
+✓ gmail.send_email             -> gmail.send_email             1.24s  send email to ops@brightline.co re: server mainten
+✓ pagerduty.list_oncall        -> pagerduty.list_oncall        0.72s  Hey, quick question — the API monitoring keeps fir
+✓ browser.screenshot           -> browser.screenshot           1.28s  Priya — before the 3pm standup, can you get an ima
+✓ jira.update_ticket           -> jira.update_ticket           0.76s  Please change the summary of ticket PAY-77 to "Fix
+✓ notion.update_page           -> notion.update_page           0.97s  rename my Q3 roadmap page to 'Q3 Product Prioritie
+✓ slack.reply_in_thread        -> slack.reply_in_thread        1.38s  In the channel where the team is discussing the se
+✓ notion.search                -> notion.search                2.56s  I vaguely recall a write-up on the migration plan 
+✓ github.search_code           -> github.search_code           0.78s  Priya — before the March 14 standup, could you pul
+✓ github.comment_on_issue      -> github.comment_on_issue      0.84s  Hi Sam, can you have the assistant add a quick rep
+✓ slack.upload_file            -> slack.upload_file            0.65s  Hey, I just finished putting together the onboardi
+✓ gmail.trash_email            -> gmail.trash_email            2.82s  Hi Dana — the email you forwarded me on March 12 (
+✓ zoom.create_meeting          -> zoom.create_meeting          0.65s  set up a video call for tuesday 3pm with the desig
+✓ calendar.find_free_time      -> calendar.find_free_time      0.86s  Hey Dana — since the vendor call got pushed, can w
+✓ github.create_branch         -> github.create_branch         0.88s  Hey Marcus, since we agreed in standup on the 14th
+✓ github.create_branch         -> github.create_branch         0.78s  Please create new branch from develop, name is fea
+✓ pagerduty.resolve_incident   -> pagerduty.resolve_incident   0.84s  Sara, the PagerDuty alert for the EU API gateway (
+✓ gmail.create_draft           -> gmail.create_draft           1.84s  To: Dana — can you have the assistant prep a rough
+✓ fs.get_file_info             -> fs.get_file_info             0.81s  Hey, before I send that big video to the client I 
+✓ fs.move_file                 -> fs.move_file                 1.81s  Hi Sarah, could you make sure the file client_prop
+✓ stripe.create_subscription   -> stripe.create_subscription   0.71s  Please begin monthly billing for customer Chen Wei
+✓ github.create_release        -> github.create_release        0.78s  Publish v2.4.0 on acme/api-server with the changel
+✓ stripe.refund_payment        -> stripe.refund_payment        0.91s  refund charge ch_8823fj in full pls
+✓ gmail.label_email            -> gmail.label_email            2.77s  Please put label 'Wichtig' on email from Frau Webe
+✓ github.close_issue           -> github.close_issue           0.68s  That ticket about the flaky CI tests in the number
+✓ fs.list_directory            -> fs.list_directory            0.59s  show me what's in /var/log/nginx
+✓ fs.write_file                -> fs.write_file                0.66s  I have some text that needs to live at /home/dana/
+✓ github.request_review        -> github.request_review        0.72s  Request review from Sarah on PR #482, thanks
+✓ gmail.archive_email          -> gmail.archive_email          0.66s  Please move out this email from BlueHarbor Insuran
+✓ browser.extract_text         -> browser.extract_text         0.80s  Hi Dana — since you're on the Acme vendor portal p
+✓ jira.log_work                -> jira.log_work                0.63s  I worked yesterday 2 hours for fixing bug on ticke
+✓ weather.current              -> weather.current              0.56s  Priya, before you drive the van to the client site
+✓ drive.share_file             -> drive.share_file             0.89s  Hey, so my new intern Daniel starts Monday and he'
+✓ stripe.list_charges          -> stripe.list_charges          1.19s  show me all charges from last month
+✓ jira.add_comment             -> jira.add_comment             0.70s  Hey, so I just finished debugging the payment gate
+✓ stripe.create_coupon         -> stripe.create_coupon         0.58s  make a 20% off coupon please
+✓ gmail.get_thread             -> gmail.get_thread             1.08s  There's a conversation I was copied on with the id
+✓ db.run_query                 -> db.run_query                 1.18s  Hi Rachel — before Friday's audit, could you pull 
+✓ translate.text               -> translate.text               0.65s  translate 'welcome to our store' to spanish
+✓ github.create_issue          -> github.create_issue          0.67s  open new bug issue on acme/widgets, title: Login f
+✓ pagerduty.acknowledge_incident -> pagerduty.acknowledge_incident 0.76s  Hi Marcus — since you're already digging into the 
+✓ jira.search_tickets          -> jira.search_tickets          0.79s  Please show me the tickets about login problem, I 
+✓ notion.create_page           -> notion.create_page           1.54s  I need somewhere new to dump my ideas for the rebr
+✓ github.get_file_contents     -> github.get_file_contents     0.82s  show me package.json on main of acme/api-gateway
+✓ github.merge_pull_request    -> github.merge_pull_request    0.58s  Hey, so I've been reviewing Maria's pull request f
+✓ calendar.respond_to_invite   -> calendar.respond_to_invite   0.74s  Hey, so I got that invite to the quarterly review 
+✓ browser.navigate             -> browser.navigate             0.74s  Hey, so I've been meaning to compare a few project
+✓ weather.forecast             -> weather.forecast             0.62s  weather for Kyoto next 5 days pls
+✓ fs.read_file                 -> fs.read_file                 0.72s  Hi Sarah, can you grab the full contents of specs/
+✓ db.list_tables               -> db.list_tables               0.49s  Please show me which tables existing in database, 
+✓ jira.link_tickets            -> jira.link_tickets            0.92s  The billing fix and the refund issue in our tracke
+✓ translate.text               -> translate.text               0.56s  Please change this text to French: 'The meeting is
+✓ calendar.update_event        -> calendar.update_event        0.80s  move the 3pm design sync to 2:30
+✓ reminders.create             -> reminders.create             0.51s  I'd like something to ping me Tuesday at noon so I
+✓ gmail.create_draft           -> gmail.create_draft           0.97s  Please make draft email to Mr. Tanaka, subject is 
+✓ jira.create_ticket           -> jira.create_ticket           0.79s  Hi Daniel — can you have the assistant open a tick
+✓ slack.search_messages        -> slack.search_messages        0.66s  Hey, so I'm trying to track down something from a 
+✓ pagerduty.trigger_incident   -> pagerduty.trigger_incident   0.68s  Priya, the auth gateway started failing at 03:14 U
+✓ fs.read_file                 -> fs.read_file                 1.09s  There's a file at logs/deploy_error.log from last 
+✓ stripe.cancel_subscription   -> stripe.cancel_subscription   0.84s  Please stop my recurring payment plan, I am not ne
+✓ fs.write_file                -> fs.write_file                0.97s  Please create file report_march.csv and put inside
+✓ notion.query_database        -> notion.query_database        1.22s  Hi Marcus — before Friday's review, can you filter
+✓ slack.create_channel         -> slack.create_channel         0.68s  Please make channel for new interns, name is "inte
+✓ translate.detect_language    -> translate.detect_language    0.90s  Priya — the customer feedback from the March 14 su
+✓ pagerduty.acknowledge_incident -> pagerduty.acknowledge_incident 1.04s  ack incident PD-4821 now pls
+✓ zoom.list_meetings           -> zoom.list_meetings           1.34s  what meetings do I have coming up?
+✓ browser.fill_form            -> browser.fill_form            1.00s  Hey, so I'm finally getting around to booking that
+✓ fs.delete_file               -> fs.delete_file               0.62s  Hey, so I was cleaning up the project folder for t
+✓ browser.type_text            -> browser.type_text            0.85s  The cursor is already sitting in the comment box o
+
+glm-5p3-flash + v1_plain: acc 98.3% top3 98.3% | invalid 0 | p50 0.8s p95 2.767s | $0.2855/1k | catalog share 0.831 | ledger $2.529
+saved results/glm-5p3-flash__v1_plain__s2.json

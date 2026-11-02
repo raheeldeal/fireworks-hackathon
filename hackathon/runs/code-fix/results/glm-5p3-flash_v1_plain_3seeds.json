@@ -1,0 +1,23 @@
+{
+  "model": "accounts/fireworks/models/glm-5p3-flash",
+  "prompt": "v1_plain",
+  "mock": false,
+  "n": 164,
+  "seed": 0,
+  "shots": 0,
+  "accuracy": 0.9512,
+  "invalid_outputs": 7.7,
+  "api_errors": 5,
+  "truncated_by_cap": false,
+  "p50_latency_s": 2.111,
+  "p95_latency_s": 10.228,
+  "cost_per_1k_requests_usd": 0.2505,
+  "avg_in_tokens": 196.2,
+  "avg_out_tokens": 449.5,
+  "avg_reasoning_tokens": 385.0,
+  "run_cost_usd": 0.0417,
+  "rows": [],
+  "seeds": 3,
+  "accuracy_min": 0.9329,
+  "accuracy_max": 0.9634
+}

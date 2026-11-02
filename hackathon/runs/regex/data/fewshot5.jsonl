@@ -1,0 +1,5 @@
+{"id": "kb13-329", "text": "lines containing words that start with 'h' and end with 'e'.", "gold": ".*\\bh[A-Za-z]*e\\b.*"}
+{"id": "kb13-666", "text": "lines where there are three characters between instances of 'ABC' and 'WEX'", "gold": ".*ABC.*.{3}.*WEX.*|.*WEX.*.{3}.*ABC.*"}
+{"id": "kb13-115", "text": "lines with 'sec' before 'mun'.", "gold": ".*sec.*mun.*"}
+{"id": "kb13-461", "text": "lines that start with 'ABC' and end with 'TRY'", "gold": "ABC.*TRY"}
+{"id": "kb13-36", "text": "lines containing a word using 'ause'", "gold": ".*\\b[A-Za-z]*ause[A-Za-z]*\\b.*"}

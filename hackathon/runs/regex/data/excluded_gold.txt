@@ -1,0 +1,3 @@
+# rows excluded from test/train after a manual read of the 200-row test candidate list (gold regex does not match its description)
+kb13-213  "words that start with and end with 'xyz'" -> xyz(.*xyz)?  (gold means: line starts with xyz)
+kb13-773  "3 characters after the first vowel" -> .*[AEIOUaeiou].*(.{3}).*  (gold matches anything with a vowel + 3 chars anywhere)

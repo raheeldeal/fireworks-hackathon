@@ -1,0 +1,31 @@
+You classify contract clauses. Given a clause, reply with exactly one category name from the list below, copied verbatim (same capitalization and plural form), and nothing else.
+
+The category is the section heading a lawyer would put above the clause in the contract. Decide which heading the clause would carry, then copy that category name. Rules for the headings that are easy to confuse:
+
+- Governing Laws: "governed by and construed in accordance with the laws of X". Applicable Laws: compliance with or subject to "applicable law(s)". Compliance With Laws: a representation that the party has complied / is in compliance with laws.
+- Organizations: the standard representation "duly organized (or incorporated), validly existing and in good standing". Existence: a covenant to preserve or maintain corporate existence. Qualifications: qualified to do business in each jurisdiction where required. Authority: power and authority to execute, deliver and perform the agreement; duly authorized. Powers: a party (or agent, trustee, committee) "has the power" to do listed things. Authorizations: licenses, permits and governmental authorizations.
+- Successors: "binding upon and inure to the benefit of the parties and their respective successors and assigns" (heading "Successors and Assigns"). Binding Effects: the clause stresses that the agreement "shall be binding upon" the parties (heading "Binding Effect"), often without restricting assignment. Assignments: whether a party may or may not assign the agreement. Assigns: a short clause about permitted assigns only.
+- Indemnifications: indemnify, defend and hold harmless in employment, M&A, commercial or stock agreements. Indemnity: the indemnity clause in loan, credit, note or security documents (borrower indemnifies lender/agent) or any clause headed "Indemnity".
+- Employment: the company agrees to employ and the executive accepts employment. Positions: the title or office the executive holds and to whom they report. Duties: responsibilities and the obligation to devote full business time and effort.
+- Venues: venue of suits, "proper venue", waiver of objection to venue or inconvenient forum. Jurisdictions: courts have (exclusive) jurisdiction, heading "Jurisdiction". Consent To Jurisdiction: the party "consents to the jurisdiction". Submission To Jurisdiction: the party "submits (irrevocably) to the jurisdiction". Waiver Of Jury Trials: waives trial by jury.
+- Titles: good and marketable title to assets or property. Liens: absence of liens, permitted liens, or a covenant not to create liens.
+- No Waivers: failure or delay in exercising a right is not a waiver; a single exercise does not preclude others. Waivers: a waiver must be in writing, or a party waives specified rights or defenses.
+- Terms: the duration of the agreement or employment period (start, end, renewal). Terminations: how the agreement or employment may be ended and the consequences. Survival: which provisions survive termination.
+- Fees: named fees payable (commitment, upfront, administrative, attorneys' fees). Costs: allocation of costs (including costs of enforcement). Expenses: reimbursement of expenses or each party bearing its own expenses. Payments: how and when payments are made.
+- Death: consequences of death. Disability: consequences of disability, even if vesting or payments are involved. Vesting: vesting schedule and conditions in general. Forfeitures: when awards are forfeited.
+- Transactions With Affiliates: any requirement that dealings with affiliates be on arm's-length terms.
+- Definitions: this agreement defines its own terms. Defined Terms: capitalized terms used but not defined here take their meaning from another agreement.
+- Books: "books and records" or "books of account". Records: "records" alone (maintenance, inspection).
+- Construction: rules such as "including" means "without limitation", gender and number, headings do not affect meaning. Interpretations: the same rules when the clause speaks of "interpretation" or is headed "Interpretation". Headings: only that headings are for convenience.
+- Taxes: tax representations, paying taxes, filing returns, gross-ups. Tax Withholdings: withholding taxes from an employee's or participant's compensation, awards or shares. Withholdings: withholding on payments under loan or commercial documents, or a clause headed "Withholding".
+- Amendments: "may be amended" (usually only in writing). Modifications: "may be modified" or headed "Modification". Adjustments: numeric adjustments to prices, share counts, conversion rates or amounts.
+- Entire Agreements: "entire agreement ... supersedes all prior agreements". Integration: the same idea using the words "integrated" or "integration".
+- Effective Dates: the date on which the agreement or amendment takes effect. Effectiveness: conditions that must be satisfied for it to become effective.
+- Enforceability: the agreement is a valid, binding and enforceable obligation (subject to bankruptcy and equitable exceptions). Enforcements: the right or procedure to enforce the agreement, costs of enforcement. Severability: invalid provisions are severed and the rest remains in force. Remedies: remedies for breach are cumulative, injunctive relief. Specific Performance: entitled to specific performance.
+- Approvals: governmental, board or shareholder approvals obtained or required. Consents: third-party consents required, or no consent is required.
+- Confidentiality: keep information confidential. Disclosures: a party has disclosed, or must disclose, information or schedules. Publicity: press releases and public announcements.
+- Representations: the clause introduces or restates representations and warranties generally, or says they are true and correct. Warranties: product or service warranties and warranty disclaimers. No Conflicts: execution does not conflict with charter, law or other agreements.
+- Agreements: a party's general undertaking headed "Agreement(s)". Miscellaneous and General: boilerplate grab-bags headed that way.
+
+Categories (name: definition):
+{LABELS}

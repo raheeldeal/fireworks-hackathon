@@ -1,0 +1,67 @@
+{
+ "what": "Raw API response where the model returned empty content because the max_tokens budget was consumed by hidden reasoning (finish_reason = length).",
+ "captured": "2026-11-02T10:24:17",
+ "endpoint": "https://api.fireworks.ai/inference/v1/chat/completions",
+ "test_row_id": "q038",
+ "gold_tool": "calendar.create_event",
+ "request": {
+  "model": "accounts/fireworks/models/glm-5p3-flash",
+  "max_tokens": 20,
+  "temperature": 0,
+  "messages": [
+   {
+    "role": "system",
+    "content": "You are a tool router. Given the tool catalog below and a user request, reply with ONLY the exact name of the single best tool from the catalog. No explanation.\n\nCATALOG:\ngithub.create_issue: Open a new issue in a repository with title, body and labels.\ngithub.update_issue: Edit the title, body, labels or assignees of an existing issue.\ngithub.close_issue: Close an existing issue, optionally with a closing comment.\ngithub.comment_on_issue: Add a comment to an existing issue or pull request thread.\ngithub.create_pull_request: Open a pull request from a head branch into a base branch.\ngithub.merge_pull_request: Merge an open pull request using merge, squash or rebase.\ngithub.request_review: Request one or more users to review an open pull request.\ngithub.list_pull_requests: List pull requests in a repository filtered by state or author.\ngithub.search_code: Search file contents across repositories with a query string.\ngithub.get_file_contents: Read the contents of a file at a path and ref in a repository.\ngithub.create_branch: Create a new branch from an existing ref in a repository.\ngithub.create_release: Publish a tagged release with release notes and optional assets.\nslack.send_message: Post a new message to a channel or direct message.\nslack.reply_in_thread: Reply to an existing message inside its thread.\nslack.schedule_message: Schedule a message to be posted to a channel at a future time.\nslack.add_reaction: Add an emoji reaction to an existing message.\nslack.search_messages: Search message history across channels by keyword, user or date.\nslack.list_channels: List channels in the workspace with their names and member counts.\nslack.set_status: Set the current user's status text, emoji and expiry.\nslack.upload_file: Upload a file to a channel or thread with an optional comment.\nslack.create_channel: Create a new public or private channel with a name and purpose.\ncalendar.create_event: Create a new calendar event with title, time, attendees and location.\ncalendar.update_event: Change the time, title, attendees or location of an existing event.\ncalendar.delete_event: Cancel and remove an existing event, notifying attendees.\ncalendar.list_events: List events on a calendar within a date range.\ncalendar.find_free_time: Find open time slots across one or more attendees' calendars.\ncalendar.respond_to_invite: Accept, decline or tentatively accept an event invitation.\nreminders.create: Create a personal reminder that fires at a specific time or date.\nreminders.list: List upcoming personal reminders.\nreminders.complete: Mark a personal reminder as done.\ngmail.send_email: Compose and send a new email to one or more recipients.\ngmail.reply_to_email: Reply to an existing email thread, keeping the subject and recipients.\ngmail.forward_email: Forward an existing email to new recipients with an optional note.\ngmail.create_draft: Save an email as a draft without sending it.\ngmail.search_emails: Search the mailbox by sender, subject, date or keywords.\ngmail.get_thread: Read all messages in an email thread by thread id.\ngmail.label_email: Apply or remove a label on an email or thread.\ngmail.archive_email: Remove an email from the inbox without deleting it.\ngmail.trash_email: Move an email to the trash.\ngmail.mark_unread: Mark an email as unread so it shows as new in the inbox.\njira.create_ticket: Create a new Jira ticket in a project with summary, type and priority.\njira.update_ticket: Edit fields of an existing ticket such as summary, priority or assignee.\njira.transition_ticket: Move a ticket to a different workflow status such as In Progress or Done.\njira.assign_ticket: Assign an existing ticket to a user.\njira.add_comment: Add a comment to an existing Jira ticket.\njira.search_tickets: Search tickets with a JQL query or free text.\njira.link_tickets: Create a relationship such as blocks or duplicates between two tickets.\njira.create_sprint: Create a new sprint on a board with a start and end date.\njira.move_to_sprint: Move one or more tickets into a sprint or the backlog.\njira.log_work: Log time spent on a ticket.\nstripe.create_customer: Create a new customer record with name, email and metadata.\nstripe.create_payment_intent: Charge a customer by creating a payment intent for an amount.\nstripe.refund_payment: Refund all or part of a completed payment.\nstripe.create_subscription: Start a recurring subscription for a customer on a price plan.\nstripe.cancel_subscription: Cancel an active subscription immediately or at period end.\nstripe.create_invoice: Create and send an invoice to a customer for line items.\nstripe.list_charges: List charges for a customer or date range.\nstripe.create_coupon: Create a discount coupon with a percent or amount off.\nfs.read_file: Read the full contents of a file at a path.\nfs.write_file: Create or overwrite a file at a path with given contents.\nfs.append_file: Append contents to the end of an existing file.\nfs.list_directory: List files and folders inside a directory.\nfs.move_file: Move or rename a file or directory to a new path.\nfs.delete_file: Permanently delete a file at a path.\nfs.search_files: Find files whose name matches a glob pattern under a directory.\nfs.get_file_info: Get size, modification time and permissions of a file.\ndb.run_query: Execute a read-only SQL SELECT query and return rows.\ndb.execute_statement: Execute a SQL INSERT, UPDATE or DELETE statement.\ndb.list_tables: List the tables in the connected database.\ndb.describe_table: Show the columns, types and indexes of a table.\ndb.explain_query: Show the execution plan for a SQL query without running it.\ndb.create_backup: Create a full backup snapshot of the database.\nbrowser.navigate: Open a URL in the browser tab.\nbrowser.click: Click an element on the current page by selector or text.\nbrowser.type_text: Type text into an input field on the current page.\nbrowser.screenshot: Capture a screenshot of the current page.\nbrowser.extract_text: Return the visible text content of the current page.\nbrowser.fill_form: Fill multiple form fields at once and optionally submit.\nbrowser.download_file: Download a file from a URL to local disk.\ndrive.upload_file: Upload a local file to a Drive folder.\ndrive.share_file: Grant a user or group view, comment or edit access to a file.\ndrive.search_files: Search Drive files by name, type, owner or content.\ndrive.create_folder: Create a new folder, optionally inside a parent folder.\ndrive.export_document: Export a Docs, Sheets or Slides file to PDF, DOCX or CSV.\nnotion.create_page: Create a new page in a workspace or under a parent page.\nnotion.update_page: Edit the title, properties or content blocks of an existing page.\nnotion.search: Search pages and databases in the workspace by text.\nnotion.add_database_row: Insert a new row with properties into a Notion database.\nnotion.query_database: Query rows in a Notion database with filters and sorts.\nzoom.create_meeting: Schedule a new video meeting and get its join link.\nzoom.get_recording: Fetch the recording and transcript of a past meeting.\nzoom.list_meetings: List upcoming scheduled meetings for the user.\nweather.current: Get current weather conditions for a location.\nweather.forecast: Get a multi-day weather forecast for a location.\ntranslate.text: Translate text from one language to another.\ntranslate.detect_language: Detect the language of a piece of text.\npagerduty.trigger_incident: Open a new incident on a service and page the on-call.\npagerduty.acknowledge_incident: Acknowledge an open incident to stop escalation.\npagerduty.resolve_incident: Mark an incident as resolved.\npagerduty.list_oncall: Show who is currently on call for a schedule or service.\n"
+   },
+   {
+    "role": "user",
+    "content": "I'd like everyone to be on the same page about the migration \u2014 could you see that a 45-minute session lands on our calendars for March 12th at 2pm, with the platform team (ana@brightloop.io, sam@brightloop.io) included and the link to the Zoom room as the place?"
+   }
+  ]
+ },
+ "response": {
+  "id": "chatcmpl-b76c83f0",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "content": null,
+     "role": "assistant",
+     "reasoning_content": "The user wants a 45-minute session on calendars for March 12th at 2pm,"
+    },
+    "finish_reason": "length",
+    "logprobs": null,
+    "raw_output": null
+   }
+  ],
+  "created": 1793643857,
+  "model": "accounts/fireworks/models/glm-5p3-flash",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "usage": {
+   "prompt_tokens": 1681,
+   "completion_tokens": 20,
+   "total_tokens": 1701,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": null,
+    "reasoning_tokens": 20,
+    "rejected_prediction_tokens": null
+   }
+  }
+ },
+ "observed": {
+  "content": "",
+  "finish_reason": "length",
+  "completion_tokens": 20,
+  "reasoning_tokens": 20,
+  "reasoning_excerpt": "The user wants a 45-minute session on calendars for March 12th at 2pm,",
+  "latency_s": 0.613,
+  "scored_as": "invalid (no catalog name in content)"
+ },
+ "rows_capped_in_full_run": 3,
+ "source_results_file": "submission/sweep/results/glm-5p3-flash__v1_plain+mt512__s0.json"
+}

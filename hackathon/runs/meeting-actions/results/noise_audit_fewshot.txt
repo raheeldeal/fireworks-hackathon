@@ -1,0 +1,112 @@
+
+## 1. ma-0005 PRED {"owner": "Hannah", "task": "approve the logging system access request", "due": null}
+   gold: [('Hannah', 'fix the Slack announcement about the office move')]
+   > Hannah: I can approve that request when it comes through, if that helps.
+
+## 2. ma-0011 PRED {"owner": "Noah", "task": "fix the dashboard conversion numbers", "due": null}
+   gold: [('Noah', 'fix the metrics dashboard for the pipeline review')]
+   > Noah: Yeah, I saw that. The stage weights got messed up when someone changed the field mapping. I'll get the dashboard sorted out before the next review.
+
+## 3. ma-0011 PRED {"owner": "Fatima", "task": "review the pricing assumptions in the Globex draft", "due": null}
+   gold: []
+
+## 4. ma-0040 PRED {"owner": "Diego", "task": "share his notes on the email subject lines in the doc", "due": null}
+   gold: []
+   > Diego: I'll share my notes in the doc so whoever picks up the rewrite has context.
+
+## 5. ma-0042 PRED {"owner": "Elena", "task": "send the updated agenda", "due": "this afternoon"}
+   gold: []
+   > Elena: Okay, let's get started. We've got the mobile checkout redesign, the pricing page, and a few other things on the agenda today.
+   > Elena: Sure, I'll send it out this afternoon. Alright, thanks everyone. Good meeting.
+
+## 6. ma-0043 PRED {"owner": "Omar", "task": "ship the config change before the deploy freeze", "due": "Thursday EOD"}
+   gold: [('Omar', 'write up the metrics dashboard for the payments service')]
+   > Omar: Noted. I'll make sure the config change goes out before then.
+
+## 7. ma-0056 PRED {"owner": "Priya", "task": "chase down answers on the procurement concerns list", "due": "June 30"}
+   gold: [('Priya', 'follow up on the risks list for the Globex proposal')]
+   > Priya: Speaking of Globex, the procurement team sent back a list of concerns about the proposal. Mostly around data residency and the SLA terms.
+   > Priya: About a dozen, and a few need input from legal before we can respond properly. I'll take responsibility for chasing down answers on that whole list so it doesn't stall.
+   > Priya: Will do. Next topic: the churned accounts. Marketing finally sent over the final list.
+
+## 8. ma-0056 PRED {"owner": "Aisha", "task": "put together the kickoff meeting for the win-back effort", "due": "end of month"}
+   gold: [('Aisha', 'draft the kickoff meeting for the churned accounts list')]
+   > Aisha: Ouch. Okay, I can own getting the win-back effort started. I'll put together the kickoff meeting for that list so we can prioritize who to contact first.
+
+## 9. ma-0082 PRED {"owner": "Priya", "task": "refresh the FAQ to cover Acme's questions", "due": "end of day tomorrow"}
+   gold: [('Priya', 'update the FAQ for the Acme renewal')]
+   > Priya: The FAQ on our side is out of date, so I'll refresh it to cover their specific questions. I can have that done by end of day tomorrow.
+
+## 10. ma-0082 PRED {"owner": "Diego", "task": "keep reassuring Acme on the calls", "due": null}
+   gold: []
+   > Diego: They're nervous about the timeline, but I think once the FAQ is solid, most of the anxiety goes away. I'll keep reassuring them on our calls.
+
+## 11. ma-0089 PRED {"owner": "Victor", "task": "circulate the customer interview recordings", "due": null}
+   gold: []
+   > Victor: Speaking of reviews, quick update from me: the customer interviews for the pricing page wrapped up last week, so that's fully done. I'll circulate the recordings separately, no action needed from anyone.
+
+## 12. ma-0096 PRED {"owner": "Tom", "task": "send the missing taxi receipts to Nadia", "due": null}
+   gold: []
+   > Tom: I'll dig those out and send them to Nadia. Not committing to a date, but soon.
+
+## 13. ma-0097 PRED {"owner": "Grace", "task": "pull together the booth summary for leadership", "due": "April 3"}
+   gold: [('Grace', 'schedule the summary of the conference booth')]
+   > Grace: Really well, actually. We got around two hundred scanned badges, which is way more than last year. I have all the notes, I just need to pull them together.
+   > Grace: Yes, I'll have the booth summary ready by April 3.
+   > Grace: I'm good. I'll get going on that booth summary.
+
+## 14. ma-0098 PRED {"owner": "Raj", "task": "pull together an FAQ based on the survey responses", "due": "Tuesday"}
+   gold: [('Raj', 'circulate the FAQ for the customer survey'), ('Raj', 'upload the recording to the shared drive'), ('Raj', 'schedule the budget estimate for the conference booth')]
+   > Raj: That's actually useful. I can pull together an FAQ based on the survey responses and send it around Tuesday, so we have it before the next customer touchpoint.
+
+## 15. ma-0102 PRED {"owner": "Olivia", "task": "verify the network drops with facilities for the second floor", "due": null}
+   gold: [('Olivia', 'set up the rollout checklist for the office move')]
+   > Olivia: On the office move, has anyone confirmed with facilities about the network drops in the new space? I don't want the checklist to assume things that aren't happening.
+
+## 16. ma-0102 PRED {"owner": "Daniel", "task": "confirm the savings in the next invoice review", "due": null}
+   gold: [('Daniel', 'cancel the unused Datadog hosts')]
+   > Daniel: Yeah, I saw that. Those are leftovers from the migration. I'll cancel the unused hosts by next Wednesday.
+   > Daniel: I'll confirm the savings in the next invoice review.
+
+## 17. ma-0127 PRED {"owner": "Victor", "task": "ask QA to free up 16.4 test phones", "due": null}
+   gold: [('Victor', 'send the FAQ for the data pipeline')]
+
+## 18. ma-0133 PRED {"owner": "Daniel", "task": "mention the broken coffee machine to facilities", "due": null}
+   gold: [('Daniel', 'cancel the unused Datadog hosts')]
+   > Daniel: I noticed. I'll mention it to facilities after this. Anyway, roadmap first?
+
+## 19. ma-0135 PRED {"owner": "Priya", "task": "pass along the app cache workaround to Lucas", "due": null}
+   gold: []
+   > Priya: We do — clearing the app cache fixes it temporarily. I'll pass that along to you.
+
+## 20. ma-0136 PRED {"owner": "Noah", "task": "compare competitor test sharding setups with ours", "due": "the 28th"}
+   gold: [('Noah', 'schedule the Slack announcement about the iOS crash on login'), ('Noah', 'send the competitor comparison for the flaky integration tests')]
+
+## 21. ma-0138 PRED {"owner": "Grace", "task": "correct the FAQ on the partner portal", "due": null}
+   gold: [('Grace', 'fix the FAQ for the partner referral program'), ('Grace', 'finalize the timeline for the pipeline review')]
+   > Grace: Agreed, park it. Olivia, how's the partner referral program going?
+   > Grace: I can take that. I'll get the FAQ corrected so it matches the current terms.
+
+## 22. ma-0139 PRED {"owner": "Nadia", "task": "send the interview notes to everyone", "due": null}
+   gold: [('Nadia', 'share the customer interviews for the pricing page')]
+   > Nadia: I did, twelve interviews. The short version is most people expected an enterprise option to exist and were more suspicious when it wasn't listed.
+   > Nadia: Sure, I can send the interview notes out to everyone so you can dig into them.
+   > Nadia: I can't take that one, I'm buried with the interviews follow-up.
+
+## 23. ma-0144 PRED {"owner": "Olivia", "task": "flag spec items that affect testing", "due": null}
+   gold: [('Olivia', 'follow up on the spec for the notifications redesign')]
+   > Olivia: Good, because I keep getting pings about it. On my side, the notifications redesign spec is still in draft.
+   > Olivia: Mostly open questions about the mute behavior. I'll chase down the answers and follow up on the spec by Friday.
+   > Olivia: I agree, we'd be testing against a design that's about to be stale anyway.
+
+## 24. ma-0158 PRED {"owner": "Elena", "task": "push the config change", "due": "tomorrow"}
+   gold: [('Elena', 'review the customer interviews for the new expense policy')]
+   > Elena: Good reminder. I have a small config change I'll push tomorrow.
+
+## 25. ma-0170 PRED {"owner": "Sofia", "task": "confirm the all-hands demo with the events team", "due": null}
+   gold: []
+   > Sofia: As far as I know, yes. I'll confirm with the events team, but don't hold me to a time yet.
+
+## 26. ma-0175 PRED {"owner": "Olivia", "task": "flag the broken coffee machine to facilities", "due": null}
+   gold: []
+   > Olivia: Not the coffee machine. I'll flag it to facilities after this.

@@ -1,0 +1,63 @@
+{
+  "small": "results/nemotron-lightning-3p5-30b-a3b_v2_conf_none.json",
+  "big": "results/kimi-k3_v1_plain_n100.json",
+  "n": 100,
+  "sweep": [
+    {
+      "threshold": 0.5,
+      "escalated_frac": 0.02,
+      "accuracy": 0.8,
+      "cost_per_1k_requests_usd": 0.1918,
+      "p50_latency_s": 0.302,
+      "p95_latency_s": 1.228
+    },
+    {
+      "threshold": 0.6,
+      "escalated_frac": 0.05,
+      "accuracy": 0.82,
+      "cost_per_1k_requests_usd": 0.3597,
+      "p50_latency_s": 0.305,
+      "p95_latency_s": 1.607
+    },
+    {
+      "threshold": 0.7,
+      "escalated_frac": 0.05,
+      "accuracy": 0.82,
+      "cost_per_1k_requests_usd": 0.3597,
+      "p50_latency_s": 0.305,
+      "p95_latency_s": 1.607
+    },
+    {
+      "threshold": 0.8,
+      "escalated_frac": 0.05,
+      "accuracy": 0.82,
+      "cost_per_1k_requests_usd": 0.3597,
+      "p50_latency_s": 0.305,
+      "p95_latency_s": 1.607
+    },
+    {
+      "threshold": 0.9,
+      "escalated_frac": 0.25,
+      "accuracy": 0.85,
+      "cost_per_1k_requests_usd": 1.4793,
+      "p50_latency_s": 0.316,
+      "p95_latency_s": 3.917
+    },
+    {
+      "threshold": 0.95,
+      "escalated_frac": 0.4,
+      "accuracy": 0.85,
+      "cost_per_1k_requests_usd": 2.3191,
+      "p50_latency_s": 0.376,
+      "p95_latency_s": 3.936
+    },
+    {
+      "threshold": 1.01,
+      "escalated_frac": 1.0,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 5.678,
+      "p50_latency_s": 2.141,
+      "p95_latency_s": 4.349
+    }
+  ]
+}

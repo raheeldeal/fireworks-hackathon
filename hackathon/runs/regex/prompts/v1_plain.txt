@@ -1,0 +1,1 @@
+Convert the user's English description into a Python regular expression. The regex will be tested with re.fullmatch against whole lines (the entire line must match). Reply with only the regex, nothing else.

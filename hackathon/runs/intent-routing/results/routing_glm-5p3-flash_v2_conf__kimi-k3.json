@@ -1,0 +1,63 @@
+{
+  "small": "results/glm-5p3-flash_v2_conf.json",
+  "big": "results/kimi-k3_v1_plain_n100.json",
+  "n": 100,
+  "sweep": [
+    {
+      "threshold": 0.5,
+      "escalated_frac": 0.0,
+      "accuracy": 0.86,
+      "cost_per_1k_requests_usd": 0.2954,
+      "p50_latency_s": 1.078,
+      "p95_latency_s": 2.881
+    },
+    {
+      "threshold": 0.6,
+      "escalated_frac": 0.02,
+      "accuracy": 0.86,
+      "cost_per_1k_requests_usd": 0.4074,
+      "p50_latency_s": 1.078,
+      "p95_latency_s": 3.007
+    },
+    {
+      "threshold": 0.7,
+      "escalated_frac": 0.14,
+      "accuracy": 0.87,
+      "cost_per_1k_requests_usd": 1.0791,
+      "p50_latency_s": 1.078,
+      "p95_latency_s": 5.798
+    },
+    {
+      "threshold": 0.8,
+      "escalated_frac": 0.29,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 1.9189,
+      "p50_latency_s": 1.094,
+      "p95_latency_s": 5.798
+    },
+    {
+      "threshold": 0.9,
+      "escalated_frac": 0.4,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 2.5347,
+      "p50_latency_s": 1.145,
+      "p95_latency_s": 6.376
+    },
+    {
+      "threshold": 0.95,
+      "escalated_frac": 0.66,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 3.9902,
+      "p50_latency_s": 2.792,
+      "p95_latency_s": 6.376
+    },
+    {
+      "threshold": 1.01,
+      "escalated_frac": 1.0,
+      "accuracy": 0.88,
+      "cost_per_1k_requests_usd": 5.8936,
+      "p50_latency_s": 3.098,
+      "p95_latency_s": 6.376
+    }
+  ]
+}

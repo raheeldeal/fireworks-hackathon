@@ -1,0 +1,19 @@
+== retry 1 rows: glm-5p3-flash_v1_plain_s1.json
+retrying 1 errored rows from /Users/raheelahmed/fireworks-hackathon/hackathon/runs/intent-routing/results/glm-5p3-flash_v1_plain_s1.json
+✓ cash_withdrawal_not_recognis -> cash_withdrawal_not_recognis conf=None 0.93s
+
+glm-5p3-flash + v1_plain: acc 83.8% | invalid 0 | err 0 | p50 0.877s p95 4.38s | $0.2702/1k | run cost $0.0416 | ledger $1.9755
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/intent-routing/results/glm-5p3-flash_v1_plain_s1.json
+== retry 1 rows: glm-5p3-flash_v4_fewshot_low.json
+retrying 1 errored rows from /Users/raheelahmed/fireworks-hackathon/hackathon/runs/intent-routing/results/glm-5p3-flash_v4_fewshot_low.json
+✓ top_up_by_cash_or_cheque     -> top_up_by_cash_or_cheque     conf=0.9 0.54s
+
+glm-5p3-flash + v4_fewshot_low: acc 78.6% | invalid 0 | err 0 | p50 0.569s p95 1.01s | $0.3641/1k | run cost $0.0561 | ledger $1.9758
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/intent-routing/results/glm-5p3-flash_v4_fewshot_low.json
+== retry 2 rows: nemotron-lightning-3p5-30b-a3b_v1_plain.json
+retrying 2 errored rows from /Users/raheelahmed/fireworks-hackathon/hackathon/runs/intent-routing/results/nemotron-lightning-3p5-30b-a3b_v1_plain.json
+✓ verify_source_of_funds       -> verify_source_of_funds       conf=None 1.06s
+✓ card_linking                 -> card_linking                 conf=None 1.89s
+
+nemotron-lightning-3p5-30b-a3b + v1_plain: acc 74.0% | invalid 7 | err 0 | p50 1.847s p95 8.341s | $0.2685/1k | run cost $0.0413 | ledger $1.9775
+saved /Users/raheelahmed/fireworks-hackathon/hackathon/runs/intent-routing/results/nemotron-lightning-3p5-30b-a3b_v1_plain.json

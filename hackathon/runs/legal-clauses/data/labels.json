@@ -1,0 +1,504 @@
+{
+ "labels": [
+  {
+   "id": 0,
+   "name": "Adjustments",
+   "definition": "Mechanics for adjusting prices, share counts, conversion rates or amounts after events like splits, dividends or recapitalizations."
+  },
+  {
+   "id": 1,
+   "name": "Agreements",
+   "definition": "A party's general undertaking or promise to do or refrain from something (often a covenant captioned 'Agreement' or 'Agreements')."
+  },
+  {
+   "id": 2,
+   "name": "Amendments",
+   "definition": "How the contract may be amended, modified or supplemented (e.g., only in writing signed by the parties)."
+  },
+  {
+   "id": 3,
+   "name": "Anti-Corruption Laws",
+   "definition": "Compliance with anti-bribery / anti-corruption statutes such as the FCPA or UK Bribery Act."
+  },
+  {
+   "id": 4,
+   "name": "Applicable Laws",
+   "definition": "A party is in compliance with, or will comply with, all laws, rules and regulations applicable to it."
+  },
+  {
+   "id": 5,
+   "name": "Approvals",
+   "definition": "Required governmental, regulatory, board or third-party approvals have been or will be obtained."
+  },
+  {
+   "id": 6,
+   "name": "Arbitration",
+   "definition": "Disputes are to be resolved by binding arbitration under named rules or a named forum."
+  },
+  {
+   "id": 7,
+   "name": "Assignments",
+   "definition": "Whether and how a party may assign or transfer the agreement or its rights and obligations."
+  },
+  {
+   "id": 8,
+   "name": "Assigns",
+   "definition": "The agreement binds and benefits successors and permitted assigns (focus on the assigns/successors wording)."
+  },
+  {
+   "id": 9,
+   "name": "Authority",
+   "definition": "A party has the corporate power and authority to enter into and perform the agreement; it is duly authorized."
+  },
+  {
+   "id": 10,
+   "name": "Authorizations",
+   "definition": "A party holds, or has obtained, all licenses, permits, consents and authorizations needed for its business or the deal."
+  },
+  {
+   "id": 11,
+   "name": "Base Salary",
+   "definition": "An employee's annual base salary amount, payment schedule and review."
+  },
+  {
+   "id": 12,
+   "name": "Benefits",
+   "definition": "An employee's eligibility to participate in benefit plans (health, retirement, perquisites)."
+  },
+  {
+   "id": 13,
+   "name": "Binding Effects",
+   "definition": "The agreement is a legal, valid and binding obligation enforceable against the party; binds successors."
+  },
+  {
+   "id": 14,
+   "name": "Books",
+   "definition": "Books and records are kept accurately / in accordance with GAAP; inspection rights to books and records."
+  },
+  {
+   "id": 15,
+   "name": "Brokers",
+   "definition": "No broker, finder or investment banker is entitled to a fee in connection with the transaction."
+  },
+  {
+   "id": 16,
+   "name": "Capitalization",
+   "definition": "A company's authorized and outstanding share capital, options and other equity are as described."
+  },
+  {
+   "id": 17,
+   "name": "Change In Control",
+   "definition": "Rights, payments or vesting triggered by a change in control of the company."
+  },
+  {
+   "id": 18,
+   "name": "Closings",
+   "definition": "Time, place and mechanics of the closing of the transaction."
+  },
+  {
+   "id": 19,
+   "name": "Compliance With Laws",
+   "definition": "A party has complied and is in compliance with applicable laws, orders and regulations."
+  },
+  {
+   "id": 20,
+   "name": "Confidentiality",
+   "definition": "Obligation to keep information confidential and not disclose or misuse it."
+  },
+  {
+   "id": 21,
+   "name": "Consent To Jurisdiction",
+   "definition": "Parties consent/submit to the personal jurisdiction of named courts (captioned 'Consent to Jurisdiction')."
+  },
+  {
+   "id": 22,
+   "name": "Consents",
+   "definition": "Required consents of third parties or governmental bodies have been or will be obtained; no consent is required."
+  },
+  {
+   "id": 23,
+   "name": "Construction",
+   "definition": "Rules for interpreting the document: headings, 'including' means without limitation, gender/number, no contra proferentem."
+  },
+  {
+   "id": 24,
+   "name": "Cooperation",
+   "definition": "Parties agree to cooperate, provide information and take actions to carry out the agreement."
+  },
+  {
+   "id": 25,
+   "name": "Costs",
+   "definition": "Allocation of costs (who bears costs, e.g., of enforcement or of the transaction)."
+  },
+  {
+   "id": 26,
+   "name": "Counterparts",
+   "definition": "The agreement may be executed in counterparts, each deemed an original, including by fax/PDF/electronic signature."
+  },
+  {
+   "id": 27,
+   "name": "Death",
+   "definition": "Consequences of an employee's or participant's death (payments, vesting, termination)."
+  },
+  {
+   "id": 28,
+   "name": "Defined Terms",
+   "definition": "Capitalized terms used but not defined have the meanings given elsewhere (e.g., in the Credit Agreement)."
+  },
+  {
+   "id": 29,
+   "name": "Definitions",
+   "definition": "Definitions of terms used in the agreement (the clause defines words or references a definitions section)."
+  },
+  {
+   "id": 30,
+   "name": "Disability",
+   "definition": "Consequences of an employee's disability (termination, benefits, vesting)."
+  },
+  {
+   "id": 31,
+   "name": "Disclosures",
+   "definition": "Disclosure obligations or statements that disclosures made are accurate and complete; disclosure schedules."
+  },
+  {
+   "id": 32,
+   "name": "Duties",
+   "definition": "An employee's position, duties, responsibilities and reporting lines; devoting full business time."
+  },
+  {
+   "id": 33,
+   "name": "Effective Dates",
+   "definition": "When the agreement or amendment becomes effective (a specified date or upon conditions)."
+  },
+  {
+   "id": 34,
+   "name": "Effectiveness",
+   "definition": "Conditions upon which the agreement or amendment becomes effective (e.g., receipt of signed counterparts)."
+  },
+  {
+   "id": 35,
+   "name": "Employment",
+   "definition": "The company employs the executive and the executive accepts employment, for a term, on stated conditions."
+  },
+  {
+   "id": 36,
+   "name": "Enforceability",
+   "definition": "The agreement constitutes a valid and binding obligation enforceable in accordance with its terms, subject to bankruptcy exceptions."
+  },
+  {
+   "id": 37,
+   "name": "Enforcements",
+   "definition": "Rights and procedures to enforce the agreement; costs of enforcement; cumulative remedies."
+  },
+  {
+   "id": 38,
+   "name": "Entire Agreements",
+   "definition": "The agreement is the entire agreement and supersedes all prior agreements and understandings."
+  },
+  {
+   "id": 39,
+   "name": "Erisa",
+   "definition": "Employee benefit plan representations or covenants under ERISA (no prohibited transactions, no Plan liabilities)."
+  },
+  {
+   "id": 40,
+   "name": "Existence",
+   "definition": "A party is duly organized, validly existing and in good standing; will maintain its existence."
+  },
+  {
+   "id": 41,
+   "name": "Expenses",
+   "definition": "Each party bears its own expenses, or one party reimburses the other's expenses (fees of counsel, etc.)."
+  },
+  {
+   "id": 42,
+   "name": "Fees",
+   "definition": "Fees payable (commitment fees, administrative fees, service fees) and their calculation and timing."
+  },
+  {
+   "id": 43,
+   "name": "Financial Statements",
+   "definition": "Financial statements delivered are accurate, complete and prepared in accordance with GAAP."
+  },
+  {
+   "id": 44,
+   "name": "Forfeitures",
+   "definition": "Circumstances in which awards, shares or payments are forfeited."
+  },
+  {
+   "id": 45,
+   "name": "Further Assurances",
+   "definition": "Parties will execute further documents and take further actions to carry out the agreement."
+  },
+  {
+   "id": 46,
+   "name": "General",
+   "definition": "General or miscellaneous provisions grouped together (catch-all captioned 'General')."
+  },
+  {
+   "id": 47,
+   "name": "Governing Laws",
+   "definition": "The agreement is governed by the laws of a named state or country."
+  },
+  {
+   "id": 48,
+   "name": "Headings",
+   "definition": "Section headings are for convenience only and do not affect interpretation."
+  },
+  {
+   "id": 49,
+   "name": "Indemnifications",
+   "definition": "A party will indemnify, defend and hold harmless the other against losses, claims and liabilities."
+  },
+  {
+   "id": 50,
+   "name": "Indemnity",
+   "definition": "Indemnity obligation (often in loan documents: borrower indemnifies lender/agent) \u2014 similar to Indemnifications."
+  },
+  {
+   "id": 51,
+   "name": "Insurances",
+   "definition": "A party maintains insurance coverage of specified types and amounts; insurance representations."
+  },
+  {
+   "id": 52,
+   "name": "Integration",
+   "definition": "The agreement integrates all prior agreements; merger clause (similar to Entire Agreements, captioned 'Integration')."
+  },
+  {
+   "id": 53,
+   "name": "Intellectual Property",
+   "definition": "Ownership, validity and non-infringement of intellectual property rights."
+  },
+  {
+   "id": 54,
+   "name": "Interests",
+   "definition": "Interest accrues on amounts at stated rates; computation and payment of interest."
+  },
+  {
+   "id": 55,
+   "name": "Interpretations",
+   "definition": "Rules of interpretation for the document (similar to Construction, captioned 'Interpretation')."
+  },
+  {
+   "id": 56,
+   "name": "Jurisdictions",
+   "definition": "Submission to the jurisdiction of courts; venue (captioned 'Jurisdiction')."
+  },
+  {
+   "id": 57,
+   "name": "Liens",
+   "definition": "No liens exist on assets other than permitted liens; covenant not to create liens."
+  },
+  {
+   "id": 58,
+   "name": "Litigations",
+   "definition": "No pending or threatened litigation, actions or proceedings against the party."
+  },
+  {
+   "id": 59,
+   "name": "Miscellaneous",
+   "definition": "Grab-bag of boilerplate provisions captioned 'Miscellaneous'."
+  },
+  {
+   "id": 60,
+   "name": "Modifications",
+   "definition": "How the agreement may be modified or waived (similar to Amendments, captioned 'Modification')."
+  },
+  {
+   "id": 61,
+   "name": "No Conflicts",
+   "definition": "Execution and performance do not conflict with the charter, laws, or other agreements of the party."
+  },
+  {
+   "id": 62,
+   "name": "No Defaults",
+   "definition": "No default or event of default exists or would result from the transaction."
+  },
+  {
+   "id": 63,
+   "name": "No Waivers",
+   "definition": "Failure or delay in exercising a right is not a waiver; single exercise does not preclude further exercise."
+  },
+  {
+   "id": 64,
+   "name": "Non-Disparagement",
+   "definition": "A party agrees not to make disparaging statements about the other."
+  },
+  {
+   "id": 65,
+   "name": "Notices",
+   "definition": "How notices must be given (in writing, delivery methods, addresses, when deemed received)."
+  },
+  {
+   "id": 66,
+   "name": "Organizations",
+   "definition": "A party is duly organized/incorporated and in good standing under the laws of its jurisdiction."
+  },
+  {
+   "id": 67,
+   "name": "Participations",
+   "definition": "A lender may sell participations in its loans/commitments to participants; participant rights."
+  },
+  {
+   "id": 68,
+   "name": "Payments",
+   "definition": "How and when payments are to be made (currency, account, business day conventions, free of set-off)."
+  },
+  {
+   "id": 69,
+   "name": "Positions",
+   "definition": "An employee's title/position and the position's role (similar to Duties, captioned 'Position')."
+  },
+  {
+   "id": 70,
+   "name": "Powers",
+   "definition": "A party has the power (and authority) to own assets, conduct business and perform the agreement."
+  },
+  {
+   "id": 71,
+   "name": "Publicity",
+   "definition": "Restrictions on press releases and public announcements about the agreement or transaction."
+  },
+  {
+   "id": 72,
+   "name": "Qualifications",
+   "definition": "A party is duly qualified to do business and in good standing in each jurisdiction where required."
+  },
+  {
+   "id": 73,
+   "name": "Records",
+   "definition": "Maintenance of records; access to and inspection of records (similar to Books, captioned 'Records')."
+  },
+  {
+   "id": 74,
+   "name": "Releases",
+   "definition": "A party releases and discharges the other from claims and liabilities."
+  },
+  {
+   "id": 75,
+   "name": "Remedies",
+   "definition": "Remedies available for breach; remedies are cumulative; injunctive relief."
+  },
+  {
+   "id": 76,
+   "name": "Representations",
+   "definition": "General representations and warranties statement, or that representations are true and correct."
+  },
+  {
+   "id": 77,
+   "name": "Sales",
+   "definition": "Terms of a sale or transfer of assets, shares or product (e.g., 'Sale of Shares', 'Sale and Purchase')."
+  },
+  {
+   "id": 78,
+   "name": "Sanctions",
+   "definition": "Compliance with economic sanctions laws (OFAC); no party is a sanctioned person."
+  },
+  {
+   "id": 79,
+   "name": "Severability",
+   "definition": "If any provision is invalid or unenforceable, the remainder stays in effect."
+  },
+  {
+   "id": 80,
+   "name": "Solvency",
+   "definition": "The party is solvent; the transaction will not render it insolvent."
+  },
+  {
+   "id": 81,
+   "name": "Specific Performance",
+   "definition": "Parties are entitled to specific performance / injunctive relief because damages are inadequate."
+  },
+  {
+   "id": 82,
+   "name": "Submission To Jurisdiction",
+   "definition": "Parties irrevocably submit to the jurisdiction of named courts (captioned 'Submission to Jurisdiction')."
+  },
+  {
+   "id": 83,
+   "name": "Subsidiaries",
+   "definition": "Representations about the company's subsidiaries (list, ownership, good standing)."
+  },
+  {
+   "id": 84,
+   "name": "Successors",
+   "definition": "The agreement binds and benefits the parties' successors and assigns (captioned 'Successors and Assigns')."
+  },
+  {
+   "id": 85,
+   "name": "Survival",
+   "definition": "Which provisions survive termination, expiration or closing, and for how long."
+  },
+  {
+   "id": 86,
+   "name": "Tax Withholdings",
+   "definition": "The company may withhold taxes from payments or share deliveries to an employee/participant."
+  },
+  {
+   "id": 87,
+   "name": "Taxes",
+   "definition": "Tax representations, payment of taxes, filing of tax returns, or tax gross-up/allocation provisions."
+  },
+  {
+   "id": 88,
+   "name": "Terminations",
+   "definition": "How and when the agreement or employment may be terminated and the consequences."
+  },
+  {
+   "id": 89,
+   "name": "Terms",
+   "definition": "The duration/term of the agreement or of employment (start, end, renewal)."
+  },
+  {
+   "id": 90,
+   "name": "Titles",
+   "definition": "A party has good and marketable title to its assets/property, free of liens except permitted ones."
+  },
+  {
+   "id": 91,
+   "name": "Transactions With Affiliates",
+   "definition": "Restrictions on transactions with affiliates unless on arm's-length terms."
+  },
+  {
+   "id": 92,
+   "name": "Use Of Proceeds",
+   "definition": "Proceeds of the loan or offering will be used only for stated purposes."
+  },
+  {
+   "id": 93,
+   "name": "Vacations",
+   "definition": "An employee's paid vacation/leave entitlement."
+  },
+  {
+   "id": 94,
+   "name": "Venues",
+   "definition": "Venue for suits lies exclusively in named courts; waiver of inconvenient forum (captioned 'Venue')."
+  },
+  {
+   "id": 95,
+   "name": "Vesting",
+   "definition": "Schedule and conditions under which awards or options vest."
+  },
+  {
+   "id": 96,
+   "name": "Waiver Of Jury Trials",
+   "definition": "Parties waive the right to a trial by jury."
+  },
+  {
+   "id": 97,
+   "name": "Waivers",
+   "definition": "Provisions may be waived only in writing; waiver of one breach is not waiver of others (captioned 'Waiver')."
+  },
+  {
+   "id": 98,
+   "name": "Warranties",
+   "definition": "Product or service warranties, or warranty disclaimers (captioned 'Warranty'/'Warranties')."
+  },
+  {
+   "id": 99,
+   "name": "Withholdings",
+   "definition": "Withholding of taxes from payments (lender tax withholding or employee withholding, captioned 'Withholding')."
+  }
+ ]
+}

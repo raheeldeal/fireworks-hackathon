@@ -1,0 +1,195 @@
+{
+ "model": "accounts/fireworks/models/glm-5p3-flash",
+ "prompt": "v1_plain",
+ "mock": false,
+ "n": 2,
+ "seed": 0,
+ "errors": 0,
+ "accuracy": 0.9333,
+ "precision": 0.875,
+ "recall": 1.0,
+ "f1": 0.9333,
+ "due_acc": 1.0,
+ "exact_row_acc": 0.5,
+ "invalid_outputs": 0,
+ "p50_latency_s": 1.64,
+ "p95_latency_s": 1.498,
+ "cost_per_1k_requests_usd": 0.1821,
+ "avg_in_tokens": 780,
+ "avg_out_tokens": 130,
+ "avg_reasoning_tokens": 0,
+ "wall_s": 1.8,
+ "rows": [
+  {
+   "id": "ma-0000",
+   "gold": [
+    {
+     "owner": "Aisha",
+     "task": "test the Slack announcement about the brand refresh",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "test the spec for the customer survey",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "follow up on the test plan for the paid search campaign",
+     "due": null
+    },
+    {
+     "owner": "Noah",
+     "task": "order the new laptops for the interns",
+     "due": "April 3"
+    },
+    {
+     "owner": "Leila",
+     "task": "summarize the test plan for the brand refresh",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Noah\", \"task\": \"Place the order for the new intern laptops\", \"due\": \"April 3\"},\n  {\"owner\": \"Aisha\", \"task\": \"Test the Slack announcement for the brand refresh\", \"due\": null},\n  {\"owner\": \"Leila\", \"task\": \"Write up a summary of the test plan for the brand refresh\", \"due\": null},\n  {\"owner\": \"Priya\", \"task\": \"Test the survey spec and report back on the question flow (including the branching logic on question six)\", \"due\": null},\n  {\"owner\": \"Priya\", \"task\": \"Follow up on the test plan for the paid search campaign and chase down missing pieces from the agency\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Noah",
+     "task": "Place the order for the new intern laptops",
+     "due": "April 3"
+    },
+    {
+     "owner": "Aisha",
+     "task": "Test the Slack announcement for the brand refresh",
+     "due": null
+    },
+    {
+     "owner": "Leila",
+     "task": "Write up a summary of the test plan for the brand refresh",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "Test the survey spec and report back on the question flow (including the branching logic on question six)",
+     "due": null
+    },
+    {
+     "owner": "Priya",
+     "task": "Follow up on the test plan for the paid search campaign and chase down missing pieces from the agency",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 5,
+    "n_pred": 5,
+    "tp": 5,
+    "due_correct": 5,
+    "due_total": 5,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 2,
+      "pred": 4,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 4,
+      "pred": 2,
+      "sim": 0.914,
+      "due_ok": true
+     },
+     {
+      "gold": 3,
+      "pred": 0,
+      "sim": 0.873,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 3,
+      "sim": 0.78,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [],
+    "unmatched_gold": []
+   },
+   "latency": 1.782438039779663,
+   "in_tokens": 818,
+   "out_tokens": 167,
+   "reasoning_tokens": 0,
+   "cost": 0.0002062,
+   "correct": true
+  },
+  {
+   "id": "ma-0002",
+   "gold": [
+    {
+     "owner": "Omar",
+     "task": "post the hiring update in #general",
+     "due": "the end of the quarter"
+    },
+    {
+     "owner": "Noah",
+     "task": "schedule the rollout checklist for the staging environment",
+     "due": null
+    }
+   ],
+   "raw": "```json\n[\n  {\"owner\": \"Noah\", \"task\": \"Schedule the staging rollout checklist session and send the invite\", \"due\": null},\n  {\"owner\": \"Omar\", \"task\": \"Post the hiring update in #general\", \"due\": \"end of the quarter\"},\n  {\"owner\": \"Noah\", \"task\": \"Flag any blockers from the checklist session in the channel\", \"due\": null}\n]\n```",
+   "pred": [
+    {
+     "owner": "Noah",
+     "task": "Schedule the staging rollout checklist session and send the invite",
+     "due": null
+    },
+    {
+     "owner": "Omar",
+     "task": "Post the hiring update in #general",
+     "due": "end of the quarter"
+    },
+    {
+     "owner": "Noah",
+     "task": "Flag any blockers from the checklist session in the channel",
+     "due": null
+    }
+   ],
+   "score": {
+    "valid": true,
+    "n_gold": 2,
+    "n_pred": 3,
+    "tp": 2,
+    "due_correct": 2,
+    "due_total": 2,
+    "matches": [
+     {
+      "gold": 0,
+      "pred": 1,
+      "sim": 1.0,
+      "due_ok": true
+     },
+     {
+      "gold": 1,
+      "pred": 0,
+      "sim": 0.85,
+      "due_ok": true
+     }
+    ],
+    "unmatched_pred": [
+     2
+    ],
+    "unmatched_gold": []
+   },
+   "latency": 1.497905969619751,
+   "in_tokens": 743,
+   "out_tokens": 93,
+   "reasoning_tokens": 0,
+   "cost": 0.00015795,
+   "correct": false
+  }
+ ]
+}

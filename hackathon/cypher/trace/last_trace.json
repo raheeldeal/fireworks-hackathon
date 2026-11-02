@@ -1,471 +1,303 @@
 {
  "step": "text2cypher",
  "kind": "span",
- "seconds": 1.828,
+ "seconds": 0.004,
  "input": {
-  "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
-  "graph": "twitter",
-  "config": "vote3",
-  "tier": "hard"
+  "question": "who?"
  },
  "output": {
-  "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-  "status": "rows",
-  "row_count": 1,
   "rows": [
    {
-    "avg_favorites": 2.2340425531914874
+    "a": 1
    }
   ],
-  "columns": [
-   "avg_favorites"
-  ],
-  "error": null,
-  "correct": true,
-  "correct_lenient": true,
-  "gold_cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {name: \"Neo4j\"}),       (t)-[:TAGS]->(:Hashtag)\\nWITH avg(t.favorites) AS average_favorites\\nRETURN average_favorites"
+  "correct": true
  },
  "meta": {
-  "graph": "twitter",
+  "graph": "movies",
   "tier": "hard",
-  "config": "vote3",
-  "row_id": "t049",
-  "config_detail": {
-   "mode": "vote",
-   "repair": true,
-   "reasoning": "low"
-  },
-  "small_model": "accounts/fireworks/models/glm-5p3-flash",
-  "big_model": "accounts/fireworks/models/glm-5p3",
-  "test_set_sha": "6c47ee00573e",
-  "release": "cypher-harness@6c47ee00573e",
-  "environment": "development",
-  "gold_known": true,
-  "agreement": 2,
-  "escalated": false,
-  "in_tokens": 2556,
-  "out_tokens": 137,
-  "cost_usd": 0.00045190000000000003,
-  "latency_s": 1.826,
-  "model_calls": 3,
+  "config": "route_big",
+  "row_id": "t000",
   "usage": {
-   "input": 2556,
-   "output": 137
+   "input": 303,
+   "output": 60
   },
+  "cost_usd": 0.00037,
   "scores": {
    "correct": 1,
-   "correct_lenient": 1,
-   "latency_s": 1.826,
-   "cost_usd": 0.000452
+   "latency_s": 2.1
   }
  },
  "children": [
   {
-   "step": "vote",
+   "step": "route",
    "kind": "agent",
-   "seconds": 1.825,
-   "input": {
-    "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
-    "n_attempts": 3,
-    "temperature": 0.7
-   },
+   "seconds": 0.003,
+   "input": null,
    "output": {
-    "per_attempt": [
-     {
-      "attempt": 0,
-      "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me) WHERE (m.screen_name = 'neo4j') AND (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites) AS avgFavorites",
-      "status": "rows",
-      "row_count": 1
-     },
-     {
-      "attempt": 1,
-      "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-      "status": "rows",
-      "row_count": 1
-     },
-     {
-      "attempt": 2,
-      "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-      "status": "rows",
-      "row_count": 1
-     }
-    ],
-    "agreement": 2,
-    "chosen": 1
+    "escalated": false
    },
-   "meta": {
-    "note": "2/3 attempts agreed on the same result set; took attempt 1"
-   },
+   "meta": {},
    "children": [
     {
-     "step": "attempt",
-     "kind": "chain",
-     "seconds": 1.74,
-     "input": {
-      "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
-      "graph": "twitter"
-     },
+     "step": "vote",
+     "kind": "agent",
+     "seconds": 0.003,
+     "input": null,
      "output": {
-      "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me) WHERE (m.screen_name = 'neo4j') AND (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites) AS avgFavorites",
-      "status": "rows",
-      "row_count": 1,
-      "rows_head": [
-       {
-        "avgFavorites": 2.4505494505494503
-       }
-      ],
-      "problems": [],
-      "repaired": false
+      "agreement": 3,
+      "chosen": 0
      },
-     "meta": {
-      "model": "accounts/fireworks/models/glm-5p3-flash",
-      "temperature": 0.7,
-      "calls": 1,
-      "pruned": false,
-      "in_tokens": 852,
-      "out_tokens": 49,
-      "statuses": [
-       "rows"
-      ],
-      "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
-      "usage": {
-       "input": 852,
-       "output": 49
-      },
-      "cost_usd": 0.00015230000000000002
-     },
+     "meta": {},
      "children": [
       {
-       "step": "generate",
-       "kind": "generation",
-       "seconds": 1.035,
-       "input": [
-        {
-         "role": "system",
-         "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\n- **Link**\n  - `url`: STRING Example: \"https://twitter.com/i/web/status/13718150212657479\"\n- **Source**\n  - `name`: STRING Example: \"Buffer\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:USING]->(:Source)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:CONTAINS]->(:Link)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
-        },
-        {
-         "role": "user",
-         "content": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?"
-        }
-       ],
-       "output": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me) WHERE (m.screen_name = 'neo4j') AND (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites) AS avgFavorites",
-       "meta": {
-        "model": "accounts/fireworks/models/glm-5p3-flash",
-        "model_parameters": {
-         "temperature": 0.7,
-         "max_tokens": 4096,
-         "reasoning_effort": "low"
-        },
-        "reasoning_tokens": 0,
-        "finish_reason": "stop",
-        "latency_s": 1.035,
-        "note": "glm-5p3-flash: 852 prompt + 49 completion tokens, $0.00015, 1.0s",
-        "usage": {
-         "input": 852,
-         "output": 49,
-         "total": 901
-        },
-        "cost_usd": 0.00015230000000000002,
-        "prompt": {
-         "name": "cypher-generate",
-         "version": "f52da8a729e5"
-        }
-       },
-       "children": []
-      },
-      {
-       "step": "validate",
-       "kind": "evaluator",
+       "step": "attempt",
+       "kind": "chain",
        "seconds": 0.001,
-       "input": {
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me) WHERE (m.screen_name = 'neo4j') AND (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites) AS avgFavorites"
-       },
+       "input": null,
        "output": {
-        "problems": [],
-        "n_problems": 0,
-        "unsafe": false
+        "cypher": "MATCH (n) RETURN n",
+        "status": "rows"
        },
        "meta": {
-        "note": "no schema problems"
-       },
-       "children": []
-      },
-      {
-       "step": "execute",
-       "kind": "retriever",
-       "seconds": 0.703,
-       "input": {
-        "graph": "twitter",
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(m:Me) WHERE (m.screen_name = 'neo4j') AND (t)-[:TAGS]->(:Hashtag) RETURN avg(t.favorites) AS avgFavorites"
-       },
-       "output": {
-        "status": "rows",
-        "row_count": 1,
-        "columns": [
-         "avgFavorites"
-        ],
-        "error": null,
-        "rows_head": [
-         {
-          "avgFavorites": 2.4505494505494503
-         }
-        ]
-       },
-       "meta": {
-        "graph": "twitter",
-        "latency_s": 0.702,
-        "note": "rows: 1 row(s) in 0.702s"
-       },
-       "children": []
-      }
-     ]
-    },
-    {
-     "step": "attempt",
-     "kind": "chain",
-     "seconds": 1.291,
-     "input": {
-      "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
-      "graph": "twitter"
-     },
-     "output": {
-      "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-      "status": "rows",
-      "row_count": 1,
-      "rows_head": [
-       {
-        "avg_favorites": 2.2340425531914874
-       }
-      ],
-      "problems": [],
-      "repaired": false
-     },
-     "meta": {
-      "model": "accounts/fireworks/models/glm-5p3-flash",
-      "temperature": 0.7,
-      "calls": 1,
-      "pruned": false,
-      "in_tokens": 852,
-      "out_tokens": 44,
-      "statuses": [
-       "rows"
-      ],
-      "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
-      "usage": {
-       "input": 852,
-       "output": 44
-      },
-      "cost_usd": 0.0001498
-     },
-     "children": [
-      {
-       "step": "generate",
-       "kind": "generation",
-       "seconds": 1.023,
-       "input": [
-        {
-         "role": "system",
-         "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\n- **Link**\n  - `url`: STRING Example: \"https://twitter.com/i/web/status/13718150212657479\"\n- **Source**\n  - `name`: STRING Example: \"Buffer\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:USING]->(:Source)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:CONTAINS]->(:Link)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
-        },
-        {
-         "role": "user",
-         "content": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?"
-        }
-       ],
-       "output": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-       "meta": {
-        "model": "accounts/fireworks/models/glm-5p3-flash",
-        "model_parameters": {
-         "temperature": 0.7,
-         "max_tokens": 4096,
-         "reasoning_effort": "low"
-        },
-        "reasoning_tokens": 0,
-        "finish_reason": "stop",
-        "latency_s": 1.022,
-        "note": "glm-5p3-flash: 852 prompt + 44 completion tokens, $0.00015, 1.0s",
+        "model": "m/small",
+        "temperature": 0.7,
         "usage": {
-         "input": 852,
-         "output": 44,
-         "total": 896
+         "input": 100,
+         "output": 20
         },
-        "cost_usd": 0.0001498,
-        "prompt": {
-         "name": "cypher-generate",
-         "version": "f52da8a729e5"
-        }
+        "cost_usd": 0.000123
        },
-       "children": []
+       "children": [
+        {
+         "step": "generate",
+         "kind": "generation",
+         "seconds": 0.0,
+         "input": [
+          {
+           "role": "user",
+           "content": "q"
+          }
+         ],
+         "output": "MATCH (n) RETURN n",
+         "meta": {
+          "model": "m/small",
+          "model_parameters": {
+           "temperature": 0.7,
+           "max_tokens": 4096
+          },
+          "finish_reason": "stop",
+          "usage": {
+           "input": 100,
+           "output": 20
+          },
+          "cost_usd": 0.000123,
+          "prompt": {
+           "name": "cypher-generate",
+           "version": "abc123def456"
+          }
+         },
+         "children": []
+        },
+        {
+         "step": "validate",
+         "kind": "evaluator",
+         "seconds": 0.0,
+         "input": {
+          "cypher": "MATCH (n) RETURN n"
+         },
+         "output": {
+          "problems": [],
+          "n_problems": 0
+         },
+         "meta": {},
+         "children": []
+        },
+        {
+         "step": "execute",
+         "kind": "retriever",
+         "seconds": 0.0,
+         "input": {
+          "graph": "movies",
+          "cypher": "MATCH (n) RETURN n"
+         },
+         "output": {
+          "status": "rows",
+          "row_count": 3
+         },
+         "meta": {
+          "graph": "movies",
+          "latency_s": 1.2
+         },
+         "children": []
+        }
+       ]
       },
       {
-       "step": "validate",
-       "kind": "evaluator",
+       "step": "attempt",
+       "kind": "chain",
        "seconds": 0.001,
-       "input": {
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites"
-       },
+       "input": null,
        "output": {
-        "problems": [],
-        "n_problems": 0,
-        "unsafe": false
+        "cypher": "MATCH (n) RETURN n",
+        "status": "rows"
        },
        "meta": {
-        "note": "no schema problems"
-       },
-       "children": []
-      },
-      {
-       "step": "execute",
-       "kind": "retriever",
-       "seconds": 0.265,
-       "input": {
-        "graph": "twitter",
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites"
-       },
-       "output": {
-        "status": "rows",
-        "row_count": 1,
-        "columns": [
-         "avg_favorites"
-        ],
-        "error": null,
-        "rows_head": [
-         {
-          "avg_favorites": 2.2340425531914874
-         }
-        ]
-       },
-       "meta": {
-        "graph": "twitter",
-        "latency_s": 0.264,
-        "note": "rows: 1 row(s) in 0.264s"
-       },
-       "children": []
-      }
-     ]
-    },
-    {
-     "step": "attempt",
-     "kind": "chain",
-     "seconds": 1.821,
-     "input": {
-      "question": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?",
-      "graph": "twitter"
-     },
-     "output": {
-      "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-      "status": "rows",
-      "row_count": 1,
-      "rows_head": [
-       {
-        "avg_favorites": 2.2340425531914874
-       }
-      ],
-      "problems": [],
-      "repaired": false
-     },
-     "meta": {
-      "model": "accounts/fireworks/models/glm-5p3-flash",
-      "temperature": 0.7,
-      "calls": 1,
-      "pruned": false,
-      "in_tokens": 852,
-      "out_tokens": 44,
-      "statuses": [
-       "rows"
-      ],
-      "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
-      "usage": {
-       "input": 852,
-       "output": 44
-      },
-      "cost_usd": 0.0001498
-     },
-     "children": [
-      {
-       "step": "generate",
-       "kind": "generation",
-       "seconds": 0.895,
-       "input": [
-        {
-         "role": "system",
-         "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\n- **Link**\n  - `url`: STRING Example: \"https://twitter.com/i/web/status/13718150212657479\"\n- **Source**\n  - `name`: STRING Example: \"Buffer\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:USING]->(:Source)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:CONTAINS]->(:Link)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
-        },
-        {
-         "role": "user",
-         "content": "What is the average number of favorites for tweets that mention both \"Neo4j\" and a hashtag?"
-        }
-       ],
-       "output": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites",
-       "meta": {
-        "model": "accounts/fireworks/models/glm-5p3-flash",
-        "model_parameters": {
-         "temperature": 0.7,
-         "max_tokens": 4096,
-         "reasoning_effort": "low"
-        },
-        "reasoning_tokens": 0,
-        "finish_reason": "stop",
-        "latency_s": 0.894,
-        "note": "glm-5p3-flash: 852 prompt + 44 completion tokens, $0.00015, 0.9s",
+        "model": "m/small",
+        "temperature": 0.7,
         "usage": {
-         "input": 852,
-         "output": 44,
-         "total": 896
+         "input": 101,
+         "output": 20
         },
-        "cost_usd": 0.0001498,
-        "prompt": {
-         "name": "cypher-generate",
-         "version": "f52da8a729e5"
+        "cost_usd": 0.000123
+       },
+       "children": [
+        {
+         "step": "generate",
+         "kind": "generation",
+         "seconds": 0.0,
+         "input": [
+          {
+           "role": "user",
+           "content": "q"
+          }
+         ],
+         "output": "MATCH (n) RETURN n",
+         "meta": {
+          "model": "m/small",
+          "model_parameters": {
+           "temperature": 0.7,
+           "max_tokens": 4096
+          },
+          "finish_reason": "stop",
+          "usage": {
+           "input": 101,
+           "output": 20
+          },
+          "cost_usd": 0.000123,
+          "prompt": {
+           "name": "cypher-generate",
+           "version": "abc123def456"
+          }
+         },
+         "children": []
+        },
+        {
+         "step": "validate",
+         "kind": "evaluator",
+         "seconds": 0.0,
+         "input": {
+          "cypher": "MATCH (n) RETURN n"
+         },
+         "output": {
+          "problems": [],
+          "n_problems": 0
+         },
+         "meta": {},
+         "children": []
+        },
+        {
+         "step": "execute",
+         "kind": "retriever",
+         "seconds": 0.0,
+         "input": {
+          "graph": "movies",
+          "cypher": "MATCH (n) RETURN n"
+         },
+         "output": {
+          "status": "rows",
+          "row_count": 3
+         },
+         "meta": {
+          "graph": "movies",
+          "latency_s": 1.2
+         },
+         "children": []
         }
-       },
-       "children": []
+       ]
       },
       {
-       "step": "validate",
-       "kind": "evaluator",
+       "step": "attempt",
+       "kind": "chain",
        "seconds": 0.001,
-       "input": {
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites"
-       },
+       "input": null,
        "output": {
-        "problems": [],
-        "n_problems": 0,
-        "unsafe": false
+        "cypher": "MATCH (n) RETURN n",
+        "status": "rows"
        },
        "meta": {
-        "note": "no schema problems"
+        "model": "m/small",
+        "temperature": 0.7,
+        "usage": {
+         "input": 102,
+         "output": 20
+        },
+        "cost_usd": 0.000123
        },
-       "children": []
-      },
-      {
-       "step": "execute",
-       "kind": "retriever",
-       "seconds": 0.923,
-       "input": {
-        "graph": "twitter",
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(:Me {screen_name:'neo4j'}), (t)-[:TAGS]->(:Hashtag)\nRETURN avg(t.favorites) AS avg_favorites"
-       },
-       "output": {
-        "status": "rows",
-        "row_count": 1,
-        "columns": [
-         "avg_favorites"
-        ],
-        "error": null,
-        "rows_head": [
-         {
-          "avg_favorites": 2.2340425531914874
-         }
-        ]
-       },
-       "meta": {
-        "graph": "twitter",
-        "latency_s": 0.922,
-        "note": "rows: 1 row(s) in 0.922s"
-       },
-       "children": []
+       "children": [
+        {
+         "step": "generate",
+         "kind": "generation",
+         "seconds": 0.0,
+         "input": [
+          {
+           "role": "user",
+           "content": "q"
+          }
+         ],
+         "output": "MATCH (n) RETURN n",
+         "meta": {
+          "model": "m/small",
+          "model_parameters": {
+           "temperature": 0.7,
+           "max_tokens": 4096
+          },
+          "finish_reason": "stop",
+          "usage": {
+           "input": 102,
+           "output": 20
+          },
+          "cost_usd": 0.000123,
+          "prompt": {
+           "name": "cypher-generate",
+           "version": "abc123def456"
+          }
+         },
+         "children": []
+        },
+        {
+         "step": "validate",
+         "kind": "evaluator",
+         "seconds": 0.0,
+         "input": {
+          "cypher": "MATCH (n) RETURN n"
+         },
+         "output": {
+          "problems": [],
+          "n_problems": 0
+         },
+         "meta": {},
+         "children": []
+        },
+        {
+         "step": "execute",
+         "kind": "retriever",
+         "seconds": 0.0,
+         "input": {
+          "graph": "movies",
+          "cypher": "MATCH (n) RETURN n"
+         },
+         "output": {
+          "status": "rows",
+          "row_count": 3
+         },
+         "meta": {
+          "graph": "movies",
+          "latency_s": 1.2
+         },
+         "children": []
+        }
+       ]
       }
      ]
     }

@@ -21,6 +21,10 @@ python cypherbench/run_cb.py --tag cb_r6bx_ftbx --model-path vishwajeethogale/ru
 ```
 Needs the same Python env as `run_eval.py` (fireworks-ai[training], transformers, neo4j). Result: `results/cb_r6bx_ftbx.json`.
 
+![CypherBench results](cypherbench_results.png)
+
+Regenerate after new runs: `python cypherbench/make_chart.py` (reads results/cb_*.json; pending rows fill in automatically).
+
 ## Results so far (this repo's scorer, n=100, single run, 95% CI)
 | config | CypherBench | flight_accident / nba | $/question | main test (this repo, n=200) |
 |---|---|---|---|---|

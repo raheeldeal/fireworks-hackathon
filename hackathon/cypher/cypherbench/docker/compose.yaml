@@ -1,0 +1,15 @@
+services:
+  flight-accident:
+    image: megagonlabs/neo4j-with-loader:2.4@sha256:90591dd406be312c7cde7df52c98d3d029ac697f7b2116520b835ca386c9a85d
+    ports: ["127.0.0.1:15064:7687"]
+    volumes: ["./source/flight_accident_simplekg.json:/init/graph.json:ro"]
+    environment:
+      NEO4J_AUTH: neo4j/cypherbench
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+  nba:
+    image: megagonlabs/neo4j-with-loader:2.4@sha256:90591dd406be312c7cde7df52c98d3d029ac697f7b2116520b835ca386c9a85d
+    ports: ["127.0.0.1:15067:7687"]
+    volumes: ["./source/nba_simplekg.json:/init/graph.json:ro"]
+    environment:
+      NEO4J_AUTH: neo4j/cypherbench
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'

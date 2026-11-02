@@ -24,21 +24,21 @@ Analyst asks. Engineer writes this. **Answer in 2 days.**
 
 # Why Cypher
 
-Language in, checkable answer out.
+We tested everyday business tasks where a computer can check the answer.
 
-| Task | Small, open | Frontier |
-|---|---|---|
-| **Cypher** | **48** | **47** |
-| Clauses | 69 | 74 |
-| Products | 77 | 70 |
-| Intent | 87 | 88 |
-| Functions | 92 | 92 |
-| Tools | 98 | 95 |
-| Code | 99 | 96 |
+| What goes in → what comes out | Kind | Small, open | Frontier |
+|---|---|---|---|
+| **Question → graph database query** | **Write code** | **48** | **47** |
+| Contract clause → clause type | Pick a label | 69 | 74 |
+| Product web page → product data form | Fill a form | 77 | 70 |
+| Support ticket → reason for contact | Pick a label | 87 | 88 |
+| Request → app command with settings | Fill a form | 92 | 92 |
+| Request → right tool out of 100 | Pick a label | 98 | 95 |
+| Broken code → fixed code | Write code | 99 | 96 |
 
-Frontier models nail the rest. **Cypher is where they break.**
+Everywhere else, models already score 70 to 99. **Graph queries are where even frontier models fail half the time.**
 
-<!-- Footnotes: Small, open = GLM 5.3 Flash. Frontier = Claude Opus 5 (Cypher), Kimi K3 (Clauses, Intent, Tools), GLM 5.3 (Products, Functions, Code). Also tested without a frontier run: Regex 68, Action items 93. SQL and ICD-10 not finished. Accuracy on held-out sets. -->
+<!-- Footnotes: Small, open = GLM 5.3 Flash. Frontier = Claude Opus 5 (graph query), Kimi K3 (clause type, reason for contact, right tool), GLM 5.3 (product data, app command, fixed code). Why these tasks: narrow, repetitive, and checkable by code, which is where small models have a chance to win. Also tested without a frontier run: Regex 68, Action items 93. SQL and ICD-10 not finished. Accuracy on held-out sets. -->
 
 ---
 
@@ -86,7 +86,7 @@ Run it on the database. Check the rows.
 
 - **Price is not accuracy.** A $0.15 open model matched $9 Claude.
 - **SFT was the jump.** +10 points.
-- **RFT backfired.** −8 points. It trained only on answers it already got right.
+- **Teach first, then reward.** RFT can only reward answers the model already finds. On hard queries it found none, so SFT beat it by 8 points.
 - **The harness buys trust.** Broken queries fell from 2.2% to 0.1%.
 
 <!-- RFT detail: rewarding only correct samples meant hard questions, which it never solved, taught it nothing. It over-reinforced easy patterns: lost 33 questions, gained 17. An earlier weighted variant had no KL penalty and collapsed to 36.5%; empty results rose from 1% to 14.5%. -->

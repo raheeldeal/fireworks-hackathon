@@ -68,6 +68,15 @@
   .attempt { border-left: 2px solid var(--grid); padding: 2px 0 2px 10px; margin: 6px 0; }
   .muted { color: var(--muted); }
   a { color: var(--s1); }
+  .tabs { display: flex; gap: 4px; margin: 4px 0 16px; border-bottom: 1px solid var(--grid); }
+  .tabs button { border: none; border-bottom: 2px solid transparent; border-radius: 0; background: none; padding: 8px 14px; color: var(--ink-2); cursor: pointer; }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--s1); font-weight: 600; }
+  .wf-row { cursor: pointer; }
+  .wf-row:hover rect.hit, .wf-row:focus rect.hit { fill: var(--grid); opacity: .45; }
+  .wf-row.sel rect.hit { fill: var(--grid); opacity: .7; }
+  .fixcols { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px; }
+  .side { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+  .side > div { border-left: 2px solid var(--grid); padding-left: 8px; min-width: 0; }
 </style>
 </head>
 <body>
@@ -76,6 +85,11 @@
   <p class="sub">200 locked test questions across 5 Neo4j graphs. Accuracy = rows returned match gold rows (execution accuracy).
     Base model Muse Glimmer 30B on Fireworks. Frontier numbers are published (CypherGuard, different subset of the same dataset), not run by us.</p>
 
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="tab-overview">Overview</button>
+    <button role="tab" aria-selected="false" data-tab="tab-waterfall">Waterfall &amp; fixes</button>
+  </div>
+  <div id="tab-overview">
   <div class="tiles" id="tiles"></div>
 
   <div class="filters">
@@ -120,6 +134,17 @@
       <label>Graph <select id="f-graph"><option value="">all</option></select></label>
       <label>Search <input id="f-q" type="search" placeholder="question text" style="font:inherit;padding:4px 8px;border:1px solid var(--axis);border-radius:6px;background:var(--surface);color:var(--ink)"></label></div>
     <div class="scroll"><table id="explorer"></table></div></section>
+  </div>
+  <div id="tab-waterfall" hidden>
+    <section class="card"><h2>From open model to best system</h2>
+      <p class="sub">Strict execution accuracy on the 200 test questions. Each step is compared with the step before it on the same questions
+        (alternatives: with the step they would replace). Click a step to see the questions it fixed and broke.</p>
+      <div id="wf"></div><div class="legend" id="legend-wf"></div></section>
+    <section class="card"><h2 id="wf-title">Pick a step above</h2><p class="sub" id="wf-sub"></p>
+      <div class="filters"><label>Graph <select id="wf-graph"><option value="">all</option></select></label></div>
+      <div class="fixcols"><div><h2 class="ok" id="wf-fixed-h"></h2><div id="wf-fixed"></div></div>
+                            <div><h2 class="no" id="wf-broke-h"></h2><div id="wf-broke"></div></div></div></section>
+  </div>
 </main>
 <div id="tip" role="tooltip"></div>
 
@@ -391,6 +416,87 @@ function dev(target) {
   legend(lg, [["--s2", "Best in its experiment"], ["--s1", "Other settings"]]);
 }
 
+// ---------- waterfall tab: steps and the questions each step fixed or broke ----------
+let wfSelected = null;
+function waterfallTab() {
+  const target = document.getElementById("wf"); target.replaceChildren();
+  const W = DATA.waterfall, steps = W.steps, chain = steps.filter(s => s.kind !== "tried"), tried = steps.filter(s => s.kind === "tried");
+  const rowH = 34, gap = tried.length ? 1 : 0, rows = chain.length + gap + tried.length;
+  const Wd = 1100, m = { l: 330, r: 300, t: 26, b: 30 }, H = m.t + m.b + rowH * rows;
+  const x = linear(0, 100, m.l, Wd - m.r), svg = el("svg", { viewBox: `0 0 ${Wd} ${H}`, role: "img", "aria-label": "Waterfall" }, target);
+  for (const t of [0, 20, 40, 60, 80, 100]) {
+    el("line", { x1: x(t), x2: x(t), y1: m.t - 6, y2: H - m.b, stroke: css("--grid") }, svg);
+    el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: t + "%" }, svg);
+  }
+  el("line", { x1: x(W.frontier), x2: x(W.frontier), y1: m.t - 6, y2: m.t + rowH * chain.length, stroke: css("--ink-2"), "stroke-dasharray": "4 3" }, svg);
+  el("text", { x: x(W.frontier), y: m.t - 10, "text-anchor": "middle", text: `Claude Sonnet 4.6, ${W.frontier.toFixed(1)}% (published, other subset)` }, svg);
+  const noteX = x(Math.max(...steps.map(s => Math.max(s.to ?? 0, s.from ?? 0, s.value ?? 0)), W.frontier) + 4);
+  const rowsY = [...chain.map((s, i) => [s, m.t + i * rowH + rowH / 2]),
+                 ...tried.map((s, i) => [s, m.t + (chain.length + gap + i) * rowH + rowH / 2])];
+  if (tried.length) {
+    const gy = m.t + chain.length * rowH + rowH / 2;
+    el("line", { x1: m.l, x2: Wd - 10, y1: gy, y2: gy, stroke: css("--grid") }, svg);
+    el("text", { x: m.l + 4, y: gy - 4, text: "Tested, not adopted (each vs the step it would replace)", style: "font-style:italic" }, svg);
+  }
+  let prev = null;
+  for (const [s, cy] of rowsY) {
+    const g = el("g", { class: "wf-row" + (s === wfSelected ? " sel" : "") }, svg);
+    el("rect", { class: "hit", x: 4, y: cy - rowH / 2, width: Wd - 8, height: rowH, rx: 4, fill: "transparent" }, g);
+    el("text", { class: "lbl", x: m.l - 10, y: cy + 4, "text-anchor": "end", text: s.label }, g);
+    if (s.kind === "start" || s.kind === "total") {
+      el("rect", { x: x(0), y: cy - 10, width: x(s.value) - x(0), height: 20, rx: 3, fill: css("--ink-2") }, g);
+      el("text", { class: "lbl", x: x(s.value) + 8, y: cy + 4, text: pct(s.value / 100), style: "font-weight:700;fill:var(--ink)" }, g);
+      if (prev !== null && s.kind === "total") el("line", { x1: x(prev[0]), x2: x(prev[0]), y1: prev[1] + 10, y2: cy - 10, stroke: css("--muted") }, svg);
+      if (s.kind === "start") prev = [s.value, cy];
+      continue;
+    }
+    const lo = Math.min(s.from, s.to), hi = Math.max(s.from, s.to), w = Math.max(x(hi) - x(lo), 2);
+    if (s.kind === "step") {
+      el("rect", { x: x(lo), y: cy - 10, width: w, height: 20, rx: 3, fill: css(s.to >= s.from ? "--s1" : "--s2") }, g);
+      if (prev !== null) el("line", { x1: x(prev[0]), x2: x(prev[0]), y1: prev[1] + 10, y2: cy - 10, stroke: css("--muted") }, svg);
+      prev = [s.to, cy];
+    } else {
+      el("rect", { x: x(lo), y: cy - 10, width: w, height: 20, rx: 3, fill: "none", stroke: css("--muted"), "stroke-dasharray": "3 2" }, g);
+    }
+    const d = s.to - s.from;
+    el("text", { class: "lbl", x: noteX, y: cy + 4, text: `${d >= 0 ? "+" : ""}${d.toFixed(1)}pp · fixed ${s.n_fixed} · broke ${s.n_broke}` }, g);
+    g.setAttribute("tabindex", "0");
+    const pick = () => { wfSelected = s; waterfallTab(); fixesPanel(); };
+    g.addEventListener("click", pick);
+    g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  }
+  const lg = document.getElementById("legend-wf"); lg.replaceChildren();
+  legend(lg, [["--ink-2", "start / overall"], ["--s1", "adopted step"], ["--muted", "tested, not adopted", "hollow"], ["--ink-2", "frontier reference", "line"]]);
+}
+
+function sideBox(parent, title, side) {
+  const box = el("div", {}, parent);
+  el("div", { class: "muted", text: `${title} · ${side.outcome}${side.stage && side.stage !== "none" ? " (" + side.stage + ")" : ""} · ${side.n_rows} rows` }, box);
+  el("code", { text: side.cypher || "(no query)" }, box);
+  el("div", { class: "muted", text: "rows: " + JSON.stringify(side.rows).slice(0, 220) }, box);
+  if (DATA.trace_prefix && side.trace) el("a", { href: DATA.trace_prefix + side.trace, target: "_blank", rel: "noopener", text: "Langfuse trace ↗" }, box);
+}
+function fixesPanel() {
+  const s = wfSelected; if (!s) return;
+  const fg = document.getElementById("wf-graph").value;
+  document.getElementById("wf-title").textContent = s.label;
+  document.getElementById("wf-sub").textContent = `${s.from.toFixed(1)}% → ${s.to.toFixed(1)}%. Fixed = wrong before this step, right after. Broke = right before, wrong after. Same 200 questions.`;
+  for (const [key, head, before, after] of [["fixed", "Fixed", "Before (wrong)", "After (right)"], ["broke", "Broke", "Before (right)", "After (wrong)"]]) {
+    const list = s[key].filter(q => !fg || q.graph === fg), box = document.getElementById("wf-" + key); box.replaceChildren();
+    document.getElementById(`wf-${key}-h`).textContent = `${head}: ${list.length}`;
+    for (const q of list) {
+      const d = el("details", { class: "attempt" }, box);
+      el("summary", { text: `${q.id} · ${q.graph}/${q.tier} · ${q.question}` }, d);
+      const sides = el("div", { class: "side" }, d);
+      sideBox(sides, before, q.before); sideBox(sides, after, q.after);
+      const g = el("div", { class: "attempt" }, d);
+      el("div", { class: "muted", text: "gold" }, g); el("code", { text: q.gold }, g);
+      el("div", { class: "muted", text: "gold rows: " + JSON.stringify(q.gold_rows).slice(0, 220) }, g);
+    }
+    if (!list.length) el("p", { class: "muted", text: "None." }, box);
+  }
+}
+
 // ---------- wire up ----------
 function render() {
   for (const id of ["tiles", "pareto-cost", "legend-cost", "pareto-lat", "legend-lat", "ladder", "stages", "legend-stages", "loss", "legend-loss", "spend", "table", "dev"])
@@ -417,6 +523,19 @@ document.getElementById("theme").addEventListener("click", () => {
   document.documentElement.dataset.theme = dark ? "light" : "dark"; render();
 });
 render();
+for (const g of DATA.graphs) el("option", { text: g }, document.getElementById("wf-graph"));
+document.getElementById("wf-graph").addEventListener("input", fixesPanel);
+wfSelected = DATA.waterfall.steps.find(s => s.label.startsWith("SFT:")) || DATA.waterfall.steps.find(s => s.kind === "step");  // open on the headline step
+waterfallTab(); fixesPanel();
+function showTab(id) {
+  for (const o of document.querySelectorAll(".tabs button")) {
+    o.setAttribute("aria-selected", String(o.dataset.tab === id)); document.getElementById(o.dataset.tab).hidden = o.dataset.tab !== id;
+  }
+}
+for (const b of document.querySelectorAll(".tabs button")) b.addEventListener("click", () => {
+  showTab(b.dataset.tab); history.replaceState(null, "", b.dataset.tab === "tab-waterfall" ? "#waterfall" : "#");
+});
+if (location.hash === "#waterfall") showTab("tab-waterfall");  // linkable: index.html#waterfall
 </script>
 </body>
 </html>

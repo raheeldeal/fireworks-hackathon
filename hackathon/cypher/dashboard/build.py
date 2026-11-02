@@ -131,6 +131,53 @@ def training_logs():
     return out
 
 
+def waterfall_steps():
+    """The waterfall of dashboard/waterfall.py, with the questions each step fixed and broke.
+
+    For every step: the accuracy before and after, and per question that changed, the query and rows on each side
+    plus both Langfuse trace ids. Uses the same START and STEPS as waterfall.png, so the tab and the image agree."""
+    import waterfall as wf  # dashboard/waterfall.py
+    test = {json.loads(l)["id"]: json.loads(l) for l in open(os.path.join(ROOT, "data", "test.jsonl"))}
+
+    def run(tag, stage):
+        doc = load(tag)
+        return {r["id"]: (r, metrics.cut(r, stage)) for r in doc["rows"]} if doc else None
+
+    def side(row, cut):
+        a = next((a for a in reversed(row["attempts"]) if a["cypher"] == cut.get("cypher")), None)
+        return {"cypher": cut.get("cypher"), "outcome": cut["outcome"], "stage": cut["stage"],
+                "rows": (a or {}).get("preview", [])[:3], "n_rows": (a or {}).get("n_rows", 0),
+                "trace": row.get("langfuse_trace_id")}
+
+    def changed(before, after):
+        out = {"fixed": [], "broke": []}
+        for i in sorted(before):
+            b_ok, a_ok = before[i][1]["outcome"] == "correct", after[i][1]["outcome"] == "correct"
+            if b_ok != a_ok:
+                t = test[i]
+                out["fixed" if a_ok else "broke"].append({
+                    "id": i, "graph": t["graph"], "tier": t["complexity"]["tier"], "question": t["question"],
+                    "gold": t["cypher"], "gold_rows": t["gold_result"]["rows"][:3],
+                    "before": side(*before[i]), "after": side(*after[i])})
+        return out
+
+    acc = lambda r: 100 * sum(c["outcome"] == "correct" for _, c in r.values()) / len(r)
+    current = run(*wf.START[1:])
+    steps = [{"label": wf.START[0], "kind": "start", "value": acc(current)}]
+    for label, tag, stage, adopted, compare_with in wf.STEPS:
+        new = run(tag, stage)
+        if not new:
+            continue
+        ref = run(*compare_with) if compare_with else current
+        d = changed(ref, new)
+        steps.append({"label": label, "kind": "step" if adopted else "tried", "from": acc(ref), "to": acc(new),
+                      "n_fixed": len(d["fixed"]), "n_broke": len(d["broke"]), **d})
+        if adopted:
+            current = new
+    steps.append({"label": "Overall: best system", "kind": "total", "value": acc(current)})
+    return {"steps": steps, "frontier": wf.FRONTIER}
+
+
 def main():
     configs = []
     for cid, label, family, tag, stage, _ in CONFIGS:
@@ -159,6 +206,7 @@ def main():
             dev.append({"group": group, "label": label, "accuracy": v["accuracy"], "ci95": v["ci95"],
                         "cost_per_question": v["cost_per_question"], "p50_secs": v["p50_secs"], "n": v["n"]})
     data = {"configs": configs, "references": refs, "dev": dev, "spend": spend(), "training": training_logs(),
+            "waterfall": waterfall_steps(),
             "trace_prefix": trace_prefix, "graphs": ["movies", "recommendations", "northwind", "fincen", "twitter"],
             "tiers": ["easy", "medium", "hard"]}
     template = open(os.path.join(HERE, "template.html")).read()

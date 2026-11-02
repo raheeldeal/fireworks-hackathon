@@ -1,0 +1,3902 @@
+[
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVnesheconombank\u2019s count differs: verified 6 vs candidate 7."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe top entity's count differs: candidate says 7 filings for Vnesheconombank, verified answer says 6."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t007",
+  "kimi": [
+   "SAME",
+   "SAME\nSame five movies and release years; missing vote counts are descriptive, not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same five movies and release years are returned, matching the verified answer."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different countries (US, Germany, Czech Republic, Hong Kong) and much smaller counts than the verified answer (Russia, Switzerland, Turkey, UAE, UK with hundreds/thousa"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists completely different countries and counts (e.g., United States 66) versus the verified answer (Russia 3146, Switzerland 1012, etc.), indicating a different filter or int"
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 non-discontinued products with unitPrice above 35, with matching names and prices; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just includes extra node properties."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer is 0 filings, while the candidate returned 87 filings."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer includes only the single tweet with the maximum favorites (394), while the candidate returns a top-10 list with many lower-favorite tweets."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe question asks for the tweet(s) with the highest number of favorites; the candidate's top row matches the verified answer (394 favorites, same tweet text), and the extra lower-ranked rows are"
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 the values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth answers identify the same four people (Cameron Crowe, Lana Wachowski, Lilly Wachowski, Nancy Meyers); the candidate's extra movie column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people as the verified answer; the extra movie column is just descriptive detail."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t066",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth return the same 41 movies (all from 1962, the year of the lowest-rated movie); the candidate just includes extra descriptive columns (year, imdbRating), which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 41 movies (same titles, year 1962); it just includes extra descriptive columns (year, imdbRating), which don't affect correctness."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 5 tweets (identical text and favorites: 394, 120, 81, 72, 58) in the same order; only formatting differs (node wrapper, missing link_url column)."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites values (394, 120, 81, 72, 58) in the same order; it just returns the full tweet node instead of extracting the link URL, but the "
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching names) as the verified answer; only descriptive columns are omitted, which doesn't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products in the same order; it just omits extra descriptive columns (productID, unitPrice, unitsInStock) that the question doesn't ask for."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate total revenue 26090.5775 does not match verified 27321.0."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different entities (usernames like \"neo4j\", \"Neo4jDE\" instead of display names like \"Neo4j\", \"Michael Hunger\") and different mention counts, so it does not match the v"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate counts screen names (e.g., \"neo4j\" with 116) while the verified answer counts display names (e.g., \"Neo4j\" with 104), and the resulting user lists differ substantially (e.g., "
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t088",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three directors with matching genre counts (Zemeckis 16, Spielberg 15, Burton 15), just expressed as genre lists instead of counts."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three directors (Robert Zemeckis, Steven Spielberg, Tim Burton), each with 15\u201316 genres, matching the verified answer's entities and counts."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \u201cThe Matrix Reloaded\u201d; the omitted vote count is not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same movie title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same four Tom Cruise war movies; the candidate only omits descriptive rating/year columns, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same four movie titles are returned, matching the verified answer's entities."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe third actor differs (Sean Connery vs Harrison Ford) and the movie counts for Bruce Willis and Cary Grant also do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns Harrison Ford instead of Sean Connery, and the movieCount values differ (28 vs 29, 26 vs 28), so the entities and values don't match."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t101",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 15 movie titles; the candidate only adds an extra votes column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 15 movie titles as the verified answer; it only includes an extra votes column, which doesn't affect correctness."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra movieCount column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra movieCount column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t108",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns different entities and much higher aggregated counts than the verified UK beneficiary-bank entity rows."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists different entities (e.g., Bank of New York Mellon, Deutsche Bank) with much higher counts, indicating it likely matched on a different criterion (e.g., entity country ra"
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t113",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (identical text, in the same order) as the verified answer; it just includes extra node properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe three tweets' texts match exactly, in the same order, despite different column formatting."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three products (Gumb\u00e4r Gummib\u00e4rchen, NuNuCa Nu\u00df-Nougat-Creme, Schoggi Schokolade) in the same order; only extra descriptive columns are omitted."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three products in the same order; it just omits the productID and unitPrice columns, which are extra descriptive columns not required by the question."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t133",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same customer, Ernst Handel (ERNSH); the candidate just includes extra order details."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate identifies the same customer (ERNSH, Ernst Handel) as the verified answer, just with additional descriptive columns."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns 323 rows versus the verified 118, and includes filings (e.g., 223877, 224005) not in the answer key \u2014 it appears to have matched banks in the same country rather than "
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns 323 rows versus the answer key's 118, including rows (e.g., 223877, 224005) not in the verified answer \u2014 it appears to match on country/coordinates rather than the bank"
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same three customers (SAVEA, ERNSH, QUICK) with identical order counts (31, 30, 28); the extra companyName column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers with identical order counts; the candidate only adds a descriptive companyName column."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 144 users; the candidate just wraps each user in a node object with extra properties, while screen_name/name match the verified handle/user values."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 users (matching handles and names) as the verified answer, just with extra descriptive properties."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified identifies EmployeeID 1 with count 6; candidate identifies EmployeeID 3 with count 3, so both the entity and value differ."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns EmployeeID 3 with a count of 3, while the verified answer is EmployeeID 1 with a count of 6 \u2014 different entity and value."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same 10 suppliers, and the candidate's categoryCount values match the number of categories listed for each supplier in the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers as the verified answer; it shows category counts instead of category lists, but the question only asks which suppliers supply more than one category, "
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t184",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three users (display name vs. handle) with identical mention counts: 104, 40, 29."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe same three users with identical mention counts; only the display names differ (handles vs. full names), which is descriptive, not substantive."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t185",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 122 movie titles; the candidate only adds extra descriptive columns (runtime, imdbRating), which do not affect correctness."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 122 movies (same titles in the same order), just with extra runtime and imdbRating columns, which don't affect correctness."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t186",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns unrelated movies with null differences, while the verified answer is Avatar, Titanic, and Star Wars: Episode VII with large positive profits."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns movies with null differences (Father of the Bride Part II, etc.), not the top three profit movies (Avatar, Titanic, Star Wars: Episode VII)."
+  ]
+ },
+ {
+  "model": "GLM 5.3 Flash",
+  "id": "t199",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 13 role values in the same sequence; omitted movie/person fields are descriptive context, not the requested roles."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 role values (with duplicates matching the verified rows), just without the movie and person columns."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t002",
+  "kimi": [
+   "SAME",
+   "SAME\nThe three entity names match exactly and in the same ranking order; the differing count for Vnesheconombank is a descriptive value, not the requested names."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe filing counts differ for Vnesheconombank (7 vs. 6), so the values don't match."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t007",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same five movies with the same release years in the same order; only the descriptive votes column is omitted, which does not affect the entities or requested release-yea"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same five movies with matching release years, just with different column names and without the votes column, which isn't required by the question."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists different countries (includes United States and Latvia, misses Turkey and United Kingdom) and much lower filing counts than the verified answer."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's counts (e.g., Russia 223) differ drastically from the verified counts (Russia 3146), and the country sets differ (US, Latvia appear; Turkey, UK missing), suggesting a differ"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just includes extra node properties."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate returned 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 0 filings, while the candidate counts 87."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate's extra product/price columns are just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify \"Aux joyeux eccl\u00e9siastiques\" as the supplier of the highest-priced product; the candidate's extra columns are descriptive only."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate returns 428 \u2014 the numeric values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns 428 while the verified answer is 205; the counts differ."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same four people; the candidate only adds an extra movie-title column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same four people; the extra movie title column is just descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t066",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer has 41 total rows while the candidate returns 313 rows, so the candidate includes many extra movies beyond those released in the same year as the lowest-rated movie."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns 313 rows while the verified answer has only 41; the candidate's query likely joins on year incorrectly (e.g., matching multiple years or producing duplicates), includin"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t068",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame director pair, but the common actor count differs (4 vs 15)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate reports 15 common actors while the verified answer reports 4 for the same pair of directors, so the values differ."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites values in the same order; only column names differ and the link_url column is omitted, which doesn't affect the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorite counts, sorted in the same descending order; it just omits the link_url column, which is descriptive and not required."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same set of 20 products; only the descriptive columns differ, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching by productName) as the verified answer; it just selects different descriptive columns (reorderLevel instead of productID/unitPrice/unitsInStoc"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t073",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same IMDb rating (6.8) for the matching movie; the omitted title is only descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same IMDb rating value (6.8) for the same movie (The Boxtrolls); the missing title column is just a descriptive column not asked for."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns only one user with an incorrect count (899 vs 104) and misses the top-10 ranking."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only one user with 899 mentions, while the verified answer has 10 users with different counts (Neo4j: 104, Michael Hunger: 29, etc.). The candidate likely counts all m"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \"The Matrix Reloaded\"; the omitted votes column is just extra descriptive data."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same movie title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t092",
+  "kimi": [
+   "DIFFERENT",
+   "empty"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "empty"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t095",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer names director Penny Marshall (1 movie), while the candidate names John Patrick Stanley, a different director."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns \"John Patrick Stanley\" while the verified answer is \"Penny Marshall\" \u2014 different directors, so the answers do not match."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different actors (Scott Mescudi, Marisa Tomei, Miles Teller) and reports a genre count of 2 rather than the top movie counts for actors in both Action and Romance (Bruc"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists Scott Mescudi, Marisa Tomei, and Miles Teller, while the verified answer is Bruce Willis, Cary Grant, and Sean Connery \u2014 completely different actors."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra count column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t108",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate aggregates Barclays variants into one count and includes different banks, while the verified answer lists distinct entity nodes with different counts."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate aggregates entities by name (e.g., merging three distinct Barclays nodes into 29 filings) and includes different entities (Deutsche Bank, Lloyds TSB, Standard Chartered), wher"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t113",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nOnly the first tweet matches; the candidate's second and third tweets differ from the verified answer's tweets mentioning @neo4j."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different tweets (rows 2 and 3 differ) \u2014 the verified answer includes \u201c@neo4j This is super useful. Sharing!\u201d and the \u201cJust starting to learn about @neo4j\u2026\u201d tweet, whi"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t128",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same single German Beverages supplier, Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG; the candidate just omits descriptive fields."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same single supplier entity (Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG, supplierID 12); the candidate just projects fewer descriptive columns."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three German-supplier products in the same order; missing unitPrice is only descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three products (IDs 25, 26, 27) are returned in the same order; the candidate just omits the unitPrice column, which is extra descriptive detail."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t133",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified customer is Ernst Handel (ERNSH); candidate returns Save-a-lot Markets."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns \"Save-a-lot Markets\" while the verified answer is \"Ernst Handel\" \u2014 different customers, so the answers disagree."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only 19 rows with IDs (e.g., 224749, 224750, 225998, 227464) that do not appear in the verified set of 118 IDs, and it appears to match on same bank name/country rathe"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only 19 rows (e.g., 224749, 224750, 225998) while the verified answer has 118 rows (e.g., 223690, 224004, 224019), and the row IDs don't match \u2014 the candidate appears "
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nThe three customers match (SAVEA/Save-a-lot, ERNSH/Ernst Handel, QUICK/QUICK-Stop) with identical order counts 31, 30, 28 in the same ranking."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers (SAVEA/Save-a-lot Markets, ERNSH/Ernst Handel, QUICK/QUICK-Stop) with identical order counts (31, 30, 28); only the identifier column differs."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth return the same set of 144 user handles; only column names differ and the candidate omits the descriptive display-name column, which doesn't affect the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 screen_name values as the verified answer's handle column; it just omits the descriptive \"user\" name column, which doesn't affect correctness."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "empty"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "empty"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t178",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified count is 332 filings with a June begin_date, while the candidate returned 38, so the values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 38 while the verified answer is 332."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\nSame 10 suppliers, and each candidate\u2019s categoryCount matches the number of categories listed in the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers with matching category counts (e.g., Pavlova 5, Karkki Oy 2, Leka Trading 3), just presenting counts instead of the category lists."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t184",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nOnly the top user matches (Neo4j/neo4j, 104); the candidate\u2019s 2nd and 3rd users (mesirii, danielcfng) differ from the verified Jim Webber and Jes\u00fas Barrasa."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists \"mesirii\" (29) and \"danielcfng\" (20) instead of \"Jim Webber\" (40) and \"Jes\u00fas Barrasa\" (29), so the top users and mention counts differ."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t185",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 122 movie titles; the candidate only adds extra descriptive columns (runtime, imdbRating), which do not affect correctness."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 122 movies (same titles in the same order), just with extra runtime and imdbRating columns, which don't affect correctness."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t186",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same three movies (Avatar, Titanic, Star Wars: Episode VII) with identical revenue\u2013budget difference values."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three movies with the same profit values, just fewer descriptive columns."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t190",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same set of 27 movie titles; the actor counts are extra descriptive columns not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 27 movie titles as the verified answer; it just omits the actorCount column, which is descriptive and not required by the question."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT + RFT",
+  "id": "t199",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 13 person-role pairs; the omitted movie column is only a filter/descriptive field."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 person-role pairs; it just omits the movie column, which is descriptive context, and the rows match one-to-one."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t002",
+  "kimi": [
+   "SAME",
+   "SAME\nThe same three entity names are returned in the same order; the question asks for names, and the count columns are descriptive."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe benefit count for Vnesheconombank is 7 in the candidate vs 6 in the verified answer, so the values differ."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate has different countries (includes United States/Latvia, omits Turkey/United Kingdom) and much lower filing counts than the verified answer."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's counts (e.g., Russia 223) differ drastically from the verified counts (e.g., Russia 3146), and the country sets differ (US and Latvia appear instead of Turkey and UK), indic"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 non-discontinued products with unitPrice above 35 and matching prices; the candidate just includes extra product fields."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just returns full node properties instead of only the two requested columns."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 0 filings while the candidate returns 87, so the values disagree."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t023",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (matching IDs, timestamps, and text) in the same recency order; formatting/nesting and the omitted expanded link_url do not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweets (matching ids, timestamps, and text) in the same order as the verified answer."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer includes only the single tweet with the maximum favorites (394), while the candidate returns a top-10 list with many lower-favorite tweets."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate includes the top tweet (394 favorites, investigative journalism tweet) as its first row; the question asks for the highest-favorites tweet, and the extra lower-ranked rows don't ch"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is irrelevant."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate's extra product/price columns are descriptive and don't change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify \"Aux joyeux eccl\u00e9siastiques\" as the supplier of the highest-priced product."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 different values for the same question."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth answers identify the same four people (Cameron Crowe, Lana Wachowski, Lilly Wachowski, Nancy Meyers); the candidate's extra movie column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people as the verified answer; the extra movie column is just descriptive detail."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t066",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer contains 41 movies (all from 1962), while the candidate returns 313 rows, including many extra movies beyond the correct year set."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns 313 rows versus the answer key's 41, indicating duplicates (likely from a join on ratings) even though the movie titles shown overlap."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t068",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame director pair, but the common actor count differs (4 vs 15), and that count is the value the question asks about."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate reports 15 common actors while the verified answer reports 4 for the same pair of directors, so the values differ."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 5 tweets in the same order with identical favorites values; the missing link_url column is just a descriptive column, which doesn't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorite counts, sorted in the same order; it just omits the link_url column, which is descriptive and not required."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 20 products; only the descriptive columns differ, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching names) as the verified answer; it just selects different descriptive columns (reorderLevel instead of productID/unitPrice/unitsInStock), which"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns only one user with an incorrect count (899 vs 104) and misses the top-10 ranking."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only one user with 899 mentions, while the verified answer has 10 users with different counts (Neo4j: 104, Michael Hunger: 29, etc.). The candidate likely counts all m"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t092",
+  "kimi": [
+   "DIFFERENT",
+   "empty"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "empty"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t095",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Penny Marshall as the director; the missing count column is descriptive only."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Penny Marshall as the director; the candidate just omits the movie count column, which is descriptive and not required."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t101",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same 15 movie titles; the candidate only adds an extra votes column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 15 movie titles as the verified answer; it only includes an extra votes column, which doesn't affect correctness."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra count column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t108",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate aggregates Barclays variants into one name and lists different banks/counts than the verified entity-level rows."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate aggregates entities by name (e.g., merging three Barclays nodes into 29) and includes different entities (Deutsche Bank, Lloyds, Standard Chartered), while the verified answer"
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t113",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nOnly the first tweet matches; the candidate's 2nd and 3rd tweets are different from the verified rows."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different tweets: only the first tweet matches; the second and third tweets differ from the verified answer."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t128",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same single German Beverages supplier, Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG; the candidate just omits descriptive fields."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same single supplier entity (Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG, supplierID 12); the candidate just projects fewer descriptive columns."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three products (Gumb\u00e4r Gummib\u00e4rchen, NuNuCa Nu\u00df-Nougat-Creme, Schoggi Schokolade) in the same order; only extra descriptive columns are omitted."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three products in the same order; it just omits the productID and unitPrice columns, which are extra descriptive columns not required by the question."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t133",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same customer, Ernst Handel; the candidate\u2019s extra totalQuantity column and missing customerID are descriptive differences that don\u2019t change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify Ernst Handel as the customer with the highest total quantity order; the candidate just lacks the customerID but the entity matches."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only 19 rows with IDs (e.g., 224749, 224750, 225998, 227464) that do not appear in the verified set of 118 IDs (e.g., 223690, 224004, 224019...). It also appears to ma"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only 19 rows (e.g., 224749, 224750, 225998) while the verified answer has 118 rows (e.g., 223690, 224004, 224019), and the row IDs don't match \u2014 the candidate appears "
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nThe three customers match (SAVEA/Save-a-lot, ERNSH/Ernst Handel, QUICK/QUICK-Stop) with identical order counts 31, 30, 28 in the same ranking."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers (SAVEA/Save-a-lot Markets, ERNSH/Ernst Handel, QUICK/QUICK-Stop) with identical order counts (31, 30, 28); only the identifier column differs."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth return the same set of 144 user handles; only column names differ and the candidate omits the descriptive display-name column, which doesn't affect the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 screen_name values as the verified answer's handle column; it just omits the extra descriptive \"user\" name column."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer identifies Employee 1 with a cross-selling count of 6, while the candidate identifies Employee 7 with a count of 1 \u2014 different employee and different value."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns EmployeeID 7 with a cross-selling count of 1, while the verified answer is EmployeeID 1 with a total of 6 \u2014 different entity and value."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t178",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified count is 332 filings with a June begin_date, while the candidate returned 38."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 332 filings with a begin_date in June, while the candidate returns only 38."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t179",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified value is LVA; candidate returned null."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned null instead of \"LVA\"."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\nSame 10 suppliers, and each candidate\u2019s categoryCount matches the number of categories listed in the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers with matching category counts (e.g., Pavlova 5, Karkki Oy 2, Leka Trading 3), just presenting counts instead of the category lists."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t184",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns only one user (neo4j, count 899) instead of the top 3 users (Neo4j 104, Jim Webber 40, Jes\u00fas Barrasa 29); entities and values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only one row with a count of 899, while the verified answer has three users with counts 104, 40, and 29 \u2014 different entities and values."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t185",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 122 movie titles; the candidate only adds extra descriptive columns (runtime, imdbRating), which do not affect correctness."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 122 movies (same titles in the same order), just with extra runtime and imdbRating columns, which don't affect correctness."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t186",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same three movies (Avatar, Titanic, Star Wars: Episode VII) with identical profit/difference values in the same ranking."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three movies with identical profit/difference values, just different column names."
+  ]
+ },
+ {
+  "model": "Muse 30B + SFT",
+  "id": "t199",
+  "kimi": [
+   "SAME",
+   "SAME\nSame 13 person-role pairs; missing movie titles are only descriptive context."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 person-role pairs; it just omits the movie column, which is descriptive context, and the rows match one-to-one."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe top entity matches, but its benefit count differs: verified shows Vnesheconombank = 6 while the candidate shows 7."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe question asks for the names of the top 3 entities, and both answers list the same three entities in the same order; the count values are extra descriptive columns not asked for by the questio"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different countries (US/Germany/Czech Republic/Hong Kong instead of Russia/Switzerland/Turkey/UAE) and much smaller counts; only United Kingdom overlaps and its value d"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists different countries (US, Germany, UK, Czech Republic, Hong Kong) with much smaller counts, while the verified answer has Russia, Switzerland, Turkey, UAE, and UK with co"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 non-discontinued products with unitPrice above 35 and matching prices; the candidate just includes extra product fields."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just returns full node properties instead of only the two requested columns."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer is 0 filings, while the candidate returned 87 filings."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t023",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returned three entirely different tweets (all from 2021-03-16 later timestamps) than the verified answer (2021-03-15/16 with different times, text, and links); no rows overlap."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different tweets (from March 16, later timestamps) than the verified answer's three tweets (March 15\u201316 earlier), so the sets of tweets do not match."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t038",
+  "kimi": [
+   "DIFFERENT",
+   "empty"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "empty"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer contains only the single tweet with the maximum favorites (394), while the candidate returns a top-10 list including many tweets with lower favorite counts."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate's top row has favorites=394, matching the verified answer's tweet (the highest-favorites tweet by neo4j); extra rows/columns don't affect the answer to \"which has the highest.\""
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate's extra Product and UnitPrice columns are just descriptive details."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify \"Aux joyeux eccl\u00e9siastiques\" as the supplier of the product with the highest unit price; the candidate just includes extra descriptive columns (Product, UnitPrice)."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 different values for the same question."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t063",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three movies; the missing rating values are descriptive columns that do not affect the requested entities."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three movie titles as the verified answer; it only omits the rating column, which is descriptive since the question asks to find movies, not their ratings."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same four people; the candidate only adds an extra movie-title column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people; the extra movie title column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same top-5 tweets in the same favorites order (394, 120, 81, 72, 58); the first row\u2019s differing ID reflects link URL versus tweet ID, not a different ranking."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets (matching tweet IDs/links) with identical favorite counts, in the same order."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 20 products satisfying reorder level > 20 and not discontinued; only the descriptive columns differ."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching by productName) as the verified answer; it just selects different descriptive columns (reorderLevel, discontinued instead of productID, unitPr"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns only one user (\"neo4j\", 899) with a mismatched count and casing, while the verified answer lists the top 10 users (Neo4j 104, Michael Hunger 29, etc.)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns only one user (\"neo4j\" with 899 mentions) instead of the top 10 users, and its mention count (899) doesn't match the verified count for Neo4j (104), suggesting a diffe"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t086",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same four products; the missing unitsOnOrder column is a descriptive/filter value and column differences do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same four products; it just omits the unitsOnOrder column, which is a filter condition, not the asked value."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same movie title, \"The Matrix Reloaded\"; the missing votes column is only descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify \"The Matrix Reloaded\" as the movie with the highest number of votes; the candidate just omits the votes column, which is not asked for."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t092",
+  "kimi": [
+   "DIFFERENT",
+   "empty"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "empty"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t100",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same three filings (IDs 236396, 226760, 234728) with matching originator/beneficiary banks and equal latitudes."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three filings (236396, 226760, 234728) with matching originator/beneficiary banks and shared latitude values."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t101",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 15 movie titles; the candidate\u2019s extra votes column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 15 movie titles as the verified answer; the extra votes column is just descriptive."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t104",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe countries match, but the originator bank counts differ (101/96/68 vs 105/104/70)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe counts differ (e.g., Russia 105 vs 101, US 104 vs 96, Switzerland 70 vs 68), indicating the candidate query counts originator banks differently (likely counting duplicates or including "
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra count column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t113",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nOnly the first tweet matches; the candidate's 2nd and 3rd tweets are different from the verified answer's tweets."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different tweets: only the first tweet matches; the second and third tweets differ from the verified answer\u2019s tweets."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t115",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists entirely different directors (Paul Wegener, Buster Keaton, Harold Lloyd) with only 4 actors each, instead of Woody Allen (132), Alfred Hitchcock (129), and Steven Spielbe"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists Paul Wegener, Buster Keaton, and Harold Lloyd with 4 actors each, while the verified answer lists Woody Allen (132), Alfred Hitchcock (129), and Steven Spielberg (107) \u2014"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t125",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three tweet IDs in the same order; missing text/labels are descriptive only."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweet IDs in the same order as the verified answer."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three products (Gumb\u00e4r Gummib\u00e4rchen, NuNuCa Nu\u00df-Nougat-Creme, Schoggi Schokolade) in the same order; missing ID/price columns are descriptive extras not required by t"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same three products in the same order; only extra columns (productID, unitPrice) are missing, which don't affect the answer."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t135",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three filing IDs (223255, 223254, 235512) with the same amounts as the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three filings (223255, 223254, 235512) with matching amounts, in the same descending order."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns 1000 rows including filings where the banks are in different cities/countries (e.g., id 223254: originator in Singapore, beneficiary in the UK), while the verified ans"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns filings where originator and beneficiary banks are in the same country (Singapore/UK mismatch aside, e.g., id 223254 has banks in different cities/countries), not the "
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t147",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three filings (IDs 232906, 232905, 232903) with identical begin dates and amounts, in the same order."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three filings (ids 232906, 232905, 232903) with matching begin dates and amounts, in the same order."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t164",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same three filings (IDs 232906, 232905, 232904) with the same begin dates in the same chronological order."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three filings (ids 232906, 232905, 232904) in the same order by begin date, matching the verified answer."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three customers (by name instead of ID) with identical order counts 31, 30, 28 in the same order."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers appear with identical order counts; only the display format (company name vs. customer ID) differs."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same set of user entities (handles match the verified answer's handles); only the column naming/structure differs, which doesn't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 users (matching handles), just without the extra descriptive \"handle\"/\"user\" name columns."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "empty"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "empty"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t178",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer counts 332 filings with a June begin_date, while the candidate returned 0."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 332 filings with a begin_date in June, while the candidate returns 0, indicating its query (likely a wrong month filter or date parsing) found no matching rows."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t179",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified value is \"LVA\" while the candidate returned null."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer returns country code \"LVA\", while the candidate returns null, so the values differ."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the identical set of 10 suppliers; the candidate only replaces the descriptive category list with a count, which doesn't change the entities answering \"which suppliers.\""
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers with the same category counts (5, 2, 3, 5, 2, 2, 3, 2, 3, 3), just showing counts instead of the category lists."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t184",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nOnly the top user matches; the candidate\u2019s 2nd and 3rd users/counts (mesirii 29, danielcfng 20) do not match Jim Webber 40 and Jes\u00fas Barrasa 29."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists \"mesirii\" (29) and \"danielcfng\" (20) instead of \"Jim Webber\" (40) and \"Jes\u00fas Barrasa\" (29), so the top users and values differ."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t185",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return 122 rows with identical movie titles; the candidate\u2019s extra runtime/rating columns are descriptive and don\u2019t affect the requested entities."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same 122 movies (titles match across the shown rows); the candidate just includes extra runtime and rating columns."
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t186",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns different movies with null revenue-budget differences, not Avatar/Titanic/Star Wars with the top profits."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns movies with null revenue-budget differences (Father of the Bride Part II, etc.), while the verified answer returns Avatar, Titanic, and Star Wars: Episode VII with the"
+  ]
+ },
+ {
+  "model": "Muse 30B base",
+  "id": "t190",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth return the same set of movie titles; the candidate only omits the descriptive actorCount column, which is not the entity being asked for."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 27 movies (same entities), just without the actorCount column, which is descriptive and not required by the question."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVnesheconombank's count differs: verified 6 vs candidate 7."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe benefit counts differ: Vnesheconombank shows 7 in the candidate vs 6 in the verified answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t007",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same five movies with the same release years in the same order; only the descriptive votes column is omitted, which does not affect the entities or release-year values a"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same five movies with matching release years, just with different column names and without the votes column, which isn't required by the question."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different countries (US, Germany, Czech Republic, Hong Kong) and much smaller filing counts than the verified answer (Russia, Switzerland, Turkey, UAE, UK)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists different countries (US, Germany, UK, Czech Republic, Hong Kong) with far smaller counts, while the verified answer lists Russia, Switzerland, Turkey, UAE, and UK with m"
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just returns full node properties instead of only the two requested columns."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer is 0 filings, while the candidate returned 87 filings."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t023",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (matching IDs, timestamps, and text) in the same order; formatting/nesting and missing link_url column are descriptive differences only."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweets (matching ids, timestamps, and text) in the same order as the verified answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer contains only the single tweet with the maximum favorites (394), while the candidate returns 10 rows including many lower-favorite tweets."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate includes the top tweet (394 favorites) matching the verified answer; extra lower-ranked rows are just additional results from a broader ranking, but the highest-favorites tweet is "
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t055",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate has different transaction counts for every entity and includes The Northern Trust Company instead of JP Morgan Chase & Co."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe transaction counts differ (e.g., BNY Mellon 20 vs 55) and the 5th entity differs (Northern Trust vs JP Morgan), indicating the candidate query counts a different set of transactions."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate just includes extra descriptive columns."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same supplier (\"Aux joyeux eccl\u00e9siastiques\") as the verified answer; the extra product name and unit price columns are just descriptive details."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same four people; the candidate only adds an extra movie-title column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people; the extra movie title column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t066",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth answers return the same set of 41 movies released in 1962 (the year of the lowest-rated movie); the candidate just includes extra year/rating columns, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 41 movies (same titles, year 1962) as the verified answer; it only includes extra descriptive columns (year, imdbRating), which don't affect correctness."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets (matching favorites counts and text) in the same order; only the output format differs (node objects vs. flat columns, missing link_url)."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites values (394, 120, 81, 72, 58) in the same order; it just returns the full tweet node instead of extracting the link URL, but the "
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching names) as the verified answer; only extra descriptive columns are omitted, which doesn't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products in the same order; it just omits extra descriptive columns (productID, unitPrice, unitsInStock) that the question doesn't ask for."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe total revenue values do not match: 27321.0 vs 26090.5775."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t075",
+  "kimi": [
+   "SAME",
+   "SAME\n\nThe candidate uses screen names instead of display names, but they map to the same users (e.g., mesirii=Michael Hunger, JAdP=Joseph A. di Paolantonio, rotnroll666=Michael Simons) with identical "
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 users with identical mention counts, just using screen names instead of display names."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t088",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three directors with matching genre counts (16, 15, 15); only format/column names differ."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three directors (Robert Zemeckis, Steven Spielberg, Tim Burton), each with 15\u201316 genres, matching the verified answer's entities and counts."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \u201cThe Matrix Reloaded\u201d; the omitted vote count is not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same four Tom Cruise war movies; only descriptive columns differ."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four movie titles as the verified answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists entirely different actors (Patrick Wilson, Ethan Hawke, Sarah Snook) and omits the movie counts, while the verified answer is Bruce Willis (29), Cary Grant (28), Sean Con"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists Patrick Wilson, Ethan Hawke, and Sarah Snook, while the verified answer lists Bruce Willis, Cary Grant, and Sean Connery \u2014 completely different actors."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t101",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 15 movie titles; the candidate only adds an extra votes column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 15 movie titles as the verified answer, just with an extra votes column."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra count column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t108",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate aggregates by bank name and lists different entities/counts; verified answer counts distinct entity nodes, mostly Barclays UK variants plus JPMorgan/DNB."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate aggregates entities by name (e.g., merging all Barclays variants into 34 filings) and lists different entities (Credit Suisse, Sberbank, etc.), whereas the verified answer tre"
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t111",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCounts differ and the third country is Hong Kong instead of United States."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's counts differ (Latvia 825 vs 823, Russia 704 vs 677) and it lists Hong Kong (475) instead of United States (254) as the third country."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t113",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nOnly the first tweet matches; the candidate's 2nd and 3rd tweets are different from the verified rows."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different tweets: only the first tweet matches; the second and third tweets differ from the verified answer."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t118",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer is 34507.0, while the candidate returned null, so the values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned null while the verified answer is 34507.0."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three products (Gumb\u00e4r Gummib\u00e4rchen, NuNuCa Nu\u00df-Nougat-Creme, Schoggi Schokolade) in the same order; only descriptive columns were omitted, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three products in the same order; it just omits the productID and unitPrice columns, which are extra descriptive columns not required by the question."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t133",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same customer, Ernst Handel (ERNSH); the candidate just includes extra descriptive columns."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify customer ERNSH (Ernst Handel); the candidate just includes extra descriptive columns (orderID, totalQuantity)."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns 323 rows versus the verified 118, and includes filings (e.g., 223877, 224005) not in the answer key \u2014 it appears to have matched banks in the same country rather than "
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns 323 rows (e.g., 223877, 224005) not in the 118-row verified answer, apparently matching banks by country/coordinates rather than the same city."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three customers (SAVEA, ERNSH, QUICK) with identical order counts (31, 30, 28); the extra companyName column is descriptive and ignored."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers with identical order counts; the extra companyName column is descriptive only."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 144 users; the candidate just wraps each user in a node object with extra properties, while screen_name/name match the verified handle/user values."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 users (matching handles and names in the same order), just with extra descriptive properties."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified identifies EmployeeID 1 with count 6; candidate identifies employee 3 with count 3, so both the entity and value differ."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer identifies Employee 1 with a cross-selling count of 6, while the candidate identifies Employee 3 with a count of 3 \u2014 different entity and different value."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth return the same 10 suppliers, and each candidate\u2019s numCategories matches the number of categories listed in the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers as the verified answer; it shows the count of categories instead of the category list, but the entities and the qualifying condition (>1 category) mat"
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t184",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three users (display name vs. handle) with identical mention counts: 104, 40, 29."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe same three users with identical mention counts; only the display name vs. handle differs."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t185",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 122 movie titles; the candidate only adds extra descriptive columns (runtime, imdbRating), which do not affect correctness."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 122 movies (titles match exactly in the shown rows), just with extra runtime and rating columns included."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t186",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns unrelated movies with null differences instead of Avatar, Titanic, and Star Wars: Episode VII with their revenue-budget profits."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns movies with null differences (Father of the Bride Part II, etc.), not the top three profit movies (Avatar, Titanic, Star Wars: Episode VII)."
+  ]
+ },
+ {
+  "model": "harness route",
+  "id": "t199",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 13 role values; omitted movie/person columns are descriptive context."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 role values (with duplicates matching the verified rows), just without the movie and person columns."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVnesheconombank's count differs: verified benefitCount is 6, candidate numFilings is 7."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe top entity's count differs: candidate says 7 filings for Vnesheconombank, verified answer says 6."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t007",
+  "kimi": [
+   "SAME",
+   "SAME\nSame five movies and release years; missing vote counts are descriptive only."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same five movies and release years are returned, just with different column names and without the votes column."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different countries (US, Germany, Czech Republic, Hong Kong) and much smaller counts than the verified answer (Russia, Switzerland, Turkey, UAE, UK with hundreds/thousa"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists different countries (US, Germany, UK, Czech Republic, Hong Kong) with far smaller counts, while the verified answer lists Russia, Switzerland, Turkey, UAE, UK with count"
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just returns full node properties instead of only the two requested columns."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer is 0 filings, while the candidate returned 87 filings."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t023",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three tweets in the same order with matching text and timestamps; only the descriptive link_url column is omitted."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweets in the same order, with matching tweet text and created_at values; only the link_url column is omitted, which is descriptive and not required."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t038",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame user pair, but the reply count differs: verified 6 vs candidate 20."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe pair of users matches, but the reply count differs (6 vs 20), so the value the question asks for is not the same."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer includes only the single tweet with the maximum favorites (394), while the candidate also returns 9 additional lower-favorite tweets."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate's top row matches the verified answer: the tweet with 394 favorites about graphs for investigative journalism. The extra rows are lower-ranked tweets, but the question asks for the"
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is irrelevant."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 the numeric values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t063",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three movies; the omitted rating is just a descriptive/filter column."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three movie titles; it just omits the rating column, which is descriptive since the question only asks for movies."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth answers identify the same four people (Cameron Crowe, Lana Wachowski, Lilly Wachowski, Nancy Meyers); the candidate's extra movie column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people as the verified answer; the extra movie column is just descriptive detail."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t066",
+  "kimi": [
+   "SAME",
+   "SAME\n\nBoth return the same 41 movies (all from 1962, the year of the lowest-rated movie); the candidate just includes extra descriptive columns (year, imdbRating), which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 41 movies (same titles, same year 1962); it only includes extra descriptive columns (year, imdbRating) which don't matter."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 5 tweets in the same order with identical favorites counts and text; only formatting (nested node objects, extra metadata fields) differs."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites values (394, 120, 81, 72, 58) in the same order; it just returns the full tweet node instead of extracting the link URL, but the "
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching names) as the verified answer; only extra descriptive columns are omitted, which doesn't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products in the same order; it just omits extra descriptive columns (productID, unitPrice, unitsInStock) that the question doesn't ask for."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe total revenue values do not match: 27321.0 vs 26090.5775."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns Twitter handles (e.g., \"neo4j\", \"Neo4jDE\") with different mention counts, while the verified answer returns user display names (e.g., \"Neo4j\", \"Michael Hunger\") with di"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns screen names (e.g., \"neo4j\" with 116 mentions) while the verified answer uses display names (e.g., \"Neo4j\" with 104 mentions), and the counts and entity lists don't mat"
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t088",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three directors with matching genre counts (16, 15, 15); only column names/format differ."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three directors (Robert Zemeckis, Steven Spielberg, Tim Burton), each with 15\u201316 genres, matching the verified answer's entities and counts."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \u201cThe Matrix Reloaded\u201d; the omitted vote count is not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same four Tom Cruise war movies; the candidate only omits descriptive rating/year columns, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same four movie titles are returned, matching the verified answer's entities."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t095",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Penny Marshall as the director; the missing count column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Penny Marshall as the director who directed the least movies among the movies of the actor who acted in the most movies."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists Harrison Ford instead of Sean Connery and reports different movie counts for Bruce Willis and Cary Grant."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns Harrison Ford instead of Sean Connery, and the movieCount values differ (28 vs 29, 26 vs 28), so the entities and values don't match."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra movieCount column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra movieCount column is just descriptive."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t108",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns different entities and much higher aggregated counts than the verified UK beneficiary-bank filing entities."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists different entities (e.g., Bank of New York Mellon, Deutsche Bank) with much higher counts, while the verified answer's top entities are Barclays Bank Plc variants and JP"
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t113",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (identical text content and order) as the verified answer; it just includes extra node properties."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe three tweets' texts match exactly between the candidate and verified answers."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t128",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same single German Beverages supplier: supplierID 12, Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same single supplier (supplierID 12, Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG) from Germany supplying Beverages; the candidate just projects fewer columns."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three products (Gumb\u00e4r Gummib\u00e4rchen, NuNuCa Nu\u00df-Nougat-Creme, Schoggi Schokolade) in the same order; omitted ID/price columns are descriptive and don't affect the ent"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three products in the same order; it just omits the productID and unitPrice columns, which are extra descriptive columns not required by the question."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t133",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same customer, Ernst Handel (ERNSH); the candidate just includes extra order details."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate identifies the same customer (ERNSH, Ernst Handel) as the verified answer, just with additional descriptive columns."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns 323 rows versus the verified 118, and includes filings (e.g., 223877, 224005) not in the answer key \u2014 it appears to have matched banks in the same country rather than "
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns 323 rows (e.g., 223877, 224005) not in the 118-row verified answer, apparently matching banks by country/coordinates rather than the same city."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three customers (SAVEA, ERNSH, QUICK) with identical order counts (31, 30, 28); the extra companyName column is descriptive and ignored."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers with identical order counts; the candidate only adds an extra descriptive column (companyName)."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 144 users; the candidate just wraps each user in a node object with extra properties, while screen_name/name match the verified handle/user values."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 users (matching handles and names in the same order) as the verified answer; it just includes extra descriptive properties of each user node."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified identifies EmployeeID 1 with count 6; candidate identifies EmployeeID 3 with count 3, so both the entity and value differ."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns EmployeeID 3 with a count of 3, while the verified answer is EmployeeID 1 with a count of 6 \u2014 different entity and value."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same 10 suppliers, and each candidate's categoryCount matches the number of categories listed for that supplier in the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers as the verified answer; it shows category counts instead of category lists, but the question only asks which suppliers supply more than one category, "
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t184",
+  "kimi": [
+   "SAME",
+   "SAME\nSame three users (display name vs. handle) with identical mention counts: 104, 40, 29."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe same three users with identical mention counts; only the display name vs. handle differs."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t185",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 122 movie titles; the candidate only adds extra descriptive columns (runtime, imdbRating), which do not affect correctness."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 122 movies (same titles in the same order), just with extra runtime and imdbRating columns, which don't affect correctness."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t186",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns unrelated movies with null budget/difference, not Avatar, Titanic, and Star Wars: Episode VII."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns movies with null budgets/differences (Father of the Bride Part II, etc.), not the top three profit movies (Avatar, Titanic, Star Wars VII)."
+  ]
+ },
+ {
+  "model": "harness repair",
+  "id": "t199",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same person\u2013role pairs for the Matrix movies; the omitted movie title is descriptive context."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 person-role pairs; it just omits the movie column, which is descriptive and not required by the question."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe top entity matches but its count differs (Vnesheconombank: 6 vs 7), indicating a different counting basis."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe question asks only for the names of the top 3 entities, which match exactly in the same order; the count columns are extra descriptive columns and their slight differences (6 vs 7) don't affe"
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different countries and much lower filing counts than the verified top 5."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's counts and countries differ (e.g., Russia 370 vs 3146, Latvia/Hong Kong/US not in the verified answer), suggesting a different filter or aggregation was used."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just returns full node properties instead of only the two requested columns."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified count is 0, candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 0 filings while the candidate returns 87, so the values disagree."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t023",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (matching IDs, timestamps, and text) in the same order; formatting/nesting and missing explicit link_url column don't change the entities."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweets (matching ids, timestamps, and text) as the verified answer, just with extra node metadata and different column names."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t038",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame user pair, but the reply count differs (6 vs 11)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer reports 6 replies between the pair, while the candidate reports 11, so the values differ."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t039",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same tweet with the same favorites value (394); the candidate only adds an extra id column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same tweet with 394 favorites; extra columns (id) don't matter."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t049",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe average favorites values differ: verified \u2248 2.2340 vs candidate \u2248 2.4505."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe average values differ (2.234 vs 2.451), indicating the candidate query computed the average over a different set of tweets than the verified answer."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is irrelevant."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate's extra product/price columns are just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify \"Aux joyeux eccl\u00e9siastiques\" as the supplier of the highest-priced product; extra columns don't matter."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 the values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205, so the values differ."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t063",
+  "kimi": [
+   "SAME",
+   "SAME  \nSame three movies are returned; missing rating display is a descriptive column difference."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three movies (Jerry Maguire, The Replacements, Cloud Atlas); it just omits the rating value and returns full movie nodes instead of title and rating columns."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same four people; the candidate only adds an extra movie-title column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people; the extra movie title column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 5 tweets (identical text and favorites: 394, 120, 81, 72, 58) in the same order; only the formatting (nested node objects, missing link_url column) differs, which d"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites values (394, 120, 81, 72, 58) in the same order; it just returns the full tweet node instead of extracting the link URL, but the "
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching names) as the verified answer; only extra descriptive columns are omitted, which doesn't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products in the same order; it just omits extra descriptive columns (productID, unitPrice, unitsInStock) that the question doesn't ask for."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe total revenue values do not match: verified is 27321.0 while the candidate returns 26090.5775."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t075",
+  "kimi": [
+   "SAME",
+   "SAME\nThe top-10 users and mention counts match exactly; the candidate just uses handles instead of display names."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate's top 10 rows match the verified answer (same users, same mention counts), but it returns 361 rows total while the answer key returns only 10, so it includes many extra rows be"
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t086",
+  "kimi": [
+   "SAME",
+   "SAME\nSame four products; missing unitsOnOrder is a descriptive column omission."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four products; it just omits the unitsOnOrder column, which is descriptive since the question only asks which products qualify."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t087",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same three people (Tom Hanks, Hugo Weaving, Keanu Reeves) in the same order; the missing totalRoles counts are descriptive and not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three people in the same order; it just omits the totalRoles column, which is descriptive since the question only asks for names."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \"The Matrix Reloaded\"; the omitted votes column is just extra descriptive data."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same movie title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same four Tom Cruise war movies; the candidate only omits descriptive rating/year columns, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same four movies (Valkyrie, Lions For Lambs, Last Samurai, Born on the Fourth of July) as the verified answer; only extra columns like ratings/years are missing, which "
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t107",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Drama as the most common genre; the extra count column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify Drama as the most common genre among 2014 movies; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t108",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate returns different entities and much higher aggregated counts than the verified UK beneficiary-bank entity rows."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists different entities (e.g., Bank of New York Mellon, Deutsche Bank) with much higher filing counts, while the verified answer lists Barclays Bank Plc variants, JPMorgan Ch"
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t113",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (identical text content, in the same order) as the verified answer; it just includes extra node properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe three tweets' texts match exactly between the candidate and verified answers."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t129",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three products (IDs 26, 25, 27) with the same names and unit prices; it just includes extra node properties, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three products (IDs 26, 25, 27) with matching names and unit prices, just with additional node properties included."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t133",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same customer, Ernst Handel (ERNSH); the candidate just includes extra customer properties."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify customer ERNSH (Ernst Handel); the candidate just returns the full node instead of selected properties."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t137",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns 323 rows versus the verified 118, and includes filings (e.g., 223877, 224005) not in the answer key \u2014 it appears to have matched banks in the same country rather than "
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate matched banks by country/coordinates (e.g., includes 223877 where Ping An Bank and Shanghai Pudong Development Bank are in different cities), returning 323 rows instead of the "
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t162",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same three users (Jennifer Allen, Lynn Green, Erica Sullivan) with identical average ratings; extra userId column and different column names don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe same three users appear with identical average ratings, just with extra columns (userId) and different column names."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t165",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same three customers (SAVEA, ERNSH, QUICK) with identical order counts (31, 30, 28); the extra companyName column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same three customers with identical order counts; the candidate only adds a descriptive companyName column."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t167",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate lists the same top 3 supplier names in the same order; the missing avgFreight values are descriptive and not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three suppliers in the same order; the missing avgFreight column is a descriptive value not explicitly requested by the question (which asks only for names)."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t174",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return 144 rows and the shown users match by handle/name; the candidate only includes extra user-object properties, which are ignored."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 144 users (matching handles and names in the same order), just with additional descriptive properties of each user node."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t177",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame employee (ID 1), but the cross-selling count differs: verified 6 vs candidate 2."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe employee ID matches (1), but the cross-selling count differs: verified answer says 6, candidate says 2."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t179",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nVerified value is \"LVA\" while the candidate returned null."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer returns country code \"LVA\", while the candidate returns null, so the values differ."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t181",
+  "kimi": [
+   "SAME",
+   "SAME\nSame 10 suppliers, and each categoryCount matches the number of categories listed in the verified answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 10 suppliers with matching category counts (e.g., Pavlova 5, Karkki Oy 2, Leka Trading 3), just presenting counts instead of the category lists."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t184",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nOnly the top user matches (Neo4j/neo4j, 104); the candidate\u2019s 2nd and 3rd users (mesirii, danielcfng) differ from the verified Jim Webber and Jes\u00fas Barrasa."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate lists \"mesirii\" (29) and \"danielcfng\" (20) instead of \"Jim Webber\" (40) and \"Jes\u00fas Barrasa\" (29), so the top users and mention counts differ."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t186",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same three movies (Avatar, Titanic, Star Wars: Episode VII) with identical revenue\u2013budget differences."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three movies with identical profit/difference values as the verified answer; only column naming differs."
+  ]
+ },
+ {
+  "model": "DeepSeek V4.1 Flash",
+  "id": "t199",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 13 role values in the same sequence; omitted movie/person columns are descriptive context, not the requested roles."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 role values as the verified answer; it just omits the descriptive movie/person columns, which don't affect the answer to \"list the roles.\""
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe top entity matches but its count differs (Vnesheconombank: 6 vs 7), indicating a different counted value."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe question asks only for the names of the top 3 entities, and both answers list the same entities in the same order; the differing count values are extra descriptive columns not asked for by th"
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t007",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same five movies with the same release years in the same order; only the descriptive votes column is omitted, which does not affect the entities or requested release-yea"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same five movies with matching release years, just with different column names and without the votes column, which isn't required by the question."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns different countries (Singapore, Ukraine instead of Turkey, UAE) and different filing counts (e.g., Russia 1032 vs 3146), so neither the entities nor the values match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe counts differ substantially (e.g., Russia 1032 vs 3146) and the country sets differ (Singapore and Ukraine appear instead of Turkey and UAE), suggesting the candidate filtered on a diff"
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just includes extra node properties."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer is 0 filings, while the candidate returned 87 filings."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t023",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three tweets (matching IDs, timestamps, and text) in the same order; formatting/nesting and missing link_url column do not change the entities."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweets (matching ids, timestamps, and text) in the same order as the verified answer."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t038",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame user pair, but the reply count differs (6 vs 11)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe pair of users matches, but the reply count differs (6 vs 11), so the value answering the question is not the same."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer includes only the single tweet with the maximum favorites (394), while the candidate returns 10 tweets including many with lower favorite counts."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate includes the top tweet (394 favorites, same text) as its first row; the question asks for the tweet(s) with the highest favorites, and the extra lower-ranked rows don't change the "
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t049",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe average favorites values do not match: verified \u2248 2.2340 vs candidate \u2248 2.4505."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe average favorites values differ: 2.234 vs 2.451, indicating different tweet sets were aggregated."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra count column is irrelevant."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra count column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate just includes extra descriptive columns."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same supplier (\"Aux joyeux eccl\u00e9siastiques\") as the verified answer; the extra product name and unit price columns are just descriptive details."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 different values for the same question."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same four people; the candidate only adds an extra movie-title column, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people; the extra movie title column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t068",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame director pair, but the shared-actor counts differ (4 vs 15), and the count is the value the question asks about."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe pair of directors matches, but the common actor count differs (4 vs 15), and the question asks for the maximal number of shared actors, so the value is part of the answer."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same 5 tweets (identical text and favorites: 394, 120, 81, 72, 58) in the same order; only the formatting (nested node objects, missing link_url column) differs, which d"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites values (394, 120, 81, 72, 58) in the same order; it just returns the full tweet node instead of extracting the link URL, but the "
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same set of products (matching productIDs 2, 3, 6, 11, 22, \u2026) satisfying reorderLevel > 20 and not discontinued; it just includes extra node properties, which are ignore"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 20 products (matching productIDs, names, prices, stock levels) with reorderLevel > 20 and discontinued = false; it just returns full node properties instead of sel"
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe total revenue values do not match: 27321.0 vs 26090.5775."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate uses screen-name handles (e.g., \"neo4j\", \"rotnroll666\") with counts like 527/3/2, while the verified answer uses display names (e.g., \"Neo4j\", \"Michael Hunger\") with counts 104"
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate counts mentions differently (e.g., \"neo4j\" with 527 vs. verified \"Neo4j\" with 104), likely counting all case-insensitive text occurrences rather than the specific mention crit"
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t086",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same four products (Scottish Longbreads, Chocolade, Maxilaku, Sir Rodney's Scones) with identical unitsOnOrder values; the candidate just includes extra descriptive columns."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same four products (Scottish Longbreads, Chocolade, Maxilaku, Sir Rodney's Scones) with matching unitsOnOrder values; it just includes extra product properties."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \u201cThe Matrix Reloaded\u201d; the omitted vote count is not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same movie title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same four Tom Cruise war movies; the candidate only omits descriptive rating/year columns, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same four movie titles are returned, matching the verified answer's entities."
+  ]
+ },
+ {
+  "model": "Kimi K3",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists Harrison Ford instead of Sean Connery as the third actor, and the movie counts also differ."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns Harrison Ford instead of Sean Connery, and the movieCount values differ (28 vs 29, 26 vs 28), so the entities and values don't match."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe top entity\u2019s count differs (Vnesheconombank: 6 vs 7), indicating a different counting basis despite the same three names."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe question asks only for the names of the top 3 entities; the count columns are extra descriptive columns, and the entity names and their order match exactly."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different countries (Singapore, Ukraine instead of Turkey, United Arab Emirates) and much lower filing counts than the verified answer."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe counts differ (e.g., Russia 1032 vs 3146) and the country sets differ (Singapore and Ukraine appear instead of Turkey and UAE), suggesting the candidate used a different transaction-val"
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate only adds extra descriptive columns, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; the extra columns (unitsInStock, etc.) are descriptive and don't affect correctness."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate returned 87."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 0 filings while the candidate counts 87, so the values differ."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t023",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same three tweets (identical IDs/text/timestamps) in the same recency order; the candidate omits the expanded link_url but includes tweet IDs, which are equivalent entities for th"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three tweets in the same order, with matching text and timestamps; it just omits the link_url column, which is descriptive and not required."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t038",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame user pair, but the reply count differs (6 vs 11), which is the value the question is about."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe reply counts differ: verified answer says 6 replies, candidate says 11, so the values for what the question asks (most frequent reply pair count) don't match."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer includes only the single tweet with the maximum favorites (394), while the candidate returns a top-10 list with many lower-favorite tweets."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate includes the top tweet (394 favorites) matching the verified answer; extra lower-ranked rows are descriptive extras, but the question asks for highest favorites, and the top result"
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t049",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe average favorites value differs: 2.2340 vs 2.4505."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe average favorites values differ: 2.234 vs 2.4505, indicating different tweet sets were aggregated (likely different filtering of tweets mentioning \"Neo4j\" and a hashtag)."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra frequency column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra frequency column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, Aux joyeux eccl\u00e9siastiques; the candidate\u2019s extra product and price columns are descriptive only."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify \"Aux joyeux eccl\u00e9siastiques\" as the supplier of the highest-priced product; the candidate just includes extra descriptive columns."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 the values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t063",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three movie entities (Jerry Maguire, The Replacements, Cloud Atlas); it just omits the rating values, which are descriptive columns."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three movies (Jerry Maguire, The Replacements, Cloud Atlas); it just omits the rating value and returns full movie nodes instead of title/rating columns."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth answers identify the same four people (Cameron Crowe, Lana Wachowski, Lilly Wachowski, Nancy Meyers); the candidate's extra movie column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people as the verified answer; the extra movie column is just descriptive detail."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t066",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same set of 41 movie titles (all from 1962); the candidate only adds extra descriptive columns (year, imdbRating), which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 41 movies (same titles, same year 1962); it only includes extra descriptive columns (year, imdbRating), which don't affect correctness."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 5 tweets in the same favorites order with identical favorites values and links; only column names/extra tweet_id differ, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 5 tweets with identical favorites, links, and text, sorted by favorites descending, matching the verified answer."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 20 products; only the descriptive columns differ (productID vs reorderLevel), which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 20 products with matching values (name, price, units in stock); it just includes reorderLevel and omits productID, which are descriptive column differences only."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe total revenue values do not match: 27321.0 vs 26090.5775."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t075",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate\u2019s top 10 match the verified users and counts, but it returns 361 rows total instead of the verified 10, adding many extra lower-count users."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same top-10 users with identical mention counts, just with extra columns (screen_name) and additional rows beyond the answer key's 10."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t086",
+  "kimi": [
+   "SAME",
+   "SAME\nSame four products; missing unitsOnOrder is a descriptive column omission."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four products; it just omits the unitsOnOrder column, which is descriptive since the question only asks which products qualify."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \u201cThe Matrix Reloaded\u201d; the omitted vote count is not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth answers list the same four Tom Cruise war movies (Valkyrie, Lions For Lambs, The Last Samurai, Born on the Fourth of July) with matching years; only column names and the extra IMDb rating co"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe same four movies (Lions For Lambs, Last Samurai, Valkyrie, Born on the Fourth of July) with matching years are returned; only column names and row order differ."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t095",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Penny Marshall as the director; the missing count is just a descriptive column."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify Penny Marshall as the director; the candidate omits the movie count, but the question asks for the director, so the entity matches."
+  ]
+ },
+ {
+  "model": "GLM 5.3 large",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists Harrison Ford instead of Sean Connery, and the movie counts for Bruce Willis and Cary Grant also do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate includes Harrison Ford instead of Sean Connery, and the movie counts differ (28 vs 29, 26 vs 28), indicating a different query logic (likely counting distinct movies vs. genre"
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t002",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe entities match, but Vnesheconombank\u2019s relevant count differs: verified benefitCount is 6 for filings under 100, while the candidate reports 7 filings, indicating a different filter/metri"
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe question asks only for the names of the top 3 entities, and both answers list the same three entities in the same order; the count/amount columns are extra descriptive details."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t017",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate has different countries (missing Turkey/UAE, includes Singapore/Ukraine) and much lower filing counts than the verified answer."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe counts differ (e.g., Russia 1032 vs 3146) and the country sets differ (Singapore and Ukraine appear instead of Turkey and UAE), suggesting the candidate used a different transaction-val"
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t018",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 13 products with identical productName and unitPrice values; the candidate just includes extra product properties, which don't matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same 13 products with matching productName and unitPrice values; it just returns full node properties instead of only the two requested columns."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t020",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer is 0 filings, while the candidate reports 87 \u2014 the counts do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe verified answer counts 0 filings, while the candidate returns 87."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t023",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returned three entirely different tweets (different text and timestamps) than the verified answer."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns different tweets (from March 16, 2021) than the verified answer (from March 15\u201316, 2021), so the entities and values do not match."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t025",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified entity is The National Bank of Ras Al-Khaimah, but the candidate returned Credit Suisse International, a different entity."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns \"Credit Suisse International\" while the verified answer is \"The National Bank of Ras Al-Khaimah\" \u2014 different entities."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t028",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify Nancy Meyers; the candidate\u2019s extra movie title column is descriptive and ignored."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same entity (Nancy Meyers) with an extra descriptive column (m.title), which doesn't affect correctness."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t038",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame user pair, but the reply count differs (6 vs 11)."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer reports 6 replies between dark_phoenix254 and adamcowley, while the candidate reports 11, so the values differ."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t039",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nCandidate includes the correct top tweet but also returns extra lower-favorite tweets, while the verified answer contains only the single highest-favorite tweet."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate includes the top tweet (394 favorites) matching the verified answer; extra lower-ranked rows are just additional results, and the question asks for the highest, which is correctly "
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t049",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe average favorites values differ: 2.234 vs 2.451."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe average favorites values differ: 2.234 vs 2.451, indicating the candidate query likely used a different filter (e.g., different hashtag or mention matching criteria)."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t052",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify English as the most common language; the extra movieCount column is descriptive and does not change the answer."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth answers identify English as the most common language; the extra movieCount column is descriptive and doesn't change the answer."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t058",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth identify the same supplier, \"Aux joyeux eccl\u00e9siastiques\"; the candidate's extra product and unitPrice columns are just descriptive details."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth identify \"Aux joyeux eccl\u00e9siastiques\" as the supplier of the highest-priced product; the candidate's extra columns are descriptive only."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t059",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified total is 205 filings, while the candidate reports 428 \u2014 the numeric values do not match."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returned 428 total filings while the verified answer is 205."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t063",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate returns the same three movies (Jerry Maguire, The Replacements, Cloud Atlas); only the rating values are omitted from display."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe candidate returns the same three movies (Jerry Maguire, The Replacements, Cloud Atlas); it just omits the rating value and returns full movie nodes instead of title/rating columns."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t064",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth answers identify the same four people (Cameron Crowe, Lana Wachowski, Lilly Wachowski, Nancy Meyers); the candidate's extra movie column is just descriptive."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four people as the verified answer; the extra movie column is just descriptive detail."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t066",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer has 41 movies while the candidate returns 40, so at least one same-year movie is missing despite matching shown titles."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate returns 40 rows while the answer key has 41; the candidate's query likely excludes the lowest-rated movie itself (e.g., via a self-join), so it misses one movie from that year."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t068",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nSame director pair, but the shared-actor counts differ (4 vs 15), and the count is the value the question asks about."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe pair of directors matches, but the common actor count differs (4 vs 15), and the question asks for the maximal number of shared actors, so the value is part of the answer."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t070",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 5 tweets in the same favorites order with matching text, favorites, and link URLs; only column naming/format differs."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe same 5 tweets are returned in the same order by favorites, with matching link URLs and favorite counts; only column naming/structure differs."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t072",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth return the same 20 products; only the descriptive columns differ, which is allowed."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same 20 products (matching by name) as the verified answer; it just selects different columns (reorderLevel instead of productID/unitPrice/unitsInStock), which doesn't a"
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t074",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe total revenue values do not match: 27321.0 vs 26090.5775."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate's total revenue (26090.5775) does not match the verified answer (27321.0)."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t075",
+  "kimi": [
+   "SAME",
+   "SAME\nThe top-10 users and mention counts match; the candidate just uses handles instead of display names."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nThe top 10 users and their mention counts match exactly; the candidate only shows additional rows beyond the answer key's 10, and uses handles instead of display names."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t086",
+  "kimi": [
+   "SAME",
+   "SAME\nSame four products; missing unitsOnOrder is a descriptive column omission."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe candidate returns the same four products; it just omits the unitsOnOrder column, which is descriptive since the question only asks which products qualify."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t091",
+  "kimi": [
+   "SAME",
+   "SAME\nThe candidate identifies the same movie title, \u201cThe Matrix Reloaded\u201d; the omitted vote count is not required by the question."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\n\nBoth return the same movie title, \"The Matrix Reloaded\", which is what the question asks for."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t092",
+  "kimi": [
+   "SAME",
+   "SAME\nBoth list the same four Tom Cruise war movies; the candidate only omits descriptive rating/year columns, which do not matter."
+  ],
+  "glm": [
+   "SAME",
+   "SAME\nThe same four movie titles are returned, matching the verified answer's entities."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t095",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe verified answer names Penny Marshall, while the candidate names John Patrick Stanley \u2014 different directors."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns director \"John Patrick Stanley\" while the verified answer is \"Penny Marshall\" \u2014 different entities for the director the question asks about."
+  ]
+ },
+ {
+  "model": "Claude Opus 5",
+  "id": "t096",
+  "kimi": [
+   "DIFFERENT",
+   "DIFFERENT\nThe candidate lists Harrison Ford instead of Sean Connery as the third actor, and the movie counts also differ."
+  ],
+  "glm": [
+   "DIFFERENT",
+   "DIFFERENT\n\nThe candidate returns Harrison Ford instead of Sean Connery, and the movieCount values differ (28 vs 29, 26 vs 28), so the entities and values don't match."
+  ]
+ }
+]

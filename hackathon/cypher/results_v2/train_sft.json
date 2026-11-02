@@ -97,12 +97,12 @@
   "easy": {
    "n": 70,
    "accuracy_v1": 0.4857,
-   "accuracy_v2": 0.5286
+   "accuracy_v2": 0.5143
   },
   "medium": {
    "n": 87,
    "accuracy_v1": 0.6092,
-   "accuracy_v2": 0.6322
+   "accuracy_v2": 0.6437
   },
   "hard": {
    "n": 43,
@@ -114,7 +114,7 @@
   "fincen": {
    "n": 40,
    "accuracy_v1": 0.575,
-   "accuracy_v2": 0.65
+   "accuracy_v2": 0.675
   },
   "movies": {
    "n": 40,
@@ -129,7 +129,7 @@
   "recommendations": {
    "n": 40,
    "accuracy_v1": 0.55,
-   "accuracy_v2": 0.575
+   "accuracy_v2": 0.55
   },
   "twitter": {
    "n": 40,
@@ -733,7 +733,7 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\\nRETURN f.sar_id",
    "raw": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity)\nMATCH (f)-[:BENEFITS]->(b:Entity)\nWHERE o.id = b.id\nRETURN f<|eot|>",
    "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity)\nMATCH (f)-[:BENEFITS]->(b:Entity)\nWHERE o.id = b.id\nRETURN f",
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "exec_error": null,
    "pred_n_rows": 1,
@@ -770,7 +770,7 @@
      }
     }
    ],
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "latency": 0.714,
@@ -780,9 +780,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -2284,7 +2284,7 @@
    "gold_cypher": "MATCH (m:Movie)\\nWHERE size(m.countries) = 1\\nRETURN m.title, m.imdbRating\\nORDER BY m.imdbRating DESC\\nLIMIT 5",
    "raw": "MATCH (m:Movie)\nWHERE size(m.languages) = 1\nRETURN m.title, m.imdbRating\nORDER BY m.imdbRating DESC\nLIMIT 5<|eot|>",
    "pred_cypher": "MATCH (m:Movie)\nWHERE size(m.languages) = 1\nRETURN m.title, m.imdbRating\nORDER BY m.imdbRating DESC\nLIMIT 5",
-   "exec_status": "correct",
+   "exec_status": "wrong",
    "lenient_status": "wrong",
    "exec_error": null,
    "pred_n_rows": 5,
@@ -2310,7 +2310,7 @@
      "m.imdbRating": null
     }
    ],
-   "correct": true,
+   "correct": false,
    "pred": "wrong",
    "label": "correct",
    "latency": 0.793,
@@ -2320,9 +2320,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "correct",
+   "exec_status_v2": "wrong",
    "correct_v1": false,
-   "correct_v2": true,
+   "correct_v2": false,
    "gold_defect": false
   },
   {

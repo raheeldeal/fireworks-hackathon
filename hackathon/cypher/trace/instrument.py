@@ -24,7 +24,7 @@ Span tree per question:
 Nothing here runs unless the caller imports it, so the harness's own entry points are
 unaffected. Every wrapper is a straight pass-through when tracing is off.
 """
-import csv, datetime, json, os, sys, threading, time
+import csv, datetime, hashlib, json, os, sys, threading, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CYPHER_DIR = os.path.dirname(HERE)
@@ -59,6 +59,25 @@ except Exception:  # noqa: BLE001  sibling may be mid-edit; the copy above still
     pass
 
 _call_tls = threading.local()
+
+# Prompt identity. The prompt templates live in harness.py, which must not be edited, so
+# they are not managed Langfuse prompts. Instead each generation records the name of the
+# prompt role it played and a 12-char hash of the system prompt actually sent, so a judge
+# can tell two prompt variants apart (few-shot vs not, pruned schema vs full) and group
+# generations by prompt version in the dashboard.
+PROMPT_NAMES = {"generate": "cypher-generate", "repair": "cypher-repair"}
+
+
+def prompt_identity(span_name, messages):
+    """(prompt_name, prompt_version) for one model call. version = sha12 of the system prompt."""
+    name = PROMPT_NAMES.get(span_name, f"cypher-{span_name}")
+    try:
+        sysmsg = next((m.get("content") or "" for m in messages
+                       if isinstance(m, dict) and m.get("role") == "system"), "")
+        ver = hashlib.sha256(sysmsg.encode("utf-8")).hexdigest()[:12] if sysmsg else None
+    except Exception:  # noqa: BLE001  never let tracing break a model call
+        ver = None
+    return name, ver
 
 
 # ---------------------------------------------------------------- ledger
@@ -112,7 +131,7 @@ def install():
     orig_route = H.route
 
     def schema_prune(question, schema):
-        with T.span("schema_prune", chars_before=len(schema or "")) as sp:
+        with T.span("schema_prune", kind="retriever", chars_before=len(schema or "")) as sp:
             out, applied = orig_prune(question, schema)
             sp.update(input={"question": question},
                       output={"applied": applied, "chars_after": len(out or ""),
@@ -122,18 +141,21 @@ def install():
             return out, applied
 
     def validate(query, schema):
-        with T.span("validate") as sp:
+        with T.span("validate", kind="evaluator") as sp:
             problems = orig_validate(query, schema)
+            unsafe = H.is_unsafe(problems)
             sp.update(input={"cypher": query},
                       output={"problems": problems, "n_problems": len(problems),
-                              "unsafe": H.is_unsafe(problems)},
+                              "unsafe": unsafe},
+                      level=("ERROR" if unsafe else "WARNING" if problems else None),
+                      status_message=("; ".join(problems)[:500] if problems else None),
                       note=(f"{len(problems)} problem(s): " + "; ".join(problems)[:300])
                       if problems else "no schema problems")
             return problems
 
     def _exec(graph, cypher, problems):
         t0 = time.time()
-        with T.span("execute", graph=graph) as sp:
+        with T.span("execute", kind="retriever", graph=graph) as sp:
             res = orig_exec(graph, cypher, problems)
             status = "error" if not res["ok"] else ("empty" if not res["rows"] else "rows")
             sp.update(input={"graph": graph, "cypher": cypher},
@@ -142,6 +164,9 @@ def install():
                               "rows_head": res["rows"][:5]},
                       latency_s=round(res.get("secs") or (time.time() - t0), 3),
                       error=res.get("error"),
+                      level=(None if not res["ok"] else "WARNING" if not res["rows"] else None),
+                      status_message=(None if not res["ok"] else
+                                      "ran but returned no rows" if not res["rows"] else None),
                       note=(f"{status}: {len(res['rows'])} row(s) in "
                             f"{res.get('secs', 0)}s" if res["ok"] else
                             "the query did not run"))
@@ -151,15 +176,19 @@ def install():
         n = getattr(_call_tls, "n", 0)
         _call_tls.n = n + 1
         name = "generate" if n == 0 else ("repair" if n == 1 else f"model_call_{n}")
-        with T.span(name, kind="generation", model=model) as sp:
+        params = {"temperature": temperature, "max_tokens": max_tokens,
+                  "reasoning_effort": reasoning}
+        pname, pver = prompt_identity(name, messages)
+        with T.span(name, kind="generation", model=model, model_parameters=params) as sp:
             r = orig_call(model, messages, budget, temperature, max_tokens, reasoning)
             cost = cost_of(model, r["in"], r["out"])
             sp.update(input=messages, output=r["raw"], model=model,
+                      model_parameters=params,
+                      prompt_name=pname, prompt_version=pver,
                       usage={"input": r["in"], "output": r["out"],
                              "total": r["in"] + r["out"]},
                       cost=cost,
-                      metadata={"temperature": temperature, "reasoning_effort": reasoning,
-                                "reasoning_tokens": r.get("reasoning"),
+                      metadata={"reasoning_tokens": r.get("reasoning"),
                                 "finish_reason": r.get("finish"),
                                 "latency_s": round(r["latency"], 3)},
                       error=r.get("api_error"),
@@ -171,7 +200,7 @@ def install():
         prev = getattr(_call_tls, "n", 0)
         _call_tls.n = 0
         m = model or cfg.get("model", H.SMALL)
-        with T.span("attempt", model=m, temperature=temperature) as sp:
+        with T.span("attempt", kind="chain", model=m, temperature=temperature) as sp:
             try:
                 rec = orig_attempt(ex, cfg, budget, temperature, model, train)
             finally:
@@ -187,13 +216,19 @@ def install():
                                 "statuses": rec["statuses"]},
                       usage={"input": rec["in"], "output": rec["out"]},
                       cost=cost_of(m, rec["in"], rec["out"]),
+                      level=("ERROR" if status == "error" else
+                             "WARNING" if (status == "empty" or rec["repaired"]) else None),
+                      status_message=(res.get("error") if status == "error" else
+                                      "no rows" if status == "empty" else
+                                      "first query failed schema or execution; repaired once"
+                                      if rec["repaired"] else None),
                       note=(f"{m.split('/')[-1]} -> {status}, "
                             f"{'repaired once' if rec['repaired'] else 'no repair needed'}, "
                             f"{rec['calls']} model call(s)"))
             return rec
 
     def vote3(ex, cfg, budget, train=None):
-        with T.span("vote") as sp:
+        with T.span("vote", kind="agent") as sp:
             v = orig_vote(ex, cfg, budget, train)
             per = [{"attempt": i, "cypher": a["cypher"],
                     "status": ("error" if not a["result"]["ok"]
@@ -209,7 +244,7 @@ def install():
             return v
 
     def route(ex, cfg, budget, train=None):
-        with T.span("route") as sp:
+        with T.span("route", kind="agent") as sp:
             v = orig_route(ex, cfg, budget, train)
             big = cfg.get("big_model", H.BIG)
             sp.update(input={"question": ex["question"],
@@ -256,7 +291,7 @@ def adhoc_example(question, graph, rows=None):
 
 
 # ---------------------------------------------------------------- one traced question
-def run_one(ex, cfg, cfg_name, budget, train, session_id=None):
+def run_one(ex, cfg, cfg_name, budget, train, session_id=None, tags=None):
     """Run one question through the harness inside a root trace.
 
     Returns a record dict with the prediction, status, tokens, cost, latency, the local
@@ -265,12 +300,18 @@ def run_one(ex, cfg, cfg_name, budget, train, session_id=None):
     tier = (ex.get("complexity") or {}).get("tier", "unknown")
     gold = ex.get("gold_result")
     t0 = time.time()
+    model_of = {"single": cfg.get("model", H.SMALL), "vote": cfg.get("model", H.SMALL),
+                "route": cfg.get("model", H.SMALL)}
     with T.trace("text2cypher",
-                 tags=[ex["graph"], tier, cfg_name],
-                 graph=ex["graph"], tier=tier, config=cfg_name, row_id=ex.get("id")) as root:
+                 tags=[ex["graph"], tier, cfg_name] + list(tags or []),
+                 graph=ex["graph"], tier=tier, config=cfg_name, row_id=ex.get("id"),
+                 config_detail={k: v for k, v in cfg.items() if k != "schema"},
+                 small_model=model_of[cfg["mode"]], big_model=cfg.get("big_model", H.BIG),
+                 test_set_sha=T.TEST_SET_SHA, release=T.RELEASE,
+                 environment=T.ENVIRONMENT, gold_known=bool(gold)) as root:
         root.update(input={"question": ex["question"], "graph": ex["graph"],
                            "config": cfg_name, "tier": tier},
-                    session_id=session_id)
+                    session_id=session_id, user_id=T.USER_ID, version=T.RELEASE)
         if cfg["mode"] == "single":
             atts = [H.generate_and_repair(ex, cfg, budget, temperature=0.0, train=train)]
             chosen, agreement, escalated = 0, None, False
@@ -302,13 +343,30 @@ def run_one(ex, cfg, cfg_name, budget, train, session_id=None):
                               "in_tokens": tin, "out_tokens": tout,
                               "cost_usd": round(cost, 6), "latency_s": latency,
                               "model_calls": sum(a["calls"] for a in atts)},
-                    usage={"input": tin, "output": tout}, cost=cost)
+                    usage={"input": tin, "output": tout}, cost=cost,
+                    level=("ERROR" if status == "error" else
+                           "WARNING" if (status == "empty" or correct is False) else None),
+                    status_message=(res.get("error") if status == "error" else
+                                    "query ran but returned no rows" if status == "empty" else
+                                    "ran clean but did not match the gold answer"
+                                    if correct is False else None))
+        rid = ex.get("id")
         if correct is not None:
             root.score("correct", 1 if correct else 0, data_type="NUMERIC",
-                       comment=f"execution-equality vs gold ({ex.get('id')})")
-            root.score("correct_lenient", 1 if lenient else 0, data_type="NUMERIC")
-        root.score("latency_s", latency, data_type="NUMERIC")
-        root.score("cost_usd", round(cost, 6), data_type="NUMERIC")
+                       comment=(f"execution-equality against the gold rows for {rid} "
+                                f"(test set {T.TEST_SET_SHA}); "
+                                f"{'match' if correct else 'no match'}, "
+                                f"got {len(res['rows'])} row(s), status {status}"))
+            root.score("correct_lenient", 1 if lenient else 0, data_type="NUMERIC",
+                       comment=(f"secondary metric from score.py for {rid}: set-equality "
+                                f"ignoring row order and column naming"))
+        root.score("latency_s", latency, data_type="NUMERIC",
+                   comment=(f"wall seconds for the whole question, {cfg_name} config, "
+                            f"{sum(a['calls'] for a in atts)} model call(s)"))
+        root.score("cost_usd", round(cost, 6), data_type="NUMERIC",
+                   comment=(f"Fireworks spend for this question: {tin} prompt + {tout} "
+                            f"completion tokens across {len(atts)} attempt(s)"
+                            + (" including the big-model escalation" if escalated else "")))
 
         url = root.url
 
@@ -328,4 +386,7 @@ def status_line():
              f"local_json={'on' if T.LOCAL_ON else 'off'}"]
     if T.LANGFUSE_ON:
         parts.append(f"host={os.environ.get('LANGFUSE_HOST', 'https://cloud.langfuse.com')}")
+        parts.append(f"env={T.ENVIRONMENT}")
+        parts.append(f"release={T.RELEASE}")
+        parts.append(f"user={T.USER_ID}")
     return "tracing: " + "  ".join(parts)

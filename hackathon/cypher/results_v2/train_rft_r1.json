@@ -3,12 +3,12 @@
  "prompt": "v1_plain",
  "mock": false,
  "n": 200,
- "accuracy": 0.35,
+ "accuracy": 0.365,
  "accuracy_lenient": 0.38,
  "invalid_outputs": 15,
  "error_rate": 0.075,
  "empty_rate": 0.145,
- "wrong_rate": 0.43,
+ "wrong_rate": 0.415,
  "p50_latency_s": 1.226,
  "p95_latency_s": 1.993,
  "cost_per_1k_requests_usd": 1.8936,
@@ -91,13 +91,13 @@
  },
  "scorer": "score_v2 (audit/SCORING.md)",
  "accuracy_v1": 0.325,
- "accuracy_v2": 0.35,
- "accuracy_v2_excl_gold_defects": 0.3469,
+ "accuracy_v2": 0.365,
+ "accuracy_v2_excl_gold_defects": 0.3622,
  "by_tier_v2": {
   "easy": {
    "n": 70,
    "accuracy_v1": 0.2143,
-   "accuracy_v2": 0.2571
+   "accuracy_v2": 0.3
   },
   "medium": {
    "n": 87,
@@ -114,7 +114,7 @@
   "fincen": {
    "n": 40,
    "accuracy_v1": 0.3,
-   "accuracy_v2": 0.35
+   "accuracy_v2": 0.45
   },
   "movies": {
    "n": 40,
@@ -129,7 +129,7 @@
   "recommendations": {
    "n": 40,
    "accuracy_v1": 0.375,
-   "accuracy_v2": 0.4
+   "accuracy_v2": 0.375
   },
   "twitter": {
    "n": 40,
@@ -1870,7 +1870,7 @@
    "gold_cypher": "MATCH (m:Movie)\\nWHERE size(m.countries) = 1\\nRETURN m.title, m.imdbRating\\nORDER BY m.imdbRating DESC\\nLIMIT 5",
    "raw": "MATCH (m:Movie)\nWHERE m.languages IS NOT NULL AND size(m.languages) = 1\nWITH m\nORDER BY m.imdbRating DESC\nLIMIT 5\nRETURN m.title AS title, m.imdbRating AS rating<|eot|>",
    "pred_cypher": "MATCH (m:Movie)\nWHERE m.languages IS NOT NULL AND size(m.languages) = 1\nWITH m\nORDER BY m.imdbRating DESC\nLIMIT 5\nRETURN m.title AS title, m.imdbRating AS rating",
-   "exec_status": "correct",
+   "exec_status": "wrong",
    "lenient_status": "wrong",
    "exec_error": null,
    "pred_n_rows": 5,
@@ -1896,7 +1896,7 @@
      "rating": null
     }
    ],
-   "correct": true,
+   "correct": false,
    "pred": "wrong",
    "label": "correct",
    "latency": 1.077,
@@ -1906,9 +1906,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "correct",
+   "exec_status_v2": "wrong",
    "correct_v1": false,
-   "correct_v2": true,
+   "correct_v2": false,
    "gold_defect": false
   },
   {
@@ -3876,7 +3876,7 @@
    "gold_cypher": "MATCH (f:Filing)\\nWHERE f.beneficiary_bank_country = 'Singapore' AND f.amount > 200000\\nRETURN f\\nLIMIT 3",
    "raw": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'Singapore' AND f.amount > 200000\nRETURN f.sar_id AS sar_id\nORDER BY f.begin ASC\nLIMIT 3<|eot|>",
    "pred_cypher": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'Singapore' AND f.amount > 200000\nRETURN f.sar_id AS sar_id\nORDER BY f.begin ASC\nLIMIT 3",
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "wrong",
    "exec_error": null,
    "pred_n_rows": 3,
@@ -3891,7 +3891,7 @@
      "sar_id": "2408"
     }
    ],
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "latency": 1.14,
@@ -3901,9 +3901,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -4897,7 +4897,7 @@
    "gold_cypher": "MATCH (f:Filing)\\nWHERE f.origin_lat = f.beneficiary_lat\\nRETURN f\\nORDER BY f.amount DESC\\nLIMIT 3",
    "raw": "MATCH (f:Filing)\nWITH f\nWHERE f.origin_lat = f.beneficiary_lat\nWITH f\nORDER BY f.amount DESC\nLIMIT 3\nRETURN f.sar_id AS sar_id<|eot|>",
    "pred_cypher": "MATCH (f:Filing)\nWITH f\nWHERE f.origin_lat = f.beneficiary_lat\nWITH f\nORDER BY f.amount DESC\nLIMIT 3\nRETURN f.sar_id AS sar_id",
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "exec_error": null,
    "pred_n_rows": 3,
@@ -4912,7 +4912,7 @@
      "sar_id": "2421"
     }
    ],
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "latency": 1.317,
@@ -4922,9 +4922,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -6813,7 +6813,7 @@
    "gold_cypher": "MATCH (f:Filing)\\nWHERE f.originator_bank_country = 'United Kingdom' AND f.amount > 200000\\nRETURN f\\nLIMIT 3",
    "raw": "MATCH (f:Filing)\nWHERE f.originator_bank_country = 'United Kingdom' AND f.amount > 200000\nRETURN f.sar_id AS sar_id\nORDER BY f.begin ASC\nLIMIT 3<|eot|>",
    "pred_cypher": "MATCH (f:Filing)\nWHERE f.originator_bank_country = 'United Kingdom' AND f.amount > 200000\nRETURN f.sar_id AS sar_id\nORDER BY f.begin ASC\nLIMIT 3",
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "wrong",
    "exec_error": null,
    "pred_n_rows": 3,
@@ -6828,7 +6828,7 @@
      "sar_id": "2343"
     }
    ],
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "latency": 1.204,
@@ -6838,9 +6838,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -7322,7 +7322,7 @@
    "gold_cypher": "MATCH (f:Filing)\\nWHERE f.beneficiary_bank_country = 'United Kingdom'\\nRETURN f",
    "raw": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'United Kingdom'\nRETURN f.sar_id AS sar_id<|eot|>",
    "pred_cypher": "MATCH (f:Filing)\nWHERE f.beneficiary_bank_country = 'United Kingdom'\nRETURN f.sar_id AS sar_id",
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "exec_error": null,
    "pred_n_rows": 120,
@@ -7343,7 +7343,7 @@
      "sar_id": "3038"
     }
    ],
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "latency": 0.838,
@@ -7353,9 +7353,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {

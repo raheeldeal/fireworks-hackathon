@@ -164,3 +164,26 @@ def test_strip_limit_and_order_by_cols():
     assert order_by_key_cols("... ORDER BY genreCount DESC LIMIT 5", ["actor", "genreCount"]) == ["genreCount"]
     assert order_by_key_cols("... ORDER BY m.year LIMIT 5", ["title", "year"]) == ["year"]
     assert order_by_key_cols("... ORDER BY rand() LIMIT 5", ["title"]) == []   # unresolvable -> stay strict
+
+
+def test_v2_null_sort_key_is_not_a_tie():
+    """A NULL ORDER BY key means the gold ordering is meaningless, not that rows tie.
+    Crediting a different query for landing in the NULL region would flatter us."""
+    gold_c = "MATCH (m:Movie) RETURN m.title AS t, m.imdbRating AS r ORDER BY r DESC LIMIT 3"
+    gold = R(["t", "r"], [["A", None], ["B", None], ["C", None]])
+    unl = R(["t", "r"], [["A", None], ["B", None], ["C", None], ["D", None], ["E", None]])
+    assert score_v2(gold, R(["t", "r"], [["A", None], ["D", None], ["E", None]]), gold_c, unl) == "wrong"
+
+
+def test_v2_genuine_all_equal_tie_is_accepted():
+    """All sort keys equal and non-null: the gold query's own top-k really is arbitrary."""
+    gold_c = "MATCH (p:Person) RETURN p.name AS n, p.f AS f ORDER BY f DESC LIMIT 2"
+    gold = R(["n", "f"], [["A", 0], ["B", 0]])
+    unl = R(["n", "f"], [["A", 0], ["B", 0], ["C", 0], ["D", 0]])
+    assert score_v2(gold, R(["n", "f"], [["C", 0], ["D", 0]]), gold_c, unl) == "correct"
+
+
+def test_v2_identifier_search_is_restricted_to_id_like_properties():
+    g = R(["f"], [[{"_labels": ["Filing"], "sar_id": "3146", "amount": 665000}]])
+    assert score_v2(g, R(["sar"], [["3146"]])) == "correct"       # node <-> sar_id
+    assert score_v2(g, R(["amt"], [[665000]])) == "wrong"         # amount is not an identifier

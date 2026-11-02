@@ -1,125 +1,292 @@
 {
  "step": "text2cypher",
  "kind": "span",
- "seconds": 0.005,
+ "seconds": 2.385,
  "input": {
-  "question": "who?"
+  "question": "List the top 5 actors by number of different genres they've acted in.",
+  "graph": "recommendations",
+  "config": "route_big",
+  "tier": "hard"
  },
  "output": {
+  "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+  "status": "rows",
+  "row_count": 5,
   "rows": [
    {
-    "a": 1
+    "actor": "Kurt Russell",
+    "genreCount": 17
+   },
+   {
+    "actor": "Brad Pitt",
+    "genreCount": 17
+   },
+   {
+    "actor": "Johnny Depp",
+    "genreCount": 17
+   },
+   {
+    "actor": "Samuel L. Jackson",
+    "genreCount": 17
+   },
+   {
+    "actor": "Ewan McGregor",
+    "genreCount": 16
    }
   ],
-  "correct": true
+  "columns": [
+   "actor",
+   "genreCount"
+  ],
+  "error": null,
+  "correct": true,
+  "correct_lenient": true,
+  "gold_cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\\nWITH a, count(distinct g) AS genreCount\\nORDER BY genreCount DESC\\nLIMIT 5\\nRETURN a.name AS actor, genreCount AS numberOfGenres"
  },
  "meta": {
-  "graph": "movies",
+  "graph": "recommendations",
   "tier": "hard",
   "config": "route_big",
   "row_id": "t000",
-  "usage": {
-   "input": 303,
-   "output": 60
+  "config_detail": {
+   "mode": "route",
+   "repair": true,
+   "reasoning": "low"
   },
-  "cost_usd": 0.00037,
+  "small_model": "accounts/fireworks/models/glm-5p3-flash",
+  "big_model": "accounts/fireworks/models/glm-5p3",
+  "test_set_sha": "6c47ee00573e",
+  "release": "cypher-harness@6c47ee00573e",
+  "environment": "development",
+  "gold_known": true,
+  "agreement": 3,
+  "escalated": false,
+  "in_tokens": 3288,
+  "out_tokens": 179,
+  "cost_usd": 0.0005827,
+  "latency_s": 2.263,
+  "model_calls": 3,
+  "usage": {
+   "input": 3288,
+   "output": 179
+  },
   "scores": {
    "correct": 1,
-   "latency_s": 2.1
+   "correct_lenient": 1,
+   "latency_s": 2.263,
+   "cost_usd": 0.000583
   }
  },
  "children": [
   {
    "step": "route",
-   "kind": "span",
-   "seconds": 0.003,
-   "input": null,
-   "output": {
-    "escalated": false
+   "kind": "agent",
+   "seconds": 1.952,
+   "input": {
+    "question": "List the top 5 actors by number of different genres they've acted in.",
+    "escalate_below": 2
    },
-   "meta": {},
+   "output": {
+    "escalated": false,
+    "agreement": 3,
+    "chosen": 0,
+    "big_model": null
+   },
+   "meta": {
+    "note": "no escalation; the small model's vote was confident enough"
+   },
    "children": [
     {
      "step": "vote",
-     "kind": "span",
-     "seconds": 0.003,
-     "input": null,
+     "kind": "agent",
+     "seconds": 1.952,
+     "input": {
+      "question": "List the top 5 actors by number of different genres they've acted in.",
+      "n_attempts": 3,
+      "temperature": 0.7
+     },
      "output": {
+      "per_attempt": [
+       {
+        "attempt": 0,
+        "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+        "status": "rows",
+        "row_count": 5
+       },
+       {
+        "attempt": 1,
+        "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+        "status": "rows",
+        "row_count": 5
+       },
+       {
+        "attempt": 2,
+        "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+        "status": "rows",
+        "row_count": 5
+       }
+      ],
       "agreement": 3,
       "chosen": 0
      },
-     "meta": {},
+     "meta": {
+      "note": "3/3 attempts agreed on the same result set; took attempt 0"
+     },
      "children": [
       {
        "step": "attempt",
-       "kind": "span",
-       "seconds": 0.001,
-       "input": null,
+       "kind": "chain",
+       "seconds": 1.882,
+       "input": {
+        "question": "List the top 5 actors by number of different genres they've acted in.",
+        "graph": "recommendations"
+       },
        "output": {
-        "cypher": "MATCH (n) RETURN n",
-        "status": "rows"
+        "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+        "status": "rows",
+        "row_count": 5,
+        "rows_head": [
+         {
+          "actor": "Kurt Russell",
+          "genreCount": 17
+         },
+         {
+          "actor": "Brad Pitt",
+          "genreCount": 17
+         },
+         {
+          "actor": "Johnny Depp",
+          "genreCount": 17
+         },
+         {
+          "actor": "Samuel L. Jackson",
+          "genreCount": 17
+         },
+         {
+          "actor": "Ewan McGregor",
+          "genreCount": 16
+         }
+        ],
+        "problems": [],
+        "repaired": false
        },
        "meta": {
-        "model": "m/small",
+        "model": "accounts/fireworks/models/glm-5p3-flash",
         "temperature": 0.7,
+        "calls": 1,
+        "pruned": false,
+        "in_tokens": 1096,
+        "out_tokens": 59,
+        "statuses": [
+         "rows"
+        ],
+        "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
         "usage": {
-         "input": 100,
-         "output": 20
+         "input": 1096,
+         "output": 59
         },
-        "cost_usd": 0.000123
+        "cost_usd": 0.0001939
        },
        "children": [
         {
          "step": "generate",
          "kind": "generation",
-         "seconds": 0.0,
+         "seconds": 0.703,
          "input": [
           {
+           "role": "system",
+           "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **Genre**\n  - `name`: STRING Example: \"Adventure\"\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\n- **Actor**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bornIn`: STRING Example: \"France\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n- **Director**\n  - `url`: STRING Example: \"https://themoviedb.org/person/88953\"\n  - `bornIn`: STRING Example: \"Burchard, Nebraska, USA\"\n  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01\n  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29\n  - `tmdbId`: STRING Example: \"88953\"\n  - `imdbId`: STRING Example: \"0516001\"\n  - `name`: STRING Example: \"Harold Lloyd\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/er4Z\"\n  - `bio`: STRING Example: \"Harold Lloyd has been called the cinema\u2019s \u201cfirst m\"\n- **Person**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `bornIn`: STRING Example: \"France\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\n- **ACTED_IN**\n  - `role: STRING` Example: \"Officer of the Marines (uncredited)\"\n- **DIRECTED**\n  - `role: STRING` \nThe relationships:\n(:Movie)-[:IN_GENRE]->(:Genre)\n(:User)-[:RATED]->(:Movie)\n(:Actor)-[:ACTED_IN]->(:Movie)\n(:Actor)-[:DIRECTED]->(:Movie)\n(:Director)-[:DIRECTED]->(:Movie)\n(:Director)-[:ACTED_IN]->(:Movie)\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+          },
+          {
            "role": "user",
-           "content": "q"
+           "content": "List the top 5 actors by number of different genres they've acted in."
           }
          ],
-         "output": "MATCH (n) RETURN n",
+         "output": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5",
          "meta": {
-          "model": "m/small",
-          "finish_reason": "stop",
-          "usage": {
-           "input": 100,
-           "output": 20
+          "model": "accounts/fireworks/models/glm-5p3-flash",
+          "model_parameters": {
+           "temperature": 0.7,
+           "max_tokens": 4096,
+           "reasoning_effort": "low"
           },
-          "cost_usd": 0.000123
+          "reasoning_tokens": 0,
+          "finish_reason": "stop",
+          "latency_s": 0.702,
+          "note": "glm-5p3-flash: 1096 prompt + 59 completion tokens, $0.00019, 0.7s",
+          "usage": {
+           "input": 1096,
+           "output": 59,
+           "total": 1155
+          },
+          "cost_usd": 0.0001939,
+          "prompt": {
+           "name": "cypher-generate",
+           "version": "bb05e06e9b78"
+          }
          },
          "children": []
         },
         {
          "step": "validate",
-         "kind": "span",
-         "seconds": 0.0,
+         "kind": "evaluator",
+         "seconds": 0.007,
          "input": {
-          "cypher": "MATCH (n) RETURN n"
+          "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5"
          },
          "output": {
           "problems": [],
-          "n_problems": 0
+          "n_problems": 0,
+          "unsafe": false
          },
-         "meta": {},
+         "meta": {
+          "note": "no schema problems"
+         },
          "children": []
         },
         {
          "step": "execute",
-         "kind": "span",
-         "seconds": 0.0,
+         "kind": "retriever",
+         "seconds": 1.168,
          "input": {
-          "graph": "movies",
-          "cypher": "MATCH (n) RETURN n"
+          "graph": "recommendations",
+          "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nWITH a, count(DISTINCT g) AS genreCount\nRETURN a.name AS actor, genreCount\nORDER BY genreCount DESC\nLIMIT 5"
          },
          "output": {
           "status": "rows",
-          "row_count": 3
+          "row_count": 5,
+          "columns": [
+           "actor",
+           "genreCount"
+          ],
+          "error": null,
+          "rows_head": [
+           {
+            "actor": "Kurt Russell",
+            "genreCount": 17
+           },
+           {
+            "actor": "Brad Pitt",
+            "genreCount": 17
+           },
+           {
+            "actor": "Johnny Depp",
+            "genreCount": 17
+           },
+           {
+            "actor": "Samuel L. Jackson",
+            "genreCount": 17
+           },
+           {
+            "actor": "Ewan McGregor",
+            "genreCount": 16
+           }
+          ]
          },
          "meta": {
-          "graph": "movies",
-          "latency_s": 1.2
+          "graph": "recommendations",
+          "latency_s": 1.167,
+          "note": "rows: 5 row(s) in 1.167s"
          },
          "children": []
         }
@@ -127,74 +294,158 @@
       },
       {
        "step": "attempt",
-       "kind": "span",
-       "seconds": 0.001,
-       "input": null,
+       "kind": "chain",
+       "seconds": 1.95,
+       "input": {
+        "question": "List the top 5 actors by number of different genres they've acted in.",
+        "graph": "recommendations"
+       },
        "output": {
-        "cypher": "MATCH (n) RETURN n",
-        "status": "rows"
+        "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+        "status": "rows",
+        "row_count": 5,
+        "rows_head": [
+         {
+          "actor": "Kurt Russell",
+          "genreCount": 17
+         },
+         {
+          "actor": "Brad Pitt",
+          "genreCount": 17
+         },
+         {
+          "actor": "Johnny Depp",
+          "genreCount": 17
+         },
+         {
+          "actor": "Samuel L. Jackson",
+          "genreCount": 17
+         },
+         {
+          "actor": "Ewan McGregor",
+          "genreCount": 16
+         }
+        ],
+        "problems": [],
+        "repaired": false
        },
        "meta": {
-        "model": "m/small",
+        "model": "accounts/fireworks/models/glm-5p3-flash",
         "temperature": 0.7,
+        "calls": 1,
+        "pruned": false,
+        "in_tokens": 1096,
+        "out_tokens": 60,
+        "statuses": [
+         "rows"
+        ],
+        "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
         "usage": {
-         "input": 101,
-         "output": 20
+         "input": 1096,
+         "output": 60
         },
-        "cost_usd": 0.000123
+        "cost_usd": 0.0001944
        },
        "children": [
         {
          "step": "generate",
          "kind": "generation",
-         "seconds": 0.0,
+         "seconds": 0.824,
          "input": [
           {
+           "role": "system",
+           "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **Genre**\n  - `name`: STRING Example: \"Adventure\"\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\n- **Actor**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bornIn`: STRING Example: \"France\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n- **Director**\n  - `url`: STRING Example: \"https://themoviedb.org/person/88953\"\n  - `bornIn`: STRING Example: \"Burchard, Nebraska, USA\"\n  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01\n  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29\n  - `tmdbId`: STRING Example: \"88953\"\n  - `imdbId`: STRING Example: \"0516001\"\n  - `name`: STRING Example: \"Harold Lloyd\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/er4Z\"\n  - `bio`: STRING Example: \"Harold Lloyd has been called the cinema\u2019s \u201cfirst m\"\n- **Person**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `bornIn`: STRING Example: \"France\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\n- **ACTED_IN**\n  - `role: STRING` Example: \"Officer of the Marines (uncredited)\"\n- **DIRECTED**\n  - `role: STRING` \nThe relationships:\n(:Movie)-[:IN_GENRE]->(:Genre)\n(:User)-[:RATED]->(:Movie)\n(:Actor)-[:ACTED_IN]->(:Movie)\n(:Actor)-[:DIRECTED]->(:Movie)\n(:Director)-[:DIRECTED]->(:Movie)\n(:Director)-[:ACTED_IN]->(:Movie)\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+          },
+          {
            "role": "user",
-           "content": "q"
+           "content": "List the top 5 actors by number of different genres they've acted in."
           }
          ],
-         "output": "MATCH (n) RETURN n",
+         "output": "```cypher\nMATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5\n```",
          "meta": {
-          "model": "m/small",
-          "finish_reason": "stop",
-          "usage": {
-           "input": 101,
-           "output": 20
+          "model": "accounts/fireworks/models/glm-5p3-flash",
+          "model_parameters": {
+           "temperature": 0.7,
+           "max_tokens": 4096,
+           "reasoning_effort": "low"
           },
-          "cost_usd": 0.000123
+          "reasoning_tokens": 0,
+          "finish_reason": "stop",
+          "latency_s": 0.823,
+          "note": "glm-5p3-flash: 1096 prompt + 60 completion tokens, $0.00019, 0.8s",
+          "usage": {
+           "input": 1096,
+           "output": 60,
+           "total": 1156
+          },
+          "cost_usd": 0.0001944,
+          "prompt": {
+           "name": "cypher-generate",
+           "version": "bb05e06e9b78"
+          }
          },
          "children": []
         },
         {
          "step": "validate",
-         "kind": "span",
-         "seconds": 0.0,
+         "kind": "evaluator",
+         "seconds": 0.001,
          "input": {
-          "cypher": "MATCH (n) RETURN n"
+          "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5"
          },
          "output": {
           "problems": [],
-          "n_problems": 0
+          "n_problems": 0,
+          "unsafe": false
          },
-         "meta": {},
+         "meta": {
+          "note": "no schema problems"
+         },
          "children": []
         },
         {
          "step": "execute",
-         "kind": "span",
-         "seconds": 0.0,
+         "kind": "retriever",
+         "seconds": 1.123,
          "input": {
-          "graph": "movies",
-          "cypher": "MATCH (n) RETURN n"
+          "graph": "recommendations",
+          "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5"
          },
          "output": {
           "status": "rows",
-          "row_count": 3
+          "row_count": 5,
+          "columns": [
+           "actor",
+           "genreCount"
+          ],
+          "error": null,
+          "rows_head": [
+           {
+            "actor": "Kurt Russell",
+            "genreCount": 17
+           },
+           {
+            "actor": "Brad Pitt",
+            "genreCount": 17
+           },
+           {
+            "actor": "Johnny Depp",
+            "genreCount": 17
+           },
+           {
+            "actor": "Samuel L. Jackson",
+            "genreCount": 17
+           },
+           {
+            "actor": "Ewan McGregor",
+            "genreCount": 16
+           }
+          ]
          },
          "meta": {
-          "graph": "movies",
-          "latency_s": 1.2
+          "graph": "recommendations",
+          "latency_s": 1.122,
+          "note": "rows: 5 row(s) in 1.122s"
          },
          "children": []
         }
@@ -202,74 +453,158 @@
       },
       {
        "step": "attempt",
-       "kind": "span",
-       "seconds": 0.001,
-       "input": null,
+       "kind": "chain",
+       "seconds": 1.947,
+       "input": {
+        "question": "List the top 5 actors by number of different genres they've acted in.",
+        "graph": "recommendations"
+       },
        "output": {
-        "cypher": "MATCH (n) RETURN n",
-        "status": "rows"
+        "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5",
+        "status": "rows",
+        "row_count": 5,
+        "rows_head": [
+         {
+          "actor": "Kurt Russell",
+          "genreCount": 17
+         },
+         {
+          "actor": "Brad Pitt",
+          "genreCount": 17
+         },
+         {
+          "actor": "Johnny Depp",
+          "genreCount": 17
+         },
+         {
+          "actor": "Samuel L. Jackson",
+          "genreCount": 17
+         },
+         {
+          "actor": "Ewan McGregor",
+          "genreCount": 16
+         }
+        ],
+        "problems": [],
+        "repaired": false
        },
        "meta": {
-        "model": "m/small",
+        "model": "accounts/fireworks/models/glm-5p3-flash",
         "temperature": 0.7,
+        "calls": 1,
+        "pruned": false,
+        "in_tokens": 1096,
+        "out_tokens": 60,
+        "statuses": [
+         "rows"
+        ],
+        "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
         "usage": {
-         "input": 102,
-         "output": 20
+         "input": 1096,
+         "output": 60
         },
-        "cost_usd": 0.000123
+        "cost_usd": 0.0001944
        },
        "children": [
         {
          "step": "generate",
          "kind": "generation",
-         "seconds": 0.0,
+         "seconds": 0.83,
          "input": [
           {
+           "role": "system",
+           "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **Movie**\n  - `url`: STRING Example: \"https://themoviedb.org/movie/862\"\n  - `runtime`: INTEGER Min: 2, Max: 910\n  - `revenue`: INTEGER Min: 1, Max: 2787965087\n  - `imdbRating`: FLOAT Min: 1.6, Max: 9.6\n  - `released`: STRING Example: \"1995-11-22\"\n  - `countries`: LIST Min Size: 1, Max Size: 16\n  - `languages`: LIST Min Size: 1, Max Size: 19\n  - `plot`: STRING Example: \"A cowboy doll is profoundly threatened and jealous\"\n  - `imdbVotes`: INTEGER Min: 13, Max: 1626900\n  - `imdbId`: STRING Example: \"0114709\"\n  - `year`: INTEGER Min: 1902, Max: 2016\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/uXDf\"\n  - `movieId`: STRING Example: \"1\"\n  - `tmdbId`: STRING Example: \"862\"\n  - `title`: STRING Example: \"Toy Story\"\n  - `budget`: INTEGER Min: 1, Max: 380000000\n- **Genre**\n  - `name`: STRING Example: \"Adventure\"\n- **User**\n  - `userId`: STRING Example: \"1\"\n  - `name`: STRING Example: \"Omar Huffman\"\n- **Actor**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bornIn`: STRING Example: \"France\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n- **Director**\n  - `url`: STRING Example: \"https://themoviedb.org/person/88953\"\n  - `bornIn`: STRING Example: \"Burchard, Nebraska, USA\"\n  - `born`: DATE Min: 1861-12-08, Max: 2018-05-01\n  - `died`: DATE Min: 1930-08-26, Max: 2976-09-29\n  - `tmdbId`: STRING Example: \"88953\"\n  - `imdbId`: STRING Example: \"0516001\"\n  - `name`: STRING Example: \"Harold Lloyd\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/er4Z\"\n  - `bio`: STRING Example: \"Harold Lloyd has been called the cinema\u2019s \u201cfirst m\"\n- **Person**\n  - `url`: STRING Example: \"https://themoviedb.org/person/1271225\"\n  - `died`: DATE Example: \"1954-01-01\"\n  - `bornIn`: STRING Example: \"France\"\n  - `born`: DATE Example: \"1877-02-04\"\n  - `imdbId`: STRING Example: \"2083046\"\n  - `name`: STRING Example: \"Fran\u00e7ois Lallement\"\n  - `poster`: STRING Example: \"https://image.tmdb.org/t/p/w440_and_h660_face/6DCW\"\n  - `tmdbId`: STRING Example: \"1271225\"\n  - `bio`: STRING Example: \"\u200bFrom Wikipedia, the free encyclopedia  Lillian Di\"\nRelationship properties:\n- **RATED**\n  - `rating: FLOAT` Example: \"2.0\"\n  - `timestamp: INTEGER` Example: \"1260759108\"\n- **ACTED_IN**\n  - `role: STRING` Example: \"Officer of the Marines (uncredited)\"\n- **DIRECTED**\n  - `role: STRING` \nThe relationships:\n(:Movie)-[:IN_GENRE]->(:Genre)\n(:User)-[:RATED]->(:Movie)\n(:Actor)-[:ACTED_IN]->(:Movie)\n(:Actor)-[:DIRECTED]->(:Movie)\n(:Director)-[:DIRECTED]->(:Movie)\n(:Director)-[:ACTED_IN]->(:Movie)\n(:Person)-[:ACTED_IN]->(:Movie)\n(:Person)-[:DIRECTED]->(:Movie)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
+          },
+          {
            "role": "user",
-           "content": "q"
+           "content": "List the top 5 actors by number of different genres they've acted in."
           }
          ],
-         "output": "MATCH (n) RETURN n",
+         "output": "```cypher\nMATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5\n```",
          "meta": {
-          "model": "m/small",
-          "finish_reason": "stop",
-          "usage": {
-           "input": 102,
-           "output": 20
+          "model": "accounts/fireworks/models/glm-5p3-flash",
+          "model_parameters": {
+           "temperature": 0.7,
+           "max_tokens": 4096,
+           "reasoning_effort": "low"
           },
-          "cost_usd": 0.000123
+          "reasoning_tokens": 0,
+          "finish_reason": "stop",
+          "latency_s": 0.83,
+          "note": "glm-5p3-flash: 1096 prompt + 60 completion tokens, $0.00019, 0.8s",
+          "usage": {
+           "input": 1096,
+           "output": 60,
+           "total": 1156
+          },
+          "cost_usd": 0.0001944,
+          "prompt": {
+           "name": "cypher-generate",
+           "version": "bb05e06e9b78"
+          }
          },
          "children": []
         },
         {
          "step": "validate",
-         "kind": "span",
-         "seconds": 0.0,
+         "kind": "evaluator",
+         "seconds": 0.001,
          "input": {
-          "cypher": "MATCH (n) RETURN n"
+          "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5"
          },
          "output": {
           "problems": [],
-          "n_problems": 0
+          "n_problems": 0,
+          "unsafe": false
          },
-         "meta": {},
+         "meta": {
+          "note": "no schema problems"
+         },
          "children": []
         },
         {
          "step": "execute",
-         "kind": "span",
-         "seconds": 0.0,
+         "kind": "retriever",
+         "seconds": 1.115,
          "input": {
-          "graph": "movies",
-          "cypher": "MATCH (n) RETURN n"
+          "graph": "recommendations",
+          "cypher": "MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)-[:IN_GENRE]->(g:Genre)\nRETURN a.name AS actor, count(DISTINCT g.name) AS genreCount\nORDER BY genreCount DESC\nLIMIT 5"
          },
          "output": {
           "status": "rows",
-          "row_count": 3
+          "row_count": 5,
+          "columns": [
+           "actor",
+           "genreCount"
+          ],
+          "error": null,
+          "rows_head": [
+           {
+            "actor": "Kurt Russell",
+            "genreCount": 17
+           },
+           {
+            "actor": "Brad Pitt",
+            "genreCount": 17
+           },
+           {
+            "actor": "Johnny Depp",
+            "genreCount": 17
+           },
+           {
+            "actor": "Samuel L. Jackson",
+            "genreCount": 17
+           },
+           {
+            "actor": "Ewan McGregor",
+            "genreCount": 16
+           }
+          ]
          },
          "meta": {
-          "graph": "movies",
-          "latency_s": 1.2
+          "graph": "recommendations",
+          "latency_s": 1.114,
+          "note": "rows: 5 row(s) in 1.114s"
          },
          "children": []
         }

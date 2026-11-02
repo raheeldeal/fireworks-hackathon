@@ -3,12 +3,12 @@
  "prompt": "v1_plain",
  "mock": false,
  "n": 100,
- "accuracy": 0.48,
+ "accuracy": 0.49,
  "accuracy_lenient": 0.62,
  "invalid_outputs": 3,
  "error_rate": 0.03,
  "empty_rate": 0.01,
- "wrong_rate": 0.48,
+ "wrong_rate": 0.47,
  "p50_latency_s": 2.508,
  "p95_latency_s": 11.933,
  "cost_per_1k_requests_usd": 3.1277,
@@ -83,8 +83,8 @@
  },
  "scorer": "score_v2 (audit/SCORING.md)",
  "accuracy_v1": 0.48,
- "accuracy_v2": 0.48,
- "accuracy_v2_excl_gold_defects": 0.4845,
+ "accuracy_v2": 0.49,
+ "accuracy_v2_excl_gold_defects": 0.4948,
  "by_tier_v2": {
   "easy": {
    "n": 35,
@@ -94,7 +94,7 @@
   "medium": {
    "n": 43,
    "accuracy_v1": 0.6047,
-   "accuracy_v2": 0.6047
+   "accuracy_v2": 0.6279
   },
   "hard": {
    "n": 22,
@@ -106,7 +106,7 @@
   "fincen": {
    "n": 19,
    "accuracy_v1": 0.5263,
-   "accuracy_v2": 0.5263
+   "accuracy_v2": 0.5789
   },
   "movies": {
    "n": 23,
@@ -708,7 +708,7 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\\nRETURN f.sar_id",
    "raw": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\nRETURN DISTINCT f",
    "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\nRETURN DISTINCT f",
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "exec_error": null,
    "pred_n_rows": 1,
@@ -745,7 +745,7 @@
      }
     }
    ],
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "latency": 11.933,
@@ -755,9 +755,9 @@
    "finish_reason": "stop",
    "api_error": null,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {

@@ -140,9 +140,10 @@ def write_rescore_md(table, skipped):
          "|---|---|---|---|---|---|---|---|"]
     for name, o in table:
         L.append(f"| {name.replace('.json','')} | {o['n']} | {o['accuracy_v1']:.1%} | {o['accuracy_v2']:.1%} | "
-                 f"{o['accuracy_v2']-o['accuracy_v1']:+.1f} pp | {o['accuracy_v2_excl_gold_defects']:.1%} | "
+                 f"{100*(o['accuracy_v2']-o['accuracy_v1']):+.1f} pp | {o['accuracy_v2_excl_gold_defects']:.1%} | "
                  f"{o['error_rate']:.1%} | {o['empty_rate']:.1%} |")
-    L += ["", "## Per-tier (easy 70 / medium 87 / hard 43 on the 200-row set)", "",
+    L += ["", "## Per-tier (easy 70 / medium 87 / hard 43 on the 200-row set; the n=100 files cover",
+          "the first 100 rows, so their tier counts are smaller but the pattern is the same)", "",
           "| config | easy v1 | easy v2 | medium v1 | medium v2 | hard v1 | hard v2 | monotone easy>=med>=hard? |",
           "|---|---|---|---|---|---|---|---|"]
     mono = 0
@@ -158,7 +159,31 @@ def write_rescore_md(table, skipped):
         L.append(f"| {name.replace('.json','')} | {bt['easy']['accuracy_v1']:.1%} | {e:.1%} | "
                  f"{bt['medium']['accuracy_v1']:.1%} | {m:.1%} | {bt['hard']['accuracy_v1']:.1%} | {h:.1%} | "
                  f"{'yes' if ok else 'NO'} |")
-    L += ["", f"Monotone (easy >= medium >= hard) under v2: **{mono} of {tot} configs**.", ""]
+    L += ["", f"Monotone (easy >= medium >= hard) under v2: **{mono} of {tot} configs**.", "",
+          "## THE SANITY CHECK STILL FAILS. Read this before quoting any tier number.", "",
+          f"Only {mono} of {tot} configs satisfy easy >= medium >= hard under v2 (the one that does is the",
+          "gold self-run at 100%). v2 lifts the easy tier by 4 to 8 points, more than any other tier,",
+          "but easy remains the **worst** tier for every model. We did not add rules until the check",
+          "passed, because the audit says the check is testing the wrong thing:",
+          "",
+          "**`tier` is not a difficulty label.** `score.complexity()` assigns `easy` to any gold query",
+          "with one hop and no aggregation. In this dataset that selects the rows whose questions are",
+          "the *least specified*, not the least difficult: bare lookups where the gold author freely",
+          "chose the projection (`RETURN m` vs `RETURN m.title` vs `RETURN m.title, m.votes`) and freely",
+          "invented an ordering for \"first 3\". Medium and hard questions name their aggregate (\"how",
+          "many\", \"the average\", \"top 5 by X\"), which pins the projection and removes that freedom.",
+          "",
+          "The hand audit (`MISS_AUDIT.md`) measured this on 36 easy misses: 2 are real model errors,",
+          "20 are scoring artifacts (15 of them projection-only, which v2 deliberately does not excuse),",
+          "11 are gold defects and 7 are ambiguous questions. So easy-tier accuracy is mostly measuring",
+          "gold-projection noise. Three honest options, for a human:",
+          "",
+          "1. Quote overall v2 accuracy and **stop reporting the tier breakdown as a difficulty curve**.",
+          "2. Relabel the tiers from the *question* (does it name a count, an order, a projection?)",
+          "   rather than from the gold Cypher's shape.",
+          "3. Fix the gold projections in a future test set; `data/test.jsonl` is frozen here by",
+          "   `data/TEST_HASH`, so this cannot be done in this submission.",
+          ""]
     if skipped:
         L += ["Skipped: " + ", ".join(skipped), ""]
     open(os.path.join(HERE, "RESCORE.md"), "w").write("\n".join(L) + "\n")

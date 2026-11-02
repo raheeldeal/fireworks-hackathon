@@ -10,14 +10,14 @@
  "seed": 2,
  "mock": false,
  "n": 200,
- "accuracy": 0.57,
+ "accuracy": 0.58,
  "accuracy_lenient": 0.665,
  "accuracy_ungated": 0.54,
  "invalid_outputs": 0,
  "invalid_by_validator": 0,
  "error_rate": 0.0,
  "empty_rate": 0.005,
- "wrong_rate": 0.425,
+ "wrong_rate": 0.415,
  "p50_latency_s": 1.768,
  "p95_latency_s": 5.825,
  "cost_per_1k_requests_usd": 0.2728,
@@ -98,8 +98,8 @@
  },
  "scorer": "score_v2 (audit/SCORING.md)",
  "accuracy_v1": 0.54,
- "accuracy_v2": 0.57,
- "accuracy_v2_excl_gold_defects": 0.5816,
+ "accuracy_v2": 0.58,
+ "accuracy_v2_excl_gold_defects": 0.5918,
  "by_tier_v2": {
   "easy": {
    "n": 70,
@@ -109,7 +109,7 @@
   "medium": {
    "n": 87,
    "accuracy_v1": 0.5977,
-   "accuracy_v2": 0.6322
+   "accuracy_v2": 0.6552
   },
   "hard": {
    "n": 43,
@@ -121,7 +121,7 @@
   "fincen": {
    "n": 40,
    "accuracy_v1": 0.575,
-   "accuracy_v2": 0.6
+   "accuracy_v2": 0.65
   },
   "movies": {
    "n": 40,
@@ -847,10 +847,10 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\\nRETURN f.sar_id",
    "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\nRETURN f",
    "validation_problems": [],
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "ungated_status": "wrong",
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -914,9 +914,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -12915,10 +12915,10 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR|:BENEFITS]->(e:Entity)\\nWITH f, COUNT(DISTINCT e) AS entityCount\\nORDER BY entityCount DESC\\nLIMIT 3\\nRETURN f.sar_id AS filing_id, entityCount",
    "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR|BENEFITS]->(e:Entity)\nWITH f, count(DISTINCT e) AS numEntities\nRETURN f, numEntities\nORDER BY numEntities DESC\nLIMIT 3",
    "validation_problems": [],
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "ungated_status": "wrong",
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -13041,9 +13041,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {

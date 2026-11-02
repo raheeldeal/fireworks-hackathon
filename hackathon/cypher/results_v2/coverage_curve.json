@@ -1,0 +1,26 @@
+[
+  {
+    "policy": "answer only if 3/3 agree",
+    "coverage": 0.6925,
+    "precision_v1": 0.6191,
+    "precision_v2": 0.648,
+    "n_row_runs": 554,
+    "runs_pooled": 4
+  },
+  {
+    "policy": "answer if >=2/3 agree",
+    "coverage": 0.9337,
+    "precision_v1": 0.5395,
+    "precision_v2": 0.5783,
+    "n_row_runs": 747,
+    "runs_pooled": 4
+  },
+  {
+    "policy": "answer everything",
+    "coverage": 1.0,
+    "precision_v1": 0.5175,
+    "precision_v2": 0.555,
+    "n_row_runs": 800,
+    "runs_pooled": 4
+  }
+]

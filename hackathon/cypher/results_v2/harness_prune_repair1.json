@@ -11,14 +11,14 @@
  "seed": 0,
  "mock": false,
  "n": 200,
- "accuracy": 0.52,
+ "accuracy": 0.525,
  "accuracy_lenient": 0.6,
  "accuracy_ungated": 0.475,
  "invalid_outputs": 1,
  "invalid_by_validator": 0,
  "error_rate": 0.005,
  "empty_rate": 0.025,
- "wrong_rate": 0.45,
+ "wrong_rate": 0.445,
  "p50_latency_s": 0.937,
  "p95_latency_s": 2.117,
  "cost_per_1k_requests_usd": 0.1305,
@@ -99,18 +99,18 @@
  },
  "scorer": "score_v2 (audit/SCORING.md)",
  "accuracy_v1": 0.475,
- "accuracy_v2": 0.52,
- "accuracy_v2_excl_gold_defects": 0.5306,
+ "accuracy_v2": 0.525,
+ "accuracy_v2_excl_gold_defects": 0.5357,
  "by_tier_v2": {
   "easy": {
    "n": 70,
    "accuracy_v1": 0.4429,
-   "accuracy_v2": 0.5143
+   "accuracy_v2": 0.5
   },
   "medium": {
    "n": 87,
    "accuracy_v1": 0.5287,
-   "accuracy_v2": 0.5517
+   "accuracy_v2": 0.5747
   },
   "hard": {
    "n": 43,
@@ -122,7 +122,7 @@
   "fincen": {
    "n": 40,
    "accuracy_v1": 0.525,
-   "accuracy_v2": 0.575
+   "accuracy_v2": 0.625
   },
   "movies": {
    "n": 40,
@@ -137,7 +137,7 @@
   "recommendations": {
    "n": 40,
    "accuracy_v1": 0.45,
-   "accuracy_v2": 0.475
+   "accuracy_v2": 0.45
   },
   "twitter": {
    "n": 40,
@@ -860,10 +860,10 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\\nRETURN f.sar_id",
    "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(o:Entity), (f)-[:BENEFITS]->(b:Entity)\nWHERE o = b\nRETURN f",
    "validation_problems": [],
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "ungated_status": "wrong",
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -927,9 +927,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -2447,10 +2447,10 @@
    "gold_cypher": "MATCH (m:Movie)\\nWHERE size(m.countries) = 1\\nRETURN m.title, m.imdbRating\\nORDER BY m.imdbRating DESC\\nLIMIT 5",
    "pred_cypher": "MATCH (m:Movie)\nWHERE size(m.languages) = 1\nRETURN m.title, m.imdbRating\nORDER BY m.imdbRating DESC\nLIMIT 5",
    "validation_problems": [],
-   "exec_status": "correct",
+   "exec_status": "wrong",
    "lenient_status": "wrong",
    "ungated_status": "wrong",
-   "correct": true,
+   "correct": false,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -2495,9 +2495,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "correct",
+   "exec_status_v2": "wrong",
    "correct_v1": false,
-   "correct_v2": true,
+   "correct_v2": false,
    "gold_defect": false
   },
   {
@@ -12975,10 +12975,10 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR|:BENEFITS]->(e:Entity)\\nWITH f, COUNT(DISTINCT e) AS entityCount\\nORDER BY entityCount DESC\\nLIMIT 3\\nRETURN f.sar_id AS filing_id, entityCount",
    "pred_cypher": "MATCH (f:Filing)-[r:ORIGINATOR|BENEFITS]->(e:Entity)\nRETURN f, count(DISTINCT e) AS entityCount\nORDER BY entityCount DESC\nLIMIT 3",
    "validation_problems": [],
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "ungated_status": "wrong",
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -13101,9 +13101,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {

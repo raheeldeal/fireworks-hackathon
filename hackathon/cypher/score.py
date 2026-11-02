@@ -196,13 +196,31 @@ def _is_entity(v):
     return isinstance(v, dict) and ("_labels" in v or "_type" in v)
 
 
-def _ident(v):
+def _ident_candidates(res):
+    """Identifier-like property names present on the node/relationship objects in a result,
+    most canonical first: name, title, id, then any *id / *_id key (movieId, sar_id, ...).
+    Only identifier-like names, so a plain data property (m.year) is never an identity."""
+    seen = []
+    for r in res["rows"]:
+        for v in _vals(r, res.get("columns") or []):
+            if not _is_entity(v):
+                continue
+            for k in v:
+                if k.startswith("_") or k in seen:
+                    continue
+                kl = k.lower()
+                if kl in ID_PROPS or kl.endswith("id") or kl.endswith("_id"):
+                    seen.append(k)
+    return sorted(seen, key=lambda k: (ID_PROPS.index(k.lower()) if k.lower() in ID_PROPS else 9, k))
+
+
+def _ident(v, prefer=None):
     """Reduce a node/relationship to its identifying property so that `RETURN m` and
     `RETURN m.title` describe the same set of entities. Non-entities pass through."""
     if not _is_entity(v):
         return norm(v)
-    for p in ID_PROPS:
-        if p in v:
+    for p in ([prefer] if prefer else []) + list(ID_PROPS):
+        if p and p in v:
             return norm(v[p])
     for k in v:  # <label>Id style keys, e.g. movieId, userId
         if k.lower().endswith("id") and not k.startswith("_"):
@@ -217,14 +235,14 @@ def _vals(row, columns):
     return list(row)
 
 
-def _rowkey(row, columns, ident=False):
+def _rowkey(row, columns, ident=False, prefer=None):
     """One row as an order-free key: column order ignored (values sorted), column names ignored."""
-    vals = [(_ident(v) if ident else norm(v)) for v in _vals(row, columns)]
+    vals = [(_ident(v, prefer) if ident else norm(v)) for v in _vals(row, columns)]
     return tuple(sorted(vals, key=repr))
 
 
-def _bag(res, ident=False):
-    return Counter(_rowkey(r, res.get("columns") or [], ident) for r in res["rows"])
+def _bag(res, ident=False, prefer=None):
+    return Counter(_rowkey(r, res.get("columns") or [], ident, prefer) for r in res["rows"])
 
 
 def _flat_scalars(res):
@@ -272,9 +290,12 @@ def score_v2(gold, pred, gold_cypher="", gold_unlimited=None):
     if gb == pb:
         return "correct"                                            # R1-R6
 
-    gi, pi = _bag(gold, ident=True), _bag(pred, ident=True)         # R7 node <-> id property
-    if gi == pi:
-        return "correct"
+    # R7 node <-> identifying property. Try each identifier-like property present, and accept if
+    # ANY single consistent choice makes the two results equal. Applied uniformly to both sides,
+    # and restricted to identifier-like names, so projecting a data property (m.year) never matches.
+    for prefer in [None] + _ident_candidates(gold) + _ident_candidates(pred):
+        if _bag(gold, True, prefer) == _bag(pred, True, prefer):
+            return "correct"
 
     if _single_col_or_list(gold) and _single_col_or_list(pred):     # R8 list <-> rows
         if _flat_scalars(gold) == _flat_scalars(pred):
@@ -283,13 +304,18 @@ def score_v2(gold, pred, gold_cypher="", gold_unlimited=None):
     # R9 LIMIT non-determinism: the gold query itself may legitimately return other rows.
     if has_limit(gold_cypher) and gold_unlimited and gold_unlimited.get("ok") and gold_unlimited["rows"]:
         if len(pred["rows"]) == len(gold["rows"]):
-            ub, ui = _bag(gold_unlimited), _bag(gold_unlimited, ident=True)
-            inside = _sub_multiset(pb, ub) or _sub_multiset(pi, ui)
+            inside = _sub_multiset(pb, _bag(gold_unlimited))
+            for prefer in ([None] + _ident_candidates(gold_unlimited) + _ident_candidates(pred)) \
+                    if not inside else []:
+                if _sub_multiset(_bag(pred, True, prefer), _bag(gold_unlimited, True, prefer)):
+                    inside = True
+                    break
             if inside:
                 keys = order_by_key_cols(gold_cypher, gold.get("columns") or [])
                 if not has_order_by(gold_cypher):
                     return "correct"                                # no ORDER BY: any such set is valid
-                if keys:
+                if keys and not any(r.get(c) is None for r in gold["rows"] for c in keys):
+                    # a NULL sort key means the gold ordering is meaningless, not a tie: stay strict
                     gk = Counter(tuple(norm(r[c]) for c in keys) for r in gold["rows"]
                                  if all(c in r for c in keys))
                     pcols = order_by_key_cols(gold_cypher, pred.get("columns") or [])

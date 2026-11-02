@@ -35,6 +35,8 @@ def main():
     ap.add_argument("--spread", action="store_true",
                     help="spread the slice across graphs and tiers instead of taking the first N")
     ap.add_argument("--session", default=None, help="Langfuse session id (default: demo_batch_<ts>)")
+    ap.add_argument("--tag", action="append", default=[],
+                    help="extra Langfuse trace tag; repeatable")
     args = ap.parse_args()
 
     if "FIREWORKS_API_KEY" not in os.environ:
@@ -61,7 +63,8 @@ def main():
 
     def one(ex):
         try:
-            rec = I.run_one(ex, cfg, args.config, budget, train, session_id=session)
+            rec = I.run_one(ex, cfg, args.config, budget, train,
+                            session_id=session, tags=args.tag)
         except I.H.BudgetExceeded:
             print(f"  {ex['id']}: budget cap reached, stopping")
             return None

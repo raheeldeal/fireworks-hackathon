@@ -22,15 +22,76 @@ OpenTelemetry context Langfuse nests on) is carried into ThreadPoolExecutor work
 the harness's three parallel vote attempts nest under the vote span instead of
 detaching into three orphan trees.
 """
-import atexit, json, os, threading, time
+import atexit, json, os, re, threading, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+CYPHER_DIR = os.path.dirname(HERE)
 LOCAL_DUMP_PATH = os.path.join(HERE, "last_trace.json")
 MAX_LOCAL_STR = 4000  # local JSON only; Langfuse gets the untruncated value
 
 LANGFUSE_ON = bool(os.environ.get("LANGFUSE_PUBLIC_KEY"))
 LOCAL_ON = os.environ.get("CYPHER_TRACE_LOCAL", "").lower() in ("1", "true", "yes", "on")
 ACTIVE = LANGFUSE_ON or LOCAL_ON
+
+
+# ---------------------------------------------------------------- run identity
+def test_set_sha(short=12):
+    """The locked test set's sha256, read from data/TEST_HASH. '' when unavailable.
+
+    Carried on every trace so a judge can tell which test set an answer was scored
+    against, and so a trace from a different test set cannot be confused with it.
+    """
+    path = os.path.join(CYPHER_DIR, "data", "TEST_HASH")
+    try:
+        with open(path) as f:
+            sha = f.read().split()[0]
+        return sha[:short] if short else sha
+    except Exception:  # noqa: BLE001  the file is optional
+        return ""
+
+
+TEST_SET_SHA = test_set_sha()
+
+# Langfuse `environment` keeps demo traces out of any production dashboard. Our scored
+# eval runs are untraced entirely, so nothing here is production traffic.
+ENVIRONMENT = os.environ.get("CYPHER_TRACE_ENV", "development")
+# Langfuse `release` pins a trace to a build. No git here, so the locked test set's hash
+# is the thing that actually determines whether two runs are comparable.
+RELEASE = os.environ.get("CYPHER_TRACE_RELEASE") or (
+    f"cypher-harness@{TEST_SET_SHA}" if TEST_SET_SHA else "cypher-harness@unknown")
+# Langfuse `user_id`: who issued the request. One demo operator, not an end user.
+USER_ID = os.environ.get("CYPHER_TRACE_USER", "hackathon-demo")
+
+
+# ---------------------------------------------------------------- masking
+# Defence in depth. Nothing we put in a span should contain a credential: model calls
+# carry prompt messages only, and the API key lives in a header the harness builds
+# itself. This guarantees it even if that ever changes.
+_SECRET_RE = re.compile(
+    r"(sk-lf-[A-Za-z0-9\-]{8,}|pk-lf-[A-Za-z0-9\-]{8,}|sk-[A-Za-z0-9_\-]{16,}"
+    r"|fw_[A-Za-z0-9]{16,}|Bearer\s+[A-Za-z0-9._\-]{12,}"
+    r"|(?i:api[_-]?key\"?\s*[:=]\s*\"?)[A-Za-z0-9._\-]{12,})")
+REDACTED = "***REDACTED***"
+
+
+def _scrub(v, depth=0):
+    if isinstance(v, str):
+        return _SECRET_RE.sub(REDACTED, v)
+    if depth > 8:
+        return v
+    if isinstance(v, dict):
+        return {k: _scrub(x, depth + 1) for k, x in v.items()}
+    if isinstance(v, (list, tuple)):
+        return [_scrub(x, depth + 1) for x in v]
+    return v
+
+
+def mask(*, data=None, **_kw):
+    """Langfuse mask hook: redact anything that looks like a credential."""
+    try:
+        return _scrub(data)
+    except Exception:  # noqa: BLE001  never let masking break a span
+        return data
 
 _tls = threading.local()
 _client = None
@@ -54,6 +115,7 @@ def client():
                     secret_key=os.environ.get("LANGFUSE_SECRET_KEY", ""),
                     host=os.environ.get("LANGFUSE_HOST", "https://cloud.langfuse.com"),
                     flush_at=20, flush_interval=2.0,
+                    environment=ENVIRONMENT, release=RELEASE, mask=mask,
                 )
             except Exception as e:  # noqa: BLE001  keys wrong, SDK missing, no network
                 _client_err = repr(e)[:300]
@@ -71,7 +133,22 @@ def flush():
             print(f"[tracing] flush failed: {e!r}")
 
 
-atexit.register(flush)
+def shutdown():
+    """Flush and stop the background exporter. Registered at exit.
+
+    `flush()` empties the queue but leaves the exporter running; a process that exits
+    mid-export can still drop the tail. `shutdown()` is the one that guarantees
+    delivery, so it is what runs on the way out.
+    """
+    c = _client
+    if c is not None:
+        try:
+            c.shutdown()
+        except Exception as e:  # noqa: BLE001
+            print(f"[tracing] shutdown failed: {e!r}")
+
+
+atexit.register(shutdown)
 
 
 # ---------------------------------------------------------------- local span tree
@@ -139,7 +216,9 @@ class Handle:
 
     # ---- data
     def update(self, input=None, output=None, metadata=None, usage=None, cost=None,
-               model=None, level=None, tags=None, error=None, session_id=None, **extra):
+               model=None, level=None, tags=None, error=None, session_id=None,
+               user_id=None, version=None, model_parameters=None, status_message=None,
+               prompt_name=None, prompt_version=None, **extra):
         n = self.node
         if n is not None:
             if input is not None:
@@ -156,6 +235,14 @@ class Handle:
                 n.meta["cost_usd"] = cost
             if model:
                 n.meta["model"] = model
+            if model_parameters:
+                n.meta["model_parameters"] = model_parameters
+            if prompt_name:
+                n.meta["prompt"] = {"name": prompt_name, "version": prompt_version}
+            if level:
+                n.meta["level"] = level
+            if status_message:
+                n.meta["status_message"] = str(status_message)[:500]
             if error:
                 n.error = error
         if self.lf is not None:
@@ -166,19 +253,33 @@ class Handle:
                 kw["output"] = output
             md = dict(metadata or {})
             md.update(extra)
+            if prompt_name:
+                # Prompt identity on the generation. Full Langfuse prompt management
+                # would mean fetching the prompt text from Langfuse, which lives in
+                # harness.py and must not be edited, so the name/version/hash of the
+                # prompt actually sent is recorded instead.
+                md["prompt_name"] = prompt_name
+                if prompt_version is not None:
+                    md["prompt_version"] = prompt_version
             if md:
                 kw["metadata"] = md
             if model:
                 kw["model"] = model
+            if model_parameters:
+                kw["model_parameters"] = model_parameters
             if usage:
                 kw["usage_details"] = usage
             if cost is not None:
                 kw["cost_details"] = {"total": cost}
+            if version:
+                kw["version"] = version
             if error:
                 kw["level"] = "ERROR"
                 kw["status_message"] = str(error)[:500]
             elif level:
                 kw["level"] = level
+                if status_message:
+                    kw["status_message"] = str(status_message)[:500]
             try:
                 if kw:
                     self.lf.update(**kw)
@@ -187,6 +288,10 @@ class Handle:
                     tkw["tags"] = list(tags)
                 if session_id:
                     tkw["session_id"] = session_id
+                if user_id:
+                    tkw["user_id"] = user_id
+                if version:
+                    tkw["version"] = version
                 if self.is_root and input is not None:
                     tkw["input"] = input
                 if self.is_root and output is not None:
@@ -262,17 +367,19 @@ class _Ctx:
         c = client()
         if c is not None:
             try:
-                start = c.start_as_current_generation if self.kind == "generation" else c.start_as_current_span
-                kw = {"name": self.name}
+                kw = {"name": self.name, "as_type": OBSERVATION_TYPES.get(self.kind, "span")}
                 if self.meta:
                     kw["metadata"] = self.meta
-                if self.kind == "generation" and self.meta.get("model"):
+                if self.meta.get("model"):
                     kw["model"] = self.meta["model"]
-                self._cm = start(**kw)
+                if self.meta.get("model_parameters"):
+                    kw["model_parameters"] = self.meta["model_parameters"]
+                self._cm = c.start_as_current_observation(**kw)
                 lf = self._cm.__enter__()
                 if self.is_root:
                     lf.update_trace(name=self.name, tags=list(self.tags or []),
-                                    metadata=self.meta or None)
+                                    metadata=self.meta or None,
+                                    user_id=USER_ID, version=RELEASE)
                 elif self.tags:
                     lf.update_trace(tags=list(self.tags))
             except Exception as e:  # noqa: BLE001
@@ -312,8 +419,24 @@ class _Ctx:
         return False
 
 
+# Langfuse observation types. Typing each step as what it actually is (rather than a
+# generic span) is what makes the Agent Graph and the model-level analytics work.
+OBSERVATION_TYPES = {
+    "span": "span",
+    "generation": "generation",   # a model call
+    "agent": "agent",             # decides the flow: route, vote
+    "chain": "chain",             # links steps: one generate-validate-execute attempt
+    "retriever": "retriever",     # read-only lookup: schema pruning, Cypher execution
+    "evaluator": "evaluator",     # judges correctness: schema validation
+    "tool": "tool",
+    "guardrail": "guardrail",
+    "embedding": "embedding",
+    "event": "event",
+}
+
+
 def span(name, kind="span", tags=None, **meta):
-    """A nested span. kind="generation" marks it as a model call in Langfuse."""
+    """A nested span. `kind` is a Langfuse observation type; see OBSERVATION_TYPES."""
     return _Ctx(name, kind, False, tags, meta)
 
 

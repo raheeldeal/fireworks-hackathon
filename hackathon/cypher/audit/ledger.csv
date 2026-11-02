@@ -1,0 +1,2 @@
+timestamp,item,model_calls,cost_usd,note
+2026-11-02T12:40:00,scorer_audit_v2,0,0.000000,"2738 Neo4j re-executions of stored pred_cypher + gold-without-LIMIT (free public demo server); no Fireworks/model calls"

@@ -1824,3 +1824,12 @@ timestamp,model,in_tokens,out_tokens,cost,note
 2026-11-02T12:09:44,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1718,2407,0.000567,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
 2026-11-02T12:09:45,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1744,485,0.000184,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
 2026-11-02T12:10:10,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1705,1247,0.000335,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:17:04,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1746,576,0.000202,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:18:08,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1701,533,0.000192,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:18:14,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1711,2125,0.000511,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:18:15,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1749,418,0.000171,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:18:19,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1701,720,0.000229,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:20:25,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1722,744,0.000235,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:20:28,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1705,675,0.000220,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:22:35,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1717,922,0.000270,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0
+2026-11-02T12:22:55,accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b,1729,453,0.000177,nemotron-lightning-3p5-30b-a3b:v1_plain+mt4096:s0

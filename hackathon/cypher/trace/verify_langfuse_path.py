@@ -39,14 +39,17 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def attempt(i):
-    with T.span("attempt", model="m/small", temperature=0.7) as sp:
-        with T.span("generate", kind="generation", model="m/small") as g:
+    with T.span("attempt", kind="chain", model="m/small", temperature=0.7) as sp:
+        with T.span("generate", kind="generation", model="m/small",
+                    model_parameters={"temperature": 0.7, "max_tokens": 4096}) as g:
             g.update(input=[{"role": "user", "content": "q"}], output="MATCH (n) RETURN n",
                      model="m/small", usage={"input": 100 + i, "output": 20},
-                     cost=0.000123, metadata={"finish_reason": "stop"})
-        with T.span("validate") as v:
+                     cost=0.000123, metadata={"finish_reason": "stop"},
+                     model_parameters={"temperature": 0.7, "max_tokens": 4096},
+                     prompt_name="cypher-generate", prompt_version="abc123def456")
+        with T.span("validate", kind="evaluator") as v:
             v.update(input={"cypher": "MATCH (n) RETURN n"}, output={"problems": [], "n_problems": 0})
-        with T.span("execute", graph="movies") as e:
+        with T.span("execute", kind="retriever", graph="movies") as e:
             e.update(input={"graph": "movies", "cypher": "MATCH (n) RETURN n"},
                      output={"status": "rows", "row_count": 3}, latency_s=1.2)
         sp.update(output={"cypher": "MATCH (n) RETURN n", "status": "rows"},
@@ -57,8 +60,8 @@ def attempt(i):
 with T.trace("text2cypher", tags=["movies", "hard", "route_big"],
              graph="movies", tier="hard", config="route_big", row_id="t000") as root:
     root.update(input={"question": "who?"}, session_id="verify_session")
-    with T.span("route") as r:
-        with T.span("vote") as v:
+    with T.span("route", kind="agent") as r:
+        with T.span("vote", kind="agent") as v:
             with ThreadPoolExecutor(3) as pool:
                 list(pool.map(attempt, range(3)))
             v.update(output={"agreement": 3, "chosen": 0})
@@ -113,5 +116,49 @@ assert "movies" in str(rattrs.get("langfuse.trace.tags")), rattrs.get("langfuse.
 assert "correct" in str(rattrs.get("langfuse.trace.output"))
 assert rattrs.get("session.id") == "verify_session"
 assert url and "/traces/" in url, url
+
+# --- observation types: each step typed as what it is, not a generic span
+types = {s.name: dict(s.attributes).get("langfuse.observation.type") for s in spans}
+assert types["generate"] == "generation", types
+assert types["attempt"] == "chain", types
+assert types["validate"] == "evaluator", types
+assert types["execute"] == "retriever", types
+assert types["route"] == "agent" and types["vote"] == "agent", types
+print("\nobservation types:", json.dumps(types, sort_keys=True))
+
+# --- model parameters and prompt identity on the generation
+assert any("model_parameters" in k for k in attrs), "model_parameters missing"
+assert "cypher-generate" in str(attrs), "prompt_name missing"
+
+# --- identity: user, release/version, environment
+assert rattrs.get("user.id") == T.USER_ID, rattrs.get("user.id")
+assert str(rattrs.get("langfuse.version")) == T.RELEASE, rattrs.get("langfuse.version")
+assert T.TEST_SET_SHA, "test set hash did not load from data/TEST_HASH"
+print("release:", T.RELEASE, " environment:", T.ENVIRONMENT, " user:", T.USER_ID)
+
+# --- masking: nothing credential-shaped can reach Langfuse even if it reached a span.
+# These are synthetic strings of the right SHAPE only. No real credential belongs in
+# this repo, which is shared; the live keys are exported inline at run time.
+shapes = {
+    "fireworks": "fw_" + "0" * 24,
+    "langfuse_secret": "sk-lf-" + "0000aaaa-1111-2222-3333-444455556666",
+    "langfuse_public": "pk-lf-" + "0000aaaa-1111-2222-3333-444455556666",
+    "bearer_header": "Bearer " + "x" * 20,
+    "generic_sk": "sk-" + "y" * 24,
+}
+for label, s in shapes.items():
+    masked = T.mask(data={"messages": [{"role": "system", "content": f"key={s}"}]})
+    assert s not in json.dumps(masked), f"{label} survived masking: {masked}"
+    assert T.REDACTED in json.dumps(masked), f"{label} not redacted: {masked}"
+assert T.mask(data={"cypher": "MATCH (n) RETURN n"}) == {"cypher": "MATCH (n) RETURN n"}, \
+    "masking altered an ordinary Cypher payload"
+print("masking:", len(shapes), "credential shapes redacted; ordinary payloads untouched")
+
+# --- no credential-shaped string appeared in any exported span
+blob = json.dumps([{k: str(v) for k, v in dict(s.attributes).items()} for s in spans])
+for pat in ("fw_", "sk-lf-", "pk-lf-", "FIREWORKS_API_KEY", "Bearer "):
+    assert pat not in blob, f"{pat!r} found in exported spans"
+print("span audit: no credential-shaped string in any of the", len(spans), "exported spans")
+
 print("\nALL ASSERTIONS PASSED")
 print("local tree steps:", json.dumps(T.last_tree(), default=str)[:120], "...")

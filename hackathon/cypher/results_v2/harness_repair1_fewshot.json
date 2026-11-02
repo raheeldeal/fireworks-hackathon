@@ -105,12 +105,12 @@
   "easy": {
    "n": 70,
    "accuracy_v1": 0.4286,
-   "accuracy_v2": 0.4857
+   "accuracy_v2": 0.4714
   },
   "medium": {
    "n": 87,
    "accuracy_v1": 0.6092,
-   "accuracy_v2": 0.6322
+   "accuracy_v2": 0.6437
   },
   "hard": {
    "n": 43,
@@ -122,7 +122,7 @@
   "fincen": {
    "n": 40,
    "accuracy_v1": 0.5,
-   "accuracy_v2": 0.55
+   "accuracy_v2": 0.575
   },
   "movies": {
    "n": 40,
@@ -137,7 +137,7 @@
   "recommendations": {
    "n": 40,
    "accuracy_v1": 0.475,
-   "accuracy_v2": 0.5
+   "accuracy_v2": 0.475
   },
   "twitter": {
    "n": 40,
@@ -861,10 +861,10 @@
    "gold_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f)\\nRETURN f.sar_id",
    "pred_cypher": "MATCH (f:Filing)-[:ORIGINATOR]->(e1:Entity), (f)-[:BENEFITS]->(e2:Entity)\nWHERE e1 = e2\nRETURN f",
    "validation_problems": [],
-   "exec_status": "wrong",
+   "exec_status": "correct",
    "lenient_status": "correct",
    "ungated_status": "wrong",
-   "correct": false,
+   "correct": true,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -928,9 +928,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "wrong",
+   "exec_status_v2": "correct",
    "correct_v1": false,
-   "correct_v2": false,
+   "correct_v2": true,
    "gold_defect": false
   },
   {
@@ -2467,10 +2467,10 @@
    "gold_cypher": "MATCH (m:Movie)\\nWHERE size(m.countries) = 1\\nRETURN m.title, m.imdbRating\\nORDER BY m.imdbRating DESC\\nLIMIT 5",
    "pred_cypher": "MATCH (m:Movie)\nWHERE size(m.languages) = 1\nRETURN m.title, m.imdbRating\nORDER BY m.imdbRating DESC\nLIMIT 5",
    "validation_problems": [],
-   "exec_status": "correct",
+   "exec_status": "wrong",
    "lenient_status": "wrong",
    "ungated_status": "wrong",
-   "correct": true,
+   "correct": false,
    "pred": "wrong",
    "label": "correct",
    "exec_error": null,
@@ -2515,9 +2515,9 @@
    "api_error": null,
    "truncated": false,
    "exec_status_v1": "wrong",
-   "exec_status_v2": "correct",
+   "exec_status_v2": "wrong",
    "correct_v1": false,
-   "correct_v2": true,
+   "correct_v2": false,
    "gold_defect": false
   },
   {

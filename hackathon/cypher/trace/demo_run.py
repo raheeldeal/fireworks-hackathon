@@ -32,6 +32,10 @@ def main():
                     help="replay a locked test row by id (e.g. t000) so `correct` is scored")
     ap.add_argument("--config", default="route_big", choices=sorted(I.CONFIGS))
     ap.add_argument("--reasoning", default="low", help="low | medium | high | default")
+    ap.add_argument("--model", help="override the small model (e.g. a fine-tuned checkpoint)")
+    ap.add_argument("--session", help="Langfuse session id (default: demo_run_<config>_<time>)")
+    ap.add_argument("--tag", action="append", default=[],
+                    help="extra Langfuse trace tag; repeatable")
     ap.add_argument("--json", action="store_true", help="also print the span tree as JSON")
     args = ap.parse_args()
 
@@ -42,6 +46,8 @@ def main():
 
     cfg = dict(I.CONFIGS[args.config],
                reasoning=None if args.reasoning == "default" else args.reasoning)
+    if args.model:
+        cfg["model"] = args.model
     rows = I.load_test()
     if args.from_test:
         ex = next((r for r in rows if r["id"] == args.from_test), None)
@@ -54,12 +60,17 @@ def main():
     train = I.load_train() if cfg.get("fewshot") else None
     budget = I.new_budget()
 
+    import time as _t
+    session = args.session or f"demo_run_{args.config}_{_t.strftime('%H%M%S')}"
+
     print(I.status_line())
     print(f"config: {args.config}   graph: {ex['graph']}   tier: {(ex.get('complexity') or {}).get('tier')}")
+    print(f"session: {session}" + (f"   tags: {', '.join(args.tag)}" if args.tag else ""))
     print(f"question: {ex['question']}\n")
 
     try:
-        rec = I.run_one(ex, cfg, args.config, budget, train, session_id="demo_run")
+        rec = I.run_one(ex, cfg, args.config, budget, train,
+                        session_id=session, tags=args.tag)
     finally:
         I.record_spend(budget, f"demo_run {args.config} id={ex.get('id')}")
         T.flush()

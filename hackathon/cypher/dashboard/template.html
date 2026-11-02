@@ -89,6 +89,7 @@
     <button role="tab" aria-selected="true" data-tab="tab-overview">Overview</button>
     <button role="tab" aria-selected="false" data-tab="tab-waterfall">Waterfall &amp; fixes</button>
     <button role="tab" aria-selected="false" data-tab="tab-pareto">Model Pareto</button>
+    <button role="tab" aria-selected="false" data-tab="tab-heldout">Held-out exam</button>
   </div>
   <div id="tab-overview">
   <div class="tiles" id="tiles"></div>
@@ -145,6 +146,21 @@
       <p class="sub">End-to-end seconds per question, including the database round trips. No published latency for Claude.</p>
       <div id="mp-lat"></div></section>
     <section class="card"><h2>The numbers</h2><div class="scroll"><table id="mp-table"></table></div></section>
+  </div>
+  <div id="tab-heldout" hidden>
+    <section class="card"><h2>Held-out exam: CypherBench vs our main test</h2>
+      <p class="sub">100 CypherBench test questions on two graphs no model saw in training (flight_accident, nba), run through the same
+        harness and scorer. Retrieved examples come from the same graph, and these graphs have none, so every config runs without examples.
+        Bars show accuracy with 95% CI; the main-test bar is the same setup on our 200 test questions, where it was run.</p>
+      <div id="cb-bars"></div><div class="legend" id="cb-legend"></div></section>
+    <section class="card"><h2>First try to escalation, held-out vs main test</h2>
+      <p class="sub">Accuracy after each harness stage. On the main test, fine-tuning lifts the first try; on unseen graphs it does not,
+        and escalation to Kimi K3 recovers most of the gap.</p>
+      <div class="row"><div><h2>Held-out (CypherBench, n=100)</h2><div id="cb-st-held"></div></div>
+                       <div><h2>Main test (n=200)</h2><div id="cb-st-main"></div></div></div>
+      <div class="legend" id="cb-st-legend"></div></section>
+    <section class="card"><h2>The numbers</h2><p class="sub">Held-out accuracy by graph and difficulty, cost per 1,000 questions, median latency.</p>
+      <div class="scroll"><table id="cb-table"></table></div></section>
   </div>
   <div id="tab-waterfall" hidden>
     <section class="card"><h2>From open model to best system</h2>
@@ -522,6 +538,82 @@ function modelParetoTab() {
   }
 }
 
+// ---------- held-out tab: CypherBench next to the main test ----------
+function heldoutTab() {
+  const rows = DATA.cypherbench || [];
+  for (const id of ["cb-bars", "cb-legend", "cb-st-held", "cb-st-main", "cb-st-legend", "cb-table"]) document.getElementById(id).replaceChildren();
+  if (!rows.length) { el("p", { class: "muted", text: "No CypherBench results yet." }, document.getElementById("cb-bars")); return; }
+  // paired bars: held-out (group color) and main test (neutral), each with its CI
+  const rowH = 46, W = 1100, m = { l: 300, r: 230, t: 8, b: 30 }, H = m.t + m.b + rowH * rows.length;
+  const x = linear(0, 1, m.l, W - m.r), svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Held-out vs main test" }, document.getElementById("cb-bars"));
+  for (const t of [0, .2, .4, .6, .8, 1]) {
+    el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b, stroke: css("--grid") }, svg);
+    el("text", { x: x(t), y: H - m.b + 16, "text-anchor": "middle", text: (100 * t) + "%" }, svg);
+  }
+  const bar = (g, cy, v, ci, fill) => {
+    el("path", { d: `M${x(0)},${cy - 7} h${x(v) - x(0) - 3} a3,3 0 0 1 3,3 v8 a3,3 0 0 1 -3,3 h${-(x(v) - x(0) - 3)} z`, fill }, g);
+    el("line", { x1: x(ci[0]), x2: x(ci[1]), y1: cy, y2: cy, stroke: css("--ink"), "stroke-width": 1.5 }, g);
+    for (const e of ci) el("line", { x1: x(e), x2: x(e), y1: cy - 4, y2: cy + 4, stroke: css("--ink"), "stroke-width": 1.5 }, g);
+  };
+  rows.forEach((r, i) => {
+    const top = m.t + i * rowH, g = el("g", {}, svg), c = css(GROUP[r.group][0]);
+    el("text", { class: "lbl", x: m.l - 10, y: top + rowH / 2 + 4, "text-anchor": "end", text: r.name }, svg);
+    bar(g, top + 13, r.accuracy, r.ci95, c);
+    if (r.main) bar(g, top + 31, r.main.accuracy, r.main.ci95, css("--neutral"));
+    el("text", { class: "lbl", x: W - m.r + 12, y: top + 17, text: `${pct(r.accuracy)} held-out`, style: "font-weight:700;fill:var(--ink)" }, g);
+    el("text", { class: "lbl", x: W - m.r + 12, y: top + 35, text: r.main ? `${pct(r.main.accuracy)} main test (${r.main.id})` : "not run on main test" }, g);
+    el("rect", { x: 0, y: top, width: W, height: rowH, fill: "transparent" }, g);
+    hover(g, r.name, [["held-out accuracy", pct(r.accuracy)], ["95% CI", `${pct(r.ci95[0])} – ${pct(r.ci95[1])}`],
+                      ["flight_accident / nba", `${pct(r.by_graph.flight_accident)} / ${pct(r.by_graph.nba)}`]]
+          .concat(r.main ? [["main test", pct(r.main.accuracy)]] : []));
+  });
+  legend(document.getElementById("cb-legend"), [["--s1", "Held-out, Muse 30B (ours)"], ["--s3", "Held-out, other open models"], ["--neutral", "Main test, same setup"]]);
+  // stage lines for the configs that run the full harness, one panel per test set
+  const harness = rows.filter(r => Object.keys(r.stages).length > 1), colors = ["--s1", "--s2", "--s4"];
+  const panel = (target, pick) => {
+    const W = 520, H = 260, m = { l: 44, r: 56, t: 12, b: 36 }, ends = [];
+    const x = linear(0, STAGES_CB.length - 1, m.l + 30, W - m.r), y = linear(0.4, 0.8, H - m.b, m.t);
+    const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Accuracy by harness stage" }, target);
+    for (const t of niceTicks(y.lo, y.hi)) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), stroke: css("--grid") }, svg);
+      el("text", { x: m.l - 6, y: y(t) + 4, "text-anchor": "end", text: (100 * t).toFixed(0) + "%" }, svg);
+    }
+    STAGES_CB.forEach(([, name], i) => el("text", { x: x(i), y: H - m.b + 18, "text-anchor": "middle", text: name }, svg));
+    harness.forEach((r, k) => {
+      const st = pick(r); if (!st) return;
+      const pts = STAGES_CB.map(([s], i) => [i, st[s]]).filter(p => p[1] !== undefined);
+      el("polyline", { points: pts.map(([i, v]) => `${x(i)},${y(v)}`).join(" "), fill: "none", stroke: css(colors[k]), "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+      for (const [i, v] of pts) {
+        const g = el("g", {}, svg);
+        el("circle", { cx: x(i), cy: y(v), r: 4, fill: css(colors[k]), stroke: css("--surface"), "stroke-width": 1.5 }, g);
+        el("circle", { cx: x(i), cy: y(v), r: 10, fill: "transparent" }, g);
+        hover(g, r.name, [[STAGES_CB[i][1], pct(v)]]);
+      }
+      ends.push([y(pts[pts.length - 1][1]), pct(pts[pts.length - 1][1]), colors[k]]);
+    });
+    let last = -Infinity;  // end labels right of the lines, nudged down so close values don't overlap
+    for (const [py, text] of ends.sort((a, b) => a[0] - b[0])) {
+      last = Math.max(py + 4, last + 13);
+      el("text", { class: "lbl", x: x(STAGES_CB.length - 1) + 10, y: last, text }, svg);
+    }
+  };
+  panel(document.getElementById("cb-st-held"), r => r.stages);
+  panel(document.getElementById("cb-st-main"), r => r.main && r.main.stages);
+  legend(document.getElementById("cb-st-legend"), harness.map((r, k) => [colors[k], r.name, "line"]));
+  // table
+  const t = document.getElementById("cb-table"), h = el("tr", {}, t);
+  ["config", "held-out", "95% CI", "flight_accident", "nba", "easy", "medium", "hard", "main test", "$ / 1,000 q", "median latency"]
+    .forEach((c, i) => el("th", { class: i ? "num" : "", text: c }, h));
+  for (const r of rows) {
+    const tr = el("tr", {}, t);
+    el("td", { text: r.name }, tr);
+    for (const v of [pct(r.accuracy), `${pct(r.ci95[0])} – ${pct(r.ci95[1])}`, pct(r.by_graph.flight_accident), pct(r.by_graph.nba),
+                     pct(r.by_tier.easy), pct(r.by_tier.medium), pct(r.by_tier.hard), r.main ? pct(r.main.accuracy) : "–",
+                     "$" + (1000 * r.cost_per_question).toFixed(2), r.p50_secs.toFixed(2) + " s"]) el("td", { class: "num", text: v }, tr);
+  }
+}
+const STAGES_CB = [["first", "first try"], ["fix", "+ arrow fix"], ["repair", "+ repair"], ["escalate", "+ escalate"]];
+
 // ---------- waterfall tab: steps and the questions each step fixed or broke ----------
 let wfSelected = null;
 function waterfallTab() {
@@ -633,13 +725,13 @@ pick.addEventListener("change", render);
 for (const id of ["f-outcome", "f-graph", "f-q"]) document.getElementById(id).addEventListener("input", () => explorer(DATA.configs.find(c => c.id === pick.value)));
 document.getElementById("theme").addEventListener("click", () => {
   const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  document.documentElement.dataset.theme = dark ? "light" : "dark"; render();
+  document.documentElement.dataset.theme = dark ? "light" : "dark"; render(); heldoutTab();
 });
 render();
 for (const g of DATA.graphs) el("option", { text: g }, document.getElementById("wf-graph"));
 document.getElementById("wf-graph").addEventListener("input", fixesPanel);
 wfSelected = DATA.waterfall.steps.find(s => s.label.startsWith("SFT:")) || DATA.waterfall.steps.find(s => s.kind === "step");  // open on the headline step
-waterfallTab(); fixesPanel(); modelParetoTab();
+waterfallTab(); fixesPanel(); modelParetoTab(); heldoutTab();
 function showTab(id) {
   for (const o of document.querySelectorAll(".tabs button")) {
     o.setAttribute("aria-selected", String(o.dataset.tab === id)); document.getElementById(o.dataset.tab).hidden = o.dataset.tab !== id;
@@ -648,7 +740,7 @@ function showTab(id) {
 for (const b of document.querySelectorAll(".tabs button")) b.addEventListener("click", () => {
   showTab(b.dataset.tab); history.replaceState(null, "", "#" + b.dataset.tab.replace("tab-", ""));
 });
-const fromHash = "tab-" + location.hash.slice(1);  // linkable: index.html#waterfall, index.html#pareto
+const fromHash = "tab-" + location.hash.slice(1);  // linkable: index.html#waterfall, index.html#pareto, index.html#heldout
 if (document.getElementById(fromHash)) showTab(fromHash);
 </script>
 </body>

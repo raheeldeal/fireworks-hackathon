@@ -1,0 +1,3973 @@
+{
+ "tag": "cb_r1_base",
+ "split": "test",
+ "data": "cypherbench/test.jsonl",
+ "model": "accounts/fireworks/models/muse-glimmer-30b",
+ "retriever": "keyword",
+ "shots": 0,
+ "escalate_model": null,
+ "config": {
+  "shots": 0,
+  "fix": false,
+  "repair": 0,
+  "escalate": null,
+  "warn": false
+ },
+ "created": "2026-11-02T15:30:54",
+ "summary": {
+  "n": 100,
+  "correct": 63,
+  "accuracy": 0.63,
+  "ci95": [
+   0.5322,
+   0.7182
+  ],
+  "outcomes": {
+   "correct": 63,
+   "empty": 17,
+   "wrong": 19,
+   "error": 1
+  },
+  "by_stage": {
+   "first": 63,
+   "fix": 0,
+   "repair": 0,
+   "escalate": 0,
+   "wrong": 37
+  },
+  "by_graph": {
+   "flight_accident": 0.66,
+   "nba": 0.6
+  },
+  "by_tier": {
+   "easy": 0.5682,
+   "hard": 0.6316,
+   "medium": 0.7027
+  },
+  "cost": 0.162369,
+  "cost_per_question": 0.001624,
+  "cost_per_correct": 0.002577,
+  "calls_per_question": 1.0,
+  "p50_secs": 1.003,
+  "p90_secs": 1.558
+ },
+ "views": {
+  "first": {
+   "n": 100,
+   "correct": 63,
+   "accuracy": 0.63,
+   "ci95": [
+    0.5322,
+    0.7182
+   ],
+   "outcomes": {
+    "correct": 63,
+    "empty": 17,
+    "wrong": 19,
+    "error": 1
+   },
+   "by_stage": {
+    "first": 63,
+    "fix": 0,
+    "repair": 0,
+    "escalate": 0,
+    "wrong": 37
+   },
+   "by_graph": {
+    "flight_accident": 0.66,
+    "nba": 0.6
+   },
+   "by_tier": {
+    "easy": 0.5682,
+    "hard": 0.6316,
+    "medium": 0.7027
+   },
+   "cost": 0.162369,
+   "cost_per_question": 0.001624,
+   "cost_per_correct": 0.002577,
+   "calls_per_question": 1.0,
+   "p50_secs": 1.003,
+   "p90_secs": 1.558
+  }
+ },
+ "rows": [
+  {
+   "id": "c6b5eee2-20b5-4240-9443-6fbc960acfd1",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Which country is L\u00edneas A\u00e9reas Nacionales S. A. based in?",
+   "gold_cypher": "MATCH (n:Operator {name: 'L\u00edneas A\u00e9reas Nacionales S. A.'}) WITH DISTINCT n RETURN n.country",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (o:Operator {name: 'L\u00edneas A\u00e9reas Nacionales S. A.'})\nRETURN o.country",
+     "cypher": "MATCH (o:Operator {name: 'L\u00edneas A\u00e9reas Nacionales S. A.'})\nRETURN o.country",
+     "calls": 1,
+     "in_tokens": 647,
+     "out_tokens": 24,
+     "cost": 0.0013852399999999998,
+     "secs": 1.1480367183685303,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "o.country": "Peru"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.197,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (o:Operator {name: 'L\u00edneas A\u00e9reas Nacionales S. A.'})\nRETURN o.country",
+   "stage": "first"
+  },
+  {
+   "id": "88ab24c3-8798-49a0-90e6-7143a5cb7370",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of players who were either drafted by the Boston Celtics or play as a center?",
+   "gold_cypher": "CALL { MATCH (n:Player)-[r0:draftedBy]->(m0:Team {name: 'Boston Celtics'}) RETURN n, m0 as m UNION MATCH (n:Player)-[r1:playsPosition]->(m1:Position {name: 'center'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:draftedBy]->(:Team {name: 'Boston Celtics'})\nWITH p AS player\nMATCH (p2:Player)-[:playsPosition]->(:Position {name: 'Center'})\nWITH COLLECT(DISTINCT player) + COLLECT(DISTINCT p2) AS players\nUNWIND players AS p\nRETURN DISTINCT p.name",
+     "cypher": "MATCH (p:Player)-[:draftedBy]->(:Team {name: 'Boston Celtics'})\nWITH p AS player\nMATCH (p2:Player)-[:playsPosition]->(:Position {name: 'Center'})\nWITH COLLECT(DISTINCT player) + COLLECT(DISTINCT p2) AS players\nUNWIND players AS p\nRETURN DISTINCT p.name",
+     "calls": 1,
+     "in_tokens": 770,
+     "out_tokens": 75,
+     "cost": 0.0018752,
+     "secs": 2.0333468914031982,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.093,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:draftedBy]->(:Team {name: 'Boston Celtics'})\nWITH p AS player\nMATCH (p2:Player)-[:playsPosition]->(:Position {name: 'Center'})\nWITH COLLECT(DISTINCT player) + COLLECT(DISTINCT p2) AS players\nUNWIND players AS p\nRETURN DISTINCT p.name",
+   "stage": "first"
+  },
+  {
+   "id": "143d6181-d481-433f-b355-251634bc22a7",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "How many distinct aircraft manufacturers are there?",
+   "gold_cypher": "MATCH (n:AircraftManufacturer) WITH DISTINCT n RETURN count(DISTINCT n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer)\nRETURN count(DISTINCT m) AS manufacturerCount",
+     "cypher": "MATCH (m:AircraftManufacturer)\nRETURN count(DISTINCT m) AS manufacturerCount",
+     "calls": 1,
+     "in_tokens": 639,
+     "out_tokens": 17,
+     "cost": 0.0013354,
+     "secs": 0.9797651767730713,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "manufacturerCount": 58
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.077,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer)\nRETURN count(DISTINCT m) AS manufacturerCount",
+   "stage": "first"
+  },
+  {
+   "id": "50c09ddc-f73d-4f75-b73b-7c9afa53ff5e",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "What are the names of positions played by players who also play as center, and how many such players are there for each position?",
+   "gold_cypher": "MATCH (n:Position)<-[r0:playsPosition]-(m0:Player)-[r1:playsPosition]->(m1:Position {name: 'center'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position)\nWHERE (p)-[:playsPosition]->(:Position {name: 'Center'})\nWITH pos, count(DISTINCT p) AS playerCount\nRETURN pos.name AS position, playerCount\nORDER BY playerCount DESC",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position)\nWHERE (p)-[:playsPosition]->(:Position {name: 'Center'})\nWITH pos, count(DISTINCT p) AS playerCount\nRETURN pos.name AS position, playerCount\nORDER BY playerCount DESC",
+     "calls": 1,
+     "in_tokens": 776,
+     "out_tokens": 58,
+     "cost": 0.001804,
+     "secs": 1.5081791877746582,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.566,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position)\nWHERE (p)-[:playsPosition]->(:Position {name: 'Center'})\nWITH pos, count(DISTINCT p) AS playerCount\nRETURN pos.name AS position, playerCount\nORDER BY playerCount DESC",
+   "stage": "first"
+  },
+  {
+   "id": "8617ce5b-3bfc-4e4f-b116-48668fc7f115",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of airports involved in flight accidents as both departure and destination points, excluding those located in New Zealand?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:destinedFor]-(m0:FlightAccident),(n:Airport)<-[r1:departsFrom]-(m0:FlightAccident) WITH DISTINCT n WHERE n.country <> 'New Zealand' RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport)<-[:departsFrom]-(fa:FlightAccident)-[:destinedFor]->(a)\nWHERE a.country <> 'New Zealand'\nRETURN DISTINCT a.name",
+     "cypher": "MATCH (a:Airport)<-[:departsFrom]-(fa:FlightAccident)-[:destinedFor]->(a)\nWHERE a.country <> 'New Zealand'\nRETURN DISTINCT a.name",
+     "calls": 1,
+     "in_tokens": 655,
+     "out_tokens": 39,
+     "cost": 0.00147412,
+     "secs": 1.1625490188598633,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 13,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "Kandahar International Airport"
+      },
+      {
+       "a.name": "Perpignan\u2013Rivesaltes Airport"
+      },
+      {
+       "a.name": "Tokyo International Airport"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.199,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport)<-[:departsFrom]-(fa:FlightAccident)-[:destinedFor]->(a)\nWHERE a.country <> 'New Zealand'\nRETURN DISTINCT a.name",
+   "stage": "first"
+  },
+  {
+   "id": "7def5609-998a-4326-b7a4-f1dba4a57e30",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of venues that have been home to a team that also calls FedExForum their home venue?",
+   "gold_cypher": "MATCH (n:Venue)<-[r0:hasHomeVenue]-(m0:Team)-[r1:hasHomeVenue]->(m1:Venue {name: 'FedExForum'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue)\nWHERE t IN [(t2:Team)-[:hasHomeVenue]->(:Venue {name: 'FedExForum'}) | t2]\nRETURN DISTINCT v.name",
+     "cypher": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue)\nWHERE t IN [(t2:Team)-[:hasHomeVenue]->(:Venue {name: 'FedExForum'}) | t2]\nRETURN DISTINCT v.name",
+     "calls": 1,
+     "in_tokens": 773,
+     "out_tokens": 49,
+     "cost": 0.0017541999999999998,
+     "secs": 1.2988479137420654,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "v.name": "Pyramid Arena"
+      },
+      {
+       "v.name": "FedExForum"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.355,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue)\nWHERE t IN [(t2:Team)-[:hasHomeVenue]->(:Venue {name: 'FedExForum'}) | t2]\nRETURN DISTINCT v.name",
+   "stage": "first"
+  },
+  {
+   "id": "d55c79cb-75f8-40d0-ac74-e6619b5211cb",
+   "graph": "flight_accident",
+   "tier": "hard",
+   "question": "What are the names of operators responsible for aviation accidents departing from Chongqing Jiangbei International Airport, and how many such accidents has each operator been involved in?",
+   "gold_cypher": "MATCH (n:Operator)<-[r0:operatedBy]-(m0:FlightAccident)-[r1:departsFrom]->(m1:Airport {name: 'Chongqing Jiangbei International Airport'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport {name: 'Chongqing Jiangbei International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:operatedBy]->(op:Operator)\nRETURN op.name AS operator, COUNT(acc) AS accident_count\nORDER BY accident_count DESC",
+     "cypher": "MATCH (a:Airport {name: 'Chongqing Jiangbei International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:operatedBy]->(op:Operator)\nRETURN op.name AS operator, COUNT(acc) AS accident_count\nORDER BY accident_count DESC",
+     "calls": 1,
+     "in_tokens": 662,
+     "out_tokens": 58,
+     "cost": 0.00158056,
+     "secs": 1.443141222000122,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "correct",
+     "preview": [
+      {
+       "operator": "Tibet Airlines",
+       "accident_count": 1
+      },
+      {
+       "operator": "China Southern Airlines",
+       "accident_count": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.486,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport {name: 'Chongqing Jiangbei International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:operatedBy]->(op:Operator)\nRETURN op.name AS operator, COUNT(acc) AS accident_count\nORDER BY accident_count DESC",
+   "stage": "first"
+  },
+  {
+   "id": "9a4685c2-cb2d-4ede-a508-ce077526051b",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "How many divisions are part of the Eastern Conference?",
+   "gold_cypher": "MATCH (n:Division)-[r0:partOfConference]->(m0:Conference {name: 'Eastern Conference'}) WITH DISTINCT n RETURN count(DISTINCT n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (c:Conference {name: 'Eastern Conference'})<-[:partOfConference]-(d:Division)\nRETURN count(d) AS divisionCount",
+     "cypher": "MATCH (c:Conference {name: 'Eastern Conference'})<-[:partOfConference]-(d:Division)\nRETURN count(d) AS divisionCount",
+     "calls": 1,
+     "in_tokens": 760,
+     "out_tokens": 30,
+     "cost": 0.001636,
+     "secs": 0.9203100204467773,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "divisionCount": 3
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.955,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (c:Conference {name: 'Eastern Conference'})<-[:partOfConference]-(d:Division)\nRETURN count(d) AS divisionCount",
+   "stage": "first"
+  },
+  {
+   "id": "d8ebd0aa-ec94-4635-a314-c1c33b659c5a",
+   "graph": "flight_accident",
+   "tier": "hard",
+   "question": "How many aviation accidents either departed from Narita International Airport or were operated by Korean Air?",
+   "gold_cypher": "CALL { MATCH (n:FlightAccident)-[r0:departsFrom]->(m0:Airport {name: 'Narita International Airport'}) RETURN n, m0 as m UNION MATCH (n:FlightAccident)-[r1:operatedBy]->(m1:Operator {name: 'Korean Air'}) RETURN n, m1 as m } WITH DISTINCT n RETURN count(n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:FlightAccident)-[:departsFrom]->(airport:Airport)\nWHERE airport.name = 'Narita International Airport'\nWITH a AS acc\nMATCH (b:FlightAccident)-[:operatedBy]->(op:Operator)\nWHERE op.name = 'Korean Air'\nWITH collect(DISTINCT acc) + collect(DISTINCT b) AS accidents\nRETURN size(apoc.coll.toSet(accidents)) AS count",
+     "cypher": "MATCH (a:FlightAccident)-[:departsFrom]->(airport:Airport)\nWHERE airport.name = 'Narita International Airport'\nWITH a AS acc\nMATCH (b:FlightAccident)-[:operatedBy]->(op:Operator)\nWHERE op.name = 'Korean Air'\nWITH collect(DISTINCT acc) + collect(DISTINCT b) AS accidents\nRETURN size(apoc.coll.toSet(accidents)) AS count",
+     "calls": 1,
+     "in_tokens": 649,
+     "out_tokens": 88,
+     "cost": 0.00170148,
+     "secs": 2.160508155822754,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "count": 13
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.185,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:FlightAccident)-[:departsFrom]->(airport:Airport)\nWHERE airport.name = 'Narita International Airport'\nWITH a AS acc\nMATCH (b:FlightAccident)-[:operatedBy]->(op:Operator)\nWHERE op.name = 'Korean Air'\nWITH collect(DISTINCT acc) + collect(DISTINCT b) AS accidents\nRETURN size(apoc.coll.toSet(accidents)) AS count",
+   "stage": "first"
+  },
+  {
+   "id": "3c61a785-dd4f-4246-8c10-937e21f19b72",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "What are the names and owners of teams that have used Toyota Coliseum as their home venue at any time?",
+   "gold_cypher": "MATCH (n:Team)-[r0:hasHomeVenue]->(m0:Venue {name: 'Toyota Coliseum'}) WITH DISTINCT n RETURN n.name, n.owners",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue {name: 'Toyota Coliseum'})\nRETURN t.name AS team_name, t.owners AS owners",
+     "cypher": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue {name: 'Toyota Coliseum'})\nRETURN t.name AS team_name, t.owners AS owners",
+     "calls": 1,
+     "in_tokens": 773,
+     "out_tokens": 37,
+     "cost": 0.0016956399999999998,
+     "secs": 1.4387190341949463,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "team_name": "Philadelphia 76ers",
+       "owners": [
+        "David Blitzer",
+        "Josh Harris"
+       ]
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.459,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue {name: 'Toyota Coliseum'})\nRETURN t.name AS team_name, t.owners AS owners",
+   "stage": "first"
+  },
+  {
+   "id": "2d5ca45f-f5e8-4258-8a76-35806e6d7f19",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of aviation accidents that either involve the L-410 Turbolet aircraft or depart from Ram\u00f3n Villeda Morales International Airport?",
+   "gold_cypher": "CALL { MATCH (n:FlightAccident)-[r0:involves]->(m0:AircraftModel {name: 'L-410 Turbolet'}) RETURN n, m0 as m UNION MATCH (n:FlightAccident)-[r1:departsFrom]->(m1:Airport {name: 'Ram\u00f3n Villeda Morales International Airport'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:FlightAccident)-[:involves]->(m:AircraftModel {name: 'L-410 Turbolet'})\nWITH a AS acc\nMATCH (b:FlightAccident)-[:departsFrom]->(ap:Airport {name: 'Ram\u00f3n Villeda Morales International Airport'})\nWITH collect(DISTINCT acc.name) + collect(DISTINCT b.name) AS names\nUNWIND names AS n\nRETURN DISTINCT n",
+     "cypher": "MATCH (a:FlightAccident)-[:involves]->(m:AircraftModel {name: 'L-410 Turbolet'})\nWITH a AS acc\nMATCH (b:FlightAccident)-[:departsFrom]->(ap:Airport {name: 'Ram\u00f3n Villeda Morales International Airport'})\nWITH collect(DISTINCT acc.name) + collect(DISTINCT b.name) AS names\nUNWIND names AS n\nRETURN DISTINCT n",
+     "calls": 1,
+     "in_tokens": 659,
+     "out_tokens": 92,
+     "cost": 0.0017406,
+     "secs": 2.1613571643829346,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 5,
+     "outcome": "correct",
+     "preview": [
+      {
+       "n": "2021 Parachute Kemerovo Let L-410UVP-E crash"
+      },
+      {
+       "n": "2021 Menzelinsk parachute Let L-410UVP-E crash"
+      },
+      {
+       "n": "Noar Linhas A\u00e9reas Flight 4896"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 2.184,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:FlightAccident)-[:involves]->(m:AircraftModel {name: 'L-410 Turbolet'})\nWITH a AS acc\nMATCH (b:FlightAccident)-[:departsFrom]->(ap:Airport {name: 'Ram\u00f3n Villeda Morales International Airport'})\nWITH collect(DISTINCT acc.name) + collect(DISTINCT b.name) AS names\nUNWIND names AS n\nRETURN DISTINCT n",
+   "stage": "first"
+  },
+  {
+   "id": "e3518c25-3bb1-41d3-b3f2-e1677096ee67",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "What are the names of awards received by players who play the center position, and how many such players have received each award?",
+   "gold_cypher": "MATCH (n:Award)<-[r0:receivesAward]-(m0:Player)-[r1:playsPosition]->(m1:Position {name: 'center'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Center'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award, COUNT(DISTINCT p) AS playerCount",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Center'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award, COUNT(DISTINCT p) AS playerCount",
+     "calls": 1,
+     "in_tokens": 775,
+     "out_tokens": 51,
+     "cost": 0.00176788,
+     "secs": 1.6470298767089844,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.696,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Center'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award, COUNT(DISTINCT p) AS playerCount",
+   "stage": "first"
+  },
+  {
+   "id": "23c6b9bd-a6c1-4c0d-a1c9-d45625b56f6e",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names of aviation accidents that were headed to Heathrow Airport, sorted by the number of injuries from highest to lowest?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:destinedFor]->(m0:Airport {name: 'Heathrow Airport'}) WITH DISTINCT n RETURN n.name ORDER BY n.number_of_injuries DESC",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Heathrow Airport'\nRETURN fa.name AS accident_name, fa.number_of_injuries AS injuries\nORDER BY fa.number_of_injuries DESC",
+     "cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Heathrow Airport'\nRETURN fa.name AS accident_name, fa.number_of_injuries AS injuries\nORDER BY fa.number_of_injuries DESC",
+     "calls": 1,
+     "in_tokens": 656,
+     "out_tokens": 53,
+     "cost": 0.0015444,
+     "secs": 1.5824248790740967,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 7,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "accident_name": "British Airways Flight 38",
+       "injuries": 47
+      },
+      {
+       "accident_name": "Qantas Flight 1",
+       "injuries": 38
+      },
+      {
+       "accident_name": "Delta Air Lines Flight 30",
+       "injuries": 0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.607,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Heathrow Airport'\nRETURN fa.name AS accident_name, fa.number_of_injuries AS injuries\nORDER BY fa.number_of_injuries DESC",
+   "stage": "first"
+  },
+  {
+   "id": "0834680e-22f8-4e23-84e8-7807640928ab",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "How many teams are either part of the Southwest Division or have drafted Lucious Harris?",
+   "gold_cypher": "CALL { MATCH (n:Team)-[r0:partOfDivision]->(m0:Division {name: 'Southwest Division'}) RETURN n, m0 as m UNION MATCH (n:Team)<-[r1:draftedBy]-(m1:Player {name: 'Lucious Harris'}) RETURN n, m1 as m } WITH DISTINCT n RETURN count(n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)\nWHERE (t)-[:partOfDivision]->(:Division {name: 'Southwest'})\nOR (t)<-[:draftedBy {year: 1994}]-(:Player {name: 'Lucious Harris'})\nRETURN count(DISTINCT t) AS teamCount",
+     "cypher": "MATCH (t:Team)\nWHERE (t)-[:partOfDivision]->(:Division {name: 'Southwest'})\nOR (t)<-[:draftedBy {year: 1994}]-(:Player {name: 'Lucious Harris'})\nRETURN count(DISTINCT t) AS teamCount",
+     "calls": 1,
+     "in_tokens": 767,
+     "out_tokens": 61,
+     "cost": 0.001801,
+     "secs": 1.6891844272613525,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "teamCount": 0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.709,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)\nWHERE (t)-[:partOfDivision]->(:Division {name: 'Southwest'})\nOR (t)<-[:draftedBy {year: 1994}]-(:Player {name: 'Lucious Harris'})\nRETURN count(DISTINCT t) AS teamCount",
+   "stage": "first"
+  },
+  {
+   "id": "92e12ff9-cadd-49f6-996b-a229e6739840",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Which flight, British Airways Flight 268 or Austral L\u00edneas A\u00e9reas Flight 2553, occurred more recently?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'British Airways Flight 268'}), (m0:FlightAccident {name: 'Austral L\u00edneas A\u00e9reas Flight 2553'}) RETURN CASE WHEN n.date > m0.date THEN n.name ELSE m0.name END AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (f:FlightAccident)\nWHERE f.flight_number IN ['British Airways Flight 268', 'Austral L\u00edneas A\u00e9reas Flight 2553']\nRETURN f.name AS flight, f.date AS date\nORDER BY f.date DESC",
+     "cypher": "MATCH (f:FlightAccident)\nWHERE f.flight_number IN ['British Airways Flight 268', 'Austral L\u00edneas A\u00e9reas Flight 2553']\nRETURN f.name AS flight, f.date AS date\nORDER BY f.date DESC",
+     "calls": 1,
+     "in_tokens": 654,
+     "out_tokens": 48,
+     "cost": 0.00151608,
+     "secs": 1.1873252391815186,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.208,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (f:FlightAccident)\nWHERE f.flight_number IN ['British Airways Flight 268', 'Austral L\u00edneas A\u00e9reas Flight 2553']\nRETURN f.name AS flight, f.date AS date\nORDER BY f.date DESC",
+   "stage": "first"
+  },
+  {
+   "id": "eec765d7-ebd3-4828-8041-e698f81a9bab",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "What are the names of teams that Walt Hazzard has played for, excluding those owned by Joe Lacob?",
+   "gold_cypher": "MATCH (n:Team)<-[r0:playsFor]-(m0:Player {name: 'Walt Hazzard'}) WITH DISTINCT n WHERE NOT 'Joe Lacob' IN n.owners RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Walt Hazzard'})-[:playsFor]->(t:Team)\nWHERE NOT 'Joe Lacob' IN t.owners\nRETURN t.name",
+     "cypher": "MATCH (p:Player {name: 'Walt Hazzard'})-[:playsFor]->(t:Team)\nWHERE NOT 'Joe Lacob' IN t.owners\nRETURN t.name",
+     "calls": 1,
+     "in_tokens": 773,
+     "out_tokens": 40,
+     "cost": 0.00171028,
+     "secs": 0.8973598480224609,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "correct",
+     "preview": [
+      {
+       "t.name": "Los Angeles Lakers"
+      },
+      {
+       "t.name": "Los Angeles Clippers"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.925,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Walt Hazzard'})-[:playsFor]->(t:Team)\nWHERE NOT 'Joe Lacob' IN t.owners\nRETURN t.name",
+   "stage": "first"
+  },
+  {
+   "id": "0e209a1b-3460-4ce7-8aa3-81d6b0d22aa0",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Did Transair Sweden and LOT Polish Airlines start operations in the same year?",
+   "gold_cypher": "MATCH (n:Operator {name: 'Transair Sweden'}), (m0:Operator {name: 'LOT Polish Airlines'}) RETURN n.launch_year = m0.launch_year AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (o1:Operator {name: 'Transair Sweden'}), (o2:Operator {name: 'LOT Polish Airlines'})\nRETURN o1.launch_year = o2.launch_year AS same_year",
+     "cypher": "MATCH (o1:Operator {name: 'Transair Sweden'}), (o2:Operator {name: 'LOT Polish Airlines'})\nRETURN o1.launch_year = o2.launch_year AS same_year",
+     "calls": 1,
+     "in_tokens": 646,
+     "out_tokens": 42,
+     "cost": 0.00147112,
+     "secs": 0.7971236705780029,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "same_year": false
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.82,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (o1:Operator {name: 'Transair Sweden'}), (o2:Operator {name: 'LOT Polish Airlines'})\nRETURN o1.launch_year = o2.launch_year AS same_year",
+   "stage": "first"
+  },
+  {
+   "id": "5169000c-5ebe-4757-a5b5-3920ad6241e2",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of venues that have been home to a team that drafted Bo Erias?",
+   "gold_cypher": "MATCH (n:Venue)<-[r0:hasHomeVenue]-(m0:Team)<-[r1:draftedBy]-(m1:Player {name: 'Bo Erias'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Bo Erias'})-[:draftedBy]->(t:Team)\nMATCH (t)-[:hasHomeVenue]->(v:Venue)\nRETURN v.name",
+     "cypher": "MATCH (p:Player {name: 'Bo Erias'})-[:draftedBy]->(t:Team)\nMATCH (t)-[:hasHomeVenue]->(v:Venue)\nRETURN v.name",
+     "calls": 1,
+     "in_tokens": 769,
+     "out_tokens": 41,
+     "cost": 0.00170732,
+     "secs": 0.7945199012756348,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 8,
+     "outcome": "correct",
+     "preview": [
+      {
+       "v.name": "Blue Cross Arena"
+      },
+      {
+       "v.name": "ARCO Arena I"
+      },
+      {
+       "v.name": "Omaha Civic Auditorium"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.815,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Bo Erias'})-[:draftedBy]->(t:Team)\nMATCH (t)-[:hasHomeVenue]->(v:Venue)\nRETURN v.name",
+   "stage": "first"
+  },
+  {
+   "id": "da5ce835-6066-4424-a009-0fa57d5f9f63",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names and locations of aviation accidents involving the Dash 7 aircraft model?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:involves]->(m0:AircraftModel {name: 'Dash 7'}) WITH DISTINCT n RETURN n.name, n.location",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:AircraftModel {name: 'Dash 7'})<-[:involves]-(acc:FlightAccident)\nRETURN acc.name AS name, acc.location AS location",
+     "cypher": "MATCH (a:AircraftModel {name: 'Dash 7'})<-[:involves]-(acc:FlightAccident)\nRETURN acc.name AS name, acc.location AS location",
+     "calls": 1,
+     "in_tokens": 648,
+     "out_tokens": 37,
+     "cost": 0.0014506399999999998,
+     "secs": 0.7943620681762695,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "name": "Wider\u00f8e Flight 710",
+       "location": "Torghatten"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.815,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:AircraftModel {name: 'Dash 7'})<-[:involves]-(acc:FlightAccident)\nRETURN acc.name AS name, acc.location AS location",
+   "stage": "first"
+  },
+  {
+   "id": "a7bfa0a6-69dc-4639-bccf-6ff8dafc2b6b",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "Who are the unique owners of teams that have had a player who received the Big Ten Conference Men's Basketball Coach of the Year award?",
+   "gold_cypher": "MATCH (n:Team)<-[r0:playsFor]-(m0:Player)-[r1:receivesAward]->(m1:Award {name: 'Big Ten Conference Men\\'s Basketball Coach of the Year'}) WITH DISTINCT n UNWIND n.owners AS prop RETURN DISTINCT prop",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[r:receivesAward]->(a:Award)\nWHERE a.name = 'Big Ten Conference Men\\'s Basketball Coach of the Year'\nWITH p\nMATCH (p)-[:playsFor]->(t:Team)\nWITH DISTINCT t\nUNWIND t.owners AS owner\nRETURN DISTINCT owner",
+     "cypher": "MATCH (p:Player)-[r:receivesAward]->(a:Award)\nWHERE a.name = 'Big Ten Conference Men\\'s Basketball Coach of the Year'\nWITH p\nMATCH (p)-[:playsFor]->(t:Team)\nWITH DISTINCT t\nUNWIND t.owners AS owner\nRETURN DISTINCT owner",
+     "calls": 1,
+     "in_tokens": 776,
+     "out_tokens": 67,
+     "cost": 0.00184792,
+     "secs": 1.1696670055389404,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 11,
+     "outcome": "correct",
+     "preview": [
+      {
+       "owner": "George Shinn"
+      },
+      {
+       "owner": "Michael Jordan"
+      },
+      {
+       "owner": "Robert L. Johnson"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.22,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[r:receivesAward]->(a:Award)\nWHERE a.name = 'Big Ten Conference Men\\'s Basketball Coach of the Year'\nWITH p\nMATCH (p)-[:playsFor]->(t:Team)\nWITH DISTINCT t\nUNWIND t.owners AS owner\nRETURN DISTINCT owner",
+   "stage": "first"
+  },
+  {
+   "id": "400c8b2a-d232-41d9-b568-13d654523b2b",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Who is the operator with the earliest launch year?",
+   "gold_cypher": "MATCH (n:Operator) WITH DISTINCT n RETURN n.name ORDER BY n.launch_year ASC LIMIT 1",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (o:Operator)\nRETURN o.name AS operator, o.launch_year AS launch_year\nORDER BY o.launch_year ASC\nLIMIT 1",
+     "cypher": "MATCH (o:Operator)\nRETURN o.name AS operator, o.launch_year AS launch_year\nORDER BY o.launch_year ASC\nLIMIT 1",
+     "calls": 1,
+     "in_tokens": 641,
+     "out_tokens": 29,
+     "cost": 0.0013978799999999998,
+     "secs": 1.3791823387145996,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "operator": "United States Army",
+       "launch_year": 1775
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.407,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (o:Operator)\nRETURN o.name AS operator, o.launch_year AS launch_year\nORDER BY o.launch_year ASC\nLIMIT 1",
+   "stage": "first"
+  },
+  {
+   "id": "a6530611-68f5-41b4-947e-df9599ef0401",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "What are the names of all the teams Doc Rivers has played for, and how many players have been part of each of those teams?",
+   "gold_cypher": "MATCH (n:Team)<-[r1:playsFor]-(m1:Player {name: 'Doc Rivers'}) OPTIONAL MATCH (n:Team)<-[r0:playsFor]-(m0:Player) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Doc Rivers'})-[:playsFor]->(t:Team)\nWITH t\nMATCH (p2:Player)-[:playsFor]->(t)\nRETURN t.name AS team, COUNT(DISTINCT p2) AS player_count",
+     "cypher": "MATCH (p:Player {name: 'Doc Rivers'})-[:playsFor]->(t:Team)\nWITH t\nMATCH (p2:Player)-[:playsFor]->(t)\nRETURN t.name AS team, COUNT(DISTINCT p2) AS player_count",
+     "calls": 1,
+     "in_tokens": 777,
+     "out_tokens": 55,
+     "cost": 0.00179132,
+     "secs": 1.396843433380127,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 5,
+     "outcome": "correct",
+     "preview": [
+      {
+       "team": "New York Knicks",
+       "player_count": 508
+      },
+      {
+       "team": "San Antonio Spurs",
+       "player_count": 353
+      },
+      {
+       "team": "Atlanta Hawks",
+       "player_count": 475
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.42,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Doc Rivers'})-[:playsFor]->(t:Team)\nWITH t\nMATCH (p2:Player)-[:playsFor]->(t)\nRETURN t.name AS team, COUNT(DISTINCT p2) AS player_count",
+   "stage": "first"
+  },
+  {
+   "id": "91554936-08c9-4012-a49a-d756dca42d9f",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "How many more survivors were there on Noar Linhas A\u00e9reas Flight 4896 compared to Air Moorea Flight 1121?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'Noar Linhas A\u00e9reas Flight 4896'}), (m0:FlightAccident {name: 'Air Moorea Flight 1121'}) RETURN n.number_of_survivors - m0.number_of_survivors AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa1:FlightAccident {flight_number: '4896'})-[:operatedBy]->(:Operator {name: 'Noar Linhas A\u00e9reas'})\nMATCH (fa2:FlightAccident {flight_number: '1121'})-[:operatedBy]->(:Operator {name: 'Air Moorea'})\nRETURN fa1.number_of_survivors - fa2.number_of_survivors AS survivor_difference",
+     "cypher": "MATCH (fa1:FlightAccident {flight_number: '4896'})-[:operatedBy]->(:Operator {name: 'Noar Linhas A\u00e9reas'})\nMATCH (fa2:FlightAccident {flight_number: '1121'})-[:operatedBy]->(:Operator {name: 'Air Moorea'})\nRETURN fa1.number_of_survivors - fa2.number_of_survivors AS survivor_difference",
+     "calls": 1,
+     "in_tokens": 658,
+     "out_tokens": 86,
+     "cost": 0.00170936,
+     "secs": 1.0875670909881592,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.112,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa1:FlightAccident {flight_number: '4896'})-[:operatedBy]->(:Operator {name: 'Noar Linhas A\u00e9reas'})\nMATCH (fa2:FlightAccident {flight_number: '1121'})-[:operatedBy]->(:Operator {name: 'Air Moorea'})\nRETURN fa1.number_of_survivors - fa2.number_of_survivors AS survivor_difference",
+   "stage": "first"
+  },
+  {
+   "id": "d6badaed-4add-4b95-a078-68bf10f3541f",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "What are the names of awards received by swingman players, and how many swingman players have received each award?",
+   "gold_cypher": "MATCH (n:Award)<-[r0:receivesAward]-(m0:Player)-[r1:playsPosition]->(m1:Position {name: 'swingman'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Swingman'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award_name, COUNT(DISTINCT p) AS player_count",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Swingman'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award_name, COUNT(DISTINCT p) AS player_count",
+     "calls": 1,
+     "in_tokens": 773,
+     "out_tokens": 53,
+     "cost": 0.00177372,
+     "secs": 1.8110761642456055,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.831,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Swingman'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award_name, COUNT(DISTINCT p) AS player_count",
+   "stage": "first"
+  },
+  {
+   "id": "adf3c4a8-916d-4092-ad56-74436f21807b",
+   "graph": "flight_accident",
+   "tier": "hard",
+   "question": "What are the names of airports from which flights involving the Airbus A321 have departed, and how many such flight accidents have occurred at each of these airports?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:departsFrom]-(m0:FlightAccident)-[r1:involves]->(m1:AircraftModel {name: 'Airbus A321'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:AircraftModel {name: 'Airbus A321'})<-[:involves]-(f:FlightAccident)-[:departsFrom]->(airport:Airport)\nRETURN airport.name AS airport_name, COUNT(f) AS accident_count\nORDER BY accident_count DESC",
+     "cypher": "MATCH (a:AircraftModel {name: 'Airbus A321'})<-[:involves]-(f:FlightAccident)-[:departsFrom]->(airport:Airport)\nRETURN airport.name AS airport_name, COUNT(f) AS accident_count\nORDER BY accident_count DESC",
+     "calls": 1,
+     "in_tokens": 662,
+     "out_tokens": 57,
+     "cost": 0.0015756799999999999,
+     "secs": 1.7684199810028076,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 3,
+     "outcome": "correct",
+     "preview": [
+      {
+       "airport_name": "Sharm el-Sheikh International Airport",
+       "accident_count": 1
+      },
+      {
+       "airport_name": "Aden Adde International Airport",
+       "accident_count": 1
+      },
+      {
+       "airport_name": "Jinnah International Airport",
+       "accident_count": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.788,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:AircraftModel {name: 'Airbus A321'})<-[:involves]-(f:FlightAccident)-[:departsFrom]->(airport:Airport)\nRETURN airport.name AS airport_name, COUNT(f) AS accident_count\nORDER BY accident_count DESC",
+   "stage": "first"
+  },
+  {
+   "id": "4615e1e9-a9be-49ac-8aee-0085570c7a7a",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of players who play the same position as Buck Williams and weigh 130 kg or less?",
+   "gold_cypher": "MATCH (n:Player)-[r0:playsPosition]->(m0:Position)<-[r1:playsPosition]-(m1:Player {name: 'Buck Williams'}) WITH DISTINCT n WHERE n.mass_kg <= 130 RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position)<-[:playsPosition]-(buck:Player {name: 'Buck Williams'})\nWHERE p.mass_kg <= 130\nRETURN p.name",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position)<-[:playsPosition]-(buck:Player {name: 'Buck Williams'})\nWHERE p.mass_kg <= 130\nRETURN p.name",
+     "calls": 1,
+     "in_tokens": 772,
+     "out_tokens": 43,
+     "cost": 0.0017229599999999997,
+     "secs": 0.9336891174316406,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1916,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "p.name": "Muggsy Bogues"
+      },
+      {
+       "p.name": "Bob Lavoy"
+      },
+      {
+       "p.name": "Jack Rocker"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.993,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position)<-[:playsPosition]-(buck:Player {name: 'Buck Williams'})\nWHERE p.mass_kg <= 130\nRETURN p.name",
+   "stage": "first"
+  },
+  {
+   "id": "d37d6da4-7814-4f5d-af68-698f941c570e",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of aviation accidents operated by the same airline that operated Iberia Airlines Flight 1456?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:operatedBy]->(m0:Operator)<-[r1:operatedBy]-(m1:FlightAccident {name: 'Iberia Airlines Flight 1456'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (ib:FlightAccident {flight_number: '1456'})-[:operatedBy]->(op:Operator)\nWHERE op.name CONTAINS 'Iberia'\nMATCH (fa:FlightAccident)-[:operatedBy]->(op)\nRETURN DISTINCT fa.name",
+     "cypher": "MATCH (ib:FlightAccident {flight_number: '1456'})-[:operatedBy]->(op:Operator)\nWHERE op.name CONTAINS 'Iberia'\nMATCH (fa:FlightAccident)-[:operatedBy]->(op)\nRETURN DISTINCT fa.name",
+     "calls": 1,
+     "in_tokens": 653,
+     "out_tokens": 57,
+     "cost": 0.00155804,
+     "secs": 1.0840909481048584,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.151,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (ib:FlightAccident {flight_number: '1456'})-[:operatedBy]->(op:Operator)\nWHERE op.name CONTAINS 'Iberia'\nMATCH (fa:FlightAccident)-[:operatedBy]->(op)\nRETURN DISTINCT fa.name",
+   "stage": "first"
+  },
+  {
+   "id": "c6c6699e-c63a-4c0d-87d8-6efc71b8c2fa",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Which team was established later, the Phoenix Suns or the Charlotte Hornets?",
+   "gold_cypher": "MATCH (n:Team {name: 'Phoenix Suns'}), (m0:Team {name: 'Charlotte Hornets'}) RETURN CASE WHEN n.inception_year > m0.inception_year THEN n.name ELSE m0.name END AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)\nWHERE t.name IN ['Phoenix Suns', 'Charlotte Hornets']\nRETURN t.name, t.inception_year\nORDER BY t.inception_year DESC",
+     "cypher": "MATCH (t:Team)\nWHERE t.name IN ['Phoenix Suns', 'Charlotte Hornets']\nRETURN t.name, t.inception_year\nORDER BY t.inception_year DESC",
+     "calls": 1,
+     "in_tokens": 765,
+     "out_tokens": 35,
+     "cost": 0.0016701999999999997,
+     "secs": 1.089595079421997,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "t.name": "Charlotte Hornets",
+       "t.inception_year": 1988
+      },
+      {
+       "t.name": "Phoenix Suns",
+       "t.inception_year": 1968
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.143,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)\nWHERE t.name IN ['Phoenix Suns', 'Charlotte Hornets']\nRETURN t.name, t.inception_year\nORDER BY t.inception_year DESC",
+   "stage": "first"
+  },
+  {
+   "id": "9e39d828-775a-4b5a-9d81-6729fd59d7a3",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names and dates of aviation accidents that departed from the same airport as Austral L\u00edneas A\u00e9reas Flight 046?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:departsFrom]->(m0:Airport)<-[r1:departsFrom]-(m1:FlightAccident {name: 'Austral L\u00edneas A\u00e9reas Flight 046'}) WITH DISTINCT n RETURN n.name, n.date",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident {flight_number: '046'})-[:operatedBy]->(:Operator {name: 'Austral L\u00edneas A\u00e9reas'})\nMATCH (fa)-[:departsFrom]->(a:Airport)\nMATCH (other:FlightAccident)-[:departsFrom]->(a)\nRETURN other.name AS name, other.date AS date",
+     "cypher": "MATCH (fa:FlightAccident {flight_number: '046'})-[:operatedBy]->(:Operator {name: 'Austral L\u00edneas A\u00e9reas'})\nMATCH (fa)-[:departsFrom]->(a:Airport)\nMATCH (other:FlightAccident)-[:departsFrom]->(a)\nRETURN other.name AS name, other.date AS date",
+     "calls": 1,
+     "in_tokens": 656,
+     "out_tokens": 72,
+     "cost": 0.00163712,
+     "secs": 1.4171769618988037,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.439,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident {flight_number: '046'})-[:operatedBy]->(:Operator {name: 'Austral L\u00edneas A\u00e9reas'})\nMATCH (fa)-[:departsFrom]->(a:Airport)\nMATCH (other:FlightAccident)-[:departsFrom]->(a)\nRETURN other.name AS name, other.date AS date",
+   "stage": "first"
+  },
+  {
+   "id": "2daca1ae-e59e-4241-8cf3-ba1cf07680aa",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Do the Phoenix Suns and the Charlotte Hornets share the same year of inception?",
+   "gold_cypher": "MATCH (n:Team {name: 'Phoenix Suns'}), (m0:Team {name: 'Charlotte Hornets'}) RETURN n.inception_year = m0.inception_year AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t1:Team {name: 'Phoenix Suns'}), (t2:Team {name: 'Charlotte Hornets'})\nRETURN t1.inception_year = t2.inception_year AS same_inception_year",
+     "cypher": "MATCH (t1:Team {name: 'Phoenix Suns'}), (t2:Team {name: 'Charlotte Hornets'})\nRETURN t1.inception_year = t2.inception_year AS same_inception_year",
+     "calls": 1,
+     "in_tokens": 766,
+     "out_tokens": 44,
+     "cost": 0.0017160799999999998,
+     "secs": 1.0215222835540771,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "same_inception_year": false
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.041,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t1:Team {name: 'Phoenix Suns'}), (t2:Team {name: 'Charlotte Hornets'})\nRETURN t1.inception_year = t2.inception_year AS same_inception_year",
+   "stage": "first"
+  },
+  {
+   "id": "3b544fc4-bb90-4859-afc8-914365f137fc",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names and service entry dates of aircraft models involved in the Pegasus Airlines Flight 2193 accident?",
+   "gold_cypher": "MATCH (n:AircraftModel)<-[r0:involves]-(m0:FlightAccident {name: 'Pegasus Airlines Flight 2193'}) WITH DISTINCT n RETURN n.name, n.service_entry",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel)\nWHERE fa.name = 'Pegasus Airlines Flight 2193'\nRETURN am.name, am.service_entry",
+     "cypher": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel)\nWHERE fa.name = 'Pegasus Airlines Flight 2193'\nRETURN am.name, am.service_entry",
+     "calls": 1,
+     "in_tokens": 653,
+     "out_tokens": 39,
+     "cost": 0.0014701999999999998,
+     "secs": 0.9065229892730713,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "am.name": "Boeing 737 Next Generation",
+       "am.service_entry": null
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.943,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel)\nWHERE fa.name = 'Pegasus Airlines Flight 2193'\nRETURN am.name, am.service_entry",
+   "stage": "first"
+  },
+  {
+   "id": "39425312-ac63-44c2-a8ae-bca437f11406",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "What are the names of teams that Sidney Wicks was drafted by?",
+   "gold_cypher": "MATCH (n:Team)<-[r0:draftedBy]-(m0:Player {name: 'Sidney Wicks'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Sidney Wicks'})-[:draftedBy]->(t:Team)\nRETURN t.name",
+     "cypher": "MATCH (p:Player {name: 'Sidney Wicks'})-[:draftedBy]->(t:Team)\nRETURN t.name",
+     "calls": 1,
+     "in_tokens": 764,
+     "out_tokens": 28,
+     "cost": 0.00163408,
+     "secs": 0.7434196472167969,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "t.name": "Portland Trail Blazers"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.763,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Sidney Wicks'})-[:draftedBy]->(t:Team)\nRETURN t.name",
+   "stage": "first"
+  },
+  {
+   "id": "d05655b0-454b-47e7-862f-5c6f362405f8",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names and wingspans in meters of aircraft models produced by PZL Mielec?",
+   "gold_cypher": "MATCH (n:AircraftModel)-[r0:manufacturedBy]->(m0:AircraftManufacturer {name: 'PZL Mielec'}) WITH DISTINCT n RETURN n.name, n.wingspan_metre",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer {name: 'PZL Mielec'})<-[:manufacturedBy]-(am:AircraftModel)\nRETURN am.name, am.wingspan_metre",
+     "cypher": "MATCH (m:AircraftManufacturer {name: 'PZL Mielec'})<-[:manufacturedBy]-(am:AircraftModel)\nRETURN am.name, am.wingspan_metre",
+     "calls": 1,
+     "in_tokens": 652,
+     "out_tokens": 38,
+     "cost": 0.0014633600000000001,
+     "secs": 0.9019310474395752,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "am.name": "An-28",
+       "am.wingspan_metre": 22.06
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.937,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer {name: 'PZL Mielec'})<-[:manufacturedBy]-(am:AircraftModel)\nRETURN am.name, am.wingspan_metre",
+   "stage": "first"
+  },
+  {
+   "id": "6a803862-a32e-458d-b368-833fc7973c91",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "What are the names of teams that currently play at the Delta Center?",
+   "gold_cypher": "MATCH (n:Team)-[r0:hasHomeVenue]->(m0:Venue {name: 'Delta Center'}) WHERE r0.start_year IS NOT NULL AND r0.end_year IS NULL WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue {name: 'Delta Center'})\nWHERE r.end_year IS NULL\nRETURN t.name",
+     "cypher": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue {name: 'Delta Center'})\nWHERE r.end_year IS NULL\nRETURN t.name",
+     "calls": 1,
+     "in_tokens": 764,
+     "out_tokens": 33,
+     "cost": 0.00165848,
+     "secs": 0.862401008605957,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "t.name": "Utah Jazz"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.899,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)-[r:hasHomeVenue]->(v:Venue {name: 'Delta Center'})\nWHERE r.end_year IS NULL\nRETURN t.name",
+   "stage": "first"
+  },
+  {
+   "id": "36b522bb-62b6-45d4-aaf7-e87de99995ce",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Which aircraft model is taller, the Douglas A-26 Invader or the Junkers Ju 52?",
+   "gold_cypher": "MATCH (n:AircraftModel {name: 'Douglas A-26 Invader'}), (m0:AircraftModel {name: 'Junkers Ju 52'}) RETURN CASE WHEN n.height_metre > m0.height_metre THEN n.name ELSE m0.name END AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m1:AircraftModel {name: 'Douglas A-26 Invader'}), (m2:AircraftModel {name: 'Junkers Ju 52'})\nRETURN m1.name AS model1, m1.height_metre AS height1, m2.name AS model2, m2.height_metre AS height2,\nCASE WHEN m1.height_metre > m2.height_metre THEN m1.name WHEN m2.height_metre > m1.height_metre THEN m2.name ELSE 'Equal' END AS taller_model",
+     "cypher": "MATCH (m1:AircraftModel {name: 'Douglas A-26 Invader'}), (m2:AircraftModel {name: 'Junkers Ju 52'})\nRETURN m1.name AS model1, m1.height_metre AS height1, m2.name AS model2, m2.height_metre AS height2,\nCASE WHEN m1.height_metre > m2.height_metre THEN m1.name WHEN m2.height_metre > m1.height_metre THEN m2.name ELSE 'Equal' END AS taller_model",
+     "calls": 1,
+     "in_tokens": 652,
+     "out_tokens": 111,
+     "cost": 0.0018196,
+     "secs": 1.5580871105194092,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "model1": "Douglas A-26 Invader",
+       "height1": 5.67,
+       "model2": "Junkers Ju 52",
+       "height2": 4.5,
+       "taller_model": "Douglas A-26 Invader"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.587,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m1:AircraftModel {name: 'Douglas A-26 Invader'}), (m2:AircraftModel {name: 'Junkers Ju 52'})\nRETURN m1.name AS model1, m1.height_metre AS height1, m2.name AS model2, m2.height_metre AS height2,\nCASE WHEN m1.height_metre > m2.height_metre THEN m1.name WHEN m2.height_metre > m1.height_metre THEN m2.name ELSE 'Equal' END AS taller_model",
+   "stage": "first"
+  },
+  {
+   "id": "65b5ad24-2869-44ad-a5f9-18fdb2bf2a66",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Who are the players who were part of the Washington Wizards roster in the year 1964?",
+   "gold_cypher": "MATCH (n:Player)-[r0:playsFor]->(m0:Team {name: 'Washington Wizards'}) WHERE r0.start_year <= 1964 AND (r0.end_year >= 1964 OR r0.end_year IS NULL) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Washington Wizards'})\nWHERE r.start_year <= 1964 <= r.end_year\nRETURN p.name",
+     "cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Washington Wizards'})\nWHERE r.start_year <= 1964 <= r.end_year\nRETURN p.name",
+     "calls": 1,
+     "in_tokens": 770,
+     "out_tokens": 40,
+     "cost": 0.0017044,
+     "secs": 1.0072851181030273,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 4,
+     "outcome": "correct",
+     "preview": [
+      {
+       "p.name": "Don Kojis"
+      },
+      {
+       "p.name": "Terry Dischinger"
+      },
+      {
+       "p.name": "Les Hunter"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.029,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Washington Wizards'})\nWHERE r.start_year <= 1964 <= r.end_year\nRETURN p.name",
+   "stage": "first"
+  },
+  {
+   "id": "c54b9f25-1d3b-4df6-88e8-bd37b9eb305e",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What year was the Ulan-Ude Aviation Plant launched?",
+   "gold_cypher": "MATCH (n:AircraftManufacturer {name: 'Ulan-Ude Aviation Plant'}) WITH DISTINCT n RETURN n.launch_year",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer {name: 'Ulan-Ude Aviation Plant'}) RETURN m.launch_year AS launch_year",
+     "cypher": "MATCH (m:AircraftManufacturer {name: 'Ulan-Ude Aviation Plant'}) RETURN m.launch_year AS launch_year",
+     "calls": 1,
+     "in_tokens": 643,
+     "out_tokens": 24,
+     "cost": 0.0013774000000000002,
+     "secs": 0.880871057510376,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "launch_year": 1939
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.901,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer {name: 'Ulan-Ude Aviation Plant'}) RETURN m.launch_year AS launch_year",
+   "stage": "first"
+  },
+  {
+   "id": "da347316-e01c-4a00-a4da-8692aac8f881",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "List all the awards.",
+   "gold_cypher": "MATCH (n:Award) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Award)\nRETURN a.name",
+     "cypher": "MATCH (a:Award)\nRETURN a.name",
+     "calls": 1,
+     "in_tokens": 755,
+     "out_tokens": 9,
+     "cost": 0.0015237200000000001,
+     "secs": 0.7007851600646973,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 28,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "L'\u00c9quipe Champion of Champions"
+      },
+      {
+       "a.name": "ACB Most Valuable Player Award"
+      },
+      {
+       "a.name": "Major League Baseball Most Valuable Player Award"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.722,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Award)\nRETURN a.name",
+   "stage": "first"
+  },
+  {
+   "id": "916f5e4c-3cf6-4c00-aa24-5f3497f1ccc1",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of airports that were the destination for flight accidents involving the Ford Trimotor?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:destinedFor]-(m0:FlightAccident)-[r1:involves]->(m1:AircraftModel {name: 'Ford Trimotor'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel {name: 'Ford Trimotor'})-[:destinedFor]->(a:Airport)\nRETURN a.name",
+     "cypher": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel {name: 'Ford Trimotor'})-[:destinedFor]->(a:Airport)\nRETURN a.name",
+     "calls": 1,
+     "in_tokens": 650,
+     "out_tokens": 40,
+     "cost": 0.0014692000000000001,
+     "secs": 1.007054090499878,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.031,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel {name: 'Ford Trimotor'})-[:destinedFor]->(a:Airport)\nRETURN a.name",
+   "stage": "first"
+  },
+  {
+   "id": "452aab89-80b8-4b69-8d1a-4cbfd98dc024",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Who are the players currently playing for the Atlanta Hawks?",
+   "gold_cypher": "MATCH (n:Player)-[r0:playsFor]->(m0:Team {name: 'Atlanta Hawks'}) WHERE r0.start_year IS NOT NULL AND r0.end_year IS NULL WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Atlanta Hawks'})\nWHERE r.end_year IS NULL\nRETURN p.name",
+     "cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Atlanta Hawks'})\nWHERE r.end_year IS NULL\nRETURN p.name",
+     "calls": 1,
+     "in_tokens": 761,
+     "out_tokens": 33,
+     "cost": 0.0016526,
+     "secs": 1.020751953125,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 420,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "p.name": "George T. Johnson"
+      },
+      {
+       "p.name": "Drew Barry"
+      },
+      {
+       "p.name": "Harry Gallatin"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.042,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Atlanta Hawks'})\nWHERE r.end_year IS NULL\nRETURN p.name",
+   "stage": "first"
+  },
+  {
+   "id": "c5f302f2-26cd-4733-a6f8-fe6fb410bc99",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names and dates of aviation accidents involving Korean Air that were headed to Mactan\u2013Cebu International Airport?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:operatedBy]->(m0:Operator {name: 'Korean Air'}),(n:FlightAccident)-[r1:destinedFor]->(m1:Airport {name: 'Mactan\u2013Cebu International Airport'}) WITH DISTINCT n RETURN n.name, n.date",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:operatedBy]->(op:Operator {name: 'Korean Air'}), (fa)-[:destinedFor]->(a:Airport {name: 'Mactan\u2013Cebu International Airport'})\nRETURN fa.name, fa.date",
+     "cypher": "MATCH (fa:FlightAccident)-[:operatedBy]->(op:Operator {name: 'Korean Air'}), (fa)-[:destinedFor]->(a:Airport {name: 'Mactan\u2013Cebu International Airport'})\nRETURN fa.name, fa.date",
+     "calls": 1,
+     "in_tokens": 657,
+     "out_tokens": 57,
+     "cost": 0.0015658800000000002,
+     "secs": 1.2146522998809814,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "fa.name": "Korean Air Flight 631",
+       "fa.date": "2022-10-23"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.239,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:operatedBy]->(op:Operator {name: 'Korean Air'}), (fa)-[:destinedFor]->(a:Airport {name: 'Mactan\u2013Cebu International Airport'})\nRETURN fa.name, fa.date",
+   "stage": "first"
+  },
+  {
+   "id": "3f28fa8b-8b37-46ad-ab48-d4e573500312",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "How many players are there who play as either a shooting guard or a swingman?",
+   "gold_cypher": "CALL { MATCH (n:Player)-[r0:playsPosition]->(m0:Position {name: 'shooting guard'}) RETURN n, m0 as m UNION MATCH (n:Player)-[r1:playsPosition]->(m1:Position {name: 'swingman'}) RETURN n, m1 as m } WITH DISTINCT n RETURN count(n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position)\nWHERE pos.name IN ['shooting guard', 'swingman']\nRETURN count(p) AS playerCount",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position)\nWHERE pos.name IN ['shooting guard', 'swingman']\nRETURN count(p) AS playerCount",
+     "calls": 1,
+     "in_tokens": 767,
+     "out_tokens": 35,
+     "cost": 0.0016741199999999999,
+     "secs": 1.0412840843200684,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "playerCount": 1099
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.061,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position)\nWHERE pos.name IN ['shooting guard', 'swingman']\nRETURN count(p) AS playerCount",
+   "stage": "first"
+  },
+  {
+   "id": "9af6d17e-0214-4cb4-8a66-635230fd7813",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "How many injuries were reported in the Emirates Flight 521 incident?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'Emirates Flight 521'}) WITH DISTINCT n RETURN n.number_of_injuries",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident {name: 'Emirates Flight 521'}) RETURN fa.number_of_injuries",
+     "cypher": "MATCH (fa:FlightAccident {name: 'Emirates Flight 521'}) RETURN fa.number_of_injuries",
+     "calls": 1,
+     "in_tokens": 644,
+     "out_tokens": 25,
+     "cost": 0.00138424,
+     "secs": 0.6862552165985107,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "fa.number_of_injuries": 13
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.705,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident {name: 'Emirates Flight 521'}) RETURN fa.number_of_injuries",
+   "stage": "first"
+  },
+  {
+   "id": "0057ca47-ddfa-410f-9634-a4400849ee20",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Who are the players currently playing for the Orlando Magic?",
+   "gold_cypher": "MATCH (n:Player)-[r0:playsFor]->(m0:Team {name: 'Orlando Magic'}) WHERE r0.start_year IS NOT NULL AND r0.end_year IS NULL WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Orlando Magic'})\nWHERE r.end_year IS NULL\nRETURN p.name",
+     "cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Orlando Magic'})\nWHERE r.end_year IS NULL\nRETURN p.name",
+     "calls": 1,
+     "in_tokens": 761,
+     "out_tokens": 34,
+     "cost": 0.00165748,
+     "secs": 0.8483247756958008,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 193,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "p.name": "Pat Burke"
+      },
+      {
+       "p.name": "Carl Thomas"
+      },
+      {
+       "p.name": "Matt Harpring"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.87,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Orlando Magic'})\nWHERE r.end_year IS NULL\nRETURN p.name",
+   "stage": "first"
+  },
+  {
+   "id": "cd852481-e1cb-4920-a90d-84ecc005ee11",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of aircraft models involved in flight accidents departing from Crnl. FAP Francisco Secada Vignetta International Airport?",
+   "gold_cypher": "MATCH (n:AircraftModel)<-[r0:involves]-(m0:FlightAccident)-[r1:departsFrom]->(m1:Airport {name: 'Crnl. FAP Francisco Secada Vignetta International Airport'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport {name: 'Crnl. FAP Francisco Secada Vignetta International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:involves]->(m:AircraftModel)\nRETURN m.name",
+     "cypher": "MATCH (a:Airport {name: 'Crnl. FAP Francisco Secada Vignetta International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:involves]->(m:AircraftModel)\nRETURN m.name",
+     "calls": 1,
+     "in_tokens": 658,
+     "out_tokens": 50,
+     "cost": 0.0015336800000000002,
+     "secs": 0.9644677639007568,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "m.name": "Boeing 737"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.985,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport {name: 'Crnl. FAP Francisco Secada Vignetta International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:involves]->(m:AircraftModel)\nRETURN m.name",
+   "stage": "first"
+  },
+  {
+   "id": "44e56e56-e9d2-4efb-87fa-1b9673e881e8",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "What are the positions played by players who have been part of the Atlanta Hawks, and how many such players have played each position?",
+   "gold_cypher": "MATCH (n:Position)<-[r0:playsPosition]-(m0:Player)-[r1:playsFor]->(m1:Team {name: 'Atlanta Hawks'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsFor]->(t:Team {name: 'Atlanta Hawks'})\nMATCH (p)-[:playsPosition]->(pos:Position)\nRETURN pos.name AS position, COUNT(DISTINCT p) AS player_count\nORDER BY player_count DESC",
+     "cypher": "MATCH (p:Player)-[:playsFor]->(t:Team {name: 'Atlanta Hawks'})\nMATCH (p)-[:playsPosition]->(pos:Position)\nRETURN pos.name AS position, COUNT(DISTINCT p) AS player_count\nORDER BY player_count DESC",
+     "calls": 1,
+     "in_tokens": 776,
+     "out_tokens": 55,
+     "cost": 0.00178936,
+     "secs": 1.0812489986419678,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 5,
+     "outcome": "correct",
+     "preview": [
+      {
+       "position": "shooting guard",
+       "player_count": 133
+      },
+      {
+       "position": "power forward",
+       "player_count": 126
+      },
+      {
+       "position": "point guard",
+       "player_count": 122
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.118,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsFor]->(t:Team {name: 'Atlanta Hawks'})\nMATCH (p)-[:playsPosition]->(pos:Position)\nRETURN pos.name AS position, COUNT(DISTINCT p) AS player_count\nORDER BY player_count DESC",
+   "stage": "first"
+  },
+  {
+   "id": "7691948b-7a81-4643-8a8a-1901612ab989",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names of aviation accidents that originated from Zvartnots International Airport?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:departsFrom]->(m0:Airport {name: 'Zvartnots International Airport'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport {name: 'Zvartnots International Airport'})<-[:departsFrom]-(acc:FlightAccident)\nRETURN acc.name",
+     "cypher": "MATCH (a:Airport {name: 'Zvartnots International Airport'})<-[:departsFrom]-(acc:FlightAccident)\nRETURN acc.name",
+     "calls": 1,
+     "in_tokens": 647,
+     "out_tokens": 31,
+     "cost": 0.0014194,
+     "secs": 0.9067018032073975,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "acc.name": "Armavia Flight 967"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.932,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport {name: 'Zvartnots International Airport'})<-[:departsFrom]-(acc:FlightAccident)\nRETURN acc.name",
+   "stage": "first"
+  },
+  {
+   "id": "4cbfd81b-f7d7-42df-b67a-9b3fc942c36f",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "How many different positions are played by players who also play as power forwards?",
+   "gold_cypher": "MATCH (n:Position)<-[r0:playsPosition]-(m0:Player)-[r1:playsPosition]->(m1:Position {name: 'power forward'}) WITH DISTINCT n RETURN count(DISTINCT n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Power Forward'})\nWITH COLLECT(DISTINCT p) AS players\nUNWIND players AS p\nMATCH (p)-[:playsPosition]->(pos2:Position)\nRETURN COUNT(DISTINCT pos2) AS different_positions",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Power Forward'})\nWITH COLLECT(DISTINCT p) AS players\nUNWIND players AS p\nMATCH (p)-[:playsPosition]->(pos2:Position)\nRETURN COUNT(DISTINCT pos2) AS different_positions",
+     "calls": 1,
+     "in_tokens": 765,
+     "out_tokens": 64,
+     "cost": 0.0018117199999999997,
+     "secs": 1.4766991138458252,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "different_positions": 0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.512,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Power Forward'})\nWITH COLLECT(DISTINCT p) AS players\nUNWIND players AS p\nMATCH (p)-[:playsPosition]->(pos2:Position)\nRETURN COUNT(DISTINCT pos2) AS different_positions",
+   "stage": "first"
+  },
+  {
+   "id": "ef21d702-743f-4623-8537-754611c84765",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Do Noar Linhas A\u00e9reas Flight 4896 and Air Moorea Flight 1121 have an equal number of survivors?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'Noar Linhas A\u00e9reas Flight 4896'}), (m0:FlightAccident {name: 'Air Moorea Flight 1121'}) RETURN n.number_of_survivors = m0.number_of_survivors AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa1:FlightAccident {flight_number: '4896'}), (fa2:FlightAccident {flight_number: '1121'})\nWHERE fa1.number_of_survivors = fa2.number_of_survivors\nRETURN fa1.number_of_survivors AS survivors1, fa2.number_of_survivors AS survivors2, fa1.number_of_survivors = fa2.number_of_survivors AS equal",
+     "cypher": "MATCH (fa1:FlightAccident {flight_number: '4896'}), (fa2:FlightAccident {flight_number: '1121'})\nWHERE fa1.number_of_survivors = fa2.number_of_survivors\nRETURN fa1.number_of_survivors AS survivors1, fa2.number_of_survivors AS survivors2, fa1.number_of_survivors = fa2.number_of_survivors AS equal",
+     "calls": 1,
+     "in_tokens": 657,
+     "out_tokens": 89,
+     "cost": 0.00172204,
+     "secs": 1.373236894607544,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.395,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa1:FlightAccident {flight_number: '4896'}), (fa2:FlightAccident {flight_number: '1121'})\nWHERE fa1.number_of_survivors = fa2.number_of_survivors\nRETURN fa1.number_of_survivors AS survivors1, fa2.number_of_survivors AS survivors2, fa1.number_of_survivors = fa2.number_of_survivors AS equal",
+   "stage": "first"
+  },
+  {
+   "id": "16725cad-e28c-4b23-8d61-c5c86740b740",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "How much heavier is JaVale McGee than Kevin Grevey in kilograms?",
+   "gold_cypher": "MATCH (n:Player {name: 'JaVale McGee'}), (m0:Player {name: 'Kevin Grevey'}) RETURN n.mass_kg - m0.mass_kg AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p1:Player {name: 'JaVale McGee'}), (p2:Player {name: 'Kevin Grevey'})\nRETURN p1.mass_kg - p2.mass_kg AS weight_difference_kg",
+     "cypher": "MATCH (p1:Player {name: 'JaVale McGee'}), (p2:Player {name: 'Kevin Grevey'})\nRETURN p1.mass_kg - p2.mass_kg AS weight_difference_kg",
+     "calls": 1,
+     "in_tokens": 765,
+     "out_tokens": 46,
+     "cost": 0.00172388,
+     "secs": 0.9356250762939453,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "weight_difference_kg": 27.0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.966,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p1:Player {name: 'JaVale McGee'}), (p2:Player {name: 'Kevin Grevey'})\nRETURN p1.mass_kg - p2.mass_kg AS weight_difference_kg",
+   "stage": "first"
+  },
+  {
+   "id": "b8bdc7b3-6b67-49e3-a211-b8ec455ad097",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of airports from which flights involved in accidents were departing, if they were headed to Dalian Zhoushuizi International Airport?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:departsFrom]-(m0:FlightAccident)-[r1:destinedFor]->(m1:Airport {name: 'Dalian Zhoushuizi International Airport'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:departsFrom]->(dep:Airport)\nWHERE (fa)-[:destinedFor]->(:Airport {name: 'Dalian Zhoushuizi International Airport'})\nRETURN DISTINCT dep.name",
+     "cypher": "MATCH (fa:FlightAccident)-[:departsFrom]->(dep:Airport)\nWHERE (fa)-[:destinedFor]->(:Airport {name: 'Dalian Zhoushuizi International Airport'})\nRETURN DISTINCT dep.name",
+     "calls": 1,
+     "in_tokens": 660,
+     "out_tokens": 46,
+     "cost": 0.00151808,
+     "secs": 1.0841028690338135,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "dep.name": "Beijing Capital International Airport"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.104,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:departsFrom]->(dep:Airport)\nWHERE (fa)-[:destinedFor]->(:Airport {name: 'Dalian Zhoushuizi International Airport'})\nRETURN DISTINCT dep.name",
+   "stage": "first"
+  },
+  {
+   "id": "29bb366e-8b46-48bf-a5b6-c9125bc7b64a",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of teams that have either played at Madison Square Garden or are part of the Atlantic Division?",
+   "gold_cypher": "CALL { MATCH (n:Team)-[r0:hasHomeVenue]->(m0:Venue {name: 'Madison Square Garden'}) RETURN n, m0 as m UNION MATCH (n:Team)-[r1:partOfDivision]->(m1:Division {name: 'Atlantic Division'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)\nWHERE (t)-[:hasHomeVenue {start_year: 0, end_year: 0}]->(:Venue {name: 'Madison Square Garden'})\n  OR (t)-[:partOfDivision]->(:Division {name: 'Atlantic'})\nRETURN t.name",
+     "cypher": "MATCH (t:Team)\nWHERE (t)-[:hasHomeVenue {start_year: 0, end_year: 0}]->(:Venue {name: 'Madison Square Garden'})\n  OR (t)-[:partOfDivision]->(:Division {name: 'Atlantic'})\nRETURN t.name",
+     "calls": 1,
+     "in_tokens": 772,
+     "out_tokens": 60,
+     "cost": 0.00180592,
+     "secs": 1.20573091506958,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.233,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)\nWHERE (t)-[:hasHomeVenue {start_year: 0, end_year: 0}]->(:Venue {name: 'Madison Square Garden'})\n  OR (t)-[:partOfDivision]->(:Division {name: 'Atlantic'})\nRETURN t.name",
+   "stage": "first"
+  },
+  {
+   "id": "ab2ad73f-ea17-4f7c-89fd-08c6b9933acd",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Which country is home to the Novosibirsk Aircraft Production Association?",
+   "gold_cypher": "MATCH (n:AircraftManufacturer {name: 'Novosibirsk Aircraft Production Association'}) WITH DISTINCT n RETURN n.country",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer {name: 'Novosibirsk Aircraft Production Association'}) RETURN m.country",
+     "cypher": "MATCH (m:AircraftManufacturer {name: 'Novosibirsk Aircraft Production Association'}) RETURN m.country",
+     "calls": 1,
+     "in_tokens": 643,
+     "out_tokens": 20,
+     "cost": 0.00135788,
+     "secs": 0.9531450271606445,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "m.country": "Russia"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.973,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer {name: 'Novosibirsk Aircraft Production Association'}) RETURN m.country",
+   "stage": "first"
+  },
+  {
+   "id": "e8ec051a-c81d-4675-96bf-2fde120a3078",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Who are the players drafted by the New York Knicks, listed from the oldest to the youngest based on their date of birth?",
+   "gold_cypher": "MATCH (n:Player)-[r0:draftedBy]->(m0:Team {name: 'New York Knicks'}) WITH DISTINCT n RETURN n.name ORDER BY n.date_of_birth ASC",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[d:draftedBy]->(t:Team {name: 'New York Knicks'})\nRETURN p.name AS player, p.date_of_birth AS date_of_birth\nORDER BY p.date_of_birth ASC",
+     "cypher": "MATCH (p:Player)-[d:draftedBy]->(t:Team {name: 'New York Knicks'})\nRETURN p.name AS player, p.date_of_birth AS date_of_birth\nORDER BY p.date_of_birth ASC",
+     "calls": 1,
+     "in_tokens": 775,
+     "out_tokens": 46,
+     "cost": 0.00174348,
+     "secs": 1.3613879680633545,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 169,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "player": "Dick Holub",
+       "date_of_birth": "1921-10-29"
+      },
+      {
+       "player": "Andy Duncan",
+       "date_of_birth": "1922-04-17"
+      },
+      {
+       "player": "Dick Shrider",
+       "date_of_birth": "1923-02-07"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.383,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[d:draftedBy]->(t:Team {name: 'New York Knicks'})\nRETURN p.name AS player, p.date_of_birth AS date_of_birth\nORDER BY p.date_of_birth ASC",
+   "stage": "first"
+  },
+  {
+   "id": "11305436-476f-4e74-bbe4-7468a16cd68f",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names of airports from which flight accidents have departed?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:departsFrom]-(m0:FlightAccident) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport)<-[:departsFrom]-(f:FlightAccident)\nRETURN DISTINCT a.name",
+     "cypher": "MATCH (a:Airport)<-[:departsFrom]-(f:FlightAccident)\nRETURN DISTINCT a.name",
+     "calls": 1,
+     "in_tokens": 644,
+     "out_tokens": 23,
+     "cost": 0.00137448,
+     "secs": 0.7939491271972656,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 300,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "Jackson-Evers International Airport"
+      },
+      {
+       "a.name": "Iwakuni Air Base"
+      },
+      {
+       "a.name": "Halim Perdanakusuma Airport"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.815,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport)<-[:departsFrom]-(f:FlightAccident)\nRETURN DISTINCT a.name",
+   "stage": "first"
+  },
+  {
+   "id": "ac5fae91-630e-4df7-aaf1-070cede1c006",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names and schools attended of players who play both point guard and center positions?",
+   "gold_cypher": "MATCH (n:Player)-[r0:playsPosition]->(m0:Position {name: 'point guard'}),(n:Player)-[r1:playsPosition]->(m1:Position {name: 'center'}) WITH DISTINCT n RETURN n.name, n.schools_attended",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos1:Position {name: 'point guard'}), (p)-[:playsPosition]->(pos2:Position {name: 'center'})\nRETURN p.name AS name, p.schools_attended AS schools_attended",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos1:Position {name: 'point guard'}), (p)-[:playsPosition]->(pos2:Position {name: 'center'})\nRETURN p.name AS name, p.schools_attended AS schools_attended",
+     "calls": 1,
+     "in_tokens": 768,
+     "out_tokens": 56,
+     "cost": 0.00177856,
+     "secs": 1.1067819595336914,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "name": "Boris Diaw",
+       "schools_attended": [
+        "INSEP"
+       ]
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.127,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos1:Position {name: 'point guard'}), (p)-[:playsPosition]->(pos2:Position {name: 'center'})\nRETURN p.name AS name, p.schools_attended AS schools_attended",
+   "stage": "first"
+  },
+  {
+   "id": "17e9f281-1c7c-43f6-aab1-823a4bd4413e",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names and launch years of aircraft manufacturers that produced models involved in the Yeti Airlines Flight 103 accident?",
+   "gold_cypher": "MATCH (n:AircraftManufacturer)<-[r0:manufacturedBy]-(m0:AircraftModel)<-[r1:involves]-(m1:FlightAccident {name: 'Yeti Airlines Flight 103'}) WITH DISTINCT n RETURN n.name, n.launch_year",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident {name: 'Yeti Airlines Flight 103'})-[:involves]->(am:AircraftModel)-[:manufacturedBy]->(man:AircraftManufacturer)\nRETURN man.name, man.launch_year",
+     "cypher": "MATCH (fa:FlightAccident {name: 'Yeti Airlines Flight 103'})-[:involves]->(am:AircraftModel)-[:manufacturedBy]->(man:AircraftManufacturer)\nRETURN man.name, man.launch_year",
+     "calls": 1,
+     "in_tokens": 655,
+     "out_tokens": 48,
+     "cost": 0.00151804,
+     "secs": 1.0610027313232422,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "man.name": "De Havilland Canada",
+       "man.launch_year": 1928
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.081,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident {name: 'Yeti Airlines Flight 103'})-[:involves]->(am:AircraftModel)-[:manufacturedBy]->(man:AircraftManufacturer)\nRETURN man.name, man.launch_year",
+   "stage": "first"
+  },
+  {
+   "id": "c960408d-76ca-492c-88d0-ea4088ea4e7b",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "How many divisions are in the same conference as the Central Division?",
+   "gold_cypher": "MATCH (n:Division)-[r0:partOfConference]->(m0:Conference)<-[r1:partOfConference]-(m1:Division {name: 'Central Division'}) WITH DISTINCT n RETURN count(DISTINCT n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d:Division {name: 'Central Division'})-[:partOfConference]->(c:Conference)<-[:partOfConference]-(d2:Division)\nRETURN count(d2) AS divisionCount",
+     "cypher": "MATCH (d:Division {name: 'Central Division'})-[:partOfConference]->(c:Conference)<-[:partOfConference]-(d2:Division)\nRETURN count(d2) AS divisionCount",
+     "calls": 1,
+     "in_tokens": 763,
+     "out_tokens": 43,
+     "cost": 0.00170532,
+     "secs": 1.2124040126800537,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "divisionCount": 2
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.232,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (d:Division {name: 'Central Division'})-[:partOfConference]->(c:Conference)<-[:partOfConference]-(d2:Division)\nRETURN count(d2) AS divisionCount",
+   "stage": "first"
+  },
+  {
+   "id": "1cfe704a-be27-4915-849d-ada3deea6e4c",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names of aircraft models produced by PZL Mielec?",
+   "gold_cypher": "MATCH (n:AircraftModel)-[r0:manufacturedBy]->(m0:AircraftManufacturer {name: 'PZL Mielec'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer {name: 'PZL Mielec'})<-[:manufacturedBy]-(am:AircraftModel)\nRETURN am.name",
+     "cypher": "MATCH (m:AircraftManufacturer {name: 'PZL Mielec'})<-[:manufacturedBy]-(am:AircraftModel)\nRETURN am.name",
+     "calls": 1,
+     "in_tokens": 646,
+     "out_tokens": 31,
+     "cost": 0.00141744,
+     "secs": 0.858788013458252,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "am.name": "An-28"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.88,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer {name: 'PZL Mielec'})<-[:manufacturedBy]-(am:AircraftModel)\nRETURN am.name",
+   "stage": "first"
+  },
+  {
+   "id": "26414c4a-54c7-4266-8f15-f7854fd714cb",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of players who have either received the NBA All-Star Game Kobe Bryant Most Valuable Player Award or play as a power forward?",
+   "gold_cypher": "CALL { MATCH (n:Player)-[r0:receivesAward]->(m0:Award {name: 'NBA All-Star Game Kobe Bryant Most Valuable Player Award'}) RETURN n, m0 as m UNION MATCH (n:Player)-[r1:playsPosition]->(m1:Position {name: 'power forward'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)\nWHERE (p)-[:receivesAward {year: _}]->(:Award {name: 'NBA All-Star Game Kobe Bryant Most Valuable Player Award'})\nOR (p)-[:playsPosition]->(:Position {name: 'power forward'})\nRETURN p.name",
+     "cypher": "MATCH (p:Player)\nWHERE (p)-[:receivesAward {year: _}]->(:Award {name: 'NBA All-Star Game Kobe Bryant Most Valuable Player Award'})\nOR (p)-[:playsPosition]->(:Position {name: 'power forward'})\nRETURN p.name",
+     "calls": 1,
+     "in_tokens": 779,
+     "out_tokens": 58,
+     "cost": 0.0018098799999999998,
+     "secs": 1.2007980346679688,
+     "status": "error",
+     "error": "CypherSyntaxError: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Variable `_` not defined (line 2, column 34 (offset: 58))\n\"WHERE (p)-[:receivesAward {year: _}]->(:Award {name: 'NBA All-Star Game Kobe Bryant Most Valuable Player Award'})\"\n                                  ^} {gql_status: 50N42} {gql_st",
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "error",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.226,
+   "outcome": "error",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)\nWHERE (p)-[:receivesAward {year: _}]->(:Award {name: 'NBA All-Star Game Kobe Bryant Most Valuable Player Award'})\nOR (p)-[:playsPosition]->(:Position {name: 'power forward'})\nRETURN p.name",
+   "stage": "first"
+  },
+  {
+   "id": "168ce5e4-8b46-4a7a-a080-66f58fa95bd3",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "When did the Emirates Flight 521 accident occur?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'Emirates Flight 521'}) WITH DISTINCT n RETURN n.date",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident {flight_number: 'Emirates Flight 521'}) RETURN fa.date",
+     "cypher": "MATCH (fa:FlightAccident {flight_number: 'Emirates Flight 521'}) RETURN fa.date",
+     "calls": 1,
+     "in_tokens": 641,
+     "out_tokens": 22,
+     "cost": 0.00136372,
+     "secs": 0.766838788986206,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.787,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident {flight_number: 'Emirates Flight 521'}) RETURN fa.date",
+   "stage": "first"
+  },
+  {
+   "id": "b9fd3905-8968-45ee-a3c0-e0609e6a82d8",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "How many teams have either drafted Tom Hawkins or had George McCloud play for them at any time?",
+   "gold_cypher": "CALL { MATCH (n:Team)<-[r0:draftedBy]-(m0:Player {name: 'Tom Hawkins'}) RETURN n, m0 as m UNION MATCH (n:Team)<-[r1:playsFor]-(m1:Player {name: 'George McCloud'}) RETURN n, m1 as m } WITH DISTINCT n RETURN count(n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Tom Hawkins'})-[:draftedBy]->(t:Team)\nWITH collect(DISTINCT t) AS draftedTeams\nMATCH (p2:Player {name: 'George McCloud'})-[:playsFor]->(t2:Team)\nWITH draftedTeams, collect(DISTINCT t2) AS playedTeams\nUNWIND (draftedTeams + playedTeams) AS team\nRETURN count(DISTINCT team)",
+     "cypher": "MATCH (p:Player {name: 'Tom Hawkins'})-[:draftedBy]->(t:Team)\nWITH collect(DISTINCT t) AS draftedTeams\nMATCH (p2:Player {name: 'George McCloud'})-[:playsFor]->(t2:Team)\nWITH draftedTeams, collect(DISTINCT t2) AS playedTeams\nUNWIND (draftedTeams + playedTeams) AS team\nRETURN count(DISTINCT team)",
+     "calls": 1,
+     "in_tokens": 770,
+     "out_tokens": 95,
+     "cost": 0.0019728,
+     "secs": 1.3296337127685547,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "count(DISTINCT team)": 5
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.351,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Tom Hawkins'})-[:draftedBy]->(t:Team)\nWITH collect(DISTINCT t) AS draftedTeams\nMATCH (p2:Player {name: 'George McCloud'})-[:playsFor]->(t2:Team)\nWITH draftedTeams, collect(DISTINCT t2) AS playedTeams\nUNWIND (draftedTeams + playedTeams) AS team\nRETURN count(DISTINCT team)",
+   "stage": "first"
+  },
+  {
+   "id": "b1f5e46e-125a-4954-ae0c-88536f946e4b",
+   "graph": "flight_accident",
+   "tier": "hard",
+   "question": "What are the names of operators involved in aviation accidents destined for Mehrabad International Airport, and how many such accidents did each operator handle?",
+   "gold_cypher": "MATCH (n:Operator)<-[r0:operatedBy]-(m0:FlightAccident)-[r1:destinedFor]->(m1:Airport {name: 'Mehrabad International Airport'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Mehrabad International Airport'\nMATCH (fa)-[:operatedBy]->(o:Operator)\nRETURN o.name AS operator, COUNT(fa) AS accident_count",
+     "cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Mehrabad International Airport'\nMATCH (fa)-[:operatedBy]->(o:Operator)\nRETURN o.name AS operator, COUNT(fa) AS accident_count",
+     "calls": 1,
+     "in_tokens": 659,
+     "out_tokens": 57,
+     "cost": 0.0015697999999999997,
+     "secs": 1.1443939208984375,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "correct",
+     "preview": [
+      {
+       "operator": "Czech Airlines",
+       "accident_count": 1
+      },
+      {
+       "operator": "Iran Air",
+       "accident_count": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.164,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Mehrabad International Airport'\nMATCH (fa)-[:operatedBy]->(o:Operator)\nRETURN o.name AS operator, COUNT(fa) AS accident_count",
+   "stage": "first"
+  },
+  {
+   "id": "3dffa227-502f-42e3-bffb-09947424be00",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of conferences that include both the Northwest Division and the Southwest Division?",
+   "gold_cypher": "MATCH (n:Conference)<-[r0:partOfConference]-(m0:Division {name: 'Northwest Division'}),(n:Conference)<-[r1:partOfConference]-(m1:Division {name: 'Southwest Division'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (northwest:Division {name: 'Northwest Division'})-[:partOfConference]->(c:Conference)\nMATCH (southwest:Division {name: 'Southwest Division'})-[:partOfConference]->(c)\nRETURN c.name",
+     "cypher": "MATCH (northwest:Division {name: 'Northwest Division'})-[:partOfConference]->(c:Conference)\nMATCH (southwest:Division {name: 'Southwest Division'})-[:partOfConference]->(c)\nRETURN c.name",
+     "calls": 1,
+     "in_tokens": 767,
+     "out_tokens": 51,
+     "cost": 0.0017521999999999998,
+     "secs": 1.000960111618042,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "c.name": "Western Conference"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.02,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (northwest:Division {name: 'Northwest Division'})-[:partOfConference]->(c:Conference)\nMATCH (southwest:Division {name: 'Southwest Division'})-[:partOfConference]->(c)\nRETURN c.name",
+   "stage": "first"
+  },
+  {
+   "id": "b759ba57-97f5-4952-8566-58808efc4767",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Who are the operators of Aeroflot Flight 3603, and what countries are they from?",
+   "gold_cypher": "MATCH (n:Operator)<-[r0:operatedBy]-(m0:FlightAccident {name: 'Aeroflot Flight 3603'}) WITH DISTINCT n RETURN n.name, n.country",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident {flight_number: '3603'})-[:operatedBy]->(o:Operator)\nWHERE fa.name CONTAINS 'Aeroflot'\nRETURN o.name AS operator, o.country AS country",
+     "cypher": "MATCH (fa:FlightAccident {flight_number: '3603'})-[:operatedBy]->(o:Operator)\nWHERE fa.name CONTAINS 'Aeroflot'\nRETURN o.name AS operator, o.country AS country",
+     "calls": 1,
+     "in_tokens": 651,
+     "out_tokens": 48,
+     "cost": 0.0015102,
+     "secs": 1.0145878791809082,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.035,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident {flight_number: '3603'})-[:operatedBy]->(o:Operator)\nWHERE fa.name CONTAINS 'Aeroflot'\nRETURN o.name AS operator, o.country AS country",
+   "stage": "first"
+  },
+  {
+   "id": "6ca84420-ea44-44aa-b31f-d373bf45f0ae",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "Who are the players who have been on the same teams as Aron Baynes, and how many of those teams has each player been a part of?",
+   "gold_cypher": "MATCH (n:Player)-[r0:playsFor]->(m0:Team)<-[r1:playsFor]-(m1:Player {name: 'Aron Baynes'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (baynes:Player {name: 'Aron Baynes'})-[:playsFor]->(team:Team)<-[:playsFor]-(player:Player)\nWHERE player <> baynes\nWITH player, COLLECT(DISTINCT team) AS teams\nRETURN player.name AS player, SIZE(teams) AS number_of_teams",
+     "cypher": "MATCH (baynes:Player {name: 'Aron Baynes'})-[:playsFor]->(team:Team)<-[:playsFor]-(player:Player)\nWHERE player <> baynes\nWITH player, COLLECT(DISTINCT team) AS teams\nRETURN player.name AS player, SIZE(teams) AS number_of_teams",
+     "calls": 1,
+     "in_tokens": 780,
+     "out_tokens": 69,
+     "cost": 0.00186552,
+     "secs": 1.2883028984069824,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1625,
+     "outcome": "correct",
+     "preview": [
+      {
+       "player": "Jack Nichols",
+       "number_of_teams": 1
+      },
+      {
+       "player": "Bob Brannum",
+       "number_of_teams": 1
+      },
+      {
+       "player": "Red Wallace",
+       "number_of_teams": 1
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.317,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (baynes:Player {name: 'Aron Baynes'})-[:playsFor]->(team:Team)<-[:playsFor]-(player:Player)\nWHERE player <> baynes\nWITH player, COLLECT(DISTINCT team) AS teams\nRETURN player.name AS player, SIZE(teams) AS number_of_teams",
+   "stage": "first"
+  },
+  {
+   "id": "00c50f73-b5ed-4ee2-9d0d-8d86d21b81e8",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names and ICAO codes of airports that were destinations for flight accidents operated by Ukraine International Airlines?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:destinedFor]-(m0:FlightAccident)-[r1:operatedBy]->(m1:Operator {name: 'Ukraine International Airlines'}) WITH DISTINCT n RETURN n.name, n.icao_code",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:operatedBy]->(:Operator {name: 'Ukraine International Airlines'})\nMATCH (fa)-[:destinedFor]->(a:Airport)\nRETURN a.name, a.icao_code",
+     "cypher": "MATCH (fa:FlightAccident)-[:operatedBy]->(:Operator {name: 'Ukraine International Airlines'})\nMATCH (fa)-[:destinedFor]->(a:Airport)\nRETURN a.name, a.icao_code",
+     "calls": 1,
+     "in_tokens": 653,
+     "out_tokens": 45,
+     "cost": 0.0014994799999999999,
+     "secs": 0.9122977256774902,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "Boryspil International Airport",
+       "a.icao_code": "UKBB"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.953,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:operatedBy]->(:Operator {name: 'Ukraine International Airlines'})\nMATCH (fa)-[:destinedFor]->(a:Airport)\nRETURN a.name, a.icao_code",
+   "stage": "first"
+  },
+  {
+   "id": "75295cc6-0576-4131-9226-11efc882228d",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Who is taller, Jordan Farmar or Michael Cooper?",
+   "gold_cypher": "MATCH (n:Player {name: 'Jordan Farmar'}), (m0:Player {name: 'Michael Cooper'}) RETURN CASE WHEN n.height_cm > m0.height_cm THEN n.name ELSE m0.name END AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)\nWHERE p.name IN ['Jordan Farmar', 'Michael Cooper']\nRETURN p.name, p.height_cm\nORDER BY p.height_cm DESC",
+     "cypher": "MATCH (p:Player)\nWHERE p.name IN ['Jordan Farmar', 'Michael Cooper']\nRETURN p.name, p.height_cm\nORDER BY p.height_cm DESC",
+     "calls": 1,
+     "in_tokens": 761,
+     "out_tokens": 33,
+     "cost": 0.0016526,
+     "secs": 0.8508591651916504,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "p.name": "Michael Cooper",
+       "p.height_cm": 196.0
+      },
+      {
+       "p.name": "Jordan Farmar",
+       "p.height_cm": 188.0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.882,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)\nWHERE p.name IN ['Jordan Farmar', 'Michael Cooper']\nRETURN p.name, p.height_cm\nORDER BY p.height_cm DESC",
+   "stage": "first"
+  },
+  {
+   "id": "06a0e95a-31a8-4b69-95af-24dc0d732b37",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What is the height difference in meters between the Douglas A-26 Invader and the Junkers Ju 52?",
+   "gold_cypher": "MATCH (n:AircraftModel {name: 'Douglas A-26 Invader'}), (m0:AircraftModel {name: 'Junkers Ju 52'}) RETURN n.height_metre - m0.height_metre AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a1:AircraftModel {name: 'Douglas A-26 Invader'}), (a2:AircraftModel {name: 'Junkers Ju 52'})\nRETURN a1.height_metre - a2.height_metre AS height_difference",
+     "cypher": "MATCH (a1:AircraftModel {name: 'Douglas A-26 Invader'}), (a2:AircraftModel {name: 'Junkers Ju 52'})\nRETURN a1.height_metre - a2.height_metre AS height_difference",
+     "calls": 1,
+     "in_tokens": 654,
+     "out_tokens": 52,
+     "cost": 0.0015355999999999998,
+     "secs": 0.9101271629333496,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "height_difference": 1.17
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.93,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a1:AircraftModel {name: 'Douglas A-26 Invader'}), (a2:AircraftModel {name: 'Junkers Ju 52'})\nRETURN a1.height_metre - a2.height_metre AS height_difference",
+   "stage": "first"
+  },
+  {
+   "id": "7535ba70-b009-43a3-8eab-3f6fac5d8edd",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "How many NBA divisions are there?",
+   "gold_cypher": "MATCH (n:Division) WITH DISTINCT n RETURN count(DISTINCT n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d:Division)\nRETURN count(d) AS divisionCount",
+     "cypher": "MATCH (d:Division)\nRETURN count(d) AS divisionCount",
+     "calls": 1,
+     "in_tokens": 757,
+     "out_tokens": 13,
+     "cost": 0.0015471600000000001,
+     "secs": 0.7018561363220215,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "divisionCount": 6
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.722,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (d:Division)\nRETURN count(d) AS divisionCount",
+   "stage": "first"
+  },
+  {
+   "id": "9d433b20-15c1-4c03-b2ab-bbe50407f8fd",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of airports where a flight accident both departed from and was destined for?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:departsFrom]-(m0:FlightAccident),(n:Airport)<-[r1:destinedFor]-(m0:FlightAccident) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport)<-[:departsFrom]-(f:FlightAccident)-[:destinedFor]->(a)\nRETURN a.name",
+     "cypher": "MATCH (a:Airport)<-[:departsFrom]-(f:FlightAccident)-[:destinedFor]->(a)\nRETURN a.name",
+     "calls": 1,
+     "in_tokens": 649,
+     "out_tokens": 30,
+     "cost": 0.00141844,
+     "secs": 0.6261899471282959,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 14,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "Aden Adde International Airport"
+      },
+      {
+       "a.name": "San Pablo Airport"
+      },
+      {
+       "a.name": "Bradley International Airport"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.65,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport)<-[:departsFrom]-(f:FlightAccident)-[:destinedFor]->(a)\nRETURN a.name",
+   "stage": "first"
+  },
+  {
+   "id": "d8947542-8e7d-4a1f-9513-b8576feccd26",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of divisions that include a team which drafted Keith Booth?",
+   "gold_cypher": "MATCH (n:Division)<-[r0:partOfDivision]-(m0:Team)<-[r1:draftedBy]-(m1:Player {name: 'Keith Booth'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Keith Booth'})-[:draftedBy]->(t:Team)\nMATCH (t)-[:partOfDivision]->(d:Division)\nRETURN d.name",
+     "cypher": "MATCH (p:Player {name: 'Keith Booth'})-[:draftedBy]->(t:Team)\nMATCH (t)-[:partOfDivision]->(d:Division)\nRETURN d.name",
+     "calls": 1,
+     "in_tokens": 765,
+     "out_tokens": 40,
+     "cost": 0.0016945999999999999,
+     "secs": 0.763545036315918,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "d.name": "Central Division"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.792,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Keith Booth'})-[:draftedBy]->(t:Team)\nMATCH (t)-[:partOfDivision]->(d:Division)\nRETURN d.name",
+   "stage": "first"
+  },
+  {
+   "id": "81b1f0da-6037-45bf-a541-9141d56b5012",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of aviation accidents either operated by the Philippine Air Force or headed for Jolo Airport?",
+   "gold_cypher": "CALL { MATCH (n:FlightAccident)-[r0:operatedBy]->(m0:Operator {name: 'Philippine Air Force'}) RETURN n, m0 as m UNION MATCH (n:FlightAccident)-[r1:destinedFor]->(m1:Airport {name: 'Jolo Airport'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:operatedBy]->(op:Operator {name: 'Philippine Air Force'})\nWITH fa AS accident\nMATCH (fa2:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Jolo Airport' OR a.iata_code = 'Jolo Airport' OR a.icao_code = 'Jolo Airport'\nWITH accident, fa2 AS accident2\nRETURN DISTINCT accident.name AS name\nUNION\nMATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Jolo Airport' OR a.iata_code = 'Jolo Airport' OR a.icao_code = 'Jolo Airport'\nRETURN DISTINCT fa.name AS name",
+     "cypher": "MATCH (fa:FlightAccident)-[:operatedBy]->(op:Operator {name: 'Philippine Air Force'})\nWITH fa AS accident\nMATCH (fa2:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Jolo Airport' OR a.iata_code = 'Jolo Airport' OR a.icao_code = 'Jolo Airport'\nWITH accident, fa2 AS accident2\nRETURN DISTINCT accident.name AS name\nUNION\nMATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Jolo Airport' OR a.iata_code = 'Jolo Airport' OR a.icao_code = 'Jolo Airport'\nRETURN DISTINCT fa.name AS name",
+     "calls": 1,
+     "in_tokens": 652,
+     "out_tokens": 155,
+     "cost": 0.00203432,
+     "secs": 1.8832967281341553,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "name": "2021 Philippine Air Force C-130 crash"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.903,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:operatedBy]->(op:Operator {name: 'Philippine Air Force'})\nWITH fa AS accident\nMATCH (fa2:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Jolo Airport' OR a.iata_code = 'Jolo Airport' OR a.icao_code = 'Jolo Airport'\nWITH accident, fa2 AS accident2\nRETURN DISTINCT accident.name AS name\nUNION\nMATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Jolo Airport' OR a.iata_code = 'Jolo Airport' OR a.icao_code = 'Jolo Airport'\nRETURN DISTINCT fa.name AS name",
+   "stage": "first"
+  },
+  {
+   "id": "ddea610c-00bc-444c-85b0-a5b15b93ac4c",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of venues that have served as home venues for teams in the Atlantic Division at any time?",
+   "gold_cypher": "MATCH (n:Venue)<-[r0:hasHomeVenue]-(m0:Team)-[r1:partOfDivision]->(m1:Division {name: 'Atlantic Division'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (d:Division {name: 'Atlantic'})<-[:partOfDivision]-(t:Team)-[h:hasHomeVenue]->(v:Venue)\nRETURN DISTINCT v.name",
+     "cypher": "MATCH (d:Division {name: 'Atlantic'})<-[:partOfDivision]-(t:Team)-[h:hasHomeVenue]->(v:Venue)\nRETURN DISTINCT v.name",
+     "calls": 1,
+     "in_tokens": 772,
+     "out_tokens": 37,
+     "cost": 0.00169368,
+     "secs": 0.7601950168609619,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.781,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (d:Division {name: 'Atlantic'})<-[:partOfDivision]-(t:Team)-[h:hasHomeVenue]->(v:Venue)\nRETURN DISTINCT v.name",
+   "stage": "first"
+  },
+  {
+   "id": "ff429c7d-42b0-4b3b-972d-1284e0164e2c",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What is the difference in range, in kilometers, between the Antonov An-12 and the ATR 42?",
+   "gold_cypher": "MATCH (n:AircraftModel {name: 'Antonov An-12'}), (m0:AircraftModel {name: 'ATR 42'}) RETURN n.range_km - m0.range_km AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:AircraftModel {name: 'Antonov An-12'})-[:manufacturedBy]->(:AircraftManufacturer)\nWITH a.range_km AS range1\nMATCH (b:AircraftModel {name: 'ATR 42'})\nRETURN range1 - b.range_km AS range_difference",
+     "cypher": "MATCH (a:AircraftModel {name: 'Antonov An-12'})-[:manufacturedBy]->(:AircraftManufacturer)\nWITH a.range_km AS range1\nMATCH (b:AircraftModel {name: 'ATR 42'})\nRETURN range1 - b.range_km AS range_difference",
+     "calls": 1,
+     "in_tokens": 654,
+     "out_tokens": 59,
+     "cost": 0.00156976,
+     "secs": 1.0133912563323975,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "range_difference": 4394.550048000001
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.034,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:AircraftModel {name: 'Antonov An-12'})-[:manufacturedBy]->(:AircraftManufacturer)\nWITH a.range_km AS range1\nMATCH (b:AircraftModel {name: 'ATR 42'})\nRETURN range1 - b.range_km AS range_difference",
+   "stage": "first"
+  },
+  {
+   "id": "0f76e925-cb2e-46c6-8a73-cdb9478a6df1",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Do Mark McNamara and Chris Paul have the same handedness?",
+   "gold_cypher": "MATCH (n:Player {name: 'Mark McNamara'}), (m0:Player {name: 'Chris Paul'}) RETURN n.handedness = m0.handedness AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p1:Player {name: 'Mark McNamara'}), (p2:Player {name: 'Chris Paul'})\nRETURN p1.handedness = p2.handedness AS same_handedness",
+     "cypher": "MATCH (p1:Player {name: 'Mark McNamara'}), (p2:Player {name: 'Chris Paul'})\nRETURN p1.handedness = p2.handedness AS same_handedness",
+     "calls": 1,
+     "in_tokens": 764,
+     "out_tokens": 45,
+     "cost": 0.00171704,
+     "secs": 0.7577106952667236,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "same_handedness": false
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.777,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p1:Player {name: 'Mark McNamara'}), (p2:Player {name: 'Chris Paul'})\nRETURN p1.handedness = p2.handedness AS same_handedness",
+   "stage": "first"
+  },
+  {
+   "id": "d8dbaf06-d2fe-4e34-903d-63b37f155ebf",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What is the earliest launch year among aircraft manufacturers?",
+   "gold_cypher": "MATCH (n:AircraftManufacturer) WITH DISTINCT n RETURN min(n.launch_year)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer)\nRETURN min(m.launch_year) AS earliest_launch_year",
+     "cypher": "MATCH (m:AircraftManufacturer)\nRETURN min(m.launch_year) AS earliest_launch_year",
+     "calls": 1,
+     "in_tokens": 641,
+     "out_tokens": 17,
+     "cost": 0.00133932,
+     "secs": 0.5600161552429199,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "earliest_launch_year": 1908
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.579,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer)\nRETURN min(m.launch_year) AS earliest_launch_year",
+   "stage": "first"
+  },
+  {
+   "id": "df3389b0-1ba2-4dea-9216-b1c5eabd79e8",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of teams that are in the same division as the New Orleans Pelicans?",
+   "gold_cypher": "MATCH (n:Team)-[r0:partOfDivision]->(m0:Division)<-[r1:partOfDivision]-(m1:Team {name: 'New Orleans Pelicans'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team {name: 'New Orleans Pelicans'})-[:partOfDivision]->(d:Division)<-[:partOfDivision]-(other:Team)\nRETURN other.name",
+     "cypher": "MATCH (t:Team {name: 'New Orleans Pelicans'})-[:partOfDivision]->(d:Division)<-[:partOfDivision]-(other:Team)\nRETURN other.name",
+     "calls": 1,
+     "in_tokens": 769,
+     "out_tokens": 39,
+     "cost": 0.0016975599999999999,
+     "secs": 0.9052438735961914,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 4,
+     "outcome": "correct",
+     "preview": [
+      {
+       "other.name": "Houston Rockets"
+      },
+      {
+       "other.name": "Memphis Grizzlies"
+      },
+      {
+       "other.name": "San Antonio Spurs"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.925,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team {name: 'New Orleans Pelicans'})-[:partOfDivision]->(d:Division)<-[:partOfDivision]-(other:Team)\nRETURN other.name",
+   "stage": "first"
+  },
+  {
+   "id": "1589d423-e502-4228-87af-dbdfb3e99f98",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of aviation accidents involving the Douglas DC-7 that departed from Douala International Airport?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:involves]->(m0:AircraftModel {name: 'Douglas DC-7'}),(n:FlightAccident)-[r1:departsFrom]->(m1:Airport {name: 'Douala International Airport'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport {name: 'Douala International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:involves]->(m:AircraftModel {name: 'Douglas DC-7'})\nRETURN acc.name",
+     "cypher": "MATCH (a:Airport {name: 'Douala International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:involves]->(m:AircraftModel {name: 'Douglas DC-7'})\nRETURN acc.name",
+     "calls": 1,
+     "in_tokens": 652,
+     "out_tokens": 50,
+     "cost": 0.0015219200000000002,
+     "secs": 0.9981780052185059,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "acc.name": "Caledonian Airways Flight 153"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.019,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport {name: 'Douala International Airport'})<-[:departsFrom]-(acc:FlightAccident)-[:involves]->(m:AircraftModel {name: 'Douglas DC-7'})\nRETURN acc.name",
+   "stage": "first"
+  },
+  {
+   "id": "f9f4c195-929a-4922-a5a0-e804df936190",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Who passed away later, Greg Jackson or Nate Hawthorne?",
+   "gold_cypher": "MATCH (n:Player {name: 'Greg Jackson'}), (m0:Player {name: 'Nate Hawthorne'}) RETURN CASE WHEN n.date_of_death > m0.date_of_death THEN n.name ELSE m0.name END AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)\nWHERE p.name IN ['Greg Jackson', 'Nate Hawthorne']\nRETURN p.name AS name, p.date_of_death AS date_of_death\nORDER BY p.date_of_death DESC\nLIMIT 1",
+     "cypher": "MATCH (p:Player)\nWHERE p.name IN ['Greg Jackson', 'Nate Hawthorne']\nRETURN p.name AS name, p.date_of_death AS date_of_death\nORDER BY p.date_of_death DESC\nLIMIT 1",
+     "calls": 1,
+     "in_tokens": 762,
+     "out_tokens": 49,
+     "cost": 0.00173264,
+     "secs": 0.8760097026824951,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "name": "Greg Jackson",
+       "date_of_death": "2012-05-01"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.895,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)\nWHERE p.name IN ['Greg Jackson', 'Nate Hawthorne']\nRETURN p.name AS name, p.date_of_death AS date_of_death\nORDER BY p.date_of_death DESC\nLIMIT 1",
+   "stage": "first"
+  },
+  {
+   "id": "93ddfe79-a307-4728-9e4f-ef66a9de3d45",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names of aviation accidents that were headed to Heathrow Airport, sorted by the number of survivors from the fewest to the most?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:destinedFor]->(m0:Airport {name: 'Heathrow Airport'}) WITH DISTINCT n RETURN n.name ORDER BY n.number_of_survivors ASC",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Heathrow Airport'\nRETURN fa.name AS accident_name, fa.number_of_survivors AS survivors\nORDER BY fa.number_of_survivors ASC",
+     "cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Heathrow Airport'\nRETURN fa.name AS accident_name, fa.number_of_survivors AS survivors\nORDER BY fa.number_of_survivors ASC",
+     "calls": 1,
+     "in_tokens": 659,
+     "out_tokens": 53,
+     "cost": 0.0015502799999999998,
+     "secs": 1.0053441524505615,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 7,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "accident_name": "Air India Flight 101",
+       "survivors": 0
+      },
+      {
+       "accident_name": "Turkish Airlines Flight 981",
+       "survivors": 0
+      },
+      {
+       "accident_name": "BOAC Flight 781",
+       "survivors": 0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.026,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE a.name = 'Heathrow Airport'\nRETURN fa.name AS accident_name, fa.number_of_survivors AS survivors\nORDER BY fa.number_of_survivors ASC",
+   "stage": "first"
+  },
+  {
+   "id": "1a0d94f4-f266-4645-8147-fdfae100b0de",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "What are the names of awards received by players drafted by the Los Angeles Lakers, and how many such players have received each award?",
+   "gold_cypher": "MATCH (n:Award)<-[r0:receivesAward]-(m0:Player)-[r1:draftedBy]->(m1:Team {name: 'Los Angeles Lakers'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[d:draftedBy]->(t:Team {name: 'Los Angeles Lakers'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award_name, COUNT(DISTINCT p) AS player_count\nORDER BY player_count DESC",
+     "cypher": "MATCH (p:Player)-[d:draftedBy]->(t:Team {name: 'Los Angeles Lakers'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award_name, COUNT(DISTINCT p) AS player_count\nORDER BY player_count DESC",
+     "calls": 1,
+     "in_tokens": 776,
+     "out_tokens": 62,
+     "cost": 0.00182352,
+     "secs": 1.134671926498413,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 6,
+     "outcome": "correct",
+     "preview": [
+      {
+       "award_name": "All-NBA Team",
+       "player_count": 4
+      },
+      {
+       "award_name": "NBA All-Star Game Kobe Bryant Most Valuable Player Award",
+       "player_count": 3
+      },
+      {
+       "award_name": "Bill Russell NBA Finals Most Valuable Player Award",
+       "player_count": 3
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.155,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[d:draftedBy]->(t:Team {name: 'Los Angeles Lakers'})\nMATCH (p)-[r:receivesAward]->(a:Award)\nRETURN a.name AS award_name, COUNT(DISTINCT p) AS player_count\nORDER BY player_count DESC",
+   "stage": "first"
+  },
+  {
+   "id": "22e968a6-b56b-42b2-9c13-83ad4383609b",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names and dates of aviation accidents involving aircraft models manufactured by Fiat Aviazione?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:involves]->(m0:AircraftModel)-[r1:manufacturedBy]->(m1:AircraftManufacturer {name: 'Fiat Aviazione'}) WITH DISTINCT n RETURN n.name, n.date",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftManufacturer {name: 'Fiat Aviazione'})<-[:manufacturedBy]-(am:AircraftModel)<-[:involves]-(fa:FlightAccident)\nRETURN fa.name, fa.date",
+     "cypher": "MATCH (m:AircraftManufacturer {name: 'Fiat Aviazione'})<-[:manufacturedBy]-(am:AircraftModel)<-[:involves]-(fa:FlightAccident)\nRETURN fa.name, fa.date",
+     "calls": 1,
+     "in_tokens": 650,
+     "out_tokens": 46,
+     "cost": 0.00149848,
+     "secs": 0.9268538951873779,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "fa.name": "Superga air disaster",
+       "fa.date": "1949-05-04"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.951,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftManufacturer {name: 'Fiat Aviazione'})<-[:manufacturedBy]-(am:AircraftModel)<-[:involves]-(fa:FlightAccident)\nRETURN fa.name, fa.date",
+   "stage": "first"
+  },
+  {
+   "id": "93830abd-079d-43de-b596-3e3b98ab7fa7",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "Which teams drafted Bob Dandridge, and who are their head coaches?",
+   "gold_cypher": "MATCH (n:Team)<-[r0:draftedBy]-(m0:Player {name: 'Bob Dandridge'}) WITH DISTINCT n RETURN n.name, n.head_coach",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player {name: 'Bob Dandridge'})-[:draftedBy]->(t:Team)\nRETURN t.name AS team, t.head_coach AS head_coach",
+     "cypher": "MATCH (p:Player {name: 'Bob Dandridge'})-[:draftedBy]->(t:Team)\nRETURN t.name AS team, t.head_coach AS head_coach",
+     "calls": 1,
+     "in_tokens": 765,
+     "out_tokens": 39,
+     "cost": 0.0016897199999999998,
+     "secs": 0.7212107181549072,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "team": "Milwaukee Bucks",
+       "head_coach": "Mike Budenholzer"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.741,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player {name: 'Bob Dandridge'})-[:draftedBy]->(t:Team)\nRETURN t.name AS team, t.head_coach AS head_coach",
+   "stage": "first"
+  },
+  {
+   "id": "4d74f7ef-33f7-48d2-a9b6-5cb9042c8f4b",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of airports from which a flight accident involving an Airbus A300 departed?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:departsFrom]-(m0:FlightAccident)-[r1:involves]->(m1:AircraftModel {name: 'Airbus A300'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:Airport)<-[:departsFrom]-(fa:FlightAccident)-[:involves]->(am:AircraftModel {name: 'Airbus A300'})\nRETURN a.name",
+     "cypher": "MATCH (a:Airport)<-[:departsFrom]-(fa:FlightAccident)-[:involves]->(am:AircraftModel {name: 'Airbus A300'})\nRETURN a.name",
+     "calls": 1,
+     "in_tokens": 649,
+     "out_tokens": 41,
+     "cost": 0.00147212,
+     "secs": 0.9886739253997803,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 7,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "Jinnah International Airport"
+      },
+      {
+       "a.name": "Aeropuerto Internacional Benito Ju\u00e1rez"
+      },
+      {
+       "a.name": "Soekarno\u2013Hatta International Airport"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.012,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:Airport)<-[:departsFrom]-(fa:FlightAccident)-[:involves]->(am:AircraftModel {name: 'Airbus A300'})\nRETURN a.name",
+   "stage": "first"
+  },
+  {
+   "id": "2583a5a3-b4e9-4334-a4e0-c75aa804a875",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "Which teams have drafted players who have played for the Sacramento Kings, and how many such players has each team drafted?",
+   "gold_cypher": "MATCH (n:Team)<-[r0:draftedBy]-(m0:Player)-[r1:playsFor]->(m1:Team {name: 'Sacramento Kings'}) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsFor]->(t:Team {name: 'Sacramento Kings'})\nMATCH (p)-[:draftedBy]->(team:Team)\nRETURN team.name AS team, COUNT(DISTINCT p) AS drafted_players_count",
+     "cypher": "MATCH (p:Player)-[:playsFor]->(t:Team {name: 'Sacramento Kings'})\nMATCH (p)-[:draftedBy]->(team:Team)\nRETURN team.name AS team, COUNT(DISTINCT p) AS drafted_players_count",
+     "calls": 1,
+     "in_tokens": 773,
+     "out_tokens": 52,
+     "cost": 0.0017688399999999998,
+     "secs": 1.0148909091949463,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 28,
+     "outcome": "correct",
+     "preview": [
+      {
+       "team": "Los Angeles Lakers",
+       "drafted_players_count": 12
+      },
+      {
+       "team": "Detroit Pistons",
+       "drafted_players_count": 12
+      },
+      {
+       "team": "Houston Rockets",
+       "drafted_players_count": 14
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.054,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsFor]->(t:Team {name: 'Sacramento Kings'})\nMATCH (p)-[:draftedBy]->(team:Team)\nRETURN team.name AS team, COUNT(DISTINCT p) AS drafted_players_count",
+   "stage": "first"
+  },
+  {
+   "id": "d83aaaaf-508f-42df-9911-f4b60dd40e65",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "How many survivors were there from FlyMontserrat Flight 107?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'FlyMontserrat Flight 107'}) WITH DISTINCT n RETURN n.number_of_survivors",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident {flight_number: 'FlyMontserrat Flight 107'})\nRETURN fa.number_of_survivors AS survivors",
+     "cypher": "MATCH (fa:FlightAccident {flight_number: 'FlyMontserrat Flight 107'})\nRETURN fa.number_of_survivors AS survivors",
+     "calls": 1,
+     "in_tokens": 643,
+     "out_tokens": 27,
+     "cost": 0.00139204,
+     "secs": 0.7060909271240234,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.726,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident {flight_number: 'FlyMontserrat Flight 107'})\nRETURN fa.number_of_survivors AS survivors",
+   "stage": "first"
+  },
+  {
+   "id": "ccfadb00-96aa-42bb-bbb3-d3b0ee64a2f9",
+   "graph": "nba",
+   "tier": "easy",
+   "question": "What are the names of the positions?",
+   "gold_cypher": "MATCH (n:Position) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Position)\nRETURN p.name",
+     "cypher": "MATCH (p:Position)\nRETURN p.name",
+     "calls": 1,
+     "in_tokens": 758,
+     "out_tokens": 9,
+     "cost": 0.0015296,
+     "secs": 0.47552919387817383,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 8,
+     "outcome": "correct",
+     "preview": [
+      {
+       "p.name": "forward-center"
+      },
+      {
+       "p.name": "point forward"
+      },
+      {
+       "p.name": "point guard"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.497,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Position)\nRETURN p.name",
+   "stage": "first"
+  },
+  {
+   "id": "1aa2c918-dea8-4c6b-82ac-708641302d78",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Do Tatarstan Airlines Flight 363 and Mandala Airlines Flight 091 have an equal number of injuries?",
+   "gold_cypher": "MATCH (n:FlightAccident {name: 'Tatarstan Airlines Flight 363'}), (m0:FlightAccident {name: 'Mandala Airlines Flight 091'}) RETURN n.number_of_injuries = m0.number_of_injuries AS answer",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa1:FlightAccident {flight_number: 'Tatarstan Airlines Flight 363'}), (fa2:FlightAccident {flight_number: 'Mandala Airlines Flight 091'})\nRETURN fa1.number_of_injuries = fa2.number_of_injuries AS equal_injuries",
+     "cypher": "MATCH (fa1:FlightAccident {flight_number: 'Tatarstan Airlines Flight 363'}), (fa2:FlightAccident {flight_number: 'Mandala Airlines Flight 091'})\nRETURN fa1.number_of_injuries = fa2.number_of_injuries AS equal_injuries",
+     "calls": 1,
+     "in_tokens": 652,
+     "out_tokens": 62,
+     "cost": 0.00158048,
+     "secs": 0.9251213073730469,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.947,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa1:FlightAccident {flight_number: 'Tatarstan Airlines Flight 363'}), (fa2:FlightAccident {flight_number: 'Mandala Airlines Flight 091'})\nRETURN fa1.number_of_injuries = fa2.number_of_injuries AS equal_injuries",
+   "stage": "first"
+  },
+  {
+   "id": "38066bd3-418d-4368-9d54-46461091f57a",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "How many players have either been part of the Utah Jazz or played as a small forward?",
+   "gold_cypher": "CALL { MATCH (n:Player)-[r0:playsFor]->(m0:Team {name: 'Utah Jazz'}) RETURN n, m0 as m UNION MATCH (n:Player)-[r1:playsPosition]->(m1:Position {name: 'small forward'}) RETURN n, m1 as m } WITH DISTINCT n RETURN count(n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)\nWHERE (p)-[:playsFor]->(:Team {name: 'Utah Jazz'})\nOR (p)-[:playsPosition]->(:Position {name: 'small forward'})\nRETURN count(p) AS playerCount",
+     "cypher": "MATCH (p:Player)\nWHERE (p)-[:playsFor]->(:Team {name: 'Utah Jazz'})\nOR (p)-[:playsPosition]->(:Position {name: 'small forward'})\nRETURN count(p) AS playerCount",
+     "calls": 1,
+     "in_tokens": 768,
+     "out_tokens": 48,
+     "cost": 0.00173952,
+     "secs": 0.983361005783081,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "playerCount": 1250
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.004,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)\nWHERE (p)-[:playsFor]->(:Team {name: 'Utah Jazz'})\nOR (p)-[:playsPosition]->(:Position {name: 'small forward'})\nRETURN count(p) AS playerCount",
+   "stage": "first"
+  },
+  {
+   "id": "6a164c27-ce21-4dca-b45e-4ca02e9bbcbc",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of aviation accidents that both departed from and were destined for the same airport, occurring after August 1st, 1943?",
+   "gold_cypher": "MATCH (n:FlightAccident)-[r0:departsFrom]->(m0:Airport),(n:FlightAccident)-[r1:destinedFor]->(m0:Airport) WITH DISTINCT n WHERE n.date > date('1943-08-01') RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (a:FlightAccident)-[:departsFrom]->(airport:Airport)\nMATCH (a)-[:destinedFor]->(airport)\nWHERE a.date > date('1943-08-01')\nRETURN a.name",
+     "cypher": "MATCH (a:FlightAccident)-[:departsFrom]->(airport:Airport)\nMATCH (a)-[:destinedFor]->(airport)\nWHERE a.date > date('1943-08-01')\nRETURN a.name",
+     "calls": 1,
+     "in_tokens": 661,
+     "out_tokens": 46,
+     "cost": 0.00152004,
+     "secs": 0.8232326507568359,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 13,
+     "outcome": "correct",
+     "preview": [
+      {
+       "a.name": "Air New Zealand Flight 901"
+      },
+      {
+       "a.name": "1980 Biggin Hill Invader crash"
+      },
+      {
+       "a.name": "Khabarovsk United Air Group Flight 3949"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.849,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (a:FlightAccident)-[:departsFrom]->(airport:Airport)\nMATCH (a)-[:destinedFor]->(airport)\nWHERE a.date > date('1943-08-01')\nRETURN a.name",
+   "stage": "first"
+  },
+  {
+   "id": "2e548453-7ec9-452d-aaf6-66847b9d242f",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names of players who either play as shooting guards or have been part of the Dallas Mavericks at some point?",
+   "gold_cypher": "CALL { MATCH (n:Player)-[r0:playsPosition]->(m0:Position {name: 'shooting guard'}) RETURN n, m0 as m UNION MATCH (n:Player)-[r1:playsFor]->(m1:Team {name: 'Dallas Mavericks'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Shooting Guard'})\nWITH p\nMATCH (p2:Player)-[:playsFor]->(:Team {name: 'Dallas Mavericks'})\nWITH COLLECT(DISTINCT p) + COLLECT(DISTINCT p2) AS players\nUNWIND players AS player\nRETURN DISTINCT player.name",
+     "cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Shooting Guard'})\nWITH p\nMATCH (p2:Player)-[:playsFor]->(:Team {name: 'Dallas Mavericks'})\nWITH COLLECT(DISTINCT p) + COLLECT(DISTINCT p2) AS players\nUNWIND players AS player\nRETURN DISTINCT player.name",
+     "calls": 1,
+     "in_tokens": 774,
+     "out_tokens": 77,
+     "cost": 0.0018928,
+     "secs": 1.3889610767364502,
+     "status": "empty",
+     "error": null,
+     "warnings": [],
+     "n_rows": 0,
+     "outcome": "empty",
+     "preview": []
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.418,
+   "outcome": "empty",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[:playsPosition]->(pos:Position {name: 'Shooting Guard'})\nWITH p\nMATCH (p2:Player)-[:playsFor]->(:Team {name: 'Dallas Mavericks'})\nWITH COLLECT(DISTINCT p) + COLLECT(DISTINCT p2) AS players\nUNWIND players AS player\nRETURN DISTINCT player.name",
+   "stage": "first"
+  },
+  {
+   "id": "b0b4cf12-dc8d-4d36-b516-0e1971f9abc9",
+   "graph": "flight_accident",
+   "tier": "medium",
+   "question": "What are the names of airports that were destinations for either LOT Polish Airlines Flight 16 or Scandinavian Airlines System Flight 751?",
+   "gold_cypher": "CALL { MATCH (n:Airport)<-[r0:destinedFor]-(m0:FlightAccident {name: 'LOT Polish Airlines Flight 16'}) RETURN n, m0 as m UNION MATCH (n:Airport)<-[r1:destinedFor]-(m1:FlightAccident {name: 'Scandinavian Airlines System Flight 751'}) RETURN n, m1 as m } WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE fa.name IN ['LOT Polish Airlines Flight 16', 'Scandinavian Airlines System Flight 751']\nRETURN a.name",
+     "cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE fa.name IN ['LOT Polish Airlines Flight 16', 'Scandinavian Airlines System Flight 751']\nRETURN a.name",
+     "calls": 1,
+     "in_tokens": 656,
+     "out_tokens": 44,
+     "cost": 0.00150048,
+     "secs": 0.8859612941741943,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 2,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "a.name": "Warsaw Chopin Airport"
+      },
+      {
+       "a.name": "Warsaw Chopin Airport"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.91,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:destinedFor]->(a:Airport)\nWHERE fa.name IN ['LOT Polish Airlines Flight 16', 'Scandinavian Airlines System Flight 751']\nRETURN a.name",
+   "stage": "first"
+  },
+  {
+   "id": "2e2c70f0-7a57-4aa8-89d6-459d45cfb643",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "How many unique venues are there?",
+   "gold_cypher": "MATCH (n:Venue) WITH DISTINCT n RETURN count(DISTINCT n)",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (v:Venue)\nRETURN count(DISTINCT v) AS unique_venues",
+     "cypher": "MATCH (v:Venue)\nRETURN count(DISTINCT v) AS unique_venues",
+     "calls": 1,
+     "in_tokens": 757,
+     "out_tokens": 17,
+     "cost": 0.00156668,
+     "secs": 0.6980471611022949,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "unique_venues": 105
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.724,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (v:Venue)\nRETURN count(DISTINCT v) AS unique_venues",
+   "stage": "first"
+  },
+  {
+   "id": "b68ffcb4-82cc-4dad-8007-c563f0ac3125",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "Which aircraft model is involved in the 2015 Juba plane crash?",
+   "gold_cypher": "MATCH (n:AircraftModel)<-[r0:involves]-(m0:FlightAccident {name: '2015 Juba plane crash'}) WITH DISTINCT n RETURN n.name",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel)\nWHERE fa.name CONTAINS 'Juba' AND fa.date.year = 2015\nRETURN am.name",
+     "cypher": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel)\nWHERE fa.name CONTAINS 'Juba' AND fa.date.year = 2015\nRETURN am.name",
+     "calls": 1,
+     "in_tokens": 646,
+     "out_tokens": 41,
+     "cost": 0.00146624,
+     "secs": 0.8712825775146484,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "am.name": "Antonov An-12"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.903,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:involves]->(am:AircraftModel)\nWHERE fa.name CONTAINS 'Juba' AND fa.date.year = 2015\nRETURN am.name",
+   "stage": "first"
+  },
+  {
+   "id": "543ea313-3750-42a7-b6cd-415cfc19469b",
+   "graph": "nba",
+   "tier": "hard",
+   "question": "Provide the names of all players who have been part of the Los Angeles Clippers at any time, along with the count of awards each has received.",
+   "gold_cypher": "MATCH (n:Player)-[r1:playsFor]->(m1:Team {name: 'Los Angeles Clippers'}) OPTIONAL MATCH (n:Player)-[r0:receivesAward]->(m0:Award) WITH n, count(DISTINCT m0) AS num RETURN n.name, num",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Los Angeles Clippers'})\nWITH p, COUNT{(p)-[:receivesAward]->(:Award)} AS awardCount\nRETURN p.name AS playerName, awardCount\n",
+     "cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Los Angeles Clippers'})\nWITH p, COUNT{(p)-[:receivesAward]->(:Award)} AS awardCount\nRETURN p.name AS playerName, awardCount",
+     "calls": 1,
+     "in_tokens": 780,
+     "out_tokens": 54,
+     "cost": 0.00179232,
+     "secs": 1.0083019733428955,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 404,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "playerName": "Freeman Williams",
+       "awardCount": 0
+      },
+      {
+       "playerName": "Al Thornton",
+       "awardCount": 0
+      },
+      {
+       "playerName": "Dave Wohl",
+       "awardCount": 0
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 1.035,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (p:Player)-[r:playsFor]->(t:Team {name: 'Los Angeles Clippers'})\nWITH p, COUNT{(p)-[:receivesAward]->(:Award)} AS awardCount\nRETURN p.name AS playerName, awardCount",
+   "stage": "first"
+  },
+  {
+   "id": "99313abe-e20b-400f-8904-7981cdeca370",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names of aircraft models, sorted by wingspan in meters from smallest to largest?",
+   "gold_cypher": "MATCH (n:AircraftModel) WITH DISTINCT n RETURN n.name ORDER BY n.wingspan_metre ASC",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (m:AircraftModel)\nRETURN m.name AS name, m.wingspan_metre AS wingspan\nORDER BY m.wingspan_metre ASC",
+     "cypher": "MATCH (m:AircraftModel)\nRETURN m.name AS name, m.wingspan_metre AS wingspan\nORDER BY m.wingspan_metre ASC",
+     "calls": 1,
+     "in_tokens": 650,
+     "out_tokens": 32,
+     "cost": 0.00143016,
+     "secs": 0.7612590789794922,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 152,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "name": "Northrop F-5 Freedom Fighter",
+       "wingspan": 8.13
+      },
+      {
+       "name": "General Dynamics F-16 Fighting Falcon",
+       "wingspan": 9.45
+      },
+      {
+       "name": "Beechcraft Bonanza",
+       "wingspan": 10.21
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.785,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (m:AircraftModel)\nRETURN m.name AS name, m.wingspan_metre AS wingspan\nORDER BY m.wingspan_metre ASC",
+   "stage": "first"
+  },
+  {
+   "id": "c21c5900-7028-4de2-a792-1459cf645449",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "What are the names and owners of teams that drafted Kent Benson and have Jabari Parker as a player, either currently or in the past?",
+   "gold_cypher": "MATCH (n:Team)<-[r0:draftedBy]-(m0:Player {name: 'Kent Benson'}),(n:Team)<-[r1:playsFor]-(m1:Player {name: 'Jabari Parker'}) WITH DISTINCT n RETURN n.name, n.owners",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (pKent:Player {name: 'Kent Benson'})-[:draftedBy]->(t:Team)\nMATCH (pJabari:Player {name: 'Jabari Parker'})-[:playsFor]->(t)\nRETURN t.name, t.owners",
+     "cypher": "MATCH (pKent:Player {name: 'Kent Benson'})-[:draftedBy]->(t:Team)\nMATCH (pJabari:Player {name: 'Jabari Parker'})-[:playsFor]->(t)\nRETURN t.name, t.owners",
+     "calls": 1,
+     "in_tokens": 778,
+     "out_tokens": 56,
+     "cost": 0.0017981599999999998,
+     "secs": 0.9039261341094971,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "t.name": "Milwaukee Bucks",
+       "t.owners": null
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.925,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (pKent:Player {name: 'Kent Benson'})-[:draftedBy]->(t:Team)\nMATCH (pJabari:Player {name: 'Jabari Parker'})-[:playsFor]->(t)\nRETURN t.name, t.owners",
+   "stage": "first"
+  },
+  {
+   "id": "f34ae1cf-d0b9-4e6f-851e-9df9662a6f07",
+   "graph": "flight_accident",
+   "tier": "easy",
+   "question": "What are the names and locations of airports from which flight accidents have departed?",
+   "gold_cypher": "MATCH (n:Airport)<-[r0:departsFrom]-(m0:FlightAccident) WITH DISTINCT n RETURN n.name, n.location",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (fa:FlightAccident)-[:departsFrom]->(a:Airport)\nRETURN a.name, a.location",
+     "cypher": "MATCH (fa:FlightAccident)-[:departsFrom]->(a:Airport)\nRETURN a.name, a.location",
+     "calls": 1,
+     "in_tokens": 646,
+     "out_tokens": 24,
+     "cost": 0.0013832800000000002,
+     "secs": 0.5668439865112305,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 507,
+     "outcome": "wrong",
+     "preview": [
+      {
+       "a.name": "Jackson-Evers International Airport",
+       "a.location": "Mississippi"
+      },
+      {
+       "a.name": "Iwakuni Air Base",
+       "a.location": "Iwakuni"
+      },
+      {
+       "a.name": "Halim Perdanakusuma Airport",
+       "a.location": "East Jakarta City"
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.593,
+   "outcome": "wrong",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (fa:FlightAccident)-[:departsFrom]->(a:Airport)\nRETURN a.name, a.location",
+   "stage": "first"
+  },
+  {
+   "id": "bbbf9f6d-0ccd-4e42-8b6b-20d2af3addd2",
+   "graph": "nba",
+   "tier": "medium",
+   "question": "Which teams have had the Chicago Coliseum and the International Amphitheatre as their home venues at some point, and who are their head coaches?",
+   "gold_cypher": "MATCH (n:Team)-[r0:hasHomeVenue]->(m0:Venue {name: 'Chicago Coliseum'}),(n:Team)-[r1:hasHomeVenue]->(m1:Venue {name: 'International Amphitheatre'}) WITH DISTINCT n RETURN n.name, n.head_coach",
+   "examples": [],
+   "attempts": [
+    {
+     "source": "first",
+     "model": "accounts/fireworks/models/muse-glimmer-30b",
+     "output": "MATCH (t:Team)-[h1:hasHomeVenue]->(v1:Venue {name: 'Chicago Coliseum'}), (t)-[h2:hasHomeVenue]->(v2:Venue {name: 'International Amphitheatre'})\nRETURN t.name AS team, t.head_coach AS head_coach",
+     "cypher": "MATCH (t:Team)-[h1:hasHomeVenue]->(v1:Venue {name: 'Chicago Coliseum'}), (t)-[h2:hasHomeVenue]->(v2:Venue {name: 'International Amphitheatre'})\nRETURN t.name AS team, t.head_coach AS head_coach",
+     "calls": 1,
+     "in_tokens": 780,
+     "out_tokens": 66,
+     "cost": 0.0018508799999999998,
+     "secs": 0.7570712566375732,
+     "status": "rows",
+     "error": null,
+     "warnings": [],
+     "n_rows": 1,
+     "outcome": "correct",
+     "preview": [
+      {
+       "team": "Washington Wizards",
+       "head_coach": "Wes Unseld Jr."
+      }
+     ]
+    }
+   ],
+   "harness_error": null,
+   "wall_secs": 0.786,
+   "outcome": "correct",
+   "langfuse_trace_id": null,
+   "final_cypher": "MATCH (t:Team)-[h1:hasHomeVenue]->(v1:Venue {name: 'Chicago Coliseum'}), (t)-[h2:hasHomeVenue]->(v2:Venue {name: 'International Amphitheatre'})\nRETURN t.name AS team, t.head_coach AS head_coach",
+   "stage": "first"
+  }
+ ]
+}

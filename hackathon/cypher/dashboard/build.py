@@ -71,6 +71,18 @@ DEV = [
     ("Example pool (gpt-oss-120b)", "4,586-row pool, top 5", "dev_gptoss_pool5", "repair"),
 ]
 
+# CypherBench held-out exam (cypherbench/README.md): 100 questions on 2 graphs never seen in training, same harness and
+# scorer. Each is (result file, display name, group, main-test config id with the same setup or None if not run there).
+CYPHERBENCH = [
+    ("cb_r1_base", "Muse 30B, untuned, plain", "ours", "R1"),
+    ("cb_r5_full", "Muse 30B + harness", "ours", "R5"),
+    ("cb_r6_ft1", "Muse 30B + SFT (1.5k gold) + harness", "ours", "R6"),
+    ("cb_r6bx_ftbx", "Muse 30B + SFT (6.5k gold) + harness", "ours", "R6bx"),
+    ("cb_kimi-k3", "Kimi K3 2.8T, plain", "open", "R23"),
+    ("cb_glm-5p3-flash", "GLM 5.3 flash, plain", "open", None),
+    ("cb_deepseek-v4p1-flash", "DeepSeek V4.1 flash, plain", "open", None),
+]
+
 # Published reference (CypherGuard, arxiv.org/html/2610.41755; Neo4j Text2Cypher audited subset, n=1,003).
 REFERENCES = [{"label": "Claude Sonnet 4.6, zero-shot (published)", "accuracy": 0.5663},
               {"label": "Claude Sonnet 4.6 + CypherGuard (published)", "accuracy": 0.6251}]
@@ -183,6 +195,28 @@ def waterfall_steps():
     return {"steps": steps, "frontier": wf.FRONTIER, "refs": refs}
 
 
+def cypherbench():
+    """Held-out exam rows: accuracy at every stage the run has, plus the same setup on the main test for comparison."""
+    tags = {cid: (tag, stage) for cid, _, _, tag, stage, _ in CONFIGS}
+    out = []
+    for tag, name, group, main_id in CYPHERBENCH:
+        doc = load(tag)
+        if not doc:
+            continue
+        stages = list(doc["views"])
+        s = metrics.summarize(doc["rows"], stages[-1])
+        row = {"tag": tag, "name": name, "group": group,
+               "stages": {st: metrics.summarize(doc["rows"], st)["accuracy"] for st in stages},
+               **{k: s[k] for k in ("accuracy", "ci95", "n", "cost_per_question", "p50_secs", "by_graph", "by_tier")}}
+        main_doc = load(tags[main_id][0]) if main_id else None
+        if main_doc:
+            m = metrics.summarize(main_doc["rows"], tags[main_id][1])
+            row["main"] = {"id": main_id, "accuracy": m["accuracy"], "ci95": m["ci95"],
+                           "stages": {st: metrics.summarize(main_doc["rows"], st)["accuracy"] for st in stages if st in main_doc["views"]}}
+        out.append(row)
+    return out
+
+
 def main():
     configs = []
     for cid, label, family, tag, stage, not_citable in CONFIGS:
@@ -212,7 +246,7 @@ def main():
             dev.append({"group": group, "label": label, "accuracy": v["accuracy"], "ci95": v["ci95"],
                         "cost_per_question": v["cost_per_question"], "p50_secs": v["p50_secs"], "n": v["n"]})
     data = {"configs": configs, "references": refs, "dev": dev, "spend": spend(), "training": training_logs(),
-            "waterfall": waterfall_steps(),
+            "waterfall": waterfall_steps(), "cypherbench": cypherbench(),
             "trace_prefix": trace_prefix, "graphs": ["movies", "recommendations", "northwind", "fincen", "twitter"],
             "tiers": ["easy", "medium", "hard"]}
     template = open(os.path.join(HERE, "template.html")).read()

@@ -12,3 +12,7 @@ __pycache__/
 *.zip
 **/.pylib/
 **/vendor/
+**/.pylib/
+**/site-packages/
+**/.venv/
+**/venv*/

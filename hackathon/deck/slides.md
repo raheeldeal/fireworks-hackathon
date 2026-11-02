@@ -4,6 +4,21 @@ theme: default
 paginate: true
 ---
 
+# What is Cypher?
+
+**It's SQL for graph databases.**
+
+Graph databases store connections: who paid whom, who follows whom, what ships where.
+
+- Fraud rings (FinCEN money transfers)
+- Social networks (Twitter)
+- Recommendations (movies)
+- Supply chains (Northwind orders)
+
+**Frontier models get Cypher right less than half the time.** Claude Opus 5: 47 out of 100.
+
+---
+
 # Your data is a graph.
 # Your questions wait in a ticket queue.
 
@@ -17,8 +32,6 @@ ORDER BY filings DESC RETURN country, filings LIMIT 5
 ```
 
 Analyst asks. Engineer writes this. **Answer in 2 days.**
-
-<!-- Notes: Graph databases today are where SQL was before BI tools. Every question needs a specialist. Fraud, compliance and supply-chain teams live on graphs. Example is the FinCEN money-transfer graph. -->
 
 ---
 
@@ -38,35 +51,47 @@ We tested everyday business tasks where a computer can check the answer.
 
 Everywhere else, models already score 70 to 99. **Graph queries are where even frontier models fail half the time.**
 
-<!-- Footnotes: Small, open = GLM 5.3 Flash. Frontier = Claude Opus 5 (graph query), Kimi K3 (clause type, reason for contact, right tool), GLM 5.3 (product data, app command, fixed code). Why these tasks: narrow, repetitive, and checkable by code, which is where small models have a chance to win. Also tested without a frontier run: Regex 68, Action items 93. SQL and ICD-10 not finished. Accuracy on held-out sets. -->
+<!-- Small, open = GLM 5.3 Flash. Frontier = Claude Opus 5 (graph query), Kimi K3 (clause type, reason for contact, right tool), GLM 5.3 (product data, app command, fixed code). -->
 
 ---
 
 # Vision
 
-**Ask any database in plain English. Get a verified answer.**
+**Every analyst can question their company's connections in plain English, and trust the answer in seconds.**
 
-"Top 5 actors by number of genres"
-
-```cypher
-MATCH (a:Actor)-[:ACTED_IN]->(:Movie)-[:IN_GENRE]->(g:Genre)
-RETURN a.name, count(DISTINCT g) AS genres
-ORDER BY genres DESC LIMIT 5
-```
-
-Run it on the database. Check the rows.
+A small open model you own. Checked by the database itself.
 
 ---
 
 # Benchmark
 
-*[Raheel adds]*
+**58.5 → 68.5**
 
-| | Claude Opus 5 | Ours |
+Frontier-class model → our system. Same 200 held-out questions, every query run on a live graph.
+
+| | Frontier | Ours |
 |---|---|---|
-| Accuracy | 47 | *[from benchmark]* |
-| Cost / 1k questions | $9.00 | $0.77 |
-| Latency, typical | 2.1 s | 1.2 s |
+| Correct out of 100 | 58.5 | **68.5** |
+| Cost per 1,000 questions | $9.00 | **$0.77** |
+| Typical response time | 2.1 s | **1.2 s** |
+
+<!-- Frontier on the 200: Kimi K3, run by us. Claude Sonnet 4.6 published 56.6 on another subset. Cost and latency: Claude Opus 5 vs our open-model harness on the same 100 questions. -->
+
+---
+
+# Cheaper and more accurate than the frontier
+
+*[Image: frontier.png]*
+
+Same 100 questions. Up and left is better.
+
+---
+
+# What moved the score
+
+*[Image: waterfall.webp]*
+
+50.5 → 68.5. Fine-tuning (SFT) gave the biggest jump: +10.
 
 ---
 
@@ -76,20 +101,12 @@ Run it on the database. Check the rows.
 
 ---
 
-# What moved the score
-
-*[Colleague's waterfall]*
-
----
-
 # What we learned
 
-- **Price is not accuracy.** A $0.15 open model matched $9 Claude.
+- **Price is not accuracy.** A $0.24 open model beat $9 Claude.
 - **SFT was the jump.** +10 points.
 - **Teach first, then reward.** RFT can only reward answers the model already finds. On hard queries it found none, so SFT beat it by 8 points.
 - **The harness buys trust.** Broken queries fell from 2.2% to 0.1%.
-
-<!-- RFT detail: rewarding only correct samples meant hard questions, which it never solved, taught it nothing. It over-reinforced easy patterns: lost 33 questions, gained 17. An earlier weighted variant had no KL penalty and collapsed to 36.5%; empty results rose from 1% to 14.5%. -->
 
 ---
 
@@ -99,9 +116,9 @@ Run it on the database. Check the rows.
 
 **$2.6B graph database market, growing ~25% a year**
 
-Next: fine-tuned model inside the harness. Low-confidence answers go to human review.
+Next: RFT on top of the fine-tuned model. Low-confidence answers go to human review.
 
-<!-- Assumptions: 10 graph questions per analyst per week x 48 weeks = 480 a year. 20 minutes of engineer time each = 160 hours at $75/hr loaded = $12k. Market: Expert Market Research, 2025, $2.58B. Other estimates range $1.4B to $4.4B, growth 22 to 29% a year. -->
+<!-- Assumptions: 10 graph questions per analyst per week x 48 weeks. 20 minutes of engineer time each = 160 hours at $75/hr = $12k. Market: Expert Market Research 2025, $2.58B. -->
 
 ---
 

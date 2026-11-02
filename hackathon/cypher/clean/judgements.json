@@ -1,0 +1,2002 @@
+{
+ "t000": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS: \u201cTop 5\u201d is tie-sensitive here, with multiple actors at 17 and no stated tie-breaking rule."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nFour actors are tied at 17 and the fifth spot is filled by an actor with 16, but other actors may also have 16 genres, so the top-5 cutoff is ambiguous."
+  ]
+ },
+ "t001": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows show actors with zero followers, which does not identify the top 3 actors by follower count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll actors have 0 followers, so there is a massive tie and no unique set of top 3 actors."
+  ]
+ },
+ "t002": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows provide three distinct entity names ranked by descending benefit count for filings under 100."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly 3 entity names ranked by benefit count (6, 3, 2) for filings with amounts less than 100, matching the question's request for the top 3 entities' names."
+  ]
+ },
+ "t003": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows show users with only one interaction each, not the users with the highest interaction counts."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll five rows have interaction_count = 1, so numerous users are tied at the cutoff and any five of them could reasonably be the \"top 5.\""
+  ]
+ },
+ "t004": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows contain only null values instead of actual tweet timestamps and text, and return 2 rows rather than the requested 3."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe answer returns only 2 rows instead of the requested 3, and both rows contain null values for the tweet fields (created_at and text) where actual tweet content should appear."
+  ]
+ },
+ "t005": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list three directors with their average movie votes in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly three directors ranked by highest average movie votes, with the tied Wachowskis correctly occupying the top two spots."
+  ]
+ },
+ "t006": {
+  "kimi-k3": [
+   "YES",
+   "YES\nIt returns the requested single average word count for review summaries of movies rated above 95."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row returns a single average word count for review summaries of movies rated above 95, matching the question's request."
+  ]
+ },
+ "t007": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list five movies in ascending vote count and include their release years, as requested."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly five movies ordered from least to more votes (1, 15, 25, 25, 29), each with its title and release year as requested."
+  ]
+ },
+ "t008": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows contain duplicate suppliers; the correct answer should list the four distinct suppliers."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows contain duplicate supplier names (each supplier appears 2\u20133 times, likely from joining to products without DISTINCT), whereas the question asks for a list of suppliers, which should return each distinct supplier once."
+  ]
+ },
+ "t009": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nSeveral customers may be tied with diversity 8, so the \u201c3 customers\u201d at the cutoff are not uniquely determined."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll three returned customers are tied at diversity 8, so if any other customer also has 8 categories, the \"top 3\" cutoff is arbitrary and multiple answers are equally correct."
+  ]
+ },
+ "t010": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nJeremy Allen White has appeared in numerous films (e.g., The Iron Claw, Afterschool, The Rental), so a count of 0 movies is incorrect."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nJeremy Allen White has appeared in multiple films (e.g., The Rental, After Everything, The Iron Claw), so a count of 0 movies indicates the query failed to find his movie credits (likely a name-matching or join error) rather than a correct answer."
+  ]
+ },
+ "t011": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe returned filing ID matches the criterion that the originator and beneficiary bank are the same entity."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe row returns a filing identifier (f.sar_id), which directly matches what the question asks for\u2014filings where the originator bank and beneficiary bank are the same entity\u2014and one result is a plausible count for this condition."
+  ]
+ },
+ "t012": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe cutoff at 5 movies includes multiple tied actors, so the chosen top 5 may be arbitrary if other actors also have 5."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThree actors are tied at 5 movies at the cutoff, so if other actors also have 5 movies, the \"top 5\" could reasonably include different actors."
+  ]
+ },
+ "t013": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list three countries ranked by originator-bank count in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly three countries ranked in descending order by originator bank count (101, 96, 68), matching the entities, values, and result count the question requests."
+  ]
+ },
+ "t014": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list five entities with descending counts of [:COUNTRY] connections, matching the request."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple entities are tied at 4 connections, so \"top 5\" could include other entities with the same count beyond the cutoff."
+  ]
+ },
+ "t015": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows are three duplicates of the same order (10248) instead of the first 3 distinct orders shipped to France."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe three rows are identical duplicates of order 10248 (likely from an ungrouped join to order details), rather than three distinct orders shipped to France."
+  ]
+ },
+ "t016": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the top 3 genres by movie count for movies with an imdbRating above 8.0."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly 3 genres ranked by movie count in descending order, matching the \"top 3\" request, with the correct entity type (genre) and a sensible measure (count of movies with imdbRating above 8.0), and no ties, duplicates, or nulls are evident."
+  ]
+ },
+ "t017": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows show five distinct countries with filing counts in descending order for transactions under $500,000."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly 5 countries ranked by filing count for transactions under $500,000, matching the question's requested entities, values, and result count."
+  ]
+ },
+ "t018": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows include exactly all 13 non-discontinued products with unitPrice above 35."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe 13 rows match exactly the Northwind products that are not discontinued with unitPrice strictly above 35 (all values range from 36.0 to 263.5), and discontinued high-priced items like Mishi Kobe Niku, Alice Mutton, R\u00f6ssle Sauerkraut, and Th\u00fcringer Rostbratwurst are correctly excluded."
+  ]
+ },
+ "t019": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll returned taglines have frequency 1, so many taglines are likely tied for the top three."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe three taglines all have frequency 1, so many taglines are tied and there is no unique set of \"3 most common\" taglines."
+  ]
+ },
+ "t020": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single count value directly answers the requested total for the specified filters."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe query returns a single count of filings matching both conditions (originator_country = 'Singapore' and amount > 1000000), which is exactly what the question asks for, and a count of 0 is a valid result if no such filings exist."
+  ]
+ },
+ "t021": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe row provides a distinct originator_bank_id matching the specified beneficiary_bank_id filter."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe returned rows directly match the question\u2014listing the distinct originator_bank_id value (\"deutsche-bank-ag\") for filings whose beneficiary_bank_id is \"azizi-bank-kabul-afghanistan-afg\", with no duplicates, nulls, or extraneous values."
+  ]
+ },
+ "t022": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\u201cTop\u201d has no stated ranking criterion, and all shown users tie at 20 genres, so other qualifying users could reasonably be selected."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple users may be tied at 20 genres rated, so \"top 3\" is ambiguous if more than three users have the same maximum count."
+  ]
+ },
+ "t023": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three rows are recent, ordered by timestamp, mention Neo4j, and include links."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll three tweets mention Neo4j, contain links, and are ordered by most recent, returning exactly 3 rows."
+  ]
+ },
+ "t024": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list exactly 5 American-born directors, each with well over 3 directed movies, matching the question's entities, values, and count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\nThe question asks for \"5 directors\" without specifying a selection criterion (e.g., \"top 5 by movie count\"), so since many US-born directors have directed at least 3 movies, multiple different sets of 5 rows could reasonably be considered correct."
+  ]
+ },
+ "t025": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the name of the entity associated with the filing with the latest end date."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe answer returns a single entity name, which correctly matches the question's request for the one entity that benefited from the filing with the latest end date."
+  ]
+ },
+ "t026": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows contain only null values for created_at and tweet_text, so they fail to provide the actual tweet data the question asks for."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows contain only null values for both created_at and tweet_text, so they fail to provide the actual tweets or timestamps the question asks for."
+  ]
+ },
+ "t027": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple users tied with 0 followers could reasonably fill the top 3."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMany users likely have 0 followers, so \"top 3 lowest\" is arbitrary among ties at the cutoff."
+  ]
+ },
+ "t028": {
+  "kimi-k3": [
+   "YES",
+   "YES\nNancy Meyers directed *Something's Gotta Give*, which contains the word \u201cGive\u201d in the title."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nNancy Meyers directed \"Something's Gotta Give,\" and no other movie title in the database contains \"Give.\""
+  ]
+ },
+ "t029": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe cutoff value of 28 favorites is tied, so tie handling could affect the top-five selection"
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe fifth row sits at a favorites count of 28, and other tweets may also be tied at 28, so the top-5 cutoff is not uniquely determined."
+  ]
+ },
+ "t030": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows contain null language lists and null language counts, so they do not identify the top 5 movies by spoken-language diversity."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO: The rows return movies with null language data (no languages at all), not the top 5 movies with the highest count of distinct spoken languages."
+  ]
+ },
+ "t031": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the five cities with the highest shipment counts in descending order."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThere is a tie at the cutoff (M\u00e9xico D.F. and Cunewalde both have 28), so other cities with the same count could equally qualify for the top 5."
+  ]
+ },
+ "t032": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThese rows match Toy Story\u2019s exact release date rather than all movies released in the same year, 1995."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows match the exact release date (1995-11-22) rather than the release year, so they miss the many other movies released in 1995."
+  ]
+ },
+ "t033": {
+  "kimi-k3": [
+   "NO",
+   "NO\nTwo rows list postal codes instead of countries in `shipCountry`, so the wrong entity/column was returned."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows include values like \"05487-020\" and \"59000\" (postal codes) as `shipCountry`, indicating the query grouped by the wrong column, so the entities and values are wrong."
+  ]
+ },
+ "t034": {
+  "kimi-k3": [
+   "NO",
+   "NO: The result is null, but a well-known movie like \"The Matrix\" should have ratings, so the query likely failed to match or join the data correctly."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe query returned null instead of a numeric average, indicating it failed to match any \"The Matrix\" movies/ratings (e.g., due to a join or filter error), so a real answer value is missing."
+  ]
+ },
+ "t035": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows list distinct `originator_iso` values from filings with no duplicates or nulls."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES: The rows return distinct originator_iso values (ISO country codes) from the filings, exactly matching what the question asks for with no duplicates or extraneous data."
+  ]
+ },
+ "t036": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows return null imdbRating values instead of the actual ratings the question asks to rank by, so they cannot be verified as the top 5 highest-rated movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe returned rows all have null imdbRating values, so they cannot be the movies with the *highest* imdbRating \u2014 the query evidently sorted nulls first rather than retrieving movies with actual top ratings."
+  ]
+ },
+ "t037": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return exactly three users with the top genre count value, matching the requested entities and count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nIf more than three users have rated movies in 20 genres, the top three isn't uniquely determined, so the answer depends on tie-breaking."
+  ]
+ },
+ "t038": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe row provides a single user pair and their mutual reply count, matching the question."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe row identifies a single pair of users (dark_phoenix254 and adamcowley) with the highest mutual reply count (6), which is exactly what the question asks for."
+  ]
+ },
+ "t039": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe row returns a neo4j tweet with its favorites count, matching the request for the tweet(s) with the highest favorites."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row returns the tweet by 'neo4j' with the maximum favorites count (394), which matches the question asking for the tweet(s) with the highest number of favorites."
+  ]
+ },
+ "t040": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row gives the requested count of directors who worked with Tom Hanks."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe question asks \"how many directors,\" but the value 31 likely counts distinct director collaborations incorrectly (e.g., counting movies or including duplicates), and without the underlying data it cannot be verified as the distinct director count\u2014more importantly, if the key counts films rath"
+  ]
+ },
+ "t041": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the requested average IMDB rating for Adventure movies."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe single row returns exactly one aggregate value\u2014the average rating for Adventure genre movies\u2014which matches the form and content of the question."
+  ]
+ },
+ "t042": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe result is a single row containing one average rating value, which is exactly what the question asks for."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a single aggregate value\u2014the average rating across all movies\u2014and the answer key returns exactly one row with one averageRating value (\u22486.72), which is a plausible average for movie ratings and matches the requested result shape."
+  ]
+ },
+ "t043": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list exactly three hashtags with their usage counts in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 3 hashtags ranked by usage count, matching the \"top 3 hashtags used in tweets\" as asked."
+  ]
+ },
+ "t044": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe result is a null value instead of an actual numeric average, so it fails to provide the real answer the question asks for."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe result returns null where a real numeric average should be, indicating the query failed to correctly match movies from 2003 with their ratings."
+  ]
+ },
+ "t045": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe five returned Tweet nodes are ordered by descending favorites and match the requested top-5 count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"Top 5\" is unspecified (presumably by favorites), and there is a tie at the cutoff (two tweets with 28 favorites), so multiple valid orderings/selections exist."
+  ]
+ },
+ "t046": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll three users are tied at one amplification, so other tied users could equally fill the top three."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll three returned users are tied at 1 amplification, so if other users also have exactly 1 amplification, any of them could reasonably be in the \"top 3,\" making the cutoff arbitrary."
+  ]
+ },
+ "t047": {
+  "kimi-k3": [
+   "NO",
+   "NO\nAniseed Syrup has recorded sales, so its total revenue should be greater than 0."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe product 'Aniseed Syrup' has actual sales in the database, so a total revenue of 0 indicates an incorrect query (e.g., a wrong join or filter) rather than the true revenue."
+  ]
+ },
+ "t048": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe average amount should be a numeric value, not null."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nA null average suggests no matching rows were found (or the query is wrong), whereas entities with country code 'CHN' likely exist and should yield a real average amount."
+  ]
+ },
+ "t049": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the requested average number of favorites for tweets matching both conditions."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a single aggregate value\u2014the average favorites across tweets mentioning \"Neo4j\" that also contain a hashtag\u2014and the answer key returns exactly one row with one average_favorites value (\u22482.234, consistent with an average like 105/47 over matching tweets), which matches the "
+  ]
+ },
+ "t050": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows appear to show popular followers ordered by follower count rather than the most recent users to follow Neo4j."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows are ordered by follower count (descending from 3.16M to 631K) rather than by when each user started following 'Neo4j', so they answer \"most popular followers of Neo4j\" instead of \"most recent followers,\" and no follow-timestamp is reflected in the results."
+  ]
+ },
+ "t051": {
+  "kimi-k3": [
+   "NO",
+   "NO\nOnly 2 tweets are returned, while the question asks for the first 3."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe question asks for the first 3 tweets, but the answer key returns only 2 rows."
+  ]
+ },
+ "t052": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row identifies the most common language, which is what the question asks for."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe question asks for a single most common language among movies with budget under 10 million, and the key returns exactly one language value, \"English,\" which is the expected correct answer."
+  ]
+ },
+ "t053": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese are the three oldest movies by release year, with the correct titles and count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple movies could be tied at the 1986 cutoff year, so the specific three returned may not be uniquely determined."
+  ]
+ },
+ "t054": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe results include a duplicate movie title, so they do not cleanly list all distinct matching movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe row \"V for Vendetta\" appears twice, but the question asks for a list of movies, so each qualifying movie should appear exactly once (the duplicate suggests the query returned one row per writer\u2013producer pair instead of distinct movie titles)."
+  ]
+ },
+ "t055": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows list five distinct entities with descending transaction counts for beneficiaries in the United Kingdom."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly five entities ranked by transaction count with UK beneficiaries, matching the question's request."
+  ]
+ },
+ "t056": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe results include a duplicate tweet, so they do not list five distinct top tweets."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nRows 3 and 4 are exact duplicates of the same tweet (same text, same favorites count), so the answer key fails to return 5 distinct top tweets \u2014 the true 5th tweet is missing."
+  ]
+ },
+ "t057": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThey list five movies from the 1990s in descending IMDb rating order."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"Top 5\" is unspecified (presumably by IMDb rating), and ties at the 8.9 cutoff could make more than one set of 5 movies a valid answer."
+  ]
+ },
+ "t058": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe supplier of the highest-priced product, C\u00f4te de Blaye, is Aux joyeux eccl\u00e9siastiques."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe row returns the supplier's company name (\"Aux joyeux eccl\u00e9siastiques\"), which is the supplier of the highest-priced product (C\u00f4te de Blaye in the Northwind database), matching the single supplier the question asks for."
+  ]
+ },
+ "t059": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe single aggregate row gives the total number of filings for the country with tld \"US,\" as requested."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a single aggregate count of filings from countries with tld \"US\", and the answer key returns exactly one row with a total count (totalFilings: 205), matching the requested form."
+  ]
+ },
+ "t060": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThese rows have negative durations with end dates before begin dates, so they do not represent the shortest valid filing durations."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows show negative durations (EndDate before BeginDate), indicating the duration was computed in the wrong direction; the shortest durations should be the smallest positive intervals between begin and end."
+  ]
+ },
+ "t061": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single aggregate row gives the maximum UnitsOnOrder for Confections products as 70."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe value 70 matches the maximum UnitsOnOrder among products in the Confections category, returned as a single aggregate row as asked."
+  ]
+ },
+ "t062": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nQueso Cabrales has the highest reorder level (30) in the Products table, so the single returned row correctly answers the question."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple products share the maximum reorder level (30), so returning only one name is not uniquely correct."
+  ]
+ },
+ "t063": {
+  "kimi-k3": [
+   "YES",
+   "YES\nAll returned rows are movies with ratings strictly above 90."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows list movies with ratings above 90, matching the question's request."
+  ]
+ },
+ "t064": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese are the people who both wrote and directed the same movie, with the correct names and count."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return the distinct names of people credited as both writer and director on the same movie, with no duplicates or nulls, which matches what the question asks for."
+  ]
+ },
+ "t065": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe question asks for three entities, but the answer key returns only one row, and that row is Barclays Bank Plc itself rather than three distinct entities with the most filings."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO: The question asks for the three entities with the most filings, but the answer key returns only one entity."
+  ]
+ },
+ "t066": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe lowest-rated movie is from 1962, and the rows list the 41 movies released that year."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe lowest-rated movie (e.g., \"Ring of Terror\", 1962) is included along with all other movies released in that same year, matching the question's request."
+  ]
+ },
+ "t067": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list distinct tweet source names, matching the requested entity with no duplicates or nulls."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list the distinct sources of tweets that mention more than 3 users, which matches the question."
+  ]
+ },
+ "t068": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe row provides a director pair with their shared-actor count, matching the requested maximal-overlap result."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe Wachowski sisters co-directed the Matrix films, so their shared actor count (4) plausibly is the maximum, and the row correctly reports the pair with the maximal number of common actors."
+  ]
+ },
+ "t069": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list exactly three actors ranked by unique role count, matching the question."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"Diverse roles\" is vague (distinct character names vs. distinct role types/genres), so multiple reasonable interpretations and results exist."
+  ]
+ },
+ "t070": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe five returned tweets all have links and are sorted in descending order by favorites."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll 5 rows contain links, are sorted descending by favorites, and return exactly the top 5 as requested."
+  ]
+ },
+ "t071": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows contain null values for m.imdbVotes where actual vote counts should appear, and the returned titles are implausible as the three most-voted movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO: All three rows have null for imdbVotes, so they cannot be the movies with the most votes; the query likely sorted nulls to the top instead of actual vote counts."
+  ]
+ },
+ "t072": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe 20 rows are exactly the non-discontinued products with reorder level greater than 20."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll 20 listed products are non-discontinued Northwind items with reorder level above 20, matching the question's criteria."
+  ]
+ },
+ "t073": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe row identifies The Boxtrolls, whose plot mentions an \u201cevil exterminator,\u201d with its correct IMDb rating of 6.8."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe Boxtrolls is the movie whose plot mentions an \"evil exterminator,\" and its IMDb rating of 6.8 is correctly returned (the title is a reasonable accompanying identifier)."
+  ]
+ },
+ "t074": {
+  "kimi-k3": [
+   "YES",
+   "YES\nIt returns the single total revenue for orders from customers whose company names begin with \u201cA.\u201d"
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe answer returns a single total revenue value for orders from customers whose company name starts with 'A', which matches the question's request."
+  ]
+ },
+ "t075": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows rank users by Neo4j mentions in descending order with appropriate values and no duplicates."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list users ranked by how many of their tweets mention 'Neo4j', with correct descending mention counts and no duplicates or nulls."
+  ]
+ },
+ "t076": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe Tweet IDs are not ordered by recency, so the rows do not correctly present the top 5 by creation date."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows return only Tweet identifiers with no creation dates, so there is no evidence they are ordered by or selected based on creation date as the question requires."
+  ]
+ },
+ "t077": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the three products with the highest order counts, with no tie ambiguity at the cutoff."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nTwo products are tied at 51 for the third spot, so if any other product also has 51 orders, more than one set of 3 products could be correct."
+  ]
+ },
+ "t078": {
+  "kimi-k3": [
+   "YES",
+   "YES\nAll three rows are filings with beneficiary bank country \"Singapore\" and amounts greater than 200,000."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll three rows have beneficiary_bank_country 'Singapore' and amount > 200000, and exactly 3 rows are returned as requested."
+  ]
+ },
+ "t079": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows show the average units in stock grouped by all 8 product categories, which is exactly what the question asks."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows give the average units in stock per category for all 8 categories, matching the question."
+  ]
+ },
+ "t080": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese are the three products supplied by Exotic Liquids."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nExotic Liquids (Northwind supplier) supplies exactly these three products\u2014Chai, Chang, and Aniseed Syrup\u2014so the rows match the correct entities and count."
+  ]
+ },
+ "t081": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe counts (only 2 each) are implausibly low for the most prolific post-2005 directors, indicating wrong values/entities."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple directors are likely tied at 2 movies, so \"the most\" with a 3-row cutoff has more than one reasonable answer."
+  ]
+ },
+ "t082": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single aggregate row matches the requested average votes for movies from Speed Racer\u2019s release year."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe value 17.0 is implausibly low for an average of votes across all movies released in 2008 (the year \"Speed Racer\" was released), suggesting the query averaged the wrong entities or values."
+  ]
+ },
+ "t083": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the requested total count, and zero is a valid count if no filings satisfy the longitude condition."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nA count of 0 is implausible for a filings dataset containing originator/beneficiary longitude values\u2014many filings would have both parties at nearby (or identical) longitudes\u2014so this almost certainly reflects a query bug (e.g., string-typed comparison or missing ABS) rather than the true total."
+  ]
+ },
+ "t084": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the requested count of filings matching the specified originator and beneficiary bank countries."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES: the key returns a single count of filings matching an originator bank from Singapore and a beneficiary bank from the United Kingdom, which is exactly what the question asks for."
+  ]
+ },
+ "t085": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows contain only null values for both favorites and text, so they fail to provide the actual tweets and favorite counts the question asks for."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows contain only null values for both favorites and text, so they fail to identify any actual tweets or their favorite counts."
+  ]
+ },
+ "t086": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese are exactly the products in that category with unitsOnOrder greater than 5."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe four rows match the Confections (\"Desserts, candies, and sweet breads\") products with unitsOnOrder above 5 (Scottish Longbreads 10, Chocolade 70, Maxilaku 60, Sir Rodney's Scones 40), with no missing or extra entries."
+  ]
+ },
+ "t087": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return exactly three distinct people with descending combined ACTED_IN role totals and no obvious nulls or duplicates."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 3 people ranked by their summed roles across ACTED_IN movies, matching the question's request."
+  ]
+ },
+ "t088": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three rows list exactly three directors whose distinct genre counts are all greater than three."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 3 directors with genre counts above three, matching the question's requested entities and count."
+  ]
+ },
+ "t089": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the qualifying hashtags with their counts, and fewer than five rows is correct when only two hashtags qualify."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe question asks for the top 5 hashtags, but only 2 rows are returned, indicating missing results (or the data lacks more, but the answer doesn't fulfill the requested count)."
+  ]
+ },
+ "t090": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows return null for the statuses count, so they fail to provide the actual number of statuses posted that the question asks to rank by."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe \"u.statuses\" values are all null, meaning the answer fails to show the actual status counts that determine the top-5 ranking, so the rows cannot verify these are the correct top users by statuses posted."
+  ]
+ },
+ "t091": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe single row identifies the top-voted movie, including its title and vote count."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe row returns a single movie's title (with its vote count as supporting context), matching the question's request for exactly one result\u2014the title of the highest-voted movie."
+  ]
+ },
+ "t092": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese rows list the Tom Cruise films categorized as war movies, with no duplicates or apparent omissions."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThese are Tom Cruise war films (Valkyrie, Lions for Lambs, The Last Samurai, Born on the Fourth of July) with correct ratings and years, matching the question's request."
+  ]
+ },
+ "t093": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe result is a null average, but the question expects an actual numeric average budget for Science Fiction movies, so the query likely failed to match the genre or join correctly."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe result returns null where a real average budget value should be, indicating the query failed to match any Science Fiction movies (likely a genre-name mismatch or missing budget data) rather than answering the question as asked."
+  ]
+ },
+ "t094": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe results contain duplicate movies with inconsistent role counts instead of five distinct top movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows list individual ACTED_IN relationships per actor (Cloud Atlas appears three times with counts 6, 4, 4) rather than the top 5 distinct movies ranked by their total roles, so they answer a different question with duplicate movies."
+  ]
+ },
+ "t095": {
+  "kimi-k3": [
+   "YES",
+   "YES"
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row correctly identifies the director with the fewest movies among the films of the most-prolific actor, returning a single director and their movie count as asked."
+  ]
+ },
+ "t096": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return exactly 3 actors with a movieCount metric, matching the requested top-3 list of actors appearing in both Action and Romance genres."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly three actors with counts of movies in both Action and Romance genres, matching the question's request for the top 3."
+  ]
+ },
+ "t097": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe single row provides the requested aggregate total amount for entities in China."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nA total of 0 is a valid aggregate result if no entities in 'China' have filed any amount, and the single-row total matches the question's request."
+  ]
+ },
+ "t098": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list five beneficiary countries ranked by filing counts from Singapore-based originator entities."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nChina and India are tied at 8 filings, so other countries with the same count could also qualify for the fifth spot, making \"top 5\" non-unique."
+  ]
+ },
+ "t099": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe row provides a single highest movie rating value, which is exactly what the question asks for."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a single value (the maximum rating), and the key returns exactly one row with one value, which matches the requested answer format."
+  ]
+ },
+ "t100": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe three filings have matching originator and beneficiary latitudes and are ordered by descending amount."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe three filings all have matching originator/beneficiary latitudes and appear to be the top 3 by amount, matching the question's request."
+  ]
+ },
+ "t101": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows are movie titles only, with no duplicates or nulls, matching a request to list movies meeting the vote threshold."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows list movie titles with more than 100 votes, matching the question's request for such movies."
+  ]
+ },
+ "t102": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe 50 listed products are exactly those with unit prices above supplier 1's average unit price."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe list includes \"Chai\" and \"Chang\", which are supplied by supplier 1 and priced below that supplier's average unit price, so they should not appear in the result."
+  ]
+ },
+ "t103": {
+  "kimi-k3": [
+   "NO",
+   "NO\nA maximum count of 1 strongly suggests many people are tied with one such movie, so returning only Jessica Thompson misses other tied answers."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nA movieCount of 1 suggests many reviewers likely tie at one such movie, so \"the most\" is not uniquely determined by a single row."
+  ]
+ },
+ "t104": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list exactly three countries with their originator-bank counts in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly three countries ranked by originator bank count in descending order, matching the entities, values, and result count the question requests."
+  ]
+ },
+ "t105": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the requested average number of favorites for tweets using the hashtag \u201ceducation.\u201d"
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row returns a single average favorites value for tweets with the 'education' hashtag, matching the question's request."
+  ]
+ },
+ "t106": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe three rows are tied at actorCount 4, so without a tie-breaker other movies with 4 actors could equally be in the first 3."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple movies likely tie at 4 actors, so \"first 3\" is arbitrary without a tie-breaking order."
+  ]
+ },
+ "t107": {
+  "kimi-k3": [
+   "YES",
+   "YES\nDrama is the most frequent genre among movies released in 2014."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe question asks for a single genre, and the key returns exactly one row with the genre name, which matches the requested answer format."
+  ]
+ },
+ "t108": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows show five distinct entities ranked by descending filing count, matching the question\u2019s requested scope."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return five distinct entities ranked by descending filings count, matching the question's request for the top 5 entities linked to filings with a United Kingdom beneficiary bank country."
+  ]
+ },
+ "t109": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe five customers are correctly ranked by descending order count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nTwo customers are tied at 19 orders at the cutoff, so other customers may also have 19 orders and the \"top 5\" is not uniquely determined."
+  ]
+ },
+ "t110": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\u201cFirst\u201d is not defined by an ordering; these are the alphabetically first three, but another reasonable order gives different rows."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list the first 3 products (alphabetically) with reorderLevel above 20, with correct names and values."
+  ]
+ },
+ "t111": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows provide three distinct originator bank countries with filing counts in descending order, matching the requested top 3."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly three countries with their filing counts in descending order, matching the requested entities (originator bank countries), values, and result count."
+  ]
+ },
+ "t112": {
+  "kimi-k3": [
+   "NO",
+   "NO\nAt least one listed movie (A Little Romance) does not appear to have a main actor born in France, and \u201cfirst 3\u201d lacks a clear ordering."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"First 3\" lacks a defined ordering (e.g., by release year or ID), and \"main actor\" is undefined, so multiple orderings/answers are reasonable."
+  ]
+ },
+ "t113": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three returned tweets all mention @neo4j, the apparent highest-betweenness user, and match the requested count."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 3 tweets that mention @neo4j, the user with the highest betweenness, matching the question's requested entities and count."
+  ]
+ },
+ "t114": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe five distinct movies each list plot languages in more than one language, matching the requested count and criteria."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows reflect movies whose `languages` field lists more than one language, not movies whose plot was translated into multiple languages (a different table/condition), so they answer a different question."
+  ]
+ },
+ "t115": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list three directors ranked by distinct actor count, matching the question\u2019s request."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 3 directors ranked by the number of distinct actors across their movies, matching the entities, values, and count requested."
+  ]
+ },
+ "t116": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nEach listed person both acted in and directed the corresponding movie, and the result set contains no duplicates or irrelevant rows."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe question asks for all persons who acted in and directed the same movie, but the key returns only 3 rows\u2014likely missing many others (e.g., Kevin Costner/Dances with Wolves, Mel Gibson/Braveheart, Woody Allen, Charlie Chaplin, etc.)\u2014so the result set is incomplete."
+  ]
+ },
+ "t117": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows provide three distinct, non-null entity names matching the requested beneficiary scope."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly three distinct entity names with no nulls or duplicates, matching the requested count of the first 3 beneficiary entities in filings originating from the United Arab Emirates."
+  ]
+ },
+ "t118": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe single row provides the requested average follower count for users who posted tweets containing the hashtag \"education\"."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a single aggregate value\u2014the average follower count across users who posted tweets with the hashtag \"education\"\u2014and the answer key returns exactly one non-null row with an average (34507.0), matching the requested entity (users), metric (followers), and result count (one a"
+  ]
+ },
+ "t119": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows show three movies whose revenue-to-budget ratios are all greater than 3."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"First 3\" lacks an explicit ordering criterion, so different reasonable orderings (e.g., by ratio, by revenue, by title) yield different valid answers."
+  ]
+ },
+ "t120": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe results contain duplicate movies with inconsistent role counts, so they do not list five distinct top movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO: The same movie (Cloud Atlas) appears three times with inconsistent counts (6, 4, 4), indicating the query grouped by something beyond movie, so each movie should appear only once with its total role count."
+  ]
+ },
+ "t121": {
+  "kimi-k3": [
+   "NO",
+   "NO\nKeanu Reeves acted in earlier movies, such as Youngblood (1986), so Johnny Mnemonic (1995) is not the oldest."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nKeanu Reeves appeared in older films (e.g., River's Edge from 1986), so 1995's Johnny Mnemonic is not his oldest movie."
+  ]
+ },
+ "t122": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows return the earliest tweet's details, not the 'location' of the user who posted it."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows return the earliest tweet itself rather than the 'location' of the user who posted it, which is what the question explicitly asks for."
+  ]
+ },
+ "t123": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows list the three ship addresses with the highest order counts, in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThese are the correct top-3 ship addresses by order count in the Northwind orders data, with accurate counts and exactly three rows as requested."
+  ]
+ },
+ "t124": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\u201cFirst 3\u201d has no stated ordering, so different sets of three qualifying genres could be valid."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"First 3\" lacks a specified ordering, so multiple orderings (e.g., alphabetical, by movie, by genre ID) could yield different valid answers."
+  ]
+ },
+ "t125": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows show three distinct retweets mentioning \u201cneo4j,\u201d ordered by creation time."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll three rows are retweets (text starts with \"RT @\") that mention @neo4j, ordered by created_at, and exactly 3 are returned as requested."
+  ]
+ },
+ "t126": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese are exactly the three movies whose director is also listed as an actor."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe question is vague about which database to use and what counts as \"listed as an actor,\" so multiple correct result sets are plausible; the given rows may be correct for one interpretation but can't be verified as exactly right."
+  ]
+ },
+ "t127": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe result provides a single count of filings matching the stated country and amount conditions."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a count of filings matching two conditions (beneficiary bank in 'United Kingdom' and amount > 200000), and the answer key returns exactly that\u2014a single count value (79) in the appropriate single-row format."
+  ]
+ },
+ "t128": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single returned supplier is the only German supplier associated with products in the Beverages category."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row correctly identifies Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG, the German supplier of Beverages products (e.g., Sasquatch Ale), and no other German supplier falls in that category."
+  ]
+ },
+ "t129": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three rows are German-supplier products with correct IDs, names, prices, and the requested count of 3."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe three products (IDs 25, 26, 27) are exactly the German-supplier products with the lowest productIDs, so they are the correct \"first 3\" (the question specifies no ordering, and the set matches)."
+  ]
+ },
+ "t130": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS  \nThe cutoff includes a tie at 8 genres, so different valid movies could fill the 2nd/3rd spots unless a tie-breaker is specified."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nMultiple movies may be tied at 8 genres, so the third row (and possibly the set of top-3 movies) is not uniquely determined."
+  ]
+ },
+ "t131": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows return followers but have null status counts, so they do not show the values needed to determine the top 5."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows return null for `u.statuses`\u2014the very value the question asks to rank by\u2014so the \"top 5 based on number of statuses\" cannot be verified or is based on missing data."
+  ]
+ },
+ "t132": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nTom Hanks\u2019s directed movies do not have \u201clove\u201d in their taglines, so a count of 0 is correct."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe question asks for a count of Tom Hanks-directed movies with \"love\" in the tagline, and the key returns a single count of 0, which matches the expected result."
+  ]
+ },
+ "t133": {
+  "kimi-k3": [
+   "YES",
+   "YES: The single returned customer matches the expected Northwind result for the order with the greatest summed product quantity."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row correctly identifies Ernst Handel (ERNSH) as the customer whose order contains the highest total quantity of products, matching the single expected result."
+  ]
+ },
+ "t134": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows provide five distinct hashtags with descending usage counts for tweets retweeted by Neo4j."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe fifth entry has count 2, and other hashtags may be tied at that count, so \"top 5\" is not uniquely determined."
+  ]
+ },
+ "t135": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three filings match the requested countries and are ordered by the highest amounts."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nAll 3 rows satisfy the filters (beneficiary_bank_country = 'United Kingdom', originator_bank_country = 'Singapore'), are distinct filings, and are returned in descending amount order (116.2M, 56.9M, 3.5M), matching the requested count of 3."
+  ]
+ },
+ "t136": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nAll three listed people both acted in and directed the corresponding movie."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe question asks for any person who both acted in and directed the same movie, and there are many such people (e.g., Woody Allen, Ben Affleck, Kevin Costner), so the three rows returned are not exhaustive and the question doesn't specify a limit."
+  ]
+ },
+ "t137": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return filing IDs for filings whose originator and beneficiary banks share the same city."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return filing IDs where originator and beneficiary banks share a city, matching the question's requested entities and result count."
+  ]
+ },
+ "t138": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nA null average indicates no matching discounted rows were found, so it does not provide the requested average discount for orders shipped to Denmark."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe answer key returns null where a real numeric value should be, indicating the query failed to find orders shipped to Denmark (likely due to a broken join or filter) rather than computing the actual average discount."
+  ]
+ },
+ "t139": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return exactly 3 categories with their names and descriptions, matching the first three categories (Beverages, Condiments, Confections) as asked."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly 3 categories (Beverages, Condiments, Confections) with their correct descriptions, matching the first 3 categories in the database (by ID order, which coincidentally also matches alphabetical order), so the question is fully and correctly answered."
+  ]
+ },
+ "t140": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe result contains five Movie nodes, matching the request for the five most recently released movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe returned Movie nodes show no release-date/year property, so there's no evidence they are ordered by or selected for most recent release."
+  ]
+ },
+ "t141": {
+  "kimi-k3": [
+   "YES",
+   "YES\nAll three rows are filings with originator bank country \"United Kingdom\" and amounts above 200,000."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll three rows have originator_bank_country 'United Kingdom' and amounts above 200000, and exactly 3 rows are returned as requested."
+  ]
+ },
+ "t142": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe question asks for the first 3 movies released in 2008, but the answer key returns only 2 rows, so the count does not match what was requested."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe question asks for the first 3 movies from 2008, but the answer key returns only 2 rows, missing one requested result."
+  ]
+ },
+ "t143": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe results contain a duplicate user, so they do not return the first 3 distinct users as requested."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows contain a duplicate (chrismoye_esq appears twice), so only 2 distinct users are returned instead of the 3 distinct users the question asks for."
+  ]
+ },
+ "t144": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe row lists the movie whose review summary is \u201cA solid romp,\u201d with no extra or missing results."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe question asks for movies with the summary \"A solid romp,\" and the key returns exactly the one matching title, The Da Vinci Code."
+  ]
+ },
+ "t145": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe results contain a duplicate Barclays entity, so they do not provide three distinct benefiting entities."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe rows contain a duplicate \u2014 Barclays Bank Plc appears twice \u2014 so only 2 distinct entities are returned when the question asks for the top 3 entities that benefited, meaning a third distinct entity is missing."
+  ]
+ },
+ "t146": {
+  "kimi-k3": [
+   "NO",
+   "NO\nEd Harris with 3 is not the maximum; actors such as Robert De Niro have more films over 3 hours."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nEd Harris has no well-known films with a runtime over 3 hours, so the returned entity and count appear to be wrong for this question."
+  ]
+ },
+ "t147": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three filings are ordered by earliest begin date and all amounts exceed 100,000."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe three rows are all Filing entities with amounts over 100,000 (1,114,906.08; 1,354,708.61; 945,000), sorted by earliest begin dates (Feb 8, Feb 29, Mar 14, 2000) and limited to exactly 3 results as requested."
+  ]
+ },
+ "t148": {
+  "kimi-k3": [
+   "YES",
+   "YES: The rows return exactly 3 originator banks with filing counts in descending order, matching the top-3-by-filings request."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"LTB Bank\" and \"LTB Bank Riga \" (with trailing space) may be the same entity recorded inconsistently, so the true top-3 ranking depends on whether such near-duplicate names are merged."
+  ]
+ },
+ "t149": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe returned movie title \"You've Got Mail\" contains the word \"Mail,\" which is exactly what the question asks for."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row \"You've Got Mail\" is a movie title containing the word \"Mail\", matching the singular \"the movie\" phrasing of the question."
+  ]
+ },
+ "t150": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows repeat the same user three times rather than identifying the first three distinct users who retweeted tweets mentioning \u201cNeo4j.\u201d"
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows return the same user (\"neo4j\") three times, but the question asks for the first 3 distinct users who retweeted tweets mentioning 'Neo4j'."
+  ]
+ },
+ "t151": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list hashtags used in tweets mentioning \u201cneo4j\u201d with their corresponding tweet counts."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"Commonly used\" is vague\u2014there's no defined threshold or count, so multiple result sets (e.g., only hashtags above some frequency, or all 114) could reasonably be correct."
+  ]
+ },
+ "t152": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nAll returned filings have beneficiary_bank_country set to \"United Kingdom,\" matching the question."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES: The returned rows are Filing entities whose beneficiary_bank_country is exactly 'United Kingdom', which matches the question's filter, and no specific count or additional fields were requested."
+  ]
+ },
+ "t153": {
+  "kimi-k3": [
+   "UNPARSED",
+   ""
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe customer with the most orders in Northwind is Save-a-lot Markets (USA, 31 orders), so the answer should list only products from USA suppliers, but the key includes German and Swedish products, indicating it used the wrong country (likely Austria's Ernst Handel)."
+  ]
+ },
+ "t154": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list five distinct users followed by Neo4j, ranked by follower count."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"Top 5\" is vague \u2014 it's unclear whether ranking should be by followers, following count, or some other criterion, so multiple orderings could be considered correct."
+  ]
+ },
+ "t155": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe result returns only \"neo4j\" itself, which is self-referential and likely misses the actual other users who retweeted tweets sharing Neo4j's hashtags."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe answer returns only \"neo4j\" itself, whereas the question asks for users who retweeted tweets mentioning hashtags Neo4j used\u2014typically other users, so this appears to answer a different question."
+  ]
+ },
+ "t156": {
+  "kimi-k3": [
+   "YES",
+   "YES\nAll listed movies satisfy both conditions, with appropriate values and no apparent duplicates or mismatches."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nAll listed movies have Revenue over 500 million and IMDbRating above 8.0, matching the question's criteria."
+  ]
+ },
+ "t157": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll five users are tied with an amplification count of 1, so other equally ranked users may have been arbitrarily excluded."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll five rows have amplification_count of 1, indicating many users are likely tied at the same count, so any \"top 5\" selection among them is arbitrary rather than uniquely determined."
+  ]
+ },
+ "t158": {
+  "kimi-k3": [
+   "YES",
+   "YES\nSpeed Racer was released in 2008 and has the tagline \u201cSpeed has no limits.\u201d"
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\"Speed Racer\" (2008) falls within 2005\u20132010 and is the movie with the tagline \"Speed has no limits,\" so the single returned row correctly matches the question."
+  ]
+ },
+ "t159": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return three distinct entities, matching the requested top-three result."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nDeutsche Bank AG is not a UK-originator bank, so the rows appear to answer a different question (e.g., relationships with filings regardless of originator bank country) rather than the one asked."
+  ]
+ },
+ "t160": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe row correctly gives Portland as the city for the customer named \"Lonesome Pine Restaurant.\""
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row correctly returns the city (Portland) for the customer named 'Lonesome Pine Restaurant', which is exactly what the question asks for."
+  ]
+ },
+ "t161": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list three actors from a 2012 movie, matching the requested count and values."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list three actors from a 2012 film (Cloud Atlas), matching the question's request for the first 3 people who acted in a movie released in 2012."
+  ]
+ },
+ "t162": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return exactly three users with their average movie ratings in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES: The rows return exactly 3 users with their average ratings in descending order, matching what the question asks for."
+  ]
+ },
+ "t163": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the correct top 3 suppliers with their correct average unit prices."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly three suppliers ranked by average unit price, with the correct values matching the Northwind data (Aux joyeux eccl\u00e9siastiques at ~140.75 is indeed the top)."
+  ]
+ },
+ "t164": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe three Filing rows are ordered by the earliest begin dates: Feb 8, Feb 29, and Mar 7, 2000."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows return exactly 3 Filing entities sorted ascending by begin date (Feb 8, 2000; Feb 29, 2000; Mar 7, 2000), which correctly represents the 3 oldest filings based on the begin date."
+  ]
+ },
+ "t165": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the three customers with the highest order counts in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows correctly list the top 3 customers by order count (SAVEA: 31, ERNSH: 30, QUICK: 28), matching the Northwind data with no ties at the cutoff."
+  ]
+ },
+ "t166": {
+  "kimi-k3": [
+   "NO",
+   "NO\nIt returns 7 rows instead of 5 and includes URLs that are not tweets."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe answer key returns 7 rows instead of the requested top 5, and it includes external links embedded in tweets (neo4j.com, medium.com, r.neo4j.com) rather than the URLs of the tweets themselves."
+  ]
+ },
+ "t167": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list three suppliers ranked by average freight, with the supporting values included."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly three supplier names ranked by average freight in descending order, matching the question's request."
+  ]
+ },
+ "t168": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the three directors with the highest movie counts in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 3 directors with their movie counts in descending order, matching the requested top 3 with no ties, duplicates, or missing elements."
+  ]
+ },
+ "t169": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe row gives the requested productName and categoryID for the non-discontinued product with the highest unitsOnOrder."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row correctly identifies Louisiana Hot Spiced Okra (categoryID 2), which has the highest unitsOnOrder (100) among non-discontinued products, and only one product is requested."
+  ]
+ },
+ "t170": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS: \u201cTop 5\u201d is sensitive to ties at the cutoff (the 5th row has 7, and other directors may also have 7), so more than one reasonable 5-row answer could be correct."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nTies at the cutoff (e.g., Woody Allen and Spike Lee both at 10, and possibly others tied at 7) mean \"top 5\" is not uniquely determined."
+  ]
+ },
+ "t171": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\u201cFirst 3\u201d does not specify an ordering criterion, so different genre triples could reasonably be returned."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"First 3 genres\" lacks a specified ordering criterion, so multiple orderings (and thus different valid sets of 3 genres) are reasonable."
+  ]
+ },
+ "t172": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return five distinct customers ranked by a descending count consistent with undiscounted product orders."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\n\"Discount was not applied\" is vague (discount = 0 vs. NULL vs. no discount record), so multiple reasonable interpretations exist."
+  ]
+ },
+ "t173": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThese are the three suppliers associated with products in the Dairy Products category."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe Northwind database has exactly three suppliers of Dairy Products, and these are them."
+  ]
+ },
+ "t174": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows list distinct users with handles and names who are amplified by \u201cMe,\u201d matching the question."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe rows"
+  ]
+ },
+ "t175": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows provide exactly three distinct hashtags with their usage counts, ordered by count."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES: the rows return exactly the top 3 hashtags with their usage counts for tweets retweeted by 'Neo4j', matching the question's requested entities and result count."
+  ]
+ },
+ "t176": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe rows are just consecutive supplierIDs 1\u201329 (essentially all suppliers), showing no filter for suppliers serving more than three distinct cities, so the count/entities are wrong."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe answer returns every supplierID 1\u201329 (all suppliers), which suggests it counted something other than distinct cities (e.g., orders or customers) rather than truly filtering to suppliers serving more than three different cities."
+  ]
+ },
+ "t177": {
+  "kimi-k3": [
+   "YES",
+   "YES"
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row identifies the employee (ID 1) with the highest cross-selling count (6) of Chocolade alongside another product, matching the question's request for a single top result."
+  ]
+ },
+ "t178": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe single count of 332 directly answers how many filings have a `begin_date` in June."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe question asks for a count of filings with a begin_date in June, and the answer key returns exactly that\u2014a single count value (332), which matches the requested result format and entity (filings filtered by June begin_date)."
+  ]
+ },
+ "t179": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe single row provides the requested country code for the entity associated with the lowest-amount filing."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nThe answer returns a single country code (LVA), which directly matches what the question asks for\u2014the country code of the entity behind the lowest-amount filing."
+  ]
+ },
+ "t180": {
+  "kimi-k3": [
+   "YES",
+   "YES"
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nThe wording \"contain products with no units on order\" could mean categories where at least one product has zero units on order (which would include nearly all categories) or where all products have zero on order, so the 3-row answer matches only one interpretation."
+  ]
+ },
+ "t181": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows list suppliers whose products span more than one category, with correct category groupings and a plausible complete count for the Northwind-style data."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list each supplier together with the distinct product categories they supply, restricted to suppliers with more than one category, which matches the question."
+  ]
+ },
+ "t182": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list three directors with distinct actor counts in descending order, matching the request."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly three directors ranked by distinct actor count, matching the question's request."
+  ]
+ },
+ "t183": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe row identifies the actor with the highest movie count and includes the supporting count."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row returns a single actor with the highest movie count, which matches the singular \"which actor\" phrasing, and the count column is consistent supporting information."
+  ]
+ },
+ "t184": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the top 3 users by Neo4j mention count in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly the top 3 users by number of 'Neo4j' mentions in tweets, with correct users and mention counts matching the question's request."
+  ]
+ },
+ "t185": {
+  "kimi-k3": [
+   "YES",
+   "YES  \nThe listed titles are consistent with movies under 90 minutes and IMDb ratings above 8.0, with no obvious duplicates or wrong entities."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES: The rows list movie titles with runtime under 90 minutes and IMDB rating above 8.0, matching the question's criteria."
+  ]
+ },
+ "t186": {
+  "kimi-k3": [
+   "YES",
+   "YES\n\nThe rows show the top three movies by revenue minus budget, in descending order."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows correctly list the top three movies by revenue minus budget (Avatar, Titanic, Star Wars: The Force Awakens) with accurate values and exactly three results as requested."
+  ]
+ },
+ "t187": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows provide five distinct countries with descending beneficiary filing counts for the first half of years."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows return exactly 5 countries with filing counts as beneficiaries in the first half of years, matching the question's request."
+  ]
+ },
+ "t188": {
+  "kimi-k3": [
+   "NO",
+   "NO\nHoward Deutch is not a correct/complete answer for directors of movies rated higher than 95."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe row returns a single director name, matching the question asking which person directed movies rated above 95."
+  ]
+ },
+ "t189": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nA maximum count of 1 almost certainly means many directors are tied, so returning only James Marshall misses the other tied persons."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe answer returns only one director with a count of 1, but \"the most movies\" questions typically have multiple directors tied at the maximum, so it likely misses tied results."
+  ]
+ },
+ "t190": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list movies with actor counts greater than 3, directly matching the question."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\n\nAll returned rows list movies whose actor counts strictly exceed 3 (values range from 4 to 12), matching the question's condition, with no duplicates or nulls, and the question imposes no limit on the number of results."
+  ]
+ },
+ "t191": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS: multiple categories are tied with 8 suppliers at the top-3 cutoff, so other equally valid selections of three categories exist."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll three categories are tied at 8, so if other categories also have 8 suppliers, the \"top 3\" cutoff is arbitrary and multiple answers could be correct."
+  ]
+ },
+ "t192": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows return three distinct entities associated with filings above 1,000,000, matching the requested count."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly 3 entities involved in filings with amounts greater than 1,000,000, with no duplicates or missing values."
+  ]
+ },
+ "t193": {
+  "kimi-k3": [
+   "NO",
+   "NO\nIt omits products supplied by Specialty Biscuits, Ltd., the other UK supplier."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe rows include only Exotic Liquids' products ("
+  ]
+ },
+ "t194": {
+  "kimi-k3": [
+   "NO",
+   "NO: The rows repeat the same hashtag three times instead of listing the first three distinct hashtags."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO: The rows return the same hashtag (\"neo4j\") three times, so they contain duplicates where the first 3 distinct hashtags used in those tweets should appear."
+  ]
+ },
+ "t195": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the five categories with the highest total unitsInStock, correctly aggregated and ordered."
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows list exactly five categories ranked by total unitsInStock in descending order (Seafood 701, Beverages 559, Condiments 507, Dairy Products 393, Confections 386), matching the Northwind data with no ties at the cutoff."
+  ]
+ },
+ "t196": {
+  "kimi-k3": [
+   "NO",
+   "NO\nThe rows have null release dates, so they cannot verify or represent the 5 most recent movies."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\n\nThe question asks for the most recent movies, but all releaseDate values are null, so there's no evidence the rows are ordered or selected by recency."
+  ]
+ },
+ "t197": {
+  "kimi-k3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nAll three filings are tied at entityCount 2, so other filings with the same count could reasonably be selected for the top 3."
+  ],
+  "glm-5p3": [
+   "AMBIGUOUS",
+   "AMBIGUOUS\nIf many filings each involve 2 entities, the top-3 cutoff is arbitrary due to ties, so multiple correct answers exist."
+  ]
+ },
+ "t198": {
+  "kimi-k3": [
+   "NO",
+   "NO\n\nThe question asks only for the originator(s) with the highest filing count, but the answer returns all 76 originators rather than just Rosbank with 10."
+  ],
+  "glm-5p3": [
+   "NO",
+   "NO\nThe question asks for the entities with the *most* filings (i.e., Rosbank with 10), but the key returns a full ranked list of 76 entities rather than only the top one(s)."
+  ]
+ },
+ "t199": {
+  "kimi-k3": [
+   "YES",
+   "YES\nThe rows list the people and their roles for every movie whose title contains \u201cMatrix.\u201d"
+  ],
+  "glm-5p3": [
+   "YES",
+   "YES\nThe rows correctly list each person and their roles for all three Matrix movies, with no duplicates or missing entries."
+  ]
+ }
+}

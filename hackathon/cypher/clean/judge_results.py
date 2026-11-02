@@ -20,7 +20,7 @@ Do these rows correctly answer the question as asked?
 Reply with exactly one word on the first line (YES, NO or AMBIGUOUS), then one short sentence of reason."""
 def ask(model, ex):
     g=ex["gold_result"]; rows=g.get("rows") or []
-    body=json.dumps({"model":model,"max_tokens":2048,"temperature":0,
+    body=json.dumps({"model":model,"max_tokens":4096,"temperature":0,"reasoning_effort":"low",
         "messages":[{"role":"user","content":PROMPT.format(q=ex["question"],n=len(rows),rows=json.dumps(rows[:25],ensure_ascii=False)[:4000])}]}).encode()
     for attempt in range(5):
         try:
@@ -34,8 +34,10 @@ def ask(model, ex):
         except Exception as e:
             time.sleep(2*(attempt+1)); err=str(e)
     return "ERROR", err[:200]
-out={}
-jobs=[(m,ex) for ex in test for m in JUDGES]
+prev=json.load(open(os.path.join(HERE,"clean/judgements.json")))
+out=prev
+jobs=[(m,ex) for ex in test for m in JUDGES if prev.get(ex["id"],{}).get(m.split("/")[-1],["UNPARSED"])[0] in ("UNPARSED","ERROR")]
+print("re-asking",len(jobs))
 with cf.ThreadPoolExecutor(12) as pool:
     for (m,ex),res in zip(jobs,pool.map(lambda j: ask(*j), jobs)):
         out.setdefault(ex["id"],{})[m.split("/")[-1]]=res

@@ -140,3 +140,172 @@ def score_lenient(gold, pred, gold_cypher=""):
         if not hit:
             return "wrong"
     return "correct"
+
+
+# ---------------------------------------------------------------------------
+# score_v2: execution accuracy with result-set equality, the standard used by
+# published text-to-Cypher / text-to-SQL evaluations. Rules documented one by
+# one in audit/SCORING.md. score() and score_lenient() above are unchanged so
+# the three can be compared on the same runs.
+# ---------------------------------------------------------------------------
+
+ID_PROPS = ("name", "title", "id")  # identifying properties, in priority order
+
+LIMIT_RE = re.compile(r"\s+\blimit\s+\d+\b", re.I)
+SKIP_RE = re.compile(r"\s+\bskip\s+\d+\b", re.I)
+
+
+def strip_limit(cypher):
+    """The same query with every LIMIT (and SKIP) clause removed: the full result the gold
+    query was truncating. Used only to test containment for LIMIT rows."""
+    c = _unescape(cypher or "")
+    return SKIP_RE.sub(" ", LIMIT_RE.sub(" ", c)).strip()
+
+
+def has_limit(cypher):
+    return bool(re.search(r"\blimit\s+\d+\b", _unescape(cypher or ""), re.I))
+
+
+def order_by_key_cols(cypher, columns):
+    """Columns of the result that the gold query's final ORDER BY sorts on, if we can tell.
+    Returns [] when the ORDER BY expression does not resolve to a returned column, in which
+    case the tie rule is not applied at all (we stay strict rather than guess)."""
+    c = _unescape(cypher or "")
+    m = None
+    for m2 in re.finditer(r"\border\s+by\b(.*?)(?=\blimit\b|\bskip\b|\breturn\b|\bwith\b|\bmatch\b|$)", c, re.I | re.S):
+        m = m2
+    if not m:
+        return []
+    cols, lower = [], {str(x).lower(): x for x in columns}
+    for term in m.group(1).split(","):
+        t = term.strip().rstrip(";")
+        t = re.sub(r"\b(asc|ascending|desc|descending)\b\s*$", "", t, flags=re.I).strip()
+        if not t:
+            continue
+        cand = [t.lower()]
+        if "." in t:
+            cand.append(t.split(".")[-1].lower())
+        hit = next((lower[x] for x in cand if x in lower), None)
+        if hit is None:
+            return []  # an ORDER BY term we cannot map to a column -> no tie relaxation
+        cols.append(hit)
+    return cols
+
+
+def _is_entity(v):
+    return isinstance(v, dict) and ("_labels" in v or "_type" in v)
+
+
+def _ident(v):
+    """Reduce a node/relationship to its identifying property so that `RETURN m` and
+    `RETURN m.title` describe the same set of entities. Non-entities pass through."""
+    if not _is_entity(v):
+        return norm(v)
+    for p in ID_PROPS:
+        if p in v:
+            return norm(v[p])
+    for k in v:  # <label>Id style keys, e.g. movieId, userId
+        if k.lower().endswith("id") and not k.startswith("_"):
+            return norm(v[k])
+    return norm(v)
+
+
+def _vals(row, columns):
+    if isinstance(row, dict):
+        cols = columns if columns and all(c in row for c in columns) else list(row.keys())
+        return [row[c] for c in cols]
+    return list(row)
+
+
+def _rowkey(row, columns, ident=False):
+    """One row as an order-free key: column order ignored (values sorted), column names ignored."""
+    vals = [(_ident(v) if ident else norm(v)) for v in _vals(row, columns)]
+    return tuple(sorted(vals, key=repr))
+
+
+def _bag(res, ident=False):
+    return Counter(_rowkey(r, res.get("columns") or [], ident) for r in res["rows"])
+
+
+def _flat_scalars(res):
+    """Rows as a flat multiset of scalars, used only for the list-vs-rows equivalence:
+    one row holding collect(x) vs N single-column rows of x answer the same question."""
+    out = []
+    for r in res["rows"]:
+        for v in _vals(r, res.get("columns") or []):
+            if isinstance(v, (list, tuple)):
+                out.extend(_ident(x) for x in v)
+            else:
+                out.append(_ident(v))
+    return Counter(out)
+
+
+def _single_col_or_list(res):
+    """True when the result is either N single-column rows, or one row whose single column is
+    a list. Only then is the list-vs-rows unwrap allowed."""
+    rows = res["rows"]
+    if not rows:
+        return False
+    widths = {len(_vals(r, res.get("columns") or [])) for r in rows}
+    if widths != {1}:
+        return False
+    if len(rows) == 1:
+        return True
+    return not any(isinstance(_vals(r, res.get("columns") or [])[0], (list, tuple)) for r in rows)
+
+
+def _sub_multiset(small, big):
+    return all(big.get(k, 0) >= n for k, n in small.items())
+
+
+def score_v2(gold, pred, gold_cypher="", gold_unlimited=None):
+    """Execution accuracy. `gold_unlimited` is the executed result of strip_limit(gold_cypher),
+    required only to judge LIMIT rows; without it those rows are judged strictly."""
+    if not pred.get("ok"):
+        return "error"
+    if not pred["rows"]:
+        return "correct" if not gold["rows"] else "empty"
+    if not gold["rows"]:
+        return "wrong"
+
+    gb, pb = _bag(gold), _bag(pred)
+    if gb == pb:
+        return "correct"                                            # R1-R6
+
+    gi, pi = _bag(gold, ident=True), _bag(pred, ident=True)         # R7 node <-> id property
+    if gi == pi:
+        return "correct"
+
+    if _single_col_or_list(gold) and _single_col_or_list(pred):     # R8 list <-> rows
+        if _flat_scalars(gold) == _flat_scalars(pred):
+            return "correct"
+
+    # R9 LIMIT non-determinism: the gold query itself may legitimately return other rows.
+    if has_limit(gold_cypher) and gold_unlimited and gold_unlimited.get("ok") and gold_unlimited["rows"]:
+        if len(pred["rows"]) == len(gold["rows"]):
+            ub, ui = _bag(gold_unlimited), _bag(gold_unlimited, ident=True)
+            inside = _sub_multiset(pb, ub) or _sub_multiset(pi, ui)
+            if inside:
+                keys = order_by_key_cols(gold_cypher, gold.get("columns") or [])
+                if not has_order_by(gold_cypher):
+                    return "correct"                                # no ORDER BY: any such set is valid
+                if keys:
+                    gk = Counter(tuple(norm(r[c]) for c in keys) for r in gold["rows"]
+                                 if all(c in r for c in keys))
+                    pcols = order_by_key_cols(gold_cypher, pred.get("columns") or [])
+                    pk = None
+                    if len(gk) and pcols and len(pcols) == len(keys):
+                        pk = Counter(tuple(norm(r[c]) for c in pcols) for r in pred["rows"]
+                                     if all(c in r for c in pcols))
+                    else:  # aliases differ: fall back to positional sort-key match on the unlimited rows
+                        ug = {_rowkey(r, gold_unlimited.get("columns") or [], True):
+                              tuple(norm(r[c]) for c in keys) for r in gold_unlimited["rows"]
+                              if all(c in r for c in keys)}
+                        if ug:
+                            pk = Counter(ug.get(k) for k in
+                                         [_rowkey(r, pred.get("columns") or [], True) for r in pred["rows"]])
+                            if None in pk:
+                                pk = None
+                    if pk is not None and gk and gk == pk:
+                        return "correct"                            # ties at the LIMIT boundary only
+    return "wrong"

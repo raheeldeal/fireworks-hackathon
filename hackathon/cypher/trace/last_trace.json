@@ -1,272 +1,93 @@
 {
  "step": "text2cypher",
  "kind": "span",
- "seconds": 1.776,
+ "seconds": 0.005,
  "input": {
-  "question": "Find the hashtags that are commonly used in tweets that mention 'neo4j'.",
-  "graph": "twitter",
-  "config": "route_big",
-  "tier": "hard"
+  "question": "who?"
  },
  "output": {
-  "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})\nMATCH (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC",
-  "status": "rows",
-  "row_count": 114,
   "rows": [
    {
-    "hashtag": "bbbt",
-    "tweetCount": 56
-   },
-   {
-    "hashtag": "neo4j",
-    "tweetCount": 24
-   },
-   {
-    "hashtag": "graph",
-    "tweetCount": 16
-   },
-   {
-    "hashtag": "cloud",
-    "tweetCount": 14
-   },
-   {
-    "hashtag": "graphdatabase",
-    "tweetCount": 11
-   },
-   {
-    "hashtag": "datascience",
-    "tweetCount": 11
-   },
-   {
-    "hashtag": "knowledgegraph",
-    "tweetCount": 9
-   },
-   {
-    "hashtag": "auraenterprise",
-    "tweetCount": 7
-   },
-   {
-    "hashtag": "connections",
-    "tweetCount": 7
-   },
-   {
-    "hashtag": "knowledgegraphs",
-    "tweetCount": 6
-   },
-   {
-    "hashtag": "apac",
-    "tweetCount": 6
-   },
-   {
-    "hashtag": "graphdatabases",
-    "tweetCount": 6
-   },
-   {
-    "hashtag": "graphtech",
-    "tweetCount": 6
-   },
-   {
-    "hashtag": "workshop",
-    "tweetCount": 4
-   },
-   {
-    "hashtag": "graphes",
-    "tweetCount": 4
-   },
-   {
-    "hashtag": "graphs",
-    "tweetCount": 4
-   },
-   {
-    "hashtag": "cypher",
-    "tweetCount": 4
-   },
-   {
-    "hashtag": "linkeddata",
-    "tweetCount": 3
-   },
-   {
-    "hashtag": "docker",
-    "tweetCount": 3
-   },
-   {
-    "hashtag": "react",
-    "tweetCount": 3
-   },
-   "... [+30 more]"
+    "a": 1
+   }
   ],
-  "columns": [
-   "hashtag",
-   "tweetCount"
-  ],
-  "error": null,
-  "correct": true,
-  "correct_lenient": true,
-  "gold_cypher": "MATCH (tweet:Tweet)-[:MENTIONS]->(:User {screen_name: 'neo4j'}),       (tweet)-[:TAGS]->(hashtag:Hashtag)\\nWITH hashtag,       count(DISTINCT tweet) AS tweetCount\\nRETURN hashtag.name, tweetCount\\nORDER BY tweetCount DESC"
+  "correct": true
  },
  "meta": {
-  "graph": "twitter",
+  "graph": "movies",
   "tier": "hard",
   "config": "route_big",
-  "row_id": "t151",
-  "agreement": 3,
-  "escalated": false,
-  "in_tokens": 2541,
-  "out_tokens": 172,
-  "cost_usd": 0.00046715,
-  "latency_s": 1.776,
-  "model_calls": 3,
+  "row_id": "t000",
   "usage": {
-   "input": 2541,
-   "output": 172
+   "input": 303,
+   "output": 60
   },
+  "cost_usd": 0.00037,
   "scores": {
    "correct": 1,
-   "correct_lenient": 1,
-   "latency_s": 1.776,
-   "cost_usd": 0.000467
+   "latency_s": 2.1
   }
  },
  "children": [
   {
    "step": "route",
    "kind": "span",
-   "seconds": 1.775,
-   "input": {
-    "question": "Find the hashtags that are commonly used in tweets that mention 'neo4j'.",
-    "escalate_below": 2
-   },
+   "seconds": 0.003,
+   "input": null,
    "output": {
-    "escalated": false,
-    "agreement": 3,
-    "chosen": 0,
-    "big_model": null
+    "escalated": false
    },
-   "meta": {
-    "note": "no escalation; the small model's vote was confident enough"
-   },
+   "meta": {},
    "children": [
     {
      "step": "vote",
      "kind": "span",
-     "seconds": 1.775,
-     "input": {
-      "question": "Find the hashtags that are commonly used in tweets that mention 'neo4j'.",
-      "n_attempts": 3,
-      "temperature": 0.7
-     },
+     "seconds": 0.003,
+     "input": null,
      "output": {
-      "per_attempt": [
-       {
-        "attempt": 0,
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})\nMATCH (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC",
-        "status": "rows",
-        "row_count": 114
-       },
-       {
-        "attempt": 1,
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}), (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC",
-        "status": "rows",
-        "row_count": 114
-       },
-       {
-        "attempt": 2,
-        "cypher": "MATCH (u:User {screen_name: 'neo4j'})<-[:MENTIONS]-(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS uses\nORDER BY uses DESC",
-        "status": "rows",
-        "row_count": 114
-       }
-      ],
       "agreement": 3,
       "chosen": 0
      },
-     "meta": {
-      "note": "3/3 attempts agreed on the same result set; took attempt 0"
-     },
+     "meta": {},
      "children": [
       {
        "step": "attempt",
        "kind": "span",
-       "seconds": 1.539,
-       "input": {
-        "question": "Find the hashtags that are commonly used in tweets that mention 'neo4j'.",
-        "graph": "twitter"
-       },
+       "seconds": 0.001,
+       "input": null,
        "output": {
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})\nMATCH (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC",
-        "status": "rows",
-        "row_count": 114,
-        "rows_head": [
-         {
-          "hashtag": "bbbt",
-          "tweetCount": 56
-         },
-         {
-          "hashtag": "neo4j",
-          "tweetCount": 24
-         },
-         {
-          "hashtag": "graph",
-          "tweetCount": 16
-         },
-         {
-          "hashtag": "cloud",
-          "tweetCount": 14
-         },
-         {
-          "hashtag": "graphdatabase",
-          "tweetCount": 11
-         }
-        ],
-        "problems": [],
-        "repaired": false
+        "cypher": "MATCH (n) RETURN n",
+        "status": "rows"
        },
        "meta": {
-        "model": "accounts/fireworks/models/glm-5p3-flash",
+        "model": "m/small",
         "temperature": 0.7,
-        "calls": 1,
-        "pruned": false,
-        "in_tokens": 847,
-        "out_tokens": 63,
-        "statuses": [
-         "rows"
-        ],
-        "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
         "usage": {
-         "input": 847,
-         "output": 63
+         "input": 100,
+         "output": 20
         },
-        "cost_usd": 0.00015855
+        "cost_usd": 0.000123
        },
        "children": [
         {
          "step": "generate",
          "kind": "generation",
-         "seconds": 0.98,
+         "seconds": 0.0,
          "input": [
           {
-           "role": "system",
-           "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\n- **Link**\n  - `url`: STRING Example: \"https://twitter.com/i/web/status/13718150212657479\"\n- **Source**\n  - `name`: STRING Example: \"Buffer\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:USING]->(:Source)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:CONTAINS]->(:Link)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
-          },
-          {
            "role": "user",
-           "content": "Find the hashtags that are commonly used in tweets that mention 'neo4j'."
+           "content": "q"
           }
          ],
-         "output": "```cypher\nMATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})\nMATCH (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC\n```",
+         "output": "MATCH (n) RETURN n",
          "meta": {
-          "model": "accounts/fireworks/models/glm-5p3-flash",
-          "temperature": 0.7,
-          "reasoning_effort": "low",
-          "reasoning_tokens": 0,
+          "model": "m/small",
           "finish_reason": "stop",
-          "latency_s": 0.98,
-          "note": "glm-5p3-flash: 847 prompt + 63 completion tokens, $0.00016, 1.0s",
           "usage": {
-           "input": 847,
-           "output": 63,
-           "total": 910
+           "input": 100,
+           "output": 20
           },
-          "cost_usd": 0.00015855
+          "cost_usd": 0.000123
          },
          "children": []
         },
@@ -275,61 +96,30 @@
          "kind": "span",
          "seconds": 0.0,
          "input": {
-          "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})\nMATCH (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC"
+          "cypher": "MATCH (n) RETURN n"
          },
          "output": {
           "problems": [],
-          "n_problems": 0,
-          "unsafe": false
+          "n_problems": 0
          },
-         "meta": {
-          "note": "no schema problems"
-         },
+         "meta": {},
          "children": []
         },
         {
          "step": "execute",
          "kind": "span",
-         "seconds": 0.558,
+         "seconds": 0.0,
          "input": {
-          "graph": "twitter",
-          "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'})\nMATCH (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC"
+          "graph": "movies",
+          "cypher": "MATCH (n) RETURN n"
          },
          "output": {
           "status": "rows",
-          "row_count": 114,
-          "columns": [
-           "hashtag",
-           "tweetCount"
-          ],
-          "error": null,
-          "rows_head": [
-           {
-            "hashtag": "bbbt",
-            "tweetCount": 56
-           },
-           {
-            "hashtag": "neo4j",
-            "tweetCount": 24
-           },
-           {
-            "hashtag": "graph",
-            "tweetCount": 16
-           },
-           {
-            "hashtag": "cloud",
-            "tweetCount": 14
-           },
-           {
-            "hashtag": "graphdatabase",
-            "tweetCount": 11
-           }
-          ]
+          "row_count": 3
          },
          "meta": {
-          "graph": "twitter",
-          "latency_s": 0.558,
-          "note": "rows: 114 row(s) in 0.558s"
+          "graph": "movies",
+          "latency_s": 1.2
          },
          "children": []
         }
@@ -338,87 +128,41 @@
       {
        "step": "attempt",
        "kind": "span",
-       "seconds": 1.533,
-       "input": {
-        "question": "Find the hashtags that are commonly used in tweets that mention 'neo4j'.",
-        "graph": "twitter"
-       },
+       "seconds": 0.001,
+       "input": null,
        "output": {
-        "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}), (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC",
-        "status": "rows",
-        "row_count": 114,
-        "rows_head": [
-         {
-          "hashtag": "bbbt",
-          "tweetCount": 56
-         },
-         {
-          "hashtag": "neo4j",
-          "tweetCount": 24
-         },
-         {
-          "hashtag": "graph",
-          "tweetCount": 16
-         },
-         {
-          "hashtag": "cloud",
-          "tweetCount": 14
-         },
-         {
-          "hashtag": "graphdatabase",
-          "tweetCount": 11
-         }
-        ],
-        "problems": [],
-        "repaired": false
+        "cypher": "MATCH (n) RETURN n",
+        "status": "rows"
        },
        "meta": {
-        "model": "accounts/fireworks/models/glm-5p3-flash",
+        "model": "m/small",
         "temperature": 0.7,
-        "calls": 1,
-        "pruned": false,
-        "in_tokens": 847,
-        "out_tokens": 57,
-        "statuses": [
-         "rows"
-        ],
-        "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
         "usage": {
-         "input": 847,
-         "output": 57
+         "input": 101,
+         "output": 20
         },
-        "cost_usd": 0.00015555
+        "cost_usd": 0.000123
        },
        "children": [
         {
          "step": "generate",
          "kind": "generation",
-         "seconds": 0.751,
+         "seconds": 0.0,
          "input": [
           {
-           "role": "system",
-           "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\n- **Link**\n  - `url`: STRING Example: \"https://twitter.com/i/web/status/13718150212657479\"\n- **Source**\n  - `name`: STRING Example: \"Buffer\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:USING]->(:Source)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:CONTAINS]->(:Link)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
-          },
-          {
            "role": "user",
-           "content": "Find the hashtags that are commonly used in tweets that mention 'neo4j'."
+           "content": "q"
           }
          ],
-         "output": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}), (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC",
+         "output": "MATCH (n) RETURN n",
          "meta": {
-          "model": "accounts/fireworks/models/glm-5p3-flash",
-          "temperature": 0.7,
-          "reasoning_effort": "low",
-          "reasoning_tokens": 0,
+          "model": "m/small",
           "finish_reason": "stop",
-          "latency_s": 0.751,
-          "note": "glm-5p3-flash: 847 prompt + 57 completion tokens, $0.00016, 0.8s",
           "usage": {
-           "input": 847,
-           "output": 57,
-           "total": 904
+           "input": 101,
+           "output": 20
           },
-          "cost_usd": 0.00015555
+          "cost_usd": 0.000123
          },
          "children": []
         },
@@ -427,61 +171,30 @@
          "kind": "span",
          "seconds": 0.0,
          "input": {
-          "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}), (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC"
+          "cypher": "MATCH (n) RETURN n"
          },
          "output": {
           "problems": [],
-          "n_problems": 0,
-          "unsafe": false
+          "n_problems": 0
          },
-         "meta": {
-          "note": "no schema problems"
-         },
+         "meta": {},
          "children": []
         },
         {
          "step": "execute",
          "kind": "span",
-         "seconds": 0.782,
+         "seconds": 0.0,
          "input": {
-          "graph": "twitter",
-          "cypher": "MATCH (t:Tweet)-[:MENTIONS]->(u:User {screen_name: 'neo4j'}), (t)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS tweetCount\nORDER BY tweetCount DESC"
+          "graph": "movies",
+          "cypher": "MATCH (n) RETURN n"
          },
          "output": {
           "status": "rows",
-          "row_count": 114,
-          "columns": [
-           "hashtag",
-           "tweetCount"
-          ],
-          "error": null,
-          "rows_head": [
-           {
-            "hashtag": "bbbt",
-            "tweetCount": 56
-           },
-           {
-            "hashtag": "neo4j",
-            "tweetCount": 24
-           },
-           {
-            "hashtag": "graph",
-            "tweetCount": 16
-           },
-           {
-            "hashtag": "cloud",
-            "tweetCount": 14
-           },
-           {
-            "hashtag": "graphdatabase",
-            "tweetCount": 11
-           }
-          ]
+          "row_count": 3
          },
          "meta": {
-          "graph": "twitter",
-          "latency_s": 0.782,
-          "note": "rows: 114 row(s) in 0.782s"
+          "graph": "movies",
+          "latency_s": 1.2
          },
          "children": []
         }
@@ -490,87 +203,41 @@
       {
        "step": "attempt",
        "kind": "span",
-       "seconds": 1.77,
-       "input": {
-        "question": "Find the hashtags that are commonly used in tweets that mention 'neo4j'.",
-        "graph": "twitter"
-       },
+       "seconds": 0.001,
+       "input": null,
        "output": {
-        "cypher": "MATCH (u:User {screen_name: 'neo4j'})<-[:MENTIONS]-(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS uses\nORDER BY uses DESC",
-        "status": "rows",
-        "row_count": 114,
-        "rows_head": [
-         {
-          "hashtag": "bbbt",
-          "uses": 56
-         },
-         {
-          "hashtag": "neo4j",
-          "uses": 24
-         },
-         {
-          "hashtag": "graph",
-          "uses": 16
-         },
-         {
-          "hashtag": "cloud",
-          "uses": 14
-         },
-         {
-          "hashtag": "graphdatabase",
-          "uses": 11
-         }
-        ],
-        "problems": [],
-        "repaired": false
+        "cypher": "MATCH (n) RETURN n",
+        "status": "rows"
        },
        "meta": {
-        "model": "accounts/fireworks/models/glm-5p3-flash",
+        "model": "m/small",
         "temperature": 0.7,
-        "calls": 1,
-        "pruned": false,
-        "in_tokens": 847,
-        "out_tokens": 52,
-        "statuses": [
-         "rows"
-        ],
-        "note": "glm-5p3-flash -> rows, no repair needed, 1 model call(s)",
         "usage": {
-         "input": 847,
-         "output": 52
+         "input": 102,
+         "output": 20
         },
-        "cost_usd": 0.00015305
+        "cost_usd": 0.000123
        },
        "children": [
         {
          "step": "generate",
          "kind": "generation",
-         "seconds": 1.533,
+         "seconds": 0.0,
          "input": [
           {
-           "role": "system",
-           "content": "You translate questions into Cypher queries for a Neo4j graph database.\n\nGraph schema:\nNode properties:\n- **User**\n  - `betweenness`: FLOAT Example: \"3.49332601E8\"\n  - `location`: STRING Example: \"Graphs Are Everywhere\"\n  - `followers`: INTEGER Example: \"34507\"\n  - `following`: INTEGER Example: \"10124\"\n  - `profile_image_url`: STRING Example: \"http://pbs.twimg.com/profile_images/11837552737537\"\n  - `screen_name`: STRING Example: \"neo4j\"\n  - `name`: STRING Example: \"Neo4j\"\n  - `url`: STRING Example: \"https://t.co/JSIaZFJEaE\"\n  - `statuses`: INTEGER Example: \"512\"\n- **Me**\n  - `profile_image_url`: STRING Available options: ['http://pbs.twimg.com/profile_images/11837552737537']\n  - `betweenness`: FLOAT Min: 3.49332601E8, Max: 3.49332601E8\n  - `following`: INTEGER Min: 10124, Max: 10124\n  - `url`: STRING Available options: ['https://t.co/JSIaZFJEaE']\n  - `location`: STRING Available options: ['Graphs Are Everywhere']\n  - `followers`: INTEGER Min: 34507, Max: 34507\n  - `screen_name`: STRING Available options: ['neo4j']\n  - `name`: STRING Available options: ['Neo4j']\n- **Tweet**\n  - `created_at`: DATE_TIME Min: 2020-12-06T05:12:02Z, Max: 2021-03-16T15:30:07Z\n  - `id`: INTEGER Min: 690028662083612672, Max: 1371846247913512966\n  - `id_str`: STRING Example: \"1371815021265747970\"\n  - `text`: STRING Example: \"Proud to help @educationgovuk deliver critical ser\"\n  - `favorites`: INTEGER Min: 0, Max: 394\n  - `import_method`: STRING Available options: ['user']\n- **Hashtag**\n  - `name`: STRING Example: \"education\"\n- **Link**\n  - `url`: STRING Example: \"https://twitter.com/i/web/status/13718150212657479\"\n- **Source**\n  - `name`: STRING Example: \"Buffer\"\nRelationship properties:\n- **SIMILAR_TO**\n  - `score: FLOAT` Min: 0.0030581039755351682, Max:  1.0\nThe relationships:\n(:User)-[:FOLLOWS]->(:User)\n(:User)-[:FOLLOWS]->(:Me)\n(:User)-[:POSTS]->(:Tweet)\n(:User)-[:INTERACTS_WITH]->(:User)\n(:User)-[:SIMILAR_TO]->(:User)\n(:User)-[:SIMILAR_TO]->(:Me)\n(:Me)-[:FOLLOWS]->(:User)\n(:Me)-[:POSTS]->(:Tweet)\n(:Me)-[:INTERACTS_WITH]->(:User)\n(:Me)-[:RT_MENTIONS]->(:User)\n(:Me)-[:AMPLIFIES]->(:User)\n(:Tweet)-[:MENTIONS]->(:User)\n(:Tweet)-[:MENTIONS]->(:Me)\n(:Tweet)-[:USING]->(:Source)\n(:Tweet)-[:TAGS]->(:Hashtag)\n(:Tweet)-[:CONTAINS]->(:Link)\n(:Tweet)-[:RETWEETS]->(:Tweet)\n(:Tweet)-[:REPLY_TO]->(:Tweet)\n\nReturn only the Cypher query. No explanation, no code fences.\n"
-          },
-          {
            "role": "user",
-           "content": "Find the hashtags that are commonly used in tweets that mention 'neo4j'."
+           "content": "q"
           }
          ],
-         "output": "MATCH (u:User {screen_name: 'neo4j'})<-[:MENTIONS]-(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS uses\nORDER BY uses DESC",
+         "output": "MATCH (n) RETURN n",
          "meta": {
-          "model": "accounts/fireworks/models/glm-5p3-flash",
-          "temperature": 0.7,
-          "reasoning_effort": "low",
-          "reasoning_tokens": 0,
+          "model": "m/small",
           "finish_reason": "stop",
-          "latency_s": 1.533,
-          "note": "glm-5p3-flash: 847 prompt + 52 completion tokens, $0.00015, 1.5s",
           "usage": {
-           "input": 847,
-           "output": 52,
-           "total": 899
+           "input": 102,
+           "output": 20
           },
-          "cost_usd": 0.00015305
+          "cost_usd": 0.000123
          },
          "children": []
         },
@@ -579,61 +246,30 @@
          "kind": "span",
          "seconds": 0.0,
          "input": {
-          "cypher": "MATCH (u:User {screen_name: 'neo4j'})<-[:MENTIONS]-(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS uses\nORDER BY uses DESC"
+          "cypher": "MATCH (n) RETURN n"
          },
          "output": {
           "problems": [],
-          "n_problems": 0,
-          "unsafe": false
+          "n_problems": 0
          },
-         "meta": {
-          "note": "no schema problems"
-         },
+         "meta": {},
          "children": []
         },
         {
          "step": "execute",
          "kind": "span",
-         "seconds": 0.237,
+         "seconds": 0.0,
          "input": {
-          "graph": "twitter",
-          "cypher": "MATCH (u:User {screen_name: 'neo4j'})<-[:MENTIONS]-(t:Tweet)-[:TAGS]->(h:Hashtag)\nRETURN h.name AS hashtag, count(t) AS uses\nORDER BY uses DESC"
+          "graph": "movies",
+          "cypher": "MATCH (n) RETURN n"
          },
          "output": {
           "status": "rows",
-          "row_count": 114,
-          "columns": [
-           "hashtag",
-           "uses"
-          ],
-          "error": null,
-          "rows_head": [
-           {
-            "hashtag": "bbbt",
-            "uses": 56
-           },
-           {
-            "hashtag": "neo4j",
-            "uses": 24
-           },
-           {
-            "hashtag": "graph",
-            "uses": 16
-           },
-           {
-            "hashtag": "cloud",
-            "uses": 14
-           },
-           {
-            "hashtag": "graphdatabase",
-            "uses": 11
-           }
-          ]
+          "row_count": 3
          },
          "meta": {
-          "graph": "twitter",
-          "latency_s": 0.237,
-          "note": "rows: 114 row(s) in 0.237s"
+          "graph": "movies",
+          "latency_s": 1.2
          },
          "children": []
         }

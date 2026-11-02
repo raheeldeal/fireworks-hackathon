@@ -25,7 +25,10 @@ def main():
         if not isinstance(d, dict) or "rows" not in d:
             continue
         for r in d["rows"]:
-            want[key(r["graph"], r.get("pred_cypher") or "")] = (r["graph"], r.get("pred_cypher") or "")
+            g, c = r.get("graph"), r.get("pred_cypher") or ""
+            if not g or not c.strip():
+                continue
+            want[key(g, c)] = (g, c)
     # gold with LIMIT stripped, for the LIMIT-tie rule
     for l in open(os.path.join(os.path.dirname(HERE), "data", "test.jsonl")):
         ex = json.loads(l)

@@ -45,24 +45,25 @@ def ledger_add(model, tin, tout, cost, note):
         w.writerow([datetime.datetime.now().isoformat(timespec="seconds"), model, tin, tout, f"{cost:.6f}", note])
 
 
-def fireworks_call(model, system_prompt, question, max_tokens, extra):
+def fireworks_call(model, system_prompt, question, max_tokens, extra, timeout=180):
     body = {"model": model, "max_tokens": max_tokens, "temperature": 0,
             "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": question}]}
     body.update(extra)
     data = json.dumps(body).encode()
+    t_start = time.time()
     for attempt in range(6):
         req = urllib.request.Request("https://api.fireworks.ai/inference/v1/chat/completions", data=data,
                                      headers={"Authorization": f"Bearer {os.environ['FIREWORKS_API_KEY']}",
                                               "Content-Type": "application/json"})
         t0 = time.time()
         try:
-            with urllib.request.urlopen(req, timeout=180) as resp:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
                 out = json.load(resp)
             lat = time.time() - t0
             msg = out["choices"][0]["message"]
             u = out.get("usage", {})
             reasoning = (u.get("completion_tokens_details") or {}).get("reasoning_tokens") or 0
-            return {"raw": msg.get("content") or "", "latency": lat, "in": u.get("prompt_tokens", 0),
+            return {"raw": msg.get("content") or "", "latency": lat, "wall_s": time.time() - t_start, "attempts": attempt + 1, "in": u.get("prompt_tokens", 0),
                     "out": u.get("completion_tokens", 0), "reasoning": reasoning,
                     "finish": out["choices"][0].get("finish_reason"), "api_error": None}
         except urllib.error.HTTPError as e:
@@ -91,6 +92,7 @@ def main():
     ap.add_argument("--extra", default="{}", help="JSON merged into the request body, e.g. '{\"reasoning_effort\":\"none\"}'")
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--tag", default="")
+    ap.add_argument("--timeout", type=float, default=180, help="per-request seconds before retry (nemotron sometimes hangs)")
     ap.add_argument("--out")
     args = ap.parse_args()
 
@@ -112,7 +114,7 @@ def main():
             with _lock:
                 if start_total + _spent["run"] >= CAP_USD:
                     return None
-            r = fireworks_call(args.model, template.replace("{schema}", ex["schema"]), ex["question"], args.max_tokens, extra)
+            r = fireworks_call(args.model, template.replace("{schema}", ex["schema"]), ex["question"], args.max_tokens, extra, args.timeout)
             with _lock:
                 _spent["run"] += (r["in"] * pin + r["out"] * pout) / 1e6
         pred = clean_pred(r["raw"])
@@ -124,7 +126,7 @@ def main():
                 "question": ex["question"], "gold_cypher": ex["cypher"], "raw": r["raw"], "pred_cypher": pred,
                 "exec_status": status, "lenient_status": lenient, "exec_error": res.get("error"), "pred_n_rows": len(res["rows"]), "pred_rows_head": res["rows"][:5],
                 "correct": status == "correct", "pred": status, "label": "correct",
-                "latency": round(r["latency"], 3), "in_tokens": r["in"], "out_tokens": r["out"],
+                "latency": round(r["latency"], 3), "wall_s": round(r.get("wall_s", r["latency"]), 3), "attempts": r.get("attempts", 1), "in_tokens": r["in"], "out_tokens": r["out"],
                 "reasoning_tokens": r["reasoning"], "finish_reason": r["finish"], "api_error": r["api_error"]}
 
     with ThreadPoolExecutor(args.workers) as pool:
@@ -153,6 +155,9 @@ def main():
         "invalid_outputs": cnt("error"),
         "error_rate": round(cnt("error") / n, 4), "empty_rate": round(cnt("empty") / n, 4), "wrong_rate": round(cnt("wrong") / n, 4),
         "p50_latency_s": round(statistics.median(lats), 3), "p95_latency_s": round(pct(lats, 0.95), 3),
+        "p50_wall_s_incl_retries": round(statistics.median([r["wall_s"] for r in rows]), 3),
+        "p95_wall_s_incl_retries": round(pct([r["wall_s"] for r in rows], 0.95), 3),
+        "retried_requests": sum(r["attempts"] > 1 for r in rows),
         "cost_per_1k_requests_usd": round(cost / n * 1000, 4), "cost_total_usd": round(cost, 4),
         "in_tokens": tin, "out_tokens": tout, "reasoning_tokens": sum(r["reasoning_tokens"] for r in rows),
         "api_errors": sum(1 for r in rows if r["api_error"]), "truncated": sum(1 for r in rows if r["finish_reason"] == "length"),

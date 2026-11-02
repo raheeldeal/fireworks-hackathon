@@ -2,3 +2,6 @@ timestamp,model,in_tokens,out_tokens,cost,note
 2026-11-02T12:07:26,accounts/fireworks/models/glm-5p3-flash,1096,59,0.000194,demo_run repair1 id=t000
 2026-11-02T12:07:34,accounts/fireworks/models/glm-5p3-flash,1089,117,0.000222,demo_run route_big id=adhoc
 2026-11-02T12:07:47,accounts/fireworks/models/glm-5p3-flash,5084,302,0.000914,demo_batch prune_repair1 n=8
+2026-11-02T12:08:24,accounts/fireworks/models/glm-5p3-flash,51989,2381,0.008989,demo_batch route_big n=20
+2026-11-02T12:08:24,accounts/fireworks/models/glm-5p3,849,312,0.002561,demo_batch route_big n=20
+2026-11-02T12:11:56,accounts/fireworks/models/glm-5p3-flash,5303,239,0.000915,demo_run route_big id=t176

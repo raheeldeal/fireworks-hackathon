@@ -144,7 +144,7 @@ def install():
                       error=res.get("error"),
                       note=(f"{status}: {len(res['rows'])} row(s) in "
                             f"{res.get('secs', 0)}s" if res["ok"] else
-                            f"failed: {str(res.get('error'))[:200]}"))
+                            "the query did not run"))
             return res
 
     def call_model(model, messages, budget, temperature=0.0, max_tokens=4096, reasoning="low"):

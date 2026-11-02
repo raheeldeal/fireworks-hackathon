@@ -216,14 +216,24 @@ class Handle:
 
     @property
     def url(self):
-        """Langfuse URL for this trace, or None when Langfuse is off."""
+        """Langfuse URL for this trace, or None when Langfuse is off.
+
+        get_trace_url() asks the API for the project id. If that call cannot be made,
+        fall back to LANGFUSE_PROJECT_ID when the human has set it.
+        """
         c = client()
         if c is None or self.lf is None:
             return None
+        tid = self.lf.trace_id
         try:
-            return c.get_trace_url(trace_id=self.lf.trace_id)
+            u = c.get_trace_url(trace_id=tid)
+            if u:
+                return u
         except Exception:  # noqa: BLE001
-            return None
+            pass
+        proj = os.environ.get("LANGFUSE_PROJECT_ID")
+        host = os.environ.get("LANGFUSE_HOST", "https://cloud.langfuse.com").rstrip("/")
+        return f"{host}/project/{proj}/traces/{tid}" if proj and tid else None
 
 
 # ---------------------------------------------------------------- span / trace
@@ -379,7 +389,8 @@ def render(tree, indent=0, out=None):
     if note:
         out.append(f"{pad}   {note}")
     if tree.get("error"):
-        out.append(f"{pad}   ! {tree['error']}")
+        err = " ".join(str(tree["error"]).split())
+        out.append(f"{pad}   ! {err[:200]}{'...' if len(err) > 200 else ''}")
     for k in ("scores",):
         if meta.get(k):
             out.append(f"{pad}   {k}: {meta[k]}")

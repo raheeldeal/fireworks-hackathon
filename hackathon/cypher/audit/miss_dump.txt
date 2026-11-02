@@ -1,0 +1,309 @@
+====================================================================================================
+t007  tier=easy  graph=movies  v1=wrong  v2=wrong
+Q      : What are the top 5 movies with the least votes and their release years?
+GOLD   : MATCH (m:Movie) RETURN m.title AS title, m.released AS release_year, m.votes AS votes ORDER BY m.votes ASC LIMIT 5
+GOLDROW: [{"release_year": 2008, "title": "Frost/Nixon", "votes": 1}, {"release_year": 2009, "title": "Ninja Assassin", "votes": 15}, {"release_year": 2007, "title": "Charlie Wilson's War", "votes": 25}, {"release_year": 2000, "title": "The Replacements", "votes": 25}, {"release_year": 1996, "title": "That Thing You Do", "votes": 29}]
+PRED   : MATCH (m:Movie) RETURN m.title AS movie, m.released AS releaseYear ORDER BY m.votes ASC LIMIT 5
+PREDROW: n=5 [{"movie": "Frost/Nixon", "releaseYear": 2008}, {"movie": "Ninja Assassin", "releaseYear": 2009}, {"movie": "Charlie Wilson's War", "releaseYear": 2007}, {"movie": "The Replacements", "releaseYear": 2000}, {"movie": "That Thing You Do", "releaseYear": 1996}]
+GOLDUNL: n=38 [{"title": "Frost/Nixon", "release_year": 2008, "votes": 1}, {"title": "Ninja Assassin", "release_year": 2009, "votes": 15}, {"title": "The Replacements", "release_year": 2000, "votes": 25}, {"title": "Charlie Wilson's War", "release_year": 2007, "votes": 25}, {"title": "That Thing You Do", "release
+====================================================================================================
+t015  tier=easy  graph=northwind  v1=wrong  v2=wrong
+Q      : List the first 3 orders shipped to France.
+GOLD   : MATCH (o:Order)-[:ORDERS]->(p:Product) WHERE o.shipCountry = 'France' RETURN o.orderID, o.shipName, o.shipCity, o.shipPostalCode, o.shipAddress, o.shipCountry, o.shipRegion, o.shipVia, o.shippedDate ORDER BY o.shippedDate LIMIT 3
+GOLDROW: [{"o.orderID": "10248", "o.shipAddress": "59 rue de l'Abbaye", "o.shipCity": "Reims", "o.shipCountry": "France", "o.shipName": "Vins et alcools Chevalier", "o.shipPostalCode": "51100", "o.shipRegion": "NULL", "o.shipVia": "3", "o.shippedDate": "1996-07-16 00:00:00.000"}, {"o.orderID": "10248", "o.shipAddress": "59 rue de l'Abbaye", "o.shipCity": "Reims", "o.shipCountry": "France", "o.shipName": "Vins et alcools Chevalier", "o.shipPostalCode": "51100", "o.shipRegion": "NULL", "o.shipVia": "3", "o.shippedDate": "1996-07-16 00:00:00.000"}, {"o.orderID": "10248", "o.shipAddress": "59 rue de l'Abba
+PRED   : MATCH (o:Order) WHERE o.shipCountry = 'France' RETURN o ORDER BY o.orderDate ASC LIMIT 3
+PREDROW: n=3 [{"o": {"_labels": ["Order"], "shipCity": "Reims", "orderID": "10248", "freight": "32.38", "requiredDate": "1996-08-01 00:00:00.000", "employeeID": "5", "shipName": "Vins et alcools Chevalier", "shipPostalCode": "51100", "shipCountry": "France", "shipAddress": "59 rue de l'Abbaye", "shipVia": "3", "customerID": "VINET", "shippedDate": "1996-07-16 00:00:00.000", "orderDate": "1996-07-04 00:00:00.000", "shipRegion": "NULL"}}, {"o": {"_labels": ["Order"], "shipCity": "Reims", "orderID": "10274", "freight": "6.01", "requiredDate": "1996-09-03 00:00:00.000", "employeeID": "6", "shipName": "Vins et 
+GOLDUNL: n=41 [{"o.orderID": "10248", "o.shipName": "Vins et alcools Chevalier", "o.shipCity": "Reims", "o.shipPostalCode": "51100", "o.shipAddress": "59 rue de l'Abbaye", "o.shipCountry": "France", "o.shipRegion": "NULL", "o.shipVia": "3", "o.shippedDate": "1996-07-16 00:00:00.000"}, {"o.orderID": "10248", "o.sh
+====================================================================================================
+t018  tier=easy  graph=northwind  v1=wrong  v2=wrong
+Q      : Display all products that are not discontinued and have a 'unitPrice' above 35.
+GOLD   : MATCH (p:Product) WHERE p.discontinued = false AND p.unitPrice > 35 RETURN p.productName, p.unitPrice
+GOLDROW: [{"p.productName": "Northwoods Cranberry Sauce", "p.unitPrice": 40.0}, {"p.productName": "Queso Manchego La Pastora", "p.unitPrice": 38.0}, {"p.productName": "Carnarvon Tigers", "p.unitPrice": 62.5}, {"p.productName": "Sir Rodney's Marmalade", "p.unitPrice": 81.0}, {"p.productName": "Schoggi Schokolade", "p.unitPrice": 43.9}, {"p.productName": "C\u00f4te de Blaye", "p.unitPrice": 263.5}, {"p.productName": "Ipoh Coffee", "p.unitPrice": 46.0}, {"p.productName": "Manjimup Dried Apples", "p.unitPrice": 53.0}, {"p.productName": "Gnocchi di nonna Alice", "p.unitPrice": 38.0}, {"p.productName": "Racl
+PRED   : MATCH (p:Product) WHERE p.discontinued = false AND p.unitPrice > 35 RETURN p
+PREDROW: n=13 [{"p": {"_labels": ["Product"], "reorderLevel": 0, "unitsInStock": 6, "unitPrice": 40.0, "supplierID": "3", "productID": "8", "quantityPerUnit": "12 - 12 oz jars", "discontinued": false, "productName": "Northwoods Cranberry Sauce", "unitsOnOrder": 0, "categoryID": "2"}}, {"p": {"_labels": ["Product"], "reorderLevel": 0, "unitsInStock": 86, "unitPrice": 38.0, "supplierID": "5", "productID": "12", "quantityPerUnit": "10 - 500 g pkgs.", "discontinued": false, "productName": "Queso Manchego La Pastora", "unitsOnOrder": 0, "categoryID": "4"}}, {"p": {"_labels": ["Product"], "reorderLevel": 0, "unit
+====================================================================================================
+t026  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : What are the 3 most recent tweets posted by any user?
+GOLD   : MATCH (u:User)-[:POSTS]->(t:Tweet) RETURN t.text AS tweet_text, t.created_at AS created_at ORDER BY t.created_at DESC LIMIT 3
+GOLDROW: [{"created_at": null, "tweet_text": null}, {"created_at": null, "tweet_text": null}, {"created_at": null, "tweet_text": null}]
+PRED   : MATCH (u:User)-[:POSTS]->(t:Tweet) RETURN u.screen_name AS user, t.text AS tweet, t.created_at AS created_at ORDER BY t.created_at DESC LIMIT 3
+PREDROW: n=3 [{"user": "rotnroll666", "tweet": null, "created_at": null}, {"user": "ElLazal", "tweet": null, "created_at": null}, {"user": "RomualdoGobbo", "tweet": null, "created_at": null}]
+GOLDUNL: n=1000 [{"tweet_text": null, "created_at": null}, {"tweet_text": null, "created_at": null}, {"tweet_text": null, "created_at": null}, {"tweet_text": null, "created_at": null}, {"tweet_text": null, "created_at": null}, {"tweet_text": null, "created_at": null}, {"tweet_text": null, "created_at": null}, {"twe
+====================================================================================================
+t027  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : List the top 3 users with the lowest number of followers who follow 'Neo4j'.
+GOLD   : MATCH (u:User)-[:FOLLOWS]->(m:Me {screen_name: 'neo4j'}) RETURN u ORDER BY u.followers ASC LIMIT 3
+GOLDROW: [{"u": {"_labels": ["User"], "betweenness": 0.0, "followers": 0, "following": 0, "location": "Dallas, Texas", "name": "WYN Entertainment", "profile_image_url": "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png", "screen_name": "RealFanNetwork", "url": "http://t.co/KdgWeOuJom"}}, {"u": {"_labels": ["User"], "betweenness": 0.0, "followers": 0, "following": 0, "location": "", "name": "Phil Rogers", "profile_image_url": "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png", "screen_name": "graphreduce"}}, {"u": {"_labels": ["User"], "betweenne
+PRED   : MATCH (u:User)-[:FOLLOWS]->(:Me) RETURN u.screen_name AS user, u.followers AS followers ORDER BY followers ASC LIMIT 3
+PREDROW: n=3 [{"user": "RealFanNetwork", "followers": 0}, {"user": "graphreduce", "followers": 0}, {"user": "w_mindz", "followers": 0}]
+GOLDUNL: n=1000 [{"u": {"_labels": ["User"], "followers": 0, "screen_name": "graphreduce", "following": 0, "name": "Phil Rogers", "location": "", "profile_image_url": "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png", "betweenness": 0.0}}, {"u": {"_labels": ["User"], "followers": 0, "s
+====================================================================================================
+t028  tier=easy  graph=movies  v1=wrong  v2=correct
+Q      : Which people have directed movies with the word "Give" in the title?
+GOLD   : MATCH (m:Movie)<-[:DIRECTED]-(p:Person) WHERE m.title CONTAINS 'Give' RETURN DISTINCT p.name
+GOLDROW: [{"p.name": "Nancy Meyers"}]
+PRED   : MATCH (p:Person)-[:DIRECTED]->(m:Movie) WHERE m.title CONTAINS 'Give' RETURN p
+PREDROW: n=1 [{"p": {"_labels": ["Person"], "born": 1949, "name": "Nancy Meyers"}}]
+====================================================================================================
+t030  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : Which top 5 movies have the most diverse range of spoken languages?
+GOLD   : MATCH (m:Movie) RETURN m.title, m.languages, size(m.languages) AS num_languages ORDER BY num_languages DESC LIMIT 5
+GOLDROW: [{"m.languages": null, "m.title": "Saturn 3", "num_languages": null}, {"m.languages": null, "m.title": "Gate of Heavenly Peace, The", "num_languages": null}, {"m.languages": null, "m.title": "Koyaanisqatsi (a.k.a. Koyaanisqatsi: Life Out of Balance)", "num_languages": null}, {"m.languages": null, "m.title": "Wedding Gift, The", "num_languages": null}, {"m.languages": null, "m.title": "My Man Godfrey", "num_languages": null}]
+PRED   : MATCH (m:Movie) RETURN m.title AS movie, size(m.languages) AS numberOfLanguages ORDER BY numberOfLanguages DESC LIMIT 5
+PREDROW: n=5 [{"movie": "Saturn 3", "numberOfLanguages": null}, {"movie": "Gate of Heavenly Peace, The", "numberOfLanguages": null}, {"movie": "Koyaanisqatsi (a.k.a. Koyaanisqatsi: Life Out of Balance)", "numberOfLanguages": null}, {"movie": "Wedding Gift, The", "numberOfLanguages": null}, {"movie": "My Man Godfrey", "numberOfLanguages": null}]
+GOLDUNL: n=1000 [{"m.title": "Wedding Gift, The", "m.languages": null, "num_languages": null}, {"m.title": "Gate of Heavenly Peace, The", "m.languages": null, "num_languages": null}, {"m.title": "Koyaanisqatsi (a.k.a. Koyaanisqatsi: Life Out of Balance)", "m.languages": null, "num_languages": null}, {"m.title": "Lo
+====================================================================================================
+t032  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : Find all movies that have the same release year as 'Toy Story' and list their titles and genres.
+GOLD   : MATCH (toyStory:Movie {title: 'Toy Story'}) WITH toyStory, toyStory.released AS toyStoryYear MATCH (otherMovies:Movie {released: toyStoryYear}) WITH otherMovies, toyStoryYear, [(otherMovies)-[:IN_GENRE]->(genres) | genres.name] AS genres RETURN otherMovies.title AS movieTitle, genres, toyStoryYear
+GOLDROW: [{"genres": ["Adventure", "Animation", "Children", "Comedy", "Fantasy"], "movieTitle": "Toy Story", "toyStoryYear": "1995-11-22"}, {"genres": ["Drama", "Crime"], "movieTitle": "Casino", "toyStoryYear": "1995-11-22"}, {"genres": ["Crime", "Comedy", "Thriller", "Drama", "Action"], "movieTitle": "Money Train", "toyStoryYear": "1995-11-22"}, {"genres": ["Action", "Thriller"], "movieTitle": "Nick of Time", "toyStoryYear": "1995-11-22"}, {"genres": ["Drama", "Romance"], "movieTitle": "Frankie Starlight", "toyStoryYear": "1995-11-22"}, {"genres": ["Musical"], "movieTitle": "Madame Butterfly", "toySto
+PRED   : MATCH (toy:Movie {title: 'Toy Story'}) WITH toy.year AS releaseYear MATCH (m:Movie)-[:IN_GENRE]->(g:Genre) WHERE m.year = releaseYear RETURN m.title AS title, collect(g.name) AS genres
+PREDROW: n=270 [{"title": "Toy Story", "genres": ["Adventure", "Animation", "Children", "Comedy", "Fantasy"]}, {"title": "Jumanji", "genres": ["Adventure", "Children", "Fantasy"]}, {"title": "Grumpier Old Men", "genres": ["Comedy", "Romance"]}, {"title": "Waiting to Exhale", "genres": ["Romance", "Drama", "Comedy"]}, {"title": "Father of the Bride Part II", "genres": ["Comedy"]}, {"title": "Heat", "genres": ["Action", "Crime", "Thriller"]}, {"title": "Sabrina", "genres": ["Comedy", "Romance"]}, {"title": "Tom and Huck", "genres": ["Children", "Adventure"]}, {"title": "Sudden Death", "genres": ["Action"]}, {"
+====================================================================================================
+t039  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : Which tweets by 'neo4j' have the highest number of favorites?
+GOLD   : MATCH (u:User {screen_name: 'neo4j'})-[:POSTS]->(t:Tweet) RETURN t.text AS TweetText, t.favorites AS Favorites ORDER BY t.favorites DESC LIMIT 1
+GOLDROW: [{"Favorites": 394, "TweetText": "Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp"}]
+PRED   : MATCH (u)-[:POSTS]->(t:Tweet) WHERE u.screen_name = 'neo4j' RETURN t.text AS tweet, t.favorites AS favorites ORDER BY favorites DESC LIMIT 10
+PREDROW: n=10 [{"tweet": "Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp", "favorites": 394}, {"tweet": "#NODES2021 is coming, and we want to hear about your #Neo4j graph story. \n\nBuilt a new connector? Developed a conne\u2026 https://t.co/CSEfhO00q7", "favorites": 72}, {"tweet": "Drawing graphs is a real thing.\nWith the brand-new https://t.co/JXFRzAooNF it is also quick and fun. Thanks to\u2026 https://t.co/YzHp2Ui1gg", "favorites": 44}, {"tweet": "The Neo4j Online Developer Expo and Summit is back for a 3rd outing June 17. Check out
+GOLDUNL: n=1000 [{"TweetText": "Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp", "Favorites": 394}, {"TweetText": "#NODES2021 is coming, and we want to hear about your #Neo4j graph story. \n\nBuilt a new connector? Developed a conne\u2026 https:
+====================================================================================================
+t050  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : List the 5 most recent users who started following 'Neo4j'.
+GOLD   : MATCH (neo4j:Me {screen_name: 'neo4j'})<-[:FOLLOWS]-(user:User) RETURN user.screen_name, user.name, user.followers, user.following, user.profile_image_url, user.url, user.location, user.statuses ORDER BY user.followers DESC LIMIT 5
+GOLDROW: [{"user.followers": 3159351, "user.following": 3159351, "user.location": "San Francisco", "user.name": "Twitter Verified", "user.profile_image_url": "http://pbs.twimg.com/profile_images/1354533298685566983/2mZQ3Lpt_normal.jpg", "user.screen_name": "verified", "user.statuses": null, "user.url": null}, {"user.followers": 2137734, "user.following": 2137734, "user.location": "Los Angeles, CA", "user.name": "MarQuis Trill \u2022 Youngest Black Billionaire", "user.profile_image_url": "http://pbs.twimg.com/profile_images/1368725691991093249/G8fSFE8V_normal.jpg", "user.screen_name": "6BillionPeople", 
+PRED   : MATCH (u:User)-[:FOLLOWS]->(m:Me {screen_name: 'neo4j'}) RETURN u.screen_name AS user LIMIT 5
+PREDROW: n=5 [{"user": "marthursson"}, {"user": "thobe"}, {"user": "peterneubauer"}, {"user": "nawroth"}, {"user": "mattiasask"}]
+GOLDUNL: n=1000 [{"user.screen_name": "verified", "user.name": "Twitter Verified", "user.followers": 3159351, "user.following": 3159351, "user.profile_image_url": "http://pbs.twimg.com/profile_images/1354533298685566983/2mZQ3Lpt_normal.jpg", "user.url": null, "user.location": "San Francisco", "user.statuses": null}
+====================================================================================================
+t057  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : List the top 5 movies that were released in the '90s.
+GOLD   : MATCH (m:Movie) WHERE m.released STARTS WITH '199' RETURN m.title, m.released, m.imdbRating ORDER BY m.imdbRating DESC LIMIT 5
+GOLDROW: [{"m.imdbRating": 9.5, "m.released": "1990-09-23", "m.title": "Civil War, The"}, {"m.imdbRating": 9.3, "m.released": "1994-10-14", "m.title": "Shawshank Redemption, The"}, {"m.imdbRating": 9.1, "m.released": "1996-01-14", "m.title": "Pride and Prejudice"}, {"m.imdbRating": 8.9, "m.released": "1993-09-14", "m.title": "Bill Hicks: Revelations"}, {"m.imdbRating": 8.9, "m.released": "1992-04-24", "m.title": "George Carlin: Jammin' in New York"}]
+PRED   : MATCH (m:Movie) WHERE m.year >= 1990 AND m.year <= 1999 RETURN m.title AS title, m.year AS year, m.imdbRating AS imdbRating ORDER BY m.imdbRating DESC LIMIT 5
+PREDROW: n=5 [{"title": "Civil War, The", "year": 1990, "imdbRating": 9.5}, {"title": "Shawshank Redemption, The", "year": 1994, "imdbRating": 9.3}, {"title": "Pride and Prejudice", "year": 1995, "imdbRating": 9.1}, {"title": "George Carlin: Jammin' in New York", "year": 1992, "imdbRating": 8.9}, {"title": "Schindler's List", "year": 1993, "imdbRating": 8.9}]
+GOLDUNL: n=1000 [{"m.title": "Civil War, The", "m.released": "1990-09-23", "m.imdbRating": 9.5}, {"m.title": "Shawshank Redemption, The", "m.released": "1994-10-14", "m.imdbRating": 9.3}, {"m.title": "Pride and Prejudice", "m.released": "1996-01-14", "m.imdbRating": 9.1}, {"m.title": "Pulp Fiction", "m.released": "
+====================================================================================================
+t066  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : Find the movies that have been released in the same year as the movie with the lowest IMDb rating.
+GOLD   : MATCH (m:Movie) WITH m ORDER BY m.imdbRating ASC LIMIT 1 WITH m.year AS lowestRatedYear MATCH (movie:Movie {year: lowestRatedYear}) RETURN movie.title
+GOLDROW: [{"movie.title": "Lawrence of Arabia"}, {"movie.title": "To Kill a Mockingbird"}, {"movie.title": "Manchurian Candidate, The"}, {"movie.title": "Cape Fear"}, {"movie.title": "In Search of the Castaways"}, {"movie.title": "King Kong vs. Godzilla (Kingukongu tai Gojira)"}, {"movie.title": "Lolita"}, {"movie.title": "Jules and Jim (Jules et Jim)"}, {"movie.title": "Sanjuro (Tsubaki Sanj\u00fbr\u00f4)"}, {"movie.title": "Dr. No"}, {"movie.title": "Longest Day, The"}, {"movie.title": "What Ever Happened to Baby Jane?"}, {"movie.title": "Gypsy"}, {"movie.title": "Carnival of Souls"}, {"movie.title":
+PRED   : MATCH (m:Movie) WITH m ORDER BY m.imdbRating ASC LIMIT 1 MATCH (movie:Movie {year: m.year}) RETURN movie.title AS title, movie.year AS year, movie.imdbRating AS imdbRating
+PREDROW: n=41 [{"title": "Lawrence of Arabia", "year": 1962, "imdbRating": 8.4}, {"title": "To Kill a Mockingbird", "year": 1962, "imdbRating": 8.4}, {"title": "Manchurian Candidate, The", "year": 1962, "imdbRating": 8.0}, {"title": "Cape Fear", "year": 1962, "imdbRating": 7.8}, {"title": "In Search of the Castaways", "year": 1962, "imdbRating": 6.7}, {"title": "King Kong vs. Godzilla (Kingukongu tai Gojira)", "year": 1962, "imdbRating": 5.9}, {"title": "Lolita", "year": 1962, "imdbRating": 7.7}, {"title": "Jules and Jim (Jules et Jim)", "year": 1962, "imdbRating": 7.9}, {"title": "Sanjuro (Tsubaki Sanj\u00
+GOLDUNL: n=1000 [{"movie.title": "Lawrence of Arabia"}, {"movie.title": "To Kill a Mockingbird"}, {"movie.title": "Manchurian Candidate, The"}, {"movie.title": "Cape Fear"}, {"movie.title": "In Search of the Castaways"}, {"movie.title": "King Kong vs. Godzilla (Kingukongu tai Gojira)"}, {"movie.title": "Lolita"}, {
+====================================================================================================
+t070  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : Find the top 5 tweets with links and sort them by number of favorites.
+GOLD   : MATCH (t:Tweet)-[:CONTAINS]->(l:Link) RETURN t.text AS tweet_text, t.favorites AS favorites, l.url AS link_url ORDER BY t.favorites DESC LIMIT 5
+GOLDROW: [{"favorites": 394, "link_url": "https://twitter.com/alburov/status/1361271333653520384", "tweet_text": "Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp"}, {"favorites": 120, "link_url": "https://twitter.com/i/web/status/1363869486575742979", "tweet_text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @origin_trail @neo4j That could very likely be the case. I'v\u2026 https://t.co/YLCP8AJUeE"}, {"favorites": 81, "link_url": "https://twitter.com/i/web/status/1363582202953531393", "tweet_text": "@jwolpert @Wen_S_klass
+PRED   : MATCH (t:Tweet)-[:CONTAINS]->(:Link) RETURN t ORDER BY t.favorites DESC LIMIT 5
+PREDROW: n=5 [{"t": {"_labels": ["Tweet"], "favorites": 394, "import_method": "user", "id_str": "1361415227091292163", "created_at": "2021-02-15T20:40:58.000000000+00:00", "id": 1361415227091292163, "text": "Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp"}}, {"t": {"_labels": ["Tweet"], "favorites": 120, "import_method": "user", "id_str": "1363869486575742979", "created_at": "2021-02-22T15:13:19.000000000+00:00", "id": 1363869486575742979, "text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @origin_trail @neo4j That could ve
+GOLDUNL: n=1000 [{"tweet_text": "Really great application of graphs for investigative journalism. Thanks so much for sharing!! https://t.co/sgyYU5Z3zp", "favorites": 394, "link_url": "https://twitter.com/alburov/status/1361271333653520384"}, {"tweet_text": "@jwolpert @Wen_S_klasse @guinnessstache @PunishedSpy01 @or
+====================================================================================================
+t071  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : Which 3 movies have the most number of votes cast by users?
+GOLD   : MATCH (m:Movie) RETURN m.title, m.imdbVotes ORDER BY m.imdbVotes DESC LIMIT 3
+GOLDROW: [{"m.imdbVotes": null, "m.title": "Gate of Heavenly Peace, The"}, {"m.imdbVotes": null, "m.title": "Wedding Gift, The"}, {"m.imdbVotes": null, "m.title": "This Is Spinal Tap"}]
+PRED   : MATCH (u:User)-[:RATED]->(m:Movie) RETURN m.title AS movie, count(u) AS votes ORDER BY votes DESC LIMIT 3
+PREDROW: n=3 [{"movie": "Forrest Gump", "votes": 341}, {"movie": "Pulp Fiction", "votes": 324}, {"movie": "Shawshank Redemption, The", "votes": 311}]
+GOLDUNL: n=1000 [{"m.title": "Wedding Gift, The", "m.imdbVotes": null}, {"m.title": "Gate of Heavenly Peace, The", "m.imdbVotes": null}, {"m.title": "This Is Spinal Tap", "m.imdbVotes": null}, {"m.title": "Clockstoppers", "m.imdbVotes": null}, {"m.title": "No. 1 Ladies' Detective Agency, The", "m.imdbVotes": null},
+====================================================================================================
+t072  tier=easy  graph=northwind  v1=wrong  v2=wrong
+Q      : Which products have a reorder level greater than 20 and are not discontinued?
+GOLD   : MATCH (p:Product) WHERE p.reorderLevel > 20 AND p.discontinued = false RETURN p.productName, p.productID, p.unitsInStock, p.unitPrice
+GOLDROW: [{"p.productID": "2", "p.productName": "Chang", "p.unitPrice": 19.0, "p.unitsInStock": 17}, {"p.productID": "3", "p.productName": "Aniseed Syrup", "p.unitPrice": 10.0, "p.unitsInStock": 13}, {"p.productID": "6", "p.productName": "Grandma's Boysenberry Spread", "p.unitPrice": 25.0, "p.unitsInStock": 120}, {"p.productID": "11", "p.productName": "Queso Cabrales", "p.unitPrice": 21.0, "p.unitsInStock": 22}, {"p.productID": "22", "p.productName": "Gustaf's Kn\u00e4ckebr\u00f6d", "p.unitPrice": 21.0, "p.unitsInStock": 104}, {"p.productID": "23", "p.productName": "Tunnbr\u00f6d", "p.unitPrice": 9.0, 
+PRED   : MATCH (p:Product) WHERE p.reorderLevel > 20 AND p.discontinued = false RETURN p.productName
+PREDROW: n=20 [{"p.productName": "Chang"}, {"p.productName": "Aniseed Syrup"}, {"p.productName": "Grandma's Boysenberry Spread"}, {"p.productName": "Queso Cabrales"}, {"p.productName": "Gustaf's Kn\u00e4ckebr\u00f6d"}, {"p.productName": "Tunnbr\u00f6d"}, {"p.productName": "NuNuCa Nu\u00df-Nougat-Creme"}, {"p.productName": "Schoggi Schokolade"}, {"p.productName": "Mascarpone Fabioli"}, {"p.productName": "Gravad lax"}, {"p.productName": "Boston Crab Meat"}, {"p.productName": "Ipoh Coffee"}, {"p.productName": "Chocolade"}, {"p.productName": "Valkoinen suklaa"}, {"p.productName": "Filo Mix"}, {"p.productName": 
+====================================================================================================
+t085  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : Identify the top 3 tweets with the highest number of favorites.
+GOLD   : MATCH (t:Tweet) RETURN t.text, t.favorites ORDER BY t.favorites DESC LIMIT 3
+GOLDROW: [{"t.favorites": null, "t.text": null}, {"t.favorites": null, "t.text": null}, {"t.favorites": null, "t.text": null}]
+PRED   : MATCH (t:Tweet) RETURN t ORDER BY t.favorites DESC LIMIT 3
+PREDROW: n=3 [{"t": {"_labels": ["Tweet"], "id": 1371756686407577611}}, {"t": {"_labels": ["Tweet"], "id": 1371773392370724864}}, {"t": {"_labels": ["Tweet"], "id": 1371490116640776194}}]
+GOLDUNL: n=1000 [{"t.text": null, "t.favorites": null}, {"t.text": null, "t.favorites": null}, {"t.text": null, "t.favorites": null}, {"t.text": null, "t.favorites": null}, {"t.text": null, "t.favorites": null}, {"t.text": null, "t.favorites": null}, {"t.text": null, "t.favorites": null}, {"t.text": null, "t.favori
+====================================================================================================
+t090  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : Find the top 5 users by number of statuses posted.
+GOLD   : MATCH (u:User) RETURN u.name, u.screen_name, u.statuses ORDER BY u.statuses DESC LIMIT 5
+GOLDROW: [{"u.name": "Neo4j", "u.screen_name": "neo4j", "u.statuses": null}, {"u.name": "pranitahakim", "u.screen_name": "pranitahakim1", "u.statuses": null}, {"u.name": "Galeister", "u.screen_name": "galeister", "u.statuses": null}, {"u.name": "Amosun BethRhema", "u.screen_name": "rhema_beth", "u.statuses": null}, {"u.name": "Michele Bertoldi", "u.screen_name": "michibertoldi", "u.statuses": null}]
+PRED   : MATCH (u:User) RETURN u.screen_name AS user, u.statuses AS statuses ORDER BY u.statuses DESC LIMIT 5
+PREDROW: n=5 [{"user": "neo4j", "statuses": null}, {"user": "pranitahakim1", "statuses": null}, {"user": "galeister", "statuses": null}, {"user": "rhema_beth", "statuses": null}, {"user": "michibertoldi", "statuses": null}]
+GOLDUNL: n=1000 [{"u.name": "Neo4j", "u.screen_name": "neo4j", "u.statuses": null}, {"u.name": "pranitahakim", "u.screen_name": "pranitahakim1", "u.statuses": null}, {"u.name": "Galeister", "u.screen_name": "galeister", "u.statuses": null}, {"u.name": "Amosun BethRhema", "u.screen_name": "rhema_beth", "u.statuses":
+====================================================================================================
+t091  tier=easy  graph=movies  v1=wrong  v2=wrong
+Q      : What is the title of the movie with the highest number of votes?
+GOLD   : MATCH (m:Movie) RETURN m.title, m.votes ORDER BY m.votes DESC LIMIT 1
+GOLDROW: [{"m.title": "The Matrix Reloaded", "m.votes": 1951}]
+PRED   : MATCH (m:Movie) RETURN m.title ORDER BY m.votes DESC LIMIT 1
+PREDROW: n=1 [{"m.title": "The Matrix Reloaded"}]
+GOLDUNL: n=38 [{"m.title": "The Matrix Reloaded", "m.votes": 1951}, {"m.title": "The Matrix Revolutions", "m.votes": 1605}, {"m.title": "Top Gun", "m.votes": 563}, {"m.title": "A Few Good Men", "m.votes": 516}, {"m.title": "The Matrix", "m.votes": 314}, {"m.title": "The Da Vinci Code", "m.votes": 308}, {"m.title"
+====================================================================================================
+t094  tier=easy  graph=movies  v1=wrong  v2=wrong
+Q      : List the top 5 movies with the most roles listed in ACTED_IN relationship.
+GOLD   : MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person) RETURN m.title AS movie, size(r.roles) AS roleCount ORDER BY roleCount DESC LIMIT 5
+GOLDROW: [{"movie": "The Polar Express", "roleCount": 6}, {"movie": "Cloud Atlas", "roleCount": 6}, {"movie": "Cloud Atlas", "roleCount": 4}, {"movie": "Cloud Atlas", "roleCount": 4}, {"movie": "Joe Versus the Volcano", "roleCount": 3}]
+PRED   : MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) RETURN m.title AS movie, sum(size(r.roles)) AS totalRoles ORDER BY totalRoles DESC LIMIT 5
+PREDROW: n=5 [{"movie": "Cloud Atlas", "totalRoles": 17}, {"movie": "A Few Good Men", "totalRoles": 12}, {"movie": "Jerry Maguire", "totalRoles": 9}, {"movie": "The Green Mile", "totalRoles": 8}, {"movie": "Stand By Me", "totalRoles": 7}]
+GOLDUNL: n=172 [{"movie": "Cloud Atlas", "roleCount": 6}, {"movie": "The Polar Express", "roleCount": 6}, {"movie": "Cloud Atlas", "roleCount": 4}, {"movie": "Cloud Atlas", "roleCount": 4}, {"movie": "Joe Versus the Volcano", "roleCount": 3}, {"movie": "Cloud Atlas", "roleCount": 3}, {"movie": "The Matrix", "roleC
+====================================================================================================
+t101  tier=easy  graph=movies  v1=wrong  v2=wrong
+Q      : List the movies with more than 100 votes.
+GOLD   : MATCH (m:Movie) WHERE m.votes > 100 RETURN m.title
+GOLDROW: [{"m.title": "The Matrix"}, {"m.title": "The Matrix Reloaded"}, {"m.title": "The Matrix Revolutions"}, {"m.title": "The Devil's Advocate"}, {"m.title": "A Few Good Men"}, {"m.title": "Top Gun"}, {"m.title": "Jerry Maguire"}, {"m.title": "As Good as It Gets"}, {"m.title": "Joe Versus the Volcano"}, {"m.title": "Cloud Atlas"}, {"m.title": "The Da Vinci Code"}, {"m.title": "Apollo 13"}, {"m.title": "Cast Away"}, {"m.title": "Bicentennial Man"}, {"m.title": "The Polar Express"}]
+PRED   : MATCH (m:Movie) WHERE m.votes > 100 RETURN m.title, m.votes
+PREDROW: n=15 [{"m.title": "The Matrix", "m.votes": 314}, {"m.title": "The Matrix Reloaded", "m.votes": 1951}, {"m.title": "The Matrix Revolutions", "m.votes": 1605}, {"m.title": "The Devil's Advocate", "m.votes": 250}, {"m.title": "A Few Good Men", "m.votes": 516}, {"m.title": "Top Gun", "m.votes": 563}, {"m.title": "Jerry Maguire", "m.votes": 155}, {"m.title": "As Good as It Gets", "m.votes": 123}, {"m.title": "Joe Versus the Volcano", "m.votes": 112}, {"m.title": "Cloud Atlas", "m.votes": 127}, {"m.title": "The Da Vinci Code", "m.votes": 308}, {"m.title": "Apollo 13", "m.votes": 214}, {"m.title": "Cast A
+====================================================================================================
+t110  tier=easy  graph=northwind  v1=wrong  v2=wrong
+Q      : What are the first 3 products with a reorder level above 20?
+GOLD   : MATCH (p:Product) WHERE p.reorderLevel > 20 RETURN p.productName, p.reorderLevel ORDER BY p.productName LIMIT 3
+GOLDROW: [{"p.productName": "Aniseed Syrup", "p.reorderLevel": 25}, {"p.productName": "Boston Crab Meat", "p.reorderLevel": 30}, {"p.productName": "Chang", "p.reorderLevel": 25}]
+PRED   : MATCH (p:Product) WHERE p.reorderLevel > 20 RETURN p LIMIT 3
+PREDROW: n=3 [{"p": {"_labels": ["Product"], "reorderLevel": 25, "unitsInStock": 17, "unitPrice": 19.0, "supplierID": "1", "productID": "2", "quantityPerUnit": "24 - 12 oz bottles", "discontinued": false, "productName": "Chang", "unitsOnOrder": 40, "categoryID": "1"}}, {"p": {"_labels": ["Product"], "reorderLevel": 25, "unitsInStock": 13, "unitPrice": 10.0, "supplierID": "1", "productID": "3", "quantityPerUnit": "12 - 550 ml bottles", "discontinued": false, "productName": "Aniseed Syrup", "unitsOnOrder": 70, "categoryID": "2"}}, {"p": {"_labels": ["Product"], "reorderLevel": 25, "unitsInStock": 120, "unitP
+GOLDUNL: n=20 [{"p.productName": "Aniseed Syrup", "p.reorderLevel": 25}, {"p.productName": "Boston Crab Meat", "p.reorderLevel": 30}, {"p.productName": "Chang", "p.reorderLevel": 25}, {"p.productName": "Chocolade", "p.reorderLevel": 25}, {"p.productName": "Filo Mix", "p.reorderLevel": 25}, {"p.productName": "Gnoc
+====================================================================================================
+t112  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : What are the first 3 movies where the main actor was born in France?
+GOLD   : MATCH (a:Actor)-[:ACTED_IN]->(m:Movie) WHERE a.bornIn = 'France' RETURN m.title LIMIT 3
+GOLDROW: [{"m.title": "Trip to the Moon, A (Voyage dans la lune, Le)"}, {"m.title": "Little Romance, A"}, {"m.title": "My Favorite Season"}]
+PRED   : MATCH (a:Actor)-[:ACTED_IN]->(m:Movie) WHERE a.bornIn CONTAINS 'France' RETURN m.title AS movie LIMIT 3
+PREDROW: n=3 [{"movie": "Trip to the Moon, A (Voyage dans la lune, Le)"}, {"movie": "Napol\u00e9on"}, {"movie": "Passion of Joan of Arc, The (Passion de Jeanne d'Arc, La)"}]
+GOLDUNL: n=9 [{"m.title": "Trip to the Moon, A (Voyage dans la lune, Le)"}, {"m.title": "Little Romance, A"}, {"m.title": "My Favorite Season"}, {"m.title": "M\u00e9tisse (Caf\u00e9 au Lait)"}, {"m.title": "Affair of Love, An (Liaison pornographique, Une)"}, {"m.title": "Crimson Rivers 2: Angels of the Apocalyps
+====================================================================================================
+t119  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : What are the first 3 movies that have a revenue to budget ratio greater than 3?
+GOLD   : MATCH (m:Movie) WHERE m.revenue / m.budget > 3 RETURN m.title, m.revenue, m.budget ORDER BY m.revenue / m.budget DESC LIMIT 3
+GOLDROW: [{"m.budget": 111, "m.revenue": 4530929, "m.title": "Dangerous Beauty"}, {"m.budget": 15000, "m.revenue": 193355800, "m.title": "Paranormal Activity"}, {"m.budget": 218, "m.revenue": 1162014, "m.title": "Tarnation"}]
+PRED   : MATCH (m:Movie) WHERE m.revenue / m.budget > 3 RETURN m.title LIMIT 3
+PREDROW: n=3 [{"m.title": "Toy Story"}, {"m.title": "Jumanji"}, {"m.title": "Waiting to Exhale"}]
+GOLDUNL: n=1000 [{"m.title": "Dangerous Beauty", "m.revenue": 4530929, "m.budget": 111}, {"m.title": "Paranormal Activity", "m.revenue": 193355800, "m.budget": 15000}, {"m.title": "Tarnation", "m.revenue": 1162014, "m.budget": 218}, {"m.title": "Blair Witch Project, The", "m.revenue": 248639099, "m.budget": 60000},
+====================================================================================================
+t122  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : What is the 'location' of the user who posted the tweet with the earliest 'created_at' date?
+GOLD   : MATCH (earliestTweet:Tweet) RETURN earliestTweet ORDER BY earliestTweet.created_at ASC LIMIT 1
+GOLDROW: [{"earliestTweet": {"_labels": ["Tweet"], "created_at": "2020-12-06T05:12:02.000000000+00:00", "favorites": 2, "id": 1335451913203163138, "id_str": "1335451913203163138", "import_method": "user", "text": "In this week's #twin4j, Hantsy shows how to write our own custom queries using the @Query annotation in Spring Data\u2026 https://t.co/oM6IPkARqZ"}}]
+PRED   : MATCH (u)-[:POSTS]->(t:Tweet) WITH t, u ORDER BY t.created_at ASC LIMIT 1 RETURN u.location
+PREDROW: n=1 [{"u.location": "Graphs Are Everywhere"}]
+GOLDUNL: n=1000 [{"earliestTweet": {"_labels": ["Tweet"], "favorites": 2, "import_method": "user", "id_str": "1335451913203163138", "created_at": "2020-12-06T05:12:02.000000000+00:00", "id": 1335451913203163138, "text": "In this week's #twin4j, Hantsy shows how to write our own custom queries using the @Query annot
+====================================================================================================
+t129  tier=easy  graph=northwind  v1=wrong  v2=wrong
+Q      : List the first 3 products from suppliers in 'Germany'.
+GOLD   : MATCH (s:Supplier {country: 'Germany'})-[:SUPPLIES]->(p:Product) RETURN p.productName, p.productID, p.unitPrice LIMIT 3
+GOLDROW: [{"p.productID": "26", "p.productName": "Gumb\u00e4r Gummib\u00e4rchen", "p.unitPrice": 31.23}, {"p.productID": "25", "p.productName": "NuNuCa Nu\u00df-Nougat-Creme", "p.unitPrice": 14.0}, {"p.productID": "27", "p.productName": "Schoggi Schokolade", "p.unitPrice": 43.9}]
+PRED   : MATCH (s:Supplier {country: 'Germany'})-[:SUPPLIES]->(p:Product) RETURN p.productName LIMIT 3
+PREDROW: n=3 [{"p.productName": "Gumb\u00e4r Gummib\u00e4rchen"}, {"p.productName": "NuNuCa Nu\u00df-Nougat-Creme"}, {"p.productName": "Schoggi Schokolade"}]
+GOLDUNL: n=9 [{"p.productName": "Gumb\u00e4r Gummib\u00e4rchen", "p.productID": "26", "p.unitPrice": 31.23}, {"p.productName": "NuNuCa Nu\u00df-Nougat-Creme", "p.productID": "25", "p.unitPrice": 14.0}, {"p.productName": "Schoggi Schokolade", "p.productID": "27", "p.unitPrice": 43.9}, {"p.productName": "Th\u00fcr
+====================================================================================================
+t140  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : Find the top 5 movies released most recently.
+GOLD   : MATCH (m:Movie) WHERE m.released IS NOT NULL RETURN m ORDER BY m.released DESC LIMIT 5
+GOLDROW: [{"m": {"_labels": ["Movie"], "countries": ["USA"], "imdbId": "1291570", "imdbRating": 6.4, "imdbVotes": 18402, "languages": ["English"], "movieId": "146688", "plot": "A psychic works with the FBI in order to hunt down a serial killer.", "plotEmbedding": [-0.002272470621392131, -0.0012192517751827836, 0.013403384014964104, -0.02640426531434059, -0.03305899724364281, 0.008157415315508842, 0.003984789829701185, -0.018072431907057762, -0.0014230194501578808, -0.008103747852146626, 0.018998190760612488, 0.008070206269621849, 0.01173970103263855, -0.018689604476094246, 0.011357322335243225, -0.0058
+PRED   : MATCH (m:Movie) RETURN m.title AS title, m.released AS released ORDER BY m.released DESC LIMIT 5
+PREDROW: n=5 [{"title": "Vertigo", "released": null}, {"title": "Wedding Gift, The", "released": null}, {"title": "Gate of Heavenly Peace, The", "released": null}, {"title": "Nothing to Lose", "released": null}, {"title": "To Catch a Thief", "released": null}]
+====================================================================================================
+t142  tier=easy  graph=movies  v1=wrong  v2=wrong
+Q      : What are the first 3 movies with a released year of 2008?
+GOLD   : MATCH (m:Movie) WHERE m.released = 2008 RETURN m.title, m.released ORDER BY m.title LIMIT 3
+GOLDROW: [{"m.released": 2008, "m.title": "Frost/Nixon"}, {"m.released": 2008, "m.title": "Speed Racer"}]
+PRED   : MATCH (m:Movie) WHERE m.released = 2008 RETURN m LIMIT 3
+PREDROW: n=2 [{"m": {"_labels": ["Movie"], "tagline": "Speed has no limits", "votes": 33, "title": "Speed Racer", "released": 2008}}, {"m": {"_labels": ["Movie"], "tagline": "400 million people were waiting for the truth.", "votes": 1, "title": "Frost/Nixon", "released": 2008}}]
+GOLDUNL: n=2 [{"m.title": "Frost/Nixon", "m.released": 2008}, {"m.title": "Speed Racer", "m.released": 2008}]
+====================================================================================================
+t144  tier=easy  graph=movies  v1=wrong  v2=correct
+Q      : List all the movies with the summary "A solid romp".
+GOLD   : MATCH (m:Movie)<-[r:REVIEWED]-() WHERE r.summary = "A solid romp" RETURN m.title
+GOLDROW: [{"m.title": "The Da Vinci Code"}]
+PRED   : MATCH (p:Person)-[r:REVIEWED]->(m:Movie) WHERE r.summary = 'A solid romp' RETURN m
+PREDROW: n=1 [{"m": {"_labels": ["Movie"], "tagline": "Break The Codes", "votes": 308, "title": "The Da Vinci Code", "released": 2006}}]
+====================================================================================================
+t145  tier=easy  graph=fincen  v1=wrong  v2=wrong
+Q      : Which entities benefited from filings where the originator bank was 'CIMB Bank Berhad'? Limit to top 3 results.
+GOLD   : MATCH (f:Filing)-[:BENEFITS]->(e:Entity) WHERE f.originator_bank = 'CIMB Bank Berhad' RETURN e LIMIT 3
+GOLDROW: [{"e": {"_labels": ["Entity"], "id": "barclays-bank-plc-london-england-gbr", "location": [-2.0, 54.0], "name": "Barclays Bank Plc"}}, {"e": {"_labels": ["Entity"], "id": "barclays-bank-plc-london-england-gbr", "location": [-2.0, 54.0], "name": "Barclays Bank Plc"}}, {"e": {"_labels": ["Entity"], "country": "HKG", "id": "standard-chartered-bank-hong-kong-hkg", "location": [114.1667, 22.25], "name": "Standard Chartered Bank"}}]
+PRED   : MATCH (f:Filing {originator_bank: 'CIMB Bank Berhad'})-[:BENEFITS]->(e:Entity) RETURN DISTINCT e.name AS entity, e.id AS entity_id LIMIT 3
+PREDROW: n=3 [{"entity": "Barclays Bank Plc", "entity_id": "barclays-bank-plc-london-england-gbr"}, {"entity": "Standard Chartered Bank", "entity_id": "standard-chartered-bank-hong-kong-hkg"}, {"entity": "China Citic Bank International Ltd", "entity_id": "china-citic-bank-international-ltd-hong-kong-hkg"}]
+GOLDUNL: n=8 [{"e": {"_labels": ["Entity"], "name": "Barclays Bank Plc", "location": [-2.0, 54.0], "id": "barclays-bank-plc-london-england-gbr"}}, {"e": {"_labels": ["Entity"], "name": "Barclays Bank Plc", "location": [-2.0, 54.0], "id": "barclays-bank-plc-london-england-gbr"}}, {"e": {"_labels": ["Entity"], "co
+====================================================================================================
+t154  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : Who are the top 5 users that a specific user named 'Neo4j' follows?
+GOLD   : MATCH (me:Me {name: 'Neo4j'})-[:FOLLOWS]->(user:User) RETURN user.name, user.screen_name, user.followers, user.following ORDER BY user.followers DESC LIMIT 5
+GOLDROW: [{"user.followers": 59391716, "user.following": 10, "user.name": "Twitter", "user.screen_name": "Twitter"}, {"user.followers": 49094141, "user.following": 103, "user.name": "Elon Musk", "user.screen_name": "elonmusk"}, {"user.followers": 44944849, "user.following": 204, "user.name": "NASA", "user.screen_name": "NASA"}, {"user.followers": 22838374, "user.following": 291, "user.name": "Google", "user.screen_name": "Google"}, {"user.followers": 16684486, "user.following": 5184, "user.name": "Forbes", "user.screen_name": "Forbes"}]
+PRED   : MATCH (:Me {name: 'Neo4j'})-[:FOLLOWS]->(u:User) RETURN u.name AS name, u.screen_name AS screen_name, u.followers AS followers ORDER BY u.followers DESC LIMIT 5
+PREDROW: n=5 [{"name": "Twitter", "screen_name": "Twitter", "followers": 59391716}, {"name": "Elon Musk", "screen_name": "elonmusk", "followers": 49094141}, {"name": "NASA", "screen_name": "NASA", "followers": 44944849}, {"name": "Google", "screen_name": "Google", "followers": 22838374}, {"name": "Forbes", "screen_name": "Forbes", "followers": 16684486}]
+GOLDUNL: n=1000 [{"user.name": "Twitter", "user.screen_name": "Twitter", "user.followers": 59391716, "user.following": 10}, {"user.name": "Elon Musk", "user.screen_name": "elonmusk", "user.followers": 49094141, "user.following": 103}, {"user.name": "NASA", "user.screen_name": "NASA", "user.followers": 44944849, "us
+====================================================================================================
+t158  tier=easy  graph=movies  v1=wrong  v2=correct
+Q      : Which movies released between 2005 and 2010 have the tagline 'Speed has no limits'?
+GOLD   : MATCH (m:Movie) WHERE m.released >= 2005 AND m.released <= 2010   AND m.tagline = 'Speed has no limits' RETURN m.title
+GOLDROW: [{"m.title": "Speed Racer"}]
+PRED   : MATCH (m:Movie) WHERE m.released >= 2005 AND m.released <= 2010 AND m.tagline = 'Speed has no limits' RETURN m
+PREDROW: n=1 [{"m": {"_labels": ["Movie"], "tagline": "Speed has no limits", "votes": 33, "title": "Speed Racer", "released": 2008}}]
+====================================================================================================
+t174  tier=easy  graph=twitter  v1=wrong  v2=wrong
+Q      : Which users are amplified by 'Me'?
+GOLD   : MATCH (me:Me)-[:AMPLIFIES]->(user:User) RETURN user.name AS user, user.screen_name AS handle
+GOLDROW: [{"handle": "tbrantb", "user": "Brant Boehmann"}, {"handle": "CSkardon", "user": "Chris Skardon \ud83d\udc99"}, {"handle": "unterstein", "user": "Johannes Unterstein"}, {"handle": "ikwattro", "user": "Christophe Willemsen"}, {"handle": "TryHume", "user": "Hume - A Graph-Powered Insights Engine"}, {"handle": "Fuertebrazos", "user": "Dan Armstrong"}, {"handle": "michaeldgrahams", "user": "Michael Graham"}, {"handle": "SQLShack", "user": "SQL Shack"}, {"handle": "rotnroll666", "user": "Michael Simons"}, {"handle": "AppCfp", "user": "SeeCFP"}, {"handle": "nmervaillie", "user": "Nicolas Mervaillie"
+PRED   : MATCH (me:Me)-[:AMPLIFIES]->(u:User) RETURN u
+PREDROW: n=144 [{"u": {"_labels": ["User"], "followers": 162, "screen_name": "tbrantb", "following": 162, "name": "Brant Boehmann", "profile_image_url": "http://pbs.twimg.com/profile_images/876824150748274689/J80AqYt6_normal.jpg", "location": "", "betweenness": 0.0}}, {"u": {"_labels": ["User"], "followers": 500, "screen_name": "CSkardon", "following": 500, "name": "Chris Skardon \ud83d\udc99", "location": "Launceston, Cornwall", "profile_image_url": "http://pbs.twimg.com/profile_images/1289954998617595906/nYDWYMRE_normal.jpg", "betweenness": 0.0, "url": "https://t.co/43Cg8OxRib"}}, {"u": {"_labels": ["User"
+====================================================================================================
+t185  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : List the movies that have a runtime shorter than 90 minutes and an IMDB rating higher than 8.0.
+GOLD   : MATCH (m:Movie) WHERE m.runtime < 90 AND m.imdbRating > 8.0 RETURN m.title
+GOLDROW: [{"m.title": "Laura"}, {"m.title": "Paris Is Burning"}, {"m.title": "Stand by Me"}, {"m.title": "High Noon"}, {"m.title": "Killing, The"}, {"m.title": "Brief Encounter"}, {"m.title": "Faust"}, {"m.title": "Little Dieter Needs to Fly"}, {"m.title": "Cabinet of Dr. Caligari, The (Cabinet des Dr. Caligari., Das)"}, {"m.title": "Vivre sa vie: Film en douze tableaux (My Life to Live)"}, {"m.title": "Navigator, The"}, {"m.title": "Virgin Spring, The (Jungfruk\u00e4llan)"}, {"m.title": "Winter Light (Nattvardsg\u00e4sterna)"}, {"m.title": "Through a Glass Darkly (S\u00e5som i en spegel)"}, {"m.title"
+PRED   : MATCH (m:Movie) WHERE m.runtime < 90 AND m.imdbRating > 8.0 RETURN m.title, m.runtime, m.imdbRating
+PREDROW: n=122 [{"m.title": "Laura", "m.runtime": 88, "m.imdbRating": 8.1}, {"m.title": "Paris Is Burning", "m.runtime": 71, "m.imdbRating": 8.1}, {"m.title": "Stand by Me", "m.runtime": 89, "m.imdbRating": 8.1}, {"m.title": "High Noon", "m.runtime": 85, "m.imdbRating": 8.1}, {"m.title": "Killing, The", "m.runtime": 85, "m.imdbRating": 8.1}, {"m.title": "Brief Encounter", "m.runtime": 86, "m.imdbRating": 8.1}, {"m.title": "Faust", "m.runtime": 85, "m.imdbRating": 8.1}, {"m.title": "Little Dieter Needs to Fly", "m.runtime": 80, "m.imdbRating": 8.1}, {"m.title": "Cabinet of Dr. Caligari, The (Cabinet des Dr. C
+====================================================================================================
+t186  tier=easy  graph=recommendations  v1=wrong  v2=wrong
+Q      : Which three movies have the highest difference in revenue and budget?
+GOLD   : MATCH (m:Movie) WHERE m.revenue IS NOT NULL AND m.budget IS NOT NULL RETURN m.title, m.revenue, m.budget, (m.revenue - m.budget) AS profit ORDER BY profit DESC LIMIT 3
+GOLDROW: [{"m.budget": 237000000, "m.revenue": 2787965087, "m.title": "Avatar", "profit": 2550965087}, {"m.budget": 200000000, "m.revenue": 2187463944, "m.title": "Titanic", "profit": 1987463944}, {"m.budget": 245000000, "m.revenue": 2068223624, "m.title": "Star Wars: Episode VII - The Force Awakens", "profit": 1823223624}]
+PRED   : MATCH (m:Movie) RETURN m.title AS movie, m.revenue - m.budget AS difference ORDER BY abs(m.revenue - m.budget) DESC LIMIT 3
+PREDROW: n=3 [{"movie": "Father of the Bride Part II", "difference": null}, {"movie": "Grumpier Old Men", "difference": null}, {"movie": "Tom and Huck", "difference": null}]
+GOLDUNL: n=1000 [{"m.title": "Avatar", "m.revenue": 2787965087, "m.budget": 237000000, "profit": 2550965087}, {"m.title": "Titanic", "m.revenue": 2187463944, "m.budget": 200000000, "profit": 1987463944}, {"m.title": "Star Wars: Episode VII - The Force Awakens", "m.revenue": 2068223624, "m.budget": 245000000, "profi
+====================================================================================================
+t192  tier=easy  graph=fincen  v1=wrong  v2=correct
+Q      : List the first 3 entities that are concerned in filings with an amount greater than 1000000.
+GOLD   : MATCH (f:Filing)-[:CONCERNS]->(e:Entity) WHERE f.amount > 1000000 RETURN e LIMIT 3
+GOLDROW: [{"e": {"_labels": ["Entity"], "country": "BGR", "id": "piraeus-bank-sofia-bulgaria-bgr", "location": [25.0, 43.0], "name": "Piraeus Bank"}}, {"e": {"_labels": ["Entity"], "country": "RUS", "id": "sberbank-of-russia-moscow-russia-rus", "location": [100.0, 60.0], "name": "Sberbank of Russia"}}, {"e": {"_labels": ["Entity"], "country": "RUS", "id": "vtb-bank-open-joint-stock-bank-moscow-russia-rus", "location": [100.0, 60.0], "name": "VTB Bank"}}]
+PRED   : MATCH (f:Filing)-[:CONCERNS]->(e:Entity) WHERE f.amount > 1000000 RETURN e.name AS entity LIMIT 3
+PREDROW: n=3 [{"entity": "Piraeus Bank"}, {"entity": "Sberbank of Russia"}, {"entity": "VTB Bank"}]
+GOLDUNL: n=1000 [{"e": {"_labels": ["Entity"], "country": "BGR", "name": "Piraeus Bank", "location": [25.0, 43.0], "id": "piraeus-bank-sofia-bulgaria-bgr"}}, {"e": {"_labels": ["Entity"], "country": "RUS", "name": "Sberbank of Russia", "location": [100.0, 60.0], "id": "sberbank-of-russia-moscow-russia-rus"}}, {"e":
+====================================================================================================
+t199  tier=easy  graph=movies  v1=wrong  v2=wrong
+Q      : List the roles of any person in movies with a title containing 'Matrix'.
+GOLD   : MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) WHERE m.title CONTAINS 'Matrix' RETURN p.name AS person, m.title AS movie, r.roles AS roles
+GOLDROW: [{"movie": "The Matrix", "person": "Emil Eifrem", "roles": ["Emil"]}, {"movie": "The Matrix", "person": "Hugo Weaving", "roles": ["Agent Smith"]}, {"movie": "The Matrix", "person": "Laurence Fishburne", "roles": ["Morpheus"]}, {"movie": "The Matrix", "person": "Carrie-Anne Moss", "roles": ["Trinity"]}, {"movie": "The Matrix", "person": "Keanu Reeves", "roles": ["Neo"]}, {"movie": "The Matrix Reloaded", "person": "Hugo Weaving", "roles": ["Agent Smith"]}, {"movie": "The Matrix Reloaded", "person": "Laurence Fishburne", "roles": ["Morpheus"]}, {"movie": "The Matrix Reloaded", "person": "Carrie-A
+PRED   : MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) WHERE m.title CONTAINS 'Matrix' RETURN r.roles
+PREDROW: n=13 [{"r.roles": ["Emil"]}, {"r.roles": ["Agent Smith"]}, {"r.roles": ["Morpheus"]}, {"r.roles": ["Trinity"]}, {"r.roles": ["Neo"]}, {"r.roles": ["Agent Smith"]}, {"r.roles": ["Morpheus"]}, {"r.roles": ["Trinity"]}, {"r.roles": ["Neo"]}, {"r.roles": ["Agent Smith"]}, {"r.roles": ["Morpheus"]}, {"r.roles": ["Trinity"]}, {"r.roles": ["Neo"]}]
+====================================================================================================
+t002  tier=medium  graph=fincen  v1=wrong  v2=wrong
+Q      : What are the names of the top 3 entities that benefited from filings with amounts less than 100?
+GOLD   : MATCH (f:Filing)-[:BENEFITS]->(e:Entity) WHERE f.amount < 100 WITH e, count(f) AS benefitCount ORDER BY benefitCount DESC RETURN e.name, benefitCount LIMIT 3
+GOLDROW: [{"benefitCount": 6, "e.name": "Vnesheconombank"}, {"benefitCount": 3, "e.name": "Commonwealth Bank of Australia"}, {"benefitCount": 2, "e.name": "Nomos Bank"}]
+PRED   : MATCH (f:Filing)-[:BENEFITS]->(e:Entity) WHERE f.amount < 100 RETURN e.name AS name, count(f) AS numFilings ORDER BY numFilings DESC LIMIT 3
+PREDROW: n=3 [{"name": "Vnesheconombank", "numFilings": 7}, {"name": "Commonwealth Bank of Australia", "numFilings": 3}, {"name": "Nomos Bank", "numFilings": 2}]
+GOLDUNL: n=11 [{"e.name": "Vnesheconombank", "benefitCount": 6}, {"e.name": "Commonwealth Bank of Australia", "benefitCount": 3}, {"e.name": "Nomos Bank", "benefitCount": 2}, {"e.name": "JSC VTB Bank", "benefitCount": 1}, {"e.name": "Vnesheconombank", "benefitCount": 1}, {"e.name": "VTB Bank", "benefitCount": 1},
+====================================================================================================
+t004  tier=medium  graph=twitter  v1=wrong  v2=wrong
+Q      : List the first 3 tweets that 'Neo4j' retweets on '2021-03-16'.
+GOLD   : MATCH (me:Me {screen_name: 'neo4j'})-[:POSTS]->(retweet:Tweet)-[:RETWEETS]->(original:Tweet) WHERE date(retweet.created_at) = date('2021-03-16') RETURN original.text, original.created_at ORDER BY retweet.created_at LIMIT 3
+GOLDROW: [{"original.created_at": null, "original.text": null}, {"original.created_at": null, "original.text": null}]
+PRED   : MATCH (u)-[:POSTS]->(t:Tweet)-[:RETWEETS]->(rt:Tweet) WHERE u.screen_name =~ '(?i)neo4j' AND date(t.created_at) = date('2021-03-16') RETURN rt LIMIT 3
+PREDROW: n=2 [{"rt": {"_labels": ["Tweet"], "id": 1371756686407577611}}, {"rt": {"_labels": ["Tweet"], "id": 1371773392370724864}}]
+GOLDUNL: n=2 [{"original.text": null, "original.created_at": null}, {"original.text": null, "original.created_at": null}]
+====================================================================================================
+t008  tier=medium  graph=northwind  v1=wrong  v2=wrong
+Q      : List all suppliers that provide products to the 'Dairy Products' category.
+GOLD   : MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category {categoryName: 'Dairy Products'}) RETURN s.companyName
+GOLDROW: [{"s.companyName": "Norske Meierier"}, {"s.companyName": "Gai p\u00e2turage"}, {"s.companyName": "Gai p\u00e2turage"}, {"s.companyName": "Formaggi Fortini s.r.l."}, {"s.companyName": "Norske Meierier"}, {"s.companyName": "Norske Meierier"}, {"s.companyName": "Formaggi Fortini s.r.l."}, {"s.companyName": "Formaggi Fortini s.r.l."}, {"s.companyName": "Cooperativa de Quesos 'Las Cabras'"}, {"s.companyName": "Cooperativa de Quesos 'Las Cabras'"}]
+PRED   : MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category) WHERE c.categoryName = 'Dairy Products' RETURN DISTINCT s.supplierID, s.companyName, s.contactName, s.country, s.city
+PREDROW: n=4 [{"s.supplierID": "15", "s.companyName": "Norske Meierier", "s.contactName": "Beate Vileid", "s.country": "Norway", "s.city": "Sandvika"}, {"s.supplierID": "28", "s.companyName": "Gai p\u00e2turage", "s.contactName": "Eliane Noz", "s.country": "74000", "s.city": " rue des Alpes"}, {"s.supplierID": "14", "s.companyName": "Formaggi Fortini s.r.l.", "s.contactName": "Elio Rossi", "s.country": "48100", "s.city": " 75"}, {"s.supplierID": "5", "s.companyName": "Cooperativa de Quesos 'Las Cabras'", "s.contactName": "Antonio del Valle Saavedra", "s.country": "Spain", "s.city": "Oviedo"}]
+====================================================================================================
+t011  tier=medium  graph=fincen  v1=wrong  v2=wrong
+Q      : Find the filings where the originator bank and beneficiary bank are the same entity.
+GOLD   : MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f) RETURN f.sar_id
+GOLDROW: [{"f.sar_id": "3146"}]
+PRED   : MATCH (f:Filing)-[:ORIGINATOR]->(e:Entity)<-[:BENEFITS]-(f) RETURN f
+PREDROW: n=1 [{"f": {"_labels": ["Filing"], "end_date": "Nov 26, 2010", "amount": 665000, "beneficiary_iso": "HKG", "beneficiary_lng": "114.1667", "begin_date": "Nov 26, 2010", "originator_bank": "HSBC Hong Kong", "beneficiary_lat": "22.25", "begin_date_format": "2010-11-26T00:00:00Z", "beneficiary_bank_id": "hsbc-hong-kong-hkg", "end_date_format": "2010-11-26T00:00:00Z", "originator_iso": "HKG", "origin_lat": "22.25", "number": 1, "filer_org_name": "HSBC Holdings Plc", "originator_bank_country": "Hong Kong", "beneficiary_bank": "HSBC Hong Kong", "beneficiary_bank_country": "Hong Kong", "filer_org_name_id"
+
+[86 total misses; showed 40]

@@ -10,3 +10,4 @@ __pycache__/
 **/raw_download/
 *.sqlite
 *.zip
+**/.pylib/

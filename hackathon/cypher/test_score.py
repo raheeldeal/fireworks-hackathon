@@ -66,3 +66,101 @@ def test_lenient_still_rejects_missing_column_and_wrong_rows():
 def test_literal_backslash_n_2025v1():
     c = complexity(r"MATCH (p:Person)-[:ACTED_IN]->(m:Movie)\nWHERE m.released > 2000\nRETURN p.name, count(m) AS n\nORDER BY n DESC\nLIMIT 3")
     assert c["where"] and c["order_by"] and c["limit"] and c["aggregation"]
+
+
+# ---------------------------------------------------------------------------
+# score_v2 (audit/SCORING.md). Every rule gets a test, and every rule gets a
+# matching negative test: a rule that lets a genuinely wrong answer pass is a bug.
+# ---------------------------------------------------------------------------
+from score import score_v2, strip_limit, order_by_key_cols
+
+NODE = lambda **p: {"_labels": ["Person"], **p}
+
+
+def test_v2_exact_and_row_order():
+    assert score_v2(G, R(["name", "n"], [["Tom", 3], ["Ann", 2]])) == "correct"
+    assert score_v2(G, R(["name", "n"], [["Ann", 2], ["Tom", 3]])) == "correct"
+
+
+def test_v2_ignores_column_names_and_order():
+    assert score_v2(G, R(["person", "cnt"], [["Ann", 2], ["Tom", 3]])) == "correct"
+    assert score_v2(G, R(["cnt", "person"], [[2, "Ann"], [3, "Tom"]])) == "correct"
+
+
+def test_v2_float_rounding_and_int_float():
+    assert score_v2(R(["avg"], [[3.14159265]]), R(["a"], [[3.1415926]])) == "correct"
+    assert score_v2(R(["c"], [[2]]), R(["c"], [[2.0]])) == "correct"
+    # ...but a different number is still wrong
+    assert score_v2(R(["avg"], [[3.142]]), R(["a"], [[3.15]])) == "wrong"
+
+
+def test_v2_lists_unordered():
+    assert score_v2(R(["l"], [[["a", "b", "c"]]]), R(["l"], [[["c", "a", "b"]]])) == "correct"
+    assert score_v2(R(["l"], [[["a", "b", "c"]]]), R(["l"], [[["a", "b"]]])) == "wrong"
+
+
+def test_v2_node_vs_identifying_property():
+    g = R(["p"], [[NODE(name="Tom", born=1956)], [NODE(name="Ann", born=1970)]])
+    assert score_v2(g, R(["name"], [["Tom"], ["Ann"]])) == "correct"          # node -> name
+    assert score_v2(R(["name"], [["Tom"]]), R(["p"], [[NODE(name="Tom")]])) == "correct"  # name -> node
+    assert score_v2(g, R(["born"], [[1956], [1970]])) == "wrong"              # wrong property
+    assert score_v2(g, R(["name"], [["Tom"], ["Bob"]])) == "wrong"            # different entity
+
+
+def test_v2_list_vs_rows_unwrap():
+    g = R(["titles"], [[["The Matrix", "Speed"]]])
+    assert score_v2(g, R(["t"], [["Speed"], ["The Matrix"]])) == "correct"
+    assert score_v2(g, R(["t"], [["Speed"], ["The Matrix"], ["Heat"]])) == "wrong"
+
+
+def test_v2_limit_without_order_by_accepts_any_valid_slice():
+    gold_c = "MATCH (m:Movie) RETURN m.title AS t LIMIT 2"
+    gold = R(["t"], [["A"], ["B"]])
+    unl = R(["t"], [["A"], ["B"], ["C"], ["D"]])
+    assert score_v2(gold, R(["t"], [["C"], ["D"]]), gold_c, unl) == "correct"
+    assert score_v2(gold, R(["t"], [["C"], ["D"], ["A"]]), gold_c, unl) == "wrong"   # wrong size
+    assert score_v2(gold, R(["t"], [["C"], ["Z"]]), gold_c, unl) == "wrong"          # not in result
+    assert score_v2(gold, R(["t"], [["C"], ["D"]]), gold_c, None) == "wrong"         # no unlimited: strict
+
+
+def test_v2_limit_with_order_by_only_accepts_boundary_ties():
+    gold_c = "MATCH (a:Actor) RETURN a.name AS actor, a.n AS n ORDER BY n DESC LIMIT 3"
+    gold = R(["actor", "n"], [["Kurt", 17], ["Brad", 17], ["Ewan", 16]])
+    unl = R(["actor", "n"], [["Kurt", 17], ["Brad", 17], ["Johnny", 17], ["Ewan", 16], ["Sam", 2]])
+    # swapping a tied 17 for another 17 is a legitimate output of the gold query itself
+    assert score_v2(gold, R(["actor", "n"], [["Kurt", 17], ["Johnny", 17], ["Ewan", 16]]), gold_c, unl) == "correct"
+    # a different sort-key multiset is NOT a valid top-3
+    assert score_v2(gold, R(["actor", "n"], [["Kurt", 17], ["Brad", 17], ["Johnny", 17]]), gold_c, unl) == "wrong"
+    assert score_v2(gold, R(["actor", "n"], [["Ewan", 16], ["Sam", 2], ["Kurt", 17]]), gold_c, unl) == "wrong"
+
+
+def test_v2_must_still_be_wrong():
+    assert score_v2(G, R(["name", "n"], [["Tom", 4], ["Ann", 2]])) == "wrong"        # wrong aggregate
+    assert score_v2(G, R(["name", "n"], [["Tom", 3]])) == "wrong"                    # missing row
+    assert score_v2(G, R(["name", "n"], [["Tom", 3], ["Ann", 2], ["Ann", 2]])) == "wrong"  # dup
+    assert score_v2(G, R(["name", "n", "x"], [["Tom", 3, 1], ["Ann", 2, 1]])) == "wrong"   # extra column
+    assert score_v2(G, R(["name"], [["Tom"], ["Ann"]])) == "wrong"                   # missing column
+    assert score_v2(G, R(["name", "n"], [])) == "empty"                              # empty vs rows
+    assert score_v2(G, {"ok": False, "rows": [], "columns": [], "error": "SyntaxError"}) == "error"
+
+
+def test_v2_empty_gold_only_matched_by_empty():
+    g = R(["x"], [])
+    assert score_v2(g, R(["x"], [])) == "correct"
+    assert score_v2(g, R(["x"], [["anything"]])) == "wrong"
+
+
+def test_v2_limit_rule_does_not_rescue_a_wrong_query():
+    # right size, rows inside the unlimited gold result, but gold has no LIMIT at all
+    gold_c = "MATCH (m:Movie) WHERE m.year = 1999 RETURN m.title AS t"
+    gold = R(["t"], [["A"], ["B"]])
+    unl = R(["t"], [["A"], ["B"], ["C"]])
+    assert score_v2(gold, R(["t"], [["B"], ["C"]]), gold_c, unl) == "wrong"
+
+
+def test_strip_limit_and_order_by_cols():
+    assert strip_limit("MATCH (n) RETURN n ORDER BY n.a DESC LIMIT 5") == "MATCH (n) RETURN n ORDER BY n.a DESC"
+    assert "LIMIT" not in strip_limit(r"MATCH (n) RETURN n\nLIMIT 10").upper()
+    assert order_by_key_cols("... ORDER BY genreCount DESC LIMIT 5", ["actor", "genreCount"]) == ["genreCount"]
+    assert order_by_key_cols("... ORDER BY m.year LIMIT 5", ["title", "year"]) == ["year"]
+    assert order_by_key_cols("... ORDER BY rand() LIMIT 5", ["title"]) == []   # unresolvable -> stay strict

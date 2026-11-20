@@ -1,5 +1,7 @@
 # Text-to-Cypher harness: results
 
+> Scored with the original scorer (`score.py`). The final numbers in `../RESULTS_FINAL.md` use the corrected scorer (`score_v2`), which scores every setup higher without changing the ranking.
+
 Test set: `data/test.jsonl`, 200 rows, sha256 `6c47ee00573e7ebc4e144c7e31363b2f3c72b10556e5d2c853323cc85733b491` (read fresh and checked against `data/TEST_HASH` at the start of every run). Scored by executing on the live Neo4j demo graphs, strict result-set equality (`score.py`). Small model glm-5p3-flash; big model glm-5p3. Every number below comes from `results/harness_<config>.json`; reproduce with `harness/run_harness.py --config <name> [--reasoning default] [--seed N]`, then `harness/report.py`.
 
 Spend: $2.41 of the $6 cap (`harness/ledger.csv`): $1.50 glm-5p3-flash, $0.91 glm-5p3. No deployments.

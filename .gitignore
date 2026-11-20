@@ -16,3 +16,10 @@ __pycache__/
 **/site-packages/
 **/.venv/
 **/venv*/
+
+# Secrets and caches
+.env
+.env.*
+!.env.example
+**/hf_cache/
+hackathon/cypher/audit/exec_cache.json
